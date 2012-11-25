@@ -11,6 +11,7 @@ namespace RandomResearch
         {
             //Basic(args);
             Advanced(args);
+            //Console.Read();
         }
 
         private static void Basic(string[] args)
@@ -40,21 +41,34 @@ namespace RandomResearch
         {
             int populationLength = int.Parse(args[0]);
             int requiredLength = int.Parse(args[1]);
-            bool makeSureNoRepeatsInARow = args.Length >=3 ? bool.Parse(args[2]) : false;
-            //int minDuplicatesAbstand = args.Length >= 3 ? int.Parse(args[2]) : 0; //todo
+            //bool makeSureNoRepeatsInARow = args.Length >=3 ? bool.Parse(args[2]) : false;
+            int minDuplicatesAbstand = args.Length >= 3 ? int.Parse(args[2]) : 0; //todo
             List<int> rslt = new List<int>();
             Random rnd = new Random();
             int prev = -1;
+            //for (int i = 0; i < requiredLength; i++)
+            //{
+            //    int curr = 0;
+
+            //    do {
+            //        curr = rnd.Next(populationLength);
+            //    } while (makeSureNoRepeatsInARow && curr == prev);
+            //    rslt.Add(curr);
+            //    prev = curr;
+            //}
             for (int i = 0; i < requiredLength; i++)
             {
                 int curr = 0;
+                int currAbstand = 0;
                 do {
                     curr = rnd.Next(populationLength);
-
-                } while (makeSureNoRepeatsInARow && curr == prev);
+                    currAbstand = rslt.IndexOf(curr, Math.Max(rslt.Count - minDuplicatesAbstand, 0));
+                } while (minDuplicatesAbstand > 0 && currAbstand != -1);
                 rslt.Add(curr);
                 prev = curr;
             }
+
+            
 
             Dictionary<int, int> grouppedBy = new Dictionary<int, int>();
             foreach (int val in rslt)
@@ -76,5 +90,7 @@ namespace RandomResearch
             Console.WriteLine("-------------------------------------------------------------------------------------------------------");
 
         }
+
+        
     }
 }
