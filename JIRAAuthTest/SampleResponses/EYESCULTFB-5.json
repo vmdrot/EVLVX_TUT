@@ -1,0 +1,189 @@
+﻿HTTP/1.1 200 OK
+Date: Fri, 01 Feb 2013 18:41:55 GMT
+Server: Apache-Coyote/1.1
+X-AREQUESTID: 1121x4910x1
+X-Seraph-LoginReason: OK
+X-ASESSIONID: 6yxbm1
+X-AUSERNAME: valeriy.drotenko
+Cache-Control: no-cache, no-store, no-transform
+Content-Type: application/json;charset=UTF-8
+Set-Cookie: JSESSIONID=393C11411480A446572280EBD78EFA4D; Path=/jira/; HttpOnly
+Set-Cookie: atlassian.xsrf.token=BRC6-JW9A-CC11-3DCY|717e495d2205e2ea8737c89dfe063f350d40f00e|lin; Path=/jira
+X-Powered-By: PleskLin
+Connection: close
+Transfer-Encoding: chunked
+
+{
+  "expand": "renderedFields,names,schema,transitions,operations,editmeta,changelog",
+  "id": "10404",
+  "self": "http://pm.ruthenorum.info/jira/rest/api/2/issue/10404",
+  "key": "EYESCULTFB-5",
+  "fields": {
+    "summary": "Марко має вподобати сторінку",
+    "progress": {
+      "progress": 0,
+      "total": 0
+    },
+    "timetracking": {
+      
+    },
+    "issuetype": {
+      "self": "http://pm.ruthenorum.info/jira/rest/api/2/issuetype/3",
+      "id": "3",
+      "description": "Задачі, які потрібно виконати",
+      "iconUrl": "http://pm.ruthenorum.info/jira/images/icons/task.gif",
+      "name": "Задачі",
+      "subtask": false
+    },
+    "votes": {
+      "self": "http://pm.ruthenorum.info/jira/rest/api/2/issue/EYESCULTFB-5/votes",
+      "votes": 0,
+      "hasVoted": false
+    },
+    "resolution": {
+      "self": "http://pm.ruthenorum.info/jira/rest/api/2/resolution/1",
+      "id": "1",
+      "description": "A fix for this issue is checked into the tree and tested.",
+      "name": "Fixed"
+    },
+    "fixVersions": [
+      
+    ],
+    "resolutiondate": "2013-01-31T00:51:53.239+0000",
+    "timespent": null,
+    "reporter": {
+      "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=valeriy.drotenko",
+      "name": "valeriy.drotenko",
+      "emailAddress": "valeriy.drotenko@gmail.com",
+      "avatarUrls": {
+        "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&ownerId=valeriy.drotenko&avatarId=10300",
+        "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?ownerId=valeriy.drotenko&avatarId=10300"
+      },
+      "displayName": "Валерій Дротенко",
+      "active": true
+    },
+    "aggregatetimeoriginalestimate": null,
+    "created": "2013-01-31T00:42:52.027+0000",
+    "updated": "2013-01-31T00:51:53.269+0000",
+    "description": "Дорогий Марко, \r\n\r\nВподобайте, будь-ласка, сторінку (її вже створено) - так ми зможемо зробити Вас адміністратором.\r\n\r\nВам мало надійти від мене запрошення її вподобати; якщо не надійшло чи неможливо знайти - тоді можна просто зайти на сторінку (https://www.facebook.com/EyeOnCulture) і вподобати її.",
+    "priority": {
+      "self": "http://pm.ruthenorum.info/jira/rest/api/2/priority/3",
+      "iconUrl": "http://pm.ruthenorum.info/jira/images/icons/priority_major.gif",
+      "name": "Значний",
+      "id": "3"
+    },
+    "duedate": null,
+    "customfield_10001": null,
+    "customfield_10020": null,
+    "issuelinks": [
+      
+    ],
+    "customfield_10004": "74",
+    "watches": {
+      "self": "http://pm.ruthenorum.info/jira/rest/api/2/issue/EYESCULTFB-5/watchers",
+      "watchCount": 1,
+      "isWatching": true
+    },
+    "worklog": {
+      "startAt": 0,
+      "maxResults": 0,
+      "total": 0,
+      "worklogs": [
+        
+      ]
+    },
+    "customfield_10000": null,
+    "subtasks": [
+      
+    ],
+    "status": {
+      "self": "http://pm.ruthenorum.info/jira/rest/api/2/status/5",
+      "description": "A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed.",
+      "iconUrl": "http://pm.ruthenorum.info/jira/images/icons/status_resolved.gif",
+      "name": "Resolved",
+      "id": "5"
+    },
+    "customfield_10006": null,
+    "labels": [
+      
+    ],
+    "customfield_10005": null,
+    "workratio": -1,
+    "assignee": {
+      "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=m.stech",
+      "name": "m.stech",
+      "emailAddress": "m.stech@utoronto.ca",
+      "avatarUrls": {
+        "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&avatarId=10122",
+        "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?avatarId=10122"
+      },
+      "displayName": "Marko Robert Stech",
+      "active": true
+    },
+    "attachment": [
+      
+    ],
+    "aggregatetimeestimate": null,
+    "project": {
+      "self": "http://pm.ruthenorum.info/jira/rest/api/2/project/EYESCULTFB",
+      "id": "10202",
+      "key": "EYESCULTFB",
+      "name": "ФБ-сторінка Очима Культури",
+      "avatarUrls": {
+        "16x16": "http://pm.ruthenorum.info/jira/secure/projectavatar?size=small&pid=10202&avatarId=10011",
+        "48x48": "http://pm.ruthenorum.info/jira/secure/projectavatar?pid=10202&avatarId=10011"
+      }
+    },
+    "versions": [
+      
+    ],
+    "environment": null,
+    "timeestimate": null,
+    "aggregateprogress": {
+      "progress": 0,
+      "total": 0
+    },
+    "lastViewed": "2013-02-01T18:28:24.733+0000",
+    "components": [
+      
+    ],
+    "comment": {
+      "startAt": 0,
+      "maxResults": 1,
+      "total": 1,
+      "comments": [
+        {
+          "self": "http://pm.ruthenorum.info/jira/rest/api/2/issue/10404/comment/10405",
+          "id": "10405",
+          "author": {
+            "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=valeriy.drotenko",
+            "name": "valeriy.drotenko",
+            "emailAddress": "valeriy.drotenko@gmail.com",
+            "avatarUrls": {
+              "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&ownerId=valeriy.drotenko&avatarId=10300",
+              "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?ownerId=valeriy.drotenko&avatarId=10300"
+            },
+            "displayName": "Валерій Дротенко",
+            "active": true
+          },
+          "body": "вже додав до менеджерів і без уподобання",
+          "updateAuthor": {
+            "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=valeriy.drotenko",
+            "name": "valeriy.drotenko",
+            "emailAddress": "valeriy.drotenko@gmail.com",
+            "avatarUrls": {
+              "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&ownerId=valeriy.drotenko&avatarId=10300",
+              "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?ownerId=valeriy.drotenko&avatarId=10300"
+            },
+            "displayName": "Валерій Дротенко",
+            "active": true
+          },
+          "created": "2013-01-31T00:51:53.268+0000",
+          "updated": "2013-01-31T00:51:53.268+0000"
+        }
+      ]
+    },
+    "timeoriginalestimate": null,
+    "aggregatetimespent": null
+  }
+}
