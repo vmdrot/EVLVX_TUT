@@ -1,0 +1,96 @@
+HTTP/1.1 401 Unauthorized
+Date: Fri, 01 Feb 2013 18:48:10 GMT
+Server: Apache-Coyote/1.1
+X-AREQUESTID: 1128x4912x1
+X-Seraph-LoginReason: AUTHENTICATED_FAILED
+WWW-Authenticate: OAuth realm="http%3A%2F%2Fpm.ruthenorum.info%2Fjira"
+X-Content-Type-Options: nosniff
+Content-Type: text/html;charset=UTF-8
+Content-Length: 6994
+Set-Cookie: JSESSIONID=79C9C30227B948492A0D1A1FB027C8E4; Path=/jira/; HttpOnly
+X-Powered-By: PleskLin
+Connection: close
+
+<!DOCTYPE html>
+
+
+
+
+
+<html>
+
+<head>
+    <title>Unauthorized (401)</title>
+    
+
+
+
+
+
+
+
+
+
+
+<!--[if IE]><![endif]-->
+<script type="text/javascript">var contextPath = '/jira';</script>
+<link type="text/css" rel="stylesheet" href="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1/_/download/superbatch/css/batch.css" media="all">
+<!--[if lte IE 8]>
+<link type="text/css" rel="stylesheet" href="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+8" media="all">
+<![endif]-->
+<!--[if IE 9]>
+<link type="text/css" rel="stylesheet" href="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1/_/download/superbatch/css/batch.css?conditionalComment=IE+9" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1/_/download/superbatch/css/batch.css?conditionalComment=lte+IE+9" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/4eb5c0152f2f080b87de47160099a213/_/download/contextbatch/css/atl.general/batch.css" media="all">
+<link type="text/css" rel="stylesheet" href="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/5cf73a169fba05b27efe61e342f57769/_/download/contextbatch/css/jira.general/batch.css" media="all">
+<link type="text/css" rel="stylesheet" href="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/c2e41f2cf09f8b3c8914470a6617682d/_/download/contextbatch/css/jira.global/batch.css" media="all">
+<link type="text/css" rel="stylesheet" href="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1.0/_/download/batch/jira.webresources:global-static/jira.webresources:global-static.css" media="all">
+<link type="text/css" rel="stylesheet" href="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1.0/_/download/batch/jira.webresources:old_header_resources/jira.webresources:old_header_resources.css" media="all">
+<link type="text/css" rel="stylesheet" href="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1.1.1/_/download/batch/com.atlassian.administration.atlassian-admin-quicksearch-jira:admin-quicksearch-webresources/com.atlassian.administration.atlassian-admin-quicksearch-jira:admin-quicksearch-webresources.css" media="all">
+<link type="text/css" rel="stylesheet" href="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1.3.16/_/download/batch/com.atlassian.plugins.atlassian-nav-links-plugin:rotp-projectshortcuts/com.atlassian.plugins.atlassian-nav-links-plugin:rotp-projectshortcuts.css" media="all">
+<link type="text/css" rel="stylesheet" href="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1.0.54/_/download/batch/com.atlassian.jira.jira-quick-edit-plugin:quick-form/com.atlassian.jira.jira-quick-edit-plugin:quick-form.css" media="all">
+<script type="text/javascript" src="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1/_/download/superbatch/js/batch.js" ></script>
+<!--[if lte IE 8]>
+<script type="text/javascript" src="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1/_/download/superbatch/js/batch.js?conditionalComment=lte+IE+8" ></script>
+<![endif]-->
+<script type="text/javascript" src="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/4eb5c0152f2f080b87de47160099a213/_/download/contextbatch/js/atl.general/batch.js" ></script>
+<script type="text/javascript" src="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/5cf73a169fba05b27efe61e342f57769/_/download/contextbatch/js/jira.general/batch.js" ></script>
+<script type="text/javascript" src="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/c2e41f2cf09f8b3c8914470a6617682d/_/download/contextbatch/js/jira.global/batch.js" ></script>
+<script type="text/javascript" src="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1.1.1/_/download/batch/com.atlassian.administration.atlassian-admin-quicksearch-jira:admin-quicksearch-webresources/com.atlassian.administration.atlassian-admin-quicksearch-jira:admin-quicksearch-webresources.js" ></script>
+<script type="text/javascript" src="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1.3.16/_/download/batch/com.atlassian.plugins.atlassian-nav-links-plugin:rotp-projectshortcuts/com.atlassian.plugins.atlassian-nav-links-plugin:rotp-projectshortcuts.js" ></script>
+<script type="text/javascript" src="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1.0/_/download/batch/jira.webresources:calendar/jira.webresources:calendar.js" ></script>
+<script type="text/javascript" src="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1.0/_/download/batch/jira.webresources:group-pickers/jira.webresources:group-pickers.js" ></script>
+<script type="text/javascript" src="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1.0/_/download/batch/jira.webresources:user-pickers/jira.webresources:user-pickers.js" ></script>
+<script type="text/javascript" src="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1.0/_/download/batch/jira.webresources:jira-fields/jira.webresources:jira-fields.js" ></script>
+<script type="text/javascript" src="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1.0.54/_/download/batch/com.atlassian.jira.jira-quick-edit-plugin:quick-form/com.atlassian.jira.jira-quick-edit-plugin:quick-form.js" ></script>
+<script type="text/javascript" src="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/1.0.54/_/download/batch/com.atlassian.jira.jira-quick-edit-plugin:quick-create-issue/com.atlassian.jira.jira-quick-edit-plugin:quick-create-issue.js" ></script>
+<script type="text/javascript" src="http://pm.ruthenorum.info/jira/s/uk_UA-runocc-418945332/843/55/6.1.1/_/download/batch/com.pyxis.greenhopper.jira:gh-help-analytics/com.pyxis.greenhopper.jira:gh-help-analytics.js" ></script>
+
+    <script type="text/javascript" src="/jira/rest/api/1.0/shortcuts/843/786e24a67916d3722c273941f1ffe615/shortcuts.js"></script>
+
+
+</head>
+<body id="jira" class="aui-layout aui-style-default page-type-message">
+<div id="page">
+    <header id="header" role="banner">
+        <nav class="global" role="navigation">
+            <div class="primary">
+                <h1 id="logo"><a href="/jira/secure/MyJiraHome.jspa"><img src="/jira/jira-logo-scaled.png" alt="Ладижинська Громадська Рада" /></a></h1>
+            </div>
+        </nav>
+    </header>
+    <section id="content" role="main">
+        <header><h1>Unauthorized (401)</h1></header>
+        <div class="content-container">
+            <div class="content-body">
+                <p>Encountered a <code>401 - Unauthorized</code> error while loading this page.</p>
+                <p><a href="/jira/secure/MyJiraHome.jspa">Домашня сторінка JIRA</a></p>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>
