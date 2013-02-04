@@ -1,16 +1,90 @@
-HTTP/1.1 200 OK
-Date: Fri, 01 Feb 2013 19:04:43 GMT
-Server: Apache-Coyote/1.1
-X-AREQUESTID: 1144x5141x1
-X-Seraph-LoginReason: OK
-X-ASESSIONID: 11u8dsj
-X-AUSERNAME: valeriy.drotenko
-Cache-Control: no-cache, no-store, no-transform
-Content-Type: application/json;charset=UTF-8
-Set-Cookie: JSESSIONID=E0B6105905B5C0E3B9AC6729536D21B3; Path=/jira/; HttpOnly
-Set-Cookie: atlassian.xsrf.token=BRC6-JW9A-CC11-3DCY|21697a8d93e473e86e9ff67a72532eea872db1cd|lin; Path=/jira
-X-Powered-By: PleskLin
-Connection: close
-Transfer-Encoding: chunked
-
-{"self":"http://pm.ruthenorum.info/jira/rest/api/2/user?username=valeriy.drotenko","name":"valeriy.drotenko","emailAddress":"valeriy.drotenko@gmail.com","avatarUrls":{"16x16":"http://pm.ruthenorum.info/jira/secure/useravatar?size=small&ownerId=valeriy.drotenko&avatarId=10300","48x48":"http://pm.ruthenorum.info/jira/secure/useravatar?ownerId=valeriy.drotenko&avatarId=10300"},"displayName":"Валерій Дротенко","active":true,"timeZone":"Europe/Kiev","groups":{"size":23,"items":[]},"expand":"groups"}
+﻿{
+  "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=valeriy.drotenko",
+  "name": "valeriy.drotenko",
+  "emailAddress": "valeriy.drotenko@gmail.com",
+  "avatarUrls": {
+    "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&ownerId=valeriy.drotenko&avatarId=10300",
+    "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?ownerId=valeriy.drotenko&avatarId=10300"
+  },
+  "displayName": "Валерій Дротенко",
+  "active": true,
+  "timeZone": "Europe/Kiev",
+  "groups": {
+    "size": 24,
+    "items": [
+      {
+        "name": "Core"
+      },
+      {
+        "name": "ForeignRelations"
+      },
+      {
+        "name": "HTCWB-Translators"
+      },
+      {
+        "name": "HUBMED-Translators"
+      },
+      {
+        "name": "JIRATranslators"
+      },
+      {
+        "name": "KontaktCA-EyeOnCulture"
+      },
+      {
+        "name": "OdesaDevelopment"
+      },
+      {
+        "name": "ProcessesAndMethodologies"
+      },
+      {
+        "name": "RadioVolya-CulturePrograms"
+      },
+      {
+        "name": "RadioVolya-Developers"
+      },
+      {
+        "name": "RadioVolya-PoliticPrograms"
+      },
+      {
+        "name": "Ruthenorum-English-Writers"
+      },
+      {
+        "name": "Ruthenorum-French-Writers"
+      },
+      {
+        "name": "Ruthenorum-German-Writers"
+      },
+      {
+        "name": "Ruthenorum-InoZMI-DB-Workers"
+      },
+      {
+        "name": "Ruthenorum-Ukrainian-Writers"
+      },
+      {
+        "name": "SocioIntAggr-Mgrs"
+      },
+      {
+        "name": "UVO"
+      },
+      {
+        "name": "UVO-FinProcurement"
+      },
+      {
+        "name": "VPProgram-Authors"
+      },
+      {
+        "name": "confluence-administrators"
+      },
+      {
+        "name": "jira-administrators"
+      },
+      {
+        "name": "jira-developers"
+      },
+      {
+        "name": "jira-users"
+      }
+    ]
+  },
+  "expand": "groups"
+}
