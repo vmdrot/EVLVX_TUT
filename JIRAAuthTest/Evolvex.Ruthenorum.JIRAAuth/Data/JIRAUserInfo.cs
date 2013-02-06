@@ -76,8 +76,9 @@ namespace Evolvex.Ruthenorum.JIRAAuth.Data
         {
             List<string> rslt = new List<string>();
             while (reader.Read())
-            { 
-
+            {
+                if (reader.TokenType == JsonToken.EndObject)
+                    break;
             }
             return rslt;
         }
