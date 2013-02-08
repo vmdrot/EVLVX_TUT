@@ -17,7 +17,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth.Tests
         public void ParseUser()
         {
             JIRAUserInfo jui = JIRAUserInfo.Parse(File.ReadAllText(USER_INFO_ME_FN));
-
+            Console.WriteLine(jui);
         }
     }
 }

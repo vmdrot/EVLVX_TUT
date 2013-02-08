@@ -5,6 +5,7 @@ using System.Text;
 using System.Net;
 using System.IO;
 using Evolvex.Web.Utility;
+using System.Web.Security;
 
 namespace Evolvex.Ruthenorum.JIRAAuth
 {

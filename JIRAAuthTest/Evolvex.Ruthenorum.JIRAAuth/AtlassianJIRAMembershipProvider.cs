@@ -135,7 +135,8 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 
         public override System.Web.Security.MembershipUser GetUser(string username, bool userIsOnline)
         {
-            //throw new NotImplementedException();
+            if(_authenticatedUsers.ContainsKey(username))
+                return (MembershipUser)_authenticatedUsers[username]; 
             return null; //todo
         }
 
@@ -244,6 +245,10 @@ namespace Evolvex.Ruthenorum.JIRAAuth
             if (rslt)
             {
                 JIRAUserInfo jui = JIRAUserInfo.Parse(json);
+                if (_authenticatedUsers.ContainsKey(jui.name))
+                    _authenticatedUsers[jui.name] = jui;
+                else
+                    _authenticatedUsers.Add(jui.name, jui);
             }
             return rslt;
 
