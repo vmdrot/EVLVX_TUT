@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evolvex.PHP2PootleConverter.Console", "Evolvex.PHP2PootleConverter.Console\Evolvex.PHP2PootleConverter.Console.csproj", "{E2F79A05-7BB9-40F9-AC06-3AE54E2B6EE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evolvex.PHP2PootleConverterLib", "Evolvex.PHP2PootleConverterLib\Evolvex.PHP2PootleConverterLib.csproj", "{A1427CB0-5D6A-4DEF-ABFF-69DE138CAC81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2F79A05-7BB9-40F9-AC06-3AE54E2B6EE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2F79A05-7BB9-40F9-AC06-3AE54E2B6EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2F79A05-7BB9-40F9-AC06-3AE54E2B6EE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2F79A05-7BB9-40F9-AC06-3AE54E2B6EE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1427CB0-5D6A-4DEF-ABFF-69DE138CAC81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1427CB0-5D6A-4DEF-ABFF-69DE138CAC81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1427CB0-5D6A-4DEF-ABFF-69DE138CAC81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1427CB0-5D6A-4DEF-ABFF-69DE138CAC81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
