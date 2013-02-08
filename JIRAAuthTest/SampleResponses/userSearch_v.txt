@@ -1,0 +1,50 @@
+[
+  {
+    "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=v.andrusiv",
+    "name": "v.andrusiv",
+    "emailAddress": "v.andrusiv@gmail.com",
+    "avatarUrls": {
+      "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&avatarId=10122",
+      "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?avatarId=10122"
+    },
+    "displayName": "viktor",
+    "active": true,
+    "timeZone": "Europe/Kiev"
+  },
+  {
+    "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=8chuma8",
+    "name": "8chuma8",
+    "emailAddress": "8chuma8@gmail.com",
+    "avatarUrls": {
+      "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&ownerId=8chuma8&avatarId=10400",
+      "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?ownerId=8chuma8&avatarId=10400"
+    },
+    "displayName": "Volodumur",
+    "active": true,
+    "timeZone": "Europe/Kiev"
+  },
+  {
+    "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=valeriy.drotenko",
+    "name": "valeriy.drotenko",
+    "emailAddress": "valeriy.drotenko@gmail.com",
+    "avatarUrls": {
+      "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&ownerId=valeriy.drotenko&avatarId=10300",
+      "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?ownerId=valeriy.drotenko&avatarId=10300"
+    },
+    "displayName": "Валерій Дротенко",
+    "active": true,
+    "timeZone": "Europe/Kiev"
+  },
+  {
+    "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=viktor.aleksa",
+    "name": "viktor.aleksa",
+    "emailAddress": "aleksavik@i.ua",
+    "avatarUrls": {
+      "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&avatarId=10122",
+      "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?avatarId=10122"
+    },
+    "displayName": "Віктор Алекса",
+    "active": true,
+    "timeZone": "Europe/Kiev"
+  }
+]

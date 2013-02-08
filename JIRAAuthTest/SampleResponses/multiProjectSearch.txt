@@ -1,0 +1,110 @@
+[
+  {
+    "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=romulus",
+    "name": "romulus",
+    "emailAddress": "ro-man@ukr.net",
+    "avatarUrls": {
+      "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&avatarId=10122",
+      "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?avatarId=10122"
+    },
+    "displayName": "Roman Sakharov",
+    "active": true,
+    "timeZone": "Europe/Kiev"
+  },
+  {
+    "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=t01_u96_h",
+    "name": "t01_u96_h",
+    "emailAddress": "t01_u96_h@gmail.com",
+    "avatarUrls": {
+      "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&ownerId=t01_u96_h&avatarId=10501",
+      "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?ownerId=t01_u96_h&avatarId=10501"
+    },
+    "displayName": "t01_u96_h",
+    "active": true,
+    "timeZone": "Europe/Kiev"
+  },
+  {
+    "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=8chuma8",
+    "name": "8chuma8",
+    "emailAddress": "8chuma8@gmail.com",
+    "avatarUrls": {
+      "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&ownerId=8chuma8&avatarId=10400",
+      "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?ownerId=8chuma8&avatarId=10400"
+    },
+    "displayName": "Volodumur",
+    "active": true,
+    "timeZone": "Europe/Kiev"
+  },
+  {
+    "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=arturkomarov",
+    "name": "arturkomarov",
+    "emailAddress": "artur.komarov@gmail.com",
+    "avatarUrls": {
+      "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&avatarId=10122",
+      "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?avatarId=10122"
+    },
+    "displayName": "Артур Комаров",
+    "active": true,
+    "timeZone": "Europe/Kiev"
+  },
+  {
+    "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=valeriy.drotenko",
+    "name": "valeriy.drotenko",
+    "emailAddress": "valeriy.drotenko@gmail.com",
+    "avatarUrls": {
+      "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&ownerId=valeriy.drotenko&avatarId=10300",
+      "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?ownerId=valeriy.drotenko&avatarId=10300"
+    },
+    "displayName": "Валерій Дротенко",
+    "active": true,
+    "timeZone": "Europe/Kiev"
+  },
+  {
+    "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=dinox",
+    "name": "dinox",
+    "emailAddress": "admin@webplaneta.com.ua",
+    "avatarUrls": {
+      "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&ownerId=dinox&avatarId=10301",
+      "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?ownerId=dinox&avatarId=10301"
+    },
+    "displayName": "Олександр Ребров",
+    "active": true,
+    "timeZone": "Europe/Kiev"
+  },
+  {
+    "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=svitlana.taranenko",
+    "name": "svitlana.taranenko",
+    "emailAddress": "for.our.freedom@gmail.com",
+    "avatarUrls": {
+      "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&avatarId=10122",
+      "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?avatarId=10122"
+    },
+    "displayName": "Світлана Тараненко",
+    "active": true,
+    "timeZone": "Europe/Kiev"
+  },
+  {
+    "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=sergiy.chekalenko",
+    "name": "sergiy.chekalenko",
+    "emailAddress": "sergei.chekalenko@gmail.com",
+    "avatarUrls": {
+      "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&avatarId=10122",
+      "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?avatarId=10122"
+    },
+    "displayName": "Сергій Чекаленко",
+    "active": true,
+    "timeZone": "Europe/Kiev"
+  },
+  {
+    "self": "http://pm.ruthenorum.info/jira/rest/api/2/user?username=jurko_zelenyj",
+    "name": "jurko_zelenyj",
+    "emailAddress": "jurko.zelenyj@gmail.com",
+    "avatarUrls": {
+      "16x16": "http://pm.ruthenorum.info/jira/secure/useravatar?size=small&avatarId=10122",
+      "48x48": "http://pm.ruthenorum.info/jira/secure/useravatar?avatarId=10122"
+    },
+    "displayName": "Юрко ЗЕЛЕНИЙ",
+    "active": true,
+    "timeZone": "Europe/Kiev"
+  }
+]

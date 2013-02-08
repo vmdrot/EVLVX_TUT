@@ -1,0 +1,2 @@
+True (OK)
+{"header":"Showing 1 of 29 matching groups","total":29,"groups":[{"name":"confluence-administrators","html":"confluence-administrators"}]}

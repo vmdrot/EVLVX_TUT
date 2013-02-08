@@ -11,12 +11,23 @@ namespace JIRAAuthTest
     {
         public String JIRARootUrl { get; set; }
         public const string RESOURCE_PATH = "/rest/api/2/user?expand=groups&username=";
+        public const string GROUPS_LIST_PATH = "/rest/api/2/groups/picker";
         public HttpStatusCode? LastStatus { get; private set; }
+
         public bool Authenticate(string usr, string pwd, out string responseText)
         {
             string url = string.Format("{0}{1}{2}", JIRARootUrl, RESOURCE_PATH, usr);
+            return AuthenticateWorker(usr, pwd, out responseText, url);
+        }
 
+        public bool ListGroups(string usr, string pwd, out string responseText, int limitTo)
+        {
+            string url = string.Format("{0}{1}?maxResults={2}", JIRARootUrl, GROUPS_LIST_PATH, limitTo);
+            return AuthenticateWorker(usr, pwd, out responseText, url);
+        }
 
+        private bool AuthenticateWorker(string usr, string pwd, out string responseText, string url)
+        {
             HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
             request.ContentType = "application/json";
             request.Method = "GET";
@@ -50,7 +61,6 @@ namespace JIRAAuthTest
             }
             return (bool)(LastStatus != null && (HttpStatusCode)LastStatus == HttpStatusCode.OK);
         }
-
 
 
         private string GetEncodedCredentials(string usr, string pwd)

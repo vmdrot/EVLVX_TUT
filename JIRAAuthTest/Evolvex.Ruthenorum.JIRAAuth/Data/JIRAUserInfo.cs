@@ -109,7 +109,6 @@ namespace Evolvex.Ruthenorum.JIRAAuth.Data
         private Dictionary<string, string> ReadAvatars(JsonTextReader reader)
         {
             Dictionary<string, string> rslt = new Dictionary<string, string>();
-            bool arrayStarted = false;
             string lastPropName = string.Empty;
             while (reader.Read())
             {
