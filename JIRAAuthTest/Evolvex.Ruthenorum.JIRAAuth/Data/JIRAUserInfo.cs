@@ -162,10 +162,10 @@ namespace Evolvex.Ruthenorum.JIRAAuth.Data
             return string.Format("self = {0}, name = {1}, email = {2}, displayName = {3}, active = {4}, timeZone = {5}, groups.Count = {6}, avatarUrls.Count = {7}", self, name, email, displayName, active, timeZone, groups.Count, avatarUrls.Count);
         }
 
-        public static explicit operator MembershipUser(JIRAUserInfo src)
-        {
-            return null; //todo
-        }
+        //public static explicit operator MembershipUser(JIRAUserInfo src)
+        //{
+        //    return new MembershipUser("???!", src.name, src.self
+        //}
 
     }
 }

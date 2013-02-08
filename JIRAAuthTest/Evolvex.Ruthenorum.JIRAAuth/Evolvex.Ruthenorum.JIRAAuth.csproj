@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AtlassianJIRAMembershipProvider.cs" />
+    <Compile Include="AtlassianJIRARolesManager.cs" />
     <Compile Include="Data\JIRAUserInfo.cs" />
     <Compile Include="JiraAuthenticator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

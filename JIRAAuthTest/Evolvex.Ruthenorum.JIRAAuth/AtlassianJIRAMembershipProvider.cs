@@ -24,6 +24,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth
         private JiraAuthenticator _jiraAuthenticator;
         private string _applicationName;
         private Dictionary<string, JIRAUserInfo> _authenticatedUsers;
+        private List<string> _lockedUsers;
         #endregion
 
         #region cctor(s)
@@ -34,7 +35,8 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 
         public AtlassianJIRAMembershipProvider()
         {
-             
+            _authenticatedUsers = new Dictionary<string, JIRAUserInfo>();
+            _lockedUsers = new List<string>();
         }
         #endregion
 
@@ -136,14 +138,34 @@ namespace Evolvex.Ruthenorum.JIRAAuth
         public override System.Web.Security.MembershipUser GetUser(string username, bool userIsOnline)
         {
             if(_authenticatedUsers.ContainsKey(username))
-                return (MembershipUser)_authenticatedUsers[username]; 
+            {
+                JIRAUserInfo jui = _authenticatedUsers[username];
+                return GetMembershipUserFromJIRAUserInfo(jui);
+            }
             return null; //todo
+        }
+
+        private MembershipUser GetMembershipUserFromJIRAUserInfo(JIRAUserInfo jui)
+        {
+            return new MembershipUser(this.Name, jui.name, jui.self, jui.email, string.Empty, jui.displayName, jui.active, _lockedUsers.Contains(jui.name.ToLower()), DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue);
         }
 
         public override System.Web.Security.MembershipUser GetUser(object providerUserKey, bool userIsOnline)
         {
-            //throw new NotImplementedException();
+            JIRAUserInfo jui = FindJIRAUserByKey(providerUserKey as string);
+            if(jui != null)
+                return GetMembershipUserFromJIRAUserInfo(jui);
             return null; //todo
+        }
+
+        private JIRAUserInfo FindJIRAUserByKey(string self)
+        {
+            foreach (JIRAUserInfo jui in _authenticatedUsers.Values)
+            {
+                if (jui.self == self)
+                    return jui;
+            }
+            return null;
         }
 
         public override string GetUserNameByEmail(string email)
@@ -237,18 +259,30 @@ namespace Evolvex.Ruthenorum.JIRAAuth
             lock(this._jiraAuthenticator)
             {
                 rslt = Authenticator.Authenticate(username, password);
-                if(rslt)
+                if (rslt)
                 {
                     json = Authenticator.LastResponseText;
                 }
+                httpStatus = Authenticator.LastStatus;
             }
             if (rslt)
             {
+                if (_lockedUsers.Contains(username.ToLower()))
+                    _lockedUsers.Remove(username.ToLower());
+
                 JIRAUserInfo jui = JIRAUserInfo.Parse(json);
                 if (_authenticatedUsers.ContainsKey(jui.name))
                     _authenticatedUsers[jui.name] = jui;
                 else
                     _authenticatedUsers.Add(jui.name, jui);
+            }
+            else
+            {
+                if (httpStatus != null && (HttpStatusCode)httpStatus == HttpStatusCode.Forbidden)
+                {
+                    if (!_lockedUsers.Contains(username.ToLower()))
+                        _lockedUsers.Add(username.ToLower());
+                }
             }
             return rslt;
 
