@@ -6,6 +6,7 @@ using System.Net;
 using System.IO;
 using Evolvex.Web.Utility;
 using System.Web.Security;
+using Evolvex.Ruthenorum.JIRAAuth.Data;
 
 namespace Evolvex.Ruthenorum.JIRAAuth
 {
@@ -58,5 +59,15 @@ namespace Evolvex.Ruthenorum.JIRAAuth
             return Convert.ToBase64String(byteCredentials);
         }
 
+
+        public List<string> ListGroups()
+        {
+            throw new NotImplementedException();
+        }
+
+        public JIRAUserInfo GetUser(string userName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

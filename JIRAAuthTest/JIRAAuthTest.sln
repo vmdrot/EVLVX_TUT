@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SampleResponses", "SampleRe
 		SampleResponses\Core.txt = SampleResponses\Core.txt
 		SampleResponses\EYESCULTFB-3.json = SampleResponses\EYESCULTFB-3.json
 		SampleResponses\EYESCULTFB-5.json = SampleResponses\EYESCULTFB-5.json
+		SampleResponses\userSearch_v.txt = SampleResponses\userSearch_v.txt
 		SampleResponses\valeriy.drotenko.txt = SampleResponses\valeriy.drotenko.txt
 	EndProjectSection
 EndProject

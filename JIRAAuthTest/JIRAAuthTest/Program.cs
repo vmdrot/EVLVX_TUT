@@ -7,16 +7,50 @@ namespace JIRAAuthTest
 {
     class Program
     {
+        
+        public delegate void CmdHandler(string[] args);
+        private static Dictionary<string, CmdHandler> _cmdHandlers;
+
+        static Program()
+        {
+            _cmdHandlers = new Dictionary<string, CmdHandler>();
+            _cmdHandlers.Add("authenticateuser", AuthenticateUser);
+            _cmdHandlers.Add("listgroups", ListGroups);
+            
+
+        }
         static void Main(string[] args)
         {
             //Console.Read();
-            String jiraRootUrl = args[0];
-            string usr = args[1];
-            string pwd = args[2];
+            CmdHandler hndlr;
+            if (_cmdHandlers.TryGetValue(args[0].ToLower(), out hndlr))
+                hndlr(args);
+            else
+                AuthenticateUser(args);
+        }
+
+        private static void AuthenticateUser(string[] args)
+        {
+            String jiraRootUrl = args[1];
+            string usr = args[2];
+            string pwd = args[3];
             string resp;
             JiraAuthenticator auth = new JiraAuthenticator();
             auth.JIRARootUrl = jiraRootUrl;
             bool rslt = auth.Authenticate(usr, pwd, out resp);
+            Console.WriteLine("{0} ({1})\n{2}", rslt, auth.LastStatus, resp);
+        }
+
+        private static void ListGroups(string[] args)
+        {
+            String jiraRootUrl = args[1];
+            string usr = args[2];
+            string pwd = args[3];
+            int limitTo = int.Parse(args[4]);
+            string resp;
+            JiraAuthenticator auth = new JiraAuthenticator();
+            auth.JIRARootUrl = jiraRootUrl;
+            bool rslt = auth.ListGroups(usr, pwd, out resp, limitTo);
             Console.WriteLine("{0} ({1})\n{2}", rslt, auth.LastStatus, resp);
         }
     }

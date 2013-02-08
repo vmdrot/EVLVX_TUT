@@ -53,6 +53,14 @@ namespace Evolvex.Ruthenorum.JIRAAuth
                 return _jiraAuthenticator;
             }
         }
+
+        public Dictionary<string, JIRAUserInfo> AuthenticatedUsers
+        {
+            get
+            {
+                return this._authenticatedUsers;
+            }
+        }
         #endregion
         #region MembershipProvider member(s)
         public override string ApplicationName
