@@ -1,0 +1,55 @@
+#. // Heading
+msgid "Heading"
+msgstr "// Heading"
+#. $_['heading_title']
+msgid "Attributes"
+msgstr "";
+
+#. // Text
+msgid "Text"
+msgstr "// Text"
+#. $_['text_success']
+msgid "Success: You have modified attributes!"
+msgstr "";
+
+#. // Column
+msgid "Column"
+msgstr "// Column"
+#. $_['column_name']
+msgid "Attribute Name"
+msgstr "";
+#. $_['column_attribute_group']
+msgid "Attribute Group"
+msgstr "";
+#. $_['column_sort_order']
+msgid "Sort Order"
+msgstr "";
+#. $_['column_action']
+msgid "Action"
+msgstr "";
+
+#. // Entry
+msgid "Entry"
+msgstr "// Entry"
+#. $_['entry_name']
+msgid "Attribute Name:"
+msgstr "";
+#. $_['entry_attribute_group']
+msgid "Attribute Group:"
+msgstr "";
+#. $_['entry_sort_order']
+msgid "Sort Order:"
+msgstr "";
+
+#. // Error
+msgid "Error"
+msgstr "// Error"
+#. $_['error_permission']
+msgid "Warning: You do not have permission to modify attributes!"
+msgstr "";
+#. $_['error_name']
+msgid "Attribute Name must be between 3 and 64 characters!"
+msgstr "";
+#. $_['error_product']
+msgid "Warning: This attribute cannot be deleted as it is currently assigned to %s products!"
+msgstr "";
