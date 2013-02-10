@@ -5,10 +5,11 @@ using System.Text;
 using Newtonsoft.Json;
 using System.IO;
 using System.Web.Security;
+using Evolvex.Ruthenorum.JIRAAuth.Core.Interfaces;
 
 namespace Evolvex.Ruthenorum.JIRAAuth.Data
 {
-    public class JIRAUserInfo
+    public class JIRAUserInfo : IJIRAUserInfo
     {
         public string self { get; private set; }
         public string name { get; private set; }

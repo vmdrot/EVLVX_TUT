@@ -66,9 +66,10 @@ namespace Evolvex.Ruthenorum.JIRAAuth
             throw new NotImplementedException();
         }
 
-        public JIRAUserInfo GetUser(string userName)
+        public IJIRAUserInfo GetUser(string userName)
         {
             throw new NotImplementedException();
+        
         }
     }
 }
