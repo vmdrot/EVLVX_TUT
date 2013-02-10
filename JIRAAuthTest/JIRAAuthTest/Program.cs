@@ -35,7 +35,7 @@ namespace JIRAAuthTest
             string usr = args[2];
             string pwd = args[3];
             string resp;
-            JiraAuthenticator auth = new JiraAuthenticator();
+            JiraAuthenticatorProto auth = new JiraAuthenticatorProto();
             auth.JIRARootUrl = jiraRootUrl;
             bool rslt = auth.Authenticate(usr, pwd, out resp);
             Console.WriteLine("{0} ({1})\n{2}", rslt, auth.LastStatus, resp);
@@ -48,7 +48,7 @@ namespace JIRAAuthTest
             string pwd = args[3];
             int limitTo = int.Parse(args[4]);
             string resp;
-            JiraAuthenticator auth = new JiraAuthenticator();
+            JiraAuthenticatorProto auth = new JiraAuthenticatorProto();
             auth.JIRARootUrl = jiraRootUrl;
             bool rslt = auth.ListGroups(usr, pwd, out resp, limitTo);
             Console.WriteLine("{0} ({1})\n{2}", rslt, auth.LastStatus, resp);

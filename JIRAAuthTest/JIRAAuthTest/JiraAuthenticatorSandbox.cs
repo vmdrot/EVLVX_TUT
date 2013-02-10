@@ -7,7 +7,7 @@ using System.IO;
 
 namespace JIRAAuthTest
 {
-    public class JiraAuthenticatorProto
+    public class JiraAuthenticatorSandbox
     {
 
         protected string m_BaseUrl;
