@@ -7,10 +7,11 @@ using System.IO;
 using Evolvex.Web.Utility;
 using System.Web.Security;
 using Evolvex.Ruthenorum.JIRAAuth.Data;
+using Evolvex.Ruthenorum.JIRAAuth.Core.Interfaces;
 
 namespace Evolvex.Ruthenorum.JIRAAuth
 {
-    public class JiraAuthenticator
+    public class JiraAuthenticator: IJIRAAuthenticator
     {
         public String JIRARootUrl { get; set; }
         public const string RESOURCE_PATH = "/rest/api/2/user?expand=groups&username=";

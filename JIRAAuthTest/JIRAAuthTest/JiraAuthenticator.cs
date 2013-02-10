@@ -14,10 +14,27 @@ namespace JIRAAuthTest
         public const string GROUPS_LIST_PATH = "/rest/api/2/groups/picker";
         public HttpStatusCode? LastStatus { get; private set; }
 
+        #region field(s)
+        private string _serviceAcctUsrName;
+        private string _serviceAcctPwd;
+        #endregion
+
+        public void SetSvcUser(String usr, string pwd)
+        {
+            this._serviceAcctUsrName = usr;
+            this._serviceAcctPwd = pwd;
+        }
+
         public bool Authenticate(string usr, string pwd, out string responseText)
         {
             string url = string.Format("{0}{1}{2}", JIRARootUrl, RESOURCE_PATH, usr);
             return AuthenticateWorker(usr, pwd, out responseText, url);
+        }
+
+        public bool GetUserInfo(string usr, out string responseJson)
+        {
+            string url = string.Format("{0}{1}{2}", JIRARootUrl, RESOURCE_PATH, usr);
+            return AuthenticateWorker(this._serviceAcctUsrName, this._serviceAcctPwd, out responseJson, url);
         }
 
         public bool ListGroups(string usr, string pwd, out string responseText, int limitTo)
