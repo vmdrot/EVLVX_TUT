@@ -7,7 +7,7 @@ using System.IO;
 
 namespace JIRAAuthTest
 {
-    public class JiraAuthenticator
+    public class JiraAuthenticatorProto
     {
         public String JIRARootUrl { get; set; }
         public const string RESOURCE_PATH = "/rest/api/2/user?expand=groups&username=";

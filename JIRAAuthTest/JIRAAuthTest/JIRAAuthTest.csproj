@@ -45,8 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JiraAuthenticator.cs" />
-    <Compile Include="JiraAuthenticatorProto.cs" />
+    <Compile Include="JiraAuthenticatorProto.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="JiraAuthenticatorSandbox.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
