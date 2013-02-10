@@ -48,6 +48,7 @@
     <Compile Include="Interfaces\IAuthenticatedUsersRepo.cs" />
     <Compile Include="Interfaces\IJIRAAuthenticator.cs" />
     <Compile Include="Interfaces\ILockedUsersRepo.cs" />
+    <Compile Include="Interfaces\IJIRAUserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

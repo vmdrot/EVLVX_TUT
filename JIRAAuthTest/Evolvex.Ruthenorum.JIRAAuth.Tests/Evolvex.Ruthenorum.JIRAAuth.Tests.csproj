@@ -52,6 +52,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Evolvex.Ruthenorum.JIRAAuth.Core\Evolvex.Ruthenorum.JIRAAuth.Core.csproj">
+      <Project>{9AF66BEA-7CB1-4483-914D-9701AC0285BA}</Project>
+      <Name>Evolvex.Ruthenorum.JIRAAuth.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Evolvex.Ruthenorum.JIRAAuth\Evolvex.Ruthenorum.JIRAAuth.csproj">
       <Project>{2E7A496B-8C33-4786-95A7-6168DF1497A7}</Project>
       <Name>Evolvex.Ruthenorum.JIRAAuth</Name>
