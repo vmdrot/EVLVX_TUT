@@ -13,6 +13,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 {
     public class AtlassianJIRAMembershipProvider : System.Web.Security.MembershipProvider
     {
+        private static readonly Evolvex.Ruthenorum.Core.Interfaces.ILog log = Evolvex.Ruthenorum.Core.Logging.GetLogger(typeof(AtlassianJIRAMembershipProvider));
         #region inner type(s)
         #endregion
 
@@ -52,18 +53,21 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
         {
+            log.Debug("ChangePassword('{0}', '{1}', '{2}')", username, oldPassword, newPassword);
             //throw new NotImplementedException();
             return false;
         }
 
         public override bool ChangePasswordQuestionAndAnswer(string username, string password, string newPasswordQuestion, string newPasswordAnswer)
         {
+            log.Debug("ChangePasswordQuestionAndAnswer('{0}', '{1}', '{2}', '{3}')", username, password, newPasswordQuestion, newPasswordAnswer);
             //throw new NotImplementedException();
             return false;
         }
 
         public override System.Web.Security.MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out System.Web.Security.MembershipCreateStatus status)
         {
+            log.Debug("CreateUser('{0}', '{1}', '{2}', '{3}', '{4}', {5}, '{6}')", username, password, email, passwordQuestion, passwordAnswer, isApproved, providerUserKey);
             //throw new NotImplementedException();
             status = System.Web.Security.MembershipCreateStatus.ProviderError;
             return null;
@@ -71,6 +75,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 
         public override bool DeleteUser(string username, bool deleteAllRelatedData)
         {
+            log.Debug("DeleteUser('{0}', '{1}')", username, deleteAllRelatedData);
             //throw new NotImplementedException();
             return false;
         }
@@ -87,16 +92,17 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 
         public override System.Web.Security.MembershipUserCollection FindUsersByEmail(string emailToMatch, int pageIndex, int pageSize, out int totalRecords)
         {
+            log.Debug("FindUsersByEmail('{0}', {1}, {2})", emailToMatch, pageIndex, pageSize);
             //throw new NotImplementedException();
             totalRecords = 0;
             return null; //todo
         }
 
         public override System.Web.Security.MembershipUserCollection FindUsersByName(string usernameToMatch, int pageIndex, int pageSize, out int totalRecords)
-        {
+        { 
             //throw new NotImplementedException();
             totalRecords = 0;
-            return null; //todo
+            return null; //todo, this one seems to be necessary, at least, to assign the site collection administrator
         }
 
         public override System.Web.Security.MembershipUserCollection GetAllUsers(int pageIndex, int pageSize, out int totalRecords)
@@ -120,12 +126,21 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 
         public override System.Web.Security.MembershipUser GetUser(string username, bool userIsOnline)
         {
-            if(AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users.ContainsKey(username))
+            if (AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users.ContainsKey(username))
             {
                 IJIRAUserInfo jui = AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users[username];
                 return GetMembershipUserFromJIRAUserInfo(jui);
             }
-            return null; //todo
+            else
+            {
+                IJIRAUserInfo jui = JIRAAuthenticatorFactory.Instance.Authenticator.GetUser(username);
+                if (jui != null)
+                {
+                    AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users.Add(jui.name, jui);
+                    return GetMembershipUserFromJIRAUserInfo(jui);
+                }
+            }
+            return null;
         }
 
         private MembershipUser GetMembershipUserFromJIRAUserInfo(IJIRAUserInfo jui)
@@ -135,10 +150,16 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 
         public override System.Web.Security.MembershipUser GetUser(object providerUserKey, bool userIsOnline)
         {
-            JIRAUserInfo jui = FindJIRAUserByKey(providerUserKey as string);
+            IJIRAUserInfo jui = FindJIRAUserByKey(providerUserKey as string);
             if(jui != null)
                 return GetMembershipUserFromJIRAUserInfo(jui);
-            return null; //todo
+            jui = JIRAAuthenticatorFactory.Instance.Authenticator.GetUser(JIRAUserInfo.ParseUserNameFromKey(providerUserKey as string));
+            if (jui != null)
+            {
+                AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users.Add(jui.name, jui);
+                return GetMembershipUserFromJIRAUserInfo(jui);
+            }
+            return null;
         }
 
         private JIRAUserInfo FindJIRAUserByKey(string self)

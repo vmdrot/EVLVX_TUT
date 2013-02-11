@@ -11,7 +11,11 @@ namespace Evolvex.Ruthenorum.JIRAAuth.WebSite
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (System.Threading.Thread.CurrentPrincipal != null && System.Threading.Thread.CurrentPrincipal.Identity.IsAuthenticated)
+            {
+                lblUserGreeting.Visible = true;
+                lblUserGreeting.Text = string.Format("Hello, {0}!", System.Threading.Thread.CurrentPrincipal.Identity.Name);
+            }
         }
     }
 }
