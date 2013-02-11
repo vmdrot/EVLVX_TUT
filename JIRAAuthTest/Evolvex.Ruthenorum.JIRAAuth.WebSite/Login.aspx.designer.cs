@@ -11,7 +11,7 @@
 namespace Evolvex.Ruthenorum.JIRAAuth.WebSite {
     
     
-    public partial class _Default {
+    public partial class Login {
         
         /// <summary>
         /// form1 control.
@@ -23,30 +23,12 @@ namespace Evolvex.Ruthenorum.JIRAAuth.WebSite {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// SiteMapDataSource1 control.
+        /// ctrlLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SiteMapDataSource SiteMapDataSource1;
-        
-        /// <summary>
-        /// mnuTop control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu mnuTop;
-        
-        /// <summary>
-        /// lblUserGreeting control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUserGreeting;
+        protected global::System.Web.UI.WebControls.Login ctrlLogin;
     }
 }

@@ -9,7 +9,11 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
+    <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" ShowStartingNode="false" SiteMapProvider="SimpleSiteMapProvider"/>
+                <asp:Menu ID="mnuTop" runat="server" DataSourceID="SiteMapDataSource1"
+            EncodeHtml="False" AllowSelectItem="False" Orientation="Horizontal"/>
+<br />
+    <asp:Label ID="lblUserGreeting" runat="server" Visible="false"></asp:Label>
     </div>
     </form>
 </body>

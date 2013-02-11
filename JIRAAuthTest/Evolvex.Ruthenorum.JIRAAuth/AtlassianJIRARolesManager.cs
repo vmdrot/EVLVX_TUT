@@ -10,6 +10,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 {
     public class AtlassianJIRARolesManager : RoleProvider
     {
+        private static readonly Evolvex.Ruthenorum.Core.Interfaces.ILog log = Evolvex.Ruthenorum.Core.Logging.GetLogger(typeof(AtlassianJIRARolesManager));
         public override void AddUsersToRoles(string[] usernames, string[] roleNames)
         {
             //throw new NotImplementedException(); // n/a
@@ -47,12 +48,12 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 
         public override string[] GetAllRoles()
         {
-            return JIRAAuthenticatorFactory.Instance.Authenticator.ListGroups().ToArray(); //todo
+            return JIRAAuthenticatorFactory.Instance.Authenticator.ListGroups().ToArray();
         }
 
         public override string[] GetRolesForUser(string username)
         {
-            return JIRAAuthenticatorFactory.Instance.Authenticator.GetUser(username).groups.ToArray();
+            return JIRAAuthenticatorFactory.Instance.Authenticator.GetUser(username).groups.ToArray(); //todo - more safety checks
         }
 
         public override string[] GetUsersInRole(string roleName)

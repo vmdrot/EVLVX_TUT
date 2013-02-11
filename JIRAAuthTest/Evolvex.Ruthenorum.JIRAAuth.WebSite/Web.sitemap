@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="" title=""  description="">
+      <siteMapNode url="confluence-administrators.html" title="confluence-administrators"  description="" roles="confluence-administrators" />
+      <siteMapNode url="Core.html" title="Core"  description="" roles="Core" />
+      <siteMapNode url="ForeignRelations.html" title="ForeignRelations"  description="" roles="ForeignRelations" />
+      <siteMapNode url="HTCWB-Translators.html" title="HTCWB-Translators"  description="" roles="HTCWB-Translators" />
+      <siteMapNode url="HUBMED-Translators.html" title="HUBMED-Translators"  description="" roles="HUBMED-Translators" />
+      <siteMapNode url="jira-administrators.html" title="jira-administrators"  description="" roles="jira-administrators" />
+      <siteMapNode url="jira-developers.html" title="jira-developers"  description="" roles="jira-developers" />
+      <siteMapNode url="jira-users.html" title="jira-users"  description="" roles="jira-users" />
+      <siteMapNode url="JIRATranslators.html" title="JIRATranslators"  description="" roles="JIRATranslators" />
+      <siteMapNode url="KhochuShche.html" title="KhochuShche"  description="" roles="KhochuShche" />
+      <siteMapNode url="KontaktCA-EyeOnCulture.html" title="KontaktCA-EyeOnCulture"  description="" roles="KontaktCA-EyeOnCulture" />
+    </siteMapNode>
+</siteMap>

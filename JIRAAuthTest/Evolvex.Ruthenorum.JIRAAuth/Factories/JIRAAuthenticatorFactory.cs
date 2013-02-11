@@ -32,7 +32,6 @@ namespace Evolvex.Ruthenorum.JIRAAuth.Factories
                 if (_authenticator == null)
                 {
                     _authenticator = new JiraAuthenticator();
-                    _authenticator.JIRARootUrl = "todo";
                 }
                 return _authenticator;
             }

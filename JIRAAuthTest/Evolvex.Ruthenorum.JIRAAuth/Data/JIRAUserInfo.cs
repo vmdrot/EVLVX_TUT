@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Web.Security;
 using Evolvex.Ruthenorum.JIRAAuth.Core.Interfaces;
+using System.Web;
 
 namespace Evolvex.Ruthenorum.JIRAAuth.Data
 {
@@ -125,7 +126,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth.Data
             return rslt;
         }
 
-        private static List<string> ReadGroups(JsonTextReader reader)
+        public static List<string> ReadGroups(JsonTextReader reader)
         {
             List<string> rslt = new List<string>();
             bool arrayStarted = false;
@@ -167,5 +168,11 @@ namespace Evolvex.Ruthenorum.JIRAAuth.Data
         //    return new MembershipUser("???!", src.name, src.self
         //}
 
+
+        internal static string ParseUserNameFromKey(string usrUrl)
+        {
+            Uri uri = new Uri(usrUrl);
+            return HttpUtility.ParseQueryString(uri.Query).Get("username");
+        }
     }
 }
