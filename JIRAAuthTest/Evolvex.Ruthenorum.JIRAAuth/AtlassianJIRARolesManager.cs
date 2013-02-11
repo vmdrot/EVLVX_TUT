@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web.Security;
+using Evolvex.Ruthenorum.JIRAAuth.Factories;
+using Evolvex.Ruthenorum.JIRAAuth.Core.Interfaces;
 
 namespace Evolvex.Ruthenorum.JIRAAuth
 {
@@ -45,12 +47,12 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 
         public override string[] GetAllRoles()
         {
-            return (new JiraAuthenticator()).ListGroups().ToArray(); //todo
+            return JIRAAuthenticatorFactory.Instance.Authenticator.ListGroups().ToArray(); //todo
         }
 
         public override string[] GetRolesForUser(string username)
         {
-            return (new JiraAuthenticator()).GetUser(username).groups.ToArray();
+            return JIRAAuthenticatorFactory.Instance.Authenticator.GetUser(username).groups.ToArray();
         }
 
         public override string[] GetUsersInRole(string roleName)
@@ -58,17 +60,23 @@ namespace Evolvex.Ruthenorum.JIRAAuth
             //closest to what we're after is D:\home\vmdrot\DEV\_tut\JIRAAuthTest\SampleResponses\multiProjectSearch.txt
             //obtained by http://pm.ruthenorum.info/jira/rest/api/2/user/assignable/multiProjectSearch?projectKeys=PSMETHDLGY,JIRATRNSL
             //throw new NotImplementedException();
-            return ExtractUsersByGroup((new AtlassianJIRAMembershipProvider()).AuthenticatedUsers.Values, roleName);
+            return ExtractUsersByGroup(AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users.Values, roleName);
         }
 
-        private string[] ExtractUsersByGroup(Dictionary<string, Evolvex.Ruthenorum.JIRAAuth.Data.JIRAUserInfo>.ValueCollection valueCollection, string roleName)
+        private string[] ExtractUsersByGroup(Dictionary<string, IJIRAUserInfo>.ValueCollection users, string roleName)
         {
-            throw new NotImplementedException(); //todo
+            List<String> rslt = new List<string>();
+            foreach (IJIRAUserInfo usr in users)
+            {
+                if (usr.groups.Contains(roleName))
+                    rslt.Add(usr.name);
+            }
+            return rslt.ToArray();
         }
 
         public override bool IsUserInRole(string username, string roleName)
         {
-            return (new JiraAuthenticator()).GetUser(username).groups.Contains(roleName);
+            return JIRAAuthenticatorFactory.Instance.Authenticator.GetUser(username).groups.Contains(roleName);
         }
 
         public override void RemoveUsersFromRoles(string[] usernames, string[] roleNames)
@@ -78,7 +86,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 
         public override bool RoleExists(string roleName)
         {
-            return (new JiraAuthenticator()).ListGroups().Contains(roleName);
+            return JIRAAuthenticatorFactory.Instance.Authenticator.ListGroups().Contains(roleName);
         }
     }
 }
