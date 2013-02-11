@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evolvex.Ruthenorum.JIRAAuth
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evolvex.Ruthenorum.JIRAAuth.Core", "Evolvex.Ruthenorum.JIRAAuth.Core\Evolvex.Ruthenorum.JIRAAuth.Core.csproj", "{9AF66BEA-7CB1-4483-914D-9701AC0285BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evolvex.Ruthenorum.JIRAAuth.WebSite", "Evolvex.Ruthenorum.JIRAAuth.WebSite\Evolvex.Ruthenorum.JIRAAuth.WebSite.csproj", "{C9CCD239-C89E-4445-AECC-99E63BBD872B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,6 +48,10 @@ Global
 		{9AF66BEA-7CB1-4483-914D-9701AC0285BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AF66BEA-7CB1-4483-914D-9701AC0285BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AF66BEA-7CB1-4483-914D-9701AC0285BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9CCD239-C89E-4445-AECC-99E63BBD872B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9CCD239-C89E-4445-AECC-99E63BBD872B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9CCD239-C89E-4445-AECC-99E63BBD872B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9CCD239-C89E-4445-AECC-99E63BBD872B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

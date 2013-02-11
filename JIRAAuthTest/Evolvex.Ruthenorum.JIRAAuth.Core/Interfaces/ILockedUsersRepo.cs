@@ -7,5 +7,6 @@ namespace Evolvex.Ruthenorum.JIRAAuth.Core.Interfaces
 {
     public interface ILockedUsersRepo
     {
+        List<string> Users { get; }
     }
 }

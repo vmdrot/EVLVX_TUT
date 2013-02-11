@@ -8,11 +8,18 @@ using Evolvex.Web.Utility;
 using System.Web.Security;
 using Evolvex.Ruthenorum.JIRAAuth.Data;
 using Evolvex.Ruthenorum.JIRAAuth.Core.Interfaces;
+using System.Configuration;
 
 namespace Evolvex.Ruthenorum.JIRAAuth
 {
     public class JiraAuthenticator: IJIRAAuthenticator
     {
+        #region const(s)
+        public const string JIRA_ROOT_URL_CFG_KEY = "JIRARootUrl";
+        private static readonly string JIRA_ROOT_URL;
+        
+        #endregion
+        
         public String JIRARootUrl { get; set; }
         public const string RESOURCE_PATH = "/rest/api/2/user?expand=groups&username=";
         public HttpStatusCode? LastStatus { get; private set; }
@@ -51,7 +58,10 @@ namespace Evolvex.Ruthenorum.JIRAAuth
             return (bool)(LastStatus != null && (HttpStatusCode)LastStatus == HttpStatusCode.OK);
         }
 
-
+        static JiraAuthenticator()
+        {
+            JIRA_ROOT_URL = ConfigurationManager.AppSettings[JIRA_ROOT_URL_CFG_KEY];
+        }
 
         private string GetEncodedCredentials(string usr, string pwd)
         {

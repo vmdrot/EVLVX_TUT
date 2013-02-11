@@ -6,6 +6,8 @@ using System.Web.Security;
 using Evolvex.Ruthenorum.JIRAAuth.Data;
 using System.Net;
 using System.Configuration;
+using Evolvex.Ruthenorum.JIRAAuth.Factories;
+using Evolvex.Ruthenorum.JIRAAuth.Core.Interfaces;
 
 namespace Evolvex.Ruthenorum.JIRAAuth
 {
@@ -14,54 +16,27 @@ namespace Evolvex.Ruthenorum.JIRAAuth
         #region inner type(s)
         #endregion
 
-        #region const(s)
-        public const string JIRA_ROOT_URL_CFG_KEY = "JIRARootUrl";
-        private static readonly string JIRA_ROOT_URL;
-        
-        #endregion
 
         #region field(s)
-        private JiraAuthenticator _jiraAuthenticator;
+        private object _jiraAuthenticatorLocObj = new object();
         private string _applicationName;
-        private Dictionary<string, JIRAUserInfo> _authenticatedUsers;
-        private List<string> _lockedUsers;
+        //private Dictionary<string, JIRAUserInfo> _authenticatedUsers;
+        //private List<string> _lockedUsers;
         #endregion
 
         #region cctor(s)
         static AtlassianJIRAMembershipProvider()
         {
-            JIRA_ROOT_URL = ConfigurationManager.AppSettings[JIRA_ROOT_URL_CFG_KEY];
+            
         }
 
         public AtlassianJIRAMembershipProvider()
         {
-            _authenticatedUsers = new Dictionary<string, JIRAUserInfo>();
-            _lockedUsers = new List<string>();
+            //_authenticatedUsers = new Dictionary<string, JIRAUserInfo>();
+            //_lockedUsers = new List<string>();
         }
         #endregion
 
-        #region prop(s)
-        protected JiraAuthenticator Authenticator
-        {
-            get
-            {
-                if (_jiraAuthenticator == null)
-                {
-                    _jiraAuthenticator = new JiraAuthenticator();
-                    _jiraAuthenticator.JIRARootUrl = JIRA_ROOT_URL;
-                }
-                return _jiraAuthenticator;
-            }
-        }
-
-        public Dictionary<string, JIRAUserInfo> AuthenticatedUsers
-        {
-            get
-            {
-                return this._authenticatedUsers;
-            }
-        }
-        #endregion
         #region MembershipProvider member(s)
         public override string ApplicationName
         {
@@ -145,17 +120,17 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 
         public override System.Web.Security.MembershipUser GetUser(string username, bool userIsOnline)
         {
-            if(_authenticatedUsers.ContainsKey(username))
+            if(AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users.ContainsKey(username))
             {
-                JIRAUserInfo jui = _authenticatedUsers[username];
+                IJIRAUserInfo jui = AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users[username];
                 return GetMembershipUserFromJIRAUserInfo(jui);
             }
             return null; //todo
         }
 
-        private MembershipUser GetMembershipUserFromJIRAUserInfo(JIRAUserInfo jui)
+        private MembershipUser GetMembershipUserFromJIRAUserInfo(IJIRAUserInfo jui)
         {
-            return new MembershipUser(this.Name, jui.name, jui.self, jui.email, string.Empty, jui.displayName, jui.active, _lockedUsers.Contains(jui.name.ToLower()), DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue);
+            return new MembershipUser(this.Name, jui.name, jui.self, jui.email, string.Empty, jui.displayName, jui.active, LockedUsersRepoFactory.Instance.LockedUsers.Users.Contains(jui.name.ToLower()), DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue);
         }
 
         public override System.Web.Security.MembershipUser GetUser(object providerUserKey, bool userIsOnline)
@@ -168,7 +143,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 
         private JIRAUserInfo FindJIRAUserByKey(string self)
         {
-            foreach (JIRAUserInfo jui in _authenticatedUsers.Values)
+            foreach (JIRAUserInfo jui in AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users.Values)
             {
                 if (jui.self == self)
                     return jui;
@@ -264,32 +239,32 @@ namespace Evolvex.Ruthenorum.JIRAAuth
             bool rslt = false;
             string json = null;
             HttpStatusCode? httpStatus = null;
-            lock(this._jiraAuthenticator)
+            lock (this._jiraAuthenticatorLocObj)
             {
-                rslt = Authenticator.Authenticate(username, password);
+                rslt = JIRAAuthenticatorFactory.Instance.Authenticator.Authenticate(username, password);
                 if (rslt)
                 {
-                    json = Authenticator.LastResponseText;
+                    json = JIRAAuthenticatorFactory.Instance.Authenticator.LastResponseText;
                 }
-                httpStatus = Authenticator.LastStatus;
+                httpStatus = JIRAAuthenticatorFactory.Instance.Authenticator.LastStatus;
             }
             if (rslt)
             {
-                if (_lockedUsers.Contains(username.ToLower()))
-                    _lockedUsers.Remove(username.ToLower());
+                if (LockedUsersRepoFactory.Instance.LockedUsers.Users.Contains(username.ToLower()))
+                    LockedUsersRepoFactory.Instance.LockedUsers.Users.Remove(username.ToLower());
 
                 JIRAUserInfo jui = JIRAUserInfo.Parse(json);
-                if (_authenticatedUsers.ContainsKey(jui.name))
-                    _authenticatedUsers[jui.name] = jui;
+                if (AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users.ContainsKey(jui.name))
+                    AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users[jui.name] = jui;
                 else
-                    _authenticatedUsers.Add(jui.name, jui);
+                    AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users.Add(jui.name, jui);
             }
             else
             {
                 if (httpStatus != null && (HttpStatusCode)httpStatus == HttpStatusCode.Forbidden)
                 {
-                    if (!_lockedUsers.Contains(username.ToLower()))
-                        _lockedUsers.Add(username.ToLower());
+                    if (!LockedUsersRepoFactory.Instance.LockedUsers.Users.Contains(username.ToLower()))
+                        LockedUsersRepoFactory.Instance.LockedUsers.Users.Add(username.ToLower());
                 }
             }
             return rslt;

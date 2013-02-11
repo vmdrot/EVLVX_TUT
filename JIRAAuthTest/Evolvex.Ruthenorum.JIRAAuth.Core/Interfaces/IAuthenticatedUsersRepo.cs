@@ -7,5 +7,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth.Core.Interfaces
 {
     public interface IAuthenticatedUsersRepo
     {
+        Dictionary<string, IJIRAUserInfo> Users { get; }
+
     }
 }
