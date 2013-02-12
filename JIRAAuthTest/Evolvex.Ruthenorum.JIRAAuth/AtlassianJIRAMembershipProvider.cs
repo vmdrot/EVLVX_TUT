@@ -8,6 +8,7 @@ using System.Net;
 using System.Configuration;
 using Evolvex.Ruthenorum.JIRAAuth.Factories;
 using Evolvex.Ruthenorum.JIRAAuth.Core.Interfaces;
+using System.IO;
 
 namespace Evolvex.Ruthenorum.JIRAAuth
 {
@@ -54,13 +55,20 @@ namespace Evolvex.Ruthenorum.JIRAAuth
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
         {
             log.Debug("ChangePassword('{0}', '{1}', '{2}')", username, oldPassword, newPassword);
+            LogDebug("ChangePassword('{0}', '{1}', '{2}')", username, oldPassword, newPassword);
             //throw new NotImplementedException();
             return false;
+        }
+
+        private void LogDebug(string fmt, params object[] args)
+        {
+            File.WriteAllText("jiraauth.log", string.Format(fmt+"\n\r", args));
         }
 
         public override bool ChangePasswordQuestionAndAnswer(string username, string password, string newPasswordQuestion, string newPasswordAnswer)
         {
             log.Debug("ChangePasswordQuestionAndAnswer('{0}', '{1}', '{2}', '{3}')", username, password, newPasswordQuestion, newPasswordAnswer);
+            LogDebug("ChangePasswordQuestionAndAnswer('{0}', '{1}', '{2}', '{3}')", username, password, newPasswordQuestion, newPasswordAnswer);
             //throw new NotImplementedException();
             return false;
         }
@@ -68,6 +76,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth
         public override System.Web.Security.MembershipUser CreateUser(string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out System.Web.Security.MembershipCreateStatus status)
         {
             log.Debug("CreateUser('{0}', '{1}', '{2}', '{3}', '{4}', {5}, '{6}')", username, password, email, passwordQuestion, passwordAnswer, isApproved, providerUserKey);
+            LogDebug("CreateUser('{0}', '{1}', '{2}', '{3}', '{4}', {5}, '{6}')", username, password, email, passwordQuestion, passwordAnswer, isApproved, providerUserKey);
             //throw new NotImplementedException();
             status = System.Web.Security.MembershipCreateStatus.ProviderError;
             return null;
@@ -76,6 +85,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth
         public override bool DeleteUser(string username, bool deleteAllRelatedData)
         {
             log.Debug("DeleteUser('{0}', '{1}')", username, deleteAllRelatedData);
+            LogDebug("DeleteUser('{0}', '{1}')", username, deleteAllRelatedData);
             //throw new NotImplementedException();
             return false;
         }
@@ -93,39 +103,56 @@ namespace Evolvex.Ruthenorum.JIRAAuth
         public override System.Web.Security.MembershipUserCollection FindUsersByEmail(string emailToMatch, int pageIndex, int pageSize, out int totalRecords)
         {
             log.Debug("FindUsersByEmail('{0}', {1}, {2})", emailToMatch, pageIndex, pageSize);
+            LogDebug("FindUsersByEmail('{0}', {1}, {2})", emailToMatch, pageIndex, pageSize);
             //throw new NotImplementedException();
             totalRecords = 0;
             return null; //todo
         }
 
         public override System.Web.Security.MembershipUserCollection FindUsersByName(string usernameToMatch, int pageIndex, int pageSize, out int totalRecords)
-        { 
-            //throw new NotImplementedException();
+        {
+            log.Debug("FindUsersByName('{0}', {1}, {2})", usernameToMatch, pageIndex, pageSize);
+            LogDebug("FindUsersByName('{0}', {1}, {2})", usernameToMatch, pageIndex, pageSize);
             totalRecords = 0;
-            return null; //todo, this one seems to be necessary, at least, to assign the site collection administrator
+            MembershipUserCollection rslt = new MembershipUserCollection();
+            MembershipUser usr = this.GetUser(usernameToMatch, false);
+            if (usr != null)
+            {
+                rslt.Add(usr);
+                totalRecords++;
+            }
+            return rslt;
         }
 
         public override System.Web.Security.MembershipUserCollection GetAllUsers(int pageIndex, int pageSize, out int totalRecords)
         {
-            //throw new NotImplementedException();
+            log.Debug("GetAllUsers({0}, {1})",  pageIndex, pageSize);
+            LogDebug("GetAllUsers({0}, {1})", pageIndex, pageSize);
+
             totalRecords = 0;
             return null; //hardly
         }
 
         public override int GetNumberOfUsersOnline()
         {
+            log.Debug("GetNumberOfUsersOnline()");
+            LogDebug("GetNumberOfUsersOnline()");
             //throw new NotImplementedException();
-            return 0; //hardly
+            return AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users.Count; //hardly
         }
 
         public override string GetPassword(string username, string answer)
         {
+            log.Debug("GetAllUsers('{0}', '{1}')", username, answer);
+            LogDebug("GetAllUsers('{0}', '{1}')", username, answer);
             //throw new NotImplementedException();
             return null; //hardly
         }
 
         public override System.Web.Security.MembershipUser GetUser(string username, bool userIsOnline)
         {
+            log.Debug("GetUser('{0}', {1})", username, userIsOnline);
+            LogDebug("GetUser('{0}', {1})", username, userIsOnline);
             if (AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users.ContainsKey(username))
             {
                 IJIRAUserInfo jui = AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users[username];
@@ -145,11 +172,14 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 
         private MembershipUser GetMembershipUserFromJIRAUserInfo(IJIRAUserInfo jui)
         {
-            return new MembershipUser(this.Name, jui.name, jui.self, jui.email, string.Empty, jui.displayName, jui.active, LockedUsersRepoFactory.Instance.LockedUsers.Users.Contains(jui.name.ToLower()), DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue);
+            MembershipUser rslt = new MembershipUser(this.Name, jui.name, jui.self, jui.email, string.Empty, jui.displayName, jui.active, LockedUsersRepoFactory.Instance.LockedUsers.Users.Contains(jui.name.ToLower()), DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue, DateTime.MinValue);
+            return rslt;
         }
 
         public override System.Web.Security.MembershipUser GetUser(object providerUserKey, bool userIsOnline)
         {
+            log.Debug("GetUser('{0}', {1})", providerUserKey, userIsOnline);
+            LogDebug("GetUser('{0}', {1})", providerUserKey, userIsOnline);
             IJIRAUserInfo jui = FindJIRAUserByKey(providerUserKey as string);
             if(jui != null)
                 return GetMembershipUserFromJIRAUserInfo(jui);
@@ -174,6 +204,8 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 
         public override string GetUserNameByEmail(string email)
         {
+            log.Debug("GetUserNameByEmail('{0}')", email);
+            LogDebug("GetUserNameByEmail('{0}')", email);
             //throw new NotImplementedException();
             return null; //hardly
         }
@@ -181,7 +213,8 @@ namespace Evolvex.Ruthenorum.JIRAAuth
         public override int MaxInvalidPasswordAttempts
         {
             get 
-            { 
+            {
+                log.Debug("get_MaxInvalidPasswordAttempts");
                 //throw new NotImplementedException(); 
                 return 2; //todo - http://pm.ruthenorum.info/jira/browse/TV-33
             }
@@ -191,6 +224,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth
         {
             get 
             {
+                log.Debug("get_MinRequiredNonAlphanumericCharacters");
                 return 0;
             }
         }
@@ -199,6 +233,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth
         {
             get 
             {
+                log.Debug("get_MinRequiredPasswordLength");
                 return 4; //not sure
             }
         }
@@ -207,6 +242,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth
         {
             get 
             {
+                log.Debug("get_PasswordAttemptWindow");
                 return 1;
             }
         }
@@ -215,6 +251,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth
         {
             get 
             {
+                log.Debug("get_PasswordFormat");
                 return MembershipPasswordFormat.Clear; //not sure
             }
         }
@@ -223,40 +260,57 @@ namespace Evolvex.Ruthenorum.JIRAAuth
         {
             get 
             {
+                log.Debug("get_PasswordStrengthRegularExpression");
                 return ".+";
             }
         }
 
         public override bool RequiresQuestionAndAnswer
         {
-            get { return false; }
+            get 
+            {
+                log.Debug("get_RequiresQuestionAndAnswer");
+                return false; 
+            }
         }
 
         public override bool RequiresUniqueEmail
         {
-            get { return true; }
+            get 
+            {
+                log.Debug("get_RequiresUniqueEmail");
+                return true; 
+            }
         }
 
         public override string ResetPassword(string username, string answer)
         {
+            log.Debug("ResetPassword('{0}', '{1}')", username, answer);
+            LogDebug("ResetPassword('{0}', '{1}')", username, answer);
             //throw new NotImplementedException();
             return null; //hardly
         }
 
         public override bool UnlockUser(string userName)
         {
+            log.Debug("UnlockUser('{0}')", userName);
+            LogDebug("UnlockUser('{0}')", userName);
             //throw new NotImplementedException();
             return false; //only manually
         }
 
         public override void UpdateUser(System.Web.Security.MembershipUser user)
         {
+            log.Debug("UpdateUser('{0}')", user.ProviderUserKey);
+            LogDebug("UpdateUser('{0}')", user.ProviderUserKey);
             //throw new NotImplementedException();
             return;//only manually
         }
 
         public override bool ValidateUser(string username, string password)
         {
+            log.Debug("ValidateUser('{0}', '{1}')", username, password);
+            LogDebug("ValidateUser('{0}', '{1}')", username, password);
             bool rslt = false;
             string json = null;
             HttpStatusCode? httpStatus = null;
