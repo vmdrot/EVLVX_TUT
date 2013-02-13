@@ -50,7 +50,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth.Data
                             break;
                         case JsonToken.StartArray:
                             if (lastPropNm == GROUPS_PROP_NM)
-                                props.Add(lastPropNm, JIRAUserInfo.ReadGroups(reader));
+                                props.Add(lastPropNm, ReadGroups(reader));
                             break;
                         case JsonToken.Undefined:
                             break;
@@ -63,6 +63,24 @@ namespace Evolvex.Ruthenorum.JIRAAuth.Data
             if (props.ContainsKey(GROUPS_PROP_NM) && props[GROUPS_PROP_NM] != null)
             {
                 rslt.AddRange((List<string>)props[GROUPS_PROP_NM]);
+            }
+            return rslt;
+        }
+
+        private static List<string> ReadGroups(JsonTextReader reader)
+        {
+            List<string> rslt = new List<string>();
+            string lastPropName = string.Empty;
+            while (reader.Read())
+            {
+                if (reader.TokenType == JsonToken.EndArray)
+                    break;
+                if (reader.TokenType == JsonToken.PropertyName)
+                {
+                    lastPropName = reader.Value as string;
+                }
+                if (reader.TokenType == JsonToken.String && lastPropName == "name")
+                    rslt.Add(reader.Value as string);
             }
             return rslt;
         }

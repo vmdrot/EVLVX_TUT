@@ -43,7 +43,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth
             JIRA_ROOT_URL = ConfigurationManager.AppSettings[JIRA_ROOT_URL_CFG_KEY];
             JIRA_SVC_USR = ConfigurationManager.AppSettings[JIRA_SVC_USR_CFG_KEY];
             JIRA_SVC_PWD = ConfigurationManager.AppSettings[JIRA_SVC_PWD_CFG_KEY];
-            log.Debug("JIRA_ROOT_URL = '{0}', JIRA_SVC_USR = '{1}', JIRA_SVC_PWD = '{2}'", JIRA_ROOT_URL, JIRA_SVC_USR, JIRA_SVC_PWD);
+            //log.Debug("JIRA_ROOT_URL = '{0}', JIRA_SVC_USR = '{1}', JIRA_SVC_PWD = '{2}'", JIRA_ROOT_URL, JIRA_SVC_USR, JIRA_SVC_PWD);
         }
 
         public JiraAuthenticator()
@@ -51,7 +51,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth
             JIRARootUrl = JIRA_ROOT_URL;
             this._serviceAcctUsrName = JIRA_SVC_USR;
             this._serviceAcctPwd = JIRA_SVC_PWD;
-            log.Debug("JIRARootUrl = '{0}', _serviceAcctUsrName = '{1}', _serviceAcctPwd = '{2}'", JIRARootUrl, _serviceAcctUsrName, _serviceAcctPwd);
+            //log.Debug("JIRARootUrl = '{0}', _serviceAcctUsrName = '{1}', _serviceAcctPwd = '{2}'", JIRARootUrl, _serviceAcctUsrName, _serviceAcctPwd);
         }
         private string GetEncodedCredentials(string usr, string pwd)
         {
@@ -90,7 +90,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth
 
         private bool AuthenticateWorker(string usr, string pwd, out string responseText, string url)
         {
-            log.Debug("AuthenticateWorker(..., url = '{0}') - entering...", url);
+            //log.Debug("AuthenticateWorker(..., url = '{0}') - entering...", url);
             HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
             request.ContentType = "application/json";
             request.Method = "GET";
