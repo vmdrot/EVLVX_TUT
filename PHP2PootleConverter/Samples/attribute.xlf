@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='utf-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.1" version="1.1">
+  <file original="attribute.po" source-language="en-US" datatype="plaintext" target-language="ru">
+    <body>
+      <trans-unit xml:space="preserve" approved="yes" id="Heading">
+        <source>Heading</source>
+        <target state="translated">// Heading</target>
+        <note from="developer">// Heading</note>
+      </trans-unit>
+      <trans-unit xml:space="preserve" approved="yes" id="Attributes">
+        <source>Attributes</source>
+        <target state="translated">Атрибут</target>
+      </trans-unit>
+      <trans-unit xml:space="preserve" approved="yes" id="Text">
+        <source>Text</source>
+        <target state="translated">// Text</target>
+        <note from="developer">// Text</note>
+      </trans-unit>
+      <trans-unit xml:space="preserve" approved="yes" id="Success: You have modified attributes!">
+        <source>Success: You have modified attributes!</source>
+        <target state="translated">Текст</target>
+      </trans-unit>
+      <trans-unit xml:space="preserve" approved="yes" id="Column">
+        <source>Column</source>
+        <target state="translated">// Column</target>
+      </trans-unit>
+      <trans-unit xml:space="preserve" approved="yes" id="Attribute Name">
+        <source>Attribute Name</source>
+        <target state="translated">Имя атрибута</target>
+      </trans-unit>
+      <trans-unit xml:space="preserve" approved="yes" id="Attribute Group">
+        <source>Attribute Group</source>
+        <target state="translated">Имя групы</target>
+      </trans-unit>
+      <trans-unit xml:space="preserve" approved="yes" id="Sort Order">
+        <source>Sort Order</source>
+        <target state="translated">Сортировка</target>
+      </trans-unit>
+      <trans-unit xml:space="preserve" approved="yes" id="Action">
+        <source>Action</source>
+        <target state="translated">Действие</target>
+      </trans-unit>
+      <trans-unit xml:space="preserve" approved="yes" id="Entry">
+        <source>Entry</source>
+        <target state="translated">// Entry</target>
+      </trans-unit>
+      <trans-unit xml:space="preserve" approved="yes" id="Attribute Name:">
+        <source>Attribute Name:</source>
+        <target state="translated">Имя атрибута</target>
+      </trans-unit>
+      <trans-unit xml:space="preserve" approved="yes" id="Attribute Group:">
+        <source>Attribute Group:</source>
+        <target state="translated">Група атрибутов</target>
+      </trans-unit>
+      <trans-unit xml:space="preserve" approved="yes" id="Sort Order:">
+        <source>Sort Order:</source>
+        <target state="translated">Сортировка</target>
+      </trans-unit>
+      <trans-unit xml:space="preserve" approved="yes" id="Error">
+        <source>Error</source>
+        <target state="translated">// Error</target>
+      </trans-unit>
+      <trans-unit xml:space="preserve" approved="yes" id="Warning: You do not have permission to modify attributes!">
+        <source>Warning: You do not have permission to modify attributes!</source>
+        <target state="translated">Ошибка</target>
+      </trans-unit>
+      <trans-unit xml:space="preserve" approved="yes" id="Attribute Name must be between 3 and 64 characters!">
+        <source>Attribute Name must be between 3 and 64 characters!</source>
+        <target state="translated">Имя должно быть больше</target>
+      </trans-unit>
+      <trans-unit xml:space="preserve" approved="yes" id="Warning: This attribute cannot be deleted as it is currently assigned to %s products!">
+        <source>Warning: This attribute cannot be deleted as it is currently assigned to %s products!</source>
+        <target state="translated">Ошибка еще одна</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

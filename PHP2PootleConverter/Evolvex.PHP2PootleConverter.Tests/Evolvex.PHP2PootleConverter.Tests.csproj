@@ -46,7 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="POReaderTests.cs" />
     <Compile Include="PHP2PootleConverterTests.cs" />
+    <Compile Include="PHPReaderTests.cs" />
+    <Compile Include="POWriterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
