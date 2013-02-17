@@ -74,7 +74,7 @@ namespace Evolvex.PHP2PootleConverterLib.Readers
 
         private string TrimComment(string ln)
         {
-            return ln.Trim().Substring(2);
+            return ln.Trim().Substring(2).Trim();
         }
 
         #endregion

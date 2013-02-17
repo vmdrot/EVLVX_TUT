@@ -19,7 +19,7 @@ namespace Evolvex.PHP2PootleConverterLib.Writers
             foreach (TranslationEntry te in entries)
             {
                 if (!string.IsNullOrEmpty(te.Comment))
-                    sb.AppendLine(String.Format("//{0}", te.Comment));
+                    sb.AppendLine(String.Format("// {0}", te.Comment));
                 if (!String.IsNullOrEmpty(te.MsgId))
                     sb.AppendLine(String.Format("$_['{0}']          = '{1}';", te.MsgId, te.MsgStr));
             }
