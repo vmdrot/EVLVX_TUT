@@ -13,7 +13,7 @@ namespace Evolvex.PHP2PootleConverter.Tests
         public void PHP2PootleTest()
         {
             Evolvex.PHP2PootleConverterLib.PHP2PootleConverter c = new Evolvex.PHP2PootleConverterLib.PHP2PootleConverter();
-            c.ProcessFile(@"D:\home\vmdrot\Testing\PHP2PootleConverter\attribute.php", Evolvex.PHP2PootleConverterLib.ConvertDirection.PHP2Pootle);
+            c.ProcessFile(@"D:\home\vmdrot\Testing\PHP2PootleConverter\attribute.php", @"D:\home\vmdrot\Testing\PHP2PootleConverter\attribute[test].po", Evolvex.PHP2PootleConverterLib.ConvertDirection.PHP2Pootle);
         }
     }
 }
