@@ -21,8 +21,13 @@ namespace Evolvex.PHP2PootleConverterLib.Writers
                 if(!String.IsNullOrEmpty(te.MsgId))
                     sb.AppendLine(String.Format("msgid \"{0}\"", te.MsgId)); 
                 if(!String.IsNullOrEmpty(te.MsgStr))
-                    sb.AppendLine(String.Format("msgstr \"{0}\"", te.MsgStr)); 
+                    sb.AppendLine(String.Format("msgstr \"{0}\"", EscapeForPO(te.MsgStr))); 
             }
+        }
+
+        public static string EscapeForPO(string php)
+        {
+            return php.Replace("\"", "\\\"");
         }
 
         #endregion

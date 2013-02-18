@@ -14,10 +14,15 @@ namespace Evolvex.PHP2PootleConverterLib
         private const string RGX_HEADER = @"<\?php\s+|\s+\?>";
         private const string PHP_HEADER_TOKEN = "<?php";
         private const string PHP_TRAIL_TOKEN = "?>";
-
+        private Encoding _saveAsEncoding;
 
         public bool ProcessFile(string srcPath, string targetPath, ConvertDirection dir)
         {
+            return ProcessFile(srcPath, targetPath, dir, Encoding.Default);
+        }
+        public bool ProcessFile(string srcPath, string targetPath, ConvertDirection dir, Encoding enc)
+        {
+            this._saveAsEncoding = enc;
             return dir == ConvertDirection.PHP2Pootle ? PHP2Pootle(srcPath, targetPath) : Pootle2PHP(srcPath, targetPath);
         }
 
@@ -27,7 +32,7 @@ namespace Evolvex.PHP2PootleConverterLib
             POWriter w = new POWriter();
             StringBuilder sb = new StringBuilder();
             w.WriteAll(r.ReadAll(File.ReadAllLines(srcPath)), sb);
-            File.WriteAllText(targetPath, sb.ToString());
+            File.WriteAllText(targetPath, sb.ToString(), this._saveAsEncoding);
             return true;
         }
 
@@ -40,7 +45,7 @@ namespace Evolvex.PHP2PootleConverterLib
             sb.AppendLine(PHP_HEADER_TOKEN);
             w.WriteAll(r.ReadAll(File.ReadAllLines(srcPath)), sb);
             sb.AppendLine(PHP_TRAIL_TOKEN);
-            File.WriteAllText(targetPath, sb.ToString());
+            File.WriteAllText(targetPath, sb.ToString(), this._saveAsEncoding);
             return true;
         }
 
