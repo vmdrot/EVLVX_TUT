@@ -46,7 +46,7 @@ namespace Evolvex.PHP2PootleConverterLib.Readers
                 else if (TryExtractVal(ln, out val))
                 {
 
-                    rslt.Add(new TranslationEntry() { Comment = prevComment, MsgId = lastKey, MsgStr = val });
+                    rslt.Add(new TranslationEntry() { Comment = prevComment, MsgId = lastKey, MsgStr = EscapeFromPO( val) });
                     prevComment = string.Empty;
 
                 }
@@ -55,6 +55,11 @@ namespace Evolvex.PHP2PootleConverterLib.Readers
 
             return rslt;
         }
+        public static string EscapeFromPO(string po)
+        {
+            return po.Replace("\\\"", "\"");
+        }
+
 
         public bool TryExtractVal(string ln, out string val)
         {
