@@ -50,6 +50,7 @@
     <Compile Include="Interfaces\IReader.cs" />
     <Compile Include="Interfaces\IWriter.cs" />
     <Compile Include="PHP2PootleConverter.cs" />
+    <Compile Include="PHP2PootleDirProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Readers\PHPReader.cs" />
     <Compile Include="Readers\POReader.cs" />

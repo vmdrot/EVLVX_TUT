@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PHP2PootleDirProcessorTests.cs" />
     <Compile Include="PHPWriterTests.cs" />
     <Compile Include="POReaderTests.cs" />
     <Compile Include="PHP2PootleConverterTests.cs" />
