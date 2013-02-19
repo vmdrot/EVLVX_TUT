@@ -11,7 +11,7 @@ namespace Evolvex.PHP2PootleConverterLib.Data
         {
             Direction = ConvertDirection.PHP2Pootle;
             DeleteSourceFiles = false;
-            SaveAsEncoding = Encoding.UTF8;
+            SaveAsEncoding = Encoding.Unicode;
             SourceLanguageName = "english";
             TargetLanguageName = "russian";
         }
