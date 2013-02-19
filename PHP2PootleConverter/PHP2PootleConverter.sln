@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evolvex.PHP2PootleConverter
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evolvex.PHP2PootleConverter.Tests", "Evolvex.PHP2PootleConverter.Tests\Evolvex.PHP2PootleConverter.Tests.csproj", "{F7F70644-671E-45ED-AFB2-6329605930EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evolvex.PHP2PootleConverter.UI", "Evolvex.PHP2PootleConverter.UI\Evolvex.PHP2PootleConverter.UI.csproj", "{245EB0CC-70C8-45B2-AA73-60C5F48E93C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{F7F70644-671E-45ED-AFB2-6329605930EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7F70644-671E-45ED-AFB2-6329605930EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7F70644-671E-45ED-AFB2-6329605930EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{245EB0CC-70C8-45B2-AA73-60C5F48E93C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{245EB0CC-70C8-45B2-AA73-60C5F48E93C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{245EB0CC-70C8-45B2-AA73-60C5F48E93C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{245EB0CC-70C8-45B2-AA73-60C5F48E93C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
