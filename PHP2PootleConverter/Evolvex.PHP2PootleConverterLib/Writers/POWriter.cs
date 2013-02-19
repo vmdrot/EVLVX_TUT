@@ -17,12 +17,20 @@ namespace Evolvex.PHP2PootleConverterLib.Writers
             foreach (TranslationEntry te in entries)
             {
                 if (!string.IsNullOrEmpty(te.Comment))
-                    sb.AppendLine(String.Format("#. {0}", te.Comment));
-                if(!String.IsNullOrEmpty(te.MsgId))
-                    sb.AppendLine(String.Format("msgid \"{0}\"", te.MsgId)); 
-                if(!String.IsNullOrEmpty(te.MsgStr))
-                    sb.AppendLine(String.Format("msgstr \"{0}\"", EscapeForPO(te.MsgStr))); 
+                    AppendComment(sb, te.Comment);
+                if (!String.IsNullOrEmpty(te.MsgStr))
+                    AppendComment(sb, te.MsgStr);
+                if (!String.IsNullOrEmpty(te.MsgId))
+                {
+                    sb.AppendLine(String.Format("msgid \"{0}\"", te.MsgId));
+                    sb.AppendLine("msgstr \"\"");
+                }
             }
+        }
+
+        private static void AppendComment(StringBuilder target, string commentText)
+        {
+            target.AppendLine(String.Format("#. {0}", commentText));
         }
 
         public static string EscapeForPO(string php)
