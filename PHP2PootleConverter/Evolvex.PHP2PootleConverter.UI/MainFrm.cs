@@ -28,7 +28,9 @@ namespace Evolvex.PHP2PootleConverter.UI
         {
             cbxSaveAsEncoding.DisplayMember = "DisplayName";
             cbxSaveAsEncoding.ValueMember = "CodePage";
-            cbxSaveAsEncoding.DataSource = Encoding.GetEncodings();
+            List<EncodingInfo> lst = new List<EncodingInfo>(Encoding.GetEncodings());
+            lst.Sort((a,b) => String.Compare(a.DisplayName, b.DisplayName));
+            cbxSaveAsEncoding.DataSource = lst;
             //Encoding enc = Encoding.GetEncoding(encs[0].CodePage);
             ConversionSettings defaultSettings = new ConversionSettings();
             if(defaultSettings.Direction == ConvertDirection.PHP2Pootle)
@@ -85,7 +87,25 @@ namespace Evolvex.PHP2PootleConverter.UI
 
         private void chkTargetDirSameAsSource_CheckedChanged(object sender, EventArgs e)
         {
-            edTargetDir.Enabled = !chkTargetDirSameAsSource.Checked;
+            edTargetDir.Enabled = btnTargetDirBrowse.Enabled = !chkTargetDirSameAsSource.Checked;
+        }
+
+        private void btnSourceDirBrowse_Click(object sender, EventArgs e)
+        {
+            SelectFolderWorker(edSourceDir);
+        }
+
+        private void btnTargetDirBrowse_Click(object sender, EventArgs e)
+        {
+            SelectFolderWorker(edTargetDir);
+        }
+
+        private void SelectFolderWorker(TextBox target)
+        {
+            if (folderDlg.ShowDialog() != DialogResult.OK)
+                return;
+            target.Text = folderDlg.SelectedPath;
+
         }
     }
 }

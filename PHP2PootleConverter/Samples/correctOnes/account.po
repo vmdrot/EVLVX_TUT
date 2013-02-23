@@ -1,0 +1,47 @@
+#. Heading
+#. My Account
+msgid "heading_title"
+msgstr ""
+#. Text
+#. Account
+msgid "text_account"
+msgstr ""
+#. My Account
+msgid "text_my_account"
+msgstr ""
+#. My Orders
+msgid "text_my_orders"
+msgstr ""
+#. Newsletter
+msgid "text_my_newsletter"
+msgstr ""
+#. Edit your account information
+msgid "text_edit"
+msgstr ""
+#. Change your password
+msgid "text_password"
+msgstr ""
+#. Modify your address book entries
+msgid "text_address"
+msgstr ""
+#. Modify your wish list
+msgid "text_wishlist"
+msgstr ""
+#. View your order history
+msgid "text_order"
+msgstr ""
+#. Downloads
+msgid "text_download"
+msgstr ""
+#. Your Reward Points
+msgid "text_reward"
+msgstr ""
+#. View your return requests
+msgid "text_return"
+msgstr ""
+#. Your Transactions
+msgid "text_transaction"
+msgstr ""
+#. Subscribe / unsubscribe to newsletter
+msgid "text_newsletter"
+msgstr ""

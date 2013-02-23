@@ -46,6 +46,9 @@
             this.cbxSaveAsEncoding = new System.Windows.Forms.ComboBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSourceDirBrowse = new System.Windows.Forms.Button();
+            this.btnTargetDirBrowse = new System.Windows.Forms.Button();
+            this.folderDlg = new System.Windows.Forms.FolderBrowserDialog();
             this.gbTargetDir.SuspendLayout();
             this.gbDirection.SuspendLayout();
             this.SuspendLayout();
@@ -72,13 +75,14 @@
             // 
             this.gbTargetDir.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbTargetDir.Controls.Add(this.btnTargetDirBrowse);
             this.gbTargetDir.Controls.Add(this.chkTargetDirSameAsSource);
             this.gbTargetDir.Controls.Add(this.lblTargetDir);
             this.gbTargetDir.Controls.Add(this.edTargetDir);
             this.gbTargetDir.Location = new System.Drawing.Point(3, 44);
             this.gbTargetDir.Name = "gbTargetDir";
             this.gbTargetDir.Size = new System.Drawing.Size(609, 73);
-            this.gbTargetDir.TabIndex = 4;
+            this.gbTargetDir.TabIndex = 3;
             this.gbTargetDir.TabStop = false;
             this.gbTargetDir.Text = "TargetDir";
             // 
@@ -88,7 +92,7 @@
             this.chkTargetDirSameAsSource.Location = new System.Drawing.Point(105, 16);
             this.chkTargetDirSameAsSource.Name = "chkTargetDirSameAsSource";
             this.chkTargetDirSameAsSource.Size = new System.Drawing.Size(118, 17);
-            this.chkTargetDirSameAsSource.TabIndex = 7;
+            this.chkTargetDirSameAsSource.TabIndex = 4;
             this.chkTargetDirSameAsSource.Text = "same as the source";
             this.chkTargetDirSameAsSource.UseVisualStyleBackColor = true;
             this.chkTargetDirSameAsSource.CheckedChanged += new System.EventHandler(this.chkTargetDirSameAsSource_CheckedChanged);
@@ -99,7 +103,7 @@
             this.lblTargetDir.Location = new System.Drawing.Point(10, 42);
             this.lblTargetDir.Name = "lblTargetDir";
             this.lblTargetDir.Size = new System.Drawing.Size(43, 13);
-            this.lblTargetDir.TabIndex = 6;
+            this.lblTargetDir.TabIndex = 5;
             this.lblTargetDir.Text = "another";
             // 
             // edTargetDir
@@ -109,7 +113,7 @@
             this.edTargetDir.Location = new System.Drawing.Point(105, 39);
             this.edTargetDir.Name = "edTargetDir";
             this.edTargetDir.Size = new System.Drawing.Size(410, 20);
-            this.edTargetDir.TabIndex = 5;
+            this.edTargetDir.TabIndex = 6;
             // 
             // gbDirection
             // 
@@ -118,7 +122,7 @@
             this.gbDirection.Location = new System.Drawing.Point(3, 124);
             this.gbDirection.Name = "gbDirection";
             this.gbDirection.Size = new System.Drawing.Size(211, 43);
-            this.gbDirection.TabIndex = 5;
+            this.gbDirection.TabIndex = 8;
             this.gbDirection.TabStop = false;
             this.gbDirection.Text = "Direction";
             // 
@@ -128,7 +132,7 @@
             this.rbPo2PHP.Location = new System.Drawing.Point(116, 20);
             this.rbPo2PHP.Name = "rbPo2PHP";
             this.rbPo2PHP.Size = new System.Drawing.Size(89, 17);
-            this.rbPo2PHP.TabIndex = 1;
+            this.rbPo2PHP.TabIndex = 9;
             this.rbPo2PHP.TabStop = true;
             this.rbPo2PHP.Text = "Pootle-2-PHP";
             this.rbPo2PHP.UseVisualStyleBackColor = true;
@@ -139,7 +143,7 @@
             this.rbPHP2Po.Location = new System.Drawing.Point(10, 20);
             this.rbPHP2Po.Name = "rbPHP2Po";
             this.rbPHP2Po.Size = new System.Drawing.Size(89, 17);
-            this.rbPHP2Po.TabIndex = 0;
+            this.rbPHP2Po.TabIndex = 8;
             this.rbPHP2Po.TabStop = true;
             this.rbPHP2Po.Text = "PHP-2-Pootle";
             this.rbPHP2Po.UseVisualStyleBackColor = true;
@@ -151,7 +155,7 @@
             this.edSourceLanguageName.Location = new System.Drawing.Point(108, 173);
             this.edSourceLanguageName.Name = "edSourceLanguageName";
             this.edSourceLanguageName.Size = new System.Drawing.Size(410, 20);
-            this.edSourceLanguageName.TabIndex = 7;
+            this.edSourceLanguageName.TabIndex = 11;
             // 
             // lblSourceLanguageName
             // 
@@ -159,7 +163,7 @@
             this.lblSourceLanguageName.Location = new System.Drawing.Point(10, 176);
             this.lblSourceLanguageName.Name = "lblSourceLanguageName";
             this.lblSourceLanguageName.Size = new System.Drawing.Size(89, 13);
-            this.lblSourceLanguageName.TabIndex = 6;
+            this.lblSourceLanguageName.TabIndex = 10;
             this.lblSourceLanguageName.Text = "SourceLanguage";
             // 
             // edTargetLanguageName
@@ -169,7 +173,7 @@
             this.edTargetLanguageName.Location = new System.Drawing.Point(108, 211);
             this.edTargetLanguageName.Name = "edTargetLanguageName";
             this.edTargetLanguageName.Size = new System.Drawing.Size(410, 20);
-            this.edTargetLanguageName.TabIndex = 9;
+            this.edTargetLanguageName.TabIndex = 13;
             // 
             // lblTargetLanguageName
             // 
@@ -177,7 +181,7 @@
             this.lblTargetLanguageName.Location = new System.Drawing.Point(10, 211);
             this.lblTargetLanguageName.Name = "lblTargetLanguageName";
             this.lblTargetLanguageName.Size = new System.Drawing.Size(86, 13);
-            this.lblTargetLanguageName.TabIndex = 8;
+            this.lblTargetLanguageName.TabIndex = 12;
             this.lblTargetLanguageName.Text = "TargetLanguage";
             // 
             // chkDeleteSourceFiles
@@ -186,7 +190,7 @@
             this.chkDeleteSourceFiles.Location = new System.Drawing.Point(108, 237);
             this.chkDeleteSourceFiles.Name = "chkDeleteSourceFiles";
             this.chkDeleteSourceFiles.Size = new System.Drawing.Size(112, 17);
-            this.chkDeleteSourceFiles.TabIndex = 10;
+            this.chkDeleteSourceFiles.TabIndex = 14;
             this.chkDeleteSourceFiles.Text = "DeleteSourceFiles";
             this.chkDeleteSourceFiles.UseVisualStyleBackColor = true;
             // 
@@ -196,7 +200,7 @@
             this.lblSaveAsEncoding.Location = new System.Drawing.Point(10, 267);
             this.lblSaveAsEncoding.Name = "lblSaveAsEncoding";
             this.lblSaveAsEncoding.Size = new System.Drawing.Size(89, 13);
-            this.lblSaveAsEncoding.TabIndex = 11;
+            this.lblSaveAsEncoding.TabIndex = 15;
             this.lblSaveAsEncoding.Text = "SaveAsEncoding";
             // 
             // cbxSaveAsEncoding
@@ -205,7 +209,7 @@
             this.cbxSaveAsEncoding.Location = new System.Drawing.Point(108, 264);
             this.cbxSaveAsEncoding.Name = "cbxSaveAsEncoding";
             this.cbxSaveAsEncoding.Size = new System.Drawing.Size(197, 21);
-            this.cbxSaveAsEncoding.TabIndex = 12;
+            this.cbxSaveAsEncoding.TabIndex = 16;
             // 
             // btnOK
             // 
@@ -213,7 +217,7 @@
             this.btnOK.Location = new System.Drawing.Point(429, 309);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
-            this.btnOK.TabIndex = 13;
+            this.btnOK.TabIndex = 17;
             this.btnOK.Text = "&OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -224,10 +228,32 @@
             this.btnCancel.Location = new System.Drawing.Point(510, 309);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 14;
+            this.btnCancel.TabIndex = 18;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSourceDirBrowse
+            // 
+            this.btnSourceDirBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSourceDirBrowse.Location = new System.Drawing.Point(524, 10);
+            this.btnSourceDirBrowse.Name = "btnSourceDirBrowse";
+            this.btnSourceDirBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btnSourceDirBrowse.TabIndex = 2;
+            this.btnSourceDirBrowse.Text = "B&rowse";
+            this.btnSourceDirBrowse.UseVisualStyleBackColor = true;
+            this.btnSourceDirBrowse.Click += new System.EventHandler(this.btnSourceDirBrowse_Click);
+            // 
+            // btnTargetDirBrowse
+            // 
+            this.btnTargetDirBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTargetDirBrowse.Location = new System.Drawing.Point(524, 36);
+            this.btnTargetDirBrowse.Name = "btnTargetDirBrowse";
+            this.btnTargetDirBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btnTargetDirBrowse.TabIndex = 7;
+            this.btnTargetDirBrowse.Text = "Bro&wse";
+            this.btnTargetDirBrowse.UseVisualStyleBackColor = true;
+            this.btnTargetDirBrowse.Click += new System.EventHandler(this.btnTargetDirBrowse_Click);
             // 
             // MainFrm
             // 
@@ -235,6 +261,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 344);
+            this.Controls.Add(this.btnSourceDirBrowse);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.cbxSaveAsEncoding);
@@ -280,6 +307,9 @@
         private System.Windows.Forms.ComboBox cbxSaveAsEncoding;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnTargetDirBrowse;
+        private System.Windows.Forms.Button btnSourceDirBrowse;
+        private System.Windows.Forms.FolderBrowserDialog folderDlg;
     }
 }
 
