@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evolvex.Trello2JIRAConverterLib", "Evolvex.Trello2JIRAConverterLib\Evolvex.Trello2JIRAConverterLib.csproj", "{4DBDBF31-1A21-4236-AD13-D294A1E353BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evolvex.Trello2JIRAConverterApp", "Evolvex.Trello2JIRAConverterApp\Evolvex.Trello2JIRAConverterApp.csproj", "{CC487F25-FCFD-432F-8890-E6A52948CB31}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4DBDBF31-1A21-4236-AD13-D294A1E353BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DBDBF31-1A21-4236-AD13-D294A1E353BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DBDBF31-1A21-4236-AD13-D294A1E353BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DBDBF31-1A21-4236-AD13-D294A1E353BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC487F25-FCFD-432F-8890-E6A52948CB31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC487F25-FCFD-432F-8890-E6A52948CB31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC487F25-FCFD-432F-8890-E6A52948CB31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC487F25-FCFD-432F-8890-E6A52948CB31}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
