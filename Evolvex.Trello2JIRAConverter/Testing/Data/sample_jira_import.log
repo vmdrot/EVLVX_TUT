@@ -1,0 +1,60 @@
+2013-07-14 12:07:12,021 INFO - Import started by valeriy.drotenko using com.atlassian.jira.plugins.importer.sample.SampleDataImporterImpl$1
+2013-07-14 12:07:12,075 INFO - ------------------------------
+2013-07-14 12:07:12,075 INFO - Importing: Users
+2013-07-14 12:07:12,075 INFO - ------------------------------
+2013-07-14 12:07:12,075 INFO - Only new items will be imported
+2013-07-14 12:07:12,076 INFO - 2 users associated with import.
+2013-07-14 12:07:12,313 INFO - Imported user Alice Foo (alice)
+2013-07-14 12:07:12,497 INFO - Imported user Bob Bar (bob)
+2013-07-14 12:07:12,497 INFO - ------------------------------
+2013-07-14 12:07:12,497 INFO - Finished Importing : Users
+2013-07-14 12:07:12,497 INFO - ------------------------------
+2013-07-14 12:07:12,497 INFO - 2 users successfully created.
+2013-07-14 12:07:12,497 INFO - Retrieving projects...
+2013-07-14 12:07:12,748 INFO - Created Project: ExternalProject[jiraId=<null>,id=<null>,externalName=<null>,name=JSON Import Test Proj,key=ASM,url=<null>,lead=valeriy.drotenko,description=JSON file description,projectCategoryName=<null>,avatarUrl=<null>,assigneeType=2,versions=[com.atlassian.jira.plugins.importer.external.beans.ExternalVersion@647c2652[id=<null>,name=1.0,released=true,archived=false,releaseDate=2012-08-31T14:59:02.161Z,description=<null>], com.atlassian.jira.plugins.importer.external.beans.ExternalVersion@12b80508[id=<null>,name=2.0,released=false,archived=false,releaseDate=<null>,description=<null>]],components=[com.atlassian.jira.plugins.importer.external.beans.ExternalComponent@786e170[id=<null>,name=Component,lead=<null>,description=<null>], com.atlassian.jira.plugins.importer.external.beans.ExternalComponent@283a83ec[id=<null>,name=AnotherComponent,lead=<null>,description=<null>]],issues=[ExternalIssue{externalId=1, summary=My chore for today, issueType=Bug}, ExternalIssue{externalId=2, summary=Sub-task, issueType=Sub-task}, ExternalIssue{externalId=3, summary=Duplicate Sub-task, issueType=Sub-task}],workflowSchemeName=<null>] successfully
+2013-07-14 12:07:12,748 INFO - ------------------------------
+2013-07-14 12:07:12,748 INFO - Importing: Versions
+2013-07-14 12:07:12,748 INFO - ------------------------------
+2013-07-14 12:07:12,748 INFO - Only new items will be imported
+2013-07-14 12:07:12,748 INFO - Importing version 1.0
+2013-07-14 12:07:12,800 INFO - Importing version 2.0
+2013-07-14 12:07:12,840 INFO - ------------------------------
+2013-07-14 12:07:12,840 INFO - Finished Importing : Versions
+2013-07-14 12:07:12,840 INFO - ------------------------------
+2013-07-14 12:07:12,840 INFO - ------------------------------
+2013-07-14 12:07:12,840 INFO - Importing: Components
+2013-07-14 12:07:12,840 INFO - ------------------------------
+2013-07-14 12:07:12,840 INFO - Only new items will be imported
+2013-07-14 12:07:12,845 INFO - Importing component Component
+2013-07-14 12:07:12,966 INFO - Importing component AnotherComponent
+2013-07-14 12:07:12,993 INFO - ------------------------------
+2013-07-14 12:07:12,994 INFO - Finished Importing : Components
+2013-07-14 12:07:12,994 INFO - ------------------------------
+2013-07-14 12:07:12,994 INFO - Retrieving custom fields...
+2013-07-14 12:07:12,994 INFO - ------------------------------
+2013-07-14 12:07:12,994 INFO - Importing: Issues
+2013-07-14 12:07:12,994 INFO - ------------------------------
+2013-07-14 12:07:12,994 INFO - Only new items will be imported
+2013-07-14 12:07:13,023 INFO - ------------------------------
+2013-07-14 12:07:13,023 INFO - Finished Importing : Issues
+2013-07-14 12:07:13,023 INFO - ------------------------------
+2013-07-14 12:07:13,023 ERROR - Unexpected failure occurred. Importer will stop immediately. Data maybe in an unstable state
+java.lang.NullPointerException
+	at com.atlassian.jira.plugins.importer.sample.SampleDataImporterImpl$1$1.apply(SampleDataImporterImpl.java:140)
+	at com.atlassian.jira.plugins.importer.sample.SampleDataImporterImpl$1$1.apply(SampleDataImporterImpl.java:135)
+	at com.google.common.collect.Iterators$8.next(Iterators.java:782)
+	at com.atlassian.jira.plugins.importer.imports.importer.impl.DefaultJiraDataImporter.importIssues(DefaultJiraDataImporter.java:750)
+	at com.atlassian.jira.plugins.importer.imports.importer.impl.DefaultJiraDataImporter.doImport(DefaultJiraDataImporter.java:354)
+	at com.atlassian.jira.plugins.importer.imports.importer.impl.ImporterCallable.call(ImporterCallable.java:27)
+	at com.atlassian.jira.plugins.importer.imports.importer.impl.ImporterCallable.call(ImporterCallable.java:16)
+	at com.atlassian.jira.task.TaskManagerImpl$TaskCallableDecorator.call(TaskManagerImpl.java:366)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at com.atlassian.multitenant.impl.DefaultMultiTenantManager.runForTenant(DefaultMultiTenantManager.java:61)
+	at com.atlassian.multitenant.juc.MultiTenantExecutors$WrappedRunnable.run(MultiTenantExecutors.java:160)
+	at com.atlassian.jira.task.ForkedThreadExecutor$ForkedRunnableDecorator.run(ForkedThreadExecutor.java:249)
+	at java.lang.Thread.run(Thread.java:619)
+2013-07-14 12:07:13,076 INFO - No issues need to be reindexed.
