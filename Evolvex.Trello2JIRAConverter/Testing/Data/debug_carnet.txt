@@ -1,0 +1,87 @@
+jsonObj["id"]
+		jsonObj["memberships"].Count()	29	int
++		jsonObj["memberships"][5]	{
+  "id": "51a5195e84d0b3165200dbc2",
+  "idMember": "51a50e11c3653e67690061f4",
+  "memberType": "normal",
+  "deactivated": false,
+  "unconfirmed": false
+}	Newtonsoft.Json.Linq.JToken {Newtonsoft.Json.Linq.JObject}
+
+		jsonObj["lists"].Count()	6	int
+
++		jsonObj["lists"][0]	{
+  "id": "518f2073dac80224250006ec",
+  "name": "Ідеї",
+  "closed": false,
+  "idBoard": "518e2c1863dde44130000852",
+  "pos": 9216,
+  "subscribed": false
+}	Newtonsoft.Json.Linq.JToken {Newtonsoft.Json.Linq.JObject}
+
+jsonObj["cards"].Count()
+		jsonObj["cards"].Count()	120	int
++		jsonObj["cards"][0]	{
+  "id": "5190997caecb22377d00091d",
+  "badges": {
+    "votes": 0,
+    "viewingMemberVoted": false,
+    "subscribed": false,
+    "fogbugz": "",
+    "checkItems": 0,
+    "checkItemsChecked": 0,
+    "comments": 1,
+    "attachments": 0,
+    "description": true,
+    "due": null
+  },
+  "checkItemStates": [],
+  "closed": false,
+  "dateLastActivity": "2013-06-17T07:18:38.307Z",
+  "desc": "Організація роботи\n==================\nІдеї\n--------\nПерш ніж запропонувати ідею, перевірте - можливо її вже додали. Сюди також переносяться пропозиції з [групи Фейсбук] (https://www.facebook.com/groups/GromadyanyTV/). Голосуючи за картку (Vote) ви впливаєте на терміни реалізації ідеї.\n\nНаступні кроки\n--------------------\nРобота організована через цикли - спрінти. Тривалість спрінта яку ми вибрали - один тиждень. На початку спрінта команда зустрічається та обговорює плани. За згодою команди картки з завданнями переміщуються зі списку Ідеї до Наступні кроки.\nПротягом спрінта крім поточної роботи ми уточнюємо завдання та шукаємо виконавців для них за допомогою коментарів.\nЦе єдиний список в якому завдання відсортовані згідно з їх пріоритетом у проекті. У разі коли у вас є можливість попрацювати на проект - візьміть у роботу картку на горі цього списку та \"додайте до неї власне обличчя\" (Assign). Термін до картки додається тільки після того, як з'ясовано хто за неї відповідає.\n\nВ роботі\n------------\nВ цьому списку ті завдання, за виконання яких хтось вже взяв на себе відповідальність.\nВласні завдання можуть бути перенесені учасником команди самостійно в будь який час з дотриманням наступних рекомендацій:\n\n- завдання може бути виконане до завершення спрінта,\n- в списку В роботі за виконавцем може бути не більше ніж дві картки - основне та додаткове завдання над якими йде робота,\n\nУ разі якщо при відборі завдань до виконання є побоювання, що воно не може бути виконане до закінчення спрінта, - розбийте його на окремі картки.\nДо кінця спрінта список В роботі має бути пустим. В цьому зацікавлена вся команда. Отже якщо ви бачите, що у колег є проблеми з завданням, - долучіться щоб допомогти його виконати.\n\nУзгодження\n----------------\nВ проекті є декілька зацікавлених сторін - глядачі, інвестори, команда. Довіра між ними базується на прозорості.\nКартки рухаються з ліва направо у сусідні списки. На етапі Узгодження ми шукаємо можливість почути зворотній зв'язок від зацікавлених сторін. Зокрема - узгоджуємо з ними документи або тестуємо рішення. \n*Як залучити групу Фейсбук до прийому роботи?*\n\nВ цей список ми також додаємо творчі завдання, з якими не встигли впоратись протягом спрінта.\n*Протоколювання / звіти для зустрічей?*\n\nВиконано\n--------------\nЗа допомогою цього списку можна простежити хід робіт. Останні з виконаних завдань - згори.\nПеріодично картки з цього списку архівуються, залишаючи тільки картки з останніх двох спринтів.\n\nДоступ\n========\n*Цей розділ ще має бути узгодженим*\nДошка є публічною. Будь хто може бачити хід робот над проектом. Редагувати - тільки члени команди.\nОкремі робочі групи можуть створювати власні дошки та самостійно надавати доступ до них. Проте залишається загальне правило - всі дошки мають бути видимі для всієї команди (Organization).\n\nЗ мобільного\n=============\nВи можете працювати з дошкою за допомогою додатків для [iPhone](http://itunes.apple.com/us/app/trello/id461504587?mt=8), [Android](https://play.google.com/store/apps/details?id=com.trello) та [Windows8](http://apps.microsoft.com/windows/en-us/app/trello/bd4fa6c1-0994-4caa-b0e1-04eec135667b)\n\nКоментарі? Ідеї? Питання?\n===============\nДля ідеї та зауважень щодо організації спільної роботи створюйте нові картки в розділі Ідеї.\nЯкщо у вас є питання як користуватись Trello - ставте їх у коментарях до цієї картки.",
+  "due": null,
+  "idBoard": "518e2c1863dde44130000852",
+  "idChecklists": [],
+  "idList": "518f2073dac80224250006ec",
+  "idMembers": [],
+  "idMembersVoted": [],
+  "idShort": 1,
+  "idAttachmentCover": null,
+  "manualCoverAttachment": false,
+  "labels": [],
+  "name": "Що це?",
+  "pos": 32768,
+  "shortUrl": "https://trello.com/c/wBdBwIdN",
+  "subscribed": false,
+  "url": "https://trello.com/card/-/518e2c1863dde44130000852/1",
+  "attachments": []
+}	Newtonsoft.Json.Linq.JToken {Newtonsoft.Json.Linq.JObject}
+
++		jsonObj["cards"][0]["name"]	{Що це?}	Newtonsoft.Json.Linq.JToken {Newtonsoft.Json.Linq.JValue}
+
+
+
+------------------
+		child.Type	Property	Newtonsoft.Json.Linq.JTokenType
+((Newtonsoft.Json.Linq.JProperty)(child)).Value.HasValues
+		((Newtonsoft.Json.Linq.JProperty)(child)).Name	"id"	string
+
+
+-		((Newtonsoft.Json.Linq.JProperty)(child))	{"id": "518e2c1863dde44130000852"}	Newtonsoft.Json.Linq.JProperty
++		base	{"id": "518e2c1863dde44130000852"}	Newtonsoft.Json.Linq.JContainer {Newtonsoft.Json.Linq.JProperty}
++		_content	Count = 1	System.Collections.Generic.List<Newtonsoft.Json.Linq.JToken>
+		_name	"id"	string
++		ChildrenTokens	Count = 1	System.Collections.Generic.IList<Newtonsoft.Json.Linq.JToken> {System.Collections.Generic.List<Newtonsoft.Json.Linq.JToken>}
+		Name	"id"	string
+		Type	Property	Newtonsoft.Json.Linq.JTokenType
++		Value	{518e2c1863dde44130000852}	Newtonsoft.Json.Linq.JToken {Newtonsoft.Json.Linq.JValue}
++		Results View	Expanding the Results View will enumerate the IEnumerable	
+
+
+board/actions/add/member
+
+		child.Parent.Type	Array	Newtonsoft.Json.Linq.JTokenType
+
+board/actions/add/attachment
+
+

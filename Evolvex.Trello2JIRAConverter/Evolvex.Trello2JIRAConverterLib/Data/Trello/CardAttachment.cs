@@ -14,7 +14,7 @@ namespace Evolvex.Trello2JIRAConverterLib.Data.Trello
         public string isUpload { get; set; }
         public string mimeType { get; set; }
         public string name { get; set; }
-        public string previews { get; set; }
+        public List<AttachmentPreview> previews { get; set; }
         public string url { get; set; }
     }
 }

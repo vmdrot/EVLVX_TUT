@@ -28,6 +28,6 @@ namespace Evolvex.Trello2JIRAConverterLib.Data.Trello
         public List<Card> cards { get; set; }
         public List<Member> members { get; set; }
         public List<Checklist> checklists { get; set; }
-        public List<Action> actions { get; set; }
+        public List<TrelloAction> actions { get; set; }
     }
 }
