@@ -50,7 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Converter.cs" />
-    <Compile Include="Data\Trello\Action.cs" />
+    <Compile Include="Data\Trello\ActionDataOld.cs" />
+    <Compile Include="Data\Trello\TrelloAction.cs" />
     <Compile Include="Data\Trello\ActionAttachment.cs" />
     <Compile Include="Data\Trello\ActionData.cs" />
     <Compile Include="Data\Trello\ActionDataBoard.cs" />

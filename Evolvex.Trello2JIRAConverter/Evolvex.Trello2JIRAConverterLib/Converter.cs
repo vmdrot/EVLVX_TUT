@@ -12,6 +12,7 @@ namespace Evolvex.Trello2JIRAConverterLib
 {
     public class Converter
     {
+        private List<string> _missingConstructors;
         public string Convert(string srcJson)
         {
 
@@ -111,8 +112,30 @@ namespace Evolvex.Trello2JIRAConverterLib
         private object SpawnInstance(string propName)
         {
             switch (propName)
-            { 
-                case "": return new 
+            {
+                case "prefs": return new Preference();
+                case "memberships": return new List<Membership>();
+                case "lists": return new List<CardsList>();
+                case "cards": return new List<Card>();
+                case "members": return new List<Member>();
+                case "checklists": return new List<Checklist>();
+                case "checkItems": return new List<ChecklistItem>();
+                case "actions": return new List<TrelloAction>();
+                case "badges": return new Badges();
+                case "attachments": return new List<CardAttachment>();
+                case "attachment": return new ActionAttachment();
+                case "data": return new ActionData();
+                case "board": return new ActionDataBoard();
+                case "card": return new ActionDataCard();
+                case "member": return new ActionMember();
+                case "old": return new ActionDataOld();
+                case "memberCreator": return new ActionMemberCreator();
+                default: 
+                    {
+                        if (!_missingConstructors.Contains(propName))
+                            _missingConstructors.Add(propName);
+                    }
+                    return null;
             }
         }
 

@@ -10,5 +10,6 @@ namespace Evolvex.Trello2JIRAConverterLib.Data.Trello
         public ActionDataBoard board { get; set; }
         public ActionDataCard card { get; set; }
         public string idMember { get; set; }
+        public string text { get; set; }
     }
 }
