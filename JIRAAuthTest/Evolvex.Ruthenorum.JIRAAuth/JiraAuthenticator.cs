@@ -35,6 +35,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth
         public String JIRARootUrl { get; set; }
         public const string RESOURCE_PATH = "/rest/api/2/user?expand=groups&username=";
         public const string GROUPS_LIST_PATH = "/rest/api/2/groups/picker";
+        public const string USER_SEARCH_PATH = "/rest/api/2/user/search?username={0}&startAt={1}&maxResults={2}";
         public HttpStatusCode? LastStatus { get; private set; }
         public string LastResponseText { get; private set; }
 
@@ -149,5 +150,31 @@ namespace Evolvex.Ruthenorum.JIRAAuth
                 return null;
             return JIRAUserInfo.Parse(usrJson);
         }
+
+        public List<string> ListAllUserNames()
+        {
+            List<string> rslt = new List<string>();
+            for (int i = 97; i <= 122; i++)
+            {
+                string currUrl = string.Format("{0}{1}", JIRA_ROOT_URL, String.Format(USER_SEARCH_PATH, (char)i, 0, 20));
+                string jsonRslt;
+                if (!AuthenticateWorker(this._serviceAcctUsrName, this._serviceAcctPwd, out jsonRslt, currUrl))
+                    continue;
+                List<string> currUsrs = JIRAUserInfo.ParseUserNames(jsonRslt);
+                MergeUserNames(rslt, currUsrs);
+            }
+            return rslt;
+        }
+
+        private void MergeUserNames(List<string> rslt, List<string> currUsrs)
+        {
+            foreach (string usr in currUsrs)
+            { 
+                if(rslt.Contains(usr)) 
+                    continue;
+                rslt.Add(usr);
+            }
+        }
+
     }
 }

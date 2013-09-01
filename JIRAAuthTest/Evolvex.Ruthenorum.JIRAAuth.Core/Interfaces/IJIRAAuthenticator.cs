@@ -14,6 +14,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth.Core.Interfaces
         String JIRARootUrl { get; set; }
         HttpStatusCode? LastStatus { get; }
         string LastResponseText { get; }
+        List<string> ListAllUserNames();
 
     }
 }

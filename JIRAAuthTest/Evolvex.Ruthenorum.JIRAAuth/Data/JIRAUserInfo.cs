@@ -174,5 +174,74 @@ namespace Evolvex.Ruthenorum.JIRAAuth.Data
             Uri uri = new Uri(usrUrl);
             return HttpUtility.ParseQueryString(uri.Query).Get("username");
         }
+
+        
+        public static List<IJIRAUserInfo> ParseMany(string json)
+        {
+            //List<IJIRAUserInfo> rslt = new List<IJIRAUserInfo>();
+            //using (Newtonsoft.Json.JsonTextReader reader = new JsonTextReader(new StringReader(json)))
+            //{
+            //    while (reader.Read())
+            //    {
+            //        rslt.Add (new JIRAUserInfo(reader);
+            //    }
+            //}
+            //return null;
+            throw new NotImplementedException();
+        }
+
+        public static List<string> ParseUserNames(string json)
+        {
+            List<string> rslt = new List<string>();
+            using (Newtonsoft.Json.JsonTextReader reader = new JsonTextReader(new StringReader(json)))
+            {
+                string lastPropNm = string.Empty;
+                Dictionary<string, object> props = new Dictionary<string, object>();
+                const string keyPropName = "name";
+                #region read-out json
+                while (reader.Read())
+                {
+                    switch (reader.TokenType)
+                    {
+                        case JsonToken.Boolean:
+                        case JsonToken.Bytes:
+                        case JsonToken.Date:
+                        case JsonToken.Float:
+                        case JsonToken.Integer:
+                        case JsonToken.Null:
+                        case JsonToken.String:
+                            {
+                                if (lastPropNm == keyPropName) rslt.Add(reader.Value as string);
+                            }
+                            break;
+                        case JsonToken.Comment:
+                            break;
+                        case JsonToken.EndArray:
+                            break;
+                        case JsonToken.EndConstructor:
+                            break;
+                        case JsonToken.EndObject:
+                            break;
+                        case JsonToken.None:
+                            break;
+                        case JsonToken.PropertyName:
+                            lastPropNm = reader.Value as string;
+                            break;
+                        case JsonToken.Raw:
+                            break;
+                        case JsonToken.StartArray:
+                            break;
+                        case JsonToken.StartConstructor:
+                            break;
+                        case JsonToken.Undefined:
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                #endregion
+            }
+            return rslt;
+        }
     }
 }

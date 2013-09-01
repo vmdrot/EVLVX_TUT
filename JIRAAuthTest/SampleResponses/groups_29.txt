@@ -1,2 +1,123 @@
 True (OK)
-{"header":"Showing 29 of 29 matching groups","total":29,"groups":[{"name":"confluence-administrators","html":"confluence-administrators"},{"name":"Core","html":"Core"},{"name":"ForeignRelations","html":"ForeignRelations"},{"name":"HTCWB-Translators","html":"HTCWB-Translators"},{"name":"HUBMED-Translators","html":"HUBMED-Translators"},{"name":"jira-administrators","html":"jira-administrators"},{"name":"jira-developers","html":"jira-developers"},{"name":"jira-users","html":"jira-users"},{"name":"JIRATranslators","html":"JIRATranslators"},{"name":"KhochuShche","html":"KhochuShche"},{"name":"KontaktCA-EyeOnCulture","html":"KontaktCA-EyeOnCulture"},{"name":"OdesaDevelopment","html":"OdesaDevelopment"},{"name":"ProcessesAndMethodologies","html":"ProcessesAndMethodologies"},{"name":"RadioVolya-CulturePrograms","html":"RadioVolya-CulturePrograms"},{"name":"RadioVolya-Developers","html":"RadioVolya-Developers"},{"name":"RadioVolya-MusicEditors","html":"RadioVolya-MusicEditors"},{"name":"RadioVolya-PoliticPrograms","html":"RadioVolya-PoliticPrograms"},{"name":"RadioVolya-Users","html":"RadioVolya-Users"},{"name":"Ruthenorum-English-Writers","html":"Ruthenorum-English-Writers"},{"name":"Ruthenorum-FaceBook-Editors","html":"Ruthenorum-FaceBook-Editors"},{"name":"Ruthenorum-French-Writers","html":"Ruthenorum-French-Writers"},{"name":"Ruthenorum-German-Writers","html":"Ruthenorum-German-Writers"},{"name":"Ruthenorum-InoZMI-DB-Workers","html":"Ruthenorum-InoZMI-DB-Workers"},{"name":"Ruthenorum-Ukrainian-Writers","html":"Ruthenorum-Ukrainian-Writers"},{"name":"SocioIntAggr-Mgrs","html":"SocioIntAggr-Mgrs"},{"name":"UVO","html":"UVO"},{"name":"UVO-FinProcurement","html":"UVO-FinProcurement"},{"name":"VPProgram-Authors","html":"VPProgram-Authors"},{"name":"VPProgram-Critics","html":"VPProgram-Critics"}]}
+{
+  "header": "Showing 29 of 29 matching groups",
+  "total": 29,
+  "groups": [
+    {
+      "name": "confluence-administrators",
+      "html": "confluence-administrators"
+    },
+    {
+      "name": "Core",
+      "html": "Core"
+    },
+    {
+      "name": "ForeignRelations",
+      "html": "ForeignRelations"
+    },
+    {
+      "name": "HTCWB-Translators",
+      "html": "HTCWB-Translators"
+    },
+    {
+      "name": "HUBMED-Translators",
+      "html": "HUBMED-Translators"
+    },
+    {
+      "name": "jira-administrators",
+      "html": "jira-administrators"
+    },
+    {
+      "name": "jira-developers",
+      "html": "jira-developers"
+    },
+    {
+      "name": "jira-users",
+      "html": "jira-users"
+    },
+    {
+      "name": "JIRATranslators",
+      "html": "JIRATranslators"
+    },
+    {
+      "name": "KhochuShche",
+      "html": "KhochuShche"
+    },
+    {
+      "name": "KontaktCA-EyeOnCulture",
+      "html": "KontaktCA-EyeOnCulture"
+    },
+    {
+      "name": "OdesaDevelopment",
+      "html": "OdesaDevelopment"
+    },
+    {
+      "name": "ProcessesAndMethodologies",
+      "html": "ProcessesAndMethodologies"
+    },
+    {
+      "name": "RadioVolya-CulturePrograms",
+      "html": "RadioVolya-CulturePrograms"
+    },
+    {
+      "name": "RadioVolya-Developers",
+      "html": "RadioVolya-Developers"
+    },
+    {
+      "name": "RadioVolya-MusicEditors",
+      "html": "RadioVolya-MusicEditors"
+    },
+    {
+      "name": "RadioVolya-PoliticPrograms",
+      "html": "RadioVolya-PoliticPrograms"
+    },
+    {
+      "name": "RadioVolya-Users",
+      "html": "RadioVolya-Users"
+    },
+    {
+      "name": "Ruthenorum-English-Writers",
+      "html": "Ruthenorum-English-Writers"
+    },
+    {
+      "name": "Ruthenorum-FaceBook-Editors",
+      "html": "Ruthenorum-FaceBook-Editors"
+    },
+    {
+      "name": "Ruthenorum-French-Writers",
+      "html": "Ruthenorum-French-Writers"
+    },
+    {
+      "name": "Ruthenorum-German-Writers",
+      "html": "Ruthenorum-German-Writers"
+    },
+    {
+      "name": "Ruthenorum-InoZMI-DB-Workers",
+      "html": "Ruthenorum-InoZMI-DB-Workers"
+    },
+    {
+      "name": "Ruthenorum-Ukrainian-Writers",
+      "html": "Ruthenorum-Ukrainian-Writers"
+    },
+    {
+      "name": "SocioIntAggr-Mgrs",
+      "html": "SocioIntAggr-Mgrs"
+    },
+    {
+      "name": "UVO",
+      "html": "UVO"
+    },
+    {
+      "name": "UVO-FinProcurement",
+      "html": "UVO-FinProcurement"
+    },
+    {
+      "name": "VPProgram-Authors",
+      "html": "VPProgram-Authors"
+    },
+    {
+      "name": "VPProgram-Critics",
+      "html": "VPProgram-Critics"
+    }
+  ]
+}
