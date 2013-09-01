@@ -83,6 +83,7 @@
     <Compile Include="Data\JIRAGroupsParser.cs" />
     <Compile Include="Data\JIRAUserInfo.cs" />
     <Compile Include="Data\LockedUsersRepo.cs" />
+    <Compile Include="Facade\JiraAuthFacade.cs" />
     <Compile Include="Factories\AuthenticatedUsersRepoFactory.cs" />
     <Compile Include="Factories\JIRAAuthenticatorFactory.cs" />
     <Compile Include="Factories\LockedUsersRepoFactory.cs" />
