@@ -1,0 +1,1453 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Google.Apis.AdSenseHost.v4_1</name>
+    </assembly>
+    <members>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Account.Id">
+            <summary>Unique identifier of this account.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Account.Kind">
+            <summary>Kind of resource this is, in this case adsensehost#account.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Account.Name">
+            <summary>Name of this account.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Account.Status">
+            <summary>Approval status of this account. One of: PENDING, APPROVED, DISABLED.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Account.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Accounts.ETag">
+            <summary>ETag of this response for caching purposes.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Accounts.Items">
+            <summary>The accounts returned in this list response.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Accounts.Kind">
+            <summary>Kind of list this is, in this case adsensehost#accounts.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdClient.ArcOptIn">
+            <summary>Whether this ad client is opted in to ARC.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdClient.Id">
+            <summary>Unique identifier of this ad client.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdClient.Kind">
+            <summary>Kind of resource this is, in this case adsensehost#adClient.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdClient.ProductCode">
+            <summary>This ad client's product code, which corresponds to the PRODUCT_CODE report dimension.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdClient.SupportsReporting">
+            <summary>Whether this ad client supports being reported on.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdClient.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdClients.ETag">
+            <summary>ETag of this response for caching purposes.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdClients.Items">
+            <summary>The ad clients returned in this list response.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdClients.Kind">
+            <summary>Kind of list this is, in this case adsensehost#adClients.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdClients.NextPageToken">
+            <summary>Continuation token used to page through ad clients. To retrieve the next page of results, set the
+            next request's "pageToken" value to this.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdCode.AdCodeValue">
+            <summary>The ad code snippet.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdCode.Kind">
+            <summary>Kind this is, in this case adsensehost#adCode.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdCode.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdStyle.Colors">
+            <summary>The colors included in the style. These are represented as six hexadecimal characters, similar to
+            HTML color codes, but without the leading hash.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdStyle.Corners">
+            <summary>The style of the corners in the ad. Possible values are SQUARE, SLIGHTLY_ROUNDED and
+            VERY_ROUNDED.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdStyle.Font">
+            <summary>The font which is included in the style.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdStyle.Kind">
+            <summary>Kind this is, in this case adsensehost#adStyle.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdStyle.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.Data.AdStyle.ColorsData">
+            <summary>The colors included in the style. These are represented as six hexadecimal characters, similar to
+            HTML color codes, but without the leading hash.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdStyle.ColorsData.Background">
+            <summary>The color of the ad background.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdStyle.ColorsData.Border">
+            <summary>The color of the ad border.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdStyle.ColorsData.Text">
+            <summary>The color of the ad text.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdStyle.ColorsData.Title">
+            <summary>The color of the ad title.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdStyle.ColorsData.Url">
+            <summary>The color of the ad url.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.Data.AdStyle.FontData">
+            <summary>The font which is included in the style.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdStyle.FontData.Family">
+            <summary>The family of the font. Possible values are: ACCOUNT_DEFAULT_FAMILY, ADSENSE_DEFAULT_FAMILY,
+            ARIAL, TIMES and VERDANA.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdStyle.FontData.Size">
+            <summary>The size of the font. Possible values are: ACCOUNT_DEFAULT_SIZE, ADSENSE_DEFAULT_SIZE, SMALL,
+            MEDIUM and LARGE.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.Code">
+            <summary>Identity code of this ad unit, not necessarily unique across ad clients.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.ContentAdsSettings">
+            <summary>Settings specific to content ads (AFC) and highend mobile content ads (AFMC).</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.CustomStyle">
+            <summary>Custom style information specific to this ad unit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.Id">
+            <summary>Unique identifier of this ad unit. This should be considered an opaque identifier; it is not safe
+            to rely on it being in any particular format.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.Kind">
+            <summary>Kind of resource this is, in this case adsensehost#adUnit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.MobileContentAdsSettings">
+            <summary>Settings specific to WAP mobile content ads (AFMC).</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.Name">
+            <summary>Name of this ad unit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.Status">
+             <summary>Status of this ad unit. Possible values are: NEW: Indicates that the ad unit was created within the
+             last seven days and does not yet have any activity associated with it.
+            
+             ACTIVE: Indicates that there has been activity on this ad unit in the last seven days.
+            
+             INACTIVE: Indicates that there has been no activity on this ad unit in the last seven days.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.ContentAdsSettingsData">
+            <summary>Settings specific to content ads (AFC) and highend mobile content ads (AFMC).</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.ContentAdsSettingsData.BackupOption">
+            <summary>The backup option to be used in instances where no ad is available.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.ContentAdsSettingsData.Size">
+            <summary>Size of this ad unit. Size values are in the form SIZE_{width}_{height}.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.ContentAdsSettingsData.Type">
+            <summary>Type of this ad unit. Possible values are TEXT, TEXT_IMAGE, IMAGE and LINK.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.ContentAdsSettingsData.BackupOptionData">
+            <summary>The backup option to be used in instances where no ad is available.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.ContentAdsSettingsData.BackupOptionData.Color">
+            <summary>Color to use when type is set to COLOR. These are represented as six hexadecimal
+            characters, similar to HTML color codes, but without the leading hash.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.ContentAdsSettingsData.BackupOptionData.Type">
+            <summary>Type of the backup option. Possible values are BLANK, COLOR and URL.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.ContentAdsSettingsData.BackupOptionData.Url">
+            <summary>URL to use when type is set to URL.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.MobileContentAdsSettingsData">
+            <summary>Settings specific to WAP mobile content ads (AFMC).</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.MobileContentAdsSettingsData.MarkupLanguage">
+            <summary>The markup language to use for this ad unit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.MobileContentAdsSettingsData.ScriptingLanguage">
+            <summary>The scripting language to use for this ad unit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.MobileContentAdsSettingsData.Size">
+            <summary>Size of this ad unit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnit.MobileContentAdsSettingsData.Type">
+            <summary>Type of this ad unit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnits.ETag">
+            <summary>ETag of this response for caching purposes.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnits.Items">
+            <summary>The ad units returned in this list response.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnits.Kind">
+            <summary>Kind of list this is, in this case adsensehost#adUnits.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AdUnits.NextPageToken">
+            <summary>Continuation token used to page through ad units. To retrieve the next page of results, set the
+            next request's "pageToken" value to this.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AssociationSession.AccountId">
+            <summary>Hosted account id of the associated publisher after association. Present if status is
+            ACCEPTED.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AssociationSession.Id">
+            <summary>Unique identifier of this association session.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AssociationSession.Kind">
+            <summary>Kind of resource this is, in this case adsensehost#associationSession.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AssociationSession.ProductCodes">
+            <summary>The products to associate with the user. Options: AFC, AFF, AFS, AFMC</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AssociationSession.RedirectUrl">
+            <summary>Redirect URL of this association session. Used to redirect users into the AdSense association
+            flow.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AssociationSession.Status">
+            <summary>Status of the completed association, available once the association callback token has been
+            verified. One of ACCEPTED, REJECTED, or ERROR.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AssociationSession.UserLocale">
+            <summary>The preferred locale of the user themselves when going through the AdSense association
+            flow.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AssociationSession.WebsiteLocale">
+            <summary>The locale of the user's hosted website.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AssociationSession.WebsiteUrl">
+            <summary>The URL of the user's hosted website.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.AssociationSession.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.CustomChannel.Code">
+            <summary>Code of this custom channel, not necessarily unique across ad clients.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.CustomChannel.Id">
+            <summary>Unique identifier of this custom channel. This should be considered an opaque identifier; it is not
+            safe to rely on it being in any particular format.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.CustomChannel.Kind">
+            <summary>Kind of resource this is, in this case adsensehost#customChannel.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.CustomChannel.Name">
+            <summary>Name of this custom channel.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.CustomChannel.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.CustomChannels.ETag">
+            <summary>ETag of this response for caching purposes.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.CustomChannels.Items">
+            <summary>The custom channels returned in this list response.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.CustomChannels.Kind">
+            <summary>Kind of list this is, in this case adsensehost#customChannels.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.CustomChannels.NextPageToken">
+            <summary>Continuation token used to page through custom channels. To retrieve the next page of results, set
+            the next request's "pageToken" value to this.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Report.Averages">
+            <summary>The averages of the report. This is the same length as any other row in the report; cells
+            corresponding to dimension columns are empty.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Report.Headers">
+            <summary>The header information of the columns requested in the report. This is a list of headers; one for
+            each dimension in the request, followed by one for each metric in the request.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Report.Kind">
+            <summary>Kind this is, in this case adsensehost#report.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Report.Rows">
+            <summary>The output rows of the report. Each row is a list of cells; one for each dimension in the request,
+            followed by one for each metric in the request. The dimension cells contain strings, and the metric cells
+            contain numbers.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Report.TotalMatchedRows">
+            <summary>The total number of rows matched by the report request. Fewer rows may be returned in the response
+            due to being limited by the row count requested or the report row limit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Report.Totals">
+            <summary>The totals of the report. This is the same length as any other row in the report; cells
+            corresponding to dimension columns are empty.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Report.Warnings">
+            <summary>Any warnings associated with generation of the report.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Report.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Report.HeadersData.Currency">
+            <summary>The currency of this column. Only present if the header type is METRIC_CURRENCY.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Report.HeadersData.Name">
+            <summary>The name of the header.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.Report.HeadersData.Type">
+            <summary>The type of the header; one of DIMENSION, METRIC_TALLY, METRIC_RATIO, or
+            METRIC_CURRENCY.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.UrlChannel.Id">
+            <summary>Unique identifier of this URL channel. This should be considered an opaque identifier; it is not
+            safe to rely on it being in any particular format.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.UrlChannel.Kind">
+            <summary>Kind of resource this is, in this case adsensehost#urlChannel.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.UrlChannel.UrlPattern">
+            <summary>URL Pattern of this URL channel. Does not include "http://" or "https://". Example:
+            www.example.com/home</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.UrlChannel.ETag">
+            <summary>The ETag of the item.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.UrlChannels.ETag">
+            <summary>ETag of this response for caching purposes.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.UrlChannels.Items">
+            <summary>The URL channels returned in this list response.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.UrlChannels.Kind">
+            <summary>Kind of list this is, in this case adsensehost#urlChannels.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.Data.UrlChannels.NextPageToken">
+            <summary>Continuation token used to page through URL channels. To retrieve the next page of results, set the
+            next request's "pageToken" value to this.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AdSenseHostService">
+            <summary>The AdSenseHost Service.</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.AdSenseHostService.Version">
+            <summary>The API version.</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.AdSenseHostService.DiscoveryVersionUsed">
+            <summary>The discovery version used to generate this service.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AdSenseHostService.#ctor">
+            <summary>Constructs a new service.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AdSenseHostService.#ctor(Google.Apis.Services.BaseClientService.Initializer)">
+            <summary>Constructs a new service.</summary>
+            <param name="initializer">The service initializer.</param>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostService.Features">
+            <summary>Gets the service supported features.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostService.Name">
+            <summary>Gets the service name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostService.BaseUri">
+            <summary>Gets the service base URI.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostService.BasePath">
+            <summary>Gets the service base path.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostService.Accounts">
+            <summary>Gets the Accounts resource.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostService.Adclients">
+            <summary>Gets the Adclients resource.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostService.Associationsessions">
+            <summary>Gets the Associationsessions resource.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostService.Customchannels">
+            <summary>Gets the Customchannels resource.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostService.Reports">
+            <summary>Gets the Reports resource.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostService.Urlchannels">
+            <summary>Gets the Urlchannels resource.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AdSenseHostService.Scope">
+            <summary>Available OAuth 2.0 scopes for use with the AdSense Host API.</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.AdSenseHostService.Scope.Adsensehost">
+            <summary>View and manage your AdSense host data and associated accounts</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AdSenseHostBaseServiceRequest`1">
+            <summary>A base abstract class for AdSenseHost requests.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AdSenseHostBaseServiceRequest`1.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new AdSenseHostBaseServiceRequest instance.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AdSenseHostBaseServiceRequest`1.InitParameters">
+            <summary>Initializes AdSenseHost parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostBaseServiceRequest`1.Alt">
+            <summary>Data format for the response.</summary>
+            [default: json]
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostBaseServiceRequest`1.Fields">
+            <summary>Selector specifying which fields to include in a partial response.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostBaseServiceRequest`1.Key">
+            <summary>API key. Your API key identifies your project and provides you with API access, quota, and reports.
+            Required unless you provide an OAuth 2.0 token.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostBaseServiceRequest`1.OauthToken">
+            <summary>OAuth 2.0 token for the current user.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostBaseServiceRequest`1.PrettyPrint">
+            <summary>Returns response with indentations and line breaks.</summary>
+            [default: true]
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostBaseServiceRequest`1.QuotaUser">
+            <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
+            assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdSenseHostBaseServiceRequest`1.UserIp">
+            <summary>IP address of the site where the request originates. Use this if you want to enforce per-user
+            limits.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AdSenseHostBaseServiceRequest`1.AltEnum">
+            <summary>Data format for the response.</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.AdSenseHostBaseServiceRequest`1.AltEnum.Csv">
+            <summary>Responses with Content-Type of text/csv</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.AdSenseHostBaseServiceRequest`1.AltEnum.Json">
+            <summary>Responses with Content-Type of application/json</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AccountsResource">
+            <summary>The "accounts" collection of methods.</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.AccountsResource.service">
+            <summary> The service whih this resource is belong to.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new resource.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.Get(System.String)">
+            <summary>Get information about the selected associated AdSense account.</summary>
+            <param name="accountId">Account to get information about.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.List(Google.Apis.Util.Repeatable{System.String})">
+            <summary>List hosted accounts associated with this AdSense account by ad client id.</summary>
+            <param name="filterAdClientId">Ad clients to list accounts for.</param>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.Adclients">
+            <summary>Gets the Adclients resource.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.Adunits">
+            <summary>Gets the Adunits resource.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.Reports">
+            <summary>Gets the Reports resource.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource">
+            <summary>The "adclients" collection of methods.</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.service">
+            <summary> The service whih this resource is belong to.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new resource.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.Get(System.String,System.String)">
+            <summary>Get information about one of the ad clients in the specified publisher's AdSense
+            account.</summary>
+            <param name="accountId">Account which contains the ad client.</param>
+            <param name="adClientId">Ad client to
+            get.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.List(System.String)">
+            <summary>List all hosted ad clients in the specified hosted account.</summary>
+            <param name="accountId">Account for which to list ad clients.</param>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.GetRequest">
+            <summary>Get information about one of the ad clients in the specified publisher's AdSense
+            account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.GetRequest.#ctor(Google.Apis.Services.IClientService,System.String,System.String)">
+            <summary>Constructs a new Get request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.GetRequest.InitParameters">
+            <summary>Initializes Get parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.GetRequest.AccountId">
+            <summary>Account which contains the ad client.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.GetRequest.AdClientId">
+            <summary>Ad client to get.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.GetRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.GetRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.GetRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.ListRequest">
+            <summary>List all hosted ad clients in the specified hosted account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.ListRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new List request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.ListRequest.InitParameters">
+            <summary>Initializes List parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.ListRequest.AccountId">
+            <summary>Account for which to list ad clients.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.ListRequest.PageToken">
+            <summary>A continuation token, used to page through ad clients. To retrieve the next page, set this
+            parameter to the value of "nextPageToken" from the previous response.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.ListRequest.MaxResults">
+            <summary>The maximum number of ad clients to include in the response, used for paging.</summary>
+            [minimum: 0]
+            [maximum: 10000]
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.ListRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.ListRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdclientsResource.ListRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource">
+            <summary>The "adunits" collection of methods.</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.service">
+            <summary> The service whih this resource is belong to.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new resource.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.Delete(System.String,System.String,System.String)">
+            <summary>Delete the specified ad unit from the specified publisher AdSense account.</summary>
+            <param name="accountId">Account which contains the ad unit.</param>
+            <param name="adClientId">Ad client for
+            which to get ad unit.</param>
+            <param name="adUnitId">Ad unit to delete.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.Get(System.String,System.String,System.String)">
+            <summary>Get the specified host ad unit in this AdSense account.</summary>
+            <param name="accountId">Account which contains the ad unit.</param>
+            <param name="adClientId">Ad client for
+            which to get ad unit.</param>
+            <param name="adUnitId">Ad unit to get.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetAdCode(System.String,System.String,System.String)">
+            <summary>Get ad code for the specified ad unit, attaching the specified host custom channels.</summary>
+            <param name="accountId">Account which contains the ad client.</param>
+            <param name="adClientId">Ad client
+            with contains the ad unit.</param>
+            <param name="adUnitId">Ad unit to get the code for.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.Insert(Google.Apis.AdSenseHost.v4_1.Data.AdUnit,System.String,System.String)">
+            <summary>Insert the supplied ad unit into the specified publisher AdSense account.</summary>
+            <param name="body">The body of the request.</param>
+            <param name="accountId">Account which will contain the ad unit.</param>
+            <param name="adClientId">Ad client
+            into which to insert the ad unit.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.List(System.String,System.String)">
+            <summary>List all ad units in the specified publisher's AdSense account.</summary>
+            <param name="accountId">Account which contains the ad client.</param>
+            <param name="adClientId">Ad client for
+            which to list ad units.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.Patch(Google.Apis.AdSenseHost.v4_1.Data.AdUnit,System.String,System.String,System.String)">
+            <summary>Update the supplied ad unit in the specified publisher AdSense account. This method supports
+            patch semantics.</summary>
+            <param name="body">The body of the request.</param>
+            <param name="accountId">Account which contains the ad client.</param>
+            <param name="adClientId">Ad client
+            which contains the ad unit.</param>
+            <param name="adUnitId">Ad unit to get.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.Update(Google.Apis.AdSenseHost.v4_1.Data.AdUnit,System.String,System.String)">
+            <summary>Update the supplied ad unit in the specified publisher AdSense account.</summary>
+            <param name="body">The body of the request.</param>
+            <param name="accountId">Account which contains the ad client.</param>
+            <param name="adClientId">Ad client
+            which contains the ad unit.</param>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.DeleteRequest">
+            <summary>Delete the specified ad unit from the specified publisher AdSense account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.DeleteRequest.#ctor(Google.Apis.Services.IClientService,System.String,System.String,System.String)">
+            <summary>Constructs a new Delete request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.DeleteRequest.InitParameters">
+            <summary>Initializes Delete parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.DeleteRequest.AccountId">
+            <summary>Account which contains the ad unit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.DeleteRequest.AdClientId">
+            <summary>Ad client for which to get ad unit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.DeleteRequest.AdUnitId">
+            <summary>Ad unit to delete.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.DeleteRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.DeleteRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.DeleteRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetRequest">
+            <summary>Get the specified host ad unit in this AdSense account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetRequest.#ctor(Google.Apis.Services.IClientService,System.String,System.String,System.String)">
+            <summary>Constructs a new Get request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetRequest.InitParameters">
+            <summary>Initializes Get parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetRequest.AccountId">
+            <summary>Account which contains the ad unit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetRequest.AdClientId">
+            <summary>Ad client for which to get ad unit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetRequest.AdUnitId">
+            <summary>Ad unit to get.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetAdCodeRequest">
+            <summary>Get ad code for the specified ad unit, attaching the specified host custom channels.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetAdCodeRequest.#ctor(Google.Apis.Services.IClientService,System.String,System.String,System.String)">
+            <summary>Constructs a new GetAdCode request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetAdCodeRequest.InitParameters">
+            <summary>Initializes GetAdCode parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetAdCodeRequest.AccountId">
+            <summary>Account which contains the ad client.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetAdCodeRequest.AdClientId">
+            <summary>Ad client with contains the ad unit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetAdCodeRequest.AdUnitId">
+            <summary>Ad unit to get the code for.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetAdCodeRequest.HostCustomChannelId">
+            <summary>Host custom channel to attach to the ad code.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetAdCodeRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetAdCodeRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.GetAdCodeRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.InsertRequest">
+            <summary>Insert the supplied ad unit into the specified publisher AdSense account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.InsertRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.AdSenseHost.v4_1.Data.AdUnit,System.String,System.String)">
+            <summary>Constructs a new Insert request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.InsertRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.InsertRequest.InitParameters">
+            <summary>Initializes Insert parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.InsertRequest.AccountId">
+            <summary>Account which will contain the ad unit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.InsertRequest.AdClientId">
+            <summary>Ad client into which to insert the ad unit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.InsertRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.InsertRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.InsertRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.InsertRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.ListRequest">
+            <summary>List all ad units in the specified publisher's AdSense account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.ListRequest.#ctor(Google.Apis.Services.IClientService,System.String,System.String)">
+            <summary>Constructs a new List request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.ListRequest.InitParameters">
+            <summary>Initializes List parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.ListRequest.AccountId">
+            <summary>Account which contains the ad client.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.ListRequest.AdClientId">
+            <summary>Ad client for which to list ad units.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.ListRequest.IncludeInactive">
+            <summary>Whether to include inactive ad units. Default: true.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.ListRequest.PageToken">
+            <summary>A continuation token, used to page through ad units. To retrieve the next page, set this
+            parameter to the value of "nextPageToken" from the previous response.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.ListRequest.MaxResults">
+            <summary>The maximum number of ad units to include in the response, used for paging.</summary>
+            [minimum: 0]
+            [maximum: 10000]
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.ListRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.ListRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.ListRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.PatchRequest">
+            <summary>Update the supplied ad unit in the specified publisher AdSense account. This method supports
+            patch semantics.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.PatchRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.AdSenseHost.v4_1.Data.AdUnit,System.String,System.String,System.String)">
+            <summary>Constructs a new Patch request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.PatchRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.PatchRequest.InitParameters">
+            <summary>Initializes Patch parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.PatchRequest.AccountId">
+            <summary>Account which contains the ad client.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.PatchRequest.AdClientId">
+            <summary>Ad client which contains the ad unit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.PatchRequest.AdUnitId">
+            <summary>Ad unit to get.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.PatchRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.PatchRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.PatchRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.PatchRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.UpdateRequest">
+            <summary>Update the supplied ad unit in the specified publisher AdSense account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.UpdateRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.AdSenseHost.v4_1.Data.AdUnit,System.String,System.String)">
+            <summary>Constructs a new Update request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.UpdateRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.UpdateRequest.InitParameters">
+            <summary>Initializes Update parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.UpdateRequest.AccountId">
+            <summary>Account which contains the ad client.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.UpdateRequest.AdClientId">
+            <summary>Ad client which contains the ad unit.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.UpdateRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.UpdateRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.UpdateRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.AdunitsResource.UpdateRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource">
+            <summary>The "reports" collection of methods.</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.service">
+            <summary> The service whih this resource is belong to.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new resource.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.Generate(System.String,System.String,System.String)">
+            <summary>Generate an AdSense report based on the report request sent in the query parameters. Returns
+            the result as JSON; to retrieve output in CSV format specify "alt=csv" as a query parameter.</summary>
+            <param name="accountId">Hosted account upon which to report.</param>
+            <param name="startDate">Start of the
+            date range to report on in "YYYY-MM-DD" format, inclusive.</param>
+            <param name="endDate">End of the date
+            range to report on in "YYYY-MM-DD" format, inclusive.</param>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.GenerateRequest">
+            <summary>Generate an AdSense report based on the report request sent in the query parameters. Returns
+            the result as JSON; to retrieve output in CSV format specify "alt=csv" as a query parameter.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.GenerateRequest.#ctor(Google.Apis.Services.IClientService,System.String,System.String,System.String)">
+            <summary>Constructs a new Generate request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.GenerateRequest.InitParameters">
+            <summary>Initializes Generate parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.GenerateRequest.AccountId">
+            <summary>Hosted account upon which to report.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.GenerateRequest.StartDate">
+            <summary>Start of the date range to report on in "YYYY-MM-DD" format, inclusive.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.GenerateRequest.EndDate">
+            <summary>End of the date range to report on in "YYYY-MM-DD" format, inclusive.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.GenerateRequest.Sort">
+            <summary>The name of a dimension or metric to sort the resulting report on, optionally prefixed with
+            "+" to sort ascending or "-" to sort descending. If no prefix is specified, the column is sorted
+            ascending.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.GenerateRequest.Locale">
+            <summary>Optional locale to use for translating report output to a local language. Defaults to
+            "en_US" if not specified.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.GenerateRequest.Metric">
+            <summary>Numeric columns to include in the report.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.GenerateRequest.MaxResults">
+            <summary>The maximum number of rows of report data to return.</summary>
+            [minimum: 0]
+            [maximum: 50000]
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.GenerateRequest.Filter">
+            <summary>Filters to be run on the report.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.GenerateRequest.StartIndex">
+            <summary>Index of the first row of report data to return.</summary>
+            [minimum: 0]
+            [maximum: 5000]
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.GenerateRequest.Dimension">
+            <summary>Dimensions to base the report on.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.GenerateRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.GenerateRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ReportsResource.GenerateRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AccountsResource.GetRequest">
+            <summary>Get information about the selected associated AdSense account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.GetRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new Get request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.GetRequest.InitParameters">
+            <summary>Initializes Get parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.GetRequest.AccountId">
+            <summary>Account to get information about.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.GetRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.GetRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.GetRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AccountsResource.ListRequest">
+            <summary>List hosted accounts associated with this AdSense account by ad client id.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.ListRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.Util.Repeatable{System.String})">
+            <summary>Constructs a new List request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AccountsResource.ListRequest.InitParameters">
+            <summary>Initializes List parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ListRequest.FilterAdClientId">
+            <summary>Ad clients to list accounts for.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ListRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ListRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AccountsResource.ListRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AdclientsResource">
+            <summary>The "adclients" collection of methods.</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.AdclientsResource.service">
+            <summary> The service whih this resource is belong to.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AdclientsResource.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new resource.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AdclientsResource.Get(System.String)">
+            <summary>Get information about one of the ad clients in the Host AdSense account.</summary>
+            <param name="adClientId">Ad client to get.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AdclientsResource.List">
+            <summary>List all host ad clients in this AdSense account.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AdclientsResource.GetRequest">
+            <summary>Get information about one of the ad clients in the Host AdSense account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AdclientsResource.GetRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new Get request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AdclientsResource.GetRequest.InitParameters">
+            <summary>Initializes Get parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdclientsResource.GetRequest.AdClientId">
+            <summary>Ad client to get.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdclientsResource.GetRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdclientsResource.GetRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdclientsResource.GetRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AdclientsResource.ListRequest">
+            <summary>List all host ad clients in this AdSense account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AdclientsResource.ListRequest.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new List request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AdclientsResource.ListRequest.InitParameters">
+            <summary>Initializes List parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdclientsResource.ListRequest.PageToken">
+            <summary>A continuation token, used to page through ad clients. To retrieve the next page, set this
+            parameter to the value of "nextPageToken" from the previous response.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdclientsResource.ListRequest.MaxResults">
+            <summary>The maximum number of ad clients to include in the response, used for paging.</summary>
+            [minimum: 0]
+            [maximum: 10000]
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdclientsResource.ListRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdclientsResource.ListRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AdclientsResource.ListRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource">
+            <summary>The "associationsessions" collection of methods.</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.service">
+            <summary> The service whih this resource is belong to.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new resource.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.Start(Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.ProductCodeEnum,System.String)">
+            <summary>Create an association session for initiating an association with an AdSense user.</summary>
+            <param name="productCode">Products to associate with the user.</param>
+            <param name="websiteUrl">The URL of
+            the user's hosted website.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.Verify(System.String)">
+            <summary>Verify an association session after the association callback returns from AdSense signup.</summary>
+            <param name="token">The token returned to the association callback URL.</param>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest">
+            <summary>Create an association session for initiating an association with an AdSense user.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.ProductCodeEnum,System.String)">
+            <summary>Constructs a new Start request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.InitParameters">
+            <summary>Initializes Start parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.ProductCode">
+            <summary>Products to associate with the user.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.WebsiteUrl">
+            <summary>The URL of the user's hosted website.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.WebsiteLocale">
+            <summary>The locale of the user's hosted website.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.UserLocale">
+            <summary>The preferred locale of the user.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.ProductCodeEnum">
+            <summary>Products to associate with the user.</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.ProductCodeEnum.AFC">
+            <summary>AdSense For Content</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.ProductCodeEnum.AFG">
+            <summary>AdSense For Games</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.ProductCodeEnum.AFMC">
+            <summary>AdSense For Mobile Content</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.ProductCodeEnum.AFS">
+            <summary>AdSense For Search</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.StartRequest.ProductCodeEnum.AFV">
+            <summary>AdSense For Video</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.VerifyRequest">
+            <summary>Verify an association session after the association callback returns from AdSense signup.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.VerifyRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new Verify request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.VerifyRequest.InitParameters">
+            <summary>Initializes Verify parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.VerifyRequest.Token">
+            <summary>The token returned to the association callback URL.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.VerifyRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.VerifyRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.AssociationsessionsResource.VerifyRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource">
+            <summary>The "customchannels" collection of methods.</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.service">
+            <summary> The service whih this resource is belong to.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new resource.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.Delete(System.String,System.String)">
+            <summary>Delete a specific custom channel from the host AdSense account.</summary>
+            <param name="adClientId">Ad client from which to delete the custom channel.</param>
+            <param
+            name="customChannelId">Custom channel to delete.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.Get(System.String,System.String)">
+            <summary>Get a specific custom channel from the host AdSense account.</summary>
+            <param name="adClientId">Ad client from which to get the custom channel.</param>
+            <param
+            name="customChannelId">Custom channel to get.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.Insert(Google.Apis.AdSenseHost.v4_1.Data.CustomChannel,System.String)">
+            <summary>Add a new custom channel to the host AdSense account.</summary>
+            <param name="body">The body of the request.</param>
+            <param name="adClientId">Ad client to which the new custom channel will be added.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.List(System.String)">
+            <summary>List all host custom channels in this AdSense account.</summary>
+            <param name="adClientId">Ad client for which to list custom channels.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.Patch(Google.Apis.AdSenseHost.v4_1.Data.CustomChannel,System.String,System.String)">
+            <summary>Update a custom channel in the host AdSense account. This method supports patch
+            semantics.</summary>
+            <param name="body">The body of the request.</param>
+            <param name="adClientId">Ad client in which the custom channel will be updated.</param>
+            <param
+            name="customChannelId">Custom channel to get.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.Update(Google.Apis.AdSenseHost.v4_1.Data.CustomChannel,System.String)">
+            <summary>Update a custom channel in the host AdSense account.</summary>
+            <param name="body">The body of the request.</param>
+            <param name="adClientId">Ad client in which the custom channel will be updated.</param>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.DeleteRequest">
+            <summary>Delete a specific custom channel from the host AdSense account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.DeleteRequest.#ctor(Google.Apis.Services.IClientService,System.String,System.String)">
+            <summary>Constructs a new Delete request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.DeleteRequest.InitParameters">
+            <summary>Initializes Delete parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.DeleteRequest.AdClientId">
+            <summary>Ad client from which to delete the custom channel.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.DeleteRequest.CustomChannelId">
+            <summary>Custom channel to delete.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.DeleteRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.DeleteRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.DeleteRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.GetRequest">
+            <summary>Get a specific custom channel from the host AdSense account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.GetRequest.#ctor(Google.Apis.Services.IClientService,System.String,System.String)">
+            <summary>Constructs a new Get request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.GetRequest.InitParameters">
+            <summary>Initializes Get parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.GetRequest.AdClientId">
+            <summary>Ad client from which to get the custom channel.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.GetRequest.CustomChannelId">
+            <summary>Custom channel to get.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.GetRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.GetRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.GetRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.InsertRequest">
+            <summary>Add a new custom channel to the host AdSense account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.InsertRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.AdSenseHost.v4_1.Data.CustomChannel,System.String)">
+            <summary>Constructs a new Insert request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.InsertRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.InsertRequest.InitParameters">
+            <summary>Initializes Insert parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.InsertRequest.AdClientId">
+            <summary>Ad client to which the new custom channel will be added.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.InsertRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.InsertRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.InsertRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.InsertRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.ListRequest">
+            <summary>List all host custom channels in this AdSense account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.ListRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new List request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.ListRequest.InitParameters">
+            <summary>Initializes List parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.ListRequest.AdClientId">
+            <summary>Ad client for which to list custom channels.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.ListRequest.PageToken">
+            <summary>A continuation token, used to page through custom channels. To retrieve the next page, set this
+            parameter to the value of "nextPageToken" from the previous response.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.ListRequest.MaxResults">
+            <summary>The maximum number of custom channels to include in the response, used for paging.</summary>
+            [minimum: 0]
+            [maximum: 10000]
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.ListRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.ListRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.ListRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.PatchRequest">
+            <summary>Update a custom channel in the host AdSense account. This method supports patch
+            semantics.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.PatchRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.AdSenseHost.v4_1.Data.CustomChannel,System.String,System.String)">
+            <summary>Constructs a new Patch request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.PatchRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.PatchRequest.InitParameters">
+            <summary>Initializes Patch parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.PatchRequest.AdClientId">
+            <summary>Ad client in which the custom channel will be updated.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.PatchRequest.CustomChannelId">
+            <summary>Custom channel to get.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.PatchRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.PatchRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.PatchRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.PatchRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.UpdateRequest">
+            <summary>Update a custom channel in the host AdSense account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.UpdateRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.AdSenseHost.v4_1.Data.CustomChannel,System.String)">
+            <summary>Constructs a new Update request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.UpdateRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.UpdateRequest.InitParameters">
+            <summary>Initializes Update parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.UpdateRequest.AdClientId">
+            <summary>Ad client in which the custom channel will be updated.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.UpdateRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.UpdateRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.UpdateRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.CustomchannelsResource.UpdateRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.ReportsResource">
+            <summary>The "reports" collection of methods.</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.ReportsResource.service">
+            <summary> The service whih this resource is belong to.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.ReportsResource.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new resource.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.ReportsResource.Generate(System.String,System.String)">
+             <summary>Generate an AdSense report based on the report request sent in the query parameters. Returns the
+             result as JSON; to retrieve output in CSV format specify "alt=csv" as a query parameter.</summary>
+             <param name="startDate">Start of the date range to report on in "YYYY-MM-DD" format, inclusive.</param>
+            
+             <param name="endDate">End of the date range to report on in "YYYY-MM-DD" format, inclusive.</param>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.ReportsResource.GenerateRequest">
+            <summary>Generate an AdSense report based on the report request sent in the query parameters. Returns the
+            result as JSON; to retrieve output in CSV format specify "alt=csv" as a query parameter.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.ReportsResource.GenerateRequest.#ctor(Google.Apis.Services.IClientService,System.String,System.String)">
+            <summary>Constructs a new Generate request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.ReportsResource.GenerateRequest.InitParameters">
+            <summary>Initializes Generate parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.ReportsResource.GenerateRequest.StartDate">
+            <summary>Start of the date range to report on in "YYYY-MM-DD" format, inclusive.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.ReportsResource.GenerateRequest.EndDate">
+            <summary>End of the date range to report on in "YYYY-MM-DD" format, inclusive.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.ReportsResource.GenerateRequest.Sort">
+            <summary>The name of a dimension or metric to sort the resulting report on, optionally prefixed with "+"
+            to sort ascending or "-" to sort descending. If no prefix is specified, the column is sorted
+            ascending.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.ReportsResource.GenerateRequest.Locale">
+            <summary>Optional locale to use for translating report output to a local language. Defaults to "en_US"
+            if not specified.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.ReportsResource.GenerateRequest.Metric">
+            <summary>Numeric columns to include in the report.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.ReportsResource.GenerateRequest.MaxResults">
+            <summary>The maximum number of rows of report data to return.</summary>
+            [minimum: 0]
+            [maximum: 50000]
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.ReportsResource.GenerateRequest.Filter">
+            <summary>Filters to be run on the report.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.ReportsResource.GenerateRequest.StartIndex">
+            <summary>Index of the first row of report data to return.</summary>
+            [minimum: 0]
+            [maximum: 5000]
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.ReportsResource.GenerateRequest.Dimension">
+            <summary>Dimensions to base the report on.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.ReportsResource.GenerateRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.ReportsResource.GenerateRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.ReportsResource.GenerateRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource">
+            <summary>The "urlchannels" collection of methods.</summary>
+        </member>
+        <member name="F:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.service">
+            <summary> The service whih this resource is belong to.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new resource.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.Delete(System.String,System.String)">
+            <summary>Delete a URL channel from the host AdSense account.</summary>
+            <param name="adClientId">Ad client from which to delete the URL channel.</param>
+            <param
+            name="urlChannelId">URL channel to delete.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.Insert(Google.Apis.AdSenseHost.v4_1.Data.UrlChannel,System.String)">
+            <summary>Add a new URL channel to the host AdSense account.</summary>
+            <param name="body">The body of the request.</param>
+            <param name="adClientId">Ad client to which the new URL channel will be added.</param>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.List(System.String)">
+            <summary>List all host URL channels in the host AdSense account.</summary>
+            <param name="adClientId">Ad client for which to list URL channels.</param>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.DeleteRequest">
+            <summary>Delete a URL channel from the host AdSense account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.DeleteRequest.#ctor(Google.Apis.Services.IClientService,System.String,System.String)">
+            <summary>Constructs a new Delete request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.DeleteRequest.InitParameters">
+            <summary>Initializes Delete parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.DeleteRequest.AdClientId">
+            <summary>Ad client from which to delete the URL channel.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.DeleteRequest.UrlChannelId">
+            <summary>URL channel to delete.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.DeleteRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.DeleteRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.DeleteRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.InsertRequest">
+            <summary>Add a new URL channel to the host AdSense account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.InsertRequest.#ctor(Google.Apis.Services.IClientService,Google.Apis.AdSenseHost.v4_1.Data.UrlChannel,System.String)">
+            <summary>Constructs a new Insert request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.InsertRequest.GetBody">
+            <summary>Returns the body of the request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.InsertRequest.InitParameters">
+            <summary>Initializes Insert parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.InsertRequest.AdClientId">
+            <summary>Ad client to which the new URL channel will be added.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.InsertRequest.Body">
+            <summary>Gets or sets the body of this request.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.InsertRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.InsertRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.InsertRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+        <member name="T:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.ListRequest">
+            <summary>List all host URL channels in the host AdSense account.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.ListRequest.#ctor(Google.Apis.Services.IClientService,System.String)">
+            <summary>Constructs a new List request.</summary>
+        </member>
+        <member name="M:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.ListRequest.InitParameters">
+            <summary>Initializes List parameter list.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.ListRequest.AdClientId">
+            <summary>Ad client for which to list URL channels.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.ListRequest.PageToken">
+            <summary>A continuation token, used to page through URL channels. To retrieve the next page, set this
+            parameter to the value of "nextPageToken" from the previous response.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.ListRequest.MaxResults">
+            <summary>The maximum number of URL channels to include in the response, used for paging.</summary>
+            [minimum: 0]
+            [maximum: 10000]
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.ListRequest.MethodName">
+            <summary>Gets the method name.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.ListRequest.HttpMethod">
+            <summary>Gets the HTTP method.</summary>
+        </member>
+        <member name="P:Google.Apis.AdSenseHost.v4_1.UrlchannelsResource.ListRequest.RestPath">
+            <summary>Gets the REST path.</summary>
+        </member>
+    </members>
+</doc>
