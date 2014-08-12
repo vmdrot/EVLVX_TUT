@@ -33,6 +33,18 @@ namespace Evolvex.Ruthenorum.JIRAAuth
         #endregion
         
         public String JIRARootUrl { get; set; }
+        public string JIRAUserName 
+        {
+            get { return this._serviceAcctUsrName; }
+            set { this._serviceAcctUsrName = value; }
+        }
+
+        public string JIRAUserPwd
+        {
+            get { return this._serviceAcctPwd; }
+            set { this._serviceAcctPwd = value; }
+        }
+
         public const string RESOURCE_PATH = "/rest/api/2/user?expand=groups&username=";
         public const string GROUPS_LIST_PATH = "/rest/api/2/groups/picker";
         public const string USER_SEARCH_PATH = "/rest/api/2/user/search?username={0}&startAt={1}&maxResults={2}";
@@ -46,14 +58,24 @@ namespace Evolvex.Ruthenorum.JIRAAuth
             JIRA_SVC_PWD = ConfigurationManager.AppSettings[JIRA_SVC_PWD_CFG_KEY];
             //log.Debug("JIRA_ROOT_URL = '{0}', JIRA_SVC_USR = '{1}', JIRA_SVC_PWD = '{2}'", JIRA_ROOT_URL, JIRA_SVC_USR, JIRA_SVC_PWD);
         }
-
-        public JiraAuthenticator()
+        public JiraAuthenticator(string jiraUsr, string jiraPwd) : this(JIRA_ROOT_URL, jiraUsr, jiraPwd)
         {
-            JIRARootUrl = JIRA_ROOT_URL;
-            this._serviceAcctUsrName = JIRA_SVC_USR;
-            this._serviceAcctPwd = JIRA_SVC_PWD;
+        }
+
+
+        public JiraAuthenticator(string jiraRootUrl, string jiraUsr, string jiraPwd)
+        {
+            JIRARootUrl = jiraRootUrl;
+            this._serviceAcctUsrName = jiraUsr;
+            this._serviceAcctPwd = jiraPwd;
             //log.Debug("JIRARootUrl = '{0}', _serviceAcctUsrName = '{1}', _serviceAcctPwd = '{2}'", JIRARootUrl, _serviceAcctUsrName, _serviceAcctPwd);
         }
+
+        public JiraAuthenticator(): this(JIRA_ROOT_URL, JIRA_SVC_USR, JIRA_SVC_PWD)
+        {
+            //log.Debug("JIRARootUrl = '{0}', _serviceAcctUsrName = '{1}', _serviceAcctPwd = '{2}'", JIRARootUrl, _serviceAcctUsrName, _serviceAcctPwd);
+        }
+
         private string GetEncodedCredentials(string usr, string pwd)
         {
             string mergedCredentials = string.Format("{0}:{1}", usr, pwd);
@@ -99,6 +121,49 @@ namespace Evolvex.Ruthenorum.JIRAAuth
             string base64Credentials = GetEncodedCredentials(usr, pwd);
             request.Headers.Add("Authorization", "Basic " + base64Credentials);
 
+            try
+            {
+                using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
+                {
+
+                    string result = string.Empty;
+                    using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+                    {
+                        result = reader.ReadToEnd();
+                    }
+                    LastStatus = response.StatusCode;
+                    responseText = result;
+                }
+            }
+            catch (WebException exc)
+            {
+                if (exc.Message.IndexOf("(401)") != -1)
+                    LastStatus = HttpStatusCode.Unauthorized;
+                else if (exc.Message.IndexOf("(403)") != -1)
+                    LastStatus = HttpStatusCode.Forbidden;
+                else
+                    LastStatus = HttpStatusCode.ServiceUnavailable;
+                responseText = string.Empty;
+            }
+            return (bool)(LastStatus != null && (HttpStatusCode)LastStatus == HttpStatusCode.OK);
+        }
+
+        private bool PostWorker(string usr, string pwd, out string responseText, string url, string sData)
+        {
+            //log.Debug("AuthenticateWorker(..., url = '{0}') - entering...", url);
+            HttpWebRequest request = WebRequest.Create(url) as HttpWebRequest;
+            request.ContentType = "application/json";
+            request.Method = "POST";
+            UnicodeEncoding enc = new UnicodeEncoding();
+            byte[] data = enc.GetBytes(sData);
+
+            string base64Credentials = GetEncodedCredentials(usr, pwd);
+            request.Headers.Add("Authorization", "Basic " + base64Credentials);
+            request.ContentLength = data.Length;
+            using(Stream strm = request.GetRequestStream())
+            {
+                strm.Write(data, 0, data.Length);
+            }
             try
             {
                 using (HttpWebResponse response = request.GetResponse() as HttpWebResponse)
@@ -175,6 +240,28 @@ namespace Evolvex.Ruthenorum.JIRAAuth
                 rslt.Add(usr);
             }
         }
+
+
+        #region IJIRAAuthenticator Members
+
+
+        public string GenericQuery(string restApiPath, string queryString)
+        {
+            string rslt;
+            if (AuthenticateWorker(this._serviceAcctUsrName, this._serviceAcctPwd, out rslt, string.Format("{0}{1}?{2}", this.JIRARootUrl, restApiPath, queryString)))
+                return rslt;
+            return string.Empty;
+        }
+
+        public string GenericPost(string restApiUrl, string jsonData)
+        { 
+            string rslt;
+            if(PostWorker(this._serviceAcctUsrName, this._serviceAcctPwd, out rslt, string.Format("{0}{1}", this.JIRARootUrl, restApiUrl), jsonData))
+                return rslt;
+            return string.Empty;
+        }
+
+        #endregion
 
     }
 }

@@ -9,10 +9,11 @@ using System.Configuration;
 using Evolvex.Ruthenorum.JIRAAuth.Factories;
 using Evolvex.Ruthenorum.JIRAAuth.Core.Interfaces;
 using System.IO;
+using Evolvex.Ruthenorum.Core.Interfaces;
 
 namespace Evolvex.Ruthenorum.JIRAAuth
 {
-    public class AtlassianJIRAMembershipProvider : System.Web.Security.MembershipProvider
+    public class AtlassianJIRAMembershipProvider : System.Web.Security.MembershipProvider, IMembershipUserProviderEx
     {
         private static readonly Evolvex.Ruthenorum.Core.Interfaces.ILog log = Evolvex.Ruthenorum.Core.Logging.GetLogger(typeof(AtlassianJIRAMembershipProvider));
         #region inner type(s)
@@ -149,14 +150,12 @@ namespace Evolvex.Ruthenorum.JIRAAuth
             return null; //hardly
         }
 
-        public override System.Web.Security.MembershipUser GetUser(string username, bool userIsOnline)
+        private IJIRAUserInfo GetJIRAUserInfo(string username)
         {
-            //log.Debug("GetUser('{0}', {1})", username, userIsOnline);
-            //LogDebug("GetUser('{0}', {1})", username, userIsOnline);
             if (AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users.ContainsKey(username))
             {
                 IJIRAUserInfo jui = AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users[username];
-                return GetMembershipUserFromJIRAUserInfo(jui);
+                return jui;
             }
             else
             {
@@ -164,9 +163,18 @@ namespace Evolvex.Ruthenorum.JIRAAuth
                 if (jui != null)
                 {
                     AuthenticatedUsersRepoFactory.Instance.AuthenticatedUsers.Users.Add(jui.name, jui);
-                    return GetMembershipUserFromJIRAUserInfo(jui);
+                    return jui;
                 }
             }
+            return null;
+        }
+        public override System.Web.Security.MembershipUser GetUser(string username, bool userIsOnline)
+        {
+            //log.Debug("GetUser('{0}', {1})", username, userIsOnline);
+            //LogDebug("GetUser('{0}', {1})", username, userIsOnline);
+            IJIRAUserInfo jui = GetJIRAUserInfo(username);
+            if(jui != null)
+                return GetMembershipUserFromJIRAUserInfo(jui);
             return null;
         }
 
@@ -344,6 +352,22 @@ namespace Evolvex.Ruthenorum.JIRAAuth
             }
             return rslt;
 
+        }
+        #endregion
+
+        #region IMembershipUserProviderEx member(s)
+
+        public string GetUserDisplaName(string usrName)
+        {
+            IJIRAUserInfo jui = GetJIRAUserInfo(usrName);
+            if (jui == null)
+                return usrName;
+            return jui.displayName;
+        }
+
+        public string GetUserLink(string usrName)
+        {
+            return string.Empty; //todo
         }
         #endregion
     }
