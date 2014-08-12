@@ -15,6 +15,7 @@ namespace Evolvex.Ruthenorum.JIRAAuth.Core.Interfaces
         HttpStatusCode? LastStatus { get; }
         string LastResponseText { get; }
         List<string> ListAllUserNames();
-
+        string GenericQuery(string restApiPath, string queryString);
+        string GenericPost(string restApiUrl, string jsonData);
     }
 }

@@ -84,11 +84,15 @@
     <Compile Include="Data\JIRAUserInfo.cs" />
     <Compile Include="Data\LockedUsersRepo.cs" />
     <Compile Include="Facade\JiraAuthFacade.cs" />
+    <Compile Include="Facade\Spares\JIRAFieldInfo.cs" />
+    <Compile Include="Facade\Spares\JIRAFieldsWrapper.cs" />
+    <Compile Include="Facade\Spares\JIRAIssue.cs" />
     <Compile Include="Factories\AuthenticatedUsersRepoFactory.cs" />
     <Compile Include="Factories\JIRAAuthenticatorFactory.cs" />
     <Compile Include="Factories\LockedUsersRepoFactory.cs" />
     <Compile Include="JiraAuthenticator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Tools.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Evolvex.Ruthenorum.JIRAAuth.Core\Evolvex.Ruthenorum.JIRAAuth.Core.csproj">

@@ -37,6 +37,15 @@ namespace Evolvex.Ruthenorum.JIRAAuth.Factories
             }
         }
 
+        public void InitAuthenticator(string usr, string pwd)
+        {
+            this._authenticator = new JiraAuthenticator(usr, pwd);
+        }
+
+        public void InitAuthenticator(string jiraUrl, string usr, string pwd)
+        {
+            this._authenticator = new JiraAuthenticator(jiraUrl, usr, pwd);
+        }
 
         private JIRAAuthenticatorFactory()
         {
