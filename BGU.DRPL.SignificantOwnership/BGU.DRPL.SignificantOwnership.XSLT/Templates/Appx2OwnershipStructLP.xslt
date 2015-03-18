@@ -59,23 +59,45 @@
                 1.5.1.	Фізичні особи – члени наглядової (спостережної) ради юридичної особи та  фізичні особи, які представляють юридичну особу – члена наглядової ради
               </td>
             </tr>
-            <tr>
-              <td>
-                <xsl:apply-templates select="SupervisoryCouncil" mode="viewSupervisoryCouncilPhys"/>
-              </td>
-            </tr>
+            <xsl:if test="SupervisoryCouncil/Members/CouncilMemberInfo/Member[PersonType='Physical']">
+              <tr>
+                <td>
+                  <xsl:call-template name="tmplSupervisoryCouncilPhys">
+                    <xsl:with-param name="council" select="SupervisoryCouncil" />
+                  </xsl:call-template>
+                </td>
+              </tr>
+            </xsl:if>
+            <xsl:if test="not(SupervisoryCouncil/Members/CouncilMemberInfo/Member[PersonType='Physical'])">
+              <tr>
+                <td>
+                  <i>(відсутні)</i>
+                </td>
+              </tr>
+            </xsl:if>
             <tr>
               <td align="left">
                 1.5.2.	Юридичні особи – члени наглядової (спостережної) ради юридичної особи
               </td>
             </tr>
-            <tr>
-              <td>
-                <xsl:apply-templates select="SupervisoryCouncil" mode="viewSupervisoryCouncilLegal"/>
-              </td>
-            </tr>
+            <xsl:if test="SupervisoryCouncil/Members/CouncilMemberInfo/Member[PersonType='Legal']">
+              <tr>
+                <td>
+                  <xsl:call-template name="tmplSupervisoryCouncilLegal">
+                    <xsl:with-param name="council" select="SupervisoryCouncil" />
+                  </xsl:call-template>
+                </td>
+              </tr>
+            </xsl:if>
+            <xsl:if test="not(SupervisoryCouncil/Members/CouncilMemberInfo/Member[PersonType='Legal'])">
+              <tr>
+                <td>
+                  <i>(відсутні)</i>
+                </td>
+              </tr>
+            </xsl:if>
           </xsl:if>
-          <xsl:if test="IsSupervisoryCouncilPresent!='true'">
+            <xsl:if test="IsSupervisoryCouncilPresent!='true'">
             <tr>
               <td>
                 <input name="chkSupervisoryCouncilAbsent" type="checkbox" id="chkSupervisoryCouncilAbsent" disabled="disabled" checked="checked"/> Наглядова (спостережна) рада юридичної особи відсутня за статутом
@@ -89,15 +111,42 @@
             <tr>
               <td>1.6.1.	Фізичні особи – члени виконавчого органу юридичної особи та  фізичні особи, які представляють юридичну особу – члена виконавчого органу</td>
             </tr>
-            <tr>
-              <td>todo</td>
-            </tr>
+            <xsl:if test="Executives/Members/CouncilMemberInfo/Member[PersonType='Physical']">
+              <tr>
+                <td>
+                  <xsl:call-template name="tmplSupervisoryCouncilPhys">
+                    <xsl:with-param name="council" select="Executives" />
+                  </xsl:call-template>
+                </td>
+              </tr>
+            </xsl:if>
+            <xsl:if test="not(Executives/Members/CouncilMemberInfo/Member[PersonType='Physical'])">
+              <tr>
+                <td>
+                  <i>(відсутні)</i>
+                </td>
+              </tr>
+            </xsl:if>
             <tr>
               <td>1.6.2.	Юридичні особи – члени виконавчого органу юридичної особи</td>
             </tr>
-            <tr>
-              <td>todo</td>
-            </tr>
+            <xsl:if test="Executives/Members/CouncilMemberInfo/Member[PersonType='Legal']">
+
+              <tr>
+                <td>
+                  <xsl:call-template name="tmplSupervisoryCouncilLegal">
+                    <xsl:with-param name="council" select="Executives" />
+                  </xsl:call-template>
+                </td>
+              </tr>
+            </xsl:if>
+            <xsl:if test="not(Executives/Members/CouncilMemberInfo/Member[PersonType='Legal'])">
+              <tr>
+                <td>
+                  <i>(відсутні)</i>
+                </td>
+              </tr>
+            </xsl:if>
           </xsl:if>
           <xsl:if test="IsExecutivesPresent!='true'">
             <tr>
