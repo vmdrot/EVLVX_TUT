@@ -213,7 +213,8 @@ namespace BGU.DRPL.SignificantOwnership.Tester
                 ResidenceCountry = countryCyprus,
                 Registrar = cyprusRegister,
                 Name = "EBENSY CUSTODY LIMITED",
-                TaxCodeOrHandelsRegNr = "ΗΕ 140707"
+                TaxCodeOrHandelsRegNr = "ΗΕ 140707",
+                RepresentedBy = siehnert
             };
             #endregion
 
