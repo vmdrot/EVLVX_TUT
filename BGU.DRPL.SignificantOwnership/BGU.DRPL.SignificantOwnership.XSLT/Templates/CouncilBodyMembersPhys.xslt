@@ -4,7 +4,8 @@
 >
   <!--<xsl:include href="FormatDate.xslt" />
   <xsl:include href="FormatAddressStreetEtc.xslt" />-->
-  <xsl:template match="SupervisoryCouncil" name="tmplSupervisoryCouncilPhys" mode="viewSupervisoryCouncilPhys">
+  <xsl:template name="tmplSupervisoryCouncilPhys">
+    <xsl:param name="council" />
       <table width="100%" class="infoTable">
         <thead>
           <tr>
@@ -37,7 +38,7 @@
           </tr>
         </thead>
         <tbody>
-          <xsl:for-each select="Members/CouncilMemberInfo[Member[PersonType='Physical']]">
+          <xsl:for-each select="$council/Members/CouncilMemberInfo[Member[PersonType='Physical']]">
             <tr>
               <td>
                 <xsl:call-template name="formatPhysPersonFullNameUkr">

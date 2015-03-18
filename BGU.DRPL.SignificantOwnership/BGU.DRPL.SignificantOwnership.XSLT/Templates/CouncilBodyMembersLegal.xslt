@@ -2,7 +2,8 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:msxsl="urn:schemas-microsoft-com:xslt" exclude-result-prefixes="msxsl"
 >
-  <xsl:template match="SupervisoryCouncil" name="tmplSupervisoryCouncilLegal" mode="viewSupervisoryCouncilLegal">
+  <xsl:template name="tmplSupervisoryCouncilLegal">
+    <xsl:param name="council" />
     <table width="100%" class="infoTable">
       <thead>
         <tr>
@@ -35,7 +36,7 @@
         </tr>
       </thead>
       <tbody>
-        <xsl:for-each select="Members/CouncilMemberInfo[Member[PersonType='Legal']]">
+        <xsl:for-each select="$council/Members/CouncilMemberInfo[Member[PersonType='Legal']]">
           <tr>
             <td>
               <xsl:value-of select="Member/LegalPerson/Name"/>
