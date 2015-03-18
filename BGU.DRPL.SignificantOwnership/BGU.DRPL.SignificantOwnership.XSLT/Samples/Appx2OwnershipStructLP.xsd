@@ -112,13 +112,26 @@
   </xs:simpleType>
   <xs:complexType name="CouncilBodyInfo">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="1" name="Members" type="ArrayOfPhysicalPersonInfo" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Members" type="ArrayOfCouncilMemberInfo" />
       <xs:element minOccurs="1" maxOccurs="1" name="HeadMemberIndex" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="ArrayOfPhysicalPersonInfo">
+  <xs:complexType name="ArrayOfCouncilMemberInfo">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PhysicalPersonInfo" nillable="true" type="PhysicalPersonInfo" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CouncilMemberInfo" nillable="true" type="CouncilMemberInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CouncilMemberInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Member" type="GenericPersonInfo" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PositionName" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GenericPersonInfo">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="PersonType" type="EntityType" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PhysicalPerson" type="PhysicalPersonInfo" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LegalPerson" type="LegalPersonInfo" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="TotalOwnershipDetailsInfo">
@@ -159,13 +172,6 @@
   <xs:complexType name="ArrayOfGenericPersonInfo">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="GenericPersonInfo" nillable="true" type="GenericPersonInfo" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="GenericPersonInfo">
-    <xs:sequence>
-      <xs:element minOccurs="1" maxOccurs="1" name="PersonType" type="EntityType" />
-      <xs:element minOccurs="0" maxOccurs="1" name="PhysicalPerson" type="PhysicalPersonInfo" />
-      <xs:element minOccurs="0" maxOccurs="1" name="LegalPerson" type="LegalPersonInfo" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="CommonOwnershipType">

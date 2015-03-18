@@ -36,7 +36,7 @@ namespace BGU.DRPL.SignificantOwnership.Tester
             LocationInfo addrKordProv13a = new LocationInfo() { Country = countryUkraine, City = "Одеса", Region = "Одеська область", ZipCode = "65074", Street = "пров. Кордонний", HouseNr = "13А" };
             LocationInfo addrTirasp22 = new LocationInfo() { Country = countryUkraine, City = "Одеса", Region = "Одеська область", ZipCode = "65020", Street = "вул. Тираспольська", HouseNr = "22", ApptOfficeNr = "3" };
             //https://www.post.at/suche/standortsuche.php/index/selectedsearch/plz?_cc_=1 , http://www.stadtplandienst.at/
-            LocationInfo addrStPoeltenErtl3 = new LocationInfo() { Country = countryUkraine, City = "St.Pölten", Region = "Niederösterreich", ZipCode = "AT-3100", Street = "Ertlstr.", HouseNr = "3", ApptOfficeNr = "5" };
+            LocationInfo addrStPoeltenErtl3 = new LocationInfo() { Country = countryAustria, City = "St.Pölten", Region = "Niederösterreich", ZipCode = "AT-3100", Street = "Ertlstr.", HouseNr = "3", ApptOfficeNr = "5" };
             #endregion
 
             #region Registrars
