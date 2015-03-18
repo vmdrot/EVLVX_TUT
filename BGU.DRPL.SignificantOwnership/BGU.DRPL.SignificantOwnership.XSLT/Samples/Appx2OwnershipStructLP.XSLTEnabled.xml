@@ -217,6 +217,62 @@
               <RegistrarName>DEPARTMENT OF REGISTRAR OF COMPANIES AND OFFICIAL RECEIVER</RegistrarName>
               <EntitiesHandled>Legal</EntitiesHandled>
             </Registrar>
+            <RepresentedBy>
+              <SurnameUkr>Зінерт</SurnameUkr>
+              <NameUkr>Андреас</NameUkr>
+              <MiddleNameUkr>Йоганн</MiddleNameUkr>
+              <FullNameUkr>Зінерт Андреас Йоганн</FullNameUkr>
+              <Surname>Siehnert</Surname>
+              <Name>Andreas</Name>
+              <MiddleName>Johann</MiddleName>
+              <FullName>Siehnert Andreas Johann</FullName>
+              <Sex>Male</Sex>
+              <BirthDate>1982-05-10T00:00:00</BirthDate>
+              <PassportID>10008456</PassportID>
+              <PassIssuedDate>2002-12-18T00:00:00</PassIssuedDate>
+              <PassIssueAuthority>
+                <Address>
+                  <Country>
+                    <CountryISO2Code>AT</CountryISO2Code>
+                    <CountryISO3Code>AUT</CountryISO3Code>
+                    <CountryISONr>040</CountryISONr>
+                    <CountryNameEng>Austria</CountryNameEng>
+                    <CountryNameUkr>Австрія</CountryNameUkr>
+                  </Country>
+                  <Region>Niederösterreich</Region>
+                  <ZipCode>3100</ZipCode>
+                  <City>St. Pölten</City>
+                  <Street>Rathausplatz</Street>
+                  <HouseNr>1</HouseNr>
+                </Address>
+                <RegistrarCode />
+                <RegistrarName>Magistrat St. Pölten</RegistrarName>
+                <EntitiesHandled>Physical</EntitiesHandled>
+              </PassIssueAuthority>
+              <TaxOrSocSecID>1237 010180</TaxOrSocSecID>
+              <Address>
+                <Country>
+                  <CountryISO2Code>AT</CountryISO2Code>
+                  <CountryISO3Code>AUT</CountryISO3Code>
+                  <CountryISONr>040</CountryISONr>
+                  <CountryNameEng>Austria</CountryNameEng>
+                  <CountryNameUkr>Австрія</CountryNameUkr>
+                </Country>
+                <Region>Niederösterreich</Region>
+                <ZipCode>AT-3100</ZipCode>
+                <City>St.Pölten</City>
+                <Street>Ertlstr.</Street>
+                <HouseNr>3</HouseNr>
+                <ApptOfficeNr>5</ApptOfficeNr>
+              </Address>
+              <CitizenshipCountry>
+                <CountryISO2Code>AT</CountryISO2Code>
+                <CountryISO3Code>AUT</CountryISO3Code>
+                <CountryISONr>040</CountryISONr>
+                <CountryNameEng>Austria</CountryNameEng>
+                <CountryNameUkr>Австрія</CountryNameUkr>
+              </CitizenshipCountry>
+            </RepresentedBy>
           </LegalPerson>
         </Member>
         <PositionName>Член</PositionName>
