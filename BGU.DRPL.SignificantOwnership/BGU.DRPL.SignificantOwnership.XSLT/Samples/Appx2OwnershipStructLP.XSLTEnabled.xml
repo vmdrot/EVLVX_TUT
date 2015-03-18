@@ -111,165 +111,298 @@
   <IsSupervisoryCouncilPresent>true</IsSupervisoryCouncilPresent>
   <SupervisoryCouncil>
     <Members>
-      <PhysicalPersonInfo>
-        <Surname>Кацман</Surname>
-        <Name>Абрам</Name>
-        <MiddleName>Мойсейович</MiddleName>
-        <FullName>Кацман Абрам Мойсейович</FullName>
-        <Sex>None</Sex>
-        <BirthDate>0001-01-01T00:00:00</BirthDate>
-        <PassportID>ЕА 293857</PassportID>
-        <PassIssuedDate>1995-03-12T00:00:00</PassIssuedDate>
-        <PassIssueAuthority>
-          <Address>
-            <Country>
+      <CouncilMemberInfo>
+        <Member>
+          <PersonType>Physical</PersonType>
+          <PhysicalPerson>
+            <Surname>Кацман</Surname>
+            <Name>Абрам</Name>
+            <MiddleName>Мойсейович</MiddleName>
+            <FullName>Кацман Абрам Мойсейович</FullName>
+            <Sex>None</Sex>
+            <BirthDate>0001-01-01T00:00:00</BirthDate>
+            <PassportID>ЕА 293857</PassportID>
+            <PassIssuedDate>1995-03-12T00:00:00</PassIssuedDate>
+            <PassIssueAuthority>
+              <Address>
+                <Country>
+                  <CountryISO2Code>UA</CountryISO2Code>
+                  <CountryISO3Code>UKR</CountryISO3Code>
+                  <CountryISONr>804</CountryISONr>
+                  <CountryNameEng>Ukraine</CountryNameEng>
+                  <CountryNameUkr>Україна</CountryNameUkr>
+                </Country>
+                <Region>Одеська область</Region>
+                <ZipCode>65080</ZipCode>
+                <City>Одеса</City>
+                <Street>вул. Академіка Філатова</Street>
+                <HouseNr>15-А</HouseNr>
+              </Address>
+              <RegistrarCode />
+              <RegistrarName>Київський РВ ОМУ ГУМВС України в Одеській області</RegistrarName>
+              <EntitiesHandled>Physical</EntitiesHandled>
+            </PassIssueAuthority>
+            <TaxOrSocSecID>0540117865</TaxOrSocSecID>
+            <Address>
+              <Country>
+                <CountryISO2Code>UA</CountryISO2Code>
+                <CountryISO3Code>UKR</CountryISO3Code>
+                <CountryISONr>804</CountryISONr>
+                <CountryNameEng>Ukraine</CountryNameEng>
+                <CountryNameUkr>Україна</CountryNameUkr>
+              </Country>
+              <Region>Одеська область</Region>
+              <ZipCode>65016</ZipCode>
+              <City>Одеса</City>
+              <Street>вул. Фонтанська Дорога</Street>
+              <HouseNr>83</HouseNr>
+            </Address>
+            <CitizenshipCountry>
               <CountryISO2Code>UA</CountryISO2Code>
               <CountryISO3Code>UKR</CountryISO3Code>
               <CountryISONr>804</CountryISONr>
               <CountryNameEng>Ukraine</CountryNameEng>
               <CountryNameUkr>Україна</CountryNameUkr>
-            </Country>
-            <Region>Одеська область</Region>
-            <ZipCode>65080</ZipCode>
-            <City>Одеса</City>
-            <Street>вул. Академіка Філатова</Street>
-            <HouseNr>15-А</HouseNr>
-          </Address>
-          <RegistrarCode />
-          <RegistrarName>Київський РВ ОМУ ГУМВС України в Одеській області</RegistrarName>
-          <EntitiesHandled>Physical</EntitiesHandled>
-        </PassIssueAuthority>
-        <TaxOrSocSecID>0540117865</TaxOrSocSecID>
-        <Address>
-          <Country>
-            <CountryISO2Code>UA</CountryISO2Code>
-            <CountryISO3Code>UKR</CountryISO3Code>
-            <CountryISONr>804</CountryISONr>
-            <CountryNameEng>Ukraine</CountryNameEng>
-            <CountryNameUkr>Україна</CountryNameUkr>
-          </Country>
-          <Region>Одеська область</Region>
-          <ZipCode>65016</ZipCode>
-          <City>Одеса</City>
-          <Street>вул. Фонтанська Дорога</Street>
-          <HouseNr>83</HouseNr>
-        </Address>
-        <CitizenshipCountry>
-          <CountryISO2Code>UA</CountryISO2Code>
-          <CountryISO3Code>UKR</CountryISO3Code>
-          <CountryISONr>804</CountryISONr>
-          <CountryNameEng>Ukraine</CountryNameEng>
-          <CountryNameUkr>Україна</CountryNameUkr>
-        </CitizenshipCountry>
-      </PhysicalPersonInfo>
+            </CitizenshipCountry>
+          </PhysicalPerson>
+        </Member>
+        <PositionName>Голова</PositionName>
+      </CouncilMemberInfo>
+      <CouncilMemberInfo>
+        <Member>
+          <PersonType>Legal</PersonType>
+          <LegalPerson>
+            <TaxCodeOrHandelsRegNr>ΗΕ 140707</TaxCodeOrHandelsRegNr>
+            <Name>EBENSY CUSTODY LIMITED</Name>
+            <Address>
+              <Country>
+                <CountryISO2Code>CY</CountryISO2Code>
+                <CountryISO3Code>CYP</CountryISO3Code>
+                <CountryISONr>196</CountryISONr>
+                <CountryNameEng>Cyprus</CountryNameEng>
+                <CountryNameUkr>Кіпр</CountryNameUkr>
+              </Country>
+              <ZipCode>4632</ZipCode>
+              <City>Λεμεσός</City>
+              <Street>Ρήγαινας</Street>
+              <HouseNr>13</HouseNr>
+            </Address>
+            <ResidenceCountry>
+              <CountryISO2Code>CY</CountryISO2Code>
+              <CountryISO3Code>CYP</CountryISO3Code>
+              <CountryISONr>196</CountryISONr>
+              <CountryNameEng>Cyprus</CountryNameEng>
+              <CountryNameUkr>Кіпр</CountryNameUkr>
+            </ResidenceCountry>
+            <Registrar>
+              <JurisdictionCountry>
+                <CountryISO2Code>CY</CountryISO2Code>
+                <CountryISO3Code>CYP</CountryISO3Code>
+                <CountryISONr>196</CountryISONr>
+                <CountryNameEng>Cyprus</CountryNameEng>
+                <CountryNameUkr>Кіпр</CountryNameUkr>
+              </JurisdictionCountry>
+              <Address>
+                <Country>
+                  <CountryISO2Code>CY</CountryISO2Code>
+                  <CountryISO3Code>CYP</CountryISO3Code>
+                  <CountryISONr>196</CountryISONr>
+                  <CountryNameEng>Cyprus</CountryNameEng>
+                  <CountryNameUkr>Кіпр</CountryNameUkr>
+                </Country>
+                <City>Nicosia</City>
+                <Street>Corner Makarios Avenue &amp; Karpenisiou</Street>
+                <HouseNr>XENIOS Building</HouseNr>
+              </Address>
+              <RegistrarName>DEPARTMENT OF REGISTRAR OF COMPANIES AND OFFICIAL RECEIVER</RegistrarName>
+              <EntitiesHandled>Legal</EntitiesHandled>
+            </Registrar>
+          </LegalPerson>
+        </Member>
+        <PositionName>Член</PositionName>
+      </CouncilMemberInfo>
+      <CouncilMemberInfo>
+        <Member>
+          <PersonType>Physical</PersonType>
+          <PhysicalPerson>
+            <SurnameUkr>Зінерт</SurnameUkr>
+            <NameUkr>Андреас</NameUkr>
+            <MiddleNameUkr>Йоганн</MiddleNameUkr>
+            <FullNameUkr>Зінерт Андреас Йоганн</FullNameUkr>
+            <Surname>Siehnert</Surname>
+            <Name>Andreas</Name>
+            <MiddleName>Johann</MiddleName>
+            <FullName>Siehnert Andreas Johann</FullName>
+            <Sex>Male</Sex>
+            <BirthDate>1982-05-10T00:00:00</BirthDate>
+            <PassportID>10008456</PassportID>
+            <PassIssuedDate>2002-12-18T00:00:00</PassIssuedDate>
+            <PassIssueAuthority>
+              <Address>
+                <Country>
+                  <CountryISO2Code>AT</CountryISO2Code>
+                  <CountryISO3Code>AUT</CountryISO3Code>
+                  <CountryISONr>040</CountryISONr>
+                  <CountryNameEng>Austria</CountryNameEng>
+                  <CountryNameUkr>Австрія</CountryNameUkr>
+                </Country>
+                <Region>Niederösterreich</Region>
+                <ZipCode>3100</ZipCode>
+                <City>St. Pölten</City>
+                <Street>Rathausplatz</Street>
+                <HouseNr>1</HouseNr>
+              </Address>
+              <RegistrarCode />
+              <RegistrarName>Magistrat St. Pölten</RegistrarName>
+              <EntitiesHandled>Physical</EntitiesHandled>
+            </PassIssueAuthority>
+            <TaxOrSocSecID>1237 010180</TaxOrSocSecID>
+            <Address>
+              <Country>
+                <CountryISO2Code>AT</CountryISO2Code>
+                <CountryISO3Code>AUT</CountryISO3Code>
+                <CountryISONr>040</CountryISONr>
+                <CountryNameEng>Austria</CountryNameEng>
+                <CountryNameUkr>Австрія</CountryNameUkr>
+              </Country>
+              <Region>Niederösterreich</Region>
+              <ZipCode>AT-3100</ZipCode>
+              <City>St.Pölten</City>
+              <Street>Ertlstr.</Street>
+              <HouseNr>3</HouseNr>
+              <ApptOfficeNr>5</ApptOfficeNr>
+            </Address>
+            <CitizenshipCountry>
+              <CountryISO2Code>AT</CountryISO2Code>
+              <CountryISO3Code>AUT</CountryISO3Code>
+              <CountryISONr>040</CountryISONr>
+              <CountryNameEng>Austria</CountryNameEng>
+              <CountryNameUkr>Австрія</CountryNameUkr>
+            </CitizenshipCountry>
+          </PhysicalPerson>
+        </Member>
+        <PositionName>Член</PositionName>
+      </CouncilMemberInfo>
     </Members>
     <HeadMemberIndex>0</HeadMemberIndex>
   </SupervisoryCouncil>
   <Executives>
     <Members>
-      <PhysicalPersonInfo>
-        <Surname>Гандрабура</Surname>
-        <Name>Циля</Name>
-        <MiddleName>Авазівна</MiddleName>
-        <FullName>Гандрабура Циля Авазівна</FullName>
-        <Sex>None</Sex>
-        <BirthDate>0001-01-01T00:00:00</BirthDate>
-        <PassportID>КЕ 554635</PassportID>
-        <PassIssuedDate>1997-12-12T00:00:00</PassIssuedDate>
-        <PassIssueAuthority>
-          <Address>
-            <Country>
+      <CouncilMemberInfo>
+        <Member>
+          <PersonType>Physical</PersonType>
+          <PhysicalPerson>
+            <Surname>Гандрабура</Surname>
+            <Name>Циля</Name>
+            <MiddleName>Авазівна</MiddleName>
+            <FullName>Гандрабура Циля Авазівна</FullName>
+            <Sex>None</Sex>
+            <BirthDate>0001-01-01T00:00:00</BirthDate>
+            <PassportID>КЕ 554635</PassportID>
+            <PassIssuedDate>1997-12-12T00:00:00</PassIssuedDate>
+            <PassIssueAuthority>
+              <Address>
+                <Country>
+                  <CountryISO2Code>UA</CountryISO2Code>
+                  <CountryISO3Code>UKR</CountryISO3Code>
+                  <CountryISONr>804</CountryISONr>
+                  <CountryNameEng>Ukraine</CountryNameEng>
+                  <CountryNameUkr>Україна</CountryNameUkr>
+                </Country>
+                <Region>Одеська область</Region>
+                <ZipCode>65080</ZipCode>
+                <City>Одеса</City>
+                <Street>вул. Академіка Філатова</Street>
+                <HouseNr>15-А</HouseNr>
+              </Address>
+              <RegistrarCode />
+              <RegistrarName>Київський РВ ОМУ ГУМВС України в Одеській області</RegistrarName>
+              <EntitiesHandled>Physical</EntitiesHandled>
+            </PassIssueAuthority>
+            <TaxOrSocSecID>5543216455</TaxOrSocSecID>
+            <Address>
+              <Country>
+                <CountryISO2Code>UA</CountryISO2Code>
+                <CountryISO3Code>UKR</CountryISO3Code>
+                <CountryISONr>804</CountryISONr>
+                <CountryNameEng>Ukraine</CountryNameEng>
+                <CountryNameUkr>Україна</CountryNameUkr>
+              </Country>
+              <Region>Одеська область</Region>
+              <ZipCode>65074</ZipCode>
+              <City>Одеса</City>
+              <Street>пров. Кордонний</Street>
+              <HouseNr>13А</HouseNr>
+            </Address>
+            <CitizenshipCountry>
               <CountryISO2Code>UA</CountryISO2Code>
               <CountryISO3Code>UKR</CountryISO3Code>
               <CountryISONr>804</CountryISONr>
               <CountryNameEng>Ukraine</CountryNameEng>
               <CountryNameUkr>Україна</CountryNameUkr>
-            </Country>
-            <Region>Одеська область</Region>
-            <ZipCode>65080</ZipCode>
-            <City>Одеса</City>
-            <Street>вул. Академіка Філатова</Street>
-            <HouseNr>15-А</HouseNr>
-          </Address>
-          <RegistrarCode />
-          <RegistrarName>Київський РВ ОМУ ГУМВС України в Одеській області</RegistrarName>
-          <EntitiesHandled>Physical</EntitiesHandled>
-        </PassIssueAuthority>
-        <TaxOrSocSecID>5543216455</TaxOrSocSecID>
-        <Address>
-          <Country>
-            <CountryISO2Code>UA</CountryISO2Code>
-            <CountryISO3Code>UKR</CountryISO3Code>
-            <CountryISONr>804</CountryISONr>
-            <CountryNameEng>Ukraine</CountryNameEng>
-            <CountryNameUkr>Україна</CountryNameUkr>
-          </Country>
-          <Region>Одеська область</Region>
-          <ZipCode>65074</ZipCode>
-          <City>Одеса</City>
-          <Street>пров. Кордонний</Street>
-          <HouseNr>13А</HouseNr>
-        </Address>
-        <CitizenshipCountry>
-          <CountryISO2Code>UA</CountryISO2Code>
-          <CountryISO3Code>UKR</CountryISO3Code>
-          <CountryISONr>804</CountryISONr>
-          <CountryNameEng>Ukraine</CountryNameEng>
-          <CountryNameUkr>Україна</CountryNameUkr>
-        </CitizenshipCountry>
-      </PhysicalPersonInfo>
-      <PhysicalPersonInfo>
-        <Surname>Головатий</Surname>
-        <Name>Марко</Name>
-        <MiddleName>Пафнутійович</MiddleName>
-        <FullName>Головатий Марко Пафнутійович</FullName>
-        <Sex>None</Sex>
-        <BirthDate>0001-01-01T00:00:00</BirthDate>
-        <PassportID>АВ 135986</PassportID>
-        <PassIssuedDate>1993-10-05T00:00:00</PassIssuedDate>
-        <PassIssueAuthority>
-          <Address>
-            <Country>
+            </CitizenshipCountry>
+          </PhysicalPerson>
+        </Member>
+        <PositionName>Генеральний директор</PositionName>
+      </CouncilMemberInfo>
+      <CouncilMemberInfo>
+        <Member>
+          <PersonType>Physical</PersonType>
+          <PhysicalPerson>
+            <Surname>Головатий</Surname>
+            <Name>Марко</Name>
+            <MiddleName>Пафнутійович</MiddleName>
+            <FullName>Головатий Марко Пафнутійович</FullName>
+            <Sex>None</Sex>
+            <BirthDate>0001-01-01T00:00:00</BirthDate>
+            <PassportID>АВ 135986</PassportID>
+            <PassIssuedDate>1993-10-05T00:00:00</PassIssuedDate>
+            <PassIssueAuthority>
+              <Address>
+                <Country>
+                  <CountryISO2Code>UA</CountryISO2Code>
+                  <CountryISO3Code>UKR</CountryISO3Code>
+                  <CountryISONr>804</CountryISONr>
+                  <CountryNameEng>Ukraine</CountryNameEng>
+                  <CountryNameUkr>Україна</CountryNameUkr>
+                </Country>
+                <Region>Одеська область</Region>
+                <ZipCode>65080</ZipCode>
+                <City>Одеса</City>
+                <Street>вул. Академіка Філатова</Street>
+                <HouseNr>15-А</HouseNr>
+              </Address>
+              <RegistrarCode />
+              <RegistrarName>Київський РВ ОМУ ГУМВС України в Одеській області</RegistrarName>
+              <EntitiesHandled>Physical</EntitiesHandled>
+            </PassIssueAuthority>
+            <TaxOrSocSecID>0514235444</TaxOrSocSecID>
+            <Address>
+              <Country>
+                <CountryISO2Code>UA</CountryISO2Code>
+                <CountryISO3Code>UKR</CountryISO3Code>
+                <CountryISONr>804</CountryISONr>
+                <CountryNameEng>Ukraine</CountryNameEng>
+                <CountryNameUkr>Україна</CountryNameUkr>
+              </Country>
+              <Region>Одеська область</Region>
+              <ZipCode>65020</ZipCode>
+              <City>Одеса</City>
+              <Street>вул. Тираспольська</Street>
+              <HouseNr>22</HouseNr>
+              <ApptOfficeNr>3</ApptOfficeNr>
+            </Address>
+            <CitizenshipCountry>
               <CountryISO2Code>UA</CountryISO2Code>
               <CountryISO3Code>UKR</CountryISO3Code>
               <CountryISONr>804</CountryISONr>
               <CountryNameEng>Ukraine</CountryNameEng>
               <CountryNameUkr>Україна</CountryNameUkr>
-            </Country>
-            <Region>Одеська область</Region>
-            <ZipCode>65080</ZipCode>
-            <City>Одеса</City>
-            <Street>вул. Академіка Філатова</Street>
-            <HouseNr>15-А</HouseNr>
-          </Address>
-          <RegistrarCode />
-          <RegistrarName>Київський РВ ОМУ ГУМВС України в Одеській області</RegistrarName>
-          <EntitiesHandled>Physical</EntitiesHandled>
-        </PassIssueAuthority>
-        <TaxOrSocSecID>0514235444</TaxOrSocSecID>
-        <Address>
-          <Country>
-            <CountryISO2Code>UA</CountryISO2Code>
-            <CountryISO3Code>UKR</CountryISO3Code>
-            <CountryISONr>804</CountryISONr>
-            <CountryNameEng>Ukraine</CountryNameEng>
-            <CountryNameUkr>Україна</CountryNameUkr>
-          </Country>
-          <Region>Одеська область</Region>
-          <ZipCode>65020</ZipCode>
-          <City>Одеса</City>
-          <Street>вул. Тираспольська</Street>
-          <HouseNr>22</HouseNr>
-          <ApptOfficeNr>3</ApptOfficeNr>
-        </Address>
-        <CitizenshipCountry>
-          <CountryISO2Code>UA</CountryISO2Code>
-          <CountryISO3Code>UKR</CountryISO3Code>
-          <CountryISONr>804</CountryISONr>
-          <CountryNameEng>Ukraine</CountryNameEng>
-          <CountryNameUkr>Україна</CountryNameUkr>
-        </CitizenshipCountry>
-      </PhysicalPersonInfo>
+            </CitizenshipCountry>
+          </PhysicalPerson>
+        </Member>
+        <PositionName>Головний бухгалтер</PositionName>
+      </CouncilMemberInfo>
     </Members>
     <HeadMemberIndex>0</HeadMemberIndex>
   </Executives>
@@ -1254,7 +1387,7 @@
   <Signatory>
     <SignatoryPosition>Директор</SignatoryPosition>
     <SurnameInitials>Голопупенко І.Й.</SurnameInitials>
-    <DateSigned>2015-03-02T00:00:00+02:00</DateSigned>
+    <DateSigned>2015-03-03T00:00:00+02:00</DateSigned>
   </Signatory>
   <ContactPerson>
     <Sex>None</Sex>

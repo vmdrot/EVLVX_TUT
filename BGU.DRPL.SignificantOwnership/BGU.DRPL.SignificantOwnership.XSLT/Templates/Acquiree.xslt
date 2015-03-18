@@ -2,6 +2,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:msxsl="urn:schemas-microsoft-com:xslt" exclude-result-prefixes="msxsl"
 >
+  <!--<xsl:include href="FormatAddressStreetEtc.xslt" />-->
   <xsl:template match="Acquiree" name="tmplAcquiree" mode="viewAcquiree">
     <table width="100%">
       <tr>
@@ -59,15 +60,9 @@
                 <xsl:value-of select="Address/ZipCode"/>
               </td>
               <td>
-                <xsl:if test="Address/Street!=''">
-                  <xsl:value-of select="Address/Street"/>
-                </xsl:if>
-                <xsl:if test="Address/HouseNr!=''">
-                  , буд.<xsl:value-of select="Address/HouseNr"/>
-                </xsl:if>
-                <xsl:if test="Address/ApptOfficeNr!=''">
-                  , кв./офіс <xsl:value-of select="Address/ApptOfficeNr"/>
-                </xsl:if>
+                <xsl:call-template name="formatAddressStreetEtc">
+                  <xsl:with-param name="address" select="Address" />
+                </xsl:call-template>
               </td>
             </tr>
           </table>

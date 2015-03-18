@@ -6,8 +6,14 @@
 
   <xsl:include href="Acquiree.xslt" />
   <xsl:include href="FormatDate.xslt" />
+  <xsl:include href="CouncilBodyMembersPhys.xslt" />
+  <xsl:include href="CouncilBodyMembersLegal.xslt" />
+  <xsl:include href="FormatAddressStreetEtc.xslt" />
+  <xsl:include href="FormatPhysPersonFullNameUkr.xslt" />
   
-  
+
+
+
   <xsl:template match="Appx2OwnershipStructLP">
     <html>
       <head>
@@ -54,7 +60,9 @@
               </td>
             </tr>
             <tr>
-              <td>todo</td>
+              <td>
+                <xsl:apply-templates select="SupervisoryCouncil" mode="viewSupervisoryCouncilPhys"/>
+              </td>
             </tr>
             <tr>
               <td align="left">
@@ -62,7 +70,9 @@
               </td>
             </tr>
             <tr>
-              <td>todo</td>
+              <td>
+                <xsl:apply-templates select="SupervisoryCouncil" mode="viewSupervisoryCouncilLegal"/>
+              </td>
             </tr>
           </xsl:if>
           <xsl:if test="IsSupervisoryCouncilPresent!='true'">
