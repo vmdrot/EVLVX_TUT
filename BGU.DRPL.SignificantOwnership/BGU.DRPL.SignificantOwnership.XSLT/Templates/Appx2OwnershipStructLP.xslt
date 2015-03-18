@@ -4,143 +4,20 @@
 >
   <xsl:output method="html" indent="yes"/>
 
-  <xsl:template match="Acquiree" name="tmplAcquiree" mode="viewAcquiree">
-    <table width="100%">
-      <tr>
-        <td width="50%">
-          <b>1.	Інформація про юридичну особу</b>
-        </td>
-        <td>
-        </td>
-      </tr>
-      <tr>
-        <td width="50%">
-          1.1.	Найменування юридичної особи
-        </td>
-        <td>
-          <b>
-            <xsl:value-of select="Name" />
-          </b>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          1.2.	Місцезнаходження юридичної особи
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">
-          <table width="100%" style="border: 0px solid rgb(255, 255, 255); font-size: 70%; margin-left: 10px; border-collapse: collapse; background-color: rgb(240, 240, 224);">
-            <tr>
-              <td colspan="4" align="center">
-                <b>Місцезнаходження</b>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b>Країна</b>
-              </td>
-              <td>
-                <b>Населений пункт</b>
-              </td>
-              <td>
-                <b>Індекс</b>
-              </td>
-              <td>
-                <b>Вулиця, номер будинку, приміщення</b>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <xsl:value-of select="Address/Country/CountryNameUkr"/> (<xsl:value-of select="Address/Country/CountryISONr"/>)
-              </td>
-              <td>
-                <xsl:value-of select="Address/City"/> 
-              </td>
-              <td><xsl:value-of select="Address/ZipCode"/> </td>
-              <td>
-                <xsl:if test="Address/Street!=''">
-                  <xsl:value-of select="Address/Street"/>
-                </xsl:if>
-                <xsl:if test="Address/HouseNr!=''">
-                  , буд.<xsl:value-of select="Address/HouseNr"/>
-                </xsl:if>
-                <xsl:if test="Address/HouseNr!=''">
-                  , кв./офіс <xsl:value-of select="Address/ApptOfficeNr"/>
-                </xsl:if>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td>1.3.	Ідентифікаційний номер юридичної особи</td>
-        <td>
-          <b>
-            <i>
-              <xsl:value-of select="TaxCodeOrHandelsRegNr"/>
-            </i>
-          </b>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">1.4.	Орган, що здійснив державну реєстрацію юридичної особи</td>
-      </tr>
-       <tr>
-        <td colspan="2">
-          <table width="100%" style="border: 0px solid rgb(255, 255, 255); font-size: 70%; margin-left: 10px; border-collapse: collapse; background-color: rgb(240, 240, 224);">
-            <tr>
-              <td>
-                <b>Країна</b>
-              </td>
-              <td>
-                <b>Повне найменування органу</b>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <xsl:value-of select="Registrar/JurisdictionCountry/CountryNameUkr"/> (<xsl:value-of select="Registrar/JurisdictionCountry/CountryISONr"/>)
-              </td>
-              <td>
-                <xsl:value-of select="Registrar/RegistrarName"/>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="2">1.5.	Голова та члени наглядової (спостережної) ради юридичної особи</td>
-      </tr>
-
-      <tr>
-        <td colspan="2">1.5.1.	Фізичні особи – члени наглядової (спостережної) ради юридичної особи та  фізичні особи, які представляють юридичну особу – члена наглядової ради</td>
-      </tr>
-      
-      <!-- -->
-      <!--
-      <tr>
-        <td>???!</td>
-        <td>
-          <b>
-            <i>
-              <xsl:value-of select="???!"/>
-            </i>
-          </b>
-        </td>
-      </tr> -->
-    </table>
-  </xsl:template>
+  <xsl:include href="Acquiree.xslt" />
+  <xsl:include href="FormatDate.xslt" />
   
   
   <xsl:template match="Appx2OwnershipStructLP">
     <html>
       <head>
+        <link rel="stylesheet" href="Questionnaire_Files/Questionnaire_print.css" />
         <title>
           Анкета юридичної особи (у тому числі банку) стосовно участі в <xsl:value-of select="BankRef/Name" />
         </title>
       </head>
       <body>
-        <table id="tblMain">
+        <table id="tblMain" width="1200px">
           <tr>
             <td>
               <table width="100%">
@@ -148,12 +25,10 @@
                   <td width="50%"></td>
                   <td width="50%" align="left" valign="top">
                     Додаток 2<br/>
-                    до положення про порядок подання<br/>
+                    до Положення про порядок подання<br/>
                     відомостей про структуру власності<br/>
                   </td>
                 </tr>
-
-
               </table>
             </td>
           </tr>
@@ -164,62 +39,186 @@
           </tr>
           <tr>
             <td align="left">
-
               <xsl:apply-templates select="Acquiree" mode="viewAcquiree"/>
-              
             </td>
           </tr>
           <tr>
             <td>
-              
+              1.5.	Голова та члени наглядової (спостережної) ради юридичної особи
+            </td>
+          </tr>
+          <xsl:if test="IsSupervisoryCouncilPresent='true'">
+            <tr>
+              <td align="left">
+                1.5.1.	Фізичні особи – члени наглядової (спостережної) ради юридичної особи та  фізичні особи, які представляють юридичну особу – члена наглядової ради
+              </td>
+            </tr>
+            <tr>
+              <td>todo</td>
+            </tr>
+            <tr>
+              <td align="left">
+                1.5.2.	Юридичні особи – члени наглядової (спостережної) ради юридичної особи
+              </td>
+            </tr>
+            <tr>
+              <td>todo</td>
+            </tr>
+          </xsl:if>
+          <xsl:if test="IsSupervisoryCouncilPresent!='true'">
+            <tr>
+              <td>
+                <input name="chkSupervisoryCouncilAbsent" type="checkbox" id="chkSupervisoryCouncilAbsent" disabled="disabled" checked="checked"/> Наглядова (спостережна) рада юридичної особи відсутня за статутом
+              </td>
+            </tr>
+          </xsl:if>
+          <tr>
+            <td>1.6.	Голова та члени виконавчого органу юридичної особи</td>
+          </tr>
+          <xsl:if test="IsExecutivesPresent='true'">
+            <tr>
+              <td>1.6.1.	Фізичні особи – члени виконавчого органу юридичної особи та  фізичні особи, які представляють юридичну особу – члена виконавчого органу</td>
+            </tr>
+            <tr>
+              <td>todo</td>
+            </tr>
+            <tr>
+              <td>1.6.2.	Юридичні особи – члени виконавчого органу юридичної особи</td>
+            </tr>
+            <tr>
+              <td>todo</td>
+            </tr>
+          </xsl:if>
+          <xsl:if test="IsExecutivesPresent!='true'">
+            <tr>
+              <td>
+                <input name="chkSupervisoryCouncilAbsent" type="checkbox" id="chkSupervisoryCouncilAbsent" disabled="disabled" checked="checked"/> Виконавчий орган юридичної особи відсутній за статутом
+              </td>
+            </tr>
+          </xsl:if>
+          <tr>
+            <td>1.7.	Відсоток участі у банку становить <u><xsl:value-of select="TotalOwneshipPct" /></u> відсотків статутного капіталу банку, в тому числі</td>
+          </tr>
+          <tr>
+            <td>todo</td>
+          </tr>
+          <tr>
+            <td>1.8.	Інформація про спільне володіння</td>
+          </tr>
+          <tr>
+            <td>1.8.1.	Фізичні особи, які мають спільне володіння із юридичною особою</td>
+          </tr>
+          <xsl:if test="BankExistingCommonImplicitOwners/CommonOwnershipInfo[Partners/GenericPersonInfo/PersonType='Physical' and OwnershipType='Direct']">
+            <tr>
+              <td>todo</td>
+            </tr>
+          </xsl:if>
+          <xsl:if test="not(BankExistingCommonImplicitOwners/CommonOwnershipInfo[Partners/GenericPersonInfo/PersonType='Physical' and OwnershipType='Direct'])">
+            <tr>
+              <td>відсутні</td>
+            </tr>
+          </xsl:if>
+          <tr>
+            <td>1.8.2.	Юридичні особи, які мають спільне володіння із юридичною особою</td>
+          </tr>
+          <xsl:if test="BankExistingCommonImplicitOwners/CommonOwnershipInfo[Partners/GenericPersonInfo/PersonType='Legal' and OwnershipType='Direct']">
+            <tr>
+              <td>todo</td>
+            </tr>
+          </xsl:if>
+          <xsl:if test="not(BankExistingCommonImplicitOwners/CommonOwnershipInfo[Partners/GenericPersonInfo/PersonType='Legal' and OwnershipType='Direct'])">
+            <tr>
+              <td>відсутні</td>
+            </tr>
+          </xsl:if>
+          <tr>
+            <td>1.9.	Наявне володіння опосередкованою участю через:</td>
+          </tr>
+          <tr>
+            <td>1.9.1.	Фізичні особи, через яких юридична особа володіє опосередкованою участю</td>
+          </tr>
+          <xsl:if test="BankExistingCommonImplicitOwners/CommonOwnershipInfo[Partners/GenericPersonInfo/PersonType='Physical' and OwnershipType='Implicit']">
+            <tr>
+              <td>todo</td>
+            </tr>
+          </xsl:if>
+          <xsl:if test="not(BankExistingCommonImplicitOwners/CommonOwnershipInfo[Partners/GenericPersonInfo/PersonType='Physical' and OwnershipType='Implicit'])">
+            <tr>
+              <td>відсутні</td>
+            </tr>
+          </xsl:if>
+          <tr>
+            <td>1.9.2.	Юридичні особи, через яких юридична особа володіє опосередкованою участю</td>
+          </tr>
+          <xsl:if test="BankExistingCommonImplicitOwners/CommonOwnershipInfo[Partners/GenericPersonInfo/PersonType='Legal' and OwnershipType='Implicit']">
+            <tr>
+              <td>todo</td>
+            </tr>
+          </xsl:if>
+          <xsl:if test="not(BankExistingCommonImplicitOwners/CommonOwnershipInfo[Partners/GenericPersonInfo/PersonType='Legal' and OwnershipType='Implicit'])">
+            <tr>
+              <td>відсутні</td>
+            </tr>
+          </xsl:if>
+          <tr>
+            <td>1.10. Інформація про набуття права голосу</td>
+          </tr>
+          <tr>
+            <td>todo</td>
+          </tr>
+          <tr>
+            <td align="center">2. Інформація про структуру власності</td>
+          </tr>
+          <tr>
+            <td>2.1. Інформація про фізичних осіб, які володіють істотною участю в юридичній особі</td>
+          </tr>
+          <xsl:if test="BankExistingCommonImplicitOwners/CommonOwnershipInfo[Partners/GenericPersonInfo/PersonType='Legal' and OwnershipType='???!']">
+            <tr>
+              <td>todo</td>
+            </tr>
+          </xsl:if>
+          <tr>
+            <td>2.2. Інформація про юридичних осіб, які володіють істотною участю в юридичній особі</td>
+          </tr>
+          <tr>
+            <td>todo</td>
+          </tr>
+          <tr>
+            <td>2.3. Інформація про спільне володіння</td>
+          </tr>
+          <tr>
+            <td>todo</td>
+          </tr>
+          <tr>
+            <td>2.4. Наявне володіння опосередкованою участю через:</td>
+          </tr>
+          <tr>
+            <td>todo</td>
+          </tr>
+          <tr>
+            <td>
+              2.5. <input name="chkInfoIsCorrect" type="checkbox" id="chkInfoIsCorrect" disabled="disabled" checked="checked"/> Стверджую, що інформація, надана в анкеті, є правдивою і повною, та не заперечую проти перевірки банком або Національним банком України достовірності поданих документів і персональних даних, що в них містяться.
+              У разі будь-яких змін в інформації, що зазначена в цій анкеті, зобов'язуюся повідомити про них банк у місячний строк з моменту настання відповідних змін.
+              Якщо анкета подається для погодження набуття/збільшення істотної участі, то в анкеті зазначається інформація з урахуванням намірів набуття/збільшення істотної участі в банку.
             </td>
           </tr>
           <tr>
-            <td align="left">
-              
+            <td>todo (signatory info)</td>
+          </tr>
+          <tr>
+            <td>
+              Підписано <u>
+                <xsl:call-template name="formatDate">
+                  <xsl:with-param name="dateTime" select="Signatory/DateSigned" />
+                </xsl:call-template></u><br />
+              (число, місяць, рік)
             </td>
           </tr>
+<!--
           <tr>
             <td></td>
           </tr>
-          <tr>
-            <td align="left">
-              1.2.	Місцезнаходження юридичної особи
-            </td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-          </tr>
+-->          
         </table>
       </body>
     </html>

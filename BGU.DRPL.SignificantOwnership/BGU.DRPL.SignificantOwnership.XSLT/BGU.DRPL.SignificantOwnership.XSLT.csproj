@@ -36,6 +36,13 @@
   <ItemGroup>
     <Content Include="Samples\Appx2OwnershipStructLP.sample.xml" />
     <Content Include="Samples\Appx2OwnershipStructLP.XSLTEnabled.xml" />
+    <Content Include="Samples\Questionnaire_Files\Questionnaire_print.css" />
+    <Content Include="Samples\UpgradeLog.XML" />
+    <Content Include="Samples\_UpgradeReport_Files\UpgradeReport.css" />
+    <Content Include="Samples\_UpgradeReport_Files\UpgradeReport.xslt" />
+    <Content Include="Samples\_UpgradeReport_Files\UpgradeReport_Minus.gif" />
+    <Content Include="Samples\_UpgradeReport_Files\UpgradeReport_Plus.gif" />
+    <Content Include="Templates\Acquiree.xslt" />
     <Content Include="Templates\Appx2OwnershipStructLP.xslt" />
   </ItemGroup>
   <ItemGroup />
