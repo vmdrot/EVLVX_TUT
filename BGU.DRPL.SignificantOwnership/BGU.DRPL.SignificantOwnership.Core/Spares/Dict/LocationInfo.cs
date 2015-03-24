@@ -196,7 +196,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
             return rslt;
         }
 
-        private static List<string> NormalizeAbbrs(List<string> list)
+        public static List<string> NormalizeAbbrs(List<string> list)
         {
             List<string> rslt = new List<string>();
             for (int i = 0; i < list.Count; i++)
