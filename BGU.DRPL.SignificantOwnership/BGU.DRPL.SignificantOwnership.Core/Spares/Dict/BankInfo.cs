@@ -20,5 +20,6 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// </summary>
         public string Code { get; set; }
         public string Name { get; set; }
+        public LegalPersonInfo LegalPerson { get; set; }
     }
 }

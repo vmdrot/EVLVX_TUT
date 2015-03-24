@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -23,5 +24,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         public string TaxOrSocSecID { get; set; }
         public LocationInfo Address { get; set; }
         public CountryInfo CitizenshipCountry { get; set; }
+
+        public GenericPersonID GenericID { get { return new GenericPersonID() { CountryISO3Code = CitizenshipCountry.CountryISONr, PersonCode = TaxOrSocSecID ?? PassportID , PersonType = EntityType.Physical }; } }
     }
 }

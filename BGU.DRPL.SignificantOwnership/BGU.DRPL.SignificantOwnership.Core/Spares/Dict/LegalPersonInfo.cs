@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -19,5 +20,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// </summary>
         public RegistrarAuthority Registrar { get; set; }
         public PhysicalPersonInfo RepresentedBy { get; set; }
+
+        public GenericPersonID GenericID { get { return new GenericPersonID() { CountryISO3Code = ResidenceCountry.CountryISONr, PersonCode = TaxCodeOrHandelsRegNr, PersonType = EntityType.Legal }; } }
     }
 }
