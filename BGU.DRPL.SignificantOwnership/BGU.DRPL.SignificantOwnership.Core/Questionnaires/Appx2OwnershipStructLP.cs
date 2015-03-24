@@ -62,6 +62,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         public List<LegalPersonShareInfo> SignificantSharesLegalPersons { get; set; }
 
         public List<CommonOwnershipInfo> AcquireeCommonImplicitOwners { get; set; }
+        public List<GenericPersonInfo> MentionedIdentities { get; set; }
 
         public SignatoryInfo Signatory { get; set; }
         public PhysicalPersonInfo ContactPerson { get; set; }

@@ -13,11 +13,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
         Legal
     }
 
-    public enum CommonOwnershipType
+    public enum OwnershipType
     {
         None = 0,
         Direct,
-        Implicit
+        Associated,
+        Agreement,
+        Attorney
     }
 
     [Flags]
