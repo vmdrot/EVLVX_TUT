@@ -17,6 +17,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
         bool CheckMissingPersonsLinks();
         List<OwnershipStructure> ListUltimateBeneficiaries();
         List<OwnershipStructure> ListUltimateBeneficiaries(GenericPersonID forEntity);
-
+        string BuildOwnershipGraph();
+        string IndentString { get; set; }
     }
 }

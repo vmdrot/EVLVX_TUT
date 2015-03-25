@@ -9,7 +9,8 @@ using BGU.DRPL.SignificantOwnership.Core.Spares;
 using System.Xml.Serialization;
 using System.IO;
 using Newtonsoft.Json;
-using BGU.DRPL.SignificantOwnership.Tester.Examples;
+using BGU.DRPL.SignificantOwnership.EmpiricalData.Examples;
+using BGU.DRPL.SignificantOwnership.Core.Checks;
 
 namespace BGU.DRPL.SignificantOwnership.Tester
 {
@@ -25,7 +26,8 @@ namespace BGU.DRPL.SignificantOwnership.Tester
             //ParseFillPassIssueData1();
             //ParseFillPassIssueData2();
             
-            WriteXML_Grant();
+            //WriteXML_Grant();
+            BuildOwnershipGraphGrantBankTest();
         }
 
         #region FFR
@@ -873,6 +875,16 @@ namespace BGU.DRPL.SignificantOwnership.Tester
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Appx2OwnershipStructLP));
             serializer.Serialize(File.Create(saveAs), questio);
+        }
+        #endregion
+
+        #region validate checkers test(s)
+        private static void BuildOwnershipGraphGrantBankTest()
+        {
+            GrantBank gb = new GrantBank();
+            Appx2OwnershipStructLPChecker checker = new Appx2OwnershipStructLPChecker();
+            checker.Questionnaire = gb.Appx2Questionnaire;
+            Console.WriteLine(checker.BuildOwnershipGraph());
         }
         #endregion
     }

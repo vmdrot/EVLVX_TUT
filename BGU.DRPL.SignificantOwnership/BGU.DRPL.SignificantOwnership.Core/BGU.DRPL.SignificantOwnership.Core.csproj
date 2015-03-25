@@ -43,6 +43,7 @@
     <Compile Include="Checks\Appx2OwnershipStructLPChecker.cs" />
     <Compile Include="Checks\IQuestionnaireChecker.cs" />
     <Compile Include="Checks\QuestionnaireCheckUtils.cs" />
+    <Compile Include="Misc\Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Questionnaires\Appx2OwnershipStructLP.cs" />
     <Compile Include="Questionnaires\IQuestionnaire.cs" />
