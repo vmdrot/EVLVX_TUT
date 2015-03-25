@@ -11,6 +11,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         public List<GenericPersonIDShare> Owners { get; set; }
         public OwnershipType OwnershipKind { get; set; }
         public decimal Share { get; set; }
+        public decimal SharePct { get; set; }
         public int Votes { get; set; }
     }
 }

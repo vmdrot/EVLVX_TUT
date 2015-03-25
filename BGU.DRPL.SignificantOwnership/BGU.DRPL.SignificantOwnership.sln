@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BGU.DRPL.SignificantOwnersh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BGU.DRPL.SignificantOwnership.Tests", "BGU.DRPL.SignificantOwnership.Tests\BGU.DRPL.SignificantOwnership.Tests.csproj", "{EEA808ED-8B17-42E1-91D5-C126E1C605E7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BGU.DRPL.SignificantOwnership.EmpiricalData", "BGU.DRPL.SignificantOwnership.EmpiricalData\BGU.DRPL.SignificantOwnership.EmpiricalData.csproj", "{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,16 @@ Global
 		{EEA808ED-8B17-42E1-91D5-C126E1C605E7}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{EEA808ED-8B17-42E1-91D5-C126E1C605E7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{EEA808ED-8B17-42E1-91D5-C126E1C605E7}.Release|x86.ActiveCfg = Release|Any CPU
+		{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

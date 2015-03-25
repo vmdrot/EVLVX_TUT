@@ -7,7 +7,7 @@ using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 {
-    public class Appx2OwnershipStructLP
+    public class Appx2OwnershipStructLP : IQuestionnaire
     {
         /// <summary>
         /// Bank name
@@ -44,25 +44,23 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// <summary>
         /// p.1.8
         /// </summary>
-        public List<CommonOwnershipInfo> BankExistingCommonImplicitOwners { get; set; }
+        //public List<CommonOwnershipInfo> BankExistingCommonImplicitOwners { get; set; }
+        public List<OwnershipStructure> BankExistingCommonImplicitOwners { get; set; }
 
         /// <summary>
         /// p.1.10
         /// </summary>
         public List<PurchasedVoteInfo> SharesAppliedFor {get;set;}
 
+
+
         /// <summary>
         /// p.2.1
         /// </summary>
-        public List<PhysicalPersonShareInfo> SignificantSharesPhysicalPersons { get; set; }
+        public List<OwnershipStructure> ApplicantOwnershipStructure { get; set; }
 
-        /// <summary>
-        /// p.2.2
-        /// </summary>
-        public List<LegalPersonShareInfo> SignificantSharesLegalPersons { get; set; }
-
-        public List<CommonOwnershipInfo> AcquireeCommonImplicitOwners { get; set; }
         public List<GenericPersonInfo> MentionedIdentities { get; set; }
+        public List<PersonsAssociation> PersonsLinks { get; set; }
 
         public SignatoryInfo Signatory { get; set; }
         public PhysicalPersonInfo ContactPerson { get; set; }

@@ -9,6 +9,7 @@ using BGU.DRPL.SignificantOwnership.Core.Spares;
 using System.Xml.Serialization;
 using System.IO;
 using Newtonsoft.Json;
+using BGU.DRPL.SignificantOwnership.Tester.Examples;
 
 namespace BGU.DRPL.SignificantOwnership.Tester
 {
@@ -17,13 +18,17 @@ namespace BGU.DRPL.SignificantOwnership.Tester
         static void Main(string[] args)
         {
             Console.Read();
+
             //CreateSampleAppx2OwnershipStructLP();
             //LocationInfoParser();
             //LocationInfoParser2();
             //ParseFillPassIssueData1();
-            ParseFillPassIssueData2();
+            //ParseFillPassIssueData2();
+            
+            WriteXML_Grant();
         }
 
+        #region FFR
         //private static void CreateSampleAppx2OwnershipStructLP()
         //{
         //    Appx2OwnershipStructLP questio = new Appx2OwnershipStructLP();
@@ -745,6 +750,7 @@ namespace BGU.DRPL.SignificantOwnership.Tester
         //    XmlSerializer serializer = new XmlSerializer(typeof(Appx2OwnershipStructLP));
         //    serializer.Serialize(File.Create(@"D:\home\vmdrot\HaErez\BGU\Var\SignificantOwnership\XMLs\Appx2OwnershipStructLP.sample.xml"), questio);
         //}
+        #endregion
 
         #region location info parse test(s)
         private static void LocationInfoParser()
@@ -854,5 +860,20 @@ namespace BGU.DRPL.SignificantOwnership.Tester
 
         #endregion
 
+        #region real banks XML output
+
+        private static void WriteXML_Grant()
+        {
+            GrantBank provider = new GrantBank();
+            WriteXML(provider.Appx2Questionnaire, @"D:\home\vmdrot\HaErez\BGU\Var\SignificantOwnership\XMLs\Appx2OwnershipStructLP.Grant.xml");
+        }
+
+
+        private static void WriteXML(Appx2OwnershipStructLP questio, string saveAs)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(Appx2OwnershipStructLP));
+            serializer.Serialize(File.Create(saveAs), questio);
+        }
+        #endregion
     }
 }

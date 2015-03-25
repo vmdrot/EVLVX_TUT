@@ -20,7 +20,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// </summary>
         public RegistrarAuthority Registrar { get; set; }
         public PhysicalPersonInfo RepresentedBy { get; set; }
-
+        public CurrencyAmount Equity { get; set; }
         public GenericPersonID GenericID { get { return new GenericPersonID() { CountryISO3Code = ResidenceCountry.CountryISONr, PersonCode = TaxCodeOrHandelsRegNr, PersonType = EntityType.Legal }; } }
     }
 }

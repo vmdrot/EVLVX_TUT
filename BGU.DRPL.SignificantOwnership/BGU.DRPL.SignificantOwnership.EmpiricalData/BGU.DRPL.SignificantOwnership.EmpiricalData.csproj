@@ -5,14 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{EEA808ED-8B17-42E1-91D5-C126E1C605E7}</ProjectGuid>
+    <ProjectGuid>{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BGU.DRPL.SignificantOwnership.Tests</RootNamespace>
-    <AssemblyName>BGU.DRPL.SignificantOwnership.Tests</AssemblyName>
+    <RootNamespace>BGU.DRPL.SignificantOwnership.EmpiricalData</RootNamespace>
+    <AssemblyName>BGU.DRPL.SignificantOwnership.EmpiricalData</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\3dPartyLibraries\Newtonsoft\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,19 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LocationInfoTests.cs" />
-    <Compile Include="PhysicalPersonInfoTests.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Examples\GrantBank.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuestionnaireCheckUtilsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BGU.DRPL.SignificantOwnership.Core\BGU.DRPL.SignificantOwnership.Core.csproj">
       <Project>{13FC3BB3-E57B-4796-A3A0-2038B681B8CB}</Project>
       <Name>BGU.DRPL.SignificantOwnership.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BGU.DRPL.SignificantOwnership.EmpiricalData\BGU.DRPL.SignificantOwnership.EmpiricalData.csproj">
-      <Project>{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809}</Project>
-      <Name>BGU.DRPL.SignificantOwnership.EmpiricalData</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
