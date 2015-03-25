@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BGU.DRPL.SignificantOwnership.Core.Misc;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -29,6 +30,24 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
             {
                 return string.IsNullOrEmpty(this.CountryISO3Code) && this.PersonType == EntityType.None && string.IsNullOrEmpty(this.PersonCode);
             }
+        }
+
+        public static bool operator ==(GenericPersonID one, GenericPersonID two)
+        {
+            if (!Utils.AreStringsEqual(one.CountryISO3Code, two.CountryISO3Code)
+                || one.PersonType != two.PersonType
+                || !Utils.AreStringsEqual(one.PersonCode, two.PersonCode))
+                return false;
+            return true;
+        }
+
+        public static bool operator !=(GenericPersonID one, GenericPersonID two)
+        {
+            if (!Utils.AreStringsEqual(one.CountryISO3Code, two.CountryISO3Code)
+                || one.PersonType != two.PersonType
+                || !Utils.AreStringsEqual(one.PersonCode, two.PersonCode))
+                return true;
+            return false;
         }
     }
 }

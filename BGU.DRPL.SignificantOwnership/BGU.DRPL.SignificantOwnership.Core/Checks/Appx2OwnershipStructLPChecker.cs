@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Questionnaires;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
+using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Checks
 {
     public class Appx2OwnershipStructLPChecker : IQuestionnaireChecker
     {
         #region field(s)
+        public static readonly string DEFAULT_INDENT_STRING = "    ";
+        private string _indentString = DEFAULT_INDENT_STRING;
         private decimal _unknownOwnersTolerancePct = 3M;
         private bool _unknownOwnersTolerancePctSet = false;
         private Appx2OwnershipStructLP _questio;
@@ -19,6 +22,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
 
 
         #region IQuestionnaireChecker members
+
+        public string IndentString
+        {
+            get { return _indentString; }
+            set { _indentString = value; }
+        }
+
         public IQuestionnaire Questionnaire 
         {
             get { if (_questio == null) return null; return (IQuestionnaire)_questio; }
@@ -26,13 +36,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
             {
                 if (_questio != null)
                     throw new ArgumentException("You can set the questionnaire only once");
-                if(!(_questio is Appx2OwnershipStructLP))
+                if(!(value is Appx2OwnershipStructLP))
                     throw new ArgumentException("Not supported questionnaire format");
                 _questio = (Appx2OwnershipStructLP)value;
             } 
         }
 
-        decimal UnkownOwnersTolerancePct 
+        public decimal UnkownOwnersTolerancePct 
         {
             get { return _unknownOwnersTolerancePct; }
             set
@@ -62,6 +72,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
         public List<Spares.Data.OwnershipStructure> ListUltimateBeneficiaries()
         {
             List<GenericPersonID> physPersons = QuestionnaireCheckUtils.ExtractPhysicsOnly(_questio.BankExistingCommonImplicitOwners);
+            Dictionary<GenericPersonID, TotalOwnershipDetailsInfo> aggrOwners = new Dictionary<GenericPersonID, TotalOwnershipDetailsInfo>();
+
+            //UnWindOwners(_questio.BankRef.LegalPerson.GenericID, _questio.BankExistingCommonImplicitOwners, physPersons, aggrOwners); //todo
             return null; //todo
         }
 
@@ -72,21 +85,48 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
         #endregion
 
 
-        decimal IQuestionnaireChecker.UnkownOwnersTolerancePct
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
         public Dictionary<Spares.EntityType, decimal> AggregateBankOwnersByEntityType()
         {
             throw new NotImplementedException();
+        }
+
+        public string BuildOwnershipGraph()
+        {
+            StringBuilder rslt = new StringBuilder();
+            UnWindOwnersGraph(_questio.BankRef.LegalPerson.GenericID, _questio.BankExistingCommonImplicitOwners, 0, rslt);
+            return rslt.ToString();
+        }
+
+        private void UnWindOwnersGraph(GenericPersonID forAsset, List<OwnershipStructure> ownershipHaystack, int lvl, StringBuilder rslt)
+        {
+            foreach (OwnershipStructure os in ownershipHaystack)
+            {
+                if (os.Asset != forAsset)
+                    continue;
+                PrintOwnershipLine(os, lvl, rslt);
+                if (os.Owners[0].Person.PersonType == Spares.EntityType.Legal)
+                    UnWindOwnersGraph(os.Owners[0].Person, ownershipHaystack, lvl + 1, rslt);
+            }
+        }
+
+        private void PrintOwnershipLine(OwnershipStructure os, int lvl, StringBuilder rslt)
+        {
+            StringBuilder sb = new StringBuilder();
+            if(lvl>0)
+            {
+                for(int i = 0; i < lvl; i++)
+                    sb.Append(_indentString);
+            }
+            GenericPersonInfo gpi = QuestionnaireCheckUtils.FindPersonByID(this._questio.MentionedIdentities, os.Owners[0].Person);
+            string ownerTxt = gpi != null ? (gpi.PersonType == Spares.EntityType.Legal ? gpi.LegalPerson.Name : gpi.PhysicalPerson.FullName) : os.Owners[0].Person.HashID;
+            sb.AppendFormat("{0}, {1}", ownerTxt, os.OwnershipKind);
+            if(os.Share > 0)
+                sb.AppendFormat(", {0}", os.Share);
+            if(os.SharePct > 0)
+                sb.AppendFormat(", {0}%", os.SharePct);
+            if(os.Votes > 0)
+                sb.AppendFormat(", {0} votes", os.Votes);
+            rslt.AppendLine(sb.ToString());
         }
     }
 }

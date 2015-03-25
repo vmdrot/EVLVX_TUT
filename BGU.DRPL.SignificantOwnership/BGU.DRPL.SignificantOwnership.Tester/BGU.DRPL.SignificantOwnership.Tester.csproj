@@ -54,6 +54,10 @@
       <Project>{13FC3BB3-E57B-4796-A3A0-2038B681B8CB}</Project>
       <Name>BGU.DRPL.SignificantOwnership.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BGU.DRPL.SignificantOwnership.EmpiricalData\BGU.DRPL.SignificantOwnership.EmpiricalData.csproj">
+      <Project>{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809}</Project>
+      <Name>BGU.DRPL.SignificantOwnership.EmpiricalData</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

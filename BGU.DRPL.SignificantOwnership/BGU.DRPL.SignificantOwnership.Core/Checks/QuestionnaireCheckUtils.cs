@@ -40,6 +40,16 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
             }
             return rslt;
         }
+        public static GenericPersonInfo FindPersonByID(List<GenericPersonInfo> lst, GenericPersonID id)
+        {
+            foreach (GenericPersonInfo gpi in lst)
+            {
+                if (gpi.ID == id)
+                    return gpi;
+            }
+
+            return null;
+        }
 
     }
 }

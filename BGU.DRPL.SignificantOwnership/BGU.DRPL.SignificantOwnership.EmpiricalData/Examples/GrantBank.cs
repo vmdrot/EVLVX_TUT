@@ -93,7 +93,7 @@ namespace BGU.DRPL.SignificantOwnership.EmpiricalData.Examples
             physIliinaSD = new GenericPersonInfo() { PersonType = Core.Spares.EntityType.Physical, PhysicalPerson = new PhysicalPersonInfo() { CitizenshipCountry = CountryInfo.UKRAINE, FullName = "Ільїна Світлана Дмитрівна", TaxOrSocSecID = "1814924262", Address = addrKhaTankop113kv64 } }; PhysicalPersonInfo.TryParseFillPassIssueData("МК 695562 виданий Фрунзенським РВ ХМУ УМВСУ в Харківській обл. 12.12.1997", physIliinaSD.PhysicalPerson);
 
 
-            physSymovianVP = new GenericPersonInfo() { PersonType = Core.Spares.EntityType.Physical, PhysicalPerson = new PhysicalPersonInfo() { FullName = "Симов'ян Віра Петрівна", TaxOrSocSecID = "1771518385", Address = addrKhaMyrh3 } }; PhysicalPersonInfo.TryParseFillPassIssueData("АР 043761, вид.Нахімовським РВ УМВСУ в м.Севастополі 30.07.1996р.", physSymovianVP.PhysicalPerson);
+            physSymovianVP = new GenericPersonInfo() { PersonType = Core.Spares.EntityType.Physical, PhysicalPerson = new PhysicalPersonInfo() { CitizenshipCountry = CountryInfo.UKRAINE, FullName = "Симов'ян Віра Петрівна", TaxOrSocSecID = "1771518385", Address = addrKhaMyrh3 } }; PhysicalPersonInfo.TryParseFillPassIssueData("АР 043761, вид.Нахімовським РВ УМВСУ в м.Севастополі 30.07.1996р.", physSymovianVP.PhysicalPerson);
 
             #endregion
 
@@ -122,7 +122,33 @@ namespace BGU.DRPL.SignificantOwnership.EmpiricalData.Examples
             this._appx2Questionnaire = new Appx2OwnershipStructLP();
             PopulateDicts();
             ComposeBankExistingCommonImplicitOwners();
+            ComposeMentionedEntities();
             return this._appx2Questionnaire;
+        }
+
+        private void ComposeMentionedEntities()
+        {
+            this._appx2Questionnaire.MentionedIdentities = new List<GenericPersonInfo>();
+            this._appx2Questionnaire.MentionedIdentities.Add(physShkarupinaTA);
+            this._appx2Questionnaire.MentionedIdentities.Add(physPohuliaievaLM);
+            this._appx2Questionnaire.MentionedIdentities.Add(physKravchenkoIV);
+            this._appx2Questionnaire.MentionedIdentities.Add(physLikhnoVP);
+            this._appx2Questionnaire.MentionedIdentities.Add(physPopovOA);
+            this._appx2Questionnaire.MentionedIdentities.Add(physSymovianSV2);
+            this._appx2Questionnaire.MentionedIdentities.Add(physSymovianVS);
+            this._appx2Questionnaire.MentionedIdentities.Add(physIliinVV);
+            this._appx2Questionnaire.MentionedIdentities.Add(physSymovianVP);
+            this._appx2Questionnaire.MentionedIdentities.Add(physSymovianSV);
+            this._appx2Questionnaire.MentionedIdentities.Add(physTovazhnianskyiVL);
+            this._appx2Questionnaire.MentionedIdentities.Add(leInvariantPlus);
+            this._appx2Questionnaire.MentionedIdentities.Add(leTDVSKGrantservis);
+            this._appx2Questionnaire.MentionedIdentities.Add(leArgusSoft);
+            this._appx2Questionnaire.MentionedIdentities.Add(physIliinaSD);
+            this._appx2Questionnaire.MentionedIdentities.Add(leInvesta);
+            this._appx2Questionnaire.MentionedIdentities.Add(leIntekh);
+            this._appx2Questionnaire.MentionedIdentities.Add(leArgus);
+            this._appx2Questionnaire.MentionedIdentities.Add(leResidentsiaSV);
+            this._appx2Questionnaire.MentionedIdentities.Add(leYurstokconsulting);
         }
 
         private void ComposeBankExistingCommonImplicitOwners()
