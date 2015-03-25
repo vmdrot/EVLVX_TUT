@@ -17,6 +17,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     {
         None = 0,
         Direct,
+        Implicit,
         Associated,
         Agreement,
         Attorney

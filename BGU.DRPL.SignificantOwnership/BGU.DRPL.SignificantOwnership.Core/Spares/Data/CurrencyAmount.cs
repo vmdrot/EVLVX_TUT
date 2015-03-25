@@ -5,9 +5,9 @@ using System.Text;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
-    public class CouncilMemberInfo
+    public class CurrencyAmount
     {
-        public GenericPersonID Member { get; set; }
-        public string PositionName { get; set; }
+        public string CCY { get; set; }
+        public decimal Amt { get; set; }
     }
 }
