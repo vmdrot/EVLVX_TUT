@@ -22,5 +22,19 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
                 return PersonType == EntityType.Physical ? PhysicalPerson.GenericID : LegalPerson.GenericID;
             } 
         }
+
+        public string DisplayName
+        {
+            get
+            {
+                object o = PersonType == EntityType.Physical ? (object)PhysicalPerson : (object)LegalPerson;
+                if (o == null)
+                    return null;
+                string rslt = PersonType == EntityType.Physical ? PhysicalPerson.FullName : LegalPerson.Name;
+                if (!string.IsNullOrEmpty(rslt))
+                    return rslt;
+                return this.ID.HashID;
+            }
+        }
     }
 }

@@ -45,9 +45,17 @@
     <Compile Include="Checks\QuestionnaireCheckUtils.cs" />
     <Compile Include="Misc\Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Questionnaires\RegLicAppx14NewSvc.cs" />
     <Compile Include="Questionnaires\Appx2OwnershipStructLP.cs" />
+    <Compile Include="Questionnaires\RegLicAppx4PhysPQuest.cs" />
+    <Compile Include="Questionnaires\RegLicAppx2LPQuest.cs" />
+    <Compile Include="Questionnaires\RegLicAppx7ShareAcqIntent.cs" />
     <Compile Include="Questionnaires\IQuestionnaire.cs" />
+    <Compile Include="Spares\Data\AttachmentInfo.cs" />
+    <Compile Include="Spares\Data\BankingLicensedActivityInfo.cs" />
+    <Compile Include="Spares\Data\BankingLicenseInfo.cs" />
     <Compile Include="Spares\Data\CommonOwnershipInfo.cs" />
+    <Compile Include="Spares\Data\ContactInfo.cs" />
     <Compile Include="Spares\Data\CouncilMemberInfo.cs" />
     <Compile Include="Spares\Data\CurrencyAmount.cs" />
     <Compile Include="Spares\Data\GenericPersonID.cs" />
@@ -56,6 +64,7 @@
     <Compile Include="Spares\Data\LegalPersonShareInfo.cs" />
     <Compile Include="Spares\Data\OwnershipStructure.cs" />
     <Compile Include="Spares\Data\PersonsAssociation.cs" />
+    <Compile Include="Spares\Data\PhoneInfo.cs" />
     <Compile Include="Spares\Data\PurchasedVoteInfo.cs" />
     <Compile Include="Spares\Data\OwnershipSummaryInfo.cs" />
     <Compile Include="Spares\Data\OwnershipVotesInfo.cs" />
