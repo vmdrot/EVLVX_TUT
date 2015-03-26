@@ -234,46 +234,46 @@ namespace BGU.DRPL.SignificantOwnership.EmpiricalData.Examples
 
             this._appx2Questionnaire.BankExistingCommonImplicitOwners = new List<OwnershipStructure>();
                     #region direct ownership
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physShkarupinaTA.ID } }), SharePct = 0.0165M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physPohuliaievaLM.ID } }), SharePct = 0.0558M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physKravchenkoIV.ID } }), SharePct = 0.0018M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physLikhnoVP.ID } }), SharePct = 0.1188M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physPopovOA.ID } }), SharePct = 0.2508M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physSymovianSV2.ID } }), SharePct = 0.7035M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physSymovianVS.ID } }), SharePct = 3.185M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physIliinVV.ID } }), SharePct = 0.0201M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physSymovianVP.ID } }), SharePct = 0.3847M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physSymovianSV.ID } }), SharePct = 65.5998M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physTovazhnianskyiVL.ID } }), SharePct = 0.0684M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = leInvariantPlus.ID } }), SharePct = 9.0462M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = leTDVSKGrantservis.ID } }), SharePct = 4.602M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = leArgusSoft.ID } }), SharePct = 4.5931M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physIliinaSD.ID } }), SharePct = 0.0201M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = leInvesta.ID } }), SharePct = 0.1518M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = leIntekh.ID } }), SharePct = 4.566M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = leArgus.ID } }), SharePct = 0.8967M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = leResidentsiaSV.ID } }), SharePct = 3.8804M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = leYurstokconsulting.ID } }), SharePct = 1.6154M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                    this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = physShkarupinaTA.ID, SharePct = 0.0165M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = physPohuliaievaLM.ID, SharePct = 0.0558M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = physKravchenkoIV.ID, SharePct = 0.0018M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = physLikhnoVP.ID, SharePct = 0.1188M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = physPopovOA.ID, SharePct = 0.2508M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = physSymovianSV2.ID, SharePct = 0.7035M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = physSymovianVS.ID, SharePct = 3.185M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = physIliinVV.ID, SharePct = 0.0201M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = physSymovianVP.ID, SharePct = 0.3847M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = physSymovianSV.ID, SharePct = 65.5998M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = physTovazhnianskyiVL.ID, SharePct = 0.0684M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = leInvariantPlus.ID, SharePct = 9.0462M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = leTDVSKGrantservis.ID, SharePct = 4.602M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = leArgusSoft.ID, SharePct = 4.5931M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = physIliinaSD.ID, SharePct = 0.0201M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = leInvesta.ID, SharePct = 0.1518M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = leIntekh.ID, SharePct = 4.566M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = leArgus.ID, SharePct = 0.8967M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = leResidentsiaSV.ID, SharePct = 3.8804M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTheBank.ID, Owner = leYurstokconsulting.ID, SharePct = 1.6154M, OwnershipKind = Core.Spares.OwnershipType.Direct });
                     #endregion
 
                     #region ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ "НАУКОВО-ТЕХНІЧНА ФІРМА "ІНВАРІАНТА ПЛЮС"
                      
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leInvariantPlus.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = leTDVSKGrantservis.ID } }), SharePct = 50.5121M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leInvariantPlus.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = leIntekh.ID } }), SharePct = 49.4751M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leInvariantPlus.ID, Owner = leTDVSKGrantservis.ID, SharePct = 50.5121M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leInvariantPlus.ID, Owner = leIntekh.ID, SharePct = 49.4751M, OwnershipKind = Core.Spares.OwnershipType.Direct });
                     #endregion
 
                     #region ТОВАРИСТВО З ДОДАТКОВОЮ ВІДПОВІДАЛЬНІСТЮ  СТРАХОВА КОМПАНІЯ "ГРАНТСЕРВІС"
                      
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTDVSKGrantservis.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physSymovianSV.ID } }), SharePct = 37.756M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTDVSKGrantservis.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physSymovianVS.ID } }), SharePct = 29.922M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTDVSKGrantservis.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = leIntekh.ID } }), SharePct = 11.353M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTDVSKGrantservis.ID, Owner = physSymovianSV.ID, SharePct = 37.756M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTDVSKGrantservis.ID, Owner = physSymovianVS.ID, SharePct = 29.922M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leTDVSKGrantservis.ID, Owner = leIntekh.ID, SharePct = 11.353M, OwnershipKind = Core.Spares.OwnershipType.Direct });
                      //todo - missing some %'s
                     #endregion
 
                     #region ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ "АРГУС-СОФТ"
                      
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leArgusSoft.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physSymovianSV.ID } }), SharePct = 50.00M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leArgusSoft.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physSymovianVS.ID } }), SharePct = 50.0M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leArgusSoft.ID, Owner = physSymovianSV.ID, SharePct = 50.00M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leArgusSoft.ID, Owner = physSymovianVS.ID, SharePct = 50.0M, OwnershipKind = Core.Spares.OwnershipType.Direct });
                     #endregion
 
                     #region ТОВ "ФК"Інвеста" для ПІНВФ "Венчурний проект"
@@ -282,8 +282,8 @@ namespace BGU.DRPL.SignificantOwnership.EmpiricalData.Examples
 
                     #region ТОВАРИСТВО З ДОДАТКОВОЮ ВІДПОВІДАЛЬНІСТЮ СТРАХОВА КОМПАНІЯ "ІНТЕХ"
                      
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leIntekh.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physSymovianSV.ID } }), SharePct = 82.72M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leIntekh.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = physSymovianSV2.ID } }), SharePct = 10.84M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leIntekh.ID, Owner = physSymovianSV.ID, SharePct = 82.72M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leIntekh.ID, Owner = physSymovianSV2.ID, SharePct = 10.84M, OwnershipKind = Core.Spares.OwnershipType.Direct });
                      //todo - missing some %'s
                     #endregion
 
@@ -293,13 +293,13 @@ namespace BGU.DRPL.SignificantOwnership.EmpiricalData.Examples
 
                     #region ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ "РЕЗИДЕНЦІЯ-СВ"
                      
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leResidentsiaSV.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = leTDVSKGrantservis.ID } }), SharePct = 84.30M, OwnershipKind = Core.Spares.OwnershipType.Direct });
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leResidentsiaSV.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = leIntekh.ID } }), SharePct = 14.70M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leResidentsiaSV.ID, Owner = leTDVSKGrantservis.ID, SharePct = 84.30M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leResidentsiaSV.ID, Owner = leIntekh.ID, SharePct = 14.70M, OwnershipKind = Core.Spares.OwnershipType.Direct });
                     #endregion
 
                     #region ТОВАРИСТВО З ОБМЕЖЕНОЮ ВІДПОВІДАЛЬНІСТЮ "ЮРСТОККОНСАЛТИНГ"
 
-                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leYurstokconsulting.ID, Owners = new List<GenericPersonIDShare>(new GenericPersonIDShare[] { new GenericPersonIDShare() { Person = leTDVSKGrantservis.ID } }), SharePct = 29.9124M, OwnershipKind = Core.Spares.OwnershipType.Direct });
+                     this._appx2Questionnaire.BankExistingCommonImplicitOwners.Add(new OwnershipStructure() { Asset = leYurstokconsulting.ID, Owner = leTDVSKGrantservis.ID, SharePct = 29.9124M, OwnershipKind = Core.Spares.OwnershipType.Direct });
                      //todo - missing some %'s
                     #endregion
 
