@@ -48,5 +48,15 @@ namespace BGU.DRPL.SignificantOwnership.Tests
         }
 
         
+        [Test]
+        public void BuildUltimateOwnershipOnlyGraphGrantBankTest()
+        {
+            GrantBank gb = new GrantBank();
+            Appx2OwnershipStructLPChecker checker = new Appx2OwnershipStructLPChecker();
+            checker.Questionnaire = gb.Appx2Questionnaire;
+            Console.WriteLine(checker.BuildUltimateOwnershipOnlyGraph(true));
+        }
+
+        
     }
 }

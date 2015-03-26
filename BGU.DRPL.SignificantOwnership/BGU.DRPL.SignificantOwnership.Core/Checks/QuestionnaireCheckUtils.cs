@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using BGU.DRPL.SignificantOwnership.Core.Spares;
+using BGU.DRPL.SignificantOwnership.Core.Misc;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Checks
 {
@@ -49,5 +50,43 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
             return null;
         }
 
+        public static GenericPersonInfo FindPersonByHashID(List<GenericPersonInfo> lst, string hashId)
+        {
+            foreach (GenericPersonInfo gpi in lst)
+            {
+                if (Utils.AreStringsEqual(gpi.ID.HashID, hashId))
+                    return gpi;
+            }
+
+            return null;
+        }
+
+        public static List<OwnershipStructure> FilterOutDirectOwners(List<OwnershipStructure> ownershipHive, GenericPersonID asset)
+        {
+            if (asset.PersonType == EntityType.Physical || asset.PersonType == EntityType.None)
+                throw new ArgumentException("Owners are supported only for legal entities");
+            List<OwnershipStructure> rslt = new List<OwnershipStructure>();
+            foreach (OwnershipStructure o in ownershipHive)
+            {
+                if (o.Asset == asset)
+                    rslt.Add(o);
+            }
+            return rslt;
+        }
+
+
+        public static void FinalizeOwners(GenericPersonID forEntity, Dictionary<string, List<Appx2OwnershipStructLPChecker.UltimateOwnershipStruct>> structs, Dictionary<string, bool> finalizedOwnership)
+        {
+        }
+
+        public static void FinalizeOwners(List<OwnershipStructure> ownershipHive, GenericPersonID forEntity, Dictionary<string, List<Appx2OwnershipStructLPChecker.UltimateOwnershipStruct>> structs, Dictionary<string, bool> finalizedOwnership)
+        {
+            List<OwnershipStructure> directOwners = FilterOutDirectOwners(ownershipHive, forEntity);
+            foreach (OwnershipStructure o in directOwners)
+            {
+                if (o.Owner.PersonType == EntityType.Physical)
+                    ;//structs.Add
+            }
+        }
     }
 }

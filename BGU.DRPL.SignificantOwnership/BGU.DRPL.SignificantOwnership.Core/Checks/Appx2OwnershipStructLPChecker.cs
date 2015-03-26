@@ -5,6 +5,7 @@ using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Questionnaires;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
+using BGU.DRPL.SignificantOwnership.Core.Spares;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Checks
 {
@@ -90,7 +91,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
 
         public List<Spares.Data.OwnershipStructure> ListUltimateBeneficiaries(Spares.Data.GenericPersonID forEntity)
         {
-            Dictionary<string, UltimateOwnershipStruct> stucts = new Dictionary<string, UltimateOwnershipStruct>();
+            Dictionary<string, List<UltimateOwnershipStruct>> structs = new Dictionary<string, List<UltimateOwnershipStruct>>();
+            Dictionary<string, bool> finalizedOwnership = new Dictionary<string, bool>();
+            QuestionnaireCheckUtils.FinalizeOwners(this._questio.BankExistingCommonImplicitOwners, forEntity, structs, finalizedOwnership);
 
             List<Spares.Data.OwnershipStructure> rslt = new List<OwnershipStructure>();
             return rslt;
@@ -108,6 +111,101 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
             StringBuilder rslt = new StringBuilder();
             UnWindOwnersGraph(_questio.BankRef.LegalPerson.GenericID, _questio.BankExistingCommonImplicitOwners, 0, rslt);
             return rslt.ToString();
+        }
+
+        public string BuildUltimateOwnershipOnlyGraph(bool bWithDisplayNames)
+        {
+            
+            Dictionary<string, TotalOwnershipDetailsInfo> ultimateOwners = new Dictionary<string, TotalOwnershipDetailsInfo>();
+            UnWindUltimateOwners(_questio.BankRef.LegalPerson.GenericID, _questio.BankRef.LegalPerson.GenericID, _questio.BankExistingCommonImplicitOwners, OwnershipType.Direct, 100M, ultimateOwners);
+            StringBuilder rslt = new StringBuilder();
+            rslt.AppendLine("Beneficiary\tDirect\tImplicit\tTotal");
+            TotalOwnershipDetailsInfo grandTotals = new TotalOwnershipDetailsInfo();
+            foreach (string key in ultimateOwners.Keys)
+            {
+                TotalOwnershipDetailsInfo curr = ultimateOwners[key];
+                decimal dirPct = curr.DirectOwnership != null ? curr.DirectOwnership.Pct : 0;
+                decimal implPct = curr.ImplicitOwnership != null ? curr.ImplicitOwnership.Pct : 0;
+                curr.TotalCapitalSharePct = dirPct + implPct;
+                string currDispName = key;
+                if (bWithDisplayNames)
+                {
+                    GenericPersonInfo gpi = QuestionnaireCheckUtils.FindPersonByHashID(this._questio.MentionedIdentities, key);
+                    if (gpi != null)
+                        currDispName = gpi.DisplayName;
+                }
+                rslt.AppendLine(string.Format("{0}\t{1}\t{2}\t{3}", currDispName, dirPct, implPct, curr.TotalCapitalSharePct));
+                IncrementUltimateOwnershipSingle(grandTotals, OwnershipType.Direct, dirPct);
+                IncrementUltimateOwnershipSingle(grandTotals, OwnershipType.Implicit, implPct);
+                grandTotals.TotalCapitalSharePct += curr.TotalCapitalSharePct;
+            }
+            rslt.AppendLine("-----------------------------------------------------------------------------------------------------------------------------------------");
+            rslt.AppendLine(string.Format("{0}\t{1}\t{2}\t{3}", "Grand totals:", grandTotals.DirectOwnership.Pct, grandTotals.ImplicitOwnership.Pct, grandTotals.TotalCapitalSharePct));
+            return rslt.ToString();
+        }
+        
+        private void UnWindUltimateOwners(GenericPersonID ultimateAsset, GenericPersonID currAsset, List<OwnershipStructure> ownershipHaystack, OwnershipType currDirImpl, decimal currPct, Dictionary<string,TotalOwnershipDetailsInfo> target)
+        {
+            List<OwnershipStructure> directOwners = QuestionnaireCheckUtils.FilterOutDirectOwners(ownershipHaystack, currAsset);
+            if(directOwners.Count == 0)
+            {
+                IncrementUltimateOwnership(target, currAsset,currDirImpl, 100, currPct);
+            }
+            foreach (OwnershipStructure os in directOwners)
+            {
+                if(os.Owner.PersonType == Spares.EntityType.Physical)
+                {
+                    OwnershipType dirImpl = ((currAsset == ultimateAsset) ? OwnershipType.Direct : OwnershipType.Implicit );
+                    IncrementUltimateOwnership(target, os.Owner, dirImpl, os.SharePct, currPct);
+                }
+                if (os.Owner.PersonType == Spares.EntityType.Legal)
+                    UnWindUltimateOwners(ultimateAsset, os.Owner, ownershipHaystack, OwnershipType.Implicit, 100*((currPct / 100)* (os.SharePct / 100)) , target);
+            }
+        }
+
+        private void IncrementUltimateOwnership(Dictionary<string, TotalOwnershipDetailsInfo> target, GenericPersonID genericPersonID, OwnershipType dirImpl, decimal sharePct, decimal currPct)
+        {
+            if (!target.ContainsKey(genericPersonID.HashID))
+                target.Add(genericPersonID.HashID, new TotalOwnershipDetailsInfo());
+            TotalOwnershipDetailsInfo todi = target[genericPersonID.HashID];
+            decimal correctedPct = 100 * ((sharePct / 100) * (currPct / 100));
+            IncrementUltimateOwnershipSingle(todi, dirImpl, correctedPct);
+        }
+
+        private void IncrementUltimateOwnershipSingle(TotalOwnershipDetailsInfo todi, OwnershipType dirImpl, decimal correctedPct)
+        {
+            switch (dirImpl)
+            {
+                case OwnershipType.None:
+                    throw new ArgumentException("A not supported ownership type for this particular purpose.");
+
+                case OwnershipType.Direct:
+                    {
+                        if (todi.DirectOwnership == null)
+                        {
+                            todi.DirectOwnership = new OwnershipSummaryInfo();
+                            todi.DirectOwnership.Pct = correctedPct;
+                        }
+                        else
+                            todi.DirectOwnership.Pct += correctedPct;
+                    }
+                    break;
+                case OwnershipType.Implicit:
+                case OwnershipType.Associated:
+                case OwnershipType.Agreement:
+                case OwnershipType.Attorney:
+                default:
+                    {
+                        if (todi.ImplicitOwnership == null)
+                        {
+                            todi.ImplicitOwnership = new OwnershipSummaryInfo();
+                            todi.ImplicitOwnership.Pct = correctedPct;
+                        }
+                        else
+                            todi.ImplicitOwnership.Pct += correctedPct;
+                    }
+                    break;
+            }
         }
 
         private void UnWindOwnersGraph(GenericPersonID forAsset, List<OwnershipStructure> ownershipHaystack, int lvl, StringBuilder rslt)
