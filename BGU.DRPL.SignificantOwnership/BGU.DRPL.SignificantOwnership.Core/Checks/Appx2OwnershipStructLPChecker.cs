@@ -78,9 +78,22 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
             return null; //todo
         }
 
+
+        #region inner type(s)
+        public class UltimateOwnershipStruct
+        {
+            public GenericPersonID Owner { get; set; }
+            public BGU.DRPL.SignificantOwnership.Core.Spares.OwnershipType OwnershipType { get; set; }
+            public decimal SharePct { get; set; }
+        }
+        #endregion
+
         public List<Spares.Data.OwnershipStructure> ListUltimateBeneficiaries(Spares.Data.GenericPersonID forEntity)
         {
-            throw new NotImplementedException();
+            Dictionary<string, UltimateOwnershipStruct> stucts = new Dictionary<string, UltimateOwnershipStruct>();
+
+            List<Spares.Data.OwnershipStructure> rslt = new List<OwnershipStructure>();
+            return rslt;
         }
         #endregion
 
@@ -104,8 +117,8 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
                 if (os.Asset != forAsset)
                     continue;
                 PrintOwnershipLine(os, lvl, rslt);
-                if (os.Owners[0].Person.PersonType == Spares.EntityType.Legal)
-                    UnWindOwnersGraph(os.Owners[0].Person, ownershipHaystack, lvl + 1, rslt);
+                if (os.Owner.PersonType == Spares.EntityType.Legal)
+                    UnWindOwnersGraph(os.Owner, ownershipHaystack, lvl + 1, rslt);
             }
         }
 
@@ -117,8 +130,8 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
                 for(int i = 0; i < lvl; i++)
                     sb.Append(_indentString);
             }
-            GenericPersonInfo gpi = QuestionnaireCheckUtils.FindPersonByID(this._questio.MentionedIdentities, os.Owners[0].Person);
-            string ownerTxt = gpi != null ? (gpi.PersonType == Spares.EntityType.Legal ? gpi.LegalPerson.Name : gpi.PhysicalPerson.FullName) : os.Owners[0].Person.HashID;
+            GenericPersonInfo gpi = QuestionnaireCheckUtils.FindPersonByID(this._questio.MentionedIdentities, os.Owner);
+            string ownerTxt = gpi != null ? (gpi.PersonType == Spares.EntityType.Legal ? gpi.LegalPerson.Name : gpi.PhysicalPerson.FullName) : os.Owner.HashID;
             sb.AppendFormat("{0}, {1}", ownerTxt, os.OwnershipKind);
             if(os.Share > 0)
                 sb.AppendFormat(", {0}", os.Share);

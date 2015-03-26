@@ -25,21 +25,19 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
             List<string> hashes = new List<string>();
             foreach (OwnershipStructure o in haystack)
             {
-                foreach (GenericPersonIDShare stake in o.Owners)
+                if (filterByType != EntityType.None)
                 {
-                    if (filterByType != EntityType.None)
-                    {
-                        if (((int)stake.Person.PersonType & (int)filterByType) == 0)
-                            continue;
-                    }
-                    if (hashes.Contains(stake.Person.HashID))
+                    if (((int)o.Owner.PersonType & (int)filterByType) == 0)
                         continue;
-                    rslt.Add(stake.Person);
-                    hashes.Add(stake.Person.HashID);
                 }
+                if (hashes.Contains(o.Owner.HashID))
+                    continue;
+                rslt.Add(o.Owner);
+                hashes.Add(o.Owner.HashID);
             }
             return rslt;
         }
+
         public static GenericPersonInfo FindPersonByID(List<GenericPersonInfo> lst, GenericPersonID id)
         {
             foreach (GenericPersonInfo gpi in lst)
