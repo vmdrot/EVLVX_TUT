@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
+    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.PhysicalPersonInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class PhysicalPersonInfo
     {
         public string SurnameUkr { get; set; }
@@ -212,5 +213,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         #endregion
 
         #endregion
+
+        public override string ToString()
+        {
+            return FullName;
+        }
     }
 }

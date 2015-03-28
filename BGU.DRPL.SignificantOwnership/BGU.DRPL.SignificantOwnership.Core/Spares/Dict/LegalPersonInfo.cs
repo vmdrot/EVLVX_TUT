@@ -6,6 +6,7 @@ using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
+    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.LegalPersonInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class LegalPersonInfo
     {
         /// <summary>
@@ -22,5 +23,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         public PhysicalPersonInfo RepresentedBy { get; set; }
         public CurrencyAmount Equity { get; set; }
         public GenericPersonID GenericID { get { return new GenericPersonID() { CountryISO3Code = ResidenceCountry.CountryISONr, PersonCode = TaxCodeOrHandelsRegNr, PersonType = EntityType.Legal }; } }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

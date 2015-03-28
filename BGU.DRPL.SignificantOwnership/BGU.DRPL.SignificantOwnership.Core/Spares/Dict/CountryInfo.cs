@@ -5,6 +5,7 @@ using System.Text;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
+    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.CountryInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class CountryInfo
     {
         /// <summary>
@@ -521,6 +522,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
                 return c;
             }
             return null;
+        }
+
+        public override string ToString()
+        {
+            return CountryNameUkr;
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
+    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.LocationInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class LocationInfo
     {
         public CountryInfo Country { get; set; }
@@ -43,6 +44,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 
         #endregion
 
+        #region Parse methods
         public static LocationInfo Parse(string addressStr)
         {
             ParseMatchInfo pmi;
@@ -52,7 +54,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         public static LocationInfo Parse(string addressStr, out ParseMatchInfo pmi)
         {
             pmi = new ParseMatchInfo();
-            if (string.IsNullOrEmpty(addressStr) || string.IsNullOrWhiteSpace(addressStr))
+            if (string.IsNullOrEmpty(addressStr) /*|| string.IsNullOrWhiteSpace(addressStr)*/)
                 return null;
             LocationInfo rslt = new LocationInfo();
             string[] words = addressStr.Split(',');
@@ -201,7 +203,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
             List<string> rslt = new List<string>();
             for (int i = 0; i < list.Count; i++)
             {
-                if (string.IsNullOrEmpty(list[i]) || string.IsNullOrWhiteSpace(list[i]))
+                if (string.IsNullOrEmpty(list[i]) /*|| string.IsNullOrWhiteSpace(list[i])*/)
                     continue;
                 if (list[i] == ".")
                     rslt[rslt.Count - 1] += list[i];
@@ -371,6 +373,12 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
             Street,
             HouseNr,
             ApptOfficeNr
+        }
+        #endregion
+
+        public override string ToString()
+        {
+            return string.Format("{0}, {1}, {2}, {3}, {4}, {5}", Country, City, Region, Street, HouseNr, ApptOfficeNr);
         }
     }
 }

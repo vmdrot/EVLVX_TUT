@@ -6,6 +6,7 @@ using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
+    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.GenericPersonInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class GenericPersonInfo
     {
         public EntityType PersonType { get; set; }
@@ -35,6 +36,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
                     return rslt;
                 return this.ID.HashID;
             }
+        }
+
+        public override string ToString()
+        {
+            return DisplayName;
         }
     }
 }

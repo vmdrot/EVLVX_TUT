@@ -5,6 +5,7 @@ using System.Text;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
+    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BankInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class BankInfo
     {
         /// <summary>
@@ -27,6 +28,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         {
             LegalPerson = le;
             Name = le.Name;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

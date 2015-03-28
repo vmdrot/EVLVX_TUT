@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
+using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 {
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.Appx2OwnershipStructLP_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class Appx2OwnershipStructLP : IQuestionnaire
     {
         /// <summary>
