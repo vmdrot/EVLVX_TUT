@@ -6,6 +6,7 @@ using BGU.DRPL.SignificantOwnership.Core.Misc;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
+    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.GenericPersonID_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class GenericPersonID
     {
         public string CountryISO3Code { get; set; }
@@ -48,6 +49,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
                 || !Utils.AreStringsEqual(one.PersonCode, two.PersonCode))
                 return true;
             return false;
+        }
+
+        public override string ToString()
+        {
+            return HashID;
         }
     }
 }

@@ -7,6 +7,7 @@ using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 {
+    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.RegLicAppx7ShareAcqIntent_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class RegLicAppx7ShareAcqIntent : IQuestionnaire
     {
         public BankInfo BankRef { get; set; }

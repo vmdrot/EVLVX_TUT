@@ -5,6 +5,7 @@ using System.Text;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
+    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.OwnershipStructure_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class OwnershipStructure
     {
         public GenericPersonID Asset { get; set; }

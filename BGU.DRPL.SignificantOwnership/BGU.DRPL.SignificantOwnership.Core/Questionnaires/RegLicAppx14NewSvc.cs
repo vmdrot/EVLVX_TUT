@@ -7,7 +7,8 @@ using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 {
-    public class RegLicAppx14NewSvc: IQuestionnaire
+    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.RegLicAppx14NewSvc_Editor), typeof(System.Drawing.Design.UITypeEditor))]
+    public class RegLicAppx14NewSvc : IQuestionnaire
     {
         public DateTime QuestDate { get; set; }
         public string Ref { get; set; }
