@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
+using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -13,6 +14,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         public PhysicalPersonInfo PhysicalPerson { get; set; }
         public LegalPersonInfo LegalPerson { get; set; }
 
+        [Browsable(false)]
         public GenericPersonID ID 
         { 
             get 
@@ -23,7 +25,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
                 return PersonType == EntityType.Physical ? PhysicalPerson.GenericID : LegalPerson.GenericID;
             } 
         }
-
+        
         public string DisplayName
         {
             get
