@@ -12,5 +12,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         public GenericPersonInfo Transferror { get; set; }
         public OwnershipVotesInfo PurchaseVotes { get; set; }
         public string VotesTransferPath { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("from {0}: {1} , {2}", Transferror, PurchaseVotes, VotesTransferPath);
+        }
     }
 }
