@@ -11,5 +11,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     {
         public LegalPersonInfo Person { get; set; }
         public decimal SharePct { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1}%", Person, SharePct);
+        }
     }
 }

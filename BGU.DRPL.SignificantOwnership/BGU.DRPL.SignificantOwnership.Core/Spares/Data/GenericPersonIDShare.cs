@@ -10,5 +10,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     {
         public GenericPersonID Person { get; set; }
         public decimal Share { get; set; }
+        public override string ToString()
+        {
+            return string.Format("{0} {1}", Person, Share );
+        }
     }
 }
