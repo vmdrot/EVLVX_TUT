@@ -12,7 +12,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         public string PositionName { get; set; }
         public override string ToString()
         {
-            return string.Format("{0} {1}", PositionName, Member.HashID);
+            return string.Format("{0} {1}", PositionName, Member);
         }
     }
 }
