@@ -56,11 +56,17 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="FormFactories.cs" />
-    <Compile Include="Forms\DummyForm.cs">
+    <Compile Include="Forms\LookupObjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\DummyForm.Designer.cs">
-      <DependentUpon>DummyForm.cs</DependentUpon>
+    <Compile Include="Forms\LookupObjectForm.Designer.cs">
+      <DependentUpon>LookupObjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SimpleObjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SimpleObjectForm.Designer.cs">
+      <DependentUpon>SimpleObjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,8 +77,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\DummyForm.resx">
-      <DependentUpon>DummyForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\LookupObjectForm.resx">
+      <DependentUpon>LookupObjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SimpleObjectForm.resx">
+      <DependentUpon>SimpleObjectForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

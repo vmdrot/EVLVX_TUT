@@ -10,5 +10,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     {
         public string CCY { get; set; }
         public decimal Amt { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1}", CCY, Amt.ToString("N0"));
+        }
     }
 }

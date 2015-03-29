@@ -94,6 +94,7 @@
     <Compile Include="Spares\Dict\PhysicalPersonInfo.cs" />
     <Compile Include="Spares\Data\TotalOwnershipDetailsInfo.cs" />
     <Compile Include="Spares\Enums.cs" />
+    <Compile Include="TypeEditors\CountryInfoLookupEditor.cs" />
     <Compile Include="TypeEditors\GenericTypeEditor.cs" />
     <Compile Include="TypeEditors\IDataSourcedForm.cs" />
     <Compile Include="TypeEditors\ITypeEditorForm.cs" />
@@ -102,7 +103,10 @@
     <Compile Include="TypeEditors\TypeEditorsInterfaces.cs" />
     <Compile Include="TypeEditors\TypeEditorTools.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="TypeEditors\Interfaces\" />
+    <Folder Include="TypeEditors\TypeConverters\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
