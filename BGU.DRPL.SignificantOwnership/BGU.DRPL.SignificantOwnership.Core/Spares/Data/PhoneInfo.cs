@@ -11,5 +11,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         public string PhoneName { get; set; }
         public string PhoneNr { get; set; }
         public string PhoneNotes { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0} {1} ({2})", PhoneName, PhoneNr, PhoneNotes);
+        }
     }
 }

@@ -10,5 +10,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     {
         public decimal Pct { get; set; }
         public int Votes { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0}% {1:N0}", Pct, Votes);
+        }
     }
 }

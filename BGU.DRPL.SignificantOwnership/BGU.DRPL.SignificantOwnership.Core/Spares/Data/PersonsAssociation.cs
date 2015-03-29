@@ -13,5 +13,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         public OwnershipType AssociationType { get; set; }
         public string AssociationTitleOneVsTwo { get; set; }
         public string AssociationTitleTwoVsOne { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("{0} vs {1}, {2} ({3}, {4})", One, Two, AssociationType, AssociationTitleOneVsTwo, AssociationTitleTwoVsOne);
+        }
     }
 }

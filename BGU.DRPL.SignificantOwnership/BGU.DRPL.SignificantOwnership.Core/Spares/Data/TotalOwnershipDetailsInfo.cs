@@ -14,5 +14,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         public OwnershipVotesInfo AcquiredVotes { get; set; }
         public decimal TotalCapitalSharePct { get; set; }
         public int TotalVotes { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("Direct: {0}, Implicit: {1}, Acquired: {2}, {3}%, {4:N0}", DirectOwnership, ImplicitOwnership, AcquiredVotes, TotalCapitalSharePct, TotalVotes);
+        }
     }
 }
