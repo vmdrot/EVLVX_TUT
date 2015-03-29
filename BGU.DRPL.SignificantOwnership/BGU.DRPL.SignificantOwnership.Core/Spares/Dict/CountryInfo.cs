@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -524,9 +525,27 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
             return null;
         }
 
+
+        [DisplayName]
+        [Browsable(false)]
+        public string DisplayName
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(CountryNameUkr))
+                    return CountryNameUkr;
+                if (!string.IsNullOrEmpty(CountryNameEng))
+                    return CountryNameEng;
+                if (!string.IsNullOrEmpty(CountryISO2Code))
+                    return CountryISO2Code;
+                if (!string.IsNullOrEmpty(CountryISO3Code))
+                    return CountryISO3Code;
+                return this.CountryISONr;
+            }
+        }
         public override string ToString()
         {
-            return CountryNameUkr;
+            return DisplayName;
         }
     }
 }

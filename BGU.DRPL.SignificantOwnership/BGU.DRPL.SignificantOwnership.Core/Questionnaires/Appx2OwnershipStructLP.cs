@@ -24,13 +24,17 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// <summary>
         /// p.1.4
         /// </summary>
+        [Browsable(true)]
         public bool IsSupervisoryCouncilPresent { get; set; }
+        [Browsable(true)]
         public CouncilBodyInfo SupervisoryCouncil { get; set; }
         
         /// <summary>
         /// p.1.5
         /// </summary>
+        /// [Browsable(true)]
         public CouncilBodyInfo Executives { get; set; }
+        [Browsable(true)]
         public bool IsExecutivesPresent { get; set; }
         
         /// <summary>
