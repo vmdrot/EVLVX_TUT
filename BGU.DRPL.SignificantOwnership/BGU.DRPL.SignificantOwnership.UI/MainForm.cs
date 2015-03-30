@@ -79,6 +79,8 @@ namespace BGU.DRPL.SignificantOwnership.UI
             if (menuItem != null)
                 sbFormCaption.Append( menuItem.Text);
             frm.Text = sbFormCaption.ToString();
+            frm.ShowMenu = true;
+            frm.IsRootObjectEditForm = true;
             frm.ShowDialog();
         }
 

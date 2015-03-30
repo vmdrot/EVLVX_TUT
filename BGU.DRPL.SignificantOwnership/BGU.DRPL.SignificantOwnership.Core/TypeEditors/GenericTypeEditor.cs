@@ -20,8 +20,8 @@ namespace BGU.DRPL.SignificantOwnership.Core.TypeEditors
                 formCaption = BGU.DRPL.SignificantOwnership.Utility.Tools.GetObjectClassDescription(value);
             else if (string.IsNullOrEmpty(formCaption) && value == null)
                 formCaption = BGU.DRPL.SignificantOwnership.Utility.Tools.GetTypeClassDescription(typeof(T));
-            if (context.Instance != null && context.Instance is IQuestionnaire)
-                TypeEditorsDispatcher.LastQuestionnaire = (IQuestionnaire)context.Instance;
+            //if (context.Instance != null && context.Instance is IQuestionnaire)
+            //    TypeEditorsDispatcher.LastQuestionnaire = (IQuestionnaire)context.Instance;
             System.Windows.Forms.Form frm = TypeEditorFormFactory.SpawnInstance();
             if(value != null)
                 ((IDataSourcedForm<T>)frm).DataSource = (T)value;

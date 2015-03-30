@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace BGU.DRPL.SignificantOwnership.Utility
 {
@@ -35,6 +37,25 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                     return ((DescriptionAttribute)attr).Description;
             }
             return string.Empty;
+        }
+
+        public static void WriteXML<T>(T obj, string saveAs)
+        {
+            using (FileStream fs = File.Create(saveAs))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(T));
+                serializer.Serialize(fs, obj);
+            }
+        }
+
+        public static T ReadXML<T>(string fromFile)
+        {
+            using (FileStream fs = new FileStream(fromFile, FileMode.Open))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(T));
+                object o = serializer.Deserialize(fs);
+                return (T)o;
+            }
         }
     }
 }

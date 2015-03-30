@@ -41,7 +41,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -59,6 +58,10 @@
     <ProjectReference Include="..\BGU.DRPL.SignificantOwnership.EmpiricalData\BGU.DRPL.SignificantOwnership.EmpiricalData.csproj">
       <Project>{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809}</Project>
       <Name>BGU.DRPL.SignificantOwnership.EmpiricalData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BGU.DRPL.SignificantOwnership.Utility\BGU.DRPL.SignificantOwnership.Utility.csproj">
+      <Project>{E7FA3686-C797-43EA-890E-5F970A54D348}</Project>
+      <Name>BGU.DRPL.SignificantOwnership.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
