@@ -10,6 +10,7 @@ using BGU.DRPL.SignificantOwnership.UI.Questionnaires;
 using BGU.DRPL.SignificantOwnership.EmpiricalData.Examples;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 using BGU.DRPL.SignificantOwnership.BasicUILib.Forms;
+using BGU.DRPL.SignificantOwnership.Core.Questionnaires;
 
 namespace BGU.DRPL.SignificantOwnership.UI
 {
@@ -61,9 +62,39 @@ namespace BGU.DRPL.SignificantOwnership.UI
 
         private void appx2LPproperToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DummyForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.Appx2OwnershipStructLP> frm = new DummyForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.Appx2OwnershipStructLP>();
-            frm.DataSource = (new GrantBank()).Appx2Questionnaire;
+            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.Appx2OwnershipStructLP>(appx2LPproperToolStripMenuItem, (new GrantBank()).Appx2Questionnaire);
+            //SimpleObjectForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.Appx2OwnershipStructLP> frm = new SimpleObjectForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.Appx2OwnershipStructLP>();
+            //frm.DataSource = (new GrantBank()).Appx2Questionnaire;
+            //frm.Text = string.Format(appx2LPproperToolStripMenuItem.GetCurrentParent().Text, appx2LPproperToolStripMenuItem.Text);
+            //frm.ShowDialog();
+        }
+
+        private void ShowQuestionnaireEditForm<T>(ToolStripMenuItem menuItem, T questio)
+        {
+            SimpleObjectForm<T> frm = new SimpleObjectForm<T>();
+            frm.DataSource = questio;
+            StringBuilder sbFormCaption = new StringBuilder();
+            if (menuItem != null && menuItem.GetCurrentParent() != null)
+                sbFormCaption.AppendFormat("{0}: ", menuItem.GetCurrentParent().Text);
+            if (menuItem != null)
+                sbFormCaption.Append( menuItem.Text);
+            frm.Text = sbFormCaption.ToString();
             frm.ShowDialog();
+        }
+
+        private void regLicAppx7ShareAcqIntentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.RegLicAppx7ShareAcqIntent>(regLicAppx7ShareAcqIntentToolStripMenuItem, new RegLicAppx7ShareAcqIntent());
+        }
+
+        private void regLicAppx14NewSvcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.RegLicAppx14NewSvc>(regLicAppx14NewSvcToolStripMenuItem, new RegLicAppx14NewSvc());
+        }
+
+        private void regLicAppx4PhysPQuestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.RegLicAppx4PhysPQuest>(regLicAppx4PhysPQuestToolStripMenuItem, new RegLicAppx4PhysPQuest());
         }
     }
 }

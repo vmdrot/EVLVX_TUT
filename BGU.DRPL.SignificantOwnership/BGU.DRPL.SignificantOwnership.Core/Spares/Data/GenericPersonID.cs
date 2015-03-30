@@ -12,6 +12,8 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         public string CountryISO3Code { get; set; }
         public EntityType PersonType { get; set; }
         public string PersonCode { get; set; }
+
+        #region Extra members
         private string _hashId;
         public string HashID
         {
@@ -63,5 +65,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         {
             return HashID;
         }
+
+        #endregion
     }
 }

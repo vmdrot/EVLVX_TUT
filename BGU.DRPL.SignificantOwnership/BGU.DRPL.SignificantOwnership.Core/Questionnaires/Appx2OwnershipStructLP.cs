@@ -12,7 +12,18 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
     [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.Appx2OwnershipStructLP_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class Appx2OwnershipStructLP : IQuestionnaire, IGenericPersonsService, IAddressesService
     {
-        
+
+        public Appx2OwnershipStructLP()
+        {
+            SupervisoryCouncil = new CouncilBodyInfo();
+            this.Executives = new CouncilBodyInfo();
+            this.BankExistingCommonImplicitOwners = new List<OwnershipStructure>();
+            this.SharesAppliedFor = new List<PurchasedVoteInfo>();
+            this.ApplicantOwnershipStructure = new List<OwnershipStructure>();
+            this.MentionedIdentities = new List<GenericPersonInfo>();
+            this.PersonsLinks = new List<PersonsAssociation>();
+        }
+
         /// <summary>
         /// Bank name
         /// </summary>
