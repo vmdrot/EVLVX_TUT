@@ -26,6 +26,23 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib
     public class GenericPersonIDEditFormFactoryBasic : IGenericPersonIDEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new DummyForm<GenericPersonID>(); } }
     public class GenericPersonIDShareEditFormFactoryBasic : IGenericPersonIDShareEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new DummyForm<GenericPersonIDShare>(); } }
     public class GenericPersonInfoEditFormFactoryBasic : IGenericPersonInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new DummyForm<GenericPersonInfo>(); } }
+    public class GenericPersonInfoEditFormFactoryBasicEx : IGenericPersonInfoEditFormFactory 
+    { 
+        public System.Windows.Forms.Form SpawnInstance() 
+        {
+            LookupObjectForm<GenericPersonInfo> frm = new LookupObjectForm<GenericPersonInfo>();
+            frm.NeedToCompareObjects += new NeedToCompareTypesHandler<GenericPersonInfo>(frm_NeedToCompareObjects);
+            IQuestionnaire questio = TypeEditorsDispatcher.LastQuestionnaire;
+            if (questio != null && questio is IGenericPersonsService)
+                frm.ListSource = ((IGenericPersonsService)questio).MentionedGenericPersons;
+            return new LookupObjectForm<GenericPersonInfo>(); 
+        }
+
+        private void frm_NeedToCompareObjects(object sender, NeedToCompareTypesArgs<GenericPersonInfo> args)
+        {
+            args.AreEqual = (args.One.ID == args.Two.ID);
+        } 
+    }
     public class LegalPersonShareInfoEditFormFactoryBasic : ILegalPersonShareInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new DummyForm<LegalPersonShareInfo>(); } }
     public class OwnershipStructureEditFormFactoryBasic : IOwnershipStructureEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new DummyForm<OwnershipStructure>(); } }
     public class OwnershipSummaryInfoEditFormFactoryBasic : IOwnershipSummaryInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new DummyForm<OwnershipSummaryInfo>(); } }
@@ -39,8 +56,66 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib
     public class BankInfoEditFormFactoryBasic : IBankInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { System.Windows.Forms.Form rslt = new DummyForm<BankInfo>(); rslt.Size = new System.Drawing.Size(500, 400); return rslt; } }
     public class CountryInfoEditFormFactoryBasic : ICountryInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new DummyForm<CountryInfo>(); } }
     public class LegalPersonInfoEditFormFactoryBasic : ILegalPersonInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new DummyForm<LegalPersonInfo>(); } }
+
+    public class LegalPersonInfoEditFormFactoryBasicEx : IGenericPersonInfoEditFormFactory
+    {
+        public System.Windows.Forms.Form SpawnInstance()
+        {
+            LookupObjectForm<LegalPersonInfo> frm = new LookupObjectForm<LegalPersonInfo>();
+            frm.NeedToCompareObjects += new NeedToCompareTypesHandler<LegalPersonInfo>(frm_NeedToCompareObjects);
+            IQuestionnaire questio = TypeEditorsDispatcher.LastQuestionnaire;
+            if (questio != null && questio is IGenericPersonsService)
+            {
+                IEnumerable<GenericPersonInfo> gpis = ((IGenericPersonsService)questio).MentionedGenericPersons;
+                List<LegalPersonInfo> lpis = new List<LegalPersonInfo>();
+                foreach(GenericPersonInfo gpi in gpis)
+                {
+                    if(gpi.PersonType == Core.Spares.EntityType.Legal && gpi.LegalPerson != null)
+                        lpis.Add(gpi.LegalPerson);
+                }
+
+                frm.ListSource = lpis;
+            }
+            return new LookupObjectForm<GenericPersonInfo>();
+        }
+
+        private void frm_NeedToCompareObjects(object sender, NeedToCompareTypesArgs<LegalPersonInfo> args)
+        {
+            args.AreEqual = (args.One.GenericID == args.Two.GenericID);
+        }
+    }
+
     public class LocationInfoEditFormFactoryBasic : ILocationInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new DummyForm<LocationInfo>(); } }
     public class PhysicalPersonInfoEditFormFactoryBasic : IPhysicalPersonInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new DummyForm<PhysicalPersonInfo>(); } }
+
+    public class PhysicalPersonInfoEditFormFactoryBasicEx : IPhysicalPersonInfoEditFormFactory
+    {
+        public System.Windows.Forms.Form SpawnInstance()
+        {
+            LookupObjectForm<PhysicalPersonInfo> frm = new LookupObjectForm<PhysicalPersonInfo>();
+            frm.NeedToCompareObjects += new NeedToCompareTypesHandler<PhysicalPersonInfo>(frm_NeedToCompareObjects);
+            IQuestionnaire questio = TypeEditorsDispatcher.LastQuestionnaire;
+            if (questio != null && questio is IGenericPersonsService)
+            {
+                IEnumerable<GenericPersonInfo> gpis = ((IGenericPersonsService)questio).MentionedGenericPersons;
+                List<PhysicalPersonInfo> ppis = new List<PhysicalPersonInfo>();
+                foreach(GenericPersonInfo gpi in gpis)
+                {
+                    if(gpi.PersonType == Core.Spares.EntityType.Physical && gpi.PhysicalPerson != null)
+                        ppis.Add(gpi.PhysicalPerson);
+                }
+
+                frm.ListSource = ppis;
+            }
+            return frm;
+        }
+
+        private void frm_NeedToCompareObjects(object sender, NeedToCompareTypesArgs<PhysicalPersonInfo> args)
+        {
+            args.AreEqual = (args.One.GenericID == args.Two.GenericID);
+        }
+    }
+
     public class RegistrarAuthorityEditFormFactoryBasic : IRegistrarAuthorityEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new DummyForm<RegistrarAuthority>(); } }
 }
 

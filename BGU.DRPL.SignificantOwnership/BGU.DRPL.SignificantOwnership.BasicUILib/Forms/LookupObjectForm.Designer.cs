@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.grpExistingOrNew = new System.Windows.Forms.GroupBox();
-            this.rbExisting = new System.Windows.Forms.RadioButton();
             this.rbNew = new System.Windows.Forms.RadioButton();
+            this.rbExisting = new System.Windows.Forms.RadioButton();
             this.propGrid = new System.Windows.Forms.PropertyGrid();
             this.cbxSelectExistingObj = new System.Windows.Forms.ComboBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnFillObject = new System.Windows.Forms.Button();
             this.grpExistingOrNew.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +50,17 @@
             this.grpExistingOrNew.TabStop = false;
             this.grpExistingOrNew.Text = "Choose existing object or a new one";
             // 
+            // rbNew
+            // 
+            this.rbNew.AutoSize = true;
+            this.rbNew.Location = new System.Drawing.Point(161, 13);
+            this.rbNew.Name = "rbNew";
+            this.rbNew.Size = new System.Drawing.Size(93, 17);
+            this.rbNew.TabIndex = 1;
+            this.rbNew.TabStop = true;
+            this.rbNew.Text = "Input new one";
+            this.rbNew.UseVisualStyleBackColor = true;
+            // 
             // rbExisting
             // 
             this.rbExisting.AutoSize = true;
@@ -60,17 +72,6 @@
             this.rbExisting.Text = "Choose from existing ones";
             this.rbExisting.UseVisualStyleBackColor = true;
             this.rbExisting.CheckedChanged += new System.EventHandler(this.rbExisting_CheckedChanged);
-            // 
-            // rbNew
-            // 
-            this.rbNew.AutoSize = true;
-            this.rbNew.Location = new System.Drawing.Point(161, 13);
-            this.rbNew.Name = "rbNew";
-            this.rbNew.Size = new System.Drawing.Size(93, 17);
-            this.rbNew.TabIndex = 1;
-            this.rbNew.TabStop = true;
-            this.rbNew.Text = "Input new one";
-            this.rbNew.UseVisualStyleBackColor = true;
             // 
             // propGrid
             // 
@@ -91,6 +92,7 @@
             this.cbxSelectExistingObj.Name = "cbxSelectExistingObj";
             this.cbxSelectExistingObj.Size = new System.Drawing.Size(704, 21);
             this.cbxSelectExistingObj.TabIndex = 2;
+            this.cbxSelectExistingObj.SelectedIndexChanged += new System.EventHandler(this.cbxSelectExistingObj_SelectedIndexChanged);
             // 
             // btnOK
             // 
@@ -101,6 +103,7 @@
             this.btnOK.TabIndex = 3;
             this.btnOK.Text = "&OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -112,6 +115,18 @@
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Can&cel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnFillObject
+            // 
+            this.btnFillObject.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnFillObject.Location = new System.Drawing.Point(0, 347);
+            this.btnFillObject.Name = "btnFillObject";
+            this.btnFillObject.Size = new System.Drawing.Size(19, 20);
+            this.btnFillObject.TabIndex = 5;
+            this.btnFillObject.Text = "+";
+            this.btnFillObject.UseVisualStyleBackColor = true;
+            this.btnFillObject.Click += new System.EventHandler(this.btnFillObject_Click);
             // 
             // LookupObjectForm
             // 
@@ -120,6 +135,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(707, 373);
+            this.Controls.Add(this.btnFillObject);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.cbxSelectExistingObj);
@@ -127,6 +143,7 @@
             this.Controls.Add(this.grpExistingOrNew);
             this.Name = "LookupObjectForm";
             this.Text = "LookupObjectForm";
+            this.Load += new System.EventHandler(this.LookupObjectForm_Load);
             this.grpExistingOrNew.ResumeLayout(false);
             this.grpExistingOrNew.PerformLayout();
             this.ResumeLayout(false);
@@ -142,5 +159,6 @@
         private System.Windows.Forms.ComboBox cbxSelectExistingObj;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnFillObject;
     }
 }

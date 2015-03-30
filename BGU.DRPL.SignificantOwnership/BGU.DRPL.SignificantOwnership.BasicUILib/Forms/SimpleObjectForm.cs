@@ -30,6 +30,7 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             }
         }
 
+
         private void btnOK_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;

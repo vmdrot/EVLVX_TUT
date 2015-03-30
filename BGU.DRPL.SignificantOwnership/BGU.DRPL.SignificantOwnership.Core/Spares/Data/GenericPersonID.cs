@@ -35,6 +35,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 
         public static bool operator ==(GenericPersonID one, GenericPersonID two)
         {
+            if (one == null && two == null)
+                return true;
+            if (one == null || two == null)
+                return false;
             if (!Utils.AreStringsEqual(one.CountryISO3Code, two.CountryISO3Code)
                 || one.PersonType != two.PersonType
                 || !Utils.AreStringsEqual(one.PersonCode, two.PersonCode))
@@ -44,6 +48,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 
         public static bool operator !=(GenericPersonID one, GenericPersonID two)
         {
+            if (one == null && two == null)
+                return false;
+            if (one == null || two == null)
+                return true;
             if (!Utils.AreStringsEqual(one.CountryISO3Code, two.CountryISO3Code)
                 || one.PersonType != two.PersonType
                 || !Utils.AreStringsEqual(one.PersonCode, two.PersonCode))

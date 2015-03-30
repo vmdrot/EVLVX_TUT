@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BGU.DRPL.SignificantOwnersh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BGU.DRPL.SignificantOwnership.BasicUILib", "BGU.DRPL.SignificantOwnership.BasicUILib\BGU.DRPL.SignificantOwnership.BasicUILib.csproj", "{47F2913D-8205-4FDA-A2D5-CAB966BF74EB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{EE4DBA6A-58FA-4F03-9062-16E87A87CDDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BGU.DRPL.SignificantOwnership.Utility", "BGU.DRPL.SignificantOwnership.Utility\BGU.DRPL.SignificantOwnership.Utility.csproj", "{E7FA3686-C797-43EA-890E-5F970A54D348}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +105,16 @@ Global
 		{47F2913D-8205-4FDA-A2D5-CAB966BF74EB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{47F2913D-8205-4FDA-A2D5-CAB966BF74EB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{47F2913D-8205-4FDA-A2D5-CAB966BF74EB}.Release|x86.ActiveCfg = Release|Any CPU
+		{E7FA3686-C797-43EA-890E-5F970A54D348}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7FA3686-C797-43EA-890E-5F970A54D348}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7FA3686-C797-43EA-890E-5F970A54D348}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E7FA3686-C797-43EA-890E-5F970A54D348}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E7FA3686-C797-43EA-890E-5F970A54D348}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E7FA3686-C797-43EA-890E-5F970A54D348}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7FA3686-C797-43EA-890E-5F970A54D348}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7FA3686-C797-43EA-890E-5F970A54D348}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E7FA3686-C797-43EA-890E-5F970A54D348}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E7FA3686-C797-43EA-890E-5F970A54D348}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -112,5 +126,6 @@ Global
 		{450CA5B8-7759-4CA9-B016-9CE1ADE1A19D} = {46A26B1A-1FE4-4FD1-8E9D-626D9BA96881}
 		{7C800992-30AB-4048-B390-B371F496CD46} = {BAF6E6A8-6F6D-4376-8BDD-31450148805A}
 		{47F2913D-8205-4FDA-A2D5-CAB966BF74EB} = {BAF6E6A8-6F6D-4376-8BDD-31450148805A}
+		{E7FA3686-C797-43EA-890E-5F970A54D348} = {EE4DBA6A-58FA-4F03-9062-16E87A87CDDD}
 	EndGlobalSection
 EndGlobal

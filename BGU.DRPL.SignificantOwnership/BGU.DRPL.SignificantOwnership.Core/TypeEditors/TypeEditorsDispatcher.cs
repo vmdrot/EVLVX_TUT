@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Practices.Unity;
+using BGU.DRPL.SignificantOwnership.Core.Questionnaires;
 
 namespace BGU.DRPL.SignificantOwnership.Core.TypeEditors
 {
@@ -20,5 +21,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.TypeEditors
                 _cont = value;
             }
         }
+
+        public static IQuestionnaire LastQuestionnaire { get; set; }
     }
 }

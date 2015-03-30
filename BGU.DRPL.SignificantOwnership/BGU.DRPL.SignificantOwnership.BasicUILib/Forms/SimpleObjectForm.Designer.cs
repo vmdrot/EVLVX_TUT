@@ -85,8 +85,7 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             // statusLbl
             // 
             this.statusLbl.Name = "statusLbl";
-            this.statusLbl.Size = new System.Drawing.Size(109, 17);
-            this.statusLbl.Text = "toolStripStatusLabel1";
+            this.statusLbl.Size = new System.Drawing.Size(0, 17);
             // 
             // btnFillObject
             // 
@@ -112,7 +111,7 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Name = "DummyForm";
-            this.Text = "DummyForm";
+            this.Text = "Simple object edit form";
             this.Load += new System.EventHandler(this.DummyForm_Load);
             this.ResizeEnd += new System.EventHandler(this.DummyForm_ResizeEnd);
             this.Resize += new System.EventHandler(this.DummyForm_Resize);
