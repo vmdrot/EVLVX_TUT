@@ -67,5 +67,7 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
         {
             DataSource = InstantiateNewDataSource();
         }
+
+        public event Core.TypeEditors.FormCloseHandler<T> FormClose;
     }
 }

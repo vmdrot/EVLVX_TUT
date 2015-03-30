@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Misc;
+using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
-    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.GenericPersonID_Editor), typeof(System.Drawing.Design.UITypeEditor))]
+    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.GenericPersonLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     public class GenericPersonID
     {
         public string CountryISO3Code { get; set; }
@@ -14,6 +15,14 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         public string PersonCode { get; set; }
 
         #region Extra members
+        [Browsable(false)]
+        public string DisplayName
+        {
+            get;
+            set;
+        }
+
+
         private string _hashId;
         public string HashID
         {
@@ -37,9 +46,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 
         public static bool operator ==(GenericPersonID one, GenericPersonID two)
         {
-            if (one == null && two == null)
+            if ((object)one == null && (object)two == null)
                 return true;
-            if (one == null || two == null)
+            if ((object)one == null || (object)two == null)
                 return false;
             if (!Utils.AreStringsEqual(one.CountryISO3Code, two.CountryISO3Code)
                 || one.PersonType != two.PersonType
@@ -50,9 +59,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 
         public static bool operator !=(GenericPersonID one, GenericPersonID two)
         {
-            if (one == null && two == null)
+            if ((object)one == null && (object)two == null)
                 return false;
-            if (one == null || two == null)
+            if ((object)one == null || (object)two == null)
                 return true;
             if (!Utils.AreStringsEqual(one.CountryISO3Code, two.CountryISO3Code)
                 || one.PersonType != two.PersonType
@@ -63,7 +72,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 
         public override string ToString()
         {
-            return HashID;
+            return (!string.IsNullOrEmpty(DisplayName) ? DisplayName : HashID);
         }
 
         #endregion

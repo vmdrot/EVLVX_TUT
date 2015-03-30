@@ -96,10 +96,10 @@
     <Compile Include="Spares\Enums.cs" />
     <Compile Include="TypeEditors\CountryInfoLookupEditor.cs" />
     <Compile Include="TypeEditors\GenericPersonInfoEditor.cs" />
+    <Compile Include="TypeEditors\GenericPersonLookupEditor.cs" />
     <Compile Include="TypeEditors\GenericTypeEditor.cs" />
     <Compile Include="TypeEditors\IDataSourcedForm.cs" />
     <Compile Include="TypeEditors\ITypeEditorForm.cs" />
-    <Compile Include="TypeEditors\RootQuestionnaireServices.cs" />
     <Compile Include="TypeEditors\TypeEditors.cs" />
     <Compile Include="TypeEditors\TypeEditorsDispatcher.cs" />
     <Compile Include="TypeEditors\TypeEditorsInterfaces.cs" />

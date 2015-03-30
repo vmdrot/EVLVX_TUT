@@ -3,19 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.LocationInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class LocationInfo
     {
+        [Description("Країна")]
         public CountryInfo Country { get; set; }
+        [Description("область, район/провінція, тощо")]
         public string Region { get; set; }
+        [Description("Поштовий індекс")]
         public string ZipCode { get; set; }
+        [Description("Населений пункт")]
         public string City { get; set; }
+        [Description("Вулиця/площа/тощо")]
         public string Street { get; set; }
+        [Description("№ / назва будинку")]
         public string HouseNr { get; set; }
+        [Description("№ кв./офісу, тощо")]
         public string ApptOfficeNr { get; set; }
+
         #region inner type(s)
         public class ParseMatchInfo
         {

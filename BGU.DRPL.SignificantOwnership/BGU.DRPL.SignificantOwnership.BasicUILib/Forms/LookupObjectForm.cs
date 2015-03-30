@@ -121,5 +121,7 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
         {
             DataSource = InstantiateNewDataSource();
         }
+
+        public event FormCloseHandler<T> FormClose;
     }
 }

@@ -4,29 +4,46 @@ using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using System.Text.RegularExpressions;
+using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.PhysicalPersonInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class PhysicalPersonInfo
     {
+        [Description("Прізвище, українською")]
         public string SurnameUkr { get; set; }
+        [Description("Ім'я, українською")]
         public string NameUkr { get; set; }
+        [Description("По-батькові/друге ім'я, українською")]
         public string MiddleNameUkr { get; set; }
+        [Description("П.І.Б., українською")]
         public string FullNameUkr { get; set; }
+        [Description("Прізвище")]
         public string Surname { get; set; }
+        [Description("Ім'я")]
         public string Name { get; set; }
+        [Description("По-батькові/друге ім'я")]
         public string MiddleName { get; set; }
+        [Description("П.І.Б.")]
         public string FullName { get; set; }
+        [Description("Стать")]
         public SexType Sex { get; set; }
+        [Description("Дата народження")]
         public DateTime BirthDate { get; set; }
+        [Description("Серія № паспорта")]
         public string PassportID { get; set; }
+        [Description("Дата видачі паспорта")]
         public DateTime PassIssuedDate { get; set; }
+        [Description("Орган, що видав паспорт")]
         public RegistrarAuthority PassIssueAuthority { get; set; }
+        [Description("ІПН/№ картки соціального страхування/тощо, дивлячись, що використовується у країні резидентства")]
         public string TaxOrSocSecID { get; set; }
+        [Description("Місце проживання/реєстрації")]
         public LocationInfo Address { get; set; }
+        [Description("Громадянство")]
         public CountryInfo CitizenshipCountry { get; set; }
-
+        [Browsable(false)]
         public GenericPersonID GenericID { get { return new GenericPersonID() { CountryISO3Code = CitizenshipCountry != null ? CitizenshipCountry.CountryISONr : string.Empty, PersonCode = TaxOrSocSecID ?? PassportID, PersonType = EntityType.Physical }; } }
 
 
