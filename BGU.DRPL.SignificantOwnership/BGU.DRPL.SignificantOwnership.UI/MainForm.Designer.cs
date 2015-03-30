@@ -30,11 +30,11 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.appx2LPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.acqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.genericPersonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.countryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regLicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regLicAppx7ShareAcqIntentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regLicAppx14NewSvcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regLicAppx4PhysPQuestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ownershipStructToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.appx2LPproperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -52,57 +52,57 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.appx2LPToolStripMenuItem,
-            this.appx2LPproperToolStripMenuItem});
+            this.regLicToolStripMenuItem,
+            this.ownershipStructToolStripMenuItem});
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.newToolStripMenuItem.Text = "New...";
             // 
-            // appx2LPToolStripMenuItem
+            // regLicToolStripMenuItem
             // 
-            this.appx2LPToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.acqToolStripMenuItem,
-            this.genericPersonToolStripMenuItem,
-            this.addressToolStripMenuItem,
-            this.countryToolStripMenuItem});
-            this.appx2LPToolStripMenuItem.Name = "appx2LPToolStripMenuItem";
-            this.appx2LPToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.appx2LPToolStripMenuItem.Text = "Appx2LP";
-            this.appx2LPToolStripMenuItem.Click += new System.EventHandler(this.appx2LPToolStripMenuItem_Click);
+            this.regLicToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.regLicAppx7ShareAcqIntentToolStripMenuItem,
+            this.regLicAppx14NewSvcToolStripMenuItem,
+            this.regLicAppx4PhysPQuestToolStripMenuItem});
+            this.regLicToolStripMenuItem.Name = "regLicToolStripMenuItem";
+            this.regLicToolStripMenuItem.Size = new System.Drawing.Size(442, 22);
+            this.regLicToolStripMenuItem.Text = "Реєстрація та ліцензування банків, відкриття відокремлених підрозділів";
             // 
-            // acqToolStripMenuItem
+            // regLicAppx7ShareAcqIntentToolStripMenuItem
             // 
-            this.acqToolStripMenuItem.Name = "acqToolStripMenuItem";
-            this.acqToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.acqToolStripMenuItem.Text = "Acquiree";
-            this.acqToolStripMenuItem.Click += new System.EventHandler(this.acqToolStripMenuItem_Click);
+            this.regLicAppx7ShareAcqIntentToolStripMenuItem.Name = "regLicAppx7ShareAcqIntentToolStripMenuItem";
+            this.regLicAppx7ShareAcqIntentToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
+            this.regLicAppx7ShareAcqIntentToolStripMenuItem.Text = "ПОВІДОМЛЕННЯ про наміри набуття/збільшення істотної участі в банку (Додаток 7)";
+            this.regLicAppx7ShareAcqIntentToolStripMenuItem.Click += new System.EventHandler(this.regLicAppx7ShareAcqIntentToolStripMenuItem_Click);
             // 
-            // genericPersonToolStripMenuItem
+            // regLicAppx14NewSvcToolStripMenuItem
             // 
-            this.genericPersonToolStripMenuItem.Name = "genericPersonToolStripMenuItem";
-            this.genericPersonToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.genericPersonToolStripMenuItem.Text = "GenericPerson";
-            this.genericPersonToolStripMenuItem.Click += new System.EventHandler(this.genericPersonToolStripMenuItem_Click);
+            this.regLicAppx14NewSvcToolStripMenuItem.Name = "regLicAppx14NewSvcToolStripMenuItem";
+            this.regLicAppx14NewSvcToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
+            this.regLicAppx14NewSvcToolStripMenuItem.Text = "ПОВІДОМЛЕННЯ банку про початок нового виду діяльності або надання нового виду фін" +
+    "ансових послуг (Додаток 14)";
+            this.regLicAppx14NewSvcToolStripMenuItem.Click += new System.EventHandler(this.regLicAppx14NewSvcToolStripMenuItem_Click);
             // 
-            // addressToolStripMenuItem
+            // regLicAppx4PhysPQuestToolStripMenuItem
             // 
-            this.addressToolStripMenuItem.Name = "addressToolStripMenuItem";
-            this.addressToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.addressToolStripMenuItem.Text = "Address";
-            this.addressToolStripMenuItem.Click += new System.EventHandler(this.addressToolStripMenuItem_Click);
+            this.regLicAppx4PhysPQuestToolStripMenuItem.Name = "regLicAppx4PhysPQuestToolStripMenuItem";
+            this.regLicAppx4PhysPQuestToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
+            this.regLicAppx4PhysPQuestToolStripMenuItem.Text = "АНКЕТА фізичної особи (Додаток 4)";
+            this.regLicAppx4PhysPQuestToolStripMenuItem.Click += new System.EventHandler(this.regLicAppx4PhysPQuestToolStripMenuItem_Click);
             // 
-            // countryToolStripMenuItem
+            // ownershipStructToolStripMenuItem
             // 
-            this.countryToolStripMenuItem.Name = "countryToolStripMenuItem";
-            this.countryToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.countryToolStripMenuItem.Text = "Country";
-            this.countryToolStripMenuItem.Click += new System.EventHandler(this.countryToolStripMenuItem_Click);
+            this.ownershipStructToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.appx2LPproperToolStripMenuItem});
+            this.ownershipStructToolStripMenuItem.Name = "ownershipStructToolStripMenuItem";
+            this.ownershipStructToolStripMenuItem.Size = new System.Drawing.Size(442, 22);
+            this.ownershipStructToolStripMenuItem.Text = "Відомості про структуру власності";
             // 
             // appx2LPproperToolStripMenuItem
             // 
             this.appx2LPproperToolStripMenuItem.Name = "appx2LPproperToolStripMenuItem";
-            this.appx2LPproperToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.appx2LPproperToolStripMenuItem.Text = "Appx2LP (proper)";
+            this.appx2LPproperToolStripMenuItem.Size = new System.Drawing.Size(373, 22);
+            this.appx2LPproperToolStripMenuItem.Text = "АНКЕТА юридичної особи (у тому числі банку) (Додаток 2)";
             this.appx2LPproperToolStripMenuItem.Click += new System.EventHandler(this.appx2LPproperToolStripMenuItem_Click);
             // 
             // MainForm
@@ -113,7 +113,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "NBU: Significant ownership (basic UI)";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -125,12 +125,12 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem appx2LPToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem acqToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem genericPersonToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addressToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem countryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem appx2LPproperToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem regLicAppx7ShareAcqIntentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem regLicAppx14NewSvcToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem regLicAppx4PhysPQuestToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem regLicToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ownershipStructToolStripMenuItem;
     }
 }
 

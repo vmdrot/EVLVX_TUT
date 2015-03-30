@@ -5,9 +5,10 @@ using System.Text;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
+    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.CouncilMemberInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class CouncilMemberInfo
     {
-        [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.CouncilMemberInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
+        
         public GenericPersonID Member { get; set; }
         public string PositionName { get; set; }
         public override string ToString()

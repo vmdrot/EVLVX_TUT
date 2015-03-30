@@ -11,9 +11,9 @@ using BGU.DRPL.SignificantOwnership.Core.TypeEditors;
 
 namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
 {
-    public partial class DummyForm<T> : Form, IDataSourcedForm<T>
+    public partial class SimpleObjectForm<T> : Form, IDataSourcedForm<T>
     {
-        public DummyForm()
+        public SimpleObjectForm()
         {
             InitializeComponent();
         }

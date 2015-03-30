@@ -2,7 +2,7 @@
 using BGU.DRPL.SignificantOwnership.Core.TypeEditors;
 namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
 {
-    partial class DummyForm<T> : Form, IDataSourcedForm<T>
+    partial class SimpleObjectForm<T> : Form, IDataSourcedForm<T>
     {
         /// <summary>
         /// Required designer variable.
@@ -69,6 +69,7 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.propGrid.Location = new System.Drawing.Point(1, 2);
             this.propGrid.Name = "propGrid";
+            this.propGrid.PropertySort = System.Windows.Forms.PropertySort.NoSort;
             this.propGrid.Size = new System.Drawing.Size(385, 283);
             this.propGrid.TabIndex = 2;
             // 
@@ -98,7 +99,7 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             this.btnFillObject.UseVisualStyleBackColor = true;
             this.btnFillObject.Click += new System.EventHandler(this.btnFillObject_Click);
             // 
-            // DummyForm
+            // SimpleObjectForm
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -110,7 +111,7 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             this.Controls.Add(this.propGrid);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
-            this.Name = "DummyForm";
+            this.Name = "SimpleObjectForm";
             this.Text = "Simple object edit form";
             this.Load += new System.EventHandler(this.DummyForm_Load);
             this.ResizeEnd += new System.EventHandler(this.DummyForm_ResizeEnd);

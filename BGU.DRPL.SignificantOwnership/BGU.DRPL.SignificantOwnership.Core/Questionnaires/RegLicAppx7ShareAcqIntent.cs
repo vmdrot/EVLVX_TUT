@@ -10,6 +10,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.RegLicAppx7ShareAcqIntent_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class RegLicAppx7ShareAcqIntent : IQuestionnaire
     {
+        public RegLicAppx7ShareAcqIntent()
+        {
+            ExistingOwnership = new List<OwnershipStructure>();
+            MentionedIdentities = new List<GenericPersonInfo>();
+            PersonsLinks = new List<PersonsAssociation>();
+        }
+
         public BankInfo BankRef { get; set; }
         public GenericPersonInfo Acquiree { get; set; }
         public TotalOwnershipDetailsInfo ExistingOwnershipSummary { get; set; }

@@ -6,9 +6,14 @@ using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
+    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.CommonOwnershipInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class CommonOwnershipInfo
     {
-        [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.CommonOwnershipInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
+        public CommonOwnershipInfo()
+        {
+            Partners = new List<GenericPersonID>();
+        }
+
         public GenericPersonID Property { get; set; }
         public List<GenericPersonID> Partners { get; set; }
         public OwnershipType OwnershipType { get; set; }
