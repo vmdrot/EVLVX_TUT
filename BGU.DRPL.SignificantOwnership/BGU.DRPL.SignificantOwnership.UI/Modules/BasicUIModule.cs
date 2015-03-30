@@ -29,7 +29,8 @@ namespace BGU.DRPL.SignificantOwnership.UI.Modules
             cont.RegisterInstance<ICurrencyAmountEditFormFactory>(new CurrencyAmountEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<IGenericPersonIDEditFormFactory>(new GenericPersonIDEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<IGenericPersonIDShareEditFormFactory>(new GenericPersonIDShareEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
-            cont.RegisterInstance<IGenericPersonInfoEditFormFactory>(new GenericPersonInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            //cont.RegisterInstance<IGenericPersonInfoEditFormFactory>(new GenericPersonInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IGenericPersonInfoEditFormFactory>(new GenericPersonInfoEditFormFactoryBasicEx(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<ILegalPersonShareInfoEditFormFactory>(new LegalPersonShareInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<IOwnershipStructureEditFormFactory>(new OwnershipStructureEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<IOwnershipSummaryInfoEditFormFactory>(new OwnershipSummaryInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
@@ -44,7 +45,8 @@ namespace BGU.DRPL.SignificantOwnership.UI.Modules
             cont.RegisterInstance<ICountryInfoEditFormFactory>(new CountryInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<ILegalPersonInfoEditFormFactory>(new LegalPersonInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<ILocationInfoEditFormFactory>(new LocationInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
-            cont.RegisterInstance<IPhysicalPersonInfoEditFormFactory>(new PhysicalPersonInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            //cont.RegisterInstance<IPhysicalPersonInfoEditFormFactory>(new PhysicalPersonInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IPhysicalPersonInfoEditFormFactory>(new PhysicalPersonInfoEditFormFactoryBasicEx(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<IRegistrarAuthorityEditFormFactory>(new RegistrarAuthorityEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
         }
     }

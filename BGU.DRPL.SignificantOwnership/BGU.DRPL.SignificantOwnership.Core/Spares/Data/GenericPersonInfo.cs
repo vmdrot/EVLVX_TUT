@@ -14,6 +14,21 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         public PhysicalPersonInfo PhysicalPerson { get; set; }
         public LegalPersonInfo LegalPerson { get; set; }
 
+        public GenericPersonInfo()
+        { }
+
+        public GenericPersonInfo(LegalPersonInfo lp)
+        {
+            this.PersonType = EntityType.Legal;
+            this.LegalPerson = lp;
+        }
+        
+        public GenericPersonInfo(PhysicalPersonInfo pp)
+        {
+            this.PersonType = EntityType.Physical;
+            this.PhysicalPerson = pp;
+        }
+
         [Browsable(false)]
         public GenericPersonID ID 
         { 
@@ -25,7 +40,20 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
                 return PersonType == EntityType.Physical ? PhysicalPerson.GenericID : LegalPerson.GenericID;
             } 
         }
-        
+
+
+        [Browsable(false)]
+        public LocationInfo Address
+        {
+            get
+            {
+                if (PersonType == EntityType.Legal && LegalPerson != null)
+                    return LegalPerson.Address;
+                if (PersonType == EntityType.Physical && PhysicalPerson != null)
+                    return PhysicalPerson.Address;
+                return null;
+            }
+        }
         public string DisplayName
         {
             get

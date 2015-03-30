@@ -95,9 +95,11 @@
     <Compile Include="Spares\Data\TotalOwnershipDetailsInfo.cs" />
     <Compile Include="Spares\Enums.cs" />
     <Compile Include="TypeEditors\CountryInfoLookupEditor.cs" />
+    <Compile Include="TypeEditors\GenericPersonInfoEditor.cs" />
     <Compile Include="TypeEditors\GenericTypeEditor.cs" />
     <Compile Include="TypeEditors\IDataSourcedForm.cs" />
     <Compile Include="TypeEditors\ITypeEditorForm.cs" />
+    <Compile Include="TypeEditors\RootQuestionnaireServices.cs" />
     <Compile Include="TypeEditors\TypeEditors.cs" />
     <Compile Include="TypeEditors\TypeEditorsDispatcher.cs" />
     <Compile Include="TypeEditors\TypeEditorsInterfaces.cs" />
@@ -106,6 +108,12 @@
   <ItemGroup>
     <Folder Include="TypeEditors\Interfaces\" />
     <Folder Include="TypeEditors\TypeConverters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BGU.DRPL.SignificantOwnership.Utility\BGU.DRPL.SignificantOwnership.Utility.csproj">
+      <Project>{E7FA3686-C797-43EA-890E-5F970A54D348}</Project>
+      <Name>BGU.DRPL.SignificantOwnership.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

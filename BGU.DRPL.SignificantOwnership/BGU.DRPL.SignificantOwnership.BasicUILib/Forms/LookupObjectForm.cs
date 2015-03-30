@@ -17,6 +17,7 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             InitializeComponent();
         }
 
+
         private void rbExisting_CheckedChanged(object sender, EventArgs e)
         {
             rbExistingNewCheckedChangedCommon();
@@ -38,20 +39,87 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             set 
             {
                 _listSource = value;
+                if (ListSource != null)
+                    BindCombo();
             }
         }
+
 
 
         public T DataSource
         {
             get
             {
-                throw new NotImplementedException();
+                if (rbExisting.Checked)
+                    return (T)cbxSelectExistingObj.SelectedValue;
+                if (rbNew.Checked)
+                    return (T)propGrid.SelectedObject;
+                return (T)(object)null;
             }
             set
             {
-                throw new NotImplementedException();
+                for(int i = 0; i < cbxSelectExistingObj.Items.Count; i++)
+                {
+                    if (this.Compare((T)cbxSelectExistingObj.Items[i], value))
+                    {
+                        cbxSelectExistingObj.SelectedIndex = i;
+                        break;
+                    }
+                }
+                propGrid.SelectedObject = value;                
             }
+        }
+
+        private bool Compare(T one, T two)
+        {
+            if (NeedToCompareObjects == null)
+                return false;
+            NeedToCompareTypesArgs<T> args = new NeedToCompareTypesArgs<T>(one, two);
+            NeedToCompareObjects(this, args);
+            return args.AreEqual;
+        }
+
+        public event NeedToCompareTypesHandler<T> NeedToCompareObjects;
+
+        private void LookupObjectForm_Load(object sender, EventArgs e)
+        {
+            if (ListSource != null && ListSource.Count() > 0)
+                rbExisting.Checked = true;
+            else
+                rbNew.Checked = true;
+        }
+
+        private void BindCombo()
+        {
+            cbxSelectExistingObj.DataSource = _listSource;
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+            Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+            Close();
+        }
+
+        private void cbxSelectExistingObj_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            propGrid.SelectedObject = cbxSelectExistingObj.SelectedItem;
+        }
+
+        private T InstantiateNewDataSource()
+        {
+            object o = Activator.CreateInstance(typeof(T));
+            return (T)o;
+        }
+
+        private void btnFillObject_Click(object sender, EventArgs e)
+        {
+            DataSource = InstantiateNewDataSource();
         }
     }
 }

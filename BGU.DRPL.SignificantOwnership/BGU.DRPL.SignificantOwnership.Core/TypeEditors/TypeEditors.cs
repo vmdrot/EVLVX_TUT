@@ -41,4 +41,16 @@ namespace BGU.DRPL.SignificantOwnership.Core.TypeEditors
     public class LocationInfo_Editor : GenericTypeEditor<LocationInfo> { private ILocationInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<ILocationInfoEditFormFactory>(); return _fact; } } }
     public class PhysicalPersonInfo_Editor : GenericTypeEditor<PhysicalPersonInfo> { private IPhysicalPersonInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IPhysicalPersonInfoEditFormFactory>(); return _fact; } } }
     public class RegistrarAuthority_Editor : GenericTypeEditor<RegistrarAuthority> { private IRegistrarAuthorityEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IRegistrarAuthorityEditFormFactory>(); return _fact; } } }
+    public class NeedToCompareTypesArgs<T> : EventArgs
+    {
+        public NeedToCompareTypesArgs(T one, T two)
+        {
+            One = one; Two = two;
+        }
+        public T One { get; private set; }
+        public T Two { get; private set; }
+        public bool AreEqual { get; set; }
+    }
+
+    public delegate void NeedToCompareTypesHandler<T>(object sender, NeedToCompareTypesArgs<T> args);
 }

@@ -31,17 +31,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.TypeEditors
             lb.SelectionMode = SelectionMode.One;
             lb.SelectedValueChanged += OnListBoxSelectedValueChanged;
 
-            // use the IBenchmark.Name property for list box display
             lb.DisplayMember = "DisplayName";
             lb.ValueMember = "CountryISONr";
-            // get the analytic object from context
-            // this is how we get the list of possible benchmarks
             CountryInfo selectedCountry = (CountryInfo)value;
             
             var countriesLst = CountryInfo.AllCountries.OrderBy(x => x.CountryNameUkr).ToList(); 
             foreach (CountryInfo c in countriesLst)
             {
-                // we store benchmarks objects directly in the listbox
                 int index = lb.Items.Add(c);
                 if (selectedCountry != null && selectedCountry.CountryISONr == c.CountryISONr)
                 {
@@ -59,7 +55,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.TypeEditors
 
         public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
         {
-            return UITypeEditorEditStyle.DropDown | UITypeEditorEditStyle.Modal;
+            return UITypeEditorEditStyle.DropDown;
         }
 
         private void OnListBoxSelectedValueChanged(object sender, EventArgs e)
