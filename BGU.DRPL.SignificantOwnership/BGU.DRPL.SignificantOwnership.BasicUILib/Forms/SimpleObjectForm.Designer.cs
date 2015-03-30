@@ -36,7 +36,15 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             this.statusBar = new System.Windows.Forms.StatusStrip();
             this.statusLbl = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnFillObject = new System.Windows.Forms.Button();
+            this.openFileDlg = new System.Windows.Forms.OpenFileDialog();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDgl = new System.Windows.Forms.SaveFileDialog();
             this.statusBar.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOK
@@ -72,6 +80,8 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             this.propGrid.PropertySort = System.Windows.Forms.PropertySort.NoSort;
             this.propGrid.Size = new System.Drawing.Size(385, 283);
             this.propGrid.TabIndex = 2;
+            this.propGrid.UseCompatibleTextRendering = true;
+            this.propGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.propGrid_PropertyValueChanged);
             // 
             // statusBar
             // 
@@ -99,6 +109,54 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             this.btnFillObject.UseVisualStyleBackColor = true;
             this.btnFillObject.Click += new System.EventHandler(this.btnFillObject_Click);
             // 
+            // openFileDlg
+            // 
+            this.openFileDlg.FileName = "openFileDialog1";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(389, 24);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Visible = false;
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.saveAsToolStripMenuItem});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(35, 20);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Text = "Sa&ve";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveAsToolStripMenuItem.Text = "Save &As...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Text = "&Open...";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
             // SimpleObjectForm
             // 
             this.AcceptButton = this.btnOK;
@@ -108,9 +166,11 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             this.ClientSize = new System.Drawing.Size(389, 336);
             this.Controls.Add(this.btnFillObject);
             this.Controls.Add(this.statusBar);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.propGrid);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "SimpleObjectForm";
             this.Text = "Simple object edit form";
             this.Load += new System.EventHandler(this.DummyForm_Load);
@@ -118,6 +178,8 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             this.Resize += new System.EventHandler(this.DummyForm_Resize);
             this.statusBar.ResumeLayout(false);
             this.statusBar.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,5 +193,12 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
         private StatusStrip statusBar;
         private ToolStripStatusLabel statusLbl;
         private Button btnFillObject;
+        private OpenFileDialog openFileDlg;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem fileToolStripMenuItem;
+        private ToolStripMenuItem openToolStripMenuItem;
+        private ToolStripMenuItem saveToolStripMenuItem;
+        private ToolStripMenuItem saveAsToolStripMenuItem;
+        private SaveFileDialog saveFileDgl;
     }
 }

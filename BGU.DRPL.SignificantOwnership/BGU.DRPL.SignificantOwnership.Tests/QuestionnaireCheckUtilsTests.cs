@@ -7,6 +7,8 @@ using BGU.DRPL.SignificantOwnership.EmpiricalData.Examples;
 using BGU.DRPL.SignificantOwnership.Core.Checks;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using Newtonsoft.Json;
+using BGU.DRPL.SignificantOwnership.Utility;
+using BGU.DRPL.SignificantOwnership.Core.Questionnaires;
 
 namespace BGU.DRPL.SignificantOwnership.Tests
 {
@@ -57,6 +59,14 @@ namespace BGU.DRPL.SignificantOwnership.Tests
             Console.WriteLine(checker.BuildUltimateOwnershipOnlyGraph(true));
         }
 
+        [Test]
+        public void BuildUltimateOwnershipOnlyGraphGrantBankFromFileTest()
+        {
+            GrantBank gb = new GrantBank();
+            Appx2OwnershipStructLPChecker checker = new Appx2OwnershipStructLPChecker();
+            checker.Questionnaire = Tools.ReadXML<Appx2OwnershipStructLP>(@"D:\home\vmdrot\HaErez\BGU\Var\SignificantOwnership\XMLs\Grant.Appx2OwnershipStructLP.xml");
+            Console.WriteLine(checker.BuildUltimateOwnershipOnlyGraph(true));
+        }
         
     }
 }

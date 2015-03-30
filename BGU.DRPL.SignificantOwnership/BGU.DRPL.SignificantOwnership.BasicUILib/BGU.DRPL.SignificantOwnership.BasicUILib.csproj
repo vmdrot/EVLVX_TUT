@@ -75,6 +75,10 @@
       <Project>{13FC3BB3-E57B-4796-A3A0-2038B681B8CB}</Project>
       <Name>BGU.DRPL.SignificantOwnership.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BGU.DRPL.SignificantOwnership.Utility\BGU.DRPL.SignificantOwnership.Utility.csproj">
+      <Project>{E7FA3686-C797-43EA-890E-5F970A54D348}</Project>
+      <Name>BGU.DRPL.SignificantOwnership.Utility</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\LookupObjectForm.resx">

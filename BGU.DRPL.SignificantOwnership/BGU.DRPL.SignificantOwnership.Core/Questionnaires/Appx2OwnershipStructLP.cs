@@ -104,6 +104,12 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
             get 
             {
                 Dictionary<string, GenericPersonInfo> rslt = new Dictionary<string, GenericPersonInfo>();
+                if (BankRef != null && BankRef.LegalPerson != null)
+                {
+                    GenericPersonInfo gpi = new GenericPersonInfo(BankRef.LegalPerson);
+                    rslt.Add(gpi.ID.HashID, gpi);
+                }
+
                 if (Acquiree != null)
                 {
                     GenericPersonInfo gpi = new GenericPersonInfo(Acquiree);
