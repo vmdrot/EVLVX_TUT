@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
+using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -13,7 +14,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         {
             Members = new List<CouncilMemberInfo>();
         }
+
+        [Description("Члени органу управління")]
         public List<CouncilMemberInfo> Members { get; set; }
+        [Description("№ п/п голови")]
         public int HeadMemberIndex { get; set; }
 
         public override string ToString()

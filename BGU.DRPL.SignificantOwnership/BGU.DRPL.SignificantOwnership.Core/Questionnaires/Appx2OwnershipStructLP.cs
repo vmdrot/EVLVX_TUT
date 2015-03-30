@@ -50,31 +50,35 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// p.1.5
         /// </summary>
         [Browsable(true)]
-        [Description("1.5. Голова та члени виконавчого органу юридичної особи")]
-        public CouncilBodyInfo Executives { get; set; }
-        [Browsable(true)]
         [Description("1.4. Чи існує виконавчий орган юридичної особи")]
         public bool IsExecutivesPresent { get; set; }
+        [Browsable(true)]
+        [Description("1.5. Голова та члени виконавчого органу юридичної особи")]
+        public CouncilBodyInfo Executives { get; set; }
         
         /// <summary>
         /// p.1.7
         /// </summary>
+        [Description("1.7. Відсоток участі в банку становить ... відсотків статутного капіталу банку")]
         public decimal TotalOwneshipPct { get; set; }
         
         /// <summary>
         /// 
         /// </summary>
+        [Description("1.7. Відсоток участі в банку становить, у т.ч.:")]
         public TotalOwnershipDetailsInfo TotalOwneshipDetails { get; set; } //todo - how many rows
 
         /// <summary>
         /// p.1.8
         /// </summary>
         //public List<CommonOwnershipInfo> BankExistingCommonImplicitOwners { get; set; }
+        [Description("1.8. Інформація про спільне володіння (=розкриття усього ланцюжка власників, у т.ч. й пов'язаних юросіб)")]
         public List<OwnershipStructure> BankExistingCommonImplicitOwners { get; set; }
 
         /// <summary>
         /// p.1.10
         /// </summary>
+        [Description("1.10. Інформація про набуття права голосу")]
         public List<PurchasedVoteInfo> SharesAppliedFor {get;set;}
 
 
@@ -82,14 +86,17 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// <summary>
         /// p.2.1
         /// </summary>
+        [Description("2.1. Інформація про фізичних осіб, які володіють істотною участю в юридичній особі\n(якщо не було розкрито у п.1.8.)")]
         public List<OwnershipStructure> ApplicantOwnershipStructure { get; set; }
 
+        [Description("Повна інформація про осіб, що згадуються в анкеті")]
         public List<GenericPersonInfo> MentionedIdentities { get; set; }
+        [Description("Відомості про пов'язаних осіб, що згадуються в анкеті")]
         public List<PersonsAssociation> PersonsLinks { get; set; }
-
+        [Description("Відомості по особу, що підписала анкету")]
         public SignatoryInfo Signatory { get; set; }
-        public PhysicalPersonInfo ContactPerson { get; set; }
-        public string ContactPhone { get; set; }
+        [Description("Контактні дані відправника анкети")]
+        public ContactInfo ContactPerson { get; set; }
 
         [Browsable(false)]
         public IEnumerable<GenericPersonInfo> MentionedGenericPersons
@@ -109,9 +116,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
                         rslt.Add(gpi.ID.HashID, gpi);
                 }
 
-                if (ContactPerson != null && !rslt.ContainsKey(ContactPerson.GenericID.HashID))
+                if (ContactPerson != null && ContactPerson.Person != null && !rslt.ContainsKey(ContactPerson.Person.GenericID.HashID))
                 {
-                    rslt.Add(ContactPerson.GenericID.HashID, new GenericPersonInfo(ContactPerson));
+                    rslt.Add(ContactPerson.Person.GenericID.HashID, new GenericPersonInfo(ContactPerson.Person));
                 }
                 return new List<GenericPersonInfo>(rslt.Values);
             } 

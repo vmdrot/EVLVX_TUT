@@ -131,6 +131,5 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
         private StatusStrip statusBar;
         private ToolStripStatusLabel statusLbl;
         private Button btnFillObject;
-
     }
 }

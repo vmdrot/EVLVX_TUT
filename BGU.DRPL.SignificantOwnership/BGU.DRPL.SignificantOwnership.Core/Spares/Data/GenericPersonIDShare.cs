@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.GenericPersonIDShare_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class GenericPersonIDShare
     {
+        [Description("Власник")]
         public GenericPersonID Person { get; set; }
+        [Description("Частка")]
         public decimal Share { get; set; }
         public override string ToString()
         {

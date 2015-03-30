@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
+using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -14,9 +15,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
             Phones = new List<PhoneInfo>();
             Emails = new List<string>();
         }
+        [Description("Контактна особа")]
         public PhysicalPersonInfo Person { get; set; }
+        [Description("Телефони")]
         public List<PhoneInfo> Phones { get; set; }
+        [Description("Факс")]
         public string Fax { get; set; }
+        [Description("E-mail-и")]
         public List<string> Emails { get; set; }
 
         public override string ToString()
