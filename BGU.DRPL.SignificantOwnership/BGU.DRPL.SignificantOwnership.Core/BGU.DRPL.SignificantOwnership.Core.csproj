@@ -67,8 +67,8 @@
     </Compile>
     <Compile Include="Questionnaires\RegLicAppx14NewSvc.cs" />
     <Compile Include="Questionnaires\Appx2OwnershipStructLP.cs" />
-    <Compile Include="Questionnaires\RegLicAppx4PhysPQuest.cs" />
-    <Compile Include="Questionnaires\RegLicAppx2LPQuest.cs" />
+    <Compile Include="Questionnaires\RegLicAppx4OwnershipAcqRequestPP.cs" />
+    <Compile Include="Questionnaires\RegLicAppx2OwnershipAcqRequestLP.cs" />
     <Compile Include="Questionnaires\RegLicAppx7ShareAcqIntent.cs" />
     <Compile Include="Questionnaires\IQuestionnaire.cs" />
     <Compile Include="Spares\Data\AttachmentInfo.cs" />
