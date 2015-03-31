@@ -65,12 +65,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PropertyNames.resx</DependentUpon>
     </Compile>
+    <Compile Include="Questionnaires\Appx3OwnershipStructPP.cs" />
+    <Compile Include="Questionnaires\RegLicAppx12HeadCandidateAppl.cs" />
     <Compile Include="Questionnaires\RegLicAppx14NewSvc.cs" />
     <Compile Include="Questionnaires\Appx2OwnershipStructLP.cs" />
+    <Compile Include="Questionnaires\RegLicAppx17EquityChangeTable.cs" />
+    <Compile Include="Questionnaires\RegLicAppx3MemberCandidateAppl.cs" />
     <Compile Include="Questionnaires\RegLicAppx4OwnershipAcqRequestPP.cs" />
     <Compile Include="Questionnaires\RegLicAppx2OwnershipAcqRequestLP.cs" />
+    <Compile Include="Questionnaires\RegLicAppx6EquityFormationTable.cs" />
     <Compile Include="Questionnaires\RegLicAppx7ShareAcqIntent.cs" />
     <Compile Include="Questionnaires\IQuestionnaire.cs" />
+    <Compile Include="Questionnaires\RegLicAppx9BankingLicenseAppl.cs" />
     <Compile Include="Spares\Data\AttachmentInfo.cs" />
     <Compile Include="Spares\Data\BankingLicensedActivityInfo.cs" />
     <Compile Include="Spares\Data\BankingLicenseInfo.cs" />

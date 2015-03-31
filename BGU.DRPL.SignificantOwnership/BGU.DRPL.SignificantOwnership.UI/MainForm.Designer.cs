@@ -34,8 +34,15 @@
             this.regLicAppx7ShareAcqIntentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.regLicAppx14NewSvcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.regLicAppx4PhysPQuestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regLicAppx12HeadCandidateApplToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regLicAppx3MemberCandidateApplToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regLicAppx17EquityChangeTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regLicAppx2OwnershipAcqRequestLPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regLicAppx6EquityFormationTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.regLicAppx9BankingLicenseApplToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ownershipStructToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.appx2LPproperToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.appx3OwnershipStructPPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +70,13 @@
             this.regLicToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.regLicAppx7ShareAcqIntentToolStripMenuItem,
             this.regLicAppx14NewSvcToolStripMenuItem,
-            this.regLicAppx4PhysPQuestToolStripMenuItem});
+            this.regLicAppx4PhysPQuestToolStripMenuItem,
+            this.regLicAppx12HeadCandidateApplToolStripMenuItem,
+            this.regLicAppx3MemberCandidateApplToolStripMenuItem,
+            this.regLicAppx17EquityChangeTableToolStripMenuItem,
+            this.regLicAppx2OwnershipAcqRequestLPToolStripMenuItem,
+            this.regLicAppx6EquityFormationTableToolStripMenuItem,
+            this.regLicAppx9BankingLicenseApplToolStripMenuItem});
             this.regLicToolStripMenuItem.Name = "regLicToolStripMenuItem";
             this.regLicToolStripMenuItem.Size = new System.Drawing.Size(442, 22);
             this.regLicToolStripMenuItem.Text = "Реєстрація та ліцензування банків, відкриття відокремлених підрозділів";
@@ -90,10 +103,53 @@
             this.regLicAppx4PhysPQuestToolStripMenuItem.Text = "АНКЕТА фізичної особи (Додаток 4)";
             this.regLicAppx4PhysPQuestToolStripMenuItem.Click += new System.EventHandler(this.regLicAppx4PhysPQuestToolStripMenuItem_Click);
             // 
+            // regLicAppx12HeadCandidateApplToolStripMenuItem
+            // 
+            this.regLicAppx12HeadCandidateApplToolStripMenuItem.Name = "regLicAppx12HeadCandidateApplToolStripMenuItem";
+            this.regLicAppx12HeadCandidateApplToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
+            this.regLicAppx12HeadCandidateApplToolStripMenuItem.Text = "АНКЕТА кандидатів на посади голови ...(Додаток 12)";
+            this.regLicAppx12HeadCandidateApplToolStripMenuItem.Click += new System.EventHandler(this.regLicAppx12HeadCandidateApplToolStripMenuItem_Click);
+            // 
+            // regLicAppx3MemberCandidateApplToolStripMenuItem
+            // 
+            this.regLicAppx3MemberCandidateApplToolStripMenuItem.Name = "regLicAppx3MemberCandidateApplToolStripMenuItem";
+            this.regLicAppx3MemberCandidateApplToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
+            this.regLicAppx3MemberCandidateApplToolStripMenuItem.Text = "АНКЕТА членів виконавчого органу ... (Додаток 3)";
+            this.regLicAppx3MemberCandidateApplToolStripMenuItem.Click += new System.EventHandler(this.regLicAppx3MemberCandidateApplToolStripMenuItem_Click);
+            // 
+            // regLicAppx17EquityChangeTableToolStripMenuItem
+            // 
+            this.regLicAppx17EquityChangeTableToolStripMenuItem.Name = "regLicAppx17EquityChangeTableToolStripMenuItem";
+            this.regLicAppx17EquityChangeTableToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
+            this.regLicAppx17EquityChangeTableToolStripMenuItem.Text = "ТАБЛИЦЯ збільшення (зменшення) статутного капіталу ... (Додаток 17)";
+            this.regLicAppx17EquityChangeTableToolStripMenuItem.Click += new System.EventHandler(this.regLicAppx17EquityChangeTableToolStripMenuItem_Click);
+            // 
+            // regLicAppx2OwnershipAcqRequestLPToolStripMenuItem
+            // 
+            this.regLicAppx2OwnershipAcqRequestLPToolStripMenuItem.Name = "regLicAppx2OwnershipAcqRequestLPToolStripMenuItem";
+            this.regLicAppx2OwnershipAcqRequestLPToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
+            this.regLicAppx2OwnershipAcqRequestLPToolStripMenuItem.Text = "АНКЕТА юридичної особи ... (Додаток 2)";
+            this.regLicAppx2OwnershipAcqRequestLPToolStripMenuItem.Click += new System.EventHandler(this.regLicAppx2OwnershipAcqRequestLPToolStripMenuItem_Click);
+            // 
+            // regLicAppx6EquityFormationTableToolStripMenuItem
+            // 
+            this.regLicAppx6EquityFormationTableToolStripMenuItem.Name = "regLicAppx6EquityFormationTableToolStripMenuItem";
+            this.regLicAppx6EquityFormationTableToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
+            this.regLicAppx6EquityFormationTableToolStripMenuItem.Text = "ТАБЛИЦЯ формування статутного капіталу (Додаток 6)";
+            this.regLicAppx6EquityFormationTableToolStripMenuItem.Click += new System.EventHandler(this.regLicAppx6EquityFormationTableToolStripMenuItem_Click);
+            // 
+            // regLicAppx9BankingLicenseApplToolStripMenuItem
+            // 
+            this.regLicAppx9BankingLicenseApplToolStripMenuItem.Name = "regLicAppx9BankingLicenseApplToolStripMenuItem";
+            this.regLicAppx9BankingLicenseApplToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
+            this.regLicAppx9BankingLicenseApplToolStripMenuItem.Text = "КЛОПОТАННЯ про надання банківської ліцензії (Додаток 9)";
+            this.regLicAppx9BankingLicenseApplToolStripMenuItem.Click += new System.EventHandler(this.regLicAppx9BankingLicenseApplToolStripMenuItem_Click);
+            // 
             // ownershipStructToolStripMenuItem
             // 
             this.ownershipStructToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.appx2LPproperToolStripMenuItem});
+            this.appx2LPproperToolStripMenuItem,
+            this.appx3OwnershipStructPPToolStripMenuItem});
             this.ownershipStructToolStripMenuItem.Name = "ownershipStructToolStripMenuItem";
             this.ownershipStructToolStripMenuItem.Size = new System.Drawing.Size(442, 22);
             this.ownershipStructToolStripMenuItem.Text = "Відомості про структуру власності";
@@ -104,6 +160,13 @@
             this.appx2LPproperToolStripMenuItem.Size = new System.Drawing.Size(373, 22);
             this.appx2LPproperToolStripMenuItem.Text = "АНКЕТА юридичної особи (у тому числі банку) (Додаток 2)";
             this.appx2LPproperToolStripMenuItem.Click += new System.EventHandler(this.appx2LPproperToolStripMenuItem_Click);
+            // 
+            // appx3OwnershipStructPPToolStripMenuItem
+            // 
+            this.appx3OwnershipStructPPToolStripMenuItem.Name = "appx3OwnershipStructPPToolStripMenuItem";
+            this.appx3OwnershipStructPPToolStripMenuItem.Size = new System.Drawing.Size(373, 22);
+            this.appx3OwnershipStructPPToolStripMenuItem.Text = "АНКЕТА фізичної особи (Додаток 3)";
+            this.appx3OwnershipStructPPToolStripMenuItem.Click += new System.EventHandler(this.appx3OwnershipStructPPToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -131,6 +194,13 @@
         private System.Windows.Forms.ToolStripMenuItem regLicAppx4PhysPQuestToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem regLicToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ownershipStructToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem regLicAppx12HeadCandidateApplToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem regLicAppx3MemberCandidateApplToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem regLicAppx17EquityChangeTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem regLicAppx2OwnershipAcqRequestLPToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem regLicAppx6EquityFormationTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem regLicAppx9BankingLicenseApplToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem appx3OwnershipStructPPToolStripMenuItem;
     }
 }
 
