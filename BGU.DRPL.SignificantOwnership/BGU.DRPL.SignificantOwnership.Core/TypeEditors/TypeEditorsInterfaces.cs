@@ -13,7 +13,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.TypeEditors
 
     public interface IAppx2OwnershipStructLPEditFormFactory : ITypeEditorFormFactoryBase { }
     public interface IRegLicAppx14NewSvcEditFormFactory : ITypeEditorFormFactoryBase { }
-    public interface IRegLicAppx2LPQuestEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface IRegLicAppx2OwnershipAcqRequestLPEditFormFactory : ITypeEditorFormFactoryBase { }
     public interface IRegLicAppx4PhysPQuestEditFormFactory : ITypeEditorFormFactoryBase { }
     public interface IRegLicAppx7ShareAcqIntentEditFormFactory : ITypeEditorFormFactoryBase { }
     public interface IAttachmentInfoEditFormFactory : ITypeEditorFormFactoryBase { }

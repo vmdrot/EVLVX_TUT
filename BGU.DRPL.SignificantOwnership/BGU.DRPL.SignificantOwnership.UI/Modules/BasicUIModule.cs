@@ -16,7 +16,7 @@ namespace BGU.DRPL.SignificantOwnership.UI.Modules
         {
             cont.RegisterInstance<IAppx2OwnershipStructLPEditFormFactory>(new Appx2OwnershipStructLPEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<IRegLicAppx14NewSvcEditFormFactory>(new RegLicAppx14NewSvcEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
-            cont.RegisterInstance<IRegLicAppx2LPQuestEditFormFactory>(new RegLicAppx2LPQuestEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IRegLicAppx2OwnershipAcqRequestLPEditFormFactory>(new RegLicAppx2OwnershipAcqRequestLPEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<IRegLicAppx4PhysPQuestEditFormFactory>(new RegLicAppx4PhysPQuestEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<IRegLicAppx7ShareAcqIntentEditFormFactory>(new RegLicAppx7ShareAcqIntentEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<IAttachmentInfoEditFormFactory>(new AttachmentInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());

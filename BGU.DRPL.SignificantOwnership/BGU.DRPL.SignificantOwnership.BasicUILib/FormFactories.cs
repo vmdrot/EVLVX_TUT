@@ -12,7 +12,7 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib
 {
     public class Appx2OwnershipStructLPEditFormFactoryBasic : IAppx2OwnershipStructLPEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<Appx2OwnershipStructLP>(); } }
     public class RegLicAppx14NewSvcEditFormFactoryBasic : IRegLicAppx14NewSvcEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<RegLicAppx14NewSvc>(); } }
-    public class RegLicAppx2LPQuestEditFormFactoryBasic : IRegLicAppx2LPQuestEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<RegLicAppx2LPQuest>(); } }
+    public class RegLicAppx2OwnershipAcqRequestLPEditFormFactoryBasic : IRegLicAppx2OwnershipAcqRequestLPEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<RegLicAppx2OwnershipAcqRequestLP>(); } }
     public class RegLicAppx4PhysPQuestEditFormFactoryBasic : IRegLicAppx4PhysPQuestEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<RegLicAppx4PhysPQuest>(); } }
     public class RegLicAppx7ShareAcqIntentEditFormFactoryBasic : IRegLicAppx7ShareAcqIntentEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<RegLicAppx7ShareAcqIntent>(); } }
     public class AttachmentInfoEditFormFactoryBasic : IAttachmentInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<AttachmentInfo>(); } }

@@ -98,5 +98,40 @@ namespace BGU.DRPL.SignificantOwnership.UI
         {
             ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.RegLicAppx4PhysPQuest>(regLicAppx4PhysPQuestToolStripMenuItem, new RegLicAppx4PhysPQuest());
         }
+
+        private void regLicAppx12HeadCandidateApplToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.RegLicAppx12HeadCandidateAppl>(regLicAppx12HeadCandidateApplToolStripMenuItem, new RegLicAppx12HeadCandidateAppl());
+        }
+
+        private void regLicAppx3MemberCandidateApplToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.RegLicAppx3MemberCandidateAppl>(regLicAppx3MemberCandidateApplToolStripMenuItem, new RegLicAppx3MemberCandidateAppl());
+        }
+
+        private void regLicAppx17EquityChangeTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.RegLicAppx17EquityChangeTable>(regLicAppx17EquityChangeTableToolStripMenuItem, new RegLicAppx17EquityChangeTable());
+        }
+
+        private void regLicAppx2OwnershipAcqRequestLPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.RegLicAppx2OwnershipAcqRequestLP>(regLicAppx2OwnershipAcqRequestLPToolStripMenuItem, new RegLicAppx2OwnershipAcqRequestLP());
+        }
+
+        private void regLicAppx6EquityFormationTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.RegLicAppx6EquityFormationTable>(regLicAppx6EquityFormationTableToolStripMenuItem, new RegLicAppx6EquityFormationTable());
+        }
+
+        private void regLicAppx9BankingLicenseApplToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.RegLicAppx9BankingLicenseAppl>(regLicAppx9BankingLicenseApplToolStripMenuItem, new RegLicAppx9BankingLicenseAppl());
+        }
+
+        private void appx3OwnershipStructPPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.Appx3OwnershipStructPP>(appx3OwnershipStructPPToolStripMenuItem, new Appx3OwnershipStructPP());
+        }
     }
 }
