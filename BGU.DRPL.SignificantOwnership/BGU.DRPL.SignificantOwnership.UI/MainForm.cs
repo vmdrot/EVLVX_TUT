@@ -96,7 +96,7 @@ namespace BGU.DRPL.SignificantOwnership.UI
 
         private void regLicAppx4PhysPQuestToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.RegLicAppx4PhysPQuest>(regLicAppx4PhysPQuestToolStripMenuItem, new RegLicAppx4PhysPQuest());
+            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.RegLicAppx4OwnershipAcqRequestPP>(regLicAppx4PhysPQuestToolStripMenuItem, new RegLicAppx4OwnershipAcqRequestPP());
         }
 
         private void regLicAppx12HeadCandidateApplToolStripMenuItem_Click(object sender, EventArgs e)
