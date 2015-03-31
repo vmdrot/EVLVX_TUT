@@ -28,6 +28,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// Bank name
         /// </summary>
         [Description("Банк")]
+        [DisplayName("Банк")]
         public BankInfo BankRef { get; set; }
         
         /// <summary>
