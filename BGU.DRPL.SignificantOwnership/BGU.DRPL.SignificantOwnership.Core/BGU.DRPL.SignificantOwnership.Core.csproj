@@ -66,6 +66,7 @@
       <DependentUpon>PropertyNames.resx</DependentUpon>
     </Compile>
     <Compile Include="Questionnaires\Appx3OwnershipStructPP.cs" />
+    <Compile Include="Spares\Data\LiquidatedEntityOwnershipInfo.cs" />
     <Compile Include="Spares\Data\BreachOfLawRecordInfo.cs" />
     <Compile Include="Spares\Data\CriminalLiabilityRecordInfo.cs" />
     <Compile Include="Spares\Data\EducationRecordInfo.cs" />
@@ -93,6 +94,8 @@
     <Compile Include="Spares\Data\GenericPersonIDShare.cs" />
     <Compile Include="Spares\Data\GenericPersonInfo.cs" />
     <Compile Include="Spares\Data\EmploymentRecordInfo.cs" />
+    <Compile Include="Spares\Data\IndebtnessInfo.cs" />
+    <Compile Include="Spares\Data\IndebtnessInfoBase.cs" />
     <Compile Include="Spares\Data\LegalPersonShareInfo.cs" />
     <Compile Include="Spares\Data\LoanInfo.cs" />
     <Compile Include="Spares\Data\OwnershipStructure.cs" />

@@ -5,7 +5,7 @@ using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using System.ComponentModel;
 
-namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
+namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.TotalOwnershipDetailsInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class TotalOwnershipDetailsInfo

@@ -8,6 +8,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
     public class ProfessionLicenseInfo
     {
+        public ProfessionLicenseInfo()
+        {
+            this.LicenseQualifications = new List<string>();
+        }
+
         public ProfessionLicensingBodyInfo LicenseIssuer { get; set; }
         public DateTime LicenseIssueDate { get; set; }
         public DateTime LicenseValidTill { get; set; }

@@ -6,12 +6,16 @@ using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
+    /// <summary>
+    /// https://osvita.net/ua/checkdoc/
+    /// </summary>
     public class EducationRecordInfo
     {
         public UniversityOrCollegeInfo UniOrCollege { get; set; }
         public DateTime GraduationDate { get; set; }
         public HigherEducationDegreeType DegreeType { get; set; }
         public DegreeHonourType HonourType { get; set; }
+        public string DegreeSeries { get; set; }
         public string DegreeID { get; set; }
         public string Trade { get; set; }
         public string Qualification { get; set; }
