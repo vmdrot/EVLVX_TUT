@@ -29,6 +29,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         [Description("Відомості про юрособу-банк")]
         public LegalPersonInfo LegalPerson { get; set; }
 
+        public string SWIFTBIC { get; set; }
+
+        public CountryInfo OperationCountry { get; set; }
+
         public BankInfo() { }
         public BankInfo(LegalPersonInfo le)
         {

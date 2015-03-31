@@ -30,4 +30,109 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
         Male,
         Female
     }
+
+    [Flags]
+    public enum EmploymentState
+    {
+        None = 0,
+        Employed,
+        Selfemployed,
+        Freelance,
+        Unemployed
+    }
+
+    [Flags]
+    public enum EmploymentTerminationType
+    {
+        None = 0,
+        PromotedOrRelocated,
+        VoluntaryQuit,
+        Dismissed,
+        Retired,
+        MaternityLeave,
+        MilitaryServiceLeave,
+        HealthConditionLeave
+    }
+
+    [Flags]
+    public enum HigherEducationDegreeType
+    {
+        None = 0,
+        Bachelor,
+        Master,
+        CandidateDoctor,
+        PhD,
+        DoctorOfSciences,
+        DoctorOfLetters,
+        Professor
+
+    }
+
+    [Flags]
+    public enum DegreeHonourType
+    {
+        None = 0,
+        Rite,
+        CumLaude,
+        Honoured,
+        MagnaCumLaude,
+        SummaCumLaude,
+        EgregiaCumLaude,
+        MaximaCumLaude
+    }
+
+    [Flags]
+    public enum FundsOriginType
+    {
+        None = 0,
+        WagesSalaries,
+        Royalties,
+        Dividends,
+        PassiveIncomes,
+        Inherited,
+        OtherIncomes
+    }
+
+    [Flags]
+    public enum PaymentType
+    {
+        None = 0,
+        Cash,
+        WireTransfer,
+        Other
+    }
+
+    [Flags]
+    public enum FinancialGuarantorRoleType
+    {
+        None = 0,
+        Guarantor,
+        Pledger,
+        Attorney
+    }
+
+    [Flags]
+    public enum BreachOfLawType
+    {
+        None = 0,
+        Criminal,
+        Antitrust,
+        Taxation,
+        Banking,
+        Financial,
+        ForeignCurrency,
+        StockExchange,
+        OtherAdministrative
+    }
+
+    [Flags]
+    public enum SentenceType
+    {
+        None = 0,
+        Jailed,
+        Fined,
+        Dismissed,
+        LicenseRevoked,
+        LicenseSuspended
+    }
 }

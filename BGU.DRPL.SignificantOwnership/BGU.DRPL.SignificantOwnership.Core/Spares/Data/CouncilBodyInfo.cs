@@ -15,11 +15,12 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
             Members = new List<CouncilMemberInfo>();
         }
 
+        public GenericPersonID GovernedEntityID { get; set; }
         [Description("Члени органу управління")]
         public List<CouncilMemberInfo> Members { get; set; }
         [Description("№ п/п голови")]
-        public int HeadMemberIndex { get; set; }
-
+        public GenericPersonID HeadMember { get; set; }
+        public string CouncilBodyName { get; set; }
         public override string ToString()
         {
             int membersCnt = Members != null ? Members.Count : 0;

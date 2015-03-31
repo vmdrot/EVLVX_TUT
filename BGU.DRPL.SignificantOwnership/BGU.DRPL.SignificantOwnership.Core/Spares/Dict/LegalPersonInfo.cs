@@ -30,6 +30,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         public PhysicalPersonInfo RepresentedBy { get; set; }
         [Description("Статутний фонд/капітал")]
         public CurrencyAmount Equity { get; set; }
+        [DisplayName("Основний вид діяльності")]
+        [Description("Основний(-і) вид(-и) діяльності юрособи")]
+        public string PrincipalActivities { get; set; }
         [Browsable(false)]
         public GenericPersonID GenericID { get { return new GenericPersonID() { CountryISO3Code = ResidenceCountry.CountryISONr, PersonCode = TaxCodeOrHandelsRegNr, PersonType = EntityType.Legal }; } }
 
