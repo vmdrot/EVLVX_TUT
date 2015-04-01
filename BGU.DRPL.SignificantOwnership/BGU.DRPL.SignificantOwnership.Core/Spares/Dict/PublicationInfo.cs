@@ -5,6 +5,7 @@ using System.Text;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
+    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.PublicationInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class PublicationInfo
     {
         public PublishingHouseInfo Publisher { get; set; }
