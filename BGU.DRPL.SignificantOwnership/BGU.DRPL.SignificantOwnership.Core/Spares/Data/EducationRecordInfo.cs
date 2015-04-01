@@ -9,6 +9,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     /// <summary>
     /// https://osvita.net/ua/checkdoc/
     /// </summary>
+    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EducationRecordInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class EducationRecordInfo
     {
         public UniversityOrCollegeInfo UniOrCollege { get; set; }

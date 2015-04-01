@@ -9,6 +9,9 @@ using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 
 namespace BGU.DRPL.SignificantOwnership.Core.TypeEditors
 {
+    #region The editors
+    // p.I
+
     public class Appx2OwnershipStructLP_Editor : GenericTypeEditor<Appx2OwnershipStructLP> { private IAppx2OwnershipStructLPEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IAppx2OwnershipStructLPEditFormFactory>(); return _fact; } } }
     public class RegLicAppx14NewSvc_Editor : GenericTypeEditor<RegLicAppx14NewSvc> { private IRegLicAppx14NewSvcEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IRegLicAppx14NewSvcEditFormFactory>(); return _fact; } } }
     public class RegLicAppx2OwnershipAcqRequestLP_Editor : GenericTypeEditor<RegLicAppx2OwnershipAcqRequestLP> { private IRegLicAppx2OwnershipAcqRequestLPEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IRegLicAppx2OwnershipAcqRequestLPEditFormFactory>(); return _fact; } } }
@@ -41,6 +44,33 @@ namespace BGU.DRPL.SignificantOwnership.Core.TypeEditors
     public class LocationInfo_Editor : GenericTypeEditor<LocationInfo> { private ILocationInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<ILocationInfoEditFormFactory>(); return _fact; } } }
     public class PhysicalPersonInfo_Editor : GenericTypeEditor<PhysicalPersonInfo> { private IPhysicalPersonInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IPhysicalPersonInfoEditFormFactory>(); return _fact; } } }
     public class RegistrarAuthority_Editor : GenericTypeEditor<RegistrarAuthority> { private IRegistrarAuthorityEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IRegistrarAuthorityEditFormFactory>(); return _fact; } } }
+    
+    //p.II
+
+    public class BreachOfLawRecordInfo_Editor : GenericTypeEditor<BreachOfLawRecordInfo> { private IBreachOfLawRecordInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IBreachOfLawRecordInfoEditFormFactory>(); return _fact; } } }
+    public class EducationRecordInfo_Editor : GenericTypeEditor<EducationRecordInfo> { private IEducationRecordInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IEducationRecordInfoEditFormFactory>(); return _fact; } } }
+    public class EmploymentRecordInfo_Editor : GenericTypeEditor<EmploymentRecordInfo> { private IEmploymentRecordInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IEmploymentRecordInfoEditFormFactory>(); return _fact; } } }
+    public class FinancialGuaranteeInfo_Editor : GenericTypeEditor<FinancialGuaranteeInfo> { private IFinancialGuaranteeInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IFinancialGuaranteeInfoEditFormFactory>(); return _fact; } } }
+    public class IncomeOriginInfo_Editor : GenericTypeEditor<IncomeOriginInfo> { private IIncomeOriginInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IIncomeOriginInfoEditFormFactory>(); return _fact; } } }
+    public class IndebtnessInfo_Editor : GenericTypeEditor<IndebtnessInfo> { private IIndebtnessInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IIndebtnessInfoEditFormFactory>(); return _fact; } } }
+    public class IndebtnessInfoBase_Editor : GenericTypeEditor<IndebtnessInfoBase> { private IIndebtnessInfoBaseEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IIndebtnessInfoBaseEditFormFactory>(); return _fact; } } }
+    public class LiquidatedEntityOwnershipInfo_Editor : GenericTypeEditor<LiquidatedEntityOwnershipInfo> { private ILiquidatedEntityOwnershipInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<ILiquidatedEntityOwnershipInfoEditFormFactory>(); return _fact; } } }
+    public class LoanInfo_Editor : GenericTypeEditor<LoanInfo> { private ILoanInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<ILoanInfoEditFormFactory>(); return _fact; } } }
+    public class PaymentDeadlineInfo_Editor : GenericTypeEditor<PaymentDeadlineInfo> { private IPaymentDeadlineInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IPaymentDeadlineInfoEditFormFactory>(); return _fact; } } }
+    public class PaymentModeInfo_Editor : GenericTypeEditor<PaymentModeInfo> { private IPaymentModeInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IPaymentModeInfoEditFormFactory>(); return _fact; } } }
+    public class ProfessionLicenseInfo_Editor : GenericTypeEditor<ProfessionLicenseInfo> { private IProfessionLicenseInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IProfessionLicenseInfoEditFormFactory>(); return _fact; } } }
+    public class SharesAcquisitionInfo_Editor : GenericTypeEditor<SharesAcquisitionInfo> { private ISharesAcquisitionInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<ISharesAcquisitionInfoEditFormFactory>(); return _fact; } } }
+    public class BankAccountInfo_Editor : GenericTypeEditor<BankAccountInfo> { private IBankAccountInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IBankAccountInfoEditFormFactory>(); return _fact; } } }
+    public class ProfessionLicensingBodyInfo_Editor : GenericTypeEditor<ProfessionLicensingBodyInfo> { private IProfessionLicensingBodyInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IProfessionLicensingBodyInfoEditFormFactory>(); return _fact; } } }
+    public class PublicationInfo_Editor : GenericTypeEditor<PublicationInfo> { private IPublicationInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IPublicationInfoEditFormFactory>(); return _fact; } } }
+    public class PublishingHouseInfo_Editor : GenericTypeEditor<PublishingHouseInfo> { private IPublishingHouseInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IPublishingHouseInfoEditFormFactory>(); return _fact; } } }
+    public class UniversityOrCollegeInfo_Editor : GenericTypeEditor<UniversityOrCollegeInfo> { private IUniversityOrCollegeInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IUniversityOrCollegeInfoEditFormFactory>(); return _fact; } } }
+    public class FinancialOversightAuthorityInfo_Editor : GenericTypeEditor<FinancialOversightAuthorityInfo> { private IFinancialOversightAuthorityInfoEditFormFactory _fact; protected override ITypeEditorFormFactoryBase TypeEditorFormFactory { get { if (_fact == null) _fact = TypeEditorsDispatcher.Container.Resolve<IFinancialOversightAuthorityInfoEditFormFactory>(); return _fact; } } }
+
+
+    #endregion
+
+    #region other related type(s)
     public class NeedToCompareTypesArgs<T> : EventArgs
     {
         public NeedToCompareTypesArgs(T one, T two)
@@ -53,4 +83,5 @@ namespace BGU.DRPL.SignificantOwnership.Core.TypeEditors
     }
 
     public delegate void NeedToCompareTypesHandler<T>(object sender, NeedToCompareTypesArgs<T> args);
+    #endregion
 }

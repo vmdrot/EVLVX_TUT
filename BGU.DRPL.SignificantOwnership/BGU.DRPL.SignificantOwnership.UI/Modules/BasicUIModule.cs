@@ -14,6 +14,8 @@ namespace BGU.DRPL.SignificantOwnership.UI.Modules
     {
         public void Initialize(IUnityContainer cont)
         {
+            //p.I
+
             cont.RegisterInstance<IAppx2OwnershipStructLPEditFormFactory>(new Appx2OwnershipStructLPEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<IRegLicAppx14NewSvcEditFormFactory>(new RegLicAppx14NewSvcEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<IRegLicAppx2OwnershipAcqRequestLPEditFormFactory>(new RegLicAppx2OwnershipAcqRequestLPEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
@@ -48,6 +50,26 @@ namespace BGU.DRPL.SignificantOwnership.UI.Modules
             //cont.RegisterInstance<IPhysicalPersonInfoEditFormFactory>(new PhysicalPersonInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<IPhysicalPersonInfoEditFormFactory>(new PhysicalPersonInfoEditFormFactoryBasicEx(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<IRegistrarAuthorityEditFormFactory>(new RegistrarAuthorityEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+
+            //p.II
+            cont.RegisterInstance<IBreachOfLawRecordInfoEditFormFactory>(new BreachOfLawRecordInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IEducationRecordInfoEditFormFactory>(new EducationRecordInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IEmploymentRecordInfoEditFormFactory>(new EmploymentRecordInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IFinancialGuaranteeInfoEditFormFactory>(new FinancialGuaranteeInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IIncomeOriginInfoEditFormFactory>(new IncomeOriginInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IIndebtnessInfoEditFormFactory>(new IndebtnessInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IIndebtnessInfoBaseEditFormFactory>(new IndebtnessInfoBaseEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<ILiquidatedEntityOwnershipInfoEditFormFactory>(new LiquidatedEntityOwnershipInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<ILoanInfoEditFormFactory>(new LoanInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IPaymentDeadlineInfoEditFormFactory>(new PaymentDeadlineInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IPaymentModeInfoEditFormFactory>(new PaymentModeInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IProfessionLicenseInfoEditFormFactory>(new ProfessionLicenseInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<ISharesAcquisitionInfoEditFormFactory>(new SharesAcquisitionInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IBankAccountInfoEditFormFactory>(new BankAccountInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IProfessionLicensingBodyInfoEditFormFactory>(new ProfessionLicensingBodyInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IPublicationInfoEditFormFactory>(new PublicationInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IPublishingHouseInfoEditFormFactory>(new PublishingHouseInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IUniversityOrCollegeInfoEditFormFactory>(new UniversityOrCollegeInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
         }
     }
 }

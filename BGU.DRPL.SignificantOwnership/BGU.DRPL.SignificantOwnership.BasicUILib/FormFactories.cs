@@ -10,6 +10,9 @@ using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 
 namespace BGU.DRPL.SignificantOwnership.BasicUILib
 {
+
+    //p.I
+    
     public class Appx2OwnershipStructLPEditFormFactoryBasic : IAppx2OwnershipStructLPEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<Appx2OwnershipStructLP>(); } }
     public class RegLicAppx14NewSvcEditFormFactoryBasic : IRegLicAppx14NewSvcEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<RegLicAppx14NewSvc>(); } }
     public class RegLicAppx2OwnershipAcqRequestLPEditFormFactoryBasic : IRegLicAppx2OwnershipAcqRequestLPEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<RegLicAppx2OwnershipAcqRequestLP>(); } }
@@ -117,5 +120,27 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib
     }
 
     public class RegistrarAuthorityEditFormFactoryBasic : IRegistrarAuthorityEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<RegistrarAuthority>(); } }
+
+    //p.II
+    public class BreachOfLawRecordInfoEditFormFactoryBasic : IBreachOfLawRecordInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<BreachOfLawRecordInfo>(); } }
+    public class EducationRecordInfoEditFormFactoryBasic : IEducationRecordInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<EducationRecordInfo>(); } }
+    public class EmploymentRecordInfoEditFormFactoryBasic : IEmploymentRecordInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<EmploymentRecordInfo>(); } }
+    public class FinancialGuaranteeInfoEditFormFactoryBasic : IFinancialGuaranteeInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<FinancialGuaranteeInfo>(); } }
+    public class IncomeOriginInfoEditFormFactoryBasic : IIncomeOriginInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<IncomeOriginInfo>(); } }
+    public class IndebtnessInfoEditFormFactoryBasic : IIndebtnessInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<IndebtnessInfo>(); } }
+    public class IndebtnessInfoBaseEditFormFactoryBasic : IIndebtnessInfoBaseEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<IndebtnessInfoBase>(); } }
+    public class LiquidatedEntityOwnershipInfoEditFormFactoryBasic : ILiquidatedEntityOwnershipInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<LiquidatedEntityOwnershipInfo>(); } }
+    public class LoanInfoEditFormFactoryBasic : ILoanInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<LoanInfo>(); } }
+    public class PaymentDeadlineInfoEditFormFactoryBasic : IPaymentDeadlineInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<PaymentDeadlineInfo>(); } }
+    public class PaymentModeInfoEditFormFactoryBasic : IPaymentModeInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<PaymentModeInfo>(); } }
+    public class ProfessionLicenseInfoEditFormFactoryBasic : IProfessionLicenseInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<ProfessionLicenseInfo>(); } }
+    public class SharesAcquisitionInfoEditFormFactoryBasic : ISharesAcquisitionInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<SharesAcquisitionInfo>(); } }
+    public class BankAccountInfoEditFormFactoryBasic : IBankAccountInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<BankAccountInfo>(); } }
+    public class ProfessionLicensingBodyInfoEditFormFactoryBasic : IProfessionLicensingBodyInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<ProfessionLicensingBodyInfo>(); } }
+    public class PublicationInfoEditFormFactoryBasic : IPublicationInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<PublicationInfo>(); } }
+    public class PublishingHouseInfoEditFormFactoryBasic : IPublishingHouseInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<PublishingHouseInfo>(); } }
+    public class UniversityOrCollegeInfoEditFormFactoryBasic : IUniversityOrCollegeInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<UniversityOrCollegeInfo>(); } }
+    public class FinancialOversightAuthorityInfoEditFormFactoryBasic : IFinancialOversightAuthorityInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<FinancialOversightAuthorityInfo>(); } }
+
 }
 

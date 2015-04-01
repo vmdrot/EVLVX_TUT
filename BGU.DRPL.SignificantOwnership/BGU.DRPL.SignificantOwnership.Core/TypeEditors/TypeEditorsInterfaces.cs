@@ -11,6 +11,8 @@ namespace BGU.DRPL.SignificantOwnership.Core.TypeEditors
         System.Windows.Forms.Form SpawnInstance();
     }
 
+    //p.I
+
     public interface IAppx2OwnershipStructLPEditFormFactory : ITypeEditorFormFactoryBase { }
     public interface IRegLicAppx14NewSvcEditFormFactory : ITypeEditorFormFactoryBase { }
     public interface IRegLicAppx2OwnershipAcqRequestLPEditFormFactory : ITypeEditorFormFactoryBase { }
@@ -43,4 +45,27 @@ namespace BGU.DRPL.SignificantOwnership.Core.TypeEditors
     public interface ILocationInfoEditFormFactory : ITypeEditorFormFactoryBase { }
     public interface IPhysicalPersonInfoEditFormFactory : ITypeEditorFormFactoryBase { }
     public interface IRegistrarAuthorityEditFormFactory : ITypeEditorFormFactoryBase { }
+
+    //p.II
+
+    public interface IBreachOfLawRecordInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface IEducationRecordInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface IEmploymentRecordInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface IFinancialGuaranteeInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface IIncomeOriginInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface IIndebtnessInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface IIndebtnessInfoBaseEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface ILiquidatedEntityOwnershipInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface ILoanInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface IPaymentDeadlineInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface IPaymentModeInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface IProfessionLicenseInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface ISharesAcquisitionInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface IBankAccountInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface IProfessionLicensingBodyInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface IPublicationInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface IPublishingHouseInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface IUniversityOrCollegeInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+    public interface IFinancialOversightAuthorityInfoEditFormFactory : ITypeEditorFormFactoryBase { }
+
 }

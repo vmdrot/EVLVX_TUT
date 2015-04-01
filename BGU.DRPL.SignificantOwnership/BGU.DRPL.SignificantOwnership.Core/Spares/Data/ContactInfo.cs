@@ -23,6 +23,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         public string Fax { get; set; }
         [Description("E-mail-и")]
         public List<string> Emails { get; set; }
+        [DisplayName("www")]
+        [Description("Веб-сайт")]
+        public Uri wwww { get; set; }
 
         public override string ToString()
         {
