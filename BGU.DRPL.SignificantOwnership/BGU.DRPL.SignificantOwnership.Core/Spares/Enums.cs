@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares
 {
@@ -9,17 +10,24 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     public enum  EntityType
     {
         None = 0,
+        [Description("Фізична особа")]
         Physical,
+        [Description("Юридична особа")]
         Legal
     }
 
     public enum OwnershipType
     {
         None = 0,
+        [Description("Пряма власність")]
         Direct,
+        [Description("Опосередкована власність")]
         Implicit,
+        [Description("Власність через пов'язану особу")]
         Associated,
+        [Description("Власність через угоду/договір")]
         Agreement,
+        [Description("Власність по довіреності")]
         Attorney
     }
 
@@ -27,7 +35,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     public enum SexType
     {
         None = 0,
+        [Description("Чол.")]
         Male,
+        [Description("Жін.")]
         Female
     }
 
@@ -35,9 +45,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     public enum EmploymentState
     {
         None = 0,
+        [Description("Найманий працівник")]
         Employed,
+        [Description("Самозайнятість")]
         Selfemployed,
+        [Description("Фрілансер")]
         Freelance,
+        [Description("Безробітний")]
         Unemployed
     }
 

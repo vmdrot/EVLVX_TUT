@@ -81,11 +81,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         public PublicationInfo IssuePublication { get; set; }
 
         [DisplayName("Чи є андеррайтер")]
-        [Description("")]
+        [Description("2.2. Андеррайтер ...")]
         public bool IsUnderwritten { get; set; }
 
         [DisplayName("Андеррайтер")]
-        [Description("2.2. Андеррайтер (якщо є)")]
+        [Description("2.2. Андеррайтер (якщо є) - реквізити")]
         public GenericPersonID Underwriter { get; set; }
 
         [DisplayName("Наявна участь у банку")]
