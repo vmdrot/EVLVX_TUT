@@ -11,6 +11,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     public class BreachOfLawRecordInfo
     {
         [DisplayName("Тип правопорушення")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public BreachOfLawType BreachType { get; set; }
         [DisplayName("Суд")]
         public string CourtName { get; set; }
@@ -23,6 +24,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         [DisplayName("Стаття(-і)")]
         public string Articles { get; set; }
         [DisplayName("Тип вироку")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public SentenceType Sentence { get; set; }
         [DisplayName("Інші санкції")]
         public string OtherSanctionDetails { get; set; }

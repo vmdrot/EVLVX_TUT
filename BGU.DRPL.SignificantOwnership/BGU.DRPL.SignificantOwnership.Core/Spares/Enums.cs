@@ -6,19 +6,21 @@ using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares
 {
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     [Flags]
     public enum  EntityType
     {
-        None = 0,
+        [Description("Не вказано")]None = 0,
         [Description("Фізична особа")]
         Physical,
         [Description("Юридична особа")]
         Legal
     }
 
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     public enum OwnershipType
     {
-        None = 0,
+        [Description("Не вказано")]None = 0,
         [Description("Пряма власність")]
         Direct,
         [Description("Опосередкована власність")]
@@ -32,9 +34,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     }
 
     [Flags]
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     public enum SexType
     {
-        None = 0,
+        [Description("Не вказано")]None = 0,
         [Description("Чол.")]
         Male,
         [Description("Жін.")]
@@ -42,9 +45,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     }
 
     [Flags]
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     public enum EmploymentState
     {
-        None = 0,
+        [Description("Не вказано")]None = 0,
         [Description("Найманий працівник")]
         Employed,
         [Description("Самозайнятість")]
@@ -56,9 +60,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     }
 
     [Flags]
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     public enum EmploymentTerminationType
     {
-        None = 0,
+        [Description("Не вказано")]None = 0,
         PromotedOrRelocated,
         VoluntaryQuit,
         Dismissed,
@@ -69,9 +74,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     }
 
     [Flags]
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     public enum HigherEducationDegreeType
     {
-        None = 0,
+        [Description("Не вказано")]None = 0,
         Bachelor,
         Master,
         CandidateDoctor,
@@ -83,9 +89,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     }
 
     [Flags]
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     public enum DegreeHonourType
     {
-        None = 0,
+        [Description("Не вказано")]None = 0,
         Rite,
         CumLaude,
         Honoured,
@@ -96,9 +103,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     }
 
     [Flags]
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     public enum FundsOriginType
     {
-        None = 0,
+        [Description("Не вказано")]None = 0,
         WagesSalaries,
         Royalties,
         Dividends,
@@ -108,27 +116,30 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     }
 
     [Flags]
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     public enum PaymentType
     {
-        None = 0,
+        [Description("Не вказано")]None = 0,
         Cash,
         WireTransfer,
         Other
     }
 
     [Flags]
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     public enum FinancialGuarantorRoleType
     {
-        None = 0,
+        [Description("Не вказано")]None = 0,
         Guarantor,
         Pledger,
         Attorney
     }
 
     [Flags]
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     public enum BreachOfLawType
     {
-        None = 0,
+        [Description("Не вказано")]None = 0,
         Criminal,
         Antitrust,
         Taxation,
@@ -140,9 +151,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     }
 
     [Flags]
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     public enum SentenceType
     {
-        None = 0,
+        [Description("Не вказано")]None = 0,
         Jailed,
         Fined,
         Dismissed,

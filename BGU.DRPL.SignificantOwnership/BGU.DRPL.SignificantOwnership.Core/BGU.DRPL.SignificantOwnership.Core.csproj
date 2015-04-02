@@ -126,6 +126,7 @@
     <Compile Include="Spares\Dict\UniversityOrCollegeInfo.cs" />
     <Compile Include="Spares\Enums.cs" />
     <Compile Include="TypeEditors\CountryInfoLookupEditor.cs" />
+    <Compile Include="TypeEditors\EnumLookupEditor.cs" />
     <Compile Include="TypeEditors\GenericPersonInfoEditor.cs" />
     <Compile Include="TypeEditors\GenericPersonLookupEditor.cs" />
     <Compile Include="TypeEditors\GenericTypeEditor.cs" />
