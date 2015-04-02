@@ -37,7 +37,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         [DisplayName("Відомості про юрособу-банк")]
         public LegalPersonInfo LegalPerson { get; set; }
 
+        /// <summary>
+        /// http://www.swift.com/bsl/
+        /// </summary>
         [DisplayName("SWIFT адреса")]
+        [DisplayName("Див. http://www.swift.com/bsl/")]
         public string SWIFTBIC { get; set; }
 
         [DisplayName("Країна діяльності")]
