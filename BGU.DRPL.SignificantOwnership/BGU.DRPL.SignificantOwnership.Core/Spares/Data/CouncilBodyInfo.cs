@@ -14,12 +14,14 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         {
             Members = new List<CouncilMemberInfo>();
         }
-
+        [DisplayName("Керована організація")]
         public GenericPersonID GovernedEntityID { get; set; }
+        [DisplayName("Члени")]
         [Description("Члени органу управління")]
         public List<CouncilMemberInfo> Members { get; set; }
-        [Description("№ п/п голови")]
+        [DisplayName("Очільник/голова органу")]
         public GenericPersonID HeadMember { get; set; }
+        [DisplayName("Назва органу")]
         public string CouncilBodyName { get; set; }
         public override string ToString()
         {

@@ -70,6 +70,7 @@ namespace BGU.DRPL.SignificantOwnership.UI.Modules
             cont.RegisterInstance<IPublicationInfoEditFormFactory>(new PublicationInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<IPublishingHouseInfoEditFormFactory>(new PublishingHouseInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<IUniversityOrCollegeInfoEditFormFactory>(new UniversityOrCollegeInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IFinancialOversightAuthorityInfoEditFormFactory>(new FinancialOversightAuthorityInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
         }
     }
 }
