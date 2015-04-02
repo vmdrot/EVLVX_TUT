@@ -41,7 +41,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// http://www.swift.com/bsl/
         /// </summary>
         [DisplayName("SWIFT адреса")]
-        [DisplayName("Див. http://www.swift.com/bsl/")]
+        [Description("Див. http://www.swift.com/bsl/")]
         public string SWIFTBIC { get; set; }
 
         [DisplayName("Країна діяльності")]

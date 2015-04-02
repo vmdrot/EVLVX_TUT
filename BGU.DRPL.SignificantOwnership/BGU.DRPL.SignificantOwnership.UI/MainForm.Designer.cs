@@ -52,7 +52,7 @@
             this.newToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(401, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(855, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -83,6 +83,7 @@
             // 
             // regLicAppx7ShareAcqIntentToolStripMenuItem
             // 
+            this.regLicAppx7ShareAcqIntentToolStripMenuItem.Enabled = false;
             this.regLicAppx7ShareAcqIntentToolStripMenuItem.Name = "regLicAppx7ShareAcqIntentToolStripMenuItem";
             this.regLicAppx7ShareAcqIntentToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
             this.regLicAppx7ShareAcqIntentToolStripMenuItem.Text = "ПОВІДОМЛЕННЯ про наміри набуття/збільшення істотної участі в банку (Додаток 7)";
@@ -93,7 +94,7 @@
             this.regLicAppx14NewSvcToolStripMenuItem.Name = "regLicAppx14NewSvcToolStripMenuItem";
             this.regLicAppx14NewSvcToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
             this.regLicAppx14NewSvcToolStripMenuItem.Text = "ПОВІДОМЛЕННЯ банку про початок нового виду діяльності або надання нового виду фін" +
-    "ансових послуг (Додаток 14)";
+                "ансових послуг (Додаток 14)";
             this.regLicAppx14NewSvcToolStripMenuItem.Click += new System.EventHandler(this.regLicAppx14NewSvcToolStripMenuItem_Click);
             // 
             // regLicAppx4PhysPQuestToolStripMenuItem
@@ -105,6 +106,7 @@
             // 
             // regLicAppx12HeadCandidateApplToolStripMenuItem
             // 
+            this.regLicAppx12HeadCandidateApplToolStripMenuItem.Enabled = false;
             this.regLicAppx12HeadCandidateApplToolStripMenuItem.Name = "regLicAppx12HeadCandidateApplToolStripMenuItem";
             this.regLicAppx12HeadCandidateApplToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
             this.regLicAppx12HeadCandidateApplToolStripMenuItem.Text = "АНКЕТА кандидатів на посади голови ...(Додаток 12)";
@@ -112,6 +114,7 @@
             // 
             // regLicAppx3MemberCandidateApplToolStripMenuItem
             // 
+            this.regLicAppx3MemberCandidateApplToolStripMenuItem.Enabled = false;
             this.regLicAppx3MemberCandidateApplToolStripMenuItem.Name = "regLicAppx3MemberCandidateApplToolStripMenuItem";
             this.regLicAppx3MemberCandidateApplToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
             this.regLicAppx3MemberCandidateApplToolStripMenuItem.Text = "АНКЕТА членів виконавчого органу ... (Додаток 3)";
@@ -119,6 +122,7 @@
             // 
             // regLicAppx17EquityChangeTableToolStripMenuItem
             // 
+            this.regLicAppx17EquityChangeTableToolStripMenuItem.Enabled = false;
             this.regLicAppx17EquityChangeTableToolStripMenuItem.Name = "regLicAppx17EquityChangeTableToolStripMenuItem";
             this.regLicAppx17EquityChangeTableToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
             this.regLicAppx17EquityChangeTableToolStripMenuItem.Text = "ТАБЛИЦЯ збільшення (зменшення) статутного капіталу ... (Додаток 17)";
@@ -126,6 +130,7 @@
             // 
             // regLicAppx2OwnershipAcqRequestLPToolStripMenuItem
             // 
+            this.regLicAppx2OwnershipAcqRequestLPToolStripMenuItem.Enabled = false;
             this.regLicAppx2OwnershipAcqRequestLPToolStripMenuItem.Name = "regLicAppx2OwnershipAcqRequestLPToolStripMenuItem";
             this.regLicAppx2OwnershipAcqRequestLPToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
             this.regLicAppx2OwnershipAcqRequestLPToolStripMenuItem.Text = "АНКЕТА юридичної особи ... (Додаток 2)";
@@ -133,6 +138,7 @@
             // 
             // regLicAppx6EquityFormationTableToolStripMenuItem
             // 
+            this.regLicAppx6EquityFormationTableToolStripMenuItem.Enabled = false;
             this.regLicAppx6EquityFormationTableToolStripMenuItem.Name = "regLicAppx6EquityFormationTableToolStripMenuItem";
             this.regLicAppx6EquityFormationTableToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
             this.regLicAppx6EquityFormationTableToolStripMenuItem.Text = "ТАБЛИЦЯ формування статутного капіталу (Додаток 6)";
@@ -140,6 +146,7 @@
             // 
             // regLicAppx9BankingLicenseApplToolStripMenuItem
             // 
+            this.regLicAppx9BankingLicenseApplToolStripMenuItem.Enabled = false;
             this.regLicAppx9BankingLicenseApplToolStripMenuItem.Name = "regLicAppx9BankingLicenseApplToolStripMenuItem";
             this.regLicAppx9BankingLicenseApplToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
             this.regLicAppx9BankingLicenseApplToolStripMenuItem.Text = "КЛОПОТАННЯ про надання банківської ліцензії (Додаток 9)";
@@ -163,6 +170,7 @@
             // 
             // appx3OwnershipStructPPToolStripMenuItem
             // 
+            this.appx3OwnershipStructPPToolStripMenuItem.Enabled = false;
             this.appx3OwnershipStructPPToolStripMenuItem.Name = "appx3OwnershipStructPPToolStripMenuItem";
             this.appx3OwnershipStructPPToolStripMenuItem.Size = new System.Drawing.Size(373, 22);
             this.appx3OwnershipStructPPToolStripMenuItem.Text = "АНКЕТА фізичної особи (Додаток 3)";
@@ -172,7 +180,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(401, 273);
+            this.ClientSize = new System.Drawing.Size(855, 427);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
