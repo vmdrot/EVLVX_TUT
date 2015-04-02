@@ -26,7 +26,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         public override string ToString()
         {
             int membersCnt = Members != null ? Members.Count : 0;
-            return string.Format("{0} members", membersCnt);
+            return string.Format("{0} членів", membersCnt);
         }
     }
 }

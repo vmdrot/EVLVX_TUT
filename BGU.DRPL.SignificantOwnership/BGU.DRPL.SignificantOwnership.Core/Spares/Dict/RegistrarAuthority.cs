@@ -13,14 +13,19 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.RegistrarAuthority_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class RegistrarAuthority
     {
+        [DisplayName("Країна юрисдикції")]
         [Description("Країна юрисдикції")]
         public CountryInfo JurisdictionCountry { get; set; }
+        [DisplayName("Місцезнаходження")]
         [Description("Місцезнаходження")]
         public LocationInfo Address { get; set; }
+        [DisplayName("Код держоргану (якщо існує)")]
         [Description("Код держоргану (якщо існує)")]
         public string RegistrarCode { get; set; }
+        [DisplayName("Назва держоргану")]
         [Description("Назва держоргану")]
         public string RegistrarName { get; set; }
+        [DisplayName("Тип осіб, що реєструє")]
         [Description("Тип осіб, що реєструє")]
         public EntityType EntitiesHandled { get; set; }
         public override string ToString()

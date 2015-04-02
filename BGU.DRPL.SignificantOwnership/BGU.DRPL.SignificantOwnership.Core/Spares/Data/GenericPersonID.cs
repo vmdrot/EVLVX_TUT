@@ -36,6 +36,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 
         public static readonly GenericPersonID Empty = new GenericPersonID() { CountryISO3Code = string.Empty, PersonType = EntityType.None, PersonCode = string.Empty };
 
+        [Browsable(false)]
         public bool IsEmpty
         {
             get

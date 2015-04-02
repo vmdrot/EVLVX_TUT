@@ -64,13 +64,22 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     public enum EmploymentTerminationType
     {
         [Description("Не вказано")]None = 0,
+        [Description("Підвищення/переміщення")]
         PromotedOrRelocated,
+        [Description("Звільнення за вл.баж.")]
         VoluntaryQuit,
+        [Description("Звільнення (з ініціативи працедавця")]
         Dismissed,
+        [Description("Вихід на пенсію")]
         Retired,
+        [Description("Декретна відпустка")]
         MaternityLeave,
+        [Description("Військова служба")]
         MilitaryServiceLeave,
-        HealthConditionLeave
+        [Description("За станом здоров'я")]
+        HealthConditionLeave,
+        [Description("Інше")]
+        OtherLeaveType
     }
 
     [Flags]
@@ -78,12 +87,21 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     public enum HigherEducationDegreeType
     {
         [Description("Не вказано")]None = 0,
+        [Description("Бакалавр/Спеціаліст")]
         Bachelor,
+        [Description("Магістр")]
         Master,
+        [Description("MBA")]
+        MBA,
+        [Description("Кандидат наук")]
         CandidateDoctor,
+        [Description("PhD")]
         PhD,
+        [Description("Доктор наук (техн.)")]
         DoctorOfSciences,
+        [Description("Доктор наук (гум.)")]
         DoctorOfLetters,
+        [Description("Професор")]
         Professor
 
     }
@@ -93,12 +111,19 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     public enum DegreeHonourType
     {
         [Description("Не вказано")]None = 0,
+        [Description("Звичайний (без відзнаки)")]
         Rite,
+        [Description("З відзнакою (Cum laude)")]
         CumLaude,
+        [Description("З відзнакою (\"червоний\"), до-болонська система")]
         Honoured,
+        [Description("Зі значною відзнакою (magna cum laude)")]
         MagnaCumLaude,
+        [Description("З найвищою відзнакою (summa cum laude)")]
         SummaCumLaude,
+        [Description("З вийнятковою відзнакою (egregia cum laude)")]
         EgregiaCumLaude,
+        [Description("З максимальною відзнакою (maxima cum laude)")]
         MaximaCumLaude
     }
 
@@ -107,11 +132,17 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     public enum FundsOriginType
     {
         [Description("Не вказано")]None = 0,
+        [Description("Зарплатня")]
         WagesSalaries,
+        [Description("Роялті")]
         Royalties,
+        [Description("Дивіденди")]
         Dividends,
+        [Description("Пасивний дохід")]
         PassiveIncomes,
+        [Description("Спадщина")]
         Inherited,
+        [Description("Інші доходи")]
         OtherIncomes
     }
 
@@ -120,8 +151,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     public enum PaymentType
     {
         [Description("Не вказано")]None = 0,
+        [Description("Готівка")]
         Cash,
+        [Description("Безготівка")]
         WireTransfer,
+        [Description("Інше")]
         Other
     }
 
@@ -130,8 +164,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     public enum FinancialGuarantorRoleType
     {
         [Description("Не вказано")]None = 0,
+        [Description("Гарантор")]
         Guarantor,
+        [Description("Заставодавець/поручитель")]
         Pledger,
+        [Description("Довірена особа")]
         Attorney
     }
 
@@ -140,13 +177,21 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     public enum BreachOfLawType
     {
         [Description("Не вказано")]None = 0,
+        [Description("Кримінальне")]
         Criminal,
+        [Description("Анти-монопольне")]
         Antitrust,
+        [Description("Податкове")]
         Taxation,
+        [Description("Банківське")]
         Banking,
+        [Description("Фінансове")]
         Financial,
+        [Description("Валютне")]
         ForeignCurrency,
+        [Description("Біржове")]
         StockExchange,
+        [Description("Інше адміністративне")]
         OtherAdministrative
     }
 
@@ -155,10 +200,17 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     public enum SentenceType
     {
         [Description("Не вказано")]None = 0,
+        [Description("Ув'язнення")]
         Jailed,
+        [Description("Виправні роботи")]
+        RemedialWorks,
+        [Description("Штраф")]
         Fined,
+        [Description("Звільнення")]
         Dismissed,
+        [Description("Відкликання/позбавлення ліцензії")]
         LicenseRevoked,
+        [Description("Призупинення ліцензії")]
         LicenseSuspended
     }
 }

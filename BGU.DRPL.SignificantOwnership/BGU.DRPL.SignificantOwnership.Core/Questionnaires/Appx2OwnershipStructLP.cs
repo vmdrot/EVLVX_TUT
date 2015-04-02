@@ -44,6 +44,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         [Browsable(true)]
         [DisplayName("Наглядова (спостережна) рада юридичної особи?")]
         [Description("1.4. Чи існує наглядова (спостережна) рада юридичної особи")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool IsSupervisoryCouncilPresent { get; set; }
         [Browsable(true)]
         [DisplayName("Особовий склад наглядової(спостережної)ради юрособи")]
@@ -56,6 +57,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         [Browsable(true)]
         [DisplayName("Виконавчий орган юридичної особи?")]
         [Description("1.4. Чи існує виконавчий орган юридичної особи")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool IsExecutivesPresent { get; set; }
         [Browsable(true)]
         [DisplayName("Особовий склад виконавчого органу юрособи")]

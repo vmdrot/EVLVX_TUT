@@ -87,6 +87,9 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
                 rbExisting.Checked = true;
             else
                 rbNew.Checked = true;
+
+            if (DataSource == null)
+                btnFillObject_Click(this, new EventArgs());
         }
 
         private void BindCombo()

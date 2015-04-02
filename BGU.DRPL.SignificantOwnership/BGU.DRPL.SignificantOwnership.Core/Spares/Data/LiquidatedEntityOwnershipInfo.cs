@@ -10,7 +10,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.LiquidatedEntityOwnershipInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class LiquidatedEntityOwnershipInfo
     {
-        [DisplayName("Ліквідовувана юрособа")]
+        [DisplayName("Ліквідована юрособа")]
         public GenericPersonID Asset { get; set; }
         [DisplayName("Частки власності")]
         public TotalOwnershipDetailsInfo Stake { get; set; }

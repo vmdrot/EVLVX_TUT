@@ -126,6 +126,7 @@
             this.btnFillObject.TabIndex = 5;
             this.btnFillObject.Text = "+";
             this.btnFillObject.UseVisualStyleBackColor = true;
+            this.btnFillObject.Visible = false;
             this.btnFillObject.Click += new System.EventHandler(this.btnFillObject_Click);
             // 
             // LookupObjectForm

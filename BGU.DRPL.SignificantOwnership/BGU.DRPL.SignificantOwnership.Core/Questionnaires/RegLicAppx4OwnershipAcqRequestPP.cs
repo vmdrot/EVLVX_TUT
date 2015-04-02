@@ -71,6 +71,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 
         [DisplayName("Чи потрібен дозвіл (для нерезидентів)")]
         [Description("1.11. Чи потрібен дозвіл на набуття (збільшення) участі в банку, розташованому в Україні (для іноземців)")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool IsForeignFinOversightBodyApprovalRequired { get; set; }
         [DisplayName("Іноземний дозвільний орган (якщо потрібен дозвіл)")]
         [Description("1.11. Іноземний державний контрольний орган, що дає дозвіл на набуття (збільшення) участі в банку, розташованому в Україні (для іноземців)")]
@@ -82,6 +83,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 
         [DisplayName("Чи є андеррайтер")]
         [Description("2.2. Андеррайтер ...")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool IsUnderwritten { get; set; }
 
         [DisplayName("Андеррайтер")]
@@ -118,6 +120,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 
         [DisplayName("Пов'язаність з з банком-емітентом")]
         [Description("2.7. Чи є Ви особою, яка пов'язана з банком-емітентом?\n (Якщо так, вкажіть деталі зв'язку в полі \"Зв'язки між особами-фігурантами анкети\")")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool IsAssociatedPersonWithIssuer { get; set; }
 
         /// <summary>
@@ -159,10 +162,12 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 
         [DisplayName("Притягувалися до кримінальної відповідальності?")]
         [Description("5.1. Чи притягувалися Ви до кримінальної відповідальності? Чи маєте Ви судимість не погашену, не зняту в установленому законодавством порядку?")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool HasBreachesOfLaw { get; set; }
 
         [DisplayName("Порушення господарського законодавства?")]
         [Description("5.2. Чи притягувалися Ви до відповідальності за порушення антимонопольного, податкового, банківського, валютного законодавства, правил діяльності на ринку цінних паперів тощо?")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool HasBreachesOfBusinessLaw { get; set; }
 
         [DisplayName("Притягнення до відповідальності")]
@@ -175,6 +180,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 
         [DisplayName("Істотна участь у особах, ліквідованих останнього року")]
         [Description("5.4. Чи були Ви протягом останнього року,  що передував прийняттю рішення про ліквідацію юридичної особи, власником істотної участі  (10 і більше відсотків) у цій особі?")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool HasLiquidatedSignOwnershipLastYear { get; set; }
 
         [DisplayName("Істотна участь у особах, ліквідованих останнього року - розшифровка")]
@@ -183,18 +189,22 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 
         [DisplayName("Дотримую законодавство...?")]
         [Description("5.5. Стверджую, що я належним чином виконую вимоги законодавства України з питань запобігання та протидії легалізації (відмиванню) доходів, одержаних злочинним шляхом, або фінансуванню тероризму та до мене не застосовувалися міжнародні санкції.")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool IsMoneyLaunderingEtcLawsKept { get; set; }
 
         [DisplayName("Підтверджую походження коштів?")]
         [Description("5.5. Стверджую, що маю можливість підтвердити походження джерел коштів, за рахунок яких придбаю акції банку.")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool CanProveMoneyOrigins { get; set; }
 
         [DisplayName("Підтверджую правдивість інформації?")]
         [Description("Я, (прізвище, ім'я, по батькові) стверджую, що інформація,  надана в анкеті,\n є правдивою і повною, та не заперечую проти перевірки Національним банком України достовірності поданих документів і персональних даних, що в них містяться.\n")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool IsApplicationInfoAccurateAndTrue { get; set; }
 
         [DisplayName("Зобов'язуюсь повідомляти про зміни?")]
         [Description("У разі будь-яких змін в інформації, що зазначена в цій анкеті, зобов'язуюся повідомити про них Національний банк України протягом 10-ти днів з дня їх виникнення.")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool AmObligingToKeepUp2DateWithin10Days { get; set; }
 
         [DisplayName("Реквізити осіб-фігурантів анкети")]

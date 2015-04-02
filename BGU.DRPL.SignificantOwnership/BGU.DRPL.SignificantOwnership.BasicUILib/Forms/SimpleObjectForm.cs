@@ -84,7 +84,8 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
 
         private void DummyForm_Load(object sender, EventArgs e)
         {
-
+            if (DataSource == null)
+                btnFillObject_Click(this, new EventArgs());
         }
 
         private T InstantiateNewDataSource()
