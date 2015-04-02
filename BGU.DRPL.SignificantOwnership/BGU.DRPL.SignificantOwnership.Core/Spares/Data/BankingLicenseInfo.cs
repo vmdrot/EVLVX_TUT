@@ -9,9 +9,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BankingLicenseInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class BankingLicenseInfo
     {
-        [Description("№ ліцензії")]
+        [DisplayName("№ ліцензії")]
         public string LicenseNr { get; set; }
-        [Description("Дата видачі ліцензії")]
+        [DisplayName("Дата видачі ліцензії")]
         public DateTime IssueDate { get; set; }
 
         public override string ToString()

@@ -16,6 +16,8 @@ namespace BGU.DRPL.SignificantOwnership.Core.TypeEditors
             string formCaption = string.Empty;
             if(provider is ITypeDescriptorContext)
                 formCaption = BGU.DRPL.SignificantOwnership.Utility.Tools.GetPropDescription(((ITypeDescriptorContext)provider).PropertyDescriptor);
+            if (string.IsNullOrEmpty(formCaption) && provider is ITypeDescriptorContext)
+                formCaption = BGU.DRPL.SignificantOwnership.Utility.Tools.GetPropDisplayName(((ITypeDescriptorContext)provider).PropertyDescriptor);
             if (string.IsNullOrEmpty(formCaption) && value != null)
                 formCaption = BGU.DRPL.SignificantOwnership.Utility.Tools.GetObjectClassDescription(value);
             else if (string.IsNullOrEmpty(formCaption) && value == null)

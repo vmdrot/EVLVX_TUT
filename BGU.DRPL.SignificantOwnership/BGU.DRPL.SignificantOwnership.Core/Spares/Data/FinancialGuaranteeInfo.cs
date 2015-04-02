@@ -11,7 +11,8 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     {
         [DisplayName("Особа, щодо якої гарантую/ручаюся,тощо")]
         public GenericPersonID Person { get; set; }
-        [DisplayName("Роль ")]
+        [DisplayName("Роль")]
+        [Description("Роль (гарантор, довірена особа, тощо)")]
         public FinancialGuarantorRoleType Role { get; set; }
         [DisplayName("Сума гарантії/поруки/тощо")]
         public CurrencyAmount PledgeAmt { get; set; }

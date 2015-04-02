@@ -11,8 +11,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     {
 
         [Description("Член органу управління")]
+        [DisplayName("Член органу управління")]
         public GenericPersonID Member { get; set; }
         [Description("Посада")]
+        [DisplayName("Посада")]
         public string PositionName { get; set; }
         public override string ToString()
         {

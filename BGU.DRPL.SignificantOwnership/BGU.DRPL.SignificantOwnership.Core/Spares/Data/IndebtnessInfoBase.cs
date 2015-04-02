@@ -21,6 +21,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         [DisplayName("Залишок заборгованості")]
         public CurrencyAmount OutstandingPricipal { get; set; }
         [DisplayName("Прострочена заборгованість?")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool IsOverdue { get; set; }
         [DisplayName("Сума простроченої заборгованості")]
         public CurrencyAmount PrincipalOverdue { get; set; }

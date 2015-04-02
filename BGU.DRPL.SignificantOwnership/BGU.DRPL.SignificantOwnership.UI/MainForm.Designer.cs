@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.regLicToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,7 +95,7 @@
             this.regLicAppx14NewSvcToolStripMenuItem.Name = "regLicAppx14NewSvcToolStripMenuItem";
             this.regLicAppx14NewSvcToolStripMenuItem.Size = new System.Drawing.Size(678, 22);
             this.regLicAppx14NewSvcToolStripMenuItem.Text = "ПОВІДОМЛЕННЯ банку про початок нового виду діяльності або надання нового виду фін" +
-                "ансових послуг (Додаток 14)";
+    "ансових послуг (Додаток 14)";
             this.regLicAppx14NewSvcToolStripMenuItem.Click += new System.EventHandler(this.regLicAppx14NewSvcToolStripMenuItem_Click);
             // 
             // regLicAppx4PhysPQuestToolStripMenuItem
@@ -182,6 +183,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(855, 427);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "NBU: Significant ownership (basic UI)";

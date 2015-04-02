@@ -14,15 +14,19 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         {
             Partners = new List<GenericPersonID>();
         }
-        [Description("Об'єкт власності")]
+        [DisplayName("Об'єкт власності")]
+        [Description("Юр.особа, чия власність розкривається")]
         public GenericPersonID Property { get; set; }
-        [Description("Співвласники")]
+        [DisplayName("Співвласники")]
+        [Description("Перелік співвласників")]
         public List<GenericPersonID> Partners { get; set; }
-        [Description("Тип спільної власності")]
+        [DisplayName("Тип спільної власності")]
+        [Description("Тип спільної власності (згідно періку)")]
         public OwnershipType OwnershipType { get; set; }
-        [Description("На підставі (якщо релевантно)")]
+        [DisplayName("Підстава володіння")]
+        [Description("На підставі (якщо релевантно), напр. довіреності, тощо")]
         public string OwnershipTestimony { get; set; }
-        [Description("Частка власності, %")]
+        [DisplayName("Частка власності, %")]
         public decimal OwnershipPct { get; set; }
 
         public override string ToString()

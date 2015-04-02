@@ -10,18 +10,25 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.LocationInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class LocationInfo
     {
+        [DisplayName("Країна")]
         [Description("Країна")]
         public CountryInfo Country { get; set; }
+        [DisplayName("область, район/провінція, тощо")]
         [Description("область, район/провінція, тощо")]
         public string Region { get; set; }
+        [DisplayName("Поштовий індекс")]
         [Description("Поштовий індекс")]
         public string ZipCode { get; set; }
+        [DisplayName("Населений пункт")]
         [Description("Населений пункт")]
         public string City { get; set; }
+        [DisplayName("Вулиця/площа/тощо")]
         [Description("Вулиця/площа/тощо")]
         public string Street { get; set; }
+        [DisplayName("№ / назва будинку")]
         [Description("№ / назва будинку")]
         public string HouseNr { get; set; }
+        [DisplayName("№ кв./офісу, тощо")]
         [Description("№ кв./офісу, тощо")]
         public string ApptOfficeNr { get; set; }
 

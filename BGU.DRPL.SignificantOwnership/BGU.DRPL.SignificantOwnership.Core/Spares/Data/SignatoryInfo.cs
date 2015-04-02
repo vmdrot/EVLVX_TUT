@@ -9,10 +9,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.SignatoryInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class SignatoryInfo
     {
+        [DisplayName("Посада (підписанта)")]
         [Description("Посада (підписанта)")]
         public string SignatoryPosition { get; set; }
+        [DisplayName("Прізвище й ініціали (підписанта)")]
         [Description("Прізвище й ініціали (підписанта)")]
         public string SurnameInitials { get; set; }
+        [DisplayName("Дата підпису")]
         [Description("Дата підпису")]
         public DateTime DateSigned { get; set; }
 

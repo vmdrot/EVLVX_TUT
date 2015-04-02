@@ -10,10 +10,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.GenericPersonInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class GenericPersonInfo
     {
+        [DisplayName("Тип особи")]
         [Description("Тип особи")]
         public EntityType PersonType { get; set; }
+        [DisplayName("Фізична особа")]
         [Description("Фізична особа")]
         public PhysicalPersonInfo PhysicalPerson { get; set; }
+        [DisplayName("Юридична особа")]
         [Description("Юридична особа")]
         public LegalPersonInfo LegalPerson { get; set; }
 

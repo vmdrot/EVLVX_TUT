@@ -10,8 +10,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     public class CurrencyAmount
     {
         [Description("Валюта")]
+        [DisplayName("Валюта")]
         public string CCY { get; set; }
         [Description("Сума")]
+        [DisplayName("Сума")]
         public decimal Amt { get; set; }
 
         public override string ToString()

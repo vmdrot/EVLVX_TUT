@@ -68,7 +68,6 @@
     <Compile Include="Questionnaires\Appx3OwnershipStructPP.cs" />
     <Compile Include="Spares\Data\LiquidatedEntityOwnershipInfo.cs" />
     <Compile Include="Spares\Data\BreachOfLawRecordInfo.cs" />
-    <Compile Include="Spares\Data\CriminalLiabilityRecordInfo.cs" />
     <Compile Include="Spares\Data\EducationRecordInfo.cs" />
     <Compile Include="Questionnaires\RegLicAppx12HeadCandidateAppl.cs" />
     <Compile Include="Questionnaires\RegLicAppx14NewSvc.cs" />
@@ -125,6 +124,7 @@
     <Compile Include="Spares\Data\TotalOwnershipDetailsInfo.cs" />
     <Compile Include="Spares\Dict\UniversityOrCollegeInfo.cs" />
     <Compile Include="Spares\Enums.cs" />
+    <Compile Include="TypeEditors\BooleanEditor.cs" />
     <Compile Include="TypeEditors\CountryInfoLookupEditor.cs" />
     <Compile Include="TypeEditors\EnumLookupEditor.cs" />
     <Compile Include="TypeEditors\GenericPersonInfoEditor.cs" />

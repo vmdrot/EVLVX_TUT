@@ -29,6 +29,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         [DisplayName("Інші санкції")]
         public string OtherSanctionDetails { get; set; }
         [DisplayName("Судимість погашена?")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool IsConvictionSettled { get; set; }
         [DisplayName("Дата погашення судимості")]
         public DateTime? SettledDate { get; set; }

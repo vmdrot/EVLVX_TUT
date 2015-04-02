@@ -15,13 +15,16 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
             Phones = new List<PhoneInfo>();
             Emails = new List<string>();
         }
-        [Description("Контактна особа")]
+        [DisplayName("Контактна особа")]
+        [Description("Контактна особа (фізособа)")]
         public PhysicalPersonInfo Person { get; set; }
-        [Description("Телефони")]
+        [DisplayName("Телефони")]
+        [Description("Перелік телефонів")]
         public List<PhoneInfo> Phones { get; set; }
-        [Description("Факс")]
+        [DisplayName("Факс")]
         public string Fax { get; set; }
-        [Description("E-mail-и")]
+        [DisplayName("E-mail-и")]
+        [Description("Перелік адрес електронної пошти")]
         public List<string> Emails { get; set; }
         [DisplayName("www")]
         [Description("Веб-сайт")]

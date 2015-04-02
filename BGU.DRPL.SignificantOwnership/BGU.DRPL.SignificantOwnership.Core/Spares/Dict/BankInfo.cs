@@ -12,22 +12,22 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// <summary>
         /// GLMFO
         /// </summary>
-        [Description("МФО головного банку")]
-        [DisplayName("МФО головного банку")]
+        [Description("МФО")]
+        [DisplayName("МФО")]
         public string HeadMFO { get; set; }
         /// <summary>
         /// REGN
         /// </summary>
-        [Description("№ у реєстрі банків")]
+        [Description("№ у реєстрі банків (лише для головних контор)")]
         [DisplayName("№ у реєстрі банків")]
         public string RegistryNr { get; set; }
         /// <summary>
         /// GLB
         /// </summary>
-        [Description("Код банку")]
+        [Description("Код банку (лише для головних контор)")]
         [DisplayName("Код банку")]
         public string Code { get; set; }
-        [Description("Найменування банку")]
+        [Description("Найменування банку (в оригіналі)")]
         [DisplayName("Найменування банку")]
         public string Name { get; set; }
         [Description("Найменування банку(українською)")]

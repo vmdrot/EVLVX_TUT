@@ -10,10 +10,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.PurchasedVoteInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class PurchasedVoteInfo
     {
+        [DisplayName("Передавач власності")]
         [Description("Особа, що передає/передає право голосу/частку власності")]
         public GenericPersonInfo Transferror { get; set; }
+        [DisplayName("Набувані голоси/частка")]
         [Description("Голоси/частка у власності, що купується/отримується")]
         public OwnershipVotesInfo PurchaseVotes { get; set; }
+        [DisplayName("Шлях передачі/купівлі голосів/власності")]
         [Description("Шлях передачі/купівлі голосів/власності")]
         public string VotesTransferPath { get; set; }
 

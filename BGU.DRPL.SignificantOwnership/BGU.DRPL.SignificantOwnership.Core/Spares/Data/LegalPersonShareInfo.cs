@@ -10,8 +10,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.LegalPersonShareInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class LegalPersonShareInfo
     {
+        [DisplayName("Юр.особа-власник")]
         [Description("Юр.особа-власник")]
         public LegalPersonInfo Person { get; set; }
+        [DisplayName("Частка власності, %")]
         [Description("Частка власності, %")]
         public decimal SharePct { get; set; }
 

@@ -39,6 +39,17 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             return string.Empty;
         }
 
+
+        public static string GetPropDisplayName(PropertyDescriptor prop)
+        {
+            foreach (Attribute attr in prop.Attributes)
+            {
+                if (attr is DisplayNameAttribute)
+                    return ((DisplayNameAttribute)attr).DisplayName;
+            }
+            return string.Empty;
+        }
+
         public static void WriteXML<T>(T obj, string saveAs)
         {
             using (FileStream fs = File.Create(saveAs))

@@ -82,6 +82,7 @@ namespace BGU.DRPL.SignificantOwnership.UI
             frm.ShowMenu = true;
             frm.IsRootObjectEditForm = true;
             frm.Size = new System.Drawing.Size(1208, 728);
+            frm.Icon = this.Icon;
             frm.ShowDialog();
         }
 

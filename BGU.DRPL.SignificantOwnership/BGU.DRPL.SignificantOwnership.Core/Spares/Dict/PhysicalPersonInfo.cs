@@ -11,36 +11,52 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.PhysicalPersonInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class PhysicalPersonInfo
     {
+        [DisplayName("Прізвище (укр.)")]
         [Description("Прізвище, українською")]
         public string SurnameUkr { get; set; }
+        [DisplayName("Ім'я (укр.)")]
         [Description("Ім'я, українською")]
         public string NameUkr { get; set; }
+        [DisplayName("По-батькові/друге ім'я (укр.)")]
         [Description("По-батькові/друге ім'я, українською")]
         public string MiddleNameUkr { get; set; }
+        [DisplayName("П.І.Б (укр.)")]
         [Description("П.І.Б., українською")]
         public string FullNameUkr { get; set; }
+        [DisplayName("Прізвище")]
         [Description("Прізвище")]
         public string Surname { get; set; }
+        [DisplayName("Ім'я")]
         [Description("Ім'я")]
         public string Name { get; set; }
+        [DisplayName("По-батькові/друге ім'я")]
         [Description("По-батькові/друге ім'я")]
         public string MiddleName { get; set; }
+        [DisplayName("П.І.Б.")]
         [Description("П.І.Б.")]
         public string FullName { get; set; }
+        [DisplayName("Стать")]
         [Description("Стать")]
         public SexType Sex { get; set; }
+        [DisplayName("Дата народження")]
         [Description("Дата народження")]
         public DateTime BirthDate { get; set; }
+        [DisplayName("Серія № паспорта")]
         [Description("Серія № паспорта")]
         public string PassportID { get; set; }
+        [DisplayName("Дата видачі паспорта")]
         [Description("Дата видачі паспорта")]
         public DateTime PassIssuedDate { get; set; }
+        [DisplayName("Орган, що видав паспорт")]
         [Description("Орган, що видав паспорт")]
         public RegistrarAuthority PassIssueAuthority { get; set; }
+        [DisplayName("ІПН")]
         [Description("ІПН/№ картки соціального страхування/тощо, дивлячись, що використовується у країні резидентства")]
         public string TaxOrSocSecID { get; set; }
+        [DisplayName("Місце проживання/реєстрації")]
         [Description("Місце проживання/реєстрації")]
         public LocationInfo Address { get; set; }
+        [DisplayName("Громадянство")]
         [Description("Громадянство")]
         public CountryInfo CitizenshipCountry { get; set; }
         [Browsable(false)]
