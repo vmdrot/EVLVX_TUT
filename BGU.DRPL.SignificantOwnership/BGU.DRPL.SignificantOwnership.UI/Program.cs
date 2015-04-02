@@ -21,6 +21,7 @@ namespace BGU.DRPL.SignificantOwnership.UI
             Application.SetCompatibleTextRenderingDefault(false);
             using (IUnityContainer cont = new UnityContainer())
             {
+                //loading UI
                 IModule module = null;
                 System.Configuration.Configuration cfg = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Configuration.ConfigurationUserLevel.None);
                 System.Configuration.KeyValueConfigurationElement keyVal = cfg.AppSettings.Settings["moduleTypeSpec"];
