@@ -19,8 +19,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         [DisplayName("Дата закінчення")]
         public DateTime GraduationDate { get; set; }
         [DisplayName("Тип диплома")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public HigherEducationDegreeType DegreeType { get; set; }
         [DisplayName("Тип відзнаки")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public DegreeHonourType HonourType { get; set; }
         [DisplayName("Серія диплома")]
         public string DegreeSeries { get; set; }

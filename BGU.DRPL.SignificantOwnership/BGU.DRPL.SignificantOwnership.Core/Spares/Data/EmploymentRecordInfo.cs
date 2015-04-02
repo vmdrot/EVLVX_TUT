@@ -18,6 +18,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         [DisplayName("Дата кінця роботи")]
         public DateTime DateQuit { get; set; }
         [DisplayName("Тип зайнятості")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public EmploymentState State { get; set; }
         [DisplayName("Тип закінчення діяльності")]
         public EmploymentTerminationType TerminationType { get; set; }
