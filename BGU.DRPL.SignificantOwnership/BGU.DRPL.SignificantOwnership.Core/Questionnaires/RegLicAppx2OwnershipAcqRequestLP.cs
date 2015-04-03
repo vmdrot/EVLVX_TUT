@@ -9,5 +9,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
     public class RegLicAppx2OwnershipAcqRequestLP : IQuestionnaire
     {
 
+        public string SuggestSaveAsFileName()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

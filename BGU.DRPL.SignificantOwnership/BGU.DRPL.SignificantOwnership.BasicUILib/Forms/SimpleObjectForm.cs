@@ -166,6 +166,8 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             
             if(!string.IsNullOrEmpty(CurrentSave2File))
                 saveFileDgl.FileName = CurrentSave2File;
+            else if (DataSource != null && DataSource is IQuestionnaire)
+                saveFileDgl.FileName = ((IQuestionnaire)DataSource).SuggestSaveAsFileName();
 
             DialogResult userClickedOK = saveFileDgl.ShowDialog();
 
