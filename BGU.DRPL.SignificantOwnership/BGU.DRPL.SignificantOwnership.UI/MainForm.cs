@@ -62,7 +62,7 @@ namespace BGU.DRPL.SignificantOwnership.UI
 
         private void appx2LPproperToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.Appx2OwnershipStructLP>(appx2LPproperToolStripMenuItem, (new GrantBank()).Appx2Questionnaire);
+            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.Appx2OwnershipStructLP>(appx2LPproperToolStripMenuItem, new Appx2OwnershipStructLP());
             //SimpleObjectForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.Appx2OwnershipStructLP> frm = new SimpleObjectForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.Appx2OwnershipStructLP>();
             //frm.DataSource = (new GrantBank()).Appx2Questionnaire;
             //frm.Text = string.Format(appx2LPproperToolStripMenuItem.GetCurrentParent().Text, appx2LPproperToolStripMenuItem.Text);
@@ -134,6 +134,11 @@ namespace BGU.DRPL.SignificantOwnership.UI
         private void appx3OwnershipStructPPToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.Appx3OwnershipStructPP>(appx3OwnershipStructPPToolStripMenuItem, new Appx3OwnershipStructPP());
+        }
+
+        private void appx2OwnershipStructLPSamplesGrantToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.Appx2OwnershipStructLP>(appx2OwnershipStructLPSamplesGrantToolStripMenuItem, (new GrantBank()).Appx2Questionnaire);
         }
     }
 }
