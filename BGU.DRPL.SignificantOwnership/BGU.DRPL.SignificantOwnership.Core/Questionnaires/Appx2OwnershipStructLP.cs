@@ -10,7 +10,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 {
     [Description("АНКЕТА юридичної особи (у тому числі банку),Додаток 2 до Положення про порядок подання відомостей про структуру власності")]
     [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.Appx2OwnershipStructLP_Editor), typeof(System.Drawing.Design.UITypeEditor))]
-    public class Appx2OwnershipStructLP : IQuestionnaire, IGenericPersonsService, IAddressesService
+    public class Appx2OwnershipStructLP : QuestionnaireBase, IGenericPersonsService, IAddressesService
     {
 
         public Appx2OwnershipStructLP()
@@ -166,6 +166,22 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 
                 return new List<LocationInfo>(rslt.Values);
             }
+        }
+
+
+        protected override string QuestionnairePrefixForFileName
+        {
+            get { return "strvlasnDod2YO"; }
+        }
+
+        protected override string BankNameForFileName
+        {
+            get { return GetBankNameForFileName(BankRef); }
+        }
+
+        protected override string ApplicantNameForFileName
+        {
+            get { if (Acquiree == null) return string.Empty; return Acquiree.Name; }
         }
     }
 }

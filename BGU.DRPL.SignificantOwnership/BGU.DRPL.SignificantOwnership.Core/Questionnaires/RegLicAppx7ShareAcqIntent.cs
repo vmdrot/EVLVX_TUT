@@ -29,5 +29,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         //public decimal TargetedOwnershipShareAmt { get; set; }
         public SignatoryInfo Signee { get; set; }
 
+
+        public string SuggestSaveAsFileName()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -66,6 +66,7 @@
       <DependentUpon>PropertyNames.resx</DependentUpon>
     </Compile>
     <Compile Include="Questionnaires\Appx3OwnershipStructPP.cs" />
+    <Compile Include="Questionnaires\QuestionnaireBase.cs" />
     <Compile Include="Spares\Data\LiquidatedEntityOwnershipInfo.cs" />
     <Compile Include="Spares\Data\BreachOfLawRecordInfo.cs" />
     <Compile Include="Spares\Data\EducationRecordInfo.cs" />

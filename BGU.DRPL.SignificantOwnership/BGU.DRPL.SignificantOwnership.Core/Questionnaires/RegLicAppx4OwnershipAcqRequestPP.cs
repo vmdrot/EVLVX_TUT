@@ -14,7 +14,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
     /// file: f364524n1224.doc
     /// </summary>
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.RegLicAppx4PhysPQuest_Editor), typeof(System.Drawing.Design.UITypeEditor))]
-    public class RegLicAppx4OwnershipAcqRequestPP : IQuestionnaire
+    public class RegLicAppx4OwnershipAcqRequestPP : QuestionnaireBase
     {
         public RegLicAppx4OwnershipAcqRequestPP()
         {
@@ -219,5 +219,20 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         [DisplayName("Контакти")]
         [Description("Контактні дані відправника анкети")]
         public ContactInfo ContactPerson { get; set; }
+
+        protected override string QuestionnairePrefixForFileName
+        {
+            get { return "regLicDod4FO"; }
+        }
+
+        protected override string BankNameForFileName
+        {
+            get { return GetBankNameForFileName(BankRef); }
+        }
+
+        protected override string ApplicantNameForFileName
+        {
+            get { return this.Acquiree.FullName ?? this.Acquiree.FullNameUkr ?? this.Acquiree.Surname ?? this.Acquiree.SurnameUkr; }
+        }
     }
 }

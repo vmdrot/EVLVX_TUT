@@ -9,7 +9,7 @@ using System.ComponentModel;
 namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 {
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.RegLicAppx14NewSvc_Editor), typeof(System.Drawing.Design.UITypeEditor))]
-    public class RegLicAppx14NewSvc : IQuestionnaire
+    public class RegLicAppx14NewSvc : QuestionnaireBase
     {
         public RegLicAppx14NewSvc()
         {
@@ -92,5 +92,20 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         [DisplayName("Підписант")]
         [Description("Інформація про підписанта (Голова правління Банку)")]
         public SignatoryInfo Signee { get; set; }
+
+        protected override string QuestionnairePrefixForFileName
+        {
+            get { return "regLicDod14NoviPoslugy"; }
+        }
+
+        protected override string BankNameForFileName
+        {
+            get { return GetBankNameForFileName(this.BankRef); }
+        }
+
+        protected override string ApplicantNameForFileName
+        {
+            get { return string.Empty; }
+        }
     }
 }
