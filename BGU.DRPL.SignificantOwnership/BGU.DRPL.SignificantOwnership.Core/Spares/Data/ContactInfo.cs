@@ -28,11 +28,46 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         public List<string> Emails { get; set; }
         [DisplayName("www")]
         [Description("Веб-сайт")]
-        public Uri wwww { get; set; }
+        public string www { get; set; }
 
         public override string ToString()
         {
-            return Person.ToString();
+            StringBuilder rslt = new StringBuilder();
+            int i = 0;
+            if (Person != null)
+            {
+                rslt.Append(Person.ToString());
+                i++;
+            }
+            if (Phones != null && Phones.Count > 0)
+            {
+                if (i > 0)
+                    rslt.Append(", ");
+                rslt.Append(Phones[0].ToString());
+                i++;
+            }
+            if (Emails != null && Emails.Count > 0)
+            {
+                if (i > 0)
+                    rslt.Append(", ");
+                rslt.Append(Emails[0].ToString());
+                i++;
+            }
+            //if (www != null && string.IsNullOrEmpty(www.ToString()))
+            //{
+            //    if (i > 0)
+            //        rslt.Append(", ");
+            //    rslt.Append(www.ToString());
+            //    i++;
+            //}
+            if (string.IsNullOrEmpty(www))
+            {
+                if (i > 0)
+                    rslt.Append(", ");
+                rslt.Append(www);
+                i++;
+            }
+            return rslt.ToString();
         }
     }
 }
