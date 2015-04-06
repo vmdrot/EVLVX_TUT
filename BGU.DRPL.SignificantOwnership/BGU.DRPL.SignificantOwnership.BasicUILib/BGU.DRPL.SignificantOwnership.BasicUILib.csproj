@@ -69,6 +69,18 @@
     <Compile Include="Forms\SimpleObjectForm.Designer.cs">
       <DependentUpon>SimpleObjectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UltimateOwnersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UltimateOwnersForm.Designer.cs">
+      <DependentUpon>UltimateOwnersForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UltimateOwnershipTreeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UltimateOwnershipTreeForm.Designer.cs">
+      <DependentUpon>UltimateOwnershipTreeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -87,6 +99,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SimpleObjectForm.resx">
       <DependentUpon>SimpleObjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UltimateOwnersForm.resx">
+      <DependentUpon>UltimateOwnersForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UltimateOwnershipTreeForm.resx">
+      <DependentUpon>UltimateOwnershipTreeForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
