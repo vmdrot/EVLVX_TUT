@@ -13,6 +13,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.RegistrarAuthority_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class RegistrarAuthority
     {
+        public RegistrarAuthority()
+        {
+            JurisdictionCountry = CountryInfo.UKRAINE;
+        }
+
         [DisplayName("Країна юрисдикції")]
         [Description("Країна юрисдикції")]
         public CountryInfo JurisdictionCountry { get; set; }

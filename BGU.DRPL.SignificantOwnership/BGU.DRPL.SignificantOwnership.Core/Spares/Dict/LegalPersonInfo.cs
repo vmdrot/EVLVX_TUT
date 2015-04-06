@@ -10,6 +10,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.LegalPersonInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class LegalPersonInfo
     {
+
+        public LegalPersonInfo()
+        {
+            ResidenceCountry = CountryInfo.UKRAINE;
+        }
         /// <summary>
         /// search - http://irc.gov.ua/ua/Poshuk-v-YeDR.html
         /// </summary>

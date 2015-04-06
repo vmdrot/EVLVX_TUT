@@ -47,8 +47,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         [DisplayName("Країна діяльності")]
         public CountryInfo OperationCountry { get; set; }
 
-        public BankInfo() { }
-        public BankInfo(LegalPersonInfo le)
+        public BankInfo() 
+        {
+            OperationCountry = CountryInfo.UKRAINE;
+        }
+        public BankInfo(LegalPersonInfo le) : this()
         {
             LegalPerson = le;
             Name = le.Name;
