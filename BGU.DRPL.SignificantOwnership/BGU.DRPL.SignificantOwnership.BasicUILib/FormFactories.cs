@@ -7,6 +7,9 @@ using BGU.DRPL.SignificantOwnership.BasicUILib.Forms;
 using BGU.DRPL.SignificantOwnership.Core.Questionnaires;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
+using System.Configuration;
+using System.Data;
+using BGU.DRPL.SignificantOwnership.Utility;
 
 namespace BGU.DRPL.SignificantOwnership.BasicUILib
 {
@@ -57,6 +60,76 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib
     public class SignatoryInfoEditFormFactoryBasic : ISignatoryInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<SignatoryInfo>(); } }
     public class TotalOwnershipDetailsInfoEditFormFactoryBasic : ITotalOwnershipDetailsInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<TotalOwnershipDetailsInfo>(); } }
     public class BankInfoEditFormFactoryBasic : IBankInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { System.Windows.Forms.Form rslt = new SimpleObjectForm<BankInfo>(); rslt.Size = new System.Drawing.Size(500, 400); return rslt; } }
+
+    public class BankInfoEditFormFactoryBasicEx : IBankInfoEditFormFactory
+    {
+        public System.Windows.Forms.Form SpawnInstance()
+        {
+            LookupObjectForm<BankInfo> frm = new LookupObjectForm<BankInfo>();
+            frm.NeedToCompareObjects += new NeedToCompareTypesHandler<BankInfo>(frm_NeedToCompareObjects);
+            IQuestionnaire questio = TypeEditorsDispatcher.LastQuestionnaire;
+            frm.ListSource = RcuKruBanks;
+            
+            return frm;
+        }
+
+        private static List<BankInfo> _rcuKurBanks;
+        private static List<BankInfo> RcuKruBanks
+        {
+            get
+            {
+                if (_rcuKurBanks == null)
+                {
+                    _rcuKurBanks = new List<BankInfo>();
+                    DataTable dt = RcuKruReader.Read(ConfigurationManager.AppSettings["rcuKruPath"]);
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        string prb = dr["PRB"] as string;
+                        if(prb == "1")
+                            continue;
+
+                        string glmfo = ((int)dr["GLMFO"]).ToString();
+                        string mfo = ((int)dr["MFO"]).ToString();
+                        if(glmfo != mfo)
+                            continue;
+                        string glb = ((int)dr["GLB"]).ToString();
+
+                        string prkb = ((int)dr["PRKB"]).ToString();
+
+                        string zipCode = dr["PI"] as string;
+                        string city = dr["NP"] as string;
+                        string address = dr["ADRESS"] as string;
+                        string yedrpou = dr["IKOD"] as string;
+
+                        BankInfo bi = new BankInfo();
+                        bi.OperationCountry = CountryInfo.UKRAINE;
+                        bi.Name = dr["NB"] as string;
+                        bi.HeadMFO = mfo;
+                        bi.Code = glb;
+                        bi.RegistryNr = prkb;
+                        bi.LegalPerson = new LegalPersonInfo() { TaxCodeOrHandelsRegNr = yedrpou, Name = dr["FULLNAME"] as string, Address = LocationInfo.Parse(address), ResidenceCountry = CountryInfo.UKRAINE };
+                        bi.LegalPerson.Address.City = city;
+                        bi.LegalPerson.Address.ZipCode = zipCode;
+                        _rcuKurBanks.Add(bi);
+                    }
+
+                    _rcuKurBanks.Sort(delegate(BankInfo obj1, BankInfo obj2)
+                    {
+                        return string.Compare(obj1.Name, obj2.Name);
+                    });
+
+
+                }
+                return _rcuKurBanks;
+            }
+        }
+
+        private void frm_NeedToCompareObjects(object sender, NeedToCompareTypesArgs<BankInfo> args)
+        {
+            args.AreEqual = (args.One.HeadMFO == args.Two.HeadMFO);
+        }
+    }
+
     public class CountryInfoEditFormFactoryBasic : ICountryInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<CountryInfo>(); } }
     public class LegalPersonInfoEditFormFactoryBasic : ILegalPersonInfoEditFormFactory { public System.Windows.Forms.Form SpawnInstance() { return new SimpleObjectForm<LegalPersonInfo>(); } }
 
