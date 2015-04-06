@@ -72,7 +72,6 @@
     <EmbeddedResource Include="Forms\SimpleObjectFormDX.resx">
       <DependentUpon>SimpleObjectFormDX.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BGU.DRPL.SignificantOwnership.Core\BGU.DRPL.SignificantOwnership.Core.csproj">
