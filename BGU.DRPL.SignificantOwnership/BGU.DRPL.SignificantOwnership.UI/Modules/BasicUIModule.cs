@@ -43,7 +43,8 @@ namespace BGU.DRPL.SignificantOwnership.UI.Modules
             cont.RegisterInstance<IPurchasedVoteInfoEditFormFactory>(new PurchasedVoteInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<ISignatoryInfoEditFormFactory>(new SignatoryInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<ITotalOwnershipDetailsInfoEditFormFactory>(new TotalOwnershipDetailsInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
-            cont.RegisterInstance<IBankInfoEditFormFactory>(new BankInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            //cont.RegisterInstance<IBankInfoEditFormFactory>(new BankInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
+            cont.RegisterInstance<IBankInfoEditFormFactory>(new BankInfoEditFormFactoryBasicEx(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<ICountryInfoEditFormFactory>(new CountryInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<ILegalPersonInfoEditFormFactory>(new LegalPersonInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());
             cont.RegisterInstance<ILocationInfoEditFormFactory>(new LocationInfoEditFormFactoryBasic(), new ContainerControlledLifetimeManager());

@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EnumType.cs" />
+    <Compile Include="ParseDBF.cs" />
+    <Compile Include="RcuKruReader.cs" />
     <Compile Include="Tools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

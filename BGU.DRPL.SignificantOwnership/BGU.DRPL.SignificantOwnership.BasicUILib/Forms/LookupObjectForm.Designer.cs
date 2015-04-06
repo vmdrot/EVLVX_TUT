@@ -48,17 +48,17 @@
             this.grpExistingOrNew.Size = new System.Drawing.Size(362, 36);
             this.grpExistingOrNew.TabIndex = 0;
             this.grpExistingOrNew.TabStop = false;
-            this.grpExistingOrNew.Text = "Choose existing object or a new one";
+            this.grpExistingOrNew.Text = "Оберете зі списку чи вводитимете новий";
             // 
             // rbNew
             // 
             this.rbNew.AutoSize = true;
             this.rbNew.Location = new System.Drawing.Point(161, 13);
             this.rbNew.Name = "rbNew";
-            this.rbNew.Size = new System.Drawing.Size(93, 17);
+            this.rbNew.Size = new System.Drawing.Size(95, 17);
             this.rbNew.TabIndex = 1;
             this.rbNew.TabStop = true;
-            this.rbNew.Text = "Input new one";
+            this.rbNew.Text = "Увести новий";
             this.rbNew.UseVisualStyleBackColor = true;
             // 
             // rbExisting
@@ -66,18 +66,18 @@
             this.rbExisting.AutoSize = true;
             this.rbExisting.Location = new System.Drawing.Point(7, 13);
             this.rbExisting.Name = "rbExisting";
-            this.rbExisting.Size = new System.Drawing.Size(148, 17);
+            this.rbExisting.Size = new System.Drawing.Size(111, 17);
             this.rbExisting.TabIndex = 0;
             this.rbExisting.TabStop = true;
-            this.rbExisting.Text = "Choose from existing ones";
+            this.rbExisting.Text = "Обрати зі списку";
             this.rbExisting.UseVisualStyleBackColor = true;
             this.rbExisting.CheckedChanged += new System.EventHandler(this.rbExisting_CheckedChanged);
             // 
             // propGrid
             // 
-            this.propGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.propGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.propGrid.Location = new System.Drawing.Point(0, 69);
             this.propGrid.Name = "propGrid";
             this.propGrid.Size = new System.Drawing.Size(704, 272);
@@ -85,8 +85,10 @@
             // 
             // cbxSelectExistingObj
             // 
-            this.cbxSelectExistingObj.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbxSelectExistingObj.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbxSelectExistingObj.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxSelectExistingObj.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbxSelectExistingObj.FormattingEnabled = true;
             this.cbxSelectExistingObj.Location = new System.Drawing.Point(0, 42);
             this.cbxSelectExistingObj.Name = "cbxSelectExistingObj";
