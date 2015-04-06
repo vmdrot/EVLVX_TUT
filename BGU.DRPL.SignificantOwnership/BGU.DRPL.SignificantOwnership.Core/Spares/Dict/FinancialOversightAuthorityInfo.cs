@@ -10,6 +10,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.FinancialOversightAuthorityInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class FinancialOversightAuthorityInfo
     {
+        public FinancialOversightAuthorityInfo()
+        {
+            Jurisdiction = CountryInfo.UKRAINE;
+        }
+
         [DisplayName("Країна юрисдикції")]        
         public CountryInfo Jurisdiction { get; set; }
         [DisplayName("Назва органу")]

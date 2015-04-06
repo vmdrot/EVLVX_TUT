@@ -11,6 +11,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.PhysicalPersonInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class PhysicalPersonInfo
     {
+        public PhysicalPersonInfo()
+        {
+            CitizenshipCountry = CountryInfo.UKRAINE;
+        }
+        
         [DisplayName("Прізвище (укр.)")]
         [Description("Прізвище, українською")]
         public string SurnameUkr { get; set; }

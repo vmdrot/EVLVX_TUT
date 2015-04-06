@@ -6,7 +6,8 @@ using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
-    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.CountryInfoLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
+    //[System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.CountryInfoLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
+    [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.CountryInfoLookupEditor2), typeof(System.Drawing.Design.UITypeEditor))]
     public class CountryInfo
     {
         /// <summary>

@@ -10,6 +10,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.LocationInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class LocationInfo
     {
+
+        public LocationInfo()
+        {
+            Country = CountryInfo.UKRAINE;
+        }
         [DisplayName("Країна")]
         [Description("Країна")]
         public CountryInfo Country { get; set; }

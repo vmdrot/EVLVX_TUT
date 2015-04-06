@@ -10,6 +10,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BreachOfLawRecordInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class BreachOfLawRecordInfo
     {
+
+        public BreachOfLawRecordInfo()
+        {
+            JurisdictionCountry = CountryInfo.UKRAINE;
+        }
         [DisplayName("Тип правопорушення")]
         [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public BreachOfLawType BreachType { get; set; }
