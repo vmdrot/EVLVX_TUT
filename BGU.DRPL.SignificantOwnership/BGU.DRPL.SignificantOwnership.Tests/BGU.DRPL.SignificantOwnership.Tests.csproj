@@ -65,6 +65,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicUI\QuestionnaireDataAggregationTests.cs" />
     <Compile Include="DXUI\DXPropGridTests.cs" />
     <Compile Include="LocationInfoTests.cs" />
     <Compile Include="PhysicalPersonInfoTests.cs" />
@@ -72,6 +73,10 @@
     <Compile Include="QuestionnaireCheckUtilsTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BGU.DRPL.SignificantOwnership.BasicUILib\BGU.DRPL.SignificantOwnership.BasicUILib.csproj">
+      <Project>{47F2913D-8205-4FDA-A2D5-CAB966BF74EB}</Project>
+      <Name>BGU.DRPL.SignificantOwnership.BasicUILib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BGU.DRPL.SignificantOwnership.Core\BGU.DRPL.SignificantOwnership.Core.csproj">
       <Project>{13FC3BB3-E57B-4796-A3A0-2038B681B8CB}</Project>
       <Name>BGU.DRPL.SignificantOwnership.Core</Name>

@@ -6,6 +6,7 @@ using BGU.DRPL.SignificantOwnership.Core.Questionnaires;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 using BGU.DRPL.SignificantOwnership.Core.Spares;
+using System.Data;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Checks
 {
@@ -89,13 +90,30 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
         }
         #endregion
 
-        public List<Spares.Data.OwnershipStructure> ListUltimateBeneficiaries(Spares.Data.GenericPersonID forEntity)
+        public List<TotalOwnershipDetailsInfoEx> ListUltimateBeneficiaries(Spares.Data.GenericPersonID forEntity)
         {
-            Dictionary<string, List<UltimateOwnershipStruct>> structs = new Dictionary<string, List<UltimateOwnershipStruct>>();
-            Dictionary<string, bool> finalizedOwnership = new Dictionary<string, bool>();
-            QuestionnaireCheckUtils.FinalizeOwners(this._questio.BankExistingCommonImplicitOwners, forEntity, structs, finalizedOwnership);
+            List<TotalOwnershipDetailsInfoEx> rslt = new List<TotalOwnershipDetailsInfoEx>();
 
-            List<Spares.Data.OwnershipStructure> rslt = new List<OwnershipStructure>();
+            Dictionary<string, TotalOwnershipDetailsInfo> ultimateOwners = new Dictionary<string, TotalOwnershipDetailsInfo>();
+            
+            UnWindUltimateOwners(_questio.BankRef.LegalPerson.GenericID, _questio.BankRef.LegalPerson.GenericID, _questio.BankExistingCommonImplicitOwners, OwnershipType.Direct, 100M, ultimateOwners);
+            TotalOwnershipDetailsInfo grandTotals = new TotalOwnershipDetailsInfo();
+            foreach (string key in ultimateOwners.Keys)
+            {
+                TotalOwnershipDetailsInfo curr = ultimateOwners[key];
+                decimal dirPct = curr.DirectOwnership != null ? curr.DirectOwnership.Pct : 0;
+                decimal implPct = curr.ImplicitOwnership != null ? curr.ImplicitOwnership.Pct : 0;
+                curr.TotalCapitalSharePct = dirPct + implPct;
+                string currDispName = key;
+                GenericPersonInfo gpi = QuestionnaireCheckUtils.FindPersonByHashID(this._questio.MentionedIdentities, key);
+                if (gpi != null)
+                    currDispName = gpi.DisplayName;
+                rslt.Add(new TotalOwnershipDetailsInfoEx(curr, gpi.ID, currDispName));
+                IncrementUltimateOwnershipSingle(grandTotals, OwnershipType.Direct, dirPct);
+                IncrementUltimateOwnershipSingle(grandTotals, OwnershipType.Implicit, implPct);
+                grandTotals.TotalCapitalSharePct += curr.TotalCapitalSharePct;
+            }
+            rslt.Add(new TotalOwnershipDetailsInfoEx(grandTotals, GenericPersonID.Empty, "Всього"));
             return rslt;
         }
         #endregion
@@ -143,6 +161,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
             rslt.AppendLine(string.Format("{0}\t{1}\t{2}\t{3}", "Grand totals:", grandTotals.DirectOwnership.Pct, grandTotals.ImplicitOwnership.Pct, grandTotals.TotalCapitalSharePct));
             return rslt.ToString();
         }
+
         
         private void UnWindUltimateOwners(GenericPersonID ultimateAsset, GenericPersonID currAsset, List<OwnershipStructure> ownershipHaystack, OwnershipType currDirImpl, decimal currPct, Dictionary<string,TotalOwnershipDetailsInfo> target)
         {
