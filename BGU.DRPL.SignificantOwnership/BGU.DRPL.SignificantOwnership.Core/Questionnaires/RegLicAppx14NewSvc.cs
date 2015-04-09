@@ -74,15 +74,19 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         [Description("Банком виконано спеціальні вимоги законодавства України, у тому числі нормативно-правових актів Національного банку України, щодо нового виду діяльності та/або нового виду фінансових послуг")]
         [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool IsGenericLawReqsMetForNewBusLines { get; set; }
-        [DisplayName("Готовність розпочати новий вид діяльності")]
+        [DisplayName("Готові розпочати новий вид діяльності?")]
         [Description("Банк готовий розпочати новий вид діяльності та/або вид фінансових послуг згідно з вимогами банківського законодавства України, нормативно-правових актів Національного банку України")]
         [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool IsBankIndustrySpecificLawReqsMetForNewBusLines { get; set; }
-        [DisplayName("Чи додано копії внутрішніх положень, що регламентують нову діяльність")]
+        [DisplayName("Нову діяльність зазначено в статуті?")]
+        [Description("Здійснення нових видів діяльності/надання нових фінансових послуг зазначено в статуті банку.")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        public bool IsNewBusLinesPresentInCharter { get; set; }
+        [DisplayName("Наявність внутрішніх положень, що регламентують нову діяльність - є/немає?")]
         [Description("Копії внутрішніх положень, що регулюють здійснення банком нових видів діяльності або надання нового виду фінансових  послуг, додаються")]
         [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool IsInternalRegulationCopiesAttachedForNewBusLines { get; set; }
-        [DisplayName("Підтвердження щодо відповідальності за достовірність")]
+        [DisplayName("Я персонально відповідаю за достовірність поданої інформації?")]
         [Description("Я несу персональну відповідальність за достовірність усіх поданих документів")]
         [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool IsSigneePersonallyLiableForCopiesAttached { get; set; }
@@ -110,5 +114,6 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         {
             get { return string.Empty; }
         }
+
     }
 }
