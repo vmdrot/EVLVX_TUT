@@ -75,9 +75,9 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             // 
             // propGrid
             // 
-            this.propGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.propGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.propGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.propGrid.Location = new System.Drawing.Point(1, 2);
             this.propGrid.Name = "propGrid";
@@ -169,22 +169,22 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             this.ultimateOwnersToolStripMenuItem,
             this.ownershipGraphToolStripMenuItem});
             this.moreToolStripMenuItem.Name = "moreToolStripMenuItem";
-            this.moreToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
-            this.moreToolStripMenuItem.Text = "More...";
+            this.moreToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.moreToolStripMenuItem.Text = "Більше...";
             this.moreToolStripMenuItem.Visible = false;
             // 
             // ultimateOwnersToolStripMenuItem
             // 
             this.ultimateOwnersToolStripMenuItem.Name = "ultimateOwnersToolStripMenuItem";
-            this.ultimateOwnersToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.ultimateOwnersToolStripMenuItem.Text = "Ultimate Owners";
+            this.ultimateOwnersToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.ultimateOwnersToolStripMenuItem.Text = "Кінцеві власники";
             this.ultimateOwnersToolStripMenuItem.Click += new System.EventHandler(this.ultimateOwnersToolStripMenuItem_Click);
             // 
             // ownershipGraphToolStripMenuItem
             // 
             this.ownershipGraphToolStripMenuItem.Name = "ownershipGraphToolStripMenuItem";
-            this.ownershipGraphToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.ownershipGraphToolStripMenuItem.Text = "OwnershipGraph";
+            this.ownershipGraphToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.ownershipGraphToolStripMenuItem.Text = "Граф власності";
             this.ownershipGraphToolStripMenuItem.Click += new System.EventHandler(this.ownershipGraphToolStripMenuItem_Click);
             // 
             // SimpleObjectForm
