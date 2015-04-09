@@ -71,6 +71,10 @@ namespace BGU.DRPL.SignificantOwnership.UI
 
         private void ShowQuestionnaireEditForm<T>(ToolStripMenuItem menuItem, T questio)
         {
+            ShowQuestionnaireEditForm<T>(menuItem, questio, false);
+        }
+        private void ShowQuestionnaireEditForm<T>(ToolStripMenuItem menuItem, T questio, bool showMoreMenu)
+        {
             SimpleObjectForm<T> frm = new SimpleObjectForm<T>();
             frm.DataSource = questio;
             StringBuilder sbFormCaption = new StringBuilder();
@@ -80,6 +84,7 @@ namespace BGU.DRPL.SignificantOwnership.UI
                 sbFormCaption.Append( menuItem.Text);
             frm.Text = sbFormCaption.ToString();
             frm.ShowMenu = true;
+            frm.ShowMoreMenu = showMoreMenu;
             frm.IsRootObjectEditForm = true;
             frm.Size = new System.Drawing.Size(1208, 728);
             frm.Icon = this.Icon;
@@ -138,7 +143,7 @@ namespace BGU.DRPL.SignificantOwnership.UI
 
         private void appx2OwnershipStructLPSamplesGrantToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.Appx2OwnershipStructLP>(appx2OwnershipStructLPSamplesGrantToolStripMenuItem, (new GrantBank()).Appx2Questionnaire);
+            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.Appx2OwnershipStructLP>(appx2OwnershipStructLPSamplesGrantToolStripMenuItem, (new GrantBank()).Appx2Questionnaire, true);
         }
     }
 }
