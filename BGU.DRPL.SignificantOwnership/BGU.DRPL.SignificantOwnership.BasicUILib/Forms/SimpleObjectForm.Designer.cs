@@ -42,10 +42,10 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveFileDgl = new System.Windows.Forms.SaveFileDialog();
             this.moreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ultimateOwnersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ownershipGraphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDgl = new System.Windows.Forms.SaveFileDialog();
             this.statusBar.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -75,10 +75,10 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             // 
             // propGrid
             // 
-            this.propGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.propGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.propGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.propGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.propGrid.Location = new System.Drawing.Point(1, 2);
             this.propGrid.Name = "propGrid";
             this.propGrid.PropertySort = System.Windows.Forms.PropertySort.NoSort;

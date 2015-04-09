@@ -56,7 +56,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.TypeEditors
 
         public override UITypeEditorEditStyle GetEditStyle(System.ComponentModel.ITypeDescriptorContext context)
         {
-            return UITypeEditorEditStyle.DropDown;
+            return UITypeEditorEditStyle.None;
         }
 
         private void OnListBoxSelectedValueChanged(object sender, EventArgs e)

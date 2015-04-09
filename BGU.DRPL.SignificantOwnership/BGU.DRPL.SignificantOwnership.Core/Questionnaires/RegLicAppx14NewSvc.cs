@@ -22,23 +22,23 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         [DisplayName("№ (Ваш висх.)")]
         [Description("номер")]
         public string Ref { get; set; }
-        [DisplayName("Банк")]
+        [DisplayName("Банк (назва та ін. реквізити)")]
         [Description("Ідентифікація банку, що подає заявку")]
         public BankInfo BankRef { get; set; }
-        [DisplayName("Діюча банківська ліцензія")]
+        [DisplayName("Діюча банківська ліцензія (реквізити)")]
         [Description("має  банківську ліцензію")]
         public BankingLicenseInfo ExistingLicenseSpecs {get;set;}
-        [DisplayName("Нові види діяльності")]
+        [DisplayName("Перелік нових видів фінпослуг")]
         [Description("перелік нових видів діяльності або нових видів фінансових послуг")]
         public List<BankingLicensedActivityInfo> NewActivitiesList { get; set; }
-        [DisplayName("Наявність фінансових можливостей")]
+        [DisplayName("Фінансові можливості наявні?")]
         [Description("Банк має достатні фінансові  можливості  для  початку  нового виду діяльності та/або виду фінансових послуг,  зазначених у цьому повідомленні")]
         [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool HasSufficientFinancialCapacity { get; set; }
         [DisplayName("Тривалість беззбиткового періоду (міс.)")]
         [Description("Банк не має збитків протягом останніх ... місяців")]
         public int MonthsWOLosses { get; set; }
-        [DisplayName("Фонди та резерви")]
+        [DisplayName("Формування фондів та резервів відповідає/не відповідає...?")]
         [Description("Банк сформував фонди та резерви відповідно до вимог законодавства України, у тому числі нормативно-правових актів Національного банку України")]
         [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool HasFormedEnoughFundsAndReserves { get; set; }
@@ -48,13 +48,16 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         [DisplayName("Тривалість дотримування економічних нормативів (міс.)")]
         [Description("Банк дотримується економічних нормативів протягом останніх ... місяців")]
         public int MonthsEconomicNormativesReqsMet { get; set; }
-        [DisplayName("Достатність регулятивного капіталу")]
+        [DisplayName("Регулятивного капіталу достатньо (так/ні)?")]
         [Description("Рівень регулятивного капіталу Банку відповідає вимогам Національного банку України")]
         [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public bool IsRegulatoryCapitalReqsMet { get; set; }
         [DisplayName("Розміри регулятивного капіталу (грн.)")]
         [Description("Рівень регулятивного капіталу Банку становить ... грн.")]
-        public CurrencyAmount RegulatoryCapital { get; set; }
+        public decimal RegulatoryCapitalAmt { get; set; }
+        [DisplayName("Дата розмірів регулятивного капіталу")]
+        [Description("Дата, на яку подано рівень регулятивного капіталу Банку (вище)")]
+        public DateTime RegulatoryCapitalDate { get; set; }
         [DisplayName("Відсутність заходів упливу")]
         [Description("Банк не є об'єктом застосування заходів впливу (крім письмового застереження) упродовж останніх 3 місяців, причому:\nпротягом усього періоду діяльності - для банків, які отримали банківську ліцензію менше ніж за три місяці до часу повідомлення Національного банку України про початок нового виду діяльності та/або виду послуг;\nпротягом трьох місяців, що передують часу повідомлення Національного банку України про початок нового виду діяльності та/або виду послуг - для банків, які здійснюють банківську діяльність на підставі банківської ліцензії більше ніж три місяці.")]
         [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
