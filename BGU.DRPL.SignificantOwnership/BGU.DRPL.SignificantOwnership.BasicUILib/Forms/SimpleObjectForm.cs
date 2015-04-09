@@ -10,6 +10,7 @@ using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using BGU.DRPL.SignificantOwnership.Core.TypeEditors;
 using System.IO;
 using BGU.DRPL.SignificantOwnership.Core.Questionnaires;
+using BGU.DRPL.SignificantOwnership.Core.Checks;
 
 namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
 {
@@ -39,6 +40,12 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
         {
             get { return menuStrip1.Visible; }
             set { menuStrip1.Visible = value; }
+        }
+
+        public bool ShowMoreMenu
+        {
+            get { return moreToolStripMenuItem.Visible; }
+            set { moreToolStripMenuItem.Visible = value; }
         }
 
         private bool _isRootObjectEditForm = false;
@@ -191,6 +198,32 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
         {
             if(_isRootObjectEditForm)
                 SyncRootQuestionnaire();
+        }
+
+        private void ultimateOwnersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //if (!(DataSource is Appx2OwnershipStructLP))
+            //    return;
+            //Appx2OwnershipStructLP questio = (Appx2OwnershipStructLP)DataSource;
+            //Appx2OwnershipStructLPChecker checker = new Appx2OwnershipStructLPChecker();
+            //checker.Questionnaire = questio;
+            //UltimateOwnersForm frm = new UltimateOwnersForm();
+            //frm.DataSource = checker.ListUltimateBeneficiaries(questio.BankRef.LegalPerson.GenericID);
+            //frm.ShowDialog();
+        }
+
+        private void ownershipGraphToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //if (!(DataSource is Appx2OwnershipStructLP))
+            //    return;
+            //Appx2OwnershipStructLP questio = (Appx2OwnershipStructLP)DataSource;
+            //Appx2OwnershipStructLPChecker checker = new Appx2OwnershipStructLPChecker();
+            //checker.Questionnaire = questio;
+            //UltimateOwnershipTreeForm frm = new UltimateOwnershipTreeForm();
+            //frm.MentionedEntities = questio.MentionedIdentities;
+            //frm.CentralAssetID = questio.BankRef.LegalPerson.GenericID;
+            //frm.DataSource = questio.BankExistingCommonImplicitOwners;
+            //frm.ShowDialog();
         }
     }
 }

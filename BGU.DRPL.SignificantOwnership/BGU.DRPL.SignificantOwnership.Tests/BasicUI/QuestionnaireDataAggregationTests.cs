@@ -23,5 +23,18 @@ namespace BGU.DRPL.SignificantOwnership.Tests.BasicUI
             frm.DataSource = checker.ListUltimateBeneficiaries(gb.Appx2Questionnaire.BankRef.LegalPerson.GenericID);
             frm.ShowDialog();
         }
+
+        [Test]
+        public void OwnershipGraphFormTest_Grant()
+        {
+            GrantBank gb = new GrantBank();
+            //Appx2OwnershipStructLPChecker checker = new Appx2OwnershipStructLPChecker();
+            //checker.Questionnaire = gb.Appx2Questionnaire;
+            UltimateOwnershipTreeForm frm = new UltimateOwnershipTreeForm();
+            frm.MentionedEntities = gb.Appx2Questionnaire.MentionedIdentities;
+            frm.CentralAssetID = gb.Appx2Questionnaire.BankRef.LegalPerson.GenericID;
+            frm.DataSource = gb.Appx2Questionnaire.BankExistingCommonImplicitOwners;
+            frm.ShowDialog();
+        }
     }
 }
