@@ -213,4 +213,21 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
         [Description("Призупинення ліцензії")]
         LicenseSuspended
     }
+
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
+    public enum TypicalApplicationAttachement
+    {
+        [Description("Не вказано")]
+        None = 0,
+        [Description("Копії/скан внутрішніх положень")]
+        InternalReglementCopiesScans,
+        [Description("Копії/скан трудової книги")]
+        WorkbookCopyScan,
+        [Description("Копії/скан паспорта")]
+        PassportCopyScan,
+        [Description("Копії/скан статуту")]
+        CharterCopyScan,
+        [Description("Інше (вказати додатково у деталях)")]
+        Other
+    }
 }

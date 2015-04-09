@@ -11,8 +11,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     {
         [DisplayName("Файл")]
         public string FileName { get; set; }
-        [DisplayName("Назва")]
-        public string Title { get; set; }
+        [DisplayName("Тип (з переліку)")]
+        [Description("Тип додатку із переліку типових долучень; якщо \"Інше\" - обов'язково вказати, що саме у полі \"Опис файлу\".")]
+        public TypicalApplicationAttachement AttachmentType { get; set; }
+        //[DisplayName("Назва")]
+        //public string Title { get; set; }
         [DisplayName("Опис файлу")]
         [Description("Що у файлі?")]
         public string Description { get; set; }
