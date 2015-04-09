@@ -75,9 +75,10 @@
             // 
             // propGrid
             // 
-            this.propGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.propGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.propGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.propGrid.Location = new System.Drawing.Point(0, 69);
             this.propGrid.Name = "propGrid";
             this.propGrid.Size = new System.Drawing.Size(704, 272);
@@ -85,14 +86,15 @@
             // 
             // cbxSelectExistingObj
             // 
-            this.cbxSelectExistingObj.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbxSelectExistingObj.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbxSelectExistingObj.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbxSelectExistingObj.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxSelectExistingObj.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbxSelectExistingObj.FormattingEnabled = true;
             this.cbxSelectExistingObj.Location = new System.Drawing.Point(0, 42);
             this.cbxSelectExistingObj.Name = "cbxSelectExistingObj";
-            this.cbxSelectExistingObj.Size = new System.Drawing.Size(704, 21);
+            this.cbxSelectExistingObj.Size = new System.Drawing.Size(704, 28);
             this.cbxSelectExistingObj.TabIndex = 2;
             this.cbxSelectExistingObj.SelectedIndexChanged += new System.EventHandler(this.cbxSelectExistingObj_SelectedIndexChanged);
             // 
