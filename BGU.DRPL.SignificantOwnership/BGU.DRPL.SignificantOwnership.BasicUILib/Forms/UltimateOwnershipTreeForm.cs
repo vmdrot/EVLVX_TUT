@@ -58,7 +58,7 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             if (gpi != null)
                 dispName = gpi.DisplayName;
             string pctPathOut = !string.IsNullOrEmpty(pctPath) ? string.Format("( {0} * {1} )", pct, pctPath) : string.Empty;
-            rslt.Text = string.Format("{0}{1} {2}", pct, pctPathOut, dispName);
+            rslt.Text = string.Format("{0}%{1} {2}", pct, pctPathOut, dispName);
             return rslt;
         }
 
