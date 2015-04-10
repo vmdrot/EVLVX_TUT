@@ -12,7 +12,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     {
         public ProfessionLicenseInfo()
         {
-            this.LicenseQualifications = new List<string>();
+            this.LicenseQualifications = new List<LicenseQualificationInfo>();
         }
 
         [DisplayName("Ліцензор")]
@@ -24,7 +24,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         [DisplayName("№ ліцензії")]
         public string LicenseIDNr { get; set; }
         [DisplayName("Кваліфікації/види діяльності за ліцензією")]
-        public List<string> LicenseQualifications { get; set; }
+        public List<LicenseQualificationInfo> LicenseQualifications { get; set; }
         [DisplayName("Формулювання/текст ліцензії")]
         [Description("Додаткові суттєві відомості про ліцензію")]
         public string LicenseClause { get; set; }
