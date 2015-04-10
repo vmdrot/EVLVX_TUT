@@ -13,7 +13,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         public ContactInfo()
         {
             Phones = new List<PhoneInfo>();
-            Emails = new List<string>();
+            Emails = new List<EmailInfo>();
         }
         [DisplayName("Контактна особа")]
         [Description("Контактна особа (фізособа)")]
@@ -25,7 +25,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         public string Fax { get; set; }
         [DisplayName("E-mail-и")]
         [Description("Перелік адрес електронної пошти")]
-        public List<string> Emails { get; set; }
+        public List<EmailInfo> Emails { get; set; }
         [DisplayName("www")]
         [Description("Веб-сайт")]
         public string www { get; set; }
