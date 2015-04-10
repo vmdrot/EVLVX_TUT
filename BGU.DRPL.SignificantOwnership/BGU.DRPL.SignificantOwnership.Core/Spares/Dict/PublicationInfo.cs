@@ -24,6 +24,6 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         public string IssueNr { get; set; }
         [DisplayName("URL публікації")]
         [Description("Ланка на публікацію (адреса публікації в інтернет)")]
-        public Uri PubUrl { get; set; }
+        public string PubUrl { get; set; }
     }
 }
