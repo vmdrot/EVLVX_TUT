@@ -232,7 +232,12 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 
         protected override string ApplicantNameForFileName
         {
-            get { return this.Acquiree.FullName ?? this.Acquiree.FullNameUkr ?? this.Acquiree.Surname ?? this.Acquiree.SurnameUkr; }
+            get 
+            { 
+                if (this.Acquiree != null)
+                    return this.Acquiree.FullName ?? this.Acquiree.FullNameUkr ?? this.Acquiree.Surname ?? this.Acquiree.SurnameUkr ?? string.Empty;
+                return string.Empty;
+            }
         }
     }
 }
