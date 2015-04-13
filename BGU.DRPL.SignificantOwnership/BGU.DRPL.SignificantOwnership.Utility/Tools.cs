@@ -5,6 +5,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Xml.Serialization;
 using System.IO;
+using System.Reflection;
 
 namespace BGU.DRPL.SignificantOwnership.Utility
 {
@@ -31,6 +32,7 @@ namespace BGU.DRPL.SignificantOwnership.Utility
 
         public static string GetPropDescription(PropertyDescriptor prop)
         {
+            
             foreach (Attribute attr in prop.Attributes)
             {
                 if (attr is DescriptionAttribute)
@@ -49,6 +51,27 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             }
             return string.Empty;
         }
+
+        //public static string GetPropDescription(PropertyInfo prop)
+        //{
+        //    foreach (Attribute attr in prop.Attributes)
+        //    {
+        //        if (attr is DescriptionAttribute)
+        //            return ((DescriptionAttribute)attr).Description;
+        //    }
+        //    return string.Empty;
+        //}
+
+
+        //public static string GetPropDisplayName(PropertyInfo prop)
+        //{
+        //    foreach (Attribute attr in prop.Attributes)
+        //    {
+        //        if (attr is DisplayNameAttribute)
+        //            return ((DisplayNameAttribute)attr).DisplayName;
+        //    }
+        //    return string.Empty;
+        //}
 
         public static void WriteXML<T>(T obj, string saveAs)
         {
