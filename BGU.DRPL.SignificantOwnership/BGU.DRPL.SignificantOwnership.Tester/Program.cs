@@ -11,6 +11,8 @@ using System.IO;
 using Newtonsoft.Json;
 using BGU.DRPL.SignificantOwnership.EmpiricalData.Examples;
 using BGU.DRPL.SignificantOwnership.Core.Checks;
+using System.Xml;
+using BGU.DRPL.SignificantOwnership.Utility;
 
 namespace BGU.DRPL.SignificantOwnership.Tester
 {
@@ -27,7 +29,8 @@ namespace BGU.DRPL.SignificantOwnership.Tester
             //ParseFillPassIssueData2();
             
             //WriteXML_Grant();
-            BuildOwnershipGraphGrantBankTest();
+            //BuildOwnershipGraphGrantBankTest();
+            ProcessXSDTest();
         }
 
         #region FFR
@@ -887,5 +890,21 @@ namespace BGU.DRPL.SignificantOwnership.Tester
             Console.WriteLine(checker.BuildOwnershipGraph());
         }
         #endregion
+
+        private static void ProcessXSDTest()
+        {
+            XmlDocument doc = new XmlDocument();
+
+            doc.Load(@"D:\home\vmdrot\HaErez\BGU\Var\SignificantOwnership\XMLs\XSDs\Appx2OwnershipStructLP.xsd");
+            List<string> classes = XSDReflectionUtil.GetXSDComplexTypes(doc);
+            //List<string> enums = XSDReflectionUtil.GetXSDEnums(doc);
+
+
+            foreach (string cls in classes)
+                Console.WriteLine(cls);
+
+            //foreach (string enm in enums)
+            //    Console.WriteLine(enm);
+        }
     }
 }
