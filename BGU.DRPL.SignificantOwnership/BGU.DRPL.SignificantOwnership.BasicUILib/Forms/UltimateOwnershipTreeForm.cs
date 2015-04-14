@@ -82,6 +82,16 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             return node;
         }
 
+        private void expandAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            treeView.ExpandAll();
+        }
+
+        private void collapseAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            treeView.CollapseAll();
+        }
+
         /*
         public string BuildUltimateOwnershipOnlyGraph(bool bWithDisplayNames)
         {
