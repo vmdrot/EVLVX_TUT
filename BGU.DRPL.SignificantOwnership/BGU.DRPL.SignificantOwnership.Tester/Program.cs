@@ -13,11 +13,23 @@ using BGU.DRPL.SignificantOwnership.EmpiricalData.Examples;
 using BGU.DRPL.SignificantOwnership.Core.Checks;
 using System.Xml;
 using BGU.DRPL.SignificantOwnership.Utility;
+using System.Configuration;
 
 namespace BGU.DRPL.SignificantOwnership.Tester
 {
     class Program
     {
+
+        private static readonly string XsdExePath;
+        private static readonly string XsdFilesOutputDir;
+
+
+        static Program()
+        {
+            XsdExePath = ConfigurationManager.AppSettings["xsdExePath"];
+            XsdFilesOutputDir = ConfigurationManager.AppSettings["xsdFilesOutputDir"];
+        }
+
         static void Main(string[] args)
         {
             Console.Read();
@@ -30,7 +42,8 @@ namespace BGU.DRPL.SignificantOwnership.Tester
             
             //WriteXML_Grant();
             //BuildOwnershipGraphGrantBankTest();
-            ProcessXSDTest();
+            //ProcessXSDTest();
+            UpdateXSDsTranslations();
         }
 
         #region FFR
@@ -891,20 +904,95 @@ namespace BGU.DRPL.SignificantOwnership.Tester
         }
         #endregion
 
+        private static void UpdateXSDsTranslations()
+        {
+            //Type[] types2Process = new Type[] { typeof(Appx2OwnershipStructLP)};
+
+            Type[] types2Process = new Type[] { typeof(Appx2OwnershipStructLP),
+typeof(Appx3OwnershipStructPP),
+typeof(RegLicAppx12HeadCandidateAppl),
+typeof(RegLicAppx14NewSvc),
+typeof(RegLicAppx17EquityChangeTable),
+typeof(RegLicAppx2OwnershipAcqRequestLP),
+typeof(RegLicAppx3MemberCandidateAppl),
+typeof(RegLicAppx4OwnershipAcqRequestPP),
+typeof(RegLicAppx6EquityFormationTable),
+typeof(RegLicAppx7ShareAcqIntent),
+typeof(RegLicAppx9BankingLicenseAppl)};
+            foreach (Type typ in types2Process)
+            {
+                CallXsdExe(typ);
+                File.Copy(Path.Combine(XsdFilesOutputDir, "schema0.xsd"), Path.Combine(XsdFilesOutputDir, string.Format("{0}.xsd", typ.Name.Trim())), true);
+                ProcessXSDSingle(typ);
+            }
+        }
+
+        private static void CallXsdExe(Type typ)
+        {
+            string strCmdText = string.Format(@"/C ""{2}"" BGU.DRPL.SignificantOwnership.Core.dll /outputdir:{0} /type:{1} >> D:\home\vmdrot\BGU\Specs\SignigicantOwnership\XMLs\xsd.log.txt", XsdFilesOutputDir, typ.FullName, XsdExePath);
+            //string strCmdText = string.Format(@"BGU.DRPL.SignificantOwnership.Core.dll /outputdir:{0} /type:{1} >> D:\home\vmdrot\BGU\Specs\SignigicantOwnership\XMLs\xsd.log.txt", XsdFilesOutputDir, typ.FullName);
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            //startInfo.FileName = XsdExePath;
+            startInfo.FileName = "cmd.exe";//XsdExePath;
+            startInfo.Arguments = strCmdText;
+            process.StartInfo = startInfo;
+            //using (FileStream fs = new FileStream(@"D:\home\vmdrot\BGU\Specs\SignigicantOwnership\XMLs\xsd.log.txt", System.IO.FileMode.Append))
+            //{
+            //    process.StandardOutput = fs;
+            //    //process.StartInfo.UseShellExecute = true;
+            //    bool bStarted = process.Start();
+            //    if (bStarted)
+            //        process.WaitForExit();
+            //}
+            bool bStarted = process.Start();
+            if (bStarted)
+                process.WaitForExit();
+        }
+
         private static void ProcessXSDTest()
         {
-            XmlDocument doc = new XmlDocument();
 
-            doc.Load(@"D:\home\vmdrot\HaErez\BGU\Var\SignificantOwnership\XMLs\XSDs\Appx2OwnershipStructLP.xsd");
-            List<string> classes = XSDReflectionUtil.GetXSDComplexTypes(doc);
-            //List<string> enums = XSDReflectionUtil.GetXSDEnums(doc);
+            string fileNames = @"Appx2OwnershipStructLP.xsd
+Appx3OwnershipStructPP.xsd
+RegLicAppx12HeadCandidateAppl.xsd
+RegLicAppx14NewSvc.xsd
+RegLicAppx17EquityChangeTable.xsd
+RegLicAppx2OwnershipAcqRequestLP.xsd
+RegLicAppx3MemberCandidateAppl.xsd
+RegLicAppx4OwnershipAcqRequestPP.xsd
+RegLicAppx6EquityFormationTable.xsd
+RegLicAppx7ShareAcqIntent.xsd
+RegLicAppx9BankingLicenseAppl.xsd";
+            string[] aFnames = fileNames.Split('\n');
+            foreach (string fnm in aFnames)
+                ProcessXSDSingle(fnm.Trim());
 
-
-            foreach (string cls in classes)
-                Console.WriteLine(cls);
-
-            //foreach (string enm in enums)
-            //    Console.WriteLine(enm);
         }
+
+
+
+        private static void ProcessXSDSingle(string fname)
+        {
+            XmlDocument doc = new XmlDocument();
+            string fileName = string.Format(@"D:\home\vmdrot\BGU\Specs\SignigicantOwnership\XMLs\XSDs\{0}", fname);
+            doc.Load(fileName);
+            XSDReflectionUtil.InjectDispProps(doc);
+            doc.Save(fileName);
+
+        }
+
+        private static void ProcessXSDSingle(Type typ)
+        {
+            XmlDocument doc = new XmlDocument();
+            string fileName = string.Format("{0}.xsd", typ.Name.Trim());
+            string fullFilePath = Path.Combine(XsdFilesOutputDir, fileName);
+            doc.Load(fullFilePath);
+            XSDReflectionUtil.InjectDispProps(doc);
+            doc.Save(fullFilePath);
+
+        }
+
     }
 }
