@@ -135,11 +135,71 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                 string propNm = propNode.Attributes["name"].Value;
                 if (!dispDescrs.ContainsKey(propNm))
                     continue;
+                
+                string propTypeNmEng = propNode.Attributes["type"].Value;
+                string propTypeNmUkr = TranslateTypeNm(propTypeNmEng);
+                if (propTypeNmEng != propTypeNmUkr)
+                    WriteAttribute(propNode, "type_ukr", propTypeNmUkr);
+
                 if (!string.IsNullOrEmpty(dispDescrs[propNm].DisplayName))
                     WriteAttribute(propNode, "displayName", dispDescrs[propNm].DisplayName);
                 if (!string.IsNullOrEmpty(dispDescrs[propNm].Description))
                     WriteAttribute(propNode, "description", dispDescrs[propNm].Description);
+
             }
+        }
+
+        private static string TranslateTypeNm(string propTypeNmEng)
+        {
+            switch (propTypeNmEng)
+            {
+                case "xs:string": return "текст";
+                case "xs:hexBinary": return "гексадвоїчний";
+                case "xs:base64Binary": return "двоїчний у 64-му кодуванні";
+                case "xs:anyURI": return "URL";
+                case "xs:QName": return "кваліфіковане ім'я";
+                case "xs:NOTATION": return "нотація";
+                case "xs:normalizedString": return "нормалізований текст";
+                case "xs:token": return "токен";
+                case "xs:language": return "мова";
+                case "xs:NMTOKEN": return "ім'я-токен";
+                case "xs:Name": return "ім'я";
+                case "xs:NCName": return "ім'я";
+                case "xs:ID": return "ідентифікатор";
+                case "xs:IDREF": return "посилання на ідентифікатор";
+                case "xs:ENTITY": return "сутність";
+                case "xs:integer": return "ціле число";
+                case "xs:nonPositiveInteger": return "недодатнє ціле число";
+                case "xs:negativeInteger": return "від'ємне ціле число";
+                case "xs:nonNegativeInteger": return "невід'ємне ціле число";
+                case "xs:positiveInteger": return "додатнє ціле число";
+                case "xs:long": return "довге ціле число";
+                case "xs:int": return "ціле число";
+                case "xs:short": return "коротке ціле число";
+                case "xs:byte": return "байт";
+                case "xs:unsignedLong": return "беззнакове довге ціле";
+                case "xs:unsignedInt": return "беззнакове ціле";
+                case "xs:unsignedShort": return "беззнакове коротке ціле";
+                case "xs:unsignedByte": return "беззнаковий байт";
+                case "xs:float": return "число з плаваючою комою";
+                case "xs:double": return "подвійне з плаваючою комою";
+                case "xs:dateTime": return "дата і час";
+                case "xs:date": return "дата";
+                case "xs:gYearMonth": return "рік і місяць";
+                case "xs:gYear": return "рік";
+                case "xs:time": return "час";
+                case "xs:gDay": return "день";
+                case "xs:gMonth": return "місяць";
+                case "xs:gMonthDay": return "місяць і день";
+                case "xs:duration": return "тривалість (по часу)";
+                case "xs:NMTOKENS": return "масив імен-токенів";
+                case "xs:IDREFS": return "масив посилань на ідентифікатори";
+                case "xs:ENTITIES": return "масив сутностей";
+                case "xs:boolean": return "логічний тип(так/ні)";
+                case "xs:decimal": return "десяткове число, у т.ч. дрібне";
+                default: break;
+            }
+            return propTypeNmEng;
         }
 
         private static XmlNode FindSequenseChild(XmlNode node)
