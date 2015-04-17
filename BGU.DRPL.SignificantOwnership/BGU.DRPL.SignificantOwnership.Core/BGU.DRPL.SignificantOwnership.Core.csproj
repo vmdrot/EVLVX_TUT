@@ -141,6 +141,7 @@
     <Compile Include="TypeEditors\TypeEditorsDispatcher.cs" />
     <Compile Include="TypeEditors\TypeEditorsInterfaces.cs" />
     <Compile Include="TypeEditors\TypeEditorTools.cs" />
+    <Compile Include="ValidationSchemes\ValidationShemeBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TypeEditors\Interfaces\" />
