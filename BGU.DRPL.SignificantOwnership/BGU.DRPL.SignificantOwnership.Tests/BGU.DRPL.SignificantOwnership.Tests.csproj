@@ -71,6 +71,7 @@
     <Compile Include="PhysicalPersonInfoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionnaireCheckUtilsTests.cs" />
+    <Compile Include="WebUIRelated\JsonGenerators.cs" />
     <Compile Include="XSDUtilTests.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -35,7 +35,7 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             rslt.Clear();
             DataRow[] rows = dt.Select(whereClause);
             foreach (DataRow dr in rows)
-                rslt.Rows.Add(dr);
+                rslt.Rows.Add(dr.ItemArray);
             return rslt;
         }
 

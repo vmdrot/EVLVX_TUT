@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.Data;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -60,6 +61,33 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         public override string ToString()
         {
             return Name;
+        }
+
+        public static BankInfo ParseFromRcuKruRow(DataRow dr)
+        {
+            string prb = dr["PRB"] as string;
+
+            string glmfo = ((int)dr["GLMFO"]).ToString();
+            string mfo = ((int)dr["MFO"]).ToString();
+            string glb = ((int)dr["GLB"]).ToString();
+
+            string prkb = ((int)dr["PRKB"]).ToString();
+
+            string zipCode = dr["PI"] as string;
+            string city = dr["NP"] as string;
+            string address = dr["ADRESS"] as string;
+            string yedrpou = dr["IKOD"] as string;
+
+            BankInfo bi = new BankInfo();
+            bi.OperationCountry = CountryInfo.UKRAINE;
+            bi.Name = dr["NB"] as string;
+            bi.HeadMFO = mfo;
+            bi.Code = glb;
+            bi.RegistryNr = prkb;
+            bi.LegalPerson = new LegalPersonInfo() { TaxCodeOrHandelsRegNr = yedrpou, Name = dr["FULLNAME"] as string, Address = LocationInfo.Parse(address), ResidenceCountry = CountryInfo.UKRAINE };
+            bi.LegalPerson.Address.City = city;
+            bi.LegalPerson.Address.ZipCode = zipCode;
+            return bi;
         }
     }
 }
