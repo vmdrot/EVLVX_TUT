@@ -1,29 +1,30 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="BankInfoEditControl.ascx.cs" Inherits="BGU.Web20.MiscItemsSite.Controls.BankInfoEditControl" %>
 <%@ Register TagPrefix="uc" TagName="BootstrapTextEditBasic" Src="~/Controls/BootstrapTextEditBasic.ascx" %>
-<%@ Register TagPrefix="uc" TagName="RcuKruLookupControl" Src="~/Controls/RcuKruLookupControl.ascx" %>
+<%@ Register TagPrefix="uc" TagName="RcuKruLookupControl2" Src="~/Controls/RcuKruLookupControl2.ascx" %>
 
 <div id="content">
-    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-        <li class="active"><a href="#red" data-toggle="tab">Вибрати</a></li>
-        <li><a href="#orange" data-toggle="tab">Увести</a></li>
+    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs" runat="server" enableviewstate="true">
+        <li class="active" runat="server" id="tbOne"><a href="#<%=tbPnlOne.ClientID %>" data-toggle="tab">Вибрати</a></li>
+        <li runat="server" id="tbTwo"><a href="#<%=tbPnlTwo.ClientID %>" data-toggle="tab">Увести</a></li>
     </ul>
     <div id="my-tab-content" class="tab-content">
-        <div class="tab-pane active" id="red">
+        <div class="tab-pane active" id="tbPnlOne" runat="server">
           <div class="panel panel-primary">
             <div class="panel-heading">
               <h3 class="panel-title">Обрати банк з довідника</h3>
             </div>
             <div class="panel-body">
-            <uc:RcuKruLookupControl ID="uabkcbx" runat="server" />
+            <uc:RcuKruLookupControl2 ID="uabkcbx" runat="server" AutoPostBack="true" OnSelectedMFOChanged="uabkcbx_OnSelectedMFOChanged" />
             </div>
           </div>
         </div>
-        <div class="tab-pane" id="orange">
+        <div class="tab-pane" id="tbPnlTwo" runat="server">
           <div class="panel panel-success">
             <div class="panel-heading">
               <h3 class="panel-title">Увести банк (не існує в довіднику)</h3>
             </div>
             <div class="panel-body">
+                <asp:DropDownList ID="ddlCountry" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged"></asp:DropDownList>
                 <uc:BootstrapTextEditBasic ID="edHeadMFO" runat="server" LabelDisplayName="МФО" LabelDescription="МФО" EditMaxLength="6" EditSize="6" EditWidth="20%" />
                 <uc:BootstrapTextEditBasic ID="edRegistryNr" runat="server" LabelDisplayName="№ у реєстрі банків" LabelDescription="№ у реєстрі банків (лише для головних контор)" EditWidth="10%" />
                 <uc:BootstrapTextEditBasic ID="edCode" runat="server" LabelDisplayName="Код банку" LabelDescription="Код банку (лише для головних контор)" EditWidth="10%" />
@@ -39,7 +40,7 @@
 
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
-        $('#tabs').tab();
+        $('#<%=tabs.ClientID%>').tab();
     });
 </script>    
 

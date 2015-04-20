@@ -34,7 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -94,12 +93,18 @@
     <Content Include="Bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Bootstrap\css\bootstrap.css" />
     <Content Include="Bootstrap\css\bootstrap.min.css" />
+    <Content Include="Bootstrap\css\selectize.bootstrap2.css" />
+    <Content Include="Bootstrap\css\selectize.bootstrap3.css" />
+    <Content Include="Bootstrap\css\selectize.css" />
+    <Content Include="Bootstrap\css\selectize.default.css" />
+    <Content Include="Bootstrap\css\selectize.legacy.css" />
     <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Bootstrap\js\bootstrap.js" />
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="Bootstrap\js\npm.js" />
     <Content Include="Controls\BankInfoEditControl.ascx" />
     <Content Include="Controls\BootstrapTextEditBasic.ascx" />
+    <Content Include="Controls\RcuKruLookupControl2.ascx" />
     <Content Include="Controls\InstitutionSerchCriteria.ascx" />
     <Content Include="Controls\RcuKruLookupControl.ascx" />
     <Content Include="Styles\Site.css" />
@@ -110,6 +115,7 @@
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Tests\BankInfoTestFrm.aspx" />
     <Content Include="Tests\Bootstrap.html" />
+    <Content Include="Tests\BootstrapSelectize.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -168,6 +174,13 @@
     <Compile Include="Controls\BootstrapTextEditBasic.ascx.designer.cs">
       <DependentUpon>BootstrapTextEditBasic.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RcuKruLookupControl2.ascx.cs">
+      <DependentUpon>RcuKruLookupControl2.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RcuKruLookupControl2.ascx.designer.cs">
+      <DependentUpon>RcuKruLookupControl2.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\InstitutionSerchCriteria.ascx.cs">
       <DependentUpon>InstitutionSerchCriteria.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -212,10 +225,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="App_Themes\Glass\" />
     <Folder Include="App_Themes\Office2003Blue\" />
     <Folder Include="App_Themes\Office2003Olive\" />
+    <Folder Include="js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
@@ -388,6 +401,7 @@
     <Content Include="App_Themes\DevEx\ReportViewer.skin" />
     <Content Include="App_Themes\DevEx\WeekDaysEdit.skin" />
     <Content Include="App_Themes\DevEx\WeekOfMonthEdit.skin" />
+    <None Include="App_Data\bankInfos.json" />
     <None Include="Bootstrap\css\bootstrap-theme.css.map" />
     <None Include="Bootstrap\css\bootstrap.css.map" />
     <None Include="Bootstrap\fonts\glyphicons-halflings-regular.eot" />
@@ -396,6 +410,10 @@
     <None Include="Bootstrap\fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BGU.DRPL.SignificantOwnership.Core\BGU.DRPL.SignificantOwnership.Core.csproj">
+      <Project>{13FC3BB3-E57B-4796-A3A0-2038B681B8CB}</Project>
+      <Name>BGU.DRPL.SignificantOwnership.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BGU.DRPL.SignificantOwnership.Utility\BGU.DRPL.SignificantOwnership.Utility.csproj">
       <Project>{E7FA3686-C797-43EA-890E-5F970A54D348}</Project>
       <Name>BGU.DRPL.SignificantOwnership.Utility</Name>
@@ -422,6 +440,9 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>copy $(SolutionDir)Data\RCUKRU.DBF $(TargetDir)*.*</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

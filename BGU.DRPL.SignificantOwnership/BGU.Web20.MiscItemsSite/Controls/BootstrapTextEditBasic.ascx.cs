@@ -68,6 +68,17 @@ namespace BGU.Web20.MiscItemsSite.Controls
             set { this.ed.MaxLength = value; }
         }
 
+
+        [Browsable(true)]
+        public string Value
+        {
+            get
+            {
+                return this.ed.Value;
+            }
+            set { this.ed.Value = value; }
+        }
+
         #endregion
 
 
