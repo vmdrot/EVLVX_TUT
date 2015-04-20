@@ -5,11 +5,11 @@ using System.Text;
 
 namespace BGU.DRPL.SignificantOwnership.Core.ValidationSchemes
 {
-    public class ValidationShemeBaseAttribute : Attribute
+    public class ValidationSchemeBaseAttribute : Attribute
     {
 
         public string condition;
-        public ValidationShemeBaseAttribute() { }
-        public ValidationShemeBaseAttribute(string condition) { this.condition = condition; }
+        public ValidationSchemeBaseAttribute() { }
+        public ValidationSchemeBaseAttribute(string condition) { this.condition = condition; }
     }
 }
