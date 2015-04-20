@@ -103,10 +103,19 @@
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="Bootstrap\js\npm.js" />
     <Content Include="Controls\BankInfoEditControl.ascx" />
+    <Content Include="Controls\BootstrapDropDownBasic.ascx" />
     <Content Include="Controls\BootstrapTextEditBasic.ascx" />
+    <Content Include="Controls\BankInfoEditControl2.ascx" />
+    <Content Include="Controls\RcuKruLookupControl3.ascx" />
     <Content Include="Controls\RcuKruLookupControl2.ascx" />
     <Content Include="Controls\InstitutionSerchCriteria.ascx" />
     <Content Include="Controls\RcuKruLookupControl.ascx" />
+    <Content Include="js\es5.js" />
+    <Content Include="js\index.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\jqueryui.js" />
+    <Content Include="js\selectize.js" />
+    <Content Include="js\selectize.min.js" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -116,6 +125,25 @@
     <Content Include="Tests\BankInfoTestFrm.aspx" />
     <Content Include="Tests\Bootstrap.html" />
     <Content Include="Tests\BootstrapSelectize.html" />
+    <Content Include="Tests\BankInfoTestFrm2.aspx" />
+    <Content Include="Tests\SelectizeBasic.html" />
+    <Content Include="Tests\Selectize\api.html" />
+    <Content Include="Tests\Selectize\basic.html" />
+    <Content Include="Tests\Selectize\cities.html" />
+    <Content Include="Tests\Selectize\confirm.html" />
+    <Content Include="Tests\Selectize\contacts.html" />
+    <Content Include="Tests\Selectize\create-filter.html" />
+    <Content Include="Tests\Selectize\customization.html" />
+    <Content Include="Tests\Selectize\dynamic.html" />
+    <Content Include="Tests\Selectize\events.html" />
+    <Content Include="Tests\Selectize\github.html" />
+    <Content Include="Tests\Selectize\lock.html" />
+    <Content Include="Tests\Selectize\movies.html" />
+    <Content Include="Tests\Selectize\optgroups.html" />
+    <Content Include="Tests\Selectize\performance.html" />
+    <Content Include="Tests\Selectize\plugins.html" />
+    <Content Include="Tests\Selectize\required.html" />
+    <Content Include="Tests\Selectize\rtl.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -167,12 +195,33 @@
     <Compile Include="Controls\BankInfoEditControl.ascx.designer.cs">
       <DependentUpon>BankInfoEditControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\BootstrapDropDownBasic.ascx.cs">
+      <DependentUpon>BootstrapDropDownBasic.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\BootstrapDropDownBasic.ascx.designer.cs">
+      <DependentUpon>BootstrapDropDownBasic.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BootstrapTextEditBasic.ascx.cs">
       <DependentUpon>BootstrapTextEditBasic.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controls\BootstrapTextEditBasic.ascx.designer.cs">
       <DependentUpon>BootstrapTextEditBasic.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BankInfoEditControl2.ascx.cs">
+      <DependentUpon>BankInfoEditControl2.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\BankInfoEditControl2.ascx.designer.cs">
+      <DependentUpon>BankInfoEditControl2.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RcuKruLookupControl3.ascx.cs">
+      <DependentUpon>RcuKruLookupControl3.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RcuKruLookupControl3.ascx.designer.cs">
+      <DependentUpon>RcuKruLookupControl3.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\RcuKruLookupControl2.ascx.cs">
       <DependentUpon>RcuKruLookupControl2.ascx</DependentUpon>
@@ -223,12 +272,18 @@
     <Compile Include="Tests\BankInfoTestFrm.aspx.designer.cs">
       <DependentUpon>BankInfoTestFrm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Tests\BankInfoTestFrm2.aspx.cs">
+      <DependentUpon>BankInfoTestFrm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tests\BankInfoTestFrm2.aspx.designer.cs">
+      <DependentUpon>BankInfoTestFrm2.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Themes\Glass\" />
     <Folder Include="App_Themes\Office2003Blue\" />
     <Folder Include="App_Themes\Office2003Olive\" />
-    <Folder Include="js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

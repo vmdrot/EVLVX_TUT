@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RcuKruLookupControl2.ascx.cs" Inherits="BGU.Web20.MiscItemsSite.Controls.RcuKruLookupControl2" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RcuKruLookupControl3.ascx.cs" Inherits="BGU.Web20.MiscItemsSite.Controls.RcuKruLookupControl3" %>
 
 <%--<%@ Register Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" Assembly="DevExpress.Web.ASPxEditors.v10.2" %>
 
@@ -19,4 +19,16 @@
                     <asp:DropDownList ID="ddlBk" runat="server" placeholder="Назва чи МФО банку...">
                     </asp:DropDownList>
 				</div>
+				<script>
+				    var ddlBkJs, $ddlBkJs;
+				    $ddlBkJs = $('#<%=ddlBk.ClientID%>').selectize({
+				        create: true,
+				        sortField: {
+				            field: 'text',
+				            direction: 'asc'
+				        },
+				        dropdownParent: 'body'
+				    });
+				    ddlBkJs = $ddlBkJs[0].selectize;
+				</script>
 
