@@ -16,7 +16,7 @@
               <h3 class="panel-title">Обрати банк з довідника</h3>
             </div>
             <div class="panel-body">
-            <uc:RcuKruLookupControl3 ID="uabkcbx" runat="server" AutoPostBack="false" OnSelectedMFOChanged="uabkcbx_OnSelectedMFOChanged" />
+            <uc:RcuKruLookupControl3 ID="uabkcbx" runat="server" AutoPostBack="false" OnSelectedMFOChanged="uabkcbx_OnSelectedMFOChanged" HeadOfficesOnly="true" SkipCategories="1,2,5,6" />
             </div>
           </div>
         </div>

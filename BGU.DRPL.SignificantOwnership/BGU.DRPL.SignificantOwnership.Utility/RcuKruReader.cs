@@ -39,6 +39,38 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             return rslt;
         }
 
+        public static DataTable Filter(DataTable src, bool bHeadBanksOnly, List<string> skipcategories)
+        {
+            StringBuilder sbWhere = new StringBuilder();
+            int i = 0;
+            if(bHeadBanksOnly)
+            {
+                sbWhere.Append("GLMFO = MFO");
+                i++;
+            }
+
+            if (skipcategories != null && skipcategories.Count > 0)
+            {
+                if(i>0)
+                    sbWhere.Append(" AND ");
+                sbWhere.AppendFormat("PRB NOT IN(");
+                for(int j = 0; j < skipcategories.Count;j++)
+                {
+                    if(j>0)
+                        sbWhere.Append(',');
+                    sbWhere.AppendFormat("'{0}'", skipcategories[j]);
+                }
+                sbWhere.Append(')');
+            }
+
+            DataTable rslt = src.Copy();
+            rslt.Clear();
+            DataRow[] rows = src.Select(sbWhere.ToString());
+            foreach (DataRow dr in rows)
+                rslt.Rows.Add(dr.ItemArray);
+            return rslt;
+        }
+
         public static string ComposeWhereClause(string anyText)
         {
             if (string.IsNullOrEmpty(anyText))

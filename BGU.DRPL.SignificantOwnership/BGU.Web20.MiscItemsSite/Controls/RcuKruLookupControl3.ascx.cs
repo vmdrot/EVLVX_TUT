@@ -41,27 +41,6 @@ namespace BGU.Web20.MiscItemsSite.Controls
             } 
         }
 
-        protected void DoBindBanksDDL()
-        {
-
-            //List<BankInfo> ds = new List<BankInfo>();
-            //foreach (DataRow dr in DataModule.RcuKru.Rows)
-            //{
-            //    try { ds.Add(BankInfo.ParseFromRcuKruRow(dr)); }
-            //    catch { }
- 
-            //}
-            //ddlBk.DataValueField = "HeadMFO";
-            //ddlBk.DataTextField = "Name";
-            //ddlBk.DataSource = ds;
-            //ddlBk.DataBind();
-            ddlBk.DataValueField = "MFO";
-            ddlBk.DataTextField = "NB";
-            ddlBk.DataSource = DataModule.RcuKru;
-            ddlBk.DataBind();
-
-        }
-
         [Browsable(true)]
         public string SelectedMFO
         {
@@ -74,6 +53,24 @@ namespace BGU.Web20.MiscItemsSite.Controls
                 ddlBk.SelectedValue = value;
             }
         }
+
+        [Browsable(true)]
+        public bool HeadOfficesOnly {get;set;}
+
+        [Browsable(true)]
+        public string SkipCategories { get; set; }
+
+        protected void DoBindBanksDDL()
+        {
+            ddlBk.DataValueField = "MFO";
+            ddlBk.DataTextField = "NB";
+            if (HeadOfficesOnly || !string.IsNullOrEmpty(SkipCategories))
+                ddlBk.DataSource = RcuKruReader.Filter(DataModule.RcuKru, HeadOfficesOnly, new List<string>(SkipCategories.Split(',')));
+            else
+                ddlBk.DataSource = DataModule.RcuKru;
+            ddlBk.DataBind();
+        }
+
 
         protected void ddlBkSelectedIndexChanged(object sender, EventArgs e)
         {
