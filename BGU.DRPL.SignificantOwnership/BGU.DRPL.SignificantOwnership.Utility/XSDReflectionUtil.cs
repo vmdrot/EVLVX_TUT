@@ -71,20 +71,43 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             public string Description { get; set; }
         }
         #endregion
-
         public static void InjectDispProps(XmlDocument doc)
         {
+            InjectDispProps(doc, null);
+        }
+
+        public static void InjectDispProps(XmlDocument doc, Dictionary<string,bool> alreadyProcessedTypes)
+        {
+            List<XmlNode> toBeDel = new List<XmlNode>();
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
                 if (node.Name == "xs:complexType")
                 {
-                    ProcessClass(node);
+                    if (alreadyProcessedTypes != null && alreadyProcessedTypes.ContainsKey(node.Attributes["name"].Value))
+                        toBeDel.Add(node);
+                    //node.ParentNode.RemoveChild(node);//doc.RemoveChild(node);
+                    //doc.DocumentElement.RemoveChild(node);
+                    else
+                    {
+                        ProcessClass(node);
+                        if (alreadyProcessedTypes != null)
+                            alreadyProcessedTypes.Add(node.Attributes["name"].Value, true);
+                    }
                 }
                 else if (node.Name == "xs:simpleType")
                 {
-                    ProcessEnum(node);
+                    if (alreadyProcessedTypes != null && alreadyProcessedTypes.ContainsKey(node.Attributes["name"].Value))
+                        toBeDel.Add(node);//node.ParentNode.RemoveChild(node);//doc.RemoveChild(node);
+                    else
+                    {
+                        ProcessEnum(node);
+                        if (alreadyProcessedTypes != null)
+                            alreadyProcessedTypes.Add(node.Attributes["name"].Value, true);
+                    }
                 }
             }
+            for(int i = 0;i<toBeDel.Count;i++)
+                doc.DocumentElement.RemoveChild(toBeDel[i]);
         }
 
         private static void ProcessEnum(XmlNode node)

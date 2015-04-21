@@ -22,6 +22,7 @@ namespace BGU.DRPL.SignificantOwnership.Tester
 
         private static readonly string XsdExePath;
         private static readonly string XsdFilesOutputDir;
+        private static Dictionary<string, bool> _alreadyProcessedXSDExportTypes;
 
 
         static Program()
@@ -908,7 +909,7 @@ namespace BGU.DRPL.SignificantOwnership.Tester
         private static void UpdateXSDsTranslations()
         {
             //Type[] types2Process = new Type[] { typeof(Appx2OwnershipStructLP)};
-
+            _alreadyProcessedXSDExportTypes = new Dictionary<string, bool>();
             Type[] types2Process = new Type[] { typeof(Appx2OwnershipStructLP),
 typeof(Appx3OwnershipStructPP),
 typeof(RegLicAppx12HeadCandidateAppl),
@@ -986,7 +987,7 @@ RegLicAppx9BankingLicenseAppl.xsd";
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(fullPath);
-            XSDReflectionUtil.InjectDispProps(doc);
+            XSDReflectionUtil.InjectDispProps(doc, _alreadyProcessedXSDExportTypes);
             doc.Save(fullPath);
 
         }
