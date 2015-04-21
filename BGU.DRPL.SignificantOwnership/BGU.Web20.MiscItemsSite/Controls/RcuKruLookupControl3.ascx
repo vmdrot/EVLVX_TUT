@@ -1,34 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RcuKruLookupControl3.ascx.cs" Inherits="BGU.Web20.MiscItemsSite.Controls.RcuKruLookupControl3" %>
+<%@ Register TagPrefix="uc" TagName="BootstrapDropDownBasic" Src="~/Controls/BootstrapDropDownBasic.ascx" %>
 
-<%--<%@ Register Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" Assembly="DevExpress.Web.ASPxEditors.v10.2" %>
-
-<dx:ASPxComboBox ID="cbx" runat="server" EnableCallbackMode="true" CallbackPageSize="10"
-    IncrementalFilteringMode="Contains" ValueType="System.Int32" ValueField="MFO"
-    OnItemsRequestedByFilterCondition="cbx_OnItemsRequestedByFilterCondition"
-    OnItemRequestedByValue="cbx_OnItemRequestedByValue" TextFormatString="{1} ({0})"
-    Width="600px" Height="30px" DropDownStyle="DropDownList" SkinID="Aqua">
-    <Columns>
-        <dx:ListBoxColumn FieldName="MFO" Width="10%"/>
-        <dx:ListBoxColumn FieldName="KNB" Width="90%"/>
-    </Columns>
-</dx:ASPxComboBox>
---%>
-
-				<div class="control-group">
-					<label for="<%=ddlBk.ClientID%>">Банк:</label>
-                    <asp:DropDownList ID="ddlBk" runat="server" placeholder="Назва чи МФО банку...">
-                    </asp:DropDownList>
-				</div>
-				<script>
-				    var ddlBkJs, $ddlBkJs;
-				    $ddlBkJs = $('#<%=ddlBk.ClientID%>').selectize({
-				        create: true,
-				        sortField: {
-				            field: 'text',
-				            direction: 'asc'
-				        },
-				        dropdownParent: 'body'
-				    });
-				    ddlBkJs = $ddlBkJs[0].selectize;
-				</script>
-
+<uc:BootstrapDropDownBasic ID="ddlBk" runat="server" LabelDisplayName="Банк" LabelDescription="Назва чи МФО банку..." AutoPostBack="false" />

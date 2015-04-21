@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="BankInfoEditControl2.ascx.cs" Inherits="BGU.Web20.MiscItemsSite.Controls.BankInfoEditControl2" %>
 <%@ Register TagPrefix="uc" TagName="BootstrapTextEditBasic" Src="~/Controls/BootstrapTextEditBasic.ascx" %>
+<%@ Register TagPrefix="uc" TagName="BootstrapDropDownBasic" Src="~/Controls/BootstrapDropDownBasic.ascx" %>
 <%@ Register TagPrefix="uc" TagName="RcuKruLookupControl3" Src="~/Controls/RcuKruLookupControl3.ascx" %>
 
 <div id="content">
@@ -24,7 +25,7 @@
               <h3 class="panel-title">Увести банк (не існує в довіднику)</h3>
             </div>
             <div class="panel-body">
-                <asp:DropDownList ID="ddlCountry" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged"></asp:DropDownList>
+                <uc:BootstrapDropDownBasic ID="ddlCountry" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged" LabelDisplayName="Країна" LabelDescription="Країна резидентності банку" />
                 <uc:BootstrapTextEditBasic ID="edHeadMFO" runat="server" LabelDisplayName="МФО" LabelDescription="МФО" EditMaxLength="6" EditSize="6" EditWidth="20%" />
                 <uc:BootstrapTextEditBasic ID="edRegistryNr" runat="server" LabelDisplayName="№ у реєстрі банків" LabelDescription="№ у реєстрі банків (лише для головних контор)" EditWidth="10%" />
                 <uc:BootstrapTextEditBasic ID="edCode" runat="server" LabelDisplayName="Код банку" LabelDescription="Код банку (лише для головних контор)" EditWidth="10%" />
@@ -35,6 +36,7 @@
           </div>
         </div>
     </div>
+    <asp:HiddenField runat="server" ID="hdATb" />
 </div>
 
 
