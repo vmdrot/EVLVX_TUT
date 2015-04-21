@@ -1,6 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="BankInfoEditControl.ascx.cs" Inherits="BGU.Web20.MiscItemsSite.Controls.BankInfoEditControl" %>
 <%@ Register TagPrefix="uc" TagName="BootstrapTextEditBasic" Src="~/Controls/BootstrapTextEditBasic.ascx" %>
 <%@ Register TagPrefix="uc" TagName="RcuKruLookupControl2" Src="~/Controls/RcuKruLookupControl2.ascx" %>
+<%@ Register TagPrefix="uc" TagName="RcuKruLookupControl3" Src="~/Controls/RcuKruLookupControl3.ascx" %>
+<%@ Register TagPrefix="uc" TagName="BootstrapDropDownBasic" Src="~/Controls/BootstrapDropDownBasic.ascx" %>
 
 <div id="content">
     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs" runat="server" enableviewstate="true">
@@ -14,7 +16,7 @@
               <h3 class="panel-title">Обрати банк з довідника</h3>
             </div>
             <div class="panel-body">
-            <uc:RcuKruLookupControl2 ID="uabkcbx" runat="server" AutoPostBack="true" OnSelectedMFOChanged="uabkcbx_OnSelectedMFOChanged" />
+            <uc:RcuKruLookupControl3 ID="uabkcbx" runat="server" AutoPostBack="false" OnSelectedMFOChanged="uabkcbx_OnSelectedMFOChanged" />
             </div>
           </div>
         </div>
@@ -24,7 +26,7 @@
               <h3 class="panel-title">Увести банк (не існує в довіднику)</h3>
             </div>
             <div class="panel-body">
-                <asp:DropDownList ID="ddlCountry" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged"></asp:DropDownList>
+                <uc:BootstrapDropDownBasic ID="ddlCountry" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged" LabelDisplayName="Країна" LabelDescription="Країна резидентності банку" />
                 <uc:BootstrapTextEditBasic ID="edHeadMFO" runat="server" LabelDisplayName="МФО" LabelDescription="МФО" EditMaxLength="6" EditSize="6" EditWidth="20%" />
                 <uc:BootstrapTextEditBasic ID="edRegistryNr" runat="server" LabelDisplayName="№ у реєстрі банків" LabelDescription="№ у реєстрі банків (лише для головних контор)" EditWidth="10%" />
                 <uc:BootstrapTextEditBasic ID="edCode" runat="server" LabelDisplayName="Код банку" LabelDescription="Код банку (лише для головних контор)" EditWidth="10%" />
@@ -35,14 +37,40 @@
           </div>
         </div>
     </div>
+<asp:HiddenField runat="server" ID="hdATb" />
 </div>
 
 
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
+
         $('#<%=tabs.ClientID%>').tab();
+
+
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            //alert('onshown');
+            //alert(e.target);
+            //alert($('#<%=hdATb.ClientID%>').outerHtml);
+            $('#<%=hdATb.ClientID%>').val(e.target);
+
+        })
+
     });
-</script>    
+
+//    $(function () {
+//        //for bootstrap 3 use 'shown.bs.tab' instead of 'shown' in the next line
+//        $('a[data-toggle="tab"]').on('shown', function (e) {
+//            //save the latest tab; use cookies if you like 'em better:
+//            localStorage.setItem('lastTab', $(e.target).attr('id'));
+//        });
+
+//        //go to the latest tab, if it exists:
+//        var lastTab = localStorage.getItem('lastTab');
+//        if (lastTab) {
+//            $('#' + lastTab).tab('show');
+//        }
+//    });
+//</script>    
 
 
 

@@ -41,12 +41,29 @@ namespace BGU.Web20.MiscItemsSite.Controls
             _UIByCountries.Add(string.Empty, new BankInfoUIDispNames() { Description = "Національний кліринговий код", DisplayName = "Національний кліринговий код (типу Code Guichet/Bankleitzahl/FedWire/тощо)", MFOMaxLength = 20, MFOWidth = "50%", ShowCode = false, ShowNameUkr = true, ShowRegistryNr = false, ShowSwift = true });
             #endregion
         }
+
+        protected override void OnInit(EventArgs e)
+        {
+            base.OnInit(e);
+            Page.LoadComplete += new EventHandler(Page_LoadComplete);
+        }
+
+        void Page_LoadComplete(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(hdATb.Value))
+                SetActiveTab(hdATb.Value);
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
                 BindCountriesDDL();
+            //if (tbOne.Attributes["class"] == "active")
+            //    hdATb.Value = tbOne.ClientID;
+            //else
+            //    hdATb.Value = tbTwo.ClientID;
         }
 
+        
         private void BindCountriesDDL()
         {
             ddlCountry.DataValueField = "CountryISONr";
@@ -73,14 +90,6 @@ namespace BGU.Web20.MiscItemsSite.Controls
             edRegistryNr.Visible = biuidn.ShowRegistryNr;
             edSWIFTBIC.Visible = biuidn.ShowSwift;
 
-            if (IsPostBack)
-            {
-                tbTwo.Attributes["class"] = "active";
-                tbOne.Attributes["class"] = string.Empty;
-
-                tbPnlOne.Attributes["class"] = "tab-pane";
-                tbPnlTwo.Attributes["class"] = "tab-pane active";
-            }
         }
 
         public BankInfo DataSource
@@ -122,5 +131,32 @@ namespace BGU.Web20.MiscItemsSite.Controls
 
             
         }
+
+        protected void SetActiveTab(string activeTabId)
+        {
+            if (activeTabId == tbOne.ClientID || activeTabId.IndexOf(tbOne.ClientID)!= -1)
+            {
+                SetTabActive(tbOne, tbPnlOne);
+                SetTabInactive(tbTwo, tbPnlTwo);
+            }
+            else
+            {
+                SetTabActive(tbTwo, tbPnlTwo);
+                SetTabInactive(tbOne, tbPnlOne);
+            }
+        }
+
+        protected void SetTabActive(System.Web.UI.HtmlControls.HtmlGenericControl tab, System.Web.UI.HtmlControls.HtmlGenericControl pnl)
+        {
+            tab.Attributes["class"] = "active";
+            pnl.Attributes["class"] = "tab-pane active";
+        }
+
+        protected void SetTabInactive(System.Web.UI.HtmlControls.HtmlGenericControl tab, System.Web.UI.HtmlControls.HtmlGenericControl pnl)
+        {
+            tab.Attributes["class"] = string.Empty;
+            pnl.Attributes["class"] = "tab-pane";
+        }
+
     }
 }

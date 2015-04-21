@@ -19,6 +19,6 @@ namespace BGU.Web20.MiscItemsSite.Controls {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBk;
+        protected global::BGU.Web20.MiscItemsSite.Controls.BootstrapDropDownBasic ddlBk;
     }
 }
