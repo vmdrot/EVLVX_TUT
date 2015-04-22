@@ -7,6 +7,9 @@ using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
+    /// <summary>
+    /// Відомості про адресу; використовується як реквізити юр./фіз.особи, держоргану, тощо
+    /// </summary>
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.LocationInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class LocationInfo
     {

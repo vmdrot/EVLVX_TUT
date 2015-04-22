@@ -39,7 +39,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         }
 
         /// <summary>
-        /// Bank name
+        /// Ідентифікація банку
         /// </summary>
         [Description("Банк")]
         [DisplayName("Банк")]
@@ -47,6 +47,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         
         /// <summary>
         /// p.1.1 , p.1.2 , p.1.3 , p.1.6
+        /// якнайповніше заповнення
         /// </summary>
         [DisplayName("Юр.особа-заявник")]
         [Description("1. Інформація про юридичну особу")]
@@ -54,6 +55,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 
         /// <summary>
         /// p.1.4
+        /// Чекбокс, щоб вказати, що її не існує (не передбачено), цього органу
         /// </summary>
         [Browsable(true)]
         [DisplayName("Наглядова (спостережна) рада юридичної особи?")]
@@ -67,6 +69,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         
         /// <summary>
         /// p.1.5
+       /// Чекбокс, щоб вказати, що її не існує (не передбачено), цього органу
         /// </summary>
         [Browsable(true)]
         [DisplayName("Виконавчий орган юридичної особи?")]
@@ -80,13 +83,15 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         
         /// <summary>
         /// p.1.7
+        /// обов'язкове поле
         /// </summary>
         [DisplayName("% власності юрособи у капіталі банку")]
         [Description("1.7. Відсоток участі в банку становить ... відсотків статутного капіталу банку")]
         public decimal TotalOwneshipPct { get; set; }
         
         /// <summary>
-        /// 
+        /// Агреговане резюме власності (прямої, опосередкованої)
+        /// обов'язкове поле
         /// </summary>
         [DisplayName("Частка власності юрособи в банку - розподіл")]
         [Description("1.7. Відсоток участі в банку становить, у т.ч.:")]
@@ -94,8 +99,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 
         /// <summary>
         /// p.1.8
+        /// Ця структура потім має розгорнутися у дерево,
+        /// як його можна відприти в живому прототипі - Зразки -> Положення про порядок... структуру -> Анкета ... (Додаток 2) -> Грант 
+        /// => і там п. меню Більше... -> Кінцеві власники
+        ///                               Граф власності
         /// </summary>
-        //public List<CommonOwnershipInfo> BankExistingCommonImplicitOwners { get; set; }
         [DisplayName("Розшифровка ланцюжка власників банку")]
         [Description("1.8. Інформація про спільне володіння (=розкриття усього ланцюжка власників, у т.ч. й пов'язаних юросіб)")]
         public List<OwnershipStructure> BankExistingCommonImplicitOwners { get; set; }
@@ -107,24 +115,44 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         [Description("1.10. Інформація про набуття права голосу")]
         public List<PurchasedVoteInfo> SharesAppliedFor {get;set;}
 
-
-
         /// <summary>
         /// p.2.1
+        /// Якщо цю інформацію не розкрито в полі BankExistingCommonImplicitOwners
+        /// (як правило, таке трапляється коли набувач доти не мав жодних часток у банку
         /// </summary>
         [DisplayName("Розшифровка ланцюжка власників юрособи-набувача")]
         [Description("2.1. Інформація про осіб (юр. і фіз.), які володіють істотною участю в юридичній особі\n(якщо не було розкрито у п.1.8.)")]
         public List<OwnershipStructure> ApplicantOwnershipStructure { get; set; }
 
+        /// <summary>
+        /// Внутрішнє, службове поле.
+        /// Для користувача заповнення інформації про кожну 
+        /// з осіб-фігурантів має відбуватися у тому місці, 
+        /// де ця особа фігурує: у полях BankRef, 
+        /// BankExistingCommonImplicitOwners, ApplicantOwnershipStructure, тощо).
+        /// </summary>
         [DisplayName("Реквізити осіб-фігурантів анкети")]
         [Description("Повна інформація про осіб, що згадуються в анкеті")]
         public List<GenericPersonInfo> MentionedIdentities { get; set; }
+
+        /// <summary>
+        /// Бачу сенс вводити це поле окремо і явно;
+        /// у перспективі, запровадити попередню перевірку на 
+        /// наявність однофамільців серед фігурантів і "торбити"
+        /// заповнювача, що там 100% є пов'язані особи, мовляв, не хочете їх ідентифікувати.
+        /// </summary>
         [DisplayName("Зв'язки між особами-фігурантами анкети")]
         [Description("Відомості про пов'язаних осіб, що згадуються в анкеті")]
         public List<PersonsAssociation> PersonsLinks { get; set; }
+        /// <summary>
+        /// Усі поля обов'язкові
+        /// </summary>
         [DisplayName("Підписант")]
         [Description("Відомості по особу, що підписала анкету")]
         public SignatoryInfo Signatory { get; set; }
+        /// <summary>
+        /// Обов'язково бодай один тел. і один e-mail, решта - необов'язкові
+        /// </summary>
         [DisplayName("Контакти")]
         [Description("Контактні дані відправника анкети")]
         public ContactInfo ContactPerson { get; set; }

@@ -11,40 +11,61 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
     public class BankInfo
     {
         /// <summary>
-        /// GLMFO
+        /// Для українських банків MFO (GLMFO)
+        /// Для банків-нерезидентів - національний кліринговий код (Bankleitzahl (BLZ), Sorted CHAPS code, FedWire, Codigo Bancario, Code Guichet, тощо)
+        /// ( http://www.tgbr.com/tgbr/help/RTN.html )
         /// </summary>
         [Description("МФО")]
         [DisplayName("МФО")]
         public string HeadMFO { get; set; }
         /// <summary>
-        /// REGN
+        /// У Rcukru - REGN (тільки дла укр.банків)
         /// </summary>
         [Description("№ у реєстрі банків (лише для головних контор)")]
         [DisplayName("№ у реєстрі банків")]
         public string RegistryNr { get; set; }
         /// <summary>
-        /// GLB
+        /// У Rcukru - GLB (тільки дла укр.банків)
         /// </summary>
         [Description("Код банку (лише для головних контор)")]
         [DisplayName("Код банку")]
         public string Code { get; set; }
+        /// <summary>
+        /// Оригінальна назва банку (мовою країни резидентності)
+        /// Для українських банків заповнюється лише ця назва
+        /// </summary>
         [Description("Найменування банку (в оригіналі)")]
         [DisplayName("Найменування банку")]
         public string Name { get; set; }
+        /// <summary>
+        /// Назва банку українською (для банків-нерезидентів)
+        /// </summary>
         [Description("Найменування банку(українською)")]
         [DisplayName("Найменування банку(українською)")]
         public string NameUkr { get; set; }
+        /// <summary>
+        /// Реквізити банку як юр.особи.
+        /// Адреса, коди, тощо - все там. 
+        /// Якщо у анкеті доведеться розкривати структуру власності у т.ч. й цього банку, то необхідно вказати бодай податковий код банку (чи його еквівалент)
+        /// </summary>
         [Description("Відомості про юрособу-банк")]
         [DisplayName("Відомості про юрособу-банк")]
         public LegalPersonInfo LegalPerson { get; set; }
 
         /// <summary>
+        /// SWIFT код (для банків нерезидентів), 
+        /// як однозначний універсальний ідентифікатор банку
+        /// Бажаний, якщо є; якщо немає - вимагати вказання національного клірингового ідентифікатору (поле MFO)
         /// http://www.swift.com/bsl/
         /// </summary>
         [DisplayName("SWIFT адреса")]
         [Description("Див. http://www.swift.com/bsl/")]
         public string SWIFTBIC { get; set; }
 
+        /// <summary>
+        /// Країна резидентності банку
+        /// Значення за змовчанням - Україна (UA, UKR, 804, Ukraine)
+        /// </summary>
         [DisplayName("Країна діяльності")]
         public CountryInfo OperationCountry { get; set; }
 
