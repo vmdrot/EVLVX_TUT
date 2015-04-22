@@ -96,6 +96,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         [DisplayName("Місце проживання/реєстрації")]
         [Description("Місце проживання/реєстрації")]
         public LocationInfo Address { get; set; }
+        /// <summary>
+        /// Обов'язкове поле (окрім хіба ContactInfo)
+        /// За змовчанням (пропонувати) - Україна
+        /// </summary>
         [DisplayName("Громадянство")]
         [Description("Громадянство")]
         public CountryInfo CitizenshipCountry { get; set; }

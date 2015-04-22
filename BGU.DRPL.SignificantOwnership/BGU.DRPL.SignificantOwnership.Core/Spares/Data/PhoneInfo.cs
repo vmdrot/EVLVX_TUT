@@ -6,15 +6,24 @@ using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
+    /// <summary>
+    /// Інформація про телефон
+    /// </summary>
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.PhoneInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class PhoneInfo
     {
+        /// <summary>
+        /// не обов'язкове, значення (напр.) - дом., моб., роб., тощо
+        /// </summary>
         [DisplayName("Тип/назва телефону")]
         [Description("Тип/назва телефону")]
         public string PhoneName { get; set; }
         [DisplayName("№ телефону")]
         [Description("№ телефону")]
         public string PhoneNr { get; set; }
+        /// <summary>
+        /// напр. "дзвонити з 9 до 18, по вихідних, поза зоною тоді-то, тощо"
+        /// </summary>
         [DisplayName("Примітки щодо телефону")]
         [Description("Примітки щодо телефону")]
         public string PhoneNotes { get; set; }

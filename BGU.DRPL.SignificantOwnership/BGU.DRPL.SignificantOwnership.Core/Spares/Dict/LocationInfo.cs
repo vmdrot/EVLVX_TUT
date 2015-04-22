@@ -18,24 +18,45 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         {
             Country = CountryInfo.UKRAINE;
         }
+        /// <summary>
+        /// За змовчанням - Україна
+        /// </summary>
         [DisplayName("Країна")]
         [Description("Країна")]
         public CountryInfo Country { get; set; }
+        /// <summary>
+        /// Якщо потрібно
+        /// </summary>
         [DisplayName("область, район/провінція, тощо")]
         [Description("область, район/провінція, тощо")]
         public string Region { get; set; }
+        /// <summary>
+        /// Залежно від контексту, у більшості випадків - бажано
+        /// </summary>
         [DisplayName("Поштовий індекс")]
         [Description("Поштовий індекс")]
         public string ZipCode { get; set; }
+        /// <summary>
+        /// Обов'язкове поле (скрізь)
+        /// </summary>
         [DisplayName("Населений пункт")]
         [Description("Населений пункт")]
         public string City { get; set; }
+        /// <summary>
+        /// Якщо вимагається контекстом
+        /// </summary>
         [DisplayName("Вулиця/площа/тощо")]
         [Description("Вулиця/площа/тощо")]
         public string Street { get; set; }
+        /// <summary>
+        /// Якщо вимагається контекстом
+        /// </summary>
         [DisplayName("№ / назва будинку")]
         [Description("№ / назва будинку")]
         public string HouseNr { get; set; }
+        /// <summary>
+        /// Якщо вимагається контекстом та передбачено/існує
+        /// </summary>
         [DisplayName("№ кв./офісу, тощо")]
         [Description("№ кв./офісу, тощо")]
         public string ApptOfficeNr { get; set; }

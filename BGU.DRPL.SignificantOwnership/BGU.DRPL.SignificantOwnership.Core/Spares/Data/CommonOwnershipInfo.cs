@@ -7,6 +7,7 @@ using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
+    [Obsolete]
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.CommonOwnershipInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class CommonOwnershipInfo
     {

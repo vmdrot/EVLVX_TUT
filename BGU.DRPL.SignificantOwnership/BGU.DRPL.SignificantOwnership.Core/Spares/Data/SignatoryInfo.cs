@@ -6,15 +6,27 @@ using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
+    /// <summary>
+    /// Інформація про підписанта (документу, анкети)
+    /// </summary>
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.SignatoryInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class SignatoryInfo
     {
+        /// <summary>
+        /// обов'язкове
+        /// </summary>
         [DisplayName("Посада (підписанта)")]
         [Description("Посада (підписанта)")]
         public string SignatoryPosition { get; set; }
+        /// <summary>
+        /// обов'язкове
+        /// </summary>
         [DisplayName("Прізвище й ініціали (підписанта)")]
         [Description("Прізвище й ініціали (підписанта)")]
         public string SurnameInitials { get; set; }
+        /// <summary>
+        /// Обов'язкове (якщо тільки контекстом не передбачено інше)
+        /// </summary>
         [DisplayName("Дата підпису")]
         [Description("Дата підпису")]
         public DateTime DateSigned { get; set; }

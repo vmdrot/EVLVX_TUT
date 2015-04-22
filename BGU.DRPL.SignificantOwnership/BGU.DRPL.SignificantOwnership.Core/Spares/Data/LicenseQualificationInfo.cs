@@ -7,13 +7,20 @@ using System.ComponentModel;
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
     /// <summary>
-    /// http://kodeksy.com.ua/buh/kp.htm
+    /// Інформація про професійну діяльність, що ліцензується
     /// </summary>
+    /// <seealso cref="http://kodeksy.com.ua/buh/kp.htm"/>
     public class LicenseQualificationInfo
     {
+        /// <summary>
+        /// Якщо існує
+        /// </summary>
         [DisplayName("Код професії/діяльності (якщо існує)")]
         [Description("Код професії згідно відповідного класифікатору/довідника професій (напр.http://kodeksy.com.ua/buh/kp.htm)")]
         public string QualificationCode { get; set; }
+        /// <summary>
+        /// обов'язкове
+        /// </summary>
         [DisplayName("Назва професії/діяльності")]
         [Description("Назва професії/виду ліцензованої діяльності згідно відповідного класифікатору/довідника професій (напр.http://kodeksy.com.ua/buh/kp.htm)")]
         public string QualificationName { get; set; }

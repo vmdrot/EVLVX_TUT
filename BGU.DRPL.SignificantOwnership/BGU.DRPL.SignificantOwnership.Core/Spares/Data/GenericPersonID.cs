@@ -7,11 +7,34 @@ using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
+    /// <summary>
+    /// Універсальний ідентифікатор особи (як юр., так і фізичної)
+    /// (щоб не "таскати", себто, не дублювати, усі реквізити особи там, де потребується просто послатися на ту особу).
+    /// Використовується (зокрема) для ідентифікації:
+    ///  - об'єкту власності та власника - при розкритті ланцюжка кінцевих власників
+    ///  - членів колегіального керівного органу;
+    ///  - виданої гарантії/поручительства);
+    ///  - тощо.
+    /// </summary>
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.GenericPersonLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     public class GenericPersonID
     {
+        /// <summary>
+        /// Код країни резидентності
+        /// </summary>
+        /// <seealso cref="CountryInfo"/>
         public string CountryISO3Code { get; set; }
+        /// <summary>
+        /// Тип особи
+        /// </summary>
         public EntityType PersonType { get; set; }
+        /// <summary>
+        /// Код особи;
+        /// Для юр.особи - TaxCodeOrHandelsRegNr
+        /// Для фіз.особи:
+        /// якщо (не пустий TaxOrSocSecID ) - то TaxOrSocSecID 
+        /// інакше - PassportID
+        /// </summary>
         public string PersonCode { get; set; }
 
         #region Extra members
