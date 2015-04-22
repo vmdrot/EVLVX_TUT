@@ -6,6 +6,9 @@ using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
+    /// <summary>
+    /// Розширений варіант агрегованої інформації про власність
+    /// </summary>
     public class TotalOwnershipDetailsInfoEx : TotalOwnershipDetailsInfo
     {
         public TotalOwnershipDetailsInfoEx() :base()
@@ -32,8 +35,14 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
             this.OwnerDisplayName = dispName;
         }
 
+        /// <summary>
+        /// Тут лише ідентифікатор особи; як завше, решта її реквізитів - десь у MentionedIdentities
+        /// </summary>
         [DisplayName("ID Власника")]
         public GenericPersonID OwnerID { get; set; }
+        /// <summary>
+        /// Чисто для показу на UI; окремого бізнес-значення поле не несе
+        /// </summary>
         [DisplayName("Власник")]
         public string OwnerDisplayName { get; set; }
     }

@@ -11,6 +11,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
     /// Значення за змовчанням - Україна (UA, UKR, 804, Ukraine)
     /// (в усіх місцях, окрім тих, де з контексту явно випливає, що буде не Україна)
     /// </summary>
+    /// <seealso cref="http://userpage.chemie.fu-berlin.de/diverse/doc/ISO_3166.html"/>
     //[System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.CountryInfoLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.CountryInfoLookupEditor2), typeof(System.Drawing.Design.UITypeEditor))]
     public class CountryInfo
@@ -22,7 +23,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         public string CountryISO2Code { get; set; }
         public string CountryISO3Code { get; set; }
         public string CountryISONr { get; set; }
+        /// <summary>
+        /// Назва країни англ. мовою
+        /// </summary>
         public string CountryNameEng { get; set; }
+        /// <summary>
+        /// Назва країни українською мовою
+        /// </summary>
         public string CountryNameUkr{ get; set; }
 
         #region specific countries

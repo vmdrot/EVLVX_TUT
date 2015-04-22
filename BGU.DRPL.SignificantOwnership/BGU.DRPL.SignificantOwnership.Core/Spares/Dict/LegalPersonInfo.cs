@@ -7,6 +7,9 @@ using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
+    /// <summary>
+    /// Реквізити юридичної особи
+    /// </summary>
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.LegalPersonInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class LegalPersonInfo
     {
@@ -16,28 +19,42 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
             ResidenceCountry = CountryInfo.UKRAINE;
         }
         /// <summary>
-        /// search - http://irc.gov.ua/ua/Poshuk-v-YeDR.html
+        /// Обов'язкове поле (якщо контекстом проперті, де використовується цей тим, не визначено інакше)
+        /// Для резидентів - ЄДРПОУ
+        /// Для нерезидентів - еквівалентний ідентифікатор
         /// </summary>
+        /// <seealso cref="http://irc.gov.ua/ua/Poshuk-v-YeDR.html"/>
         [DisplayName("Податковий №")]
         [Description("ЄДРПОУ/Податковий ID/HandelsregisterNr.(для нерезидентів)")]
         public string TaxCodeOrHandelsRegNr { get; set; }
+        /// <summary>
+        /// Обов'язкове поле.
+        /// Назва оригінальною мовою.
+        /// </summary>
         [DisplayName("Найменування")]
         [Description("Найменування юридичної особи (оригінальною мовою)")]
         public string Name { get; set; }
+        /// <summary>
+        /// Назва українською (якщо оригінальна - іншою мовою).
+        /// </summary>
         [DisplayName("Найменування українською")]
         [Description("Найменування юридичної особи українською мовою (для нерезидентів)")]
         public string NameUkr { get; set; }
+        /// <summary>
+        /// Адреса юрособи. Поле обов'язкове, якщо контекстом не вказано інше.
+        /// </summary>
         [DisplayName("Місцезнаходження")]
         [Description("місцезнаходження юридичної особи")]
         public LocationInfo Address { get; set; }
         /// <summary>
         /// Країна резидентності
+        /// Обов'язкове. За змовчанням (пропонувати) - Україна.
         /// </summary>
         [DisplayName("Країна юрисдикції")]
         [Description("Країна юрисдикції юридичної особи")]
         public CountryInfo ResidenceCountry { get; set; }
         /// <summary>
-        /// 
+        /// Обов'язкове поле, якщо контекстом не визначено інше
         /// </summary>
         [DisplayName("Держорган-реєстратор")]
         [Description("Державний орган, який здійснив реєстрацію юридичної особи")]
@@ -49,7 +66,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         [Description("Особа, що представляє юрособу")]
         public GenericPersonID RepresentedBy { get; set; }
         /// <summary>
-        /// Якщо анкетою вимагається
+        /// Якщо анкетою вимагається (див. по контексту, необов'язкове поле).
         /// </summary>
         [DisplayName("Статутний капітал")]
         [Description("Статутний фонд/капітал")]

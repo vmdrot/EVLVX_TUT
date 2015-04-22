@@ -6,6 +6,9 @@ using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
+    /// <summary>
+    /// Інформація-елемент ланцюжка розкриття структури власності
+    /// </summary>
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.OwnershipStructure_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class OwnershipStructure
     {
@@ -14,21 +17,39 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         {
             this.OwnershipKind = OwnershipType.Direct;
         }
+        /// <summary>
+        /// Ідентифікатор юр.особи - об'єкта власності
+        /// </summary>
         [DisplayName("Об'єкт власності")]
         [Description("Юр.особа, чия власність розкривається")]
         public GenericPersonID Asset { get; set; }
+        /// <summary>
+        /// ідентифікатор особи-власника
+        /// </summary>
         [DisplayName("Власник")]
         [Description("Власник")]
         public GenericPersonID Owner { get; set; }
+        /// <summary>
+        /// За змовчанням Direct (пропонувати уже введене)
+        /// </summary>
         [DisplayName("Тип володіння")]
         [Description("Тип володіння")]
         public OwnershipType OwnershipKind { get; set; }
+        /// <summary>
+        /// Якщо відомий загальний статутний капітал, або якщо частку визначено в абсолютному виразі
+        /// </summary>
         [DisplayName("Частка у власності (сума)")]
         [Description("Частка (сума)")]
         public decimal Share { get; set; }
+        /// <summary>
+        /// Як правило, саме у %-х і зазначається власність
+        /// </summary>
         [DisplayName("Частка (%)")]
         [Description("Частка (%)")]
         public decimal SharePct { get; set; }
+        /// <summary>
+        /// Якщо вимагається контекстом
+        /// </summary>
         [DisplayName("Кількість голосів в управлінні")]
         [Description("Кількість голосів в управлінні")]
         public int Votes { get; set; }

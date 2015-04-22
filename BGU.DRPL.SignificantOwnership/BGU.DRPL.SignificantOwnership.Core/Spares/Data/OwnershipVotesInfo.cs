@@ -6,6 +6,9 @@ using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
+    /// <summary>
+    /// Спрощений варіант інформації про часту власності (де не вимагається сума в абс. виразі)
+    /// </summary>
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.OwnershipVotesInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class OwnershipVotesInfo
     {

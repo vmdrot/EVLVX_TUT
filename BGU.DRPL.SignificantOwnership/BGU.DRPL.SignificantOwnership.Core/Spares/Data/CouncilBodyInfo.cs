@@ -7,6 +7,9 @@ using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
+    /// <summary>
+    /// Інформація про колегіальний орган управління (наглядова рада, виконавчий комітет, рада директорів, тощо)
+    /// </summary>
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.CouncilBodyInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class CouncilBodyInfo
     {
@@ -14,15 +17,32 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         {
             Members = new List<CouncilMemberInfo>();
         }
+        /// <summary>
+        /// Повні реквізити самої організації "житимуть", як правило, у MentionedEntities (або його еквіваленті)
+        /// </summary>
         [DisplayName("Керована організація")]
         public GenericPersonID GovernedEntityID { get; set; }
+        /// <summary>
+        /// Перелік членів органу
+        /// </summary>
         [DisplayName("Члени")]
         [Description("Члени органу управління")]
         public List<CouncilMemberInfo> Members { get; set; }
+        /// <summary>
+        /// Ідентифікатор особи-голови
+        /// </summary>
         [DisplayName("Очільник/голова органу")]
         public GenericPersonID HeadMember { get; set; }
+        /// <summary>
+        /// Назва органу (мовою оригіналу)
+        /// </summary>
         [DisplayName("Назва органу")]
         public string CouncilBodyName { get; set; }
+        /// <summary>
+        /// Назва органу (українською, для організацій-нерезидентів)
+        /// </summary>
+        [DisplayName("Назва органу (укр.)")]
+        public string CouncilBodyNameUkr { get; set; }
         public override string ToString()
         {
             int membersCnt = Members != null ? Members.Count : 0;

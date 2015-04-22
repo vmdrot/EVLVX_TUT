@@ -7,17 +7,35 @@ using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
+    /// <summary>
+    /// Інформація про ліквідовану юр.особу
+    /// </summary>
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.LiquidatedEntityOwnershipInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class LiquidatedEntityOwnershipInfo
     {
+        /// <summary>
+        /// Ідентифікатор, обов'язкове
+        /// </summary>
         [DisplayName("Ліквідована юрособа")]
         public GenericPersonID Asset { get; set; }
+        /// <summary>
+        /// обов'язкове; заповнення секцій - за фактом власності подавача (чи кого там в анкеті вимагають, за контекстом)
+        /// </summary>
         [DisplayName("Частки власності")]
         public TotalOwnershipDetailsInfo Stake { get; set; }
+        /// <summary>
+        /// обов'язкове
+        /// </summary>
         [DisplayName("Дата ліквідації")]
         public DateTime LiquidationDate { get; set; }
+        /// <summary>
+        /// обов'язкове
+        /// </summary>
         [DisplayName("Причина ліквідації")]
         public string LiquidationReason { get; set; }
+        /// <summary>
+        /// обов'язкове; мається на увазі, документ, рішення, розпорядження, закон, тощо (конкретний...)
+        /// </summary>
         [DisplayName("Підстава ліквідації")]
         public string LiquidationPretext { get; set; }
     }

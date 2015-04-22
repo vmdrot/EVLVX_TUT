@@ -165,7 +165,13 @@ namespace BGU.DRPL.SignificantOwnership.Utility
 
         private static void FindAddAnnotation(XmlNode target, Type typ, XmlDocument asmblyDoc)
         {
+            StringBuilder sbComment = new StringBuilder();
+            if (Attribute.GetCustomAttribute(typ, typeof(ObsoleteAttribute)) != null)
+                sbComment.AppendLine("Увага! Цей тип було помічено як такий, що не використовується/застарів (Obsolete)!");
             string comment = GetSummaryFromAssemblyXmlForAType(asmblyDoc, typ);
+            if (!string.IsNullOrEmpty(comment))
+                sbComment.AppendLine(comment);
+            comment = sbComment.ToString();
             string seeAlso = GetSeeAlsoFromAssemblyXmlForAType(asmblyDoc, typ);
             if (string.IsNullOrEmpty(comment) && string.IsNullOrEmpty(seeAlso))
                 return;
