@@ -7,6 +7,10 @@ using System.Data;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
+    /// <summary>
+    /// Інформація про банк - як український, так і іноземний (якщо треба)
+    /// Приклад реалізації Web UI (без заповнення поля LegalPerson) див. за адресою https://youtu.be/ReThZDDMsOM
+    /// </summary>
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BankInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class BankInfo
     {
