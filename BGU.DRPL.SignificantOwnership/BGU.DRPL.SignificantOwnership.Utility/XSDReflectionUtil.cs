@@ -5,6 +5,7 @@ using System.Text;
 using System.Reflection;
 using System.ComponentModel;
 using System.Xml;
+using System.IO;
 
 namespace BGU.DRPL.SignificantOwnership.Utility
 {
@@ -63,6 +64,19 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             doc.Load(xsdPath);
         }
 
+        public static XmlDocument LoadAnnotationXml(Assembly asbmly)
+        {
+            string dir = Path.GetDirectoryName(asbmly.CodeBase).Replace("file:\\",string.Empty);;
+            string fnm = Path.GetFileNameWithoutExtension(asbmly.CodeBase);
+            string xmlPath = Path.Combine(dir, string.Format("{0}.xml", fnm));
+            if (!File.Exists(xmlPath))
+                return null;
+            XmlDocument rslt = new XmlDocument();
+            rslt.Load(xmlPath);
+            return rslt;
+        }
+
+
         #region inner type(s)
 
         public class PropDispDescr
@@ -75,8 +89,11 @@ namespace BGU.DRPL.SignificantOwnership.Utility
         {
             InjectDispProps(doc, null);
         }
-
-        public static void InjectDispProps(XmlDocument doc, Dictionary<string,bool> alreadyProcessedTypes)
+        public static void InjectDispProps(XmlDocument doc, Dictionary<string, bool> alreadyProcessedTypes)
+        {
+            InjectDispProps(doc, alreadyProcessedTypes, null);
+        }
+        public static void InjectDispProps(XmlDocument doc, Dictionary<string,bool> alreadyProcessedTypes, XmlDocument assemblySummariesXml)
         {
             List<XmlNode> toBeDel = new List<XmlNode>();
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
@@ -89,7 +106,7 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                     //doc.DocumentElement.RemoveChild(node);
                     else
                     {
-                        ProcessClass(node);
+                        ProcessClass(node, assemblySummariesXml);
                         if (alreadyProcessedTypes != null)
                             alreadyProcessedTypes.Add(node.Attributes["name"].Value, true);
                     }
@@ -100,7 +117,7 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                         toBeDel.Add(node);//node.ParentNode.RemoveChild(node);//doc.RemoveChild(node);
                     else
                     {
-                        ProcessEnum(node);
+                        ProcessEnum(node, assemblySummariesXml);
                         if (alreadyProcessedTypes != null)
                             alreadyProcessedTypes.Add(node.Attributes["name"].Value, true);
                     }
@@ -110,7 +127,50 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                 doc.DocumentElement.RemoveChild(toBeDel[i]);
         }
 
-        private static void ProcessEnum(XmlNode node)
+        public static string GetSummaryFromAssemblyXmlForAType(XmlDocument doc, Type typ)
+        {
+            XmlNode node = doc.SelectSingleNode(string.Format("/doc/members/member[@name='T:{0}']/summary", typ.FullName));
+            if (node == null)
+                return null;
+            return node.InnerText;
+        }
+
+        public static string GetSummaryFromAssemblyXmlForATypeProperty(XmlDocument doc, Type typ, string propName)
+        {
+            XmlNode node = doc.SelectSingleNode(string.Format("/doc/members/member[@name='P:{0}.{1}']/summary", typ.FullName, propName));
+            if (node == null)
+                return null;
+            return node.InnerText;
+        }
+
+        private static void FindAddAnnotation(XmlNode target, Type typ, XmlDocument asmblyDoc)
+        {
+            string comment = GetSummaryFromAssemblyXmlForAType(asmblyDoc, typ);
+            if (string.IsNullOrEmpty(comment))
+                return;
+            AddAnnotation(target, comment);
+        }
+
+        private static void FindAddAnnotation(XmlNode target, Type typ, string prop, XmlDocument asmblyDoc)
+        {
+            string comment = GetSummaryFromAssemblyXmlForATypeProperty(asmblyDoc, typ, prop);
+            if (string.IsNullOrEmpty(comment))
+                return;
+            AddAnnotation(target, comment);
+        }
+
+        private static void AddAnnotation(XmlNode target, string comment)
+        {
+            XmlNode annotNode = target.OwnerDocument.CreateNode(XmlNodeType.Element, "xs:annotation", target.OwnerDocument.DocumentElement.Attributes["xmlns:xs"].Value);
+            XmlNode docNode = target.OwnerDocument.CreateNode(XmlNodeType.Element, "xs:documentation", target.OwnerDocument.DocumentElement.Attributes["xmlns:xs"].Value);
+            docNode.InnerText = comment;
+            annotNode.AppendChild(docNode);
+            if (target.ChildNodes == null || target.ChildNodes.Count == 0)
+                target.AppendChild(annotNode);
+            else
+                target.InsertBefore(annotNode, target.ChildNodes[0]);
+        }
+        private static void ProcessEnum(XmlNode node, XmlDocument assemblySummariesXml)
         {
             string typNm = node.Attributes["name"].Value;
             Type typ = FindType(typNm);
@@ -120,7 +180,8 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             XmlNode seqNode = FindRestrictionChild(node);
             if (seqNode == null)
                 return;
-
+            if(assemblySummariesXml != null)
+                FindAddAnnotation(node, typ, assemblySummariesXml);
             List<EnumType> enmTyps = EnumType.GetEnumList(typ, false);
             Dictionary<string, string> enms2Descrs = new Dictionary<string, string>();
             foreach (EnumType enmTyp in enmTyps)
@@ -142,7 +203,7 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             }
         }
 
-        private static void ProcessClass(XmlNode node)
+        private static void ProcessClass(XmlNode node, XmlDocument assemblySummariesXml)
         {
             string typNm = node.Attributes["name"].Value;
             Type typ = FindType(typNm);
@@ -152,6 +213,10 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             XmlNode seqNode = FindSequenseChild(node);
             if (seqNode == null)
                 return;
+
+            if (assemblySummariesXml != null)
+                FindAddAnnotation(node, typ, assemblySummariesXml);
+
             XmlNodeList propNodes = seqNode.ChildNodes;
             foreach (XmlNode propNode in propNodes)
             {
@@ -168,6 +233,8 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                     WriteAttribute(propNode, "displayName", dispDescrs[propNm].DisplayName);
                 if (!string.IsNullOrEmpty(dispDescrs[propNm].Description))
                     WriteAttribute(propNode, "description", dispDescrs[propNm].Description);
+                if (assemblySummariesXml != null)
+                    FindAddAnnotation(propNode, typ, propNm,assemblySummariesXml);
 
             }
         }
