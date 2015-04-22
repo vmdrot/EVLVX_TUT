@@ -22,11 +22,17 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         [Description("ЄДРПОУ/Податковий ID/HandelsregisterNr.(для нерезидентів)")]
         public string TaxCodeOrHandelsRegNr { get; set; }
         [DisplayName("Найменування")]
-        [Description("Найменування юридичної особи")]
+        [Description("Найменування юридичної особи (оригінальною мовою)")]
         public string Name { get; set; }
+        [DisplayName("Найменування українською")]
+        [Description("Найменування юридичної особи українською мовою (для нерезидентів)")]
+        public string NameUkr { get; set; }
         [DisplayName("Місцезнаходження")]
         [Description("місцезнаходження юридичної особи")]
         public LocationInfo Address { get; set; }
+        /// <summary>
+        /// Країна резидентності
+        /// </summary>
         [DisplayName("Країна юрисдикції")]
         [Description("Країна юрисдикції юридичної особи")]
         public CountryInfo ResidenceCountry { get; set; }
@@ -36,12 +42,22 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         [DisplayName("Держорган-реєстратор")]
         [Description("Державний орган, який здійснив реєстрацію юридичної особи")]
         public RegistrarAuthority Registrar { get; set; }
+        /// <summary>
+        /// Якщо передбачений представник
+        /// </summary>
         [DisplayName("Представник юрособи")]
         [Description("Особа, що представляє юрособу")]
         public GenericPersonID RepresentedBy { get; set; }
+        /// <summary>
+        /// Якщо анкетою вимагається
+        /// </summary>
         [DisplayName("Статутний капітал")]
         [Description("Статутний фонд/капітал")]
         public CurrencyAmount Equity { get; set; }
+        /// <summary>
+        /// Вид діяльності - якщо вимагається в анкеті; логічно його притулити 
+        /// було до самої структури інформації про юр.особу
+        /// </summary>
         [DisplayName("Основний вид діяльності")]
         [Description("Основний(-і) вид(-и) діяльності юрособи")]
         public string PrincipalActivities { get; set; }

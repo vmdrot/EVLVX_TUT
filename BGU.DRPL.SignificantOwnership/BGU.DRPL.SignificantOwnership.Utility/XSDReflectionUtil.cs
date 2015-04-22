@@ -143,27 +143,64 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             return node.InnerText;
         }
 
+        private static string GetSeeAlsoCref(XmlDocument doc, string xPath)
+        { 
+            XmlNode node = doc.SelectSingleNode(xPath);
+            if (node == null)
+                return null;
+            string cref = node.Attributes["cref"].Value;
+            if(cref.IndexOf("!:")==0)
+                cref = cref.Substring(2);
+            return cref;
+        }
+        public static string GetSeeAlsoFromAssemblyXmlForAType(XmlDocument doc, Type typ)
+        {
+            return GetSeeAlsoCref(doc, string.Format("/doc/members/member[@name='T:{0}']/seealso", typ.FullName));
+        }
+
+        public static string GetSeeAlsoFromAssemblyXmlForATypeProperty(XmlDocument doc, Type typ, string propName)
+        {
+            return GetSeeAlsoCref(doc, string.Format("/doc/members/member[@name='P:{0}.{1}']/seealso", typ.FullName, propName));
+        }
+
         private static void FindAddAnnotation(XmlNode target, Type typ, XmlDocument asmblyDoc)
         {
             string comment = GetSummaryFromAssemblyXmlForAType(asmblyDoc, typ);
-            if (string.IsNullOrEmpty(comment))
+            string seeAlso = GetSeeAlsoFromAssemblyXmlForAType(asmblyDoc, typ);
+            if (string.IsNullOrEmpty(comment) && string.IsNullOrEmpty(seeAlso))
                 return;
-            AddAnnotation(target, comment);
+            AddAnnotation(target, comment,seeAlso);
         }
 
         private static void FindAddAnnotation(XmlNode target, Type typ, string prop, XmlDocument asmblyDoc)
         {
             string comment = GetSummaryFromAssemblyXmlForATypeProperty(asmblyDoc, typ, prop);
-            if (string.IsNullOrEmpty(comment))
+            string seeAlso = GetSeeAlsoFromAssemblyXmlForATypeProperty(asmblyDoc, typ,prop);
+            if (string.IsNullOrEmpty(comment) && string.IsNullOrEmpty(seeAlso))
                 return;
-            AddAnnotation(target, comment);
+            AddAnnotation(target, comment, seeAlso);
         }
 
-        private static void AddAnnotation(XmlNode target, string comment)
+        private static void AddAnnotation(XmlNode target, string comment, string seeAlso)
         {
             XmlNode annotNode = target.OwnerDocument.CreateNode(XmlNodeType.Element, "xs:annotation", target.OwnerDocument.DocumentElement.Attributes["xmlns:xs"].Value);
             XmlNode docNode = target.OwnerDocument.CreateNode(XmlNodeType.Element, "xs:documentation", target.OwnerDocument.DocumentElement.Attributes["xmlns:xs"].Value);
-            docNode.InnerText = comment;
+            StringBuilder sbInnerTxt = new StringBuilder();
+            int i = 0;
+            if(!string.IsNullOrEmpty(comment))
+            {
+                sbInnerTxt.Append(comment); i++;
+            }
+
+            if (!string.IsNullOrEmpty(seeAlso))
+            {
+                if (i > 0)
+                    sbInnerTxt.AppendLine();
+                sbInnerTxt.AppendFormat("Див.також: {0}", seeAlso); i++;
+            }
+
+            docNode.InnerText = sbInnerTxt.ToString();
+            
             annotNode.AppendChild(docNode);
             if (target.ChildNodes == null || target.ChildNodes.Count == 0)
                 target.AppendChild(annotNode);

@@ -8,6 +8,9 @@ using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
+    /// <summary>
+    /// Інформація про фіз.особу (реквізити)
+    /// </summary>
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.PhysicalPersonInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class PhysicalPersonInfo
     {
@@ -16,15 +19,27 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
             CitizenshipCountry = CountryInfo.UKRAINE;
         }
         
+        /// <summary>
+        /// для нерезидентів
+        /// </summary>
         [DisplayName("Прізвище (укр.)")]
         [Description("Прізвище, українською")]
         public string SurnameUkr { get; set; }
+        /// <summary>
+        /// для нерезидентів
+        /// </summary>
         [DisplayName("Ім'я (укр.)")]
         [Description("Ім'я, українською")]
         public string NameUkr { get; set; }
+        /// <summary>
+        /// для нерезидентів
+        /// </summary>
         [DisplayName("По-батькові/друге ім'я (укр.)")]
         [Description("По-батькові/друге ім'я, українською")]
         public string MiddleNameUkr { get; set; }
+        /// <summary>
+        /// для нерезидентів
+        /// </summary>
         [DisplayName("П.І.Б (укр.)")]
         [Description("П.І.Б., українською")]
         public string FullNameUkr { get; set; }
@@ -37,12 +52,29 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         [DisplayName("По-батькові/друге ім'я")]
         [Description("По-батькові/друге ім'я")]
         public string MiddleName { get; set; }
+        /// <summary>
+        /// Вказувати достатньо повного імені; 
+        /// Якщо є натхнення (або вимагає анкета) - можна й деталізацію по полях
+        /// Для нерезидентів бажано вимагати як окремих частин імені, 
+        /// так і повного (повністю) (бо хто його там зна, як до нього звертатися)
+        /// </summary>
         [DisplayName("П.І.Б.")]
         [Description("П.І.Б.")]
         public string FullName { get; set; }
+        /// <summary>
+        /// Бажано вимагати; дивитися за контекстом конкретного поля 
+        /// у конкретній анкеті
+        /// </summary>
         [DisplayName("Стать")]
         [Description("Стать")]
         public SexType Sex { get; set; }
+        /// <summary>
+        /// Як правило, необов'язкове поле
+        /// Буває, що онука називають як діда, і у ланцюжку володіння фігурують обидва
+        /// Тоді корисно мати ще й дату народження, щоб відрізняти; 
+        /// буває, що онук ще неповнолітній та не має паспорта/кода
+        /// (реальний випадок - банк "Грант", щоправда, там, був код ІПН)
+        /// </summary>
         [DisplayName("Дата народження")]
         [Description("Дата народження")]
         public DateTime BirthDate { get; set; }
@@ -58,6 +90,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         [DisplayName("ІПН")]
         [Description("ІПН/№ картки соціального страхування/тощо, дивлячись, що використовується у країні резидентства")]
         public string TaxOrSocSecID { get; set; }
+        /// <summary>
+        /// Поле необхідне лише якщо вимагається у анкеті
+        /// </summary>
         [DisplayName("Місце проживання/реєстрації")]
         [Description("Місце проживання/реєстрації")]
         public LocationInfo Address { get; set; }

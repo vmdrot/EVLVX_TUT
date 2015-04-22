@@ -7,6 +7,10 @@ using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
+    /// <summary>
+    /// Банківський/фінансовий наглядовий/регуляторний орган 
+    /// (згадується у декотрих анкетах)
+    /// </summary>
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.FinancialOversightAuthorityInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class FinancialOversightAuthorityInfo
     {

@@ -34,6 +34,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.Data.v10.2">
+      <HintPath>..\3dPartyLibraries\DevExpress\DevExpress.Data.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxEditors.v10.2">
+      <HintPath>..\3dPartyLibraries\DevExpress\DevExpress.Web.ASPxEditors.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxGridView.v10.2">
+      <HintPath>..\3dPartyLibraries\DevExpress\DevExpress.Web.ASPxGridView.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxHtmlEditor.v10.2">
+      <HintPath>..\3dPartyLibraries\DevExpress\DevExpress.Web.ASPxHtmlEditor.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxSpellChecker.v10.2">
+      <HintPath>..\3dPartyLibraries\DevExpress\DevExpress.Web.ASPxSpellChecker.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxThemes.v10.2">
+      <HintPath>..\3dPartyLibraries\DevExpress\DevExpress.Web.ASPxThemes.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.ASPxTreeList.v10.2">
+      <HintPath>..\3dPartyLibraries\DevExpress\DevExpress.Web.ASPxTreeList.v10.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Web.v10.2">
+      <HintPath>..\3dPartyLibraries\DevExpress\DevExpress.Web.v10.2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -49,28 +73,6 @@
     <Reference Include="DevExpress.Charts.v10.2.Core, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\3dPartyLibraries\DevExpress\DevExpress.Charts.v10.2.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Data.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.Web.ASPxEditors.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.Web.ASPxGridView.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.Web.ASPxHtmlEditor.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.Web.ASPxSpellChecker.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Web.ASPxThemes.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.Web.ASPxTreeList.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="DevExpress.Web.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <Private>True</Private>
     </Reference>
     <Reference Include="DevExpress.XtraCharts.v10.2, Version=10.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

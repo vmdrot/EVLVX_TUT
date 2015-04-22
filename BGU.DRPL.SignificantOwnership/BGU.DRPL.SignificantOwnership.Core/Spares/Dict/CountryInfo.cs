@@ -6,12 +6,18 @@ using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
+    /// <summary>
+    /// Країна 
+    /// Значення за змовчанням - Україна (UA, UKR, 804, Ukraine)
+    /// (в усіх місцях, окрім тих, де з контексту явно випливає, що буде не Україна)
+    /// </summary>
     //[System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.CountryInfoLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.CountryInfoLookupEditor2), typeof(System.Drawing.Design.UITypeEditor))]
     public class CountryInfo
     {
         /// <summary>
         /// this and other fields as per http://userpage.chemie.fu-berlin.de/diverse/doc/ISO_3166.html
+        /// Див. вищевказаний урл для специфікації (для усіх полів)
         /// </summary>
         public string CountryISO2Code { get; set; }
         public string CountryISO3Code { get; set; }
