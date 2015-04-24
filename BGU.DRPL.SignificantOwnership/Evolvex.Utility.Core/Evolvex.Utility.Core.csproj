@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809}</ProjectGuid>
+    <ProjectGuid>{80563496-BDC4-468D-A65C-58F2A1158A61}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BGU.DRPL.SignificantOwnership.EmpiricalData</RootNamespace>
-    <AssemblyName>BGU.DRPL.SignificantOwnership.EmpiricalData</AssemblyName>
+    <RootNamespace>Evolvex.Utility.Core</RootNamespace>
+    <AssemblyName>Evolvex.Utility.Core</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -40,15 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Examples\GrantBank.cs" />
+    <Compile Include="ComponentModelEx\RequiredAttribute.cs" />
+    <Compile Include="ComponentModelEx\ValidationAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BGU.DRPL.SignificantOwnership.Core\BGU.DRPL.SignificantOwnership.Core.csproj">
-      <Project>{13FC3BB3-E57B-4796-A3A0-2038B681B8CB}</Project>
-      <Name>BGU.DRPL.SignificantOwnership.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

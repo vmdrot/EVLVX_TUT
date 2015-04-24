@@ -14,7 +14,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 
         protected virtual string GetBankNameForFileName(BankInfo bankRef)
         {
-            if (bankRef == null) return string.Empty; return bankRef.HeadMFO ?? bankRef.Code ?? bankRef.RegistryNr ?? bankRef.SWIFTBIC;
+            if (bankRef == null) return string.Empty; return bankRef.HeadMFO ?? bankRef.SWIFTBIC;
         }
         
         public virtual string SuggestSaveAsFileName()

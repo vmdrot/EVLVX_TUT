@@ -5,6 +5,8 @@ using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
+using System.Xml.Serialization;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 {
@@ -42,7 +44,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// Ідентифікація банку
         /// Лише укр. банки, лише головні контори, крім НБУ і всіх ТРУ
         /// </summary>
-        //[ObligatoryAttribute] - todo
+        [Required]
         [Description("Банк")]
         [DisplayName("Банк")]
         public BankInfo BankRef { get; set; }
@@ -53,6 +55,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// </summary>
         [DisplayName("Юр.особа-заявник")]
         [Description("1. Інформація про юридичну особу")]
+        [Required]
         public LegalPersonInfo Acquiree { get; set; }
 
         /// <summary>
@@ -63,7 +66,12 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         [DisplayName("Наглядова (спостережна) рада юридичної особи?")]
         [Description("1.4. Чи існує наглядова (спостережна) рада юридичної особи")]
         [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [Required]
         public bool IsSupervisoryCouncilPresent { get; set; }
+
+        /// <summary>
+        /// тільки якщо IsSupervisoryCouncilPresent == true
+        /// </summary>
         [Browsable(true)]
         [DisplayName("Особовий склад наглядової(спостережної)ради юрособи")]
         [Description("1.4. Голова та члени наглядової (спостережної) ради юридичної особи")]
@@ -77,16 +85,23 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         [DisplayName("Виконавчий орган юридичної особи?")]
         [Description("1.4. Чи існує виконавчий орган юридичної особи")]
         [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [Required]
         public bool IsExecutivesPresent { get; set; }
+
+        /// <summary>
+        /// тільки якщо IsExecutivesPresent == true
+        /// </summary>
         [Browsable(true)]
         [DisplayName("Особовий склад виконавчого органу юрособи")]
         [Description("1.5. Голова та члени виконавчого органу юридичної особи")]
+        [Required]
         public CouncilBodyInfo Executives { get; set; }
         
         /// <summary>
         /// p.1.7
         /// обов'язкове поле
         /// </summary>
+        [Required]
         [DisplayName("% власності юрособи у капіталі банку")]
         [Description("1.7. Відсоток участі в банку становить ... відсотків статутного капіталу банку")]
         public decimal TotalOwneshipPct { get; set; }
@@ -97,6 +112,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// </summary>
         [DisplayName("Частка власності юрособи в банку - розподіл")]
         [Description("1.7. Відсоток участі в банку становить, у т.ч.:")]
+        [Required]
         public TotalOwnershipDetailsInfo TotalOwneshipDetails { get; set; } //todo - how many rows
 
         /// <summary>
@@ -108,6 +124,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// </summary>
         [DisplayName("Розшифровка ланцюжка власників банку")]
         [Description("1.8. Інформація про спільне володіння (=розкриття усього ланцюжка власників, у т.ч. й пов'язаних юросіб)")]
+        [Required]
         public List<OwnershipStructure> BankExistingCommonImplicitOwners { get; set; }
 
         /// <summary>
@@ -116,7 +133,8 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// </summary>
         [DisplayName("Частка власності, що набувається")]
         [Description("1.10. Інформація про набуття права голосу")]
-        public List<PurchasedVoteInfo> SharesAppliedFor {get;set;}
+        [Required]
+        public List<PurchasedVoteInfo> SharesAppliedFor { get; set; }
 
         /// <summary>
         /// p.2.1
@@ -136,6 +154,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// </summary>
         [DisplayName("Реквізити осіб-фігурантів анкети")]
         [Description("Повна інформація про осіб, що згадуються в анкеті")]
+        [Required]
         public List<GenericPersonInfo> MentionedIdentities { get; set; }
 
         /// <summary>
@@ -143,6 +162,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// у перспективі, запровадити попередню перевірку на 
         /// наявність однофамільців серед фігурантів і "торбити"
         /// заповнювача, що там 100% є пов'язані особи, мовляв, не хочете їх ідентифікувати.
+        /// Якщо немає пов'язаних осіб - не обов'язкове
         /// </summary>
         [DisplayName("Зв'язки між особами-фігурантами анкети")]
         [Description("Відомості про пов'язаних осіб, що згадуються в анкеті")]
@@ -152,15 +172,18 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// </summary>
         [DisplayName("Підписант")]
         [Description("Відомості по особу, що підписала анкету")]
+        [Required]
         public SignatoryInfo Signatory { get; set; }
         /// <summary>
         /// Обов'язково бодай один тел. і один e-mail, решта - необов'язкові
         /// </summary>
         [DisplayName("Контакти")]
         [Description("Контактні дані відправника анкети")]
+        [Required]
         public ContactInfo ContactPerson { get; set; }
 
         [Browsable(false)]
+        [XmlIgnore]
         public IEnumerable<GenericPersonInfo> MentionedGenericPersons
         {
             get 
@@ -193,6 +216,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         }
 
         [Browsable(false)]
+        [XmlIgnore]
         public IEnumerable<LocationInfo> MentionedAddresses
         {
             get 

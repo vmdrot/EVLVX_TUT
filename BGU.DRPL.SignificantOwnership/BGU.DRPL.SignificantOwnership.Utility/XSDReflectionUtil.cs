@@ -6,6 +6,7 @@ using System.Reflection;
 using System.ComponentModel;
 using System.Xml;
 using System.IO;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Utility
 {
@@ -93,7 +94,13 @@ namespace BGU.DRPL.SignificantOwnership.Utility
         {
             InjectDispProps(doc, alreadyProcessedTypes, null);
         }
+
         public static void InjectDispProps(XmlDocument doc, Dictionary<string,bool> alreadyProcessedTypes, XmlDocument assemblySummariesXml)
+        {
+            InjectDispProps(doc, alreadyProcessedTypes, assemblySummariesXml, false);
+        }
+
+        public static void InjectDispProps(XmlDocument doc, Dictionary<string, bool> alreadyProcessedTypes, XmlDocument assemblySummariesXml, bool xsdPutDispNmDescrIntoAnnotation)
         {
             List<XmlNode> toBeDel = new List<XmlNode>();
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
@@ -106,7 +113,7 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                     //doc.DocumentElement.RemoveChild(node);
                     else
                     {
-                        ProcessClass(node, assemblySummariesXml);
+                        ProcessClass(node, assemblySummariesXml, xsdPutDispNmDescrIntoAnnotation);
                         if (alreadyProcessedTypes != null)
                             alreadyProcessedTypes.Add(node.Attributes["name"].Value, true);
                     }
@@ -117,7 +124,7 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                         toBeDel.Add(node);//node.ParentNode.RemoveChild(node);//doc.RemoveChild(node);
                     else
                     {
-                        ProcessEnum(node, assemblySummariesXml);
+                        ProcessEnum(node, assemblySummariesXml, xsdPutDispNmDescrIntoAnnotation);
                         if (alreadyProcessedTypes != null)
                             alreadyProcessedTypes.Add(node.Attributes["name"].Value, true);
                     }
@@ -178,9 +185,25 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             AddAnnotation(target, comment,seeAlso);
         }
 
-        private static void FindAddAnnotation(XmlNode target, Type typ, string prop, XmlDocument asmblyDoc)
+        private static void FindAddAnnotation(XmlNode target, Type typ, string prop, XmlDocument asmblyDoc, string extraClause2Put)
         {
+            StringBuilder sbComment = new StringBuilder();
+            
+            PropertyInfo pi = typ.GetProperty(prop);
+            if (Attribute.IsDefined(pi, typeof(RequiredAttribute)))
+            {
+                target.Attributes["minOccurs"].Value = "1";
+                sbComment.AppendLine("ОБОВЯ'ЗКОВЕ ПОЛЕ!");
+            }
+            
+            if (Attribute.IsDefined(pi, typeof(ObsoleteAttribute)))
+                sbComment.AppendLine("Увага! Це поле було помічено як таке, що не використовується/застаріло (Obsolete)!");
+            if (!string.IsNullOrEmpty(extraClause2Put))
+                sbComment.AppendLine(extraClause2Put);
             string comment = GetSummaryFromAssemblyXmlForATypeProperty(asmblyDoc, typ, prop);
+            if (!string.IsNullOrEmpty(comment))
+                sbComment.AppendLine(comment);
+            comment = sbComment.ToString();
             string seeAlso = GetSeeAlsoFromAssemblyXmlForATypeProperty(asmblyDoc, typ,prop);
             if (string.IsNullOrEmpty(comment) && string.IsNullOrEmpty(seeAlso))
                 return;
@@ -205,7 +228,7 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                 sbInnerTxt.AppendFormat("Див.також: {0}", seeAlso); i++;
             }
 
-            docNode.InnerText = sbInnerTxt.ToString();
+            docNode.InnerText = sbInnerTxt.ToString().Trim();
             
             annotNode.AppendChild(docNode);
             if (target.ChildNodes == null || target.ChildNodes.Count == 0)
@@ -213,7 +236,7 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             else
                 target.InsertBefore(annotNode, target.ChildNodes[0]);
         }
-        private static void ProcessEnum(XmlNode node, XmlDocument assemblySummariesXml)
+        private static void ProcessEnum(XmlNode node, XmlDocument assemblySummariesXml, bool xsdPutDispNmDescrIntoAnnotation)
         {
             string typNm = node.Attributes["name"].Value;
             Type typ = FindType(typNm);
@@ -242,11 +265,16 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                 if (!enms2Descrs.ContainsKey(propNm))
                     continue;
                 if (!string.IsNullOrEmpty(enms2Descrs[propNm]))
-                    WriteAttribute(propNode, "description", enms2Descrs[propNm]);
+                {
+                    if(xsdPutDispNmDescrIntoAnnotation)
+                        AddAnnotation(propNode, string.Format("Підпис до значення/текст у випадаючому списку (для UI): {0}", enms2Descrs[propNm]), string.Empty);
+                    else
+                        WriteAttribute(propNode, "description", enms2Descrs[propNm]);
+                }
             }
         }
 
-        private static void ProcessClass(XmlNode node, XmlDocument assemblySummariesXml)
+        private static void ProcessClass(XmlNode node, XmlDocument assemblySummariesXml, bool xsdPutDispNmDescrIntoAnnotation)
         {
             string typNm = node.Attributes["name"].Value;
             Type typ = FindType(typNm);
@@ -266,18 +294,33 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                 string propNm = propNode.Attributes["name"].Value;
                 if (!dispDescrs.ContainsKey(propNm))
                     continue;
-                
+
                 string propTypeNmEng = propNode.Attributes["type"].Value;
                 string propTypeNmUkr = TranslateTypeNm(propTypeNmEng);
-                if (propTypeNmEng != propTypeNmUkr)
-                    WriteAttribute(propNode, "type_ukr", propTypeNmUkr);
+                string xtraClause = null;
+                if (!xsdPutDispNmDescrIntoAnnotation)
+                {
+                    if (propTypeNmEng != propTypeNmUkr)
+                        WriteAttribute(propNode, "type_ukr", propTypeNmUkr);
 
-                if (!string.IsNullOrEmpty(dispDescrs[propNm].DisplayName))
-                    WriteAttribute(propNode, "displayName", dispDescrs[propNm].DisplayName);
-                if (!string.IsNullOrEmpty(dispDescrs[propNm].Description))
-                    WriteAttribute(propNode, "description", dispDescrs[propNm].Description);
-                if (assemblySummariesXml != null)
-                    FindAddAnnotation(propNode, typ, propNm,assemblySummariesXml);
+                    if (!string.IsNullOrEmpty(dispDescrs[propNm].DisplayName))
+                        WriteAttribute(propNode, "displayName", dispDescrs[propNm].DisplayName);
+                    if (!string.IsNullOrEmpty(dispDescrs[propNm].Description))
+                        WriteAttribute(propNode, "description", dispDescrs[propNm].Description);
+                }
+                else
+                {
+                    StringBuilder sbXtraClause = new StringBuilder();
+                    if (propTypeNmEng != propTypeNmUkr)
+                        sbXtraClause.AppendLine(string.Format("Тип поля (українською): {0}", propTypeNmUkr));
+                    if (!string.IsNullOrEmpty(dispDescrs[propNm].DisplayName))
+                        sbXtraClause.AppendLine(string.Format("Підпис до поля (в UI): {0}", dispDescrs[propNm].DisplayName));
+                    if (!string.IsNullOrEmpty(dispDescrs[propNm].Description))
+                        sbXtraClause.AppendLine(string.Format("Опис до поля (в UI): {0}", dispDescrs[propNm].Description));
+                    xtraClause = sbXtraClause.ToString();
+                }
+
+                FindAddAnnotation(propNode, typ, propNm,assemblySummariesXml,xtraClause);
 
             }
         }
@@ -375,5 +418,6 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             attr.Value = attrVal;
             node.Attributes.SetNamedItem(attr);
         }
+
     }
 }
