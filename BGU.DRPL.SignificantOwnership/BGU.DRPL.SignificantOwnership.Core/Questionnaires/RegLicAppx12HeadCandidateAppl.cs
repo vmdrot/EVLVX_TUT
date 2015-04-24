@@ -21,6 +21,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
     /// </summary>
     public class RegLicAppx12HeadCandidateAppl : IQuestionnaire
     {
+        
         public string SuggestSaveAsFileName()
         {
             throw new NotImplementedException();
