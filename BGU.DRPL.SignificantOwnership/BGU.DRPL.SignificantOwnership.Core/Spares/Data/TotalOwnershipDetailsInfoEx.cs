@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using System.Xml.Serialization;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -39,11 +41,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// Тут лише ідентифікатор особи; як завше, решта її реквізитів - десь у MentionedIdentities
         /// </summary>
         [DisplayName("ID Власника")]
+        [Required]
         public GenericPersonID OwnerID { get; set; }
         /// <summary>
         /// Чисто для показу на UI; окремого бізнес-значення поле не несе
         /// </summary>
         [DisplayName("Власник")]
+        [XmlIgnore]
         public string OwnerDisplayName { get; set; }
     }
 }

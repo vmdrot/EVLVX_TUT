@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -23,11 +24,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// </summary>
         [DisplayName("Тип правопорушення")]
         [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [Required]
         public BreachOfLawType BreachType { get; set; }
         /// <summary>
         /// Суд, що виніс рішення, обов'язкове поле
         /// </summary>
         [DisplayName("Суд")]
+        [Required]
         public string CourtName { get; set; }
         /// <summary>
         /// Суд, що виніс рішення - укр. (якщо іноземна юрисдикція)
@@ -38,27 +41,32 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// Юрисдикція, за змовчанням - Україна
         /// </summary>
         [DisplayName("Країна підсудності")]
+        [Required]
         public CountryInfo JurisdictionCountry { get; set; }
         /// <summary>
         /// обов'язкове
         /// </summary>
         [DisplayName("Дата вироку")]
+        [Required]
         public DateTime SentenceDate { get; set; }
         /// <summary>
         /// обов'язкове
         /// </summary>
         [DisplayName("Закон/кодекс")]
+        [Required]
         public string CodeOrLaw { get; set; }
         /// <summary>
         /// обов'язкове
         /// </summary>
         [DisplayName("Стаття(-і)")]
+        [Required]
         public string Articles { get; set; }
         /// <summary>
         /// обов'язкове
         /// </summary>
         [DisplayName("Тип вироку")]
         [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [Required]
         public SentenceType Sentence { get; set; }
         /// <summary>
         /// якщо були (інші санкції)
@@ -70,6 +78,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// </summary>
         [DisplayName("Судимість погашена?")]
         [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [Required]
         public bool IsConvictionSettled { get; set; }
         /// <summary>
         /// якщо IsConvictionSettled == true, то обов'язкове

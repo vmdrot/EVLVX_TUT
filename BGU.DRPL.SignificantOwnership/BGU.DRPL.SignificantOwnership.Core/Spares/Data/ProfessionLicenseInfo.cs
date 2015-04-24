@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -23,11 +24,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// обов'язкове
         /// </summary>
         [DisplayName("Ліцензор")]
+        [Required]
         public ProfessionLicensingBodyInfo LicenseIssuer { get; set; }
         /// <summary>
         /// обов'язкове
         /// </summary>
         [DisplayName("Дата видачі")]
+        [Required]
         public DateTime LicenseIssueDate { get; set; }
         /// <summary>
         /// якщо не вказана - дійсна довічно
@@ -40,6 +43,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         [DisplayName("№ ліцензії")]
         public string LicenseIDNr { get; set; }
         [DisplayName("Кваліфікації/види діяльності за ліцензією")]
+        [Required]
         public List<LicenseQualificationInfo> LicenseQualifications { get; set; }
         /// <summary>
         /// Якщо недостатньо поля LicenseQualifications

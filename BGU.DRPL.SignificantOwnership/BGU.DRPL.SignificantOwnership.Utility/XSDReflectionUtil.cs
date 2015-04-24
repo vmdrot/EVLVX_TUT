@@ -207,11 +207,17 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             string seeAlso = GetSeeAlsoFromAssemblyXmlForATypeProperty(asmblyDoc, typ,prop);
             if (string.IsNullOrEmpty(comment) && string.IsNullOrEmpty(seeAlso))
                 return;
+            if (string.IsNullOrEmpty(comment) && string.IsNullOrEmpty(seeAlso))
+                return;
             AddAnnotation(target, comment, seeAlso);
         }
 
         private static void AddAnnotation(XmlNode target, string comment, string seeAlso)
         {
+            if (string.IsNullOrEmpty(comment) && string.IsNullOrEmpty(seeAlso))
+                return;
+            if (target == null)
+                return;
             XmlNode annotNode = target.OwnerDocument.CreateNode(XmlNodeType.Element, "xs:annotation", target.OwnerDocument.DocumentElement.Attributes["xmlns:xs"].Value);
             XmlNode docNode = target.OwnerDocument.CreateNode(XmlNodeType.Element, "xs:documentation", target.OwnerDocument.DocumentElement.Attributes["xmlns:xs"].Value);
             StringBuilder sbInnerTxt = new StringBuilder();
@@ -292,8 +298,8 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             foreach (XmlNode propNode in propNodes)
             {
                 string propNm = propNode.Attributes["name"].Value;
-                if (!dispDescrs.ContainsKey(propNm))
-                    continue;
+                //if (!dispDescrs.ContainsKey(propNm))
+                //    continue;
 
                 string propTypeNmEng = propNode.Attributes["type"].Value;
                 string propTypeNmUkr = TranslateTypeNm(propTypeNmEng);
@@ -303,9 +309,9 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                     if (propTypeNmEng != propTypeNmUkr)
                         WriteAttribute(propNode, "type_ukr", propTypeNmUkr);
 
-                    if (!string.IsNullOrEmpty(dispDescrs[propNm].DisplayName))
+                    if (dispDescrs.ContainsKey(propNm) && !string.IsNullOrEmpty(dispDescrs[propNm].DisplayName))
                         WriteAttribute(propNode, "displayName", dispDescrs[propNm].DisplayName);
-                    if (!string.IsNullOrEmpty(dispDescrs[propNm].Description))
+                    if (dispDescrs.ContainsKey(propNm) && !string.IsNullOrEmpty(dispDescrs[propNm].Description))
                         WriteAttribute(propNode, "description", dispDescrs[propNm].Description);
                 }
                 else
@@ -313,15 +319,14 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                     StringBuilder sbXtraClause = new StringBuilder();
                     if (propTypeNmEng != propTypeNmUkr)
                         sbXtraClause.AppendLine(string.Format("Тип поля (українською): {0}", propTypeNmUkr));
-                    if (!string.IsNullOrEmpty(dispDescrs[propNm].DisplayName))
+                    if (dispDescrs.ContainsKey(propNm) && !string.IsNullOrEmpty(dispDescrs[propNm].DisplayName))
                         sbXtraClause.AppendLine(string.Format("Підпис до поля (в UI): {0}", dispDescrs[propNm].DisplayName));
-                    if (!string.IsNullOrEmpty(dispDescrs[propNm].Description))
+                    if (dispDescrs.ContainsKey(propNm) && !string.IsNullOrEmpty(dispDescrs[propNm].Description))
                         sbXtraClause.AppendLine(string.Format("Опис до поля (в UI): {0}", dispDescrs[propNm].Description));
                     xtraClause = sbXtraClause.ToString();
                 }
 
-                FindAddAnnotation(propNode, typ, propNm,assemblySummariesXml,xtraClause);
-
+                FindAddAnnotation( propNode, typ, propNm, assemblySummariesXml, xtraClause);
             }
         }
 

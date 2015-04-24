@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -23,6 +24,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// </summary>
         [DisplayName("Країна")]
         [Description("Країна")]
+        [Required]
         public CountryInfo Country { get; set; }
         /// <summary>
         /// Якщо потрібно
@@ -41,6 +43,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// </summary>
         [DisplayName("Населений пункт")]
         [Description("Населений пункт")]
+        [Required]
         public string City { get; set; }
         /// <summary>
         /// Якщо вимагається контекстом

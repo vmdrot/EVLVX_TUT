@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -32,6 +33,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// </summary>
         [DisplayName("Телефони")]
         [Description("Перелік телефонів")]
+        [Required]
         public List<PhoneInfo> Phones { get; set; }
         /// <summary>
         /// Необов'язкове поле, як на мене - вже застарілий засіб зв'язку.
@@ -43,6 +45,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// </summary>
         [DisplayName("E-mail-и")]
         [Description("Перелік адрес електронної пошти")]
+        [Required]
         public List<EmailInfo> Emails { get; set; }
         /// <summary>
         /// Не обов'язкове (окрім банку, видавництва, тощо - де це вимагається контекстом використання цього типу).

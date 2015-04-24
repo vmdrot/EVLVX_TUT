@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -18,9 +19,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// <seealso cref="http://www.currency-iso.org/en/home/tables/table-a1.html"/>
         [Description("Валюта")]
         [DisplayName("Валюта")]
+        [Required]
         public string CCY { get; set; }
         [Description("Сума")]
         [DisplayName("Сума")]
+        [Required]
         public decimal Amt { get; set; }
 
         public override string ToString()

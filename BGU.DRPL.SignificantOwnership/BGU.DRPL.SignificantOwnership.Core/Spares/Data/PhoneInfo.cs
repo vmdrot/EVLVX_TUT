@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -20,6 +21,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         public string PhoneName { get; set; }
         [DisplayName("№ телефону")]
         [Description("№ телефону")]
+        [Required]
         public string PhoneNr { get; set; }
         /// <summary>
         /// напр. "дзвонити з 9 до 18, по вихідних, поза зоною тоді-то, тощо"

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -17,6 +18,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// Обов'язкове поле
         /// </summary>
         [DisplayName("Назва видавництва")]
+        [Required]
         public string Name { get; set; }
         /// <summary>
         /// Глибина валідації й повнота 
@@ -25,6 +27,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// (у адресі - місто, як стандартно означають видавництва)й назва; решта полів - за бажанням заповнювача.
         /// </summary>
         [DisplayName("Реквізити юрособи видавництва")]
+        [Required]
         public LegalPersonInfo LegalPerson { get; set; }
     }
 }

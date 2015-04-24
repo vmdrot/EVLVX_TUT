@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -22,18 +23,21 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// </summary>
         [DisplayName("Об'єкт власності")]
         [Description("Юр.особа, чия власність розкривається")]
+        [Required]
         public GenericPersonID Asset { get; set; }
         /// <summary>
         /// ідентифікатор особи-власника
         /// </summary>
         [DisplayName("Власник")]
         [Description("Власник")]
+        [Required]
         public GenericPersonID Owner { get; set; }
         /// <summary>
         /// За змовчанням Direct (пропонувати уже введене)
         /// </summary>
         [DisplayName("Тип володіння")]
         [Description("Тип володіння")]
+        [Required]
         public OwnershipType OwnershipKind { get; set; }
         /// <summary>
         /// Якщо відомий загальний статутний капітал, або якщо частку визначено в абсолютному виразі

@@ -4,18 +4,31 @@ using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
+    /// <summary>
+    /// Універсальна інформація про особу, "обгортка" (wrapper), куди можна "запхати" як юридичну, так і фізичну особу
+    /// </summary>
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.GenericPersonInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class GenericPersonInfo
     {
         [DisplayName("Тип особи")]
         [Description("Тип особи")]
+        [Required]
         public EntityType PersonType { get; set; }
+        /// <summary>
+        /// Обов'язкове поле, якщо PersonType == Physical
+        /// Інакше - відсутнє!
+        /// </summary>
         [DisplayName("Фізична особа")]
         [Description("Фізична особа")]
         public PhysicalPersonInfo PhysicalPerson { get; set; }
+        /// <summary>
+        /// Обов'язкове поле, якщо PersonType == Legal
+        /// Інакше - відсутнє!
+        /// </summary>
         [DisplayName("Юридична особа")]
         [Description("Юридична особа")]
         public LegalPersonInfo LegalPerson { get; set; }

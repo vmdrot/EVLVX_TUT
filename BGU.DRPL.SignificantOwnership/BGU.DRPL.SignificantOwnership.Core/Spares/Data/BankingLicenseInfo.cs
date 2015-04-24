@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -16,11 +17,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// Обов'язкове
         /// </summary>
         [DisplayName("№ ліцензії")]
+        [Required]
         public string LicenseNr { get; set; }
         /// <summary>
         /// Обов'язкове
         /// </summary>
         [DisplayName("Дата видачі ліцензії")]
+        [Required]
         public DateTime IssueDate { get; set; }
 
         public override string ToString()

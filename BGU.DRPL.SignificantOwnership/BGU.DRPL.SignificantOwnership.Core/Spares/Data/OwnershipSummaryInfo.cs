@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
     /// <summary>
     /// Структура для групування загальної інформації про власність
+    /// Обов'язково або Pct, або Amount
     /// </summary>
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.OwnershipSummaryInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class OwnershipSummaryInfo
@@ -26,6 +28,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// </summary>
         [DisplayName("Кількість голосів")]
         [Description("Кількість голосів")]
+        [Required]
         public int Votes { get; set; }
 
         public override string ToString()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -14,9 +15,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     {
         [DisplayName("%")]
         [Description("%")]
+        [Required]
         public decimal Pct { get; set; }
         [DisplayName("Кількість голосів")]
         [Description("Кількість голосів")]
+        [Required]
         public int Votes { get; set; }
 
         public override string ToString()

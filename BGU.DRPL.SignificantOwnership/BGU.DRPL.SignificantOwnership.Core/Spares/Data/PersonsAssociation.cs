@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -18,18 +19,21 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// </summary>
         [DisplayName("Перша особа")]
         [Description("Перша особа")]
+        [Required]
         public GenericPersonID One { get; set; }
         /// <summary>
         /// обов'язково, не та ж що й One
         /// </summary>
         [DisplayName("Друга особа")]
         [Description("Друга особа")]
+        [Required]
         public GenericPersonID Two { get; set; }
         /// <summary>
         /// обов'язково
         /// </summary>
         [DisplayName("Тип зв'язку")]
         [Description("Тип зв'язку")]
+        [Required]
         public OwnershipType AssociationType { get; set; }
         /// <summary>
         /// батько, мати, дружина, кум, зять, брат, сват, і т.д.;
@@ -37,6 +41,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// </summary>
         [DisplayName("Ким приходиться перша особа другій")]
         [Description("Назва, ким приходиться перша особа другій")]
+        [Required]
         public string AssociationTitleOneVsTwo { get; set; }
         /// <summary>
         /// Віддзеркалення значення AssociationTitleOneVsTwo
@@ -45,6 +50,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// <seealso cref="AssociationTitleOneVsTwo"/>
         [DisplayName("Ким приходиться друга особа першій")]
         [Description("Назва, ким приходиться друга особа першій")]
+        [Required]
         public string AssociationTitleTwoVsOne { get; set; }
 
         public override string ToString()

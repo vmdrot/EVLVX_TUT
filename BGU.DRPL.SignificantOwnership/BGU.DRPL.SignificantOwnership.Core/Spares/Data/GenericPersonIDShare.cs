@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -11,9 +12,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     {
         [DisplayName("Власник")]
         [Description("Власник")]
+        [Required]
         public GenericPersonID Person { get; set; }
         [DisplayName("Частка")]
         [Description("Частка власності (%)")]
+        [Required]
         public decimal Share { get; set; }
         public override string ToString()
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -17,6 +18,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// валідація як e-mail
         /// </summary>
         [DisplayName("Адреса ел.пошти")]
+        [Required]
         public string Email { get; set; }
         /// <summary>
         /// Необов'язкове поле, передбачено для вказання, що за мило - робоче, особисте, офіційне (юр.особи).

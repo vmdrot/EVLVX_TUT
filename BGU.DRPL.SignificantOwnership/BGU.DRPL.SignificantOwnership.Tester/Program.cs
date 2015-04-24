@@ -44,7 +44,7 @@ namespace BGU.DRPL.SignificantOwnership.Tester
 
         static void Main(string[] args)
         {
-            Console.Read();
+            //Console.Read();
 
             //CreateSampleAppx2OwnershipStructLP();
             //LocationInfoParser();
@@ -1020,7 +1020,6 @@ RegLicAppx9BankingLicenseAppl.xsd";
             doc.Load(fullPath);
             XSDReflectionUtil.InjectDispProps(doc, _alreadyProcessedXSDExportTypes, assemblySummariesXml, XsdPutDispNmDescrIntoAnnotation);
             doc.Save(fullPath);
-
         }
 
         private static void ProcessXSDSingle(Type typ, XmlDocument assemblySummariesXml, string extraFileExt)

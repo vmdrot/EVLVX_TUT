@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -19,17 +20,20 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// </summary>
         [DisplayName("ВНЗ")]
         [Description("ВНЗ - університет, інститут, коледж, тощо")]
+        [Required]
         public UniversityOrCollegeInfo UniOrCollege { get; set; }
         /// <summary>
         /// Обов'язкове поле; достатньо рік, або рік і місяць
         /// </summary>
         [DisplayName("Дата закінчення")]
+        [Required]
         public DateTime GraduationDate { get; set; }
         /// <summary>
         /// обов'язкове
         /// </summary>
         [DisplayName("Тип диплома")]
         [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [Required]
         public HigherEducationDegreeType DegreeType { get; set; }
         /// <summary>
         /// необов'язкове поле (подавачі самі зацікавлені)
@@ -42,6 +46,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// іншої країни - на віру
         /// </summary>
         [DisplayName("Серія диплома")]
+        [Required]
         public string DegreeSeries { get; set; }
         /// <summary>
         /// Якщо український диплом - обов'язкове;
@@ -49,11 +54,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// </summary>
         /// <seealso cref="DegreeSeries"/>
         [DisplayName("№ диплома")]
+        [Required]
         public string DegreeID { get; set; }
         /// <summary>
         /// Обов'язково
         /// </summary>
         [DisplayName("Спеціальність/фах")]
+        [Required]
         public string Trade { get; set; }
         /// <summary>
         /// Якщо передбачено

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -13,8 +14,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     public class PaymentModeInfo
     {
         [DisplayName("Сума")]
+        [Required]
         public CurrencyAmount Amount { get; set; }
         [DisplayName("Спосіб сплати")]
+        [Required]
         public PaymentType PaymentMode { get; set; }
     }
 }

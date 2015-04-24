@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -17,6 +18,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// Обов'язкове поле
         /// </summary>
         [DisplayName("Видавництво")]
+        [Required]
         public PublishingHouseInfo Publisher { get; set; }
         /// <summary>
         /// ISBN публікації (якщо є).
@@ -35,6 +37,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// Обов'язкове поле
         /// </summary>
         [DisplayName("Дата публікації")]
+        [Required]
         public DateTime PubDate { get; set; }
         /// <summary>
         /// якщо у ЗМІ, то обов'язкове

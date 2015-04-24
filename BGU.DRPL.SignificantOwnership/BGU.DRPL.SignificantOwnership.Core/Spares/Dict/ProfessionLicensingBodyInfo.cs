@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -18,6 +19,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// Назва оригінальною мовою
         /// </summary>
         [DisplayName("Назва ліцензіатора")]
+        [Required]
         public string Name { get; set; }
         /// <summary>
         /// Назва українською (якщо нерезидент)
@@ -28,6 +30,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// обов'язкові поля: Назва(-и), Адреса, країна резидентності
         /// </summary>
         [DisplayName("Реквізити юрособи (ліцензіатора)")]
+        [Required]
         public LegalPersonInfo LegalPerson { get; set; }
     }
 }

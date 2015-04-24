@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -21,22 +22,26 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// Повні реквізити самої організації "житимуть", як правило, у MentionedEntities (або його еквіваленті)
         /// </summary>
         [DisplayName("Керована організація")]
+        [Required]
         public GenericPersonID GovernedEntityID { get; set; }
         /// <summary>
         /// Перелік членів органу
         /// </summary>
         [DisplayName("Члени")]
         [Description("Члени органу управління")]
+        [Required]
         public List<CouncilMemberInfo> Members { get; set; }
         /// <summary>
         /// Ідентифікатор особи-голови
         /// </summary>
         [DisplayName("Очільник/голова органу")]
+        [Required]
         public GenericPersonID HeadMember { get; set; }
         /// <summary>
         /// Назва органу (мовою оригіналу)
         /// </summary>
         [DisplayName("Назва органу")]
+        [Required]
         public string CouncilBodyName { get; set; }
         /// <summary>
         /// Назва органу (українською, для організацій-нерезидентів)
