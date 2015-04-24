@@ -145,5 +145,10 @@ namespace BGU.DRPL.SignificantOwnership.UI
         {
             ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.Appx2OwnershipStructLP>(appx2OwnershipStructLPSamplesGrantToolStripMenuItem, (new GrantBank()).Appx2Questionnaire, true);
         }
+
+        private void tKKredytToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowQuestionnaireEditForm<BGU.DRPL.SignificantOwnership.Core.Questionnaires.Appx2OwnershipStructLP>(appx2OwnershipStructLPSamplesGrantToolStripMenuItem, (new TKKredyt()).Appx2Questionnaire, true);
+        }
     }
 }

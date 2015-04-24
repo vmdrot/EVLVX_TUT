@@ -33,6 +33,8 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 
         public override string ToString()
         {
+            if (Amount == 0.00M && Votes == 0)
+                return string.Format("{0}%", Pct);
             return string.Format("{0}% {1:N0} {2:N0}", Pct, Amount, Votes);
         }
     }

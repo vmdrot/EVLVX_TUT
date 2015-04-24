@@ -44,7 +44,7 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             treeView.Nodes.Clear();
             TreeNode rootNode = FormatNode(CentralAssetID, 100, string.Empty);
             treeView.Nodes.Add(rootNode);
-            UnWindOwnersGraph(CentralAssetID, _dataSource, treeView, rootNode);
+            UnWindOwnersGraph(CentralAssetID, _dataSource, treeView, rootNode, 100M);
         }
 
 
@@ -57,27 +57,30 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             string dispName = gpid.HashID;
             if (gpi != null)
                 dispName = gpi.DisplayName;
-            string pctPathOut = !string.IsNullOrEmpty(pctPath) ? string.Format("( {0} * {1} )", pct, pctPath) : string.Empty;
-            rslt.Text = string.Format("{0}%{1} {2}", pct, pctPathOut, dispName);
+            //string pctPathOut = !string.IsNullOrEmpty(pctPath) ? string.Format("( {0} * {1} )", pct, pctPath) : string.Empty;
+            //rslt.Text = string.Format("{0}%{1} {2}", pct, pctPathOut, dispName);
+            rslt.Text = string.Format("{0}%{1} {2}", pct, pctPath, dispName);
             return rslt;
         }
 
         
-        private void UnWindOwnersGraph(GenericPersonID forAsset, List<OwnershipStructure> ownershipHaystack, TreeView rslt, TreeNode putUnderNode)
+        private void UnWindOwnersGraph(GenericPersonID forAsset, List<OwnershipStructure> ownershipHaystack, TreeView rslt, TreeNode putUnderNode, decimal inPct)
         {
             foreach (OwnershipStructure os in ownershipHaystack)
             {
                 if (os.Asset != forAsset)
                     continue;
-                TreeNode currNode = PrintOwnershipLine(os, rslt, putUnderNode);
+                decimal correctedPct = 100 * ((os.SharePct / 100) * (inPct / 100));
+                TreeNode currNode = PrintOwnershipLine(os, rslt, putUnderNode, correctedPct);
                 if (os.Owner.PersonType == EntityType.Legal)
-                    UnWindOwnersGraph(os.Owner, ownershipHaystack, rslt, currNode);
+                    UnWindOwnersGraph(os.Owner, ownershipHaystack, rslt, currNode, correctedPct);
             }
         }
 
-        private TreeNode PrintOwnershipLine(OwnershipStructure os, TreeView rslt, TreeNode putUnderNode)
+        private TreeNode PrintOwnershipLine(OwnershipStructure os, TreeView rslt, TreeNode putUnderNode, decimal? ultimatePct)
         {
-            TreeNode node = FormatNode(os.Owner, os.SharePct, string.Empty);
+            string pctPath = ultimatePct != null ? string.Format("({0}%)", ((decimal)ultimatePct).ToString()) : string.Empty;
+            TreeNode node = FormatNode(os.Owner, os.SharePct, pctPath);
             putUnderNode.Nodes.Add(node);
             return node;
         }
