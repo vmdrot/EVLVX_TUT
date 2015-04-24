@@ -5,6 +5,7 @@ using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using System.Text.RegularExpressions;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -60,6 +61,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// </summary>
         [DisplayName("П.І.Б.")]
         [Description("П.І.Б.")]
+        [Required]
         public string FullName { get; set; }
         /// <summary>
         /// Бажано вимагати; дивитися за контекстом конкретного поля 

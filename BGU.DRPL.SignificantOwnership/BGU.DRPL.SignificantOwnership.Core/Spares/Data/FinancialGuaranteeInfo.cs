@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -17,23 +18,27 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// обирається зі списку, джерело - MentionedEntities, або ж уводиться (тут же) й "кладеться" у MentionedEntities.
         /// </summary>
         [DisplayName("Особа, щодо якої гарантую/ручаюся,тощо")]
+        [Required]
         public GenericPersonID Person { get; set; }
         /// <summary>
-        /// Обов'зкове
+        /// Обов'язкове
         /// </summary>
         [DisplayName("Роль")]
         [Description("Роль (гарантор, довірена особа, тощо)")]
+        [Required]
         public FinancialGuarantorRoleType Role { get; set; }
         /// <summary>
         /// обов'язкове
         /// </summary>
         [DisplayName("Сума гарантії/поруки/тощо")]
+        [Required]
         public CurrencyAmount PledgeAmt { get; set; }
         /// <summary>
         /// обов'язкове (але вільного формату)
         /// </summary>
         [DisplayName("Деталі")]
         [Description("з яких питань")]
+        [Required]
         public string GuaranteeDetails { get; set; }
     }
 }

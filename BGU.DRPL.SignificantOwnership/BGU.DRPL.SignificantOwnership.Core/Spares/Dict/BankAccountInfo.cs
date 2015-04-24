@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -18,6 +19,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// решта реквізитів особи - десь у MentionedEntities чи його еквіваленті
         /// </summary>
         [DisplayName("Власник рахунку")]
+        [Required]
         public GenericPersonID AccountOwner { get; set; }
         /// <summary>
         /// Ідентифікація банку, де відкрито рахунок
@@ -25,6 +27,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// для нерезидентів - Назва, назва укр., (SWIFT або MFO), якщо ні - адреса, щоб однозначно ідентифікувати
         /// </summary>
         [DisplayName("У банку...")]
+        [Required]
         public BankInfo Bank { get; set; }
         /// <summary>
         /// № рахунку
@@ -40,6 +43,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// релевантні примітки - що за рахунок, для чого використовується (залежно від контексту), необов'язкове поле
         /// </summary>
         [DisplayName("Опис/примітки/призначення рахунку")]
+        [Required]
         public string AccountDescription { get; set; }
     }
 }

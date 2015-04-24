@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -18,16 +19,19 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// Посилання - реквізити в MentionedEntities
         /// </summary>
         [DisplayName("Роботодавець")]
+        [Required]
         public GenericPersonID Employer { get; set; }
         /// <summary>
         /// обов'язкове, вільний формат
         /// </summary>
         [DisplayName("Посада/функція")]
+        [Required]
         public string JobTitle { get; set; }
         /// <summary>
         /// обов'язкове, з точністю до місяця
         /// </summary>
         [DisplayName("Дата початку роботи")]
+        [Required]
         public DateTime DateStarted { get; set; }
         /// <summary>
         /// з точністю до місяця
@@ -40,11 +44,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// </summary>
         [DisplayName("Тип зайнятості")]
         [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        [Required]
         public EmploymentState State { get; set; }
         /// <summary>
         /// обов'язкове поле (хіба ще досі там працює)
         /// </summary>
         [DisplayName("Тип закінчення діяльності")]
+        [Required]
         public EmploymentTerminationType TerminationType { get; set; }
         /// <summary>
         /// Пояснення обов'язкове для TerminationType типів:
@@ -60,6 +66,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// якщо вказується особа, то вона сприймається як рекомендувач; чим повніше цю особу ідентифіковано, тим краще для подавача
         /// </summary>
         [DisplayName("Контакти роботодавця")]
+        [Required]
         public ContactInfo EmployerContact { get; set; }
     }
 }

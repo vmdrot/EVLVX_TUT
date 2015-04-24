@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.Data;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -17,6 +18,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// <summary>
         /// Для українських банків MFO (GLMFO)
         /// Для банків-нерезидентів - національний кліринговий код (Bankleitzahl (BLZ), Sorted CHAPS code, FedWire, Codigo Bancario, Code Guichet, тощо)
+        /// Обов'язкове поле, якщо OperationCountry == UKRAINE
         /// ( http://www.tgbr.com/tgbr/help/RTN.html )
         /// </summary>
         [Description("МФО")]
@@ -42,6 +44,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// </summary>
         [Description("Найменування банку (в оригіналі)")]
         [DisplayName("Найменування банку")]
+        [Required]
         public string Name { get; set; }
         /// <summary>
         /// Назва банку українською (для банків-нерезидентів)
@@ -73,6 +76,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// Значення за змовчанням - Україна (UA, UKR, 804, Ukraine)
         /// </summary>
         [DisplayName("Країна діяльності")]
+        [Required]
         public CountryInfo OperationCountry { get; set; }
 
         public BankInfo() 

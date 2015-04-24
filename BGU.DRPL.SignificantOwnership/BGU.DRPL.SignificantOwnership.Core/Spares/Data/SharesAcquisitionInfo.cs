@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -13,15 +14,19 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     public class SharesAcquisitionInfo
     {
         [DisplayName("Кількість акцій (одиниць)")]
+        [Required]
         public int SharesCount { get; set; }
         [DisplayName("У тому числі кількість акцій з правом голосу")]
+        [Required]
         public int InclVotingSharesCount { get; set; }
         [DisplayName("номінальна вартість однієї акції (паю)")]
+        [Required]
         public decimal SharePrice { get; set; }
         /// <summary>
         /// тобто, SharesCount * SharePrice
         /// </summary>
         [DisplayName("загальна сума ... гривень")]
+        [Required]
         public decimal TotalCosts { get; set; }
     }
 }

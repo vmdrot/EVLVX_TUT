@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -17,6 +18,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// </summary>
         [DisplayName("Назва ВНЗ")]
         [Description("Назва вищого навчального закладу оригінальною мовою")]
+        [Required]
         public string UniversityName { get; set; }
         /// <summary>
         /// Обов'язкове, якщо ВНЗ - не український, відповідно, 
@@ -29,6 +31,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// Хоча б місто й країна
         /// </summary>
         [DisplayName("Адреса ВНЗ")]
+        [Required]
         public LocationInfo Address { get; set; }
         /// <summary>
         /// Не певен, чи десь існують ці ідентифікатори - 

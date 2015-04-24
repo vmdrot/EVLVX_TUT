@@ -5,6 +5,7 @@ using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Misc;
 using System.ComponentModel;
 using System.Xml.Serialization;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -24,10 +25,12 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// Код країни резидентності
         /// </summary>
         /// <seealso cref="CountryInfo"/>
+        [Required]
         public string CountryISO3Code { get; set; }
         /// <summary>
         /// Тип особи
         /// </summary>
+        [Required]
         public EntityType PersonType { get; set; }
         /// <summary>
         /// Код особи;
@@ -36,6 +39,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// якщо (не пустий TaxOrSocSecID ) - то TaxOrSocSecID 
         /// інакше - PassportID
         /// </summary>
+        [Required]
         public string PersonCode { get; set; }
 
         #region Extra members

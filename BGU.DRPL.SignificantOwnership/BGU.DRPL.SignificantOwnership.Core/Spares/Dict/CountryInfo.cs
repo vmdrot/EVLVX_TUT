@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -22,6 +23,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// </summary>
         public string CountryISO2Code { get; set; }
         public string CountryISO3Code { get; set; }
+        [Required]
         public string CountryISONr { get; set; }
         /// <summary>
         /// Назва країни англ. мовою
@@ -30,6 +32,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// <summary>
         /// Назва країни українською мовою
         /// </summary>
+        [Required]
         public string CountryNameUkr{ get; set; }
 
         #region specific countries

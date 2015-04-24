@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -22,7 +23,8 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
             Jurisdiction = CountryInfo.UKRAINE;
         }
 
-        [DisplayName("Країна юрисдикції")]        
+        [DisplayName("Країна юрисдикції")]
+        [Required]
         public CountryInfo Jurisdiction { get; set; }
         /// <summary>
         /// Назва органу оригінальною мовою, напр.:
@@ -30,6 +32,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         ///  - Komisja Nadzoru Finansowego
         /// </summary>
         [DisplayName("Назва органу")]
+        [Required]
         public string AuthorityName { get; set; }
         /// <summary>
         /// Назва органу українською, напр.:
@@ -38,11 +41,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         ///  
         /// </summary>
         [DisplayName("Назва органу(українською)")]
+        [Required]
         public string AuthorityNameUkr { get; set; }
         /// <summary>
         /// Максимальне заповнення полів
         /// </summary>
         [DisplayName("Адреса")]
+        [Required]
         public LocationInfo Address { get; set; }
 
         /// <summary>
@@ -55,6 +60,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// Поля, які бажано заповнити - www
         /// </summary>
         [DisplayName("Контакти")]
+        [Required]
         public ContactInfo Contacts { get; set; }
     }
 }

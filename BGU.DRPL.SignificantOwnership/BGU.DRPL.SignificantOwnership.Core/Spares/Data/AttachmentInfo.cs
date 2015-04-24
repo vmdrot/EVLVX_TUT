@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -16,12 +17,14 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// Обов'язкове поле
         /// </summary>
         [DisplayName("Файл")]
+        [Required]
         public string FileName { get; set; }
         /// <summary>
         /// Обов'язкове поле, за змовчанням - Інше
         /// </summary>
         [DisplayName("Тип (з переліку)")]
         [Description("Тип додатку із переліку типових долучень; якщо \"Інше\" - обов'язково вказати, що саме у полі \"Опис файлу\".")]
+        [Required]
         public TypicalApplicationAttachement AttachmentType { get; set; }
         //[DisplayName("Назва")]
         //public string Title { get; set; }
@@ -37,6 +40,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// </summary>
         [DisplayName("Формат")]
         [Description("Тип MIME, напр. pdf, xls, xlsx, doc, docs, rtf, тощо")]
+        [Required]
         public string ContentType { get; set; }
 
         public override string ToString()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -18,12 +19,14 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// </summary>
         [Description("Член органу управління")]
         [DisplayName("Член органу управління")]
+        [Required]
         public GenericPersonID Member { get; set; }
         /// <summary>
         /// за змовчанням - просто "член"
         /// </summary>
         [Description("Посада")]
         [DisplayName("Посада")]
+        [Required]
         public string PositionName { get; set; }
         public override string ToString()
         {

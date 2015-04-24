@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -23,6 +24,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// </summary>
         [DisplayName("Назва професії/діяльності")]
         [Description("Назва професії/виду ліцензованої діяльності згідно відповідного класифікатору/довідника професій (напр.http://kodeksy.com.ua/buh/kp.htm)")]
+        [Required]
         public string QualificationName { get; set; }
 
         public override string ToString()

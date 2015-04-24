@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -13,20 +14,40 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
     [System.ComponentModel.Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.TotalOwnershipDetailsInfo_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class TotalOwnershipDetailsInfo
     {
+        /// <summary>
+        /// Обов'язкове, навіть якщо там усе по 0-м
+        /// </summary>
         [DisplayName("Пряма власність")]
         [Description("Пряма власність")]
+        [Required]
         public OwnershipSummaryInfo DirectOwnership { get; set; }
+        /// <summary>
+        /// Обов'язкове, навіть якщо там усе по 0-м
+        /// </summary>
         [DisplayName("Опосередкована власність")]
         [Description("Опосередкована власність")]
+        [Required]
         public OwnershipSummaryInfo ImplicitOwnership { get; set; }
+        /// <summary>
+        /// Обов'язкове, навіть якщо там усе по 0-м
+        /// </summary>
         [DisplayName("Власність, що набувається")]
         [Description("Власність, що набувається")]
+        [Required]
         public OwnershipVotesInfo AcquiredVotes { get; set; }
+        /// <summary>
+        /// Обов'язкове, навіть якщо там усе по 0-м
+        /// </summary>
         [DisplayName("Усього % у загальній власності")]
         [Description("Усього % у загальній власності")]
+        [Required]
         public decimal TotalCapitalSharePct { get; set; }
+        /// <summary>
+        /// Обов'язкове, навіть якщо там усе по 0-м
+        /// </summary>
         [DisplayName("Усього голосів")]
         [Description("Усього голосів")]
+        [Required]
         public int TotalVotes { get; set; }
 
         public override string ToString()

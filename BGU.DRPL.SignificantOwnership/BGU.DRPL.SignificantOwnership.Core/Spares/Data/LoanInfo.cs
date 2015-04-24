@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -22,6 +23,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// обов'язкове
         /// </summary>
         [DisplayName("Дата договору")]
+        [Required]
         public DateTime AgreementDt { get; set; }
         /// <summary>
         /// якщо є прострочка

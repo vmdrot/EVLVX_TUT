@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -26,6 +27,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// <seealso cref="http://irc.gov.ua/ua/Poshuk-v-YeDR.html"/>
         [DisplayName("Податковий №")]
         [Description("ЄДРПОУ/Податковий ID/HandelsregisterNr.(для нерезидентів)")]
+        [Required]
         public string TaxCodeOrHandelsRegNr { get; set; }
         /// <summary>
         /// Обов'язкове поле.
@@ -33,6 +35,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// </summary>
         [DisplayName("Найменування")]
         [Description("Найменування юридичної особи (оригінальною мовою)")]
+        [Required]
         public string Name { get; set; }
         /// <summary>
         /// Назва українською (якщо оригінальна - іншою мовою).
@@ -42,9 +45,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         public string NameUkr { get; set; }
         /// <summary>
         /// Адреса юрособи. Поле обов'язкове, якщо контекстом не вказано інше.
+        /// Мінімальне заповнення - країна та місто
         /// </summary>
         [DisplayName("Місцезнаходження")]
         [Description("місцезнаходження юридичної особи")]
+        [Required]
         public LocationInfo Address { get; set; }
         /// <summary>
         /// Країна резидентності
@@ -52,6 +57,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// </summary>
         [DisplayName("Країна юрисдикції")]
         [Description("Країна юрисдикції юридичної особи")]
+        [Required]
         public CountryInfo ResidenceCountry { get; set; }
         /// <summary>
         /// Обов'язкове поле, якщо контекстом не визначено інше

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -24,12 +25,14 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// </summary>
         [DisplayName("Країна юрисдикції")]
         [Description("Країна юрисдикції")]
+        [Required]
         public CountryInfo JurisdictionCountry { get; set; }
         /// <summary>
         /// якнайповніше
         /// </summary>
         [DisplayName("Місцезнаходження")]
         [Description("Місцезнаходження")]
+        [Required]
         public LocationInfo Address { get; set; }
         /// <summary>
         /// Якщо такий код передбачено/існує; коротше, необов'язкове поле
@@ -43,6 +46,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// </summary>
         [DisplayName("Назва держоргану")]
         [Description("Назва держоргану")]
+        [Required]
         public string RegistrarName { get; set; }
         /// <summary>
         /// Назва реєстратора українською (якщо реєстратор не український).
@@ -58,6 +62,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// </summary>
         [DisplayName("Тип осіб, що реєструє")]
         [Description("Тип осіб, що реєструє")]
+        [Required]
         public EntityType EntitiesHandled { get; set; }
         public override string ToString()
         {
