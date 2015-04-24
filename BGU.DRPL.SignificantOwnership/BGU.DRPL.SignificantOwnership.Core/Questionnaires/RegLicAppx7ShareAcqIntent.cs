@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
+using Evolvex.Utility.Core.ComponentModelEx;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 {
@@ -31,16 +32,23 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
             PersonsLinks = new List<PersonsAssociation>();
         }
 
+        [Required]
         public BankInfo BankRef { get; set; }
+        [Required]
         public GenericPersonInfo Acquiree { get; set; }
+        [Required]
         public TotalOwnershipDetailsInfo ExistingOwnershipSummary { get; set; }
+        [Required]
         public List<OwnershipStructure> ExistingOwnership { get; set; }
+        [Required]
         public List<GenericPersonInfo> MentionedIdentities { get; set; }
         public List<PersonsAssociation> PersonsLinks { get; set; }
+        [Required]
         public TotalOwnershipDetailsInfo TargetedOwnershipSummary { get; set; }
 
         //public decimal TargetedOwnershipSharePct { get; set; }
         //public decimal TargetedOwnershipShareAmt { get; set; }
+        [Required]
         public SignatoryInfo Signee { get; set; }
 
 

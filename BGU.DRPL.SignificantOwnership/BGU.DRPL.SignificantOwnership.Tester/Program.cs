@@ -23,6 +23,8 @@ namespace BGU.DRPL.SignificantOwnership.Tester
         private static readonly string XsdExePath;
         private static readonly string XsdFilesOutputDir;
         private static readonly string OriginalXsdFilesOutputDir;
+        private static readonly bool XsdPutDispNmDescrIntoAnnotation;
+        private static readonly string XmlFormatterPath;
         private static Dictionary<string, bool> _alreadyProcessedXSDExportTypes;
 
 
@@ -31,6 +33,13 @@ namespace BGU.DRPL.SignificantOwnership.Tester
             XsdExePath = ConfigurationManager.AppSettings["xsdExePath"];
             XsdFilesOutputDir = ConfigurationManager.AppSettings["xsdFilesOutputDir"];
             OriginalXsdFilesOutputDir = ConfigurationManager.AppSettings["origXsdFilesOutputDir"];
+            XmlFormatterPath = ConfigurationManager.AppSettings["xmlFormatterPathRel"];
+            string xsdPutDispNmDescrIntoAnnotationStr = ConfigurationManager.AppSettings["xsdUkUAPutDispNmDescr2Annot"];
+            if(string.IsNullOrEmpty(xsdPutDispNmDescrIntoAnnotationStr))
+                XsdPutDispNmDescrIntoAnnotation = false;
+            bool tmp;
+            if (bool.TryParse(xsdPutDispNmDescrIntoAnnotationStr, out tmp))
+                XsdPutDispNmDescrIntoAnnotation = tmp;
         }
 
         static void Main(string[] args)
@@ -929,13 +938,30 @@ typeof(RegLicAppx9BankingLicenseAppl)};
             File.Copy(Path.Combine(XsdFilesOutputDir, "schema0.xsd"), Path.Combine(XsdFilesOutputDir, "all_spares.xsd"), true);
             File.Copy(Path.Combine(XsdFilesOutputDir, "schema0.xsd"), Path.Combine(XsdFilesOutputDir, "all_spares.uk-UA.xsd"), true);
             ProcessXSDSingle(Path.Combine(XsdFilesOutputDir, "all_spares.uk-UA.xsd"), assemblySummariesXml);
+            CallXmlFormatterExe(Path.Combine(XsdFilesOutputDir, "all_spares.uk-UA.xsd"));
             foreach (Type typ in types2Process)
             {
                 CallXsdExe(typ.FullName);
                 File.Copy(Path.Combine(XsdFilesOutputDir, "schema0.xsd"), Path.Combine(XsdFilesOutputDir, string.Format("{0}.xsd", typ.Name.Trim())), true);
                 File.Copy(Path.Combine(XsdFilesOutputDir, "schema0.xsd"), Path.Combine(XsdFilesOutputDir, string.Format("{0}.uk-UA.xsd", typ.Name.Trim())), true);
                 ProcessXSDSingle(typ, assemblySummariesXml,"uk-UA.");
+                
             }
+        }
+
+        private static void CallXmlFormatterExe(string xsdPath)
+        {
+            string strCmdText = string.Format(@"/C ""{0}"" ""{1}""", XmlFormatterPath, xsdPath);
+
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.FileName = "cmd.exe";//XsdExePath;
+            startInfo.Arguments = strCmdText;
+            process.StartInfo = startInfo;
+            bool bStarted = process.Start();
+            if (bStarted)
+                process.WaitForExit();
+
         }
 
         private static void CallXsdExe(string typeName)
@@ -992,14 +1018,16 @@ RegLicAppx9BankingLicenseAppl.xsd";
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(fullPath);
-            XSDReflectionUtil.InjectDispProps(doc, _alreadyProcessedXSDExportTypes, assemblySummariesXml);
+            XSDReflectionUtil.InjectDispProps(doc, _alreadyProcessedXSDExportTypes, assemblySummariesXml, XsdPutDispNmDescrIntoAnnotation);
             doc.Save(fullPath);
 
         }
 
         private static void ProcessXSDSingle(Type typ, XmlDocument assemblySummariesXml, string extraFileExt)
         {
-            ProcessXSDSingle(Path.Combine(XsdFilesOutputDir, string.Format("{0}.{1}xsd", typ.Name.Trim(), extraFileExt)), assemblySummariesXml);
+            string targetPath = Path.Combine(XsdFilesOutputDir, string.Format("{0}.{1}xsd", typ.Name.Trim(), extraFileExt));
+            ProcessXSDSingle(targetPath, assemblySummariesXml);
+            CallXmlFormatterExe(targetPath);
         }
         #endregion
     }

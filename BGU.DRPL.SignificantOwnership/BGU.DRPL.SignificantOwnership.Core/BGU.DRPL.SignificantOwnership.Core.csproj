@@ -154,6 +154,10 @@
       <Project>{E7FA3686-C797-43EA-890E-5F970A54D348}</Project>
       <Name>BGU.DRPL.SignificantOwnership.Utility</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Evolvex.Utility.Core\Evolvex.Utility.Core.csproj">
+      <Project>{80563496-BDC4-468D-A65C-58F2A1158A61}</Project>
+      <Name>Evolvex.Utility.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="PropertyNames.resx">
