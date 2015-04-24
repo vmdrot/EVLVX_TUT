@@ -25,12 +25,14 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// <summary>
         /// У Rcukru - REGN (тільки дла укр.банків)
         /// </summary>
+        [Obsolete]
         [Description("№ у реєстрі банків (лише для головних контор)")]
         [DisplayName("№ у реєстрі банків")]
         public string RegistryNr { get; set; }
         /// <summary>
         /// У Rcukru - GLB (тільки дла укр.банків)
         /// </summary>
+        [Obsolete]
         [Description("Код банку (лише для головних контор)")]
         [DisplayName("Код банку")]
         public string Code { get; set; }

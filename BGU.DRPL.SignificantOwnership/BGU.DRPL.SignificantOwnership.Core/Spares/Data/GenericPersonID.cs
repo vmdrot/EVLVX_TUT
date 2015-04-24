@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using BGU.DRPL.SignificantOwnership.Core.Misc;
 using System.ComponentModel;
+using System.Xml.Serialization;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
@@ -39,6 +40,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 
         #region Extra members
         [Browsable(false)]
+        [XmlIgnore]
         public string DisplayName
         {
             get;

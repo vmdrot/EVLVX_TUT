@@ -9,15 +9,15 @@ using System.ComponentModel;
 namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 {
     /// <summary>
-    /// АНКЕТА фізичної особи
-    /// Додаток 3 до Положення про порядок подання відомостей про структуру власності
-    /// file                                  : f364553n173.doc
-    /// Рівень складності                     : 6
+    /// АНКЕТА юридичної особи (у тому числі банку)
+    /// Додаток 2 до Положення про порядок подання відомостей про структуру власності
+    /// file                                  : f364553n172.doc
+    /// Рівень складності                     : 7
     /// (оціночний, шкала від 1 до 10)
     /// Пріоритетність                        : Lo  (Легенда: Hi - Висока, Lo - Низька, Mid - Середня, Hold - Поки що притримати)
-    /// Подавач анкети                        : PP (Легенда: LP - юр.особа, PP - фіз.особа, BK - банк)
+    /// Подавач анкети                        : LP (Легенда: LP - юр.особа, PP - фіз.особа, BK - банк)
     /// Чи заповнюватиметься он-лайн          : Так
-    /// Первинну розробку структури завершено : Ні
+    /// Первинну розробку структури завершено : Так
     /// Структуру фіналізовано                : Ні
     /// (=остаточно узгоджено 
     /// з бізнес-користувачами)
@@ -40,7 +40,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 
         /// <summary>
         /// Ідентифікація банку
+        /// Лише укр. банки, лише головні контори, крім НБУ і всіх ТРУ
         /// </summary>
+        //[ObligatoryAttribute] - todo
         [Description("Банк")]
         [DisplayName("Банк")]
         public BankInfo BankRef { get; set; }
@@ -109,6 +111,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         public List<OwnershipStructure> BankExistingCommonImplicitOwners { get; set; }
 
         /// <summary>
+        /// обов'язкове
         /// p.1.10
         /// </summary>
         [DisplayName("Частка власності, що набувається")]
@@ -223,7 +226,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 
         protected override string ApplicantNameForFileName
         {
-            get { if (Acquiree == null) return string.Empty; return Acquiree.Name; }
+            get { if (Acquiree == null) return string.Empty; return Acquiree.TaxCodeOrHandelsRegNr; }
         }
     }
 }
