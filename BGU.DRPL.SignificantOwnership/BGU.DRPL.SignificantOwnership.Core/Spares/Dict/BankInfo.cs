@@ -23,7 +23,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// </summary>
         [Description("МФО")]
         [DisplayName("МФО")]
-        public string HeadMFO { get; set; }
+        public string MFO { get; set; }
         /// <summary>
         /// У Rcukru - REGN (тільки дла укр.банків)
         /// </summary>
@@ -112,7 +112,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
             BankInfo bi = new BankInfo();
             bi.OperationCountry = CountryInfo.UKRAINE;
             bi.Name = dr["NB"] as string;
-            bi.HeadMFO = mfo;
+            bi.MFO = mfo;
             bi.Code = glb;
             bi.RegistryNr = prkb;
             bi.LegalPerson = new LegalPersonInfo() { TaxCodeOrHandelsRegNr = yedrpou, Name = dr["FULLNAME"] as string, Address = LocationInfo.Parse(address), ResidenceCountry = CountryInfo.UKRAINE };
