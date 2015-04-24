@@ -88,7 +88,7 @@ namespace BGU.Web20.MiscItemsSite.Controls
             get
             {
                 BankInfo rslt = new BankInfo();
-                rslt.HeadMFO = edHeadMFO.Value;
+                rslt.MFO = edHeadMFO.Value;
                 rslt.Name = edName.Value;
                 rslt.NameUkr = edNameUkr.Value;
                 rslt.OperationCountry = new CountryInfo() { CountryISONr = ddlCountry.SelectedValue };
@@ -101,7 +101,7 @@ namespace BGU.Web20.MiscItemsSite.Controls
             {
                 if (value == null)
                     return;
-                edHeadMFO.Value  = value.HeadMFO;
+                edHeadMFO.Value  = value.MFO;
                 edName.Value = value.Name;
                 edNameUkr.Value = value.NameUkr;
                 edSWIFTBIC.Value = value.SWIFTBIC;

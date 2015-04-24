@@ -110,7 +110,7 @@ namespace BGU.DRPL.SignificantOwnership.EmpiricalData.Examples
             //the bank itself
             leTheBank = new GenericPersonInfo() { PersonType = Core.Spares.EntityType.Legal, LegalPerson = new LegalPersonInfo() { Name = "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"СХІДНО-УКРАЇНСЬКИЙ БАНК \"ГРАНТ\"", TaxCodeOrHandelsRegNr = "14070197", ResidenceCountry = CountryInfo.UKRAINE, Address = addrKhaDanyl19, Equity = new CurrencyAmount() { CCY = "UAH", Amt = 130000000.00M } } };
             #endregion
-            this._appx2Questionnaire.BankRef = new BankInfo(leTheBank.LegalPerson) { HeadMFO = "351607", RegistryNr = "123", Code = "788" };
+            this._appx2Questionnaire.BankRef = new BankInfo(leTheBank.LegalPerson) { MFO = "351607", RegistryNr = "123", Code = "788" };
             this._appx2Questionnaire.Acquiree = leArgus.LegalPerson;
 
             
