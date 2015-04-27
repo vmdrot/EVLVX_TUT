@@ -44,7 +44,7 @@ namespace BGU.DRPL.SignificantOwnership.Tester
 
         static void Main(string[] args)
         {
-            //Console.Read();
+            Console.Read();
 
             //CreateSampleAppx2OwnershipStructLP();
             //LocationInfoParser();
@@ -921,32 +921,46 @@ namespace BGU.DRPL.SignificantOwnership.Tester
         {
             //Type[] types2Process = new Type[] { typeof(Appx2OwnershipStructLP)};
             _alreadyProcessedXSDExportTypes = new Dictionary<string, bool>();
-            Type[] types2Process = new Type[] { typeof(Appx2OwnershipStructLP),
-typeof(Appx3OwnershipStructPP),
-typeof(RegLicAppx12HeadCandidateAppl),
-typeof(RegLicAppx14NewSvc),
-typeof(RegLicAppx17EquityChangeTable),
-typeof(RegLicAppx2OwnershipAcqRequestLP),
-typeof(RegLicAppx3MemberCandidateAppl),
-typeof(RegLicAppx4OwnershipAcqRequestPP),
-typeof(RegLicAppx6EquityFormationTable),
-typeof(RegLicAppx7ShareAcqIntent),
-typeof(RegLicAppx9BankingLicenseAppl)};
+//            Type[] types2Process = new Type[] { typeof(Appx2OwnershipStructLP),
+//typeof(Appx3OwnershipStructPP),
+//typeof(RegLicAppx12HeadCandidateAppl),
+//typeof(RegLicAppx14NewSvc),
+//typeof(RegLicAppx17EquityChangeTable),
+//typeof(RegLicAppx2OwnershipAcqRequestLP),
+//typeof(RegLicAppx3MemberCandidateAppl),
+//typeof(RegLicAppx4OwnershipAcqRequestPP),
+//typeof(RegLicAppx6EquityFormationTable),
+//typeof(RegLicAppx7ShareAcqIntent),
+//typeof(RegLicAppx9BankingLicenseAppl)};
 
-            XmlDocument assemblySummariesXml = XSDReflectionUtil.LoadAnnotationXml(types2Process[0].Assembly);
-            CallXsdExe("BGU.DRPL.SignificantOwnership.Core.Spares.*");
-            File.Copy(Path.Combine(XsdFilesOutputDir, "schema0.xsd"), Path.Combine(XsdFilesOutputDir, "all_spares.xsd"), true);
-            File.Copy(Path.Combine(XsdFilesOutputDir, "schema0.xsd"), Path.Combine(XsdFilesOutputDir, "all_spares.uk-UA.xsd"), true);
-            ProcessXSDSingle(Path.Combine(XsdFilesOutputDir, "all_spares.uk-UA.xsd"), assemblySummariesXml);
-            CallXmlFormatterExe(Path.Combine(XsdFilesOutputDir, "all_spares.uk-UA.xsd"));
-            foreach (Type typ in types2Process)
+            XmlDocument assemblySummariesXml = XSDReflectionUtil.LoadAnnotationXml(typeof(Appx2OwnershipStructLP).Assembly);
+            string[] auxNamespacesNames = new string[] { "BGU.DRPL.SignificantOwnership.Core.Spares.Data", "BGU.DRPL.SignificantOwnership.Core.Spares.Dict", "BGU.DRPL.SignificantOwnership.Core.Spares" };
+            string[] questNamespacesNames = new string[] { "BGU.DRPL.SignificantOwnership.Core.Questionnaires" };
+            //CallXsdExe("BGU.DRPL.SignificantOwnership.Core.Spares.*");
+            //File.Copy(Path.Combine(XsdFilesOutputDir, "schema0.xsd"), Path.Combine(XsdFilesOutputDir, "all_spares.xsd"), true);
+            //File.Copy(Path.Combine(XsdFilesOutputDir, "schema0.xsd"), Path.Combine(XsdFilesOutputDir, "all_spares.uk-UA.xsd"), true);
+            //ProcessXSDSingle(Path.Combine(XsdFilesOutputDir, "all_spares.uk-UA.xsd"), assemblySummariesXml);
+            //CallXmlFormatterExe(Path.Combine(XsdFilesOutputDir, "all_spares.uk-UA.xsd"));
+            //List<Type> allAndEveryTypes = XSDReflectionUtil.ListTypes(types2Process[0], new string[]{});
+
+            List<Type> allAuxTypes = XSDReflectionUtil.ListTypes(typeof(Appx2OwnershipStructLP), auxNamespacesNames, System.Reflection.BindingFlags.Public, true);
+            List<Type> questTypes = XSDReflectionUtil.ListTypes(typeof(Appx2OwnershipStructLP), questNamespacesNames, System.Reflection.BindingFlags.Public, true);
+            List<Type> allTypes = new List<Type>(allAuxTypes);
+            allTypes.AddRange(questTypes);
+
+            //foreach (Type typ in types2Process)
+            foreach (Type typ in allTypes)
             {
-                CallXsdExe(typ.FullName);
-                File.Copy(Path.Combine(XsdFilesOutputDir, "schema0.xsd"), Path.Combine(XsdFilesOutputDir, string.Format("{0}.xsd", typ.Name.Trim())), true);
-                File.Copy(Path.Combine(XsdFilesOutputDir, "schema0.xsd"), Path.Combine(XsdFilesOutputDir, string.Format("{0}.uk-UA.xsd", typ.Name.Trim())), true);
-                ProcessXSDSingle(typ, assemblySummariesXml,"uk-UA.");
-                
+                ProcessTypeExport2XSD(typ, assemblySummariesXml);
             }
+        }
+
+        private static void ProcessTypeExport2XSD(Type typ, XmlDocument assemblySummariesXml)
+        {
+            CallXsdExe(typ.FullName);
+            File.Copy(Path.Combine(XsdFilesOutputDir, "schema0.xsd"), Path.Combine(XsdFilesOutputDir, string.Format("{0}.xsd", typ.Name.Trim())), true);
+            File.Copy(Path.Combine(XsdFilesOutputDir, "schema0.xsd"), Path.Combine(XsdFilesOutputDir, string.Format("{0}.uk-UA.xsd", typ.Name.Trim())), true);
+            ProcessXSDSingle(typ, assemblySummariesXml, "uk-UA.", true);
         }
 
         private static void CallXmlFormatterExe(string xsdPath)
@@ -956,6 +970,7 @@ typeof(RegLicAppx9BankingLicenseAppl)};
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
             startInfo.FileName = "cmd.exe";//XsdExePath;
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             startInfo.Arguments = strCmdText;
             process.StartInfo = startInfo;
             bool bStarted = process.Start();
@@ -974,7 +989,7 @@ typeof(RegLicAppx9BankingLicenseAppl)};
 
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-            //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             //startInfo.FileName = XsdExePath;
             startInfo.FileName = "cmd.exe";//XsdExePath;
             startInfo.Arguments = strCmdText;
@@ -1008,24 +1023,30 @@ RegLicAppx7ShareAcqIntent.xsd
 RegLicAppx9BankingLicenseAppl.xsd";
             string[] aFnames = fileNames.Split('\n');
             foreach (string fnm in aFnames)
-                ProcessXSDSingle(fnm.Trim(),null);
+                ProcessXSDSingle(fnm.Trim(),null,null);
 
         }
 
 
 
-        private static void ProcessXSDSingle(string fullPath, XmlDocument assemblySummariesXml)
+        private static void ProcessXSDSingle(string fullPath, XmlDocument assemblySummariesXml, Type specificType)
         {
             XmlDocument doc = new XmlDocument();
             doc.Load(fullPath);
-            XSDReflectionUtil.InjectDispProps(doc, _alreadyProcessedXSDExportTypes, assemblySummariesXml, XsdPutDispNmDescrIntoAnnotation);
+            if(specificType == null)
+                XSDReflectionUtil.InjectDispProps(doc, _alreadyProcessedXSDExportTypes, assemblySummariesXml, XsdPutDispNmDescrIntoAnnotation);
+            else
+                XSDReflectionUtil.InjectDispProps(doc, _alreadyProcessedXSDExportTypes, assemblySummariesXml, XsdPutDispNmDescrIntoAnnotation, specificType);
             doc.Save(fullPath);
         }
 
-        private static void ProcessXSDSingle(Type typ, XmlDocument assemblySummariesXml, string extraFileExt)
+        private static void ProcessXSDSingle(Type typ, XmlDocument assemblySummariesXml, string extraFileExt, bool bRemoveAllOtherTypes)
         {
             string targetPath = Path.Combine(XsdFilesOutputDir, string.Format("{0}.{1}xsd", typ.Name.Trim(), extraFileExt));
-            ProcessXSDSingle(targetPath, assemblySummariesXml);
+            if(!bRemoveAllOtherTypes)
+                ProcessXSDSingle(targetPath, assemblySummariesXml, null);
+            else
+                ProcessXSDSingle(targetPath, assemblySummariesXml, typ);
             CallXmlFormatterExe(targetPath);
         }
         #endregion
