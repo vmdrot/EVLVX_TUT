@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BGU.Web20.MiscItemsSite", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evolvex.Utility.Core", "Evolvex.Utility.Core\Evolvex.Utility.Core.csproj", "{80563496-BDC4-468D-A65C-58F2A1158A61}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BGU.DRPL.SignificantOwnership.Facade", "BGU.DRPL.SignificantOwnership.Facade\BGU.DRPL.SignificantOwnership.Facade.csproj", "{2EA821E8-BF52-41E1-88A3-3214521EB557}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,16 @@ Global
 		{80563496-BDC4-468D-A65C-58F2A1158A61}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{80563496-BDC4-468D-A65C-58F2A1158A61}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{80563496-BDC4-468D-A65C-58F2A1158A61}.Release|x86.ActiveCfg = Release|Any CPU
+		{2EA821E8-BF52-41E1-88A3-3214521EB557}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EA821E8-BF52-41E1-88A3-3214521EB557}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EA821E8-BF52-41E1-88A3-3214521EB557}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{2EA821E8-BF52-41E1-88A3-3214521EB557}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{2EA821E8-BF52-41E1-88A3-3214521EB557}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2EA821E8-BF52-41E1-88A3-3214521EB557}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EA821E8-BF52-41E1-88A3-3214521EB557}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EA821E8-BF52-41E1-88A3-3214521EB557}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{2EA821E8-BF52-41E1-88A3-3214521EB557}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{2EA821E8-BF52-41E1-88A3-3214521EB557}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -160,6 +172,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E1A4FFBF-88B4-4F0A-9748-9CA3CFD2D809} = {EBAE2C75-D4A8-4C18-9A26-B671C13140D4}
 		{13FC3BB3-E57B-4796-A3A0-2038B681B8CB} = {EBAE2C75-D4A8-4C18-9A26-B671C13140D4}
+		{2EA821E8-BF52-41E1-88A3-3214521EB557} = {EBAE2C75-D4A8-4C18-9A26-B671C13140D4}
 		{EEA808ED-8B17-42E1-91D5-C126E1C605E7} = {46A26B1A-1FE4-4FD1-8E9D-626D9BA96881}
 		{450CA5B8-7759-4CA9-B016-9CE1ADE1A19D} = {46A26B1A-1FE4-4FD1-8E9D-626D9BA96881}
 		{7C800992-30AB-4048-B390-B371F496CD46} = {BAF6E6A8-6F6D-4376-8BDD-31450148805A}
