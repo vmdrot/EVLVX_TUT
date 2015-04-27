@@ -12,7 +12,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares2
     {
         [Description("Не вказано")]
         None = 0,
-        [Description("Банк")]
+        [Description("НБУ")]
+        CentralBank,
+        [Description("Комерційний банк")]
         Bank,
         [Description("Небанківська фінустанова")]
         NonBank
@@ -53,4 +55,5 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares2
         [Description("Котирується на фондовій біржі")]
         PubliclyTraded
     }
+
 }

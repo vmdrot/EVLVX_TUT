@@ -112,6 +112,7 @@
     <Content Include="Controls\BootstrapDropDownBasic.ascx" />
     <Content Include="Controls\BootstrapTextEditBasic.ascx" />
     <Content Include="Controls\BankInfoEditControl2.ascx" />
+    <Content Include="Controls\GenericFinInstSearchCriteriaControl.ascx" />
     <Content Include="Controls\RcuKruLookupControl3.ascx" />
     <Content Include="Controls\RcuKruLookupControl2.ascx" />
     <Content Include="Controls\InstitutionSerchCriteria.ascx" />
@@ -221,6 +222,12 @@
     </Compile>
     <Compile Include="Controls\BankInfoEditControl2.ascx.designer.cs">
       <DependentUpon>BankInfoEditControl2.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GenericFinInstSearchCriteriaControl.ascx.cs">
+      <DependentUpon>GenericFinInstSearchCriteriaControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GenericFinInstSearchCriteriaControl.ascx.designer.cs">
+      <DependentUpon>GenericFinInstSearchCriteriaControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\RcuKruLookupControl3.ascx.cs">
       <DependentUpon>RcuKruLookupControl3.ascx</DependentUpon>
