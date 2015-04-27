@@ -69,6 +69,13 @@
     </Compile>
     <Compile Include="Questionnaires\Appx3OwnershipStructPP.cs" />
     <Compile Include="Questionnaires\QuestionnaireBase.cs" />
+    <Compile Include="Spares2\BankingLicenseInfo.cs" />
+    <Compile Include="Spares2\Enums2.cs" />
+    <Compile Include="Spares2\FinancialInstitutionRating.cs" />
+    <Compile Include="Spares2\GeneralForexLicenseInfo.cs" />
+    <Compile Include="Spares2\GenericFinancialInstitutionInfo.cs" />
+    <Compile Include="Spares2\NonBankFinInstitutionInfo.cs" />
+    <Compile Include="Spares2\NonBankingFinInstLicenseInfo.cs" />
     <Compile Include="Spares\Data\EmailInfo.cs" />
     <Compile Include="Spares\Data\LicenseQualificationInfo.cs" />
     <Compile Include="Spares\Data\LiquidatedEntityOwnershipInfo.cs" />
