@@ -13,7 +13,7 @@ namespace BGU.DRPL.SignificantOwnership.Utility
     public class XSDReflectionUtil
     {
         private static readonly string AssemblyName = "BGU.DRPL.SignificantOwnership.Core";
-        private static readonly string[] SearchNamespaces = new string[] { "BGU.DRPL.SignificantOwnership.Core.Questionnaires", "BGU.DRPL.SignificantOwnership.Core.Spares.Data", "BGU.DRPL.SignificantOwnership.Core.Spares.Dict", "BGU.DRPL.SignificantOwnership.Core.Spares" };
+        public static readonly string[] SearchNamespaces = new string[] { "BGU.DRPL.SignificantOwnership.Core.Questionnaires", "BGU.DRPL.SignificantOwnership.Core.Spares.Data", "BGU.DRPL.SignificantOwnership.Core.Spares.Dict", "BGU.DRPL.SignificantOwnership.Core.Spares" };
 
         public static Dictionary<string, PropDispDescr> FetchPropDispsDescrs(Type typ)
         {
@@ -97,36 +97,63 @@ namespace BGU.DRPL.SignificantOwnership.Utility
 
         public static void InjectDispProps(XmlDocument doc, Dictionary<string,bool> alreadyProcessedTypes, XmlDocument assemblySummariesXml)
         {
-            InjectDispProps(doc, alreadyProcessedTypes, assemblySummariesXml, false);
+            InjectDispProps(doc, alreadyProcessedTypes, assemblySummariesXml, false, null);
         }
 
         public static void InjectDispProps(XmlDocument doc, Dictionary<string, bool> alreadyProcessedTypes, XmlDocument assemblySummariesXml, bool xsdPutDispNmDescrIntoAnnotation)
         {
+            InjectDispProps(doc, alreadyProcessedTypes, assemblySummariesXml, xsdPutDispNmDescrIntoAnnotation, null);
+        }
+
+        public static void InjectDispProps(XmlDocument doc, Dictionary<string, bool> alreadyProcessedTypes, XmlDocument assemblySummariesXml, bool xsdPutDispNmDescrIntoAnnotation, Type specificType)
+        {
             List<XmlNode> toBeDel = new List<XmlNode>();
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
+                string currTypeShortName = node.Attributes["name"].Value;
                 if (node.Name == "xs:complexType")
                 {
-                    if (alreadyProcessedTypes != null && alreadyProcessedTypes.ContainsKey(node.Attributes["name"].Value))
-                        toBeDel.Add(node);
-                    //node.ParentNode.RemoveChild(node);//doc.RemoveChild(node);
-                    //doc.DocumentElement.RemoveChild(node);
-                    else
+                    if (specificType != null)
                     {
-                        ProcessClass(node, assemblySummariesXml, xsdPutDispNmDescrIntoAnnotation);
-                        if (alreadyProcessedTypes != null)
-                            alreadyProcessedTypes.Add(node.Attributes["name"].Value, true);
+                        if (specificType.Name == currTypeShortName)
+                            ProcessClass(node, assemblySummariesXml, xsdPutDispNmDescrIntoAnnotation);
+                        else
+                            toBeDel.Add(node);
+                    }
+                    else if (specificType == null)
+                    {
+                        if( alreadyProcessedTypes != null && alreadyProcessedTypes.ContainsKey(node.Attributes["name"].Value))
+                            toBeDel.Add(node);
+                        //node.ParentNode.RemoveChild(node);//doc.RemoveChild(node);
+                        //doc.DocumentElement.RemoveChild(node);
+                        else
+                        {
+                            ProcessClass(node, assemblySummariesXml, xsdPutDispNmDescrIntoAnnotation);
+                            if (alreadyProcessedTypes != null)
+                                alreadyProcessedTypes.Add(currTypeShortName, true);
+                        }
                     }
                 }
                 else if (node.Name == "xs:simpleType")
                 {
-                    if (alreadyProcessedTypes != null && alreadyProcessedTypes.ContainsKey(node.Attributes["name"].Value))
-                        toBeDel.Add(node);//node.ParentNode.RemoveChild(node);//doc.RemoveChild(node);
-                    else
+                    if (specificType != null)
                     {
-                        ProcessEnum(node, assemblySummariesXml, xsdPutDispNmDescrIntoAnnotation);
-                        if (alreadyProcessedTypes != null)
-                            alreadyProcessedTypes.Add(node.Attributes["name"].Value, true);
+                        if (specificType.Name == currTypeShortName)
+                            ProcessEnum(node, assemblySummariesXml, xsdPutDispNmDescrIntoAnnotation);
+                        else
+                            toBeDel.Add(node);//node.ParentNode.RemoveChild(node);//doc.RemoveChild(node);
+
+                    }
+                    else if (specificType == null)
+                    {
+                        if (alreadyProcessedTypes != null && alreadyProcessedTypes.ContainsKey(node.Attributes["name"].Value))
+                            toBeDel.Add(node);//node.ParentNode.RemoveChild(node);//doc.RemoveChild(node);
+                        else
+                        {
+                            ProcessEnum(node, assemblySummariesXml, xsdPutDispNmDescrIntoAnnotation);
+                            if (alreadyProcessedTypes != null)
+                                alreadyProcessedTypes.Add(currTypeShortName, true);
+                        }
                     }
                 }
             }
@@ -415,6 +442,41 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                     break;
             }
             return rslt;
+        }
+        public static List<Type> ListTypes(Type anyTypeOfAsmbly, string[] lookInNs, BindingFlags flags, bool bClassesOnly)
+        {
+            List<Type> rslt = new List<Type>();
+            Dictionary<string,bool> alreadyAdded = new Dictionary<string,bool>();
+            Type[] allTypes = Assembly.GetAssembly(anyTypeOfAsmbly).GetTypes();
+            foreach (Type typ in allTypes)
+            {
+                foreach(string ns in lookInNs)
+                {
+                    if (typ.FullName.IndexOf(string.Format("{0}.", ns.Trim())) == 0 && !alreadyAdded.ContainsKey(typ.FullName))
+                    {
+                        if (flags == BindingFlags.Public && !typ.IsPublic)
+                            continue;
+                        if (bClassesOnly && typ.IsInterface)
+                            continue;
+                        rslt.Add(typ);
+                        alreadyAdded.Add(typ.FullName, true);
+                    }
+                }
+                //string currNs = GetNamespaceFromType(typ);
+                //if (string.IsNullOrEmpty(currNs) || !lookInNs.Contains(GetNamespaceFromType(typ)) || alreadyAdded.ContainsKey(typ.FullName))
+                //    continue;
+                
+            }
+
+            return rslt;
+        }
+
+        public static string GetNamespaceFromType(Type typ)
+        {
+            int lastDotPos = typ.FullName.LastIndexOf('.');
+            if (lastDotPos == -1)
+                return string.Empty;
+            return typ.FullName.Substring(0, lastDotPos);
         }
 
         private static void WriteAttribute(XmlNode node, string attrName, string attrVal)
