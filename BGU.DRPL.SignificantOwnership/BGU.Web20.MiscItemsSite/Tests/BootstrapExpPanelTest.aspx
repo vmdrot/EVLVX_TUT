@@ -12,8 +12,8 @@
 <table width="40%">
 <tr>
 <td>
-<div class="panel-group" id="accordion">
-<uc:BootstrapExpandablePanel ID="bep1" runat="server">
+<%--<div class="panel-group" id="accordion">--%>
+<uc:BootstrapExpandablePanel ID="bep1" runat="server" Caption="Загальні критерії пошуку">
 <Template>
     <uc:BootstrapTextEditBasic ID="edOne" runat="server" LabelDisplayName="№ у реєстрі банків" LabelDescription="№ у реєстрі банків (лише для головних контор)" EditWidth="10%" />
     <uc:BootstrapTextEditBasic ID="ed2" runat="server" LabelDisplayName="№ у реєстрі банків" LabelDescription="№ у реєстрі банків (лише для головних контор)" EditWidth="10%" />
@@ -23,7 +23,7 @@
     <uc:BootstrapTextEditBasic ID="ed6" runat="server" LabelDisplayName="№ у реєстрі банків" LabelDescription="№ у реєстрі банків (лише для головних контор)" EditWidth="10%" />
 </Template>
 </uc:BootstrapExpandablePanel>
-</div>
+<%--</div>--%>
 </td>
 </tr>
 </table>

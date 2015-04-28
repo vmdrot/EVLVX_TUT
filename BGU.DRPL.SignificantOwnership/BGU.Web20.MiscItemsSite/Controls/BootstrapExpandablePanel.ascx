@@ -2,7 +2,7 @@
         <div class="panel panel-default" id="pnl" runat="server">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-target="#<%=pnlBody.ClientID %>" href="#<%=pnlBody.ClientID %>"><asp:Literal ID="txt" runat="server"></asp:Literal></a>
+                    <a data-toggle="collapse" data-target="#<%=pnlBody.ClientID %>" href="#<%=pnlBody.ClientID %>"><asp:Literal ID="txt" runat="server">Caption</asp:Literal></a>
                 </h4>
             </div>
             <div id="pnlBody" class="panel-collapse collapse in" runat="server">

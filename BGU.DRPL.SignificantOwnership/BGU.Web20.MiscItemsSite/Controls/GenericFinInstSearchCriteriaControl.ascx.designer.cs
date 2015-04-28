@@ -13,75 +13,30 @@ namespace BGU.Web20.MiscItemsSite.Controls {
     public partial class GenericFinInstSearchCriteriaControl {
         
         /// <summary>
-        /// uabkcbx control.
+        /// bep1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BGU.Web20.MiscItemsSite.Controls.RcuKruLookupControl3 uabkcbx;
+        protected global::BGU.Web20.MiscItemsSite.Controls.BootstrapExpandablePanel bep1;
         
         /// <summary>
-        /// ddlCountry control.
+        /// BootstrapExpandablePanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BGU.Web20.MiscItemsSite.Controls.BootstrapDropDownBasic ddlCountry;
+        protected global::BGU.Web20.MiscItemsSite.Controls.BootstrapExpandablePanel BootstrapExpandablePanel1;
         
         /// <summary>
-        /// edHeadMFO control.
+        /// BootstrapExpandablePanel2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::BGU.Web20.MiscItemsSite.Controls.BootstrapTextEditBasic edHeadMFO;
-        
-        /// <summary>
-        /// edRegistryNr control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::BGU.Web20.MiscItemsSite.Controls.BootstrapTextEditBasic edRegistryNr;
-        
-        /// <summary>
-        /// edCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::BGU.Web20.MiscItemsSite.Controls.BootstrapTextEditBasic edCode;
-        
-        /// <summary>
-        /// edName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::BGU.Web20.MiscItemsSite.Controls.BootstrapTextEditBasic edName;
-        
-        /// <summary>
-        /// edNameUkr control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::BGU.Web20.MiscItemsSite.Controls.BootstrapTextEditBasic edNameUkr;
-        
-        /// <summary>
-        /// edSWIFTBIC control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::BGU.Web20.MiscItemsSite.Controls.BootstrapTextEditBasic edSWIFTBIC;
+        protected global::BGU.Web20.MiscItemsSite.Controls.BootstrapExpandablePanel BootstrapExpandablePanel2;
     }
 }

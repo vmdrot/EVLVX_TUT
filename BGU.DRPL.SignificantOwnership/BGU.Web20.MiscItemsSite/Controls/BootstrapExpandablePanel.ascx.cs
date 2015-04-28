@@ -4,12 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.ComponentModel;
 
 namespace BGU.Web20.MiscItemsSite.Controls
 {
     public partial class BootstrapExpandablePanel : System.Web.UI.UserControl //, IPostBackDataHandler, INamingContainer
     {
         private ITemplate _templateValue;
+
+        [Browsable(true)]
+        public string Caption
+        {
+            get { return txt.Text; }
+            set { txt.Text = value; }
+        }
 
         [PersistenceMode(PersistenceMode.InnerProperty)]
         [TemplateContainer(typeof(BootstrapExpandablePanel))]
