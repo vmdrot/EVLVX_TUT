@@ -56,4 +56,21 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares2
         PubliclyTraded
     }
 
+    [Description("Рівень установи")]
+    public enum InstitutionLevel
+    {
+        [Description("Не вказано")]
+        None = 0,
+        [Description("Головна контора")]
+        HeadOffice,
+        [Description("Філія")]
+        Branch,
+        [Description("ТВБВ")]
+        TVBV,
+        [Description("Обмінний пункт")]
+        ForexOutlet,
+        [Description("Банкомат")]
+        ATM
+    }
+
 }

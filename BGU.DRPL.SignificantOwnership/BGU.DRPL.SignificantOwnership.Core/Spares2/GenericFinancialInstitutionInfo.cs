@@ -14,5 +14,6 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares2
         public CompanyOwnershipType InstitutionOwnershipStatus { get; set; }
         public string InstitutionCode { get; set; }
         public LegalPersonInfo LegalPerson { get; set; }
+        public GenericFinancialInstitutionInfo ParentInstitution { get; set; }
     }
 }
