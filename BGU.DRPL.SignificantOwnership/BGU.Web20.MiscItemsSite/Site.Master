@@ -6,10 +6,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		<link rel="stylesheet" href="/Bootstrap/css/normalize.css">
 		<link rel="stylesheet" href="/Bootstrap/css/stylesheet.css">
         <link rel="stylesheet" href="/Bootstrap/css/selectize.default.css">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <link href="/Bootstrap/css/bootstrap-jsfiddle-panel.css" rel="stylesheet">
 
     <%--<link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />--%>
     <link rel="Stylesheet" href="~/App_Themes/Default/Default.css" />
@@ -33,28 +34,28 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <title><asp:ContentPlaceHolder ID="cphTitle" runat="server"></asp:ContentPlaceHolder></title>
-    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    <title><asp:ContentPlaceHolder ID="cpht1" runat="server"></asp:ContentPlaceHolder></title>
+    <asp:ContentPlaceHolder ID="cphh" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <div class="page">
         <div class="header">
             <div class="title">
-            <asp:ContentPlaceHolder ID="cphDivTitle" runat="server"></asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="cpht2" runat="server"></asp:ContentPlaceHolder>
             </div>
             <div class="clear hideSkiplink">
-            <asp:ContentPlaceHolder ID="cphMenu"></asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="cphmnu"></asp:ContentPlaceHolder>
             </div>
         </div>
         <div class="main">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+            <asp:ContentPlaceHolder ID="cphm" runat="server"/>
         </div>
         <div class="clear">
         </div>
     </div>
     <div class="footer">
-        <asp:ContentPlaceHolder ID="cphFooter" runat="server"/>
+        <asp:ContentPlaceHolder ID="cphf" runat="server"/>
     </div>
 </body>
 </html>

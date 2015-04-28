@@ -7,54 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BGU.Web20.MiscItemsSite {
+namespace BGU.Web20.MiscItemsSite.Controls {
     
     
-    public partial class SiteMaster {
+    public partial class BootstrapExpandablePanel {
         
         /// <summary>
-        /// cpht1 control.
+        /// pnl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cpht1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnl;
         
         /// <summary>
-        /// cphh control.
+        /// txt control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cphh;
+        protected global::System.Web.UI.WebControls.Literal txt;
         
         /// <summary>
-        /// cpht2 control.
+        /// pnlBody control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cpht2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pnlBody;
         
         /// <summary>
-        /// cphm control.
+        /// ph control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cphm;
-        
-        /// <summary>
-        /// cphf control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cphf;
+        protected global::System.Web.UI.WebControls.PlaceHolder ph;
     }
 }
