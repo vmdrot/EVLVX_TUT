@@ -50,6 +50,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         [Description("має  банківську ліцензію")]
         [Required]
         public BankingLicenseInfo ExistingLicenseSpecs { get; set; }
+        /// <summary>
+        /// Контрол для заповнення - два listbox-а, drag у один listbox
+        /// </summary>
         [DisplayName("Перелік нових видів фінпослуг")]
         [Description("перелік нових видів діяльності або нових видів фінансових послуг")]
         [Required]
