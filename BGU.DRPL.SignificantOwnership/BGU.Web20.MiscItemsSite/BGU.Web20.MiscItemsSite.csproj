@@ -95,6 +95,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Themes\Default\Default.css" />
+    <Content Include="Bootstrap\css\bootstrap-jsfiddle-panel.css" />
     <Content Include="Bootstrap\css\bootstrap-theme.css" />
     <Content Include="Bootstrap\css\bootstrap-theme.min.css" />
     <Content Include="Bootstrap\css\bootstrap.css" />
@@ -112,6 +113,7 @@
     <Content Include="Controls\BootstrapColourfulCheckBoxList.ascx" />
     <Content Include="Controls\BootstrapDropDownBasic.ascx" />
     <Content Include="Controls\BootstrapCheckBoxBasic.ascx" />
+    <Content Include="Controls\BootstrapExpandablePanel.ascx" />
     <Content Include="Controls\BootstrapTextEditBasic.ascx" />
     <Content Include="Controls\BankInfoEditControl2.ascx" />
     <Content Include="Controls\FinInstSearchCriteria.ascx" />
@@ -134,8 +136,10 @@
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Tests\BankInfoTestFrm.aspx" />
     <Content Include="Tests\Bootstrap.html" />
+    <Content Include="Tests\BootstrapExpPanelTest.aspx" />
     <Content Include="Tests\BootstrapSelectize.html" />
     <Content Include="Tests\BankInfoTestFrm2.aspx" />
+    <Content Include="Tests\BootstrapJSFiddleExpandPanel.html" />
     <Content Include="Tests\SelectizeBasic.html" />
     <Content Include="Tests\Selectize\api.html" />
     <Content Include="Tests\Selectize\basic.html" />
@@ -225,6 +229,13 @@
     </Compile>
     <Compile Include="Controls\BootstrapCheckBoxBasic.ascx.designer.cs">
       <DependentUpon>BootstrapCheckBoxBasic.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BootstrapExpandablePanel.ascx.cs">
+      <DependentUpon>BootstrapExpandablePanel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\BootstrapExpandablePanel.ascx.designer.cs">
+      <DependentUpon>BootstrapExpandablePanel.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\BootstrapTextEditBasic.ascx.cs">
       <DependentUpon>BootstrapTextEditBasic.ascx</DependentUpon>
@@ -316,6 +327,13 @@
     </Compile>
     <Compile Include="Tests\BankInfoTestFrm2.aspx.designer.cs">
       <DependentUpon>BankInfoTestFrm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\BootstrapExpPanelTest.aspx.cs">
+      <DependentUpon>BootstrapExpPanelTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tests\BootstrapExpPanelTest.aspx.designer.cs">
+      <DependentUpon>BootstrapExpPanelTest.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
