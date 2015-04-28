@@ -137,6 +137,7 @@
     <Content Include="Tests\BankInfoTestFrm.aspx" />
     <Content Include="Tests\Bootstrap.html" />
     <Content Include="Tests\BootstrapExpPanelTest.aspx" />
+    <Content Include="Tests\BootstrapJSFiddleExpandPanel.aspx" />
     <Content Include="Tests\BootstrapSelectize.html" />
     <Content Include="Tests\BankInfoTestFrm2.aspx" />
     <Content Include="Tests\BootstrapJSFiddleExpandPanel.html" />
@@ -334,6 +335,13 @@
     </Compile>
     <Compile Include="Tests\BootstrapExpPanelTest.aspx.designer.cs">
       <DependentUpon>BootstrapExpPanelTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\BootstrapJSFiddleExpandPanel.aspx.cs">
+      <DependentUpon>BootstrapJSFiddleExpandPanel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tests\BootstrapJSFiddleExpandPanel.aspx.designer.cs">
+      <DependentUpon>BootstrapJSFiddleExpandPanel.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
