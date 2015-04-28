@@ -109,9 +109,12 @@
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="Bootstrap\js\npm.js" />
     <Content Include="Controls\BankInfoEditControl.ascx" />
+    <Content Include="Controls\BootstrapColourfulCheckBoxList.ascx" />
     <Content Include="Controls\BootstrapDropDownBasic.ascx" />
+    <Content Include="Controls\BootstrapCheckBoxBasic.ascx" />
     <Content Include="Controls\BootstrapTextEditBasic.ascx" />
     <Content Include="Controls\BankInfoEditControl2.ascx" />
+    <Content Include="Controls\FinInstSearchCriteria.ascx" />
     <Content Include="Controls\GenericFinInstSearchCriteriaControl.ascx" />
     <Content Include="Controls\RcuKruLookupControl3.ascx" />
     <Content Include="Controls\RcuKruLookupControl2.ascx" />
@@ -202,12 +205,26 @@
     <Compile Include="Controls\BankInfoEditControl.ascx.designer.cs">
       <DependentUpon>BankInfoEditControl.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\BootstrapColourfulCheckBoxList.ascx.cs">
+      <DependentUpon>BootstrapColourfulCheckBoxList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\BootstrapColourfulCheckBoxList.ascx.designer.cs">
+      <DependentUpon>BootstrapColourfulCheckBoxList.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BootstrapDropDownBasic.ascx.cs">
       <DependentUpon>BootstrapDropDownBasic.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controls\BootstrapDropDownBasic.ascx.designer.cs">
       <DependentUpon>BootstrapDropDownBasic.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BootstrapCheckBoxBasic.ascx.cs">
+      <DependentUpon>BootstrapCheckBoxBasic.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\BootstrapCheckBoxBasic.ascx.designer.cs">
+      <DependentUpon>BootstrapCheckBoxBasic.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\BootstrapTextEditBasic.ascx.cs">
       <DependentUpon>BootstrapTextEditBasic.ascx</DependentUpon>
@@ -223,8 +240,16 @@
     <Compile Include="Controls\BankInfoEditControl2.ascx.designer.cs">
       <DependentUpon>BankInfoEditControl2.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\FinInstSearchCriteria.ascx.cs">
+      <DependentUpon>FinInstSearchCriteria.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\FinInstSearchCriteria.ascx.designer.cs">
+      <DependentUpon>FinInstSearchCriteria.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\GenericFinInstSearchCriteriaControl.ascx.cs">
       <DependentUpon>GenericFinInstSearchCriteriaControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controls\GenericFinInstSearchCriteriaControl.ascx.designer.cs">
       <DependentUpon>GenericFinInstSearchCriteriaControl.ascx</DependentUpon>
