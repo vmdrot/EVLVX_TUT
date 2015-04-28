@@ -95,6 +95,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="App_Themes\Default\Default.css" />
+    <Content Include="Bootstrap\css\bootstrap-bootsnipp-cbl.css" />
     <Content Include="Bootstrap\css\bootstrap-jsfiddle-panel.css" />
     <Content Include="Bootstrap\css\bootstrap-theme.css" />
     <Content Include="Bootstrap\css\bootstrap-theme.min.css" />
@@ -106,10 +107,12 @@
     <Content Include="Bootstrap\css\selectize.default.css" />
     <Content Include="Bootstrap\css\selectize.legacy.css" />
     <Content Include="Bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Bootstrap\js\bootstrap-cbl.js" />
     <Content Include="Bootstrap\js\bootstrap.js" />
     <Content Include="Bootstrap\js\bootstrap.min.js" />
     <Content Include="Bootstrap\js\npm.js" />
     <Content Include="Controls\BankInfoEditControl.ascx" />
+    <Content Include="Controls\BootstrapCheckBoxList.ascx" />
     <Content Include="Controls\BootstrapColourfulCheckBoxList.ascx" />
     <Content Include="Controls\BootstrapDropDownBasic.ascx" />
     <Content Include="Controls\BootstrapCheckBoxBasic.ascx" />
@@ -136,6 +139,8 @@
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Tests\BankInfoTestFrm.aspx" />
     <Content Include="Tests\Bootstrap.html" />
+    <Content Include="Tests\BootstrapCheckboxList.htm" />
+    <Content Include="Tests\BootstrapCheckboxlistTest.aspx" />
     <Content Include="Tests\BootstrapExpPanelTest.aspx" />
     <Content Include="Tests\BootstrapJSFiddleExpandPanel.aspx" />
     <Content Include="Tests\BootstrapSelectize.html" />
@@ -209,6 +214,13 @@
     </Compile>
     <Compile Include="Controls\BankInfoEditControl.ascx.designer.cs">
       <DependentUpon>BankInfoEditControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BootstrapCheckBoxList.ascx.cs">
+      <DependentUpon>BootstrapCheckBoxList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\BootstrapCheckBoxList.ascx.designer.cs">
+      <DependentUpon>BootstrapCheckBoxList.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\BootstrapColourfulCheckBoxList.ascx.cs">
       <DependentUpon>BootstrapColourfulCheckBoxList.ascx</DependentUpon>
@@ -328,6 +340,13 @@
     </Compile>
     <Compile Include="Tests\BankInfoTestFrm2.aspx.designer.cs">
       <DependentUpon>BankInfoTestFrm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\BootstrapCheckboxlistTest.aspx.cs">
+      <DependentUpon>BootstrapCheckboxlistTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tests\BootstrapCheckboxlistTest.aspx.designer.cs">
+      <DependentUpon>BootstrapCheckboxlistTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tests\BootstrapExpPanelTest.aspx.cs">
       <DependentUpon>BootstrapExpPanelTest.aspx</DependentUpon>
