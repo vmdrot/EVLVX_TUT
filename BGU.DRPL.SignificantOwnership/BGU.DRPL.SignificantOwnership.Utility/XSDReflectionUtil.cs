@@ -24,9 +24,10 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             {
                 string dispName = Tools.GetPropDisplayName(pd);
                 string descr = Tools.GetPropDescription(pd);
+                string cat = Tools.GetPropCategory(pd);
                 if (string.IsNullOrEmpty(dispName) && string.IsNullOrEmpty(descr))
                     continue;
-                rslt.Add(pd.Name, new PropDispDescr() { Description = descr, DisplayName = dispName });
+                rslt.Add(pd.Name, new PropDispDescr() { Description = descr, DisplayName = dispName, Category = cat });
             }
             return rslt;
         }
@@ -84,6 +85,7 @@ namespace BGU.DRPL.SignificantOwnership.Utility
         {
             public string DisplayName { get; set; }
             public string Description { get; set; }
+            public string Category { get; set; }
         }
         #endregion
         public static void InjectDispProps(XmlDocument doc)
@@ -340,6 +342,9 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                         WriteAttribute(propNode, "displayName", dispDescrs[propNm].DisplayName);
                     if (dispDescrs.ContainsKey(propNm) && !string.IsNullOrEmpty(dispDescrs[propNm].Description))
                         WriteAttribute(propNode, "description", dispDescrs[propNm].Description);
+                    if (dispDescrs.ContainsKey(propNm) && !string.IsNullOrEmpty(dispDescrs[propNm].Category))
+                        WriteAttribute(propNode, "category", dispDescrs[propNm].Category);
+
                 }
                 else
                 {
@@ -350,6 +355,8 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                         sbXtraClause.AppendLine(string.Format("Підпис до поля (в UI): {0}", dispDescrs[propNm].DisplayName));
                     if (dispDescrs.ContainsKey(propNm) && !string.IsNullOrEmpty(dispDescrs[propNm].Description))
                         sbXtraClause.AppendLine(string.Format("Опис до поля (в UI): {0}", dispDescrs[propNm].Description));
+                    if (dispDescrs.ContainsKey(propNm) && !string.IsNullOrEmpty(dispDescrs[propNm].Category))
+                        sbXtraClause.AppendLine(string.Format("Об'єднати у категорію (в UI): {0}", dispDescrs[propNm].Category));
                     xtraClause = sbXtraClause.ToString();
                 }
 

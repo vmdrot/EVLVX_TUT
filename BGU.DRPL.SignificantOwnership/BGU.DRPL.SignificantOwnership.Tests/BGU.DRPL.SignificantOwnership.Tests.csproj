@@ -49,6 +49,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\3dPartyLibraries\DevExpress\DevExpress.XtraVerticalGrid.v10.2.dll</HintPath>
     </Reference>
+    <Reference Include="GenericParsing">
+      <HintPath>..\3dPartyLibraries\Misc\GenericParsing.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\3dPartyLibraries\Newtonsoft\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -67,6 +70,7 @@
   <ItemGroup>
     <Compile Include="BasicUI\QuestionnaireDataAggregationTests.cs" />
     <Compile Include="DXUI\DXPropGridTests.cs" />
+    <Compile Include="GenericParserTests.cs" />
     <Compile Include="LocationInfoTests.cs" />
     <Compile Include="PhysicalPersonInfoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
