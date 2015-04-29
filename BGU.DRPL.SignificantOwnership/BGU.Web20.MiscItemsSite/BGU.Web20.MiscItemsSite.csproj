@@ -146,6 +146,8 @@
     <Content Include="Tests\BootstrapSelectize.html" />
     <Content Include="Tests\BankInfoTestFrm2.aspx" />
     <Content Include="Tests\BootstrapJSFiddleExpandPanel.html" />
+    <Content Include="Tests\GenericFinInstSearchCriteria.aspx" />
+    <Content Include="Tests\GenericFinInstSearchCriteria.html" />
     <Content Include="Tests\SelectizeBasic.html" />
     <Content Include="Tests\Selectize\api.html" />
     <Content Include="Tests\Selectize\basic.html" />
@@ -361,6 +363,13 @@
     </Compile>
     <Compile Include="Tests\BootstrapJSFiddleExpandPanel.aspx.designer.cs">
       <DependentUpon>BootstrapJSFiddleExpandPanel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\GenericFinInstSearchCriteria.aspx.cs">
+      <DependentUpon>GenericFinInstSearchCriteria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tests\GenericFinInstSearchCriteria.aspx.designer.cs">
+      <DependentUpon>GenericFinInstSearchCriteria.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
