@@ -13,6 +13,20 @@
  </uc:BootstrapExpandablePanel>
 <uc:BootstrapExpandablePanel ID="BootstrapExpandablePanel1" runat="server" Caption="Види,типи та статуси установ">
 <Template>
+        <asp:CheckBox ID="lcid_chkAll" runat="server" Text="(all)" />
+            <webctrl:CheckBoxListEx ID="lcid" runat="server" EnableViewState="true" RepeatColumns="1"
+                RepeatDirection="Vertical" RepeatLayout="Table" DataValueField="LCID" DataTextField="NativeName" ClientScriptUrl="/js/CheckBoxListEx.js">
+            </webctrl:CheckBoxListEx>
+            <%--<asp:CheckBoxList ID="lcid" runat="server" EnableViewState="true" RepeatColumns="5" RepeatDirection="Horizontal" RepeatLayout="Table" DataValueField="LCID" DataTextField="NativeName"></asp:CheckBoxList>--%>
+            <%--<input type="button" value="Toggle 'Check all'" onclick="javascript:ToggleCheckAll();" />--%>
+            <script language="javascript" type="text/javascript">
+                function ToggleCheckAll() {
+                    var clientId = '<%=CheckAllClientID %>';
+                    var objChkAll = document.getElementById(clientId);
+                    objChkAll.checked = !objChkAll.checked;
+                }
+            </script>
+
  </Template>
  </uc:BootstrapExpandablePanel>
 <uc:BootstrapExpandablePanel ID="BootstrapExpandablePanel2" runat="server" Caption="Мізцезнаходження">
