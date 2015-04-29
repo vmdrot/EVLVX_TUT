@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Xml.Serialization;
 using System.IO;
 using System.Reflection;
+using System.Data;
 
 namespace BGU.DRPL.SignificantOwnership.Utility
 {
@@ -41,6 +42,16 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             return string.Empty;
         }
 
+        public static string GetPropCategory(PropertyDescriptor prop)
+        {
+
+            foreach (Attribute attr in prop.Attributes)
+            {
+                if (attr is CategoryAttribute)
+                    return ((CategoryAttribute)attr).Category;
+            }
+            return string.Empty;
+        }
 
         public static string GetPropDisplayName(PropertyDescriptor prop)
         {
@@ -90,6 +101,38 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                 object o = serializer.Deserialize(fs);
                 return (T)o;
             }
+        }
+
+
+        public static bool DataTableToCSV(DataTable dtSource, string saveAsPath, bool includeHeader)
+        {
+
+            using (StreamWriter sw = new StreamWriter(saveAsPath, false,Encoding.Unicode))
+            {
+                return DataTableToCSV(dtSource, sw, includeHeader);
+            }
+        }
+        public static bool DataTableToCSV(DataTable dtSource, StreamWriter writer, bool includeHeader)
+        {
+            if (dtSource == null || writer == null) return false;
+
+            if (includeHeader)
+            {
+                //string[] columnNames = dtSource.Columns.Cast<DataColumn>().Select(column => "\"" + column.ColumnName.Replace("\"", "\"\"") + "\"").ToArray<string>();
+                string[] columnNames = dtSource.Columns.Cast<DataColumn>().Select(column => column.ColumnName).ToArray<string>();
+                writer.WriteLine(String.Join("\t", columnNames));
+                writer.Flush();
+            }
+
+            foreach (DataRow row in dtSource.Rows)
+            {
+                //string[] fields = row.ItemArray.Select(field => "\"" + field.ToString().Replace("\"", "\"\"") + "\"").ToArray<string>();
+                string[] fields = row.ItemArray.Select(field => field.ToString()).ToArray<string>();
+                writer.WriteLine(String.Join("\t", fields));
+                writer.Flush();
+            }
+
+            return true;
         }
     }
 }
