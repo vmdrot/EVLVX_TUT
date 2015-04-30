@@ -108,6 +108,7 @@
     <Compile Include="Spares\Data\IndebtnessInfo.cs" />
     <Compile Include="Spares\Data\IndebtnessInfoBase.cs" />
     <Compile Include="Spares\Data\LegalPersonShareInfo.cs" />
+    <Compile Include="Spares\Data\LiquidatedOrInsolventEntityMgmtRecordInfo.cs" />
     <Compile Include="Spares\Data\LoanInfo.cs" />
     <Compile Include="Spares\Data\OwnershipStructure.cs" />
     <Compile Include="Spares\Data\PaymentDeadlineInfo.cs" />
