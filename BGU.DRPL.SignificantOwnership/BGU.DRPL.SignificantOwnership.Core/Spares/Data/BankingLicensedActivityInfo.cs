@@ -37,7 +37,6 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         [DisplayName("Вид діяльності - власна інтерпретація")]
         [Description("Власна назва та/або опис виду діяльності")]
         public string ActivityName { get; set; }
-        //todo
 
         public override string ToString()
         {

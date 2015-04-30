@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
 {
-    public class LiquidatedOrInsolventEntityMgmtRecordInfo
+    public class LiquidatedOrInsolventEntityMgmtRecordInfo : LiquidatedOrInsolventEntityInfoBase
     {
-        //todo
+        
+        /// <summary>
+        /// ... займану Вами в цій юридичний особі посаду
+        /// </summary>
+        [DisplayName("Посада")]
+        public ManagementPosition Position { get; set; }
     }
 }
