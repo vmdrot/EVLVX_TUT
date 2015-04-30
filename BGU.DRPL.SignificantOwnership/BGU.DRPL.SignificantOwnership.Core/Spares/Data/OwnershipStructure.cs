@@ -45,6 +45,11 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         [DisplayName("Частка у власності (сума)")]
         [Description("Частка (сума)")]
         public decimal Share { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int SharesCount { get; set; }
         /// <summary>
         /// Як правило, саме у %-х і зазначається власність
         /// </summary>
