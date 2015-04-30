@@ -470,4 +470,28 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
         [Description("інший родич")]
         OtherRelative
     }
+
+    public enum ManagementPosition
+    {
+        [Description("Не вказано")]
+        None = 0,
+        [Description("Голова Правління")]
+        CEO,
+        [Description("Заступник Голови Правління")]
+        VCEO,
+        [Description("Член Правління")]
+        ManagingBoardMember,
+        [Description("Головний бухгалтер")]
+        ChiefBookkeeper,
+        [Description("Заступник головного бухгалтера")]
+        DeputyChiefBookkeeper,
+        [Description("Голова Спостережної ради")]
+        SupervisoryBoardHead,
+        [Description("Заступник Голови Спостережної ради")]
+        DeputySupervisoryBoardHead,
+        [Description("Член Спостережної ради")]
+        SupervisoryBoardMember,
+        [Description("Представник юридичної особи – Члена спостережної ради")]
+        SupervisoryBoardMemberLPRep
+    }
 }
