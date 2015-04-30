@@ -51,6 +51,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.TypeEditors
                 }
             }
             // show this model stuff
+            lb.Refresh();
             _editorService.DropDownControl(lb);
             if (lb.SelectedItem == null) // no selection, return the passed-in value as is
                 return value;

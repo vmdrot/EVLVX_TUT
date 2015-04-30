@@ -95,8 +95,8 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
             List<TotalOwnershipDetailsInfoEx> rslt = new List<TotalOwnershipDetailsInfoEx>();
 
             Dictionary<string, TotalOwnershipDetailsInfo> ultimateOwners = new Dictionary<string, TotalOwnershipDetailsInfo>();
-            
-            UnWindUltimateOwners(_questio.BankRef.LegalPerson.GenericID, _questio.BankRef.LegalPerson.GenericID, _questio.BankExistingCommonImplicitOwners, OwnershipType.Direct, 100M, ultimateOwners);
+
+            UnWindUltimateOwners(_questio.BankRef.LegalPerson, _questio.BankRef.LegalPerson, _questio.BankExistingCommonImplicitOwners, OwnershipType.Direct, 100M, ultimateOwners);
             TotalOwnershipDetailsInfo grandTotals = new TotalOwnershipDetailsInfo();
             foreach (string key in ultimateOwners.Keys)
             {
@@ -127,7 +127,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
         public string BuildOwnershipGraph()
         {
             StringBuilder rslt = new StringBuilder();
-            UnWindOwnersGraph(_questio.BankRef.LegalPerson.GenericID, _questio.BankExistingCommonImplicitOwners, 0, rslt);
+            UnWindOwnersGraph(_questio.BankRef.LegalPerson, _questio.BankExistingCommonImplicitOwners, 0, rslt);
             return rslt.ToString();
         }
 
@@ -135,7 +135,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Checks
         {
             
             Dictionary<string, TotalOwnershipDetailsInfo> ultimateOwners = new Dictionary<string, TotalOwnershipDetailsInfo>();
-            UnWindUltimateOwners(_questio.BankRef.LegalPerson.GenericID, _questio.BankRef.LegalPerson.GenericID, _questio.BankExistingCommonImplicitOwners, OwnershipType.Direct, 100M, ultimateOwners);
+            UnWindUltimateOwners(_questio.BankRef.LegalPerson, _questio.BankRef.LegalPerson, _questio.BankExistingCommonImplicitOwners, OwnershipType.Direct, 100M, ultimateOwners);
             StringBuilder rslt = new StringBuilder();
             rslt.AppendLine("Beneficiary\tDirect\tImplicit\tTotal");
             TotalOwnershipDetailsInfo grandTotals = new TotalOwnershipDetailsInfo();

@@ -289,6 +289,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     /// 
     /// 14) банківські та інші фінансові послуги, що надаються відповідно до Закону України "Про банки і банківську діяльність".
     /// </summary>
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     public enum FinancialServicesType
     {
         [Description("Не вказано")]
@@ -381,6 +382,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     /// 
     /// 7) надання консультаційних та інформаційних послуг щодо банківських та інших фінансових послуг. 
     /// </summary>
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
     public enum BankingActivityType
     {
         [Description("Не вказано")]
@@ -408,4 +410,64 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
 
     }
     #endregion
+
+    /// <summary>
+    /// Близький до вичерпного перелік ролей пов'язаних осіб-родичів
+    /// Додаткові посилання:
+    ///  - http://uba.ua/documents/doc/bevza.pdf
+    ///  - http://uk.wikipedia.org/wiki/%D0%9F%D0%BE%D0%B2'%D1%8F%D0%B7%D0%B0%D0%BD%D0%B0_%D0%BE%D1%81%D0%BE%D0%B1%D0%B0
+    /// </summary>
+    /// <seealso cref="http://uba.ua/documents/doc/bevza.pdf"/>
+    [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.EnumLookupEditor), typeof(System.Drawing.Design.UITypeEditor))]
+    public enum AssociatedPersonRole
+    { 
+        [Description("Не вказано")]
+        None = 0,
+        [Description("чоловік")]
+        Husband,
+        [Description("дружина")]
+        Wife,
+        [Description("син")]
+        Son,
+        [Description("дочка")]
+        Daughter,
+        [Description("батько")]
+        Father,
+        [Description("мати")]
+        Mother,
+        [Description("опікун/-ка")]
+        Patron,
+        [Description("брат")]
+        Brother,
+        [Description("сестра")]
+        Sister,
+        [Description("тесть/свекор")]
+        FatherInLaw,
+        [Description("теща/свекруха")]
+        MotherInLaw,
+        [Description("зять")]
+        SonInLaw,
+        [Description("невістка")]
+        DaughterInLaw,
+        [Description("шурин/дівер/зять")]
+        BrotherInLaw,
+        [Description("сестра чоловіка")]
+        SisterInLaw,
+        [Description("двоюрідні брат/сестра")]
+        Cousin,
+        [Description("дід")]
+        GrandFather,
+        [Description("баба")]
+        GrandMother,
+        [Description("онук")]
+        GrandSon,
+        [Description("онука")]
+        GrandDaughter,
+        [Description("племінник(-ця) / небіж / небога")]
+        NephewNiece,
+        [Description("дядько / тітка / дядина")]
+        AuncleAunt,
+        [Description("інший родич")]
+        OtherRelative
+    }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Data;
 using Evolvex.Utility.Core.ComponentModelEx;
+using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
 {
@@ -59,7 +60,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// </summary>
         [Description("Відомості про юрособу-банк")]
         [DisplayName("Відомості про юрособу-банк")]
-        public LegalPersonInfo LegalPerson { get; set; }
+        public GenericPersonID LegalPerson { get; set; }
 
         /// <summary>
         /// SWIFT код (для банків нерезидентів), 
@@ -85,7 +86,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         }
         public BankInfo(LegalPersonInfo le) : this()
         {
-            LegalPerson = le;
+            LegalPerson = le.GenericID;
             Name = le.Name;
         }
 
@@ -115,9 +116,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
             bi.MFO = mfo;
             bi.Code = glb;
             bi.RegistryNr = prkb;
-            bi.LegalPerson = new LegalPersonInfo() { TaxCodeOrHandelsRegNr = yedrpou, Name = dr["FULLNAME"] as string, Address = LocationInfo.Parse(address), ResidenceCountry = CountryInfo.UKRAINE };
-            bi.LegalPerson.Address.City = city;
-            bi.LegalPerson.Address.ZipCode = zipCode;
+            bi.LegalPerson = (new LegalPersonInfo() { TaxCodeOrHandelsRegNr = yedrpou, Name = dr["FULLNAME"] as string, Address = LocationInfo.Parse(address), ResidenceCountry = CountryInfo.UKRAINE }).GenericID;
+            //bi.LegalPerson.Address.City = city;
+            //bi.LegalPerson.Address.ZipCode = zipCode;
             return bi;
         }
     }

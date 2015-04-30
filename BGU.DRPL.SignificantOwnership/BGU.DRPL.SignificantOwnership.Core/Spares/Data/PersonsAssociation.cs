@@ -42,7 +42,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         [DisplayName("Ким приходиться перша особа другій")]
         [Description("Назва, ким приходиться перша особа другій")]
         [Required]
-        public string AssociationTitleOneVsTwo { get; set; }
+        public AssociatedPersonRole AssociationRoleOneVsTwo { get; set; }
         /// <summary>
         /// Віддзеркалення значення AssociationTitleOneVsTwo
         /// син, син, чоловік, кум/кума/похресник/похресниця, тесть/свекор/теща/свекруха, брат/сестра, ..., і т.д.
@@ -51,11 +51,20 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         [DisplayName("Ким приходиться друга особа першій")]
         [Description("Назва, ким приходиться друга особа першій")]
         [Required]
-        public string AssociationTitleTwoVsOne { get; set; }
+        public AssociatedPersonRole AssociationRoleTwoVsOne { get; set; }
+
+        /// <summary>
+        /// опис ролей пов'язаних осіб, якщо в полях AssociationTitleTwoVsOne / AssociationTitleOneVsTwo вказано "Інше..."
+        /// </summary>
+        /// <seealso cref="AssociationTitleOneVsTwo"/>
+        [DisplayName("Ролі осіособи одна одній (якщо інше)")]
+        [Description("Ким приходяться особи одна одній (якщо інше)")]
+        [Required]
+        public string AssociationRolesIfOther { get; set; }
 
         public override string ToString()
         {
-            return string.Format("{0} vs {1}, {2} ({3}, {4})", One, Two, AssociationType, AssociationTitleOneVsTwo, AssociationTitleTwoVsOne);
+            return string.Format("{0} vs {1}, {2} ({3}, {4}, {5})", One, Two, AssociationType, AssociationRoleOneVsTwo, AssociationRoleTwoVsOne, AssociationRolesIfOther);
         }
     }
 }
