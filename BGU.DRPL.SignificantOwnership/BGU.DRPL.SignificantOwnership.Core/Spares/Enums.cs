@@ -494,4 +494,14 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
         [Description("Представник юридичної особи – Члена спостережної ради")]
         SupervisoryBoardMemberLPRep
     }
+
+    public enum InsolvencyStatus
+    {
+        [Description("Не вказано")]
+        None = 0,
+        [Description("Банкрут")]
+        Insolvent,
+        [Description("Ліквідовано")]
+        Liquidated
+    }
 }

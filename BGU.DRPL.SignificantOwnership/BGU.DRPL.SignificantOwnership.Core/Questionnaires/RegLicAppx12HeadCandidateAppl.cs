@@ -206,15 +206,19 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// </summary>
         public List<EmploymentRecordInfo> EmploymentGaps { get; set; }
         
+        /// <summary>
         /// 16. Чи порушувалася справа про банкрутство, чи приймалося рішення про ліквідацію банку або іншої юридичної особи, де Ви раніше працювали керівником (на день прийняття таких рішень)? 
+        /// </summary>
         public bool HasLiquidatedOrInsolventManagements { get; set; }
+
+        /// <summary>
         /// ________________________________________________________________________
         /// (якщо так, то зазначити найменування юридичної особи, займану Вами в цій юридичний особі посаду,
         /// ________________________________________________________________________________
         /// період і причини порушення справи про банкрутство або прийняття
         /// _______________________________________________________________________________.
         /// рішення про ліквідацію)
-        /// 
+        /// </summary>
         public List<LiquidatedOrInsolventEntityMgmtRecordInfo> LiquidatedOrInsolventManagements { get; set; }
         
 
