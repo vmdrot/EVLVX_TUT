@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
+using System.ComponentModel;
+using BGU.DRPL.SignificantOwnership.Core.Spares;
+using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 {
@@ -21,10 +25,27 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
     /// </summary>
     public class RegLicAppx12HeadCandidateAppl : IQuestionnaire
     {
-        
+        [DisplayName("у банку")]
+        [Description("(повне офіційне найменування банку, у який призначається/рекомендується керівник)")]
+        public BankInfo BankRef { get; set; }
+
+        [DisplayName("Посада")]
+        [Description("1. Посада, на яку призначається/рекомендується керівник")]
+        public ManagementPosition PositionAppliedFor { get; set; }
+
+        public GenericPersonID Candidate { get; set; }
+
+        public List<EducationRecordInfo> Education { get; set; }
+
+        public bool HasScientificTitle { get; set; }
+        public string ScientificTitle { get; set; }
+
+
+        public List<GenericPersonInfo> MentionedIdentities { get; set; }
+
         public string SuggestSaveAsFileName()
         {
-            throw new NotImplementedException();
+            return "regLicDod12Kand";
         }
     }
 }

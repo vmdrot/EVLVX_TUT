@@ -159,8 +159,24 @@ namespace BGU.DRPL.SignificantOwnership.Utility
                     }
                 }
             }
-            for(int i = 0;i<toBeDel.Count;i++)
+            List<string> includesList = new List<string>();
+            for (int i = 0; i < toBeDel.Count; i++)
+            {
+                string currNm = toBeDel[i].Attributes["name"].Value;
+                if (!string.IsNullOrEmpty(currNm))
+                {
+                    if (!includesList.Contains(currNm))
+                        includesList.Add(currNm);
+                }
                 doc.DocumentElement.RemoveChild(toBeDel[i]);
+            }
+            foreach(string typNm in includesList)
+            {
+                XmlNode inclNode = doc.CreateNode(XmlNodeType.Element, "xs:include", doc.DocumentElement.Attributes["xmlns:xs"].Value);
+                WriteAttribute(inclNode, "schemaLocation", string.Format("{0}.uk-UA.xsd",typNm));
+                doc.DocumentElement.AppendChild(inclNode);
+            }
+
         }
 
         public static string GetSummaryFromAssemblyXmlForAType(XmlDocument doc, Type typ)
