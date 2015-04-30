@@ -85,7 +85,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         [Description("Основний(-і) вид(-и) діяльності юрособи")]
         public string PrincipalActivities { get; set; }
         [Browsable(false)]
-        public GenericPersonID GenericID { get { return new GenericPersonID() { CountryISO3Code = ResidenceCountry.CountryISONr, PersonCode = TaxCodeOrHandelsRegNr, PersonType = EntityType.Legal }; } }
+        public GenericPersonID GenericID { get { return new GenericPersonID() { CountryISO3Code = ResidenceCountry.CountryISONr, PersonCode = TaxCodeOrHandelsRegNr, PersonType = EntityType.Legal, DisplayName = ToString() }; } }
 
         public override string ToString()
         {

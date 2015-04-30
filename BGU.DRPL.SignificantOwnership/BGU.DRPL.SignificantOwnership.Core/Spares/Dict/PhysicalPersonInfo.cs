@@ -106,7 +106,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         [Description("Громадянство")]
         public CountryInfo CitizenshipCountry { get; set; }
         [Browsable(false)]
-        public GenericPersonID GenericID { get { return new GenericPersonID() { CountryISO3Code = CitizenshipCountry != null ? CitizenshipCountry.CountryISONr : string.Empty, PersonCode = TaxOrSocSecID ?? PassportID, PersonType = EntityType.Physical }; } }
+        public GenericPersonID GenericID { get { return new GenericPersonID() { CountryISO3Code = CitizenshipCountry != null ? CitizenshipCountry.CountryISONr : string.Empty, PersonCode = TaxOrSocSecID ?? PassportID, PersonType = EntityType.Physical, DisplayName = ToString() }; } }
 
 
         #region inner type(s)

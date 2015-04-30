@@ -56,7 +56,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         [DisplayName("Юр.особа-заявник")]
         [Description("1. Інформація про юридичну особу")]
         [Required]
-        public LegalPersonInfo Acquiree { get; set; }
+        public GenericPersonID Acquiree { get; set; }
 
         /// <summary>
         /// p.1.4
@@ -189,17 +189,17 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
             get 
             {
                 Dictionary<string, GenericPersonInfo> rslt = new Dictionary<string, GenericPersonInfo>();
-                if (BankRef != null && BankRef.LegalPerson != null)
-                {
-                    GenericPersonInfo gpi = new GenericPersonInfo(BankRef.LegalPerson);
-                    rslt.Add(gpi.ID.HashID, gpi);
-                }
+                //if (BankRef != null && BankRef.LegalPerson != null)
+                //{
+                //    GenericPersonInfo gpi = new GenericPersonInfo(BankRef.LegalPerson);
+                //    rslt.Add(gpi.ID.HashID, gpi);
+                //}
 
-                if (Acquiree != null)
-                {
-                    GenericPersonInfo gpi = new GenericPersonInfo(Acquiree);
-                    rslt.Add(gpi.ID.HashID, gpi);
-                }
+                //if (Acquiree != null)
+                //{
+                //    GenericPersonInfo gpi = new GenericPersonInfo(Acquiree);
+                //    rslt.Add(gpi.ID.HashID, gpi);
+                //}
 
                 foreach (GenericPersonInfo gpi in MentionedIdentities)
                 {
@@ -223,10 +223,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
             {
                 Dictionary<string, LocationInfo> rslt = new Dictionary<string, LocationInfo>();
 
-                if (BankRef != null && BankRef.LegalPerson != null && BankRef.LegalPerson.Address != null && !rslt.ContainsKey(BankRef.LegalPerson.Address.ToString()))
-                    rslt.Add(BankRef.LegalPerson.Address.ToString(), BankRef.LegalPerson.Address);
-                if (Acquiree != null && Acquiree.Address != null && !rslt.ContainsKey(Acquiree.Address.ToString()))
-                    rslt.Add(Acquiree.Address.ToString(), Acquiree.Address);
+                //if (BankRef != null && BankRef.LegalPerson != null && BankRef.LegalPerson.Address != null && !rslt.ContainsKey(BankRef.LegalPerson.Address.ToString()))
+                //    rslt.Add(BankRef.LegalPerson.Address.ToString(), BankRef.LegalPerson.Address);
+                //if (Acquiree != null && Acquiree.Address != null && !rslt.ContainsKey(Acquiree.Address.ToString()))
+                //    rslt.Add(Acquiree.Address.ToString(), Acquiree.Address);
                 foreach(GenericPersonInfo gpi in MentionedIdentities)
                 {
                     if(gpi.Address != null && !rslt.ContainsKey(gpi.Address.ToString()))
@@ -250,7 +250,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 
         protected override string ApplicantNameForFileName
         {
-            get { if (Acquiree == null) return string.Empty; return Acquiree.TaxCodeOrHandelsRegNr; }
+            get { if (Acquiree == null) return string.Empty; return Acquiree.PersonCode; }
         }
     }
 }

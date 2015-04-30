@@ -10,8 +10,8 @@ namespace BGU.DRPL.SignificantOwnership.EmpiricalData.Examples
 {
     public class GrantBank
     {
-        private List<PhysicalPersonInfo> _INDs;
-        private List<LegalPersonInfo> _LEs;
+        //private List<PhysicalPersonInfo> _INDs;
+        //private List<LegalPersonInfo> _LEs;
         private Appx2OwnershipStructLP _appx2Questionnaire;
         #region particular entities
         private GenericPersonInfo physShkarupinaTA;
@@ -111,7 +111,7 @@ namespace BGU.DRPL.SignificantOwnership.EmpiricalData.Examples
             leTheBank = new GenericPersonInfo() { PersonType = Core.Spares.EntityType.Legal, LegalPerson = new LegalPersonInfo() { Name = "ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО \"СХІДНО-УКРАЇНСЬКИЙ БАНК \"ГРАНТ\"", TaxCodeOrHandelsRegNr = "14070197", ResidenceCountry = CountryInfo.UKRAINE, Address = addrKhaDanyl19, Equity = new CurrencyAmount() { CCY = "UAH", Amt = 130000000.00M } } };
             #endregion
             this._appx2Questionnaire.BankRef = new BankInfo(leTheBank.LegalPerson) { MFO = "351607", RegistryNr = "123", Code = "788" };
-            this._appx2Questionnaire.Acquiree = leArgus.LegalPerson;
+            this._appx2Questionnaire.Acquiree = leArgus.ID;
 
             
         }
@@ -123,9 +123,14 @@ namespace BGU.DRPL.SignificantOwnership.EmpiricalData.Examples
             PopulateDicts();
             ComposeBankExistingCommonImplicitOwners();
             ComposeMentionedEntities();
+            ComposePersonLinks();
+
+            ComposeSupervisoryBoard();
+            ComposeExecutives();
+            ComposeSignatory();
+
             return this._appx2Questionnaire;
         }
-
         private void ComposeMentionedEntities()
         {
             this._appx2Questionnaire.MentionedIdentities = new List<GenericPersonInfo>();
@@ -149,6 +154,10 @@ namespace BGU.DRPL.SignificantOwnership.EmpiricalData.Examples
             this._appx2Questionnaire.MentionedIdentities.Add(leArgus);
             this._appx2Questionnaire.MentionedIdentities.Add(leResidentsiaSV);
             this._appx2Questionnaire.MentionedIdentities.Add(leYurstokconsulting);
+            this._appx2Questionnaire.MentionedIdentities.Add(leTheBank);
+            string tmp = null;
+            foreach (GenericPersonInfo gpi in this._appx2Questionnaire.MentionedIdentities)
+                tmp = gpi.DisplayName;
         }
 
         private void ComposeBankExistingCommonImplicitOwners()
@@ -305,5 +314,29 @@ namespace BGU.DRPL.SignificantOwnership.EmpiricalData.Examples
 
         }
 
+        private void ComposePersonLinks()
+        {
+            this._appx2Questionnaire.PersonsLinks.Add(new PersonsAssociation() { One = physSymovianSV.ID, Two = physSymovianVS.ID, AssociationType = Core.Spares.OwnershipType.Associated, AssociationRoleOneVsTwo = Core.Spares.AssociatedPersonRole.Father, AssociationRoleTwoVsOne = Core.Spares.AssociatedPersonRole.Son });
+            this._appx2Questionnaire.PersonsLinks.Add(new PersonsAssociation() { One = physSymovianVS.ID, Two = physSymovianSV2.ID, AssociationType = Core.Spares.OwnershipType.Associated, AssociationRoleOneVsTwo = Core.Spares.AssociatedPersonRole.Father, AssociationRoleTwoVsOne = Core.Spares.AssociatedPersonRole.Son });
+            this._appx2Questionnaire.PersonsLinks.Add(new PersonsAssociation() { One = physSymovianVP.ID, Two = physSymovianSV.ID, AssociationType = Core.Spares.OwnershipType.Associated, AssociationRoleOneVsTwo = Core.Spares.AssociatedPersonRole.Wife, AssociationRoleTwoVsOne = Core.Spares.AssociatedPersonRole.Husband });
+            this._appx2Questionnaire.PersonsLinks.Add(new PersonsAssociation() { One = physSymovianVP.ID, Two = physSymovianVS.ID, AssociationType = Core.Spares.OwnershipType.Associated, AssociationRoleOneVsTwo = Core.Spares.AssociatedPersonRole.Mother, AssociationRoleTwoVsOne = Core.Spares.AssociatedPersonRole.Son });
+            this._appx2Questionnaire.PersonsLinks.Add(new PersonsAssociation() { One = physSymovianSV.ID, Two = physSymovianSV2.ID, AssociationType = Core.Spares.OwnershipType.Associated, AssociationRoleOneVsTwo = Core.Spares.AssociatedPersonRole.GrandFather, AssociationRoleTwoVsOne = Core.Spares.AssociatedPersonRole.GrandSon });
+        }
+
+        private void ComposeSupervisoryBoard()
+        {
+            //todo
+        }
+
+
+        private void ComposeExecutives()
+        {
+            //todo
+        }
+
+        private void ComposeSignatory()
+        {
+            //todo
+        }
     }
 }

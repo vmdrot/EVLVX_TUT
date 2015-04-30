@@ -121,8 +121,8 @@ namespace BGU.DRPL.SignificantOwnership.EmpiricalData.Examples
             physWlmartnDeBeer = new GenericPersonInfo() { PersonType = Core.Spares.EntityType.Physical, PhysicalPerson = new PhysicalPersonInfo() { FullName = "Willem Martinus De Beer", TaxOrSocSecID = "nl-45375", CitizenshipCountry = CountryInfo.NETHERLANDS } };
 
             #endregion
-            this._appx2Questionnaire.BankRef = new BankInfo() { MFO = "322830", Name = "АТ КБ \"ТК КРЕДИТ\"", LegalPerson = leTheBank.LegalPerson , OperationCountry = CountryInfo.UKRAINE };
-            this._appx2Questionnaire.Acquiree = leNoviThekhn.LegalPerson;
+            this._appx2Questionnaire.BankRef = new BankInfo() { MFO = "322830", Name = "АТ КБ \"ТК КРЕДИТ\"", LegalPerson = leTheBank.ID, OperationCountry = CountryInfo.UKRAINE };
+            this._appx2Questionnaire.Acquiree = leNoviThekhn.ID;
 
             
         }
@@ -167,6 +167,12 @@ namespace BGU.DRPL.SignificantOwnership.EmpiricalData.Examples
             this._appx2Questionnaire.MentionedIdentities.Add(physUmanets);
             this._appx2Questionnaire.MentionedIdentities.Add(physElmIbanez);
             this._appx2Questionnaire.MentionedIdentities.Add(physWlmartnDeBeer);
+            this._appx2Questionnaire.MentionedIdentities.Add(this.leTheBank);
+
+            string tmp = null;
+            foreach (GenericPersonInfo gpi in this._appx2Questionnaire.MentionedIdentities)
+                tmp = gpi.DisplayName;
+            
 
         }
         private void ComposeBankExistingCommonImplicitOwners()

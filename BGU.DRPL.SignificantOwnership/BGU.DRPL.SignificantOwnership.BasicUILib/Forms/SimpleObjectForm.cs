@@ -208,7 +208,7 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             Appx2OwnershipStructLPChecker checker = new Appx2OwnershipStructLPChecker();
             checker.Questionnaire = questio;
             UltimateOwnersForm frm = new UltimateOwnersForm();
-            frm.DataSource = checker.ListUltimateBeneficiaries(questio.BankRef.LegalPerson.GenericID);
+            frm.DataSource = checker.ListUltimateBeneficiaries(questio.BankRef.LegalPerson);
             frm.ShowDialog();
         }
 
@@ -221,8 +221,8 @@ namespace BGU.DRPL.SignificantOwnership.BasicUILib.Forms
             checker.Questionnaire = questio;
             UltimateOwnershipTreeForm frm = new UltimateOwnershipTreeForm();
             frm.MentionedEntities = questio.MentionedIdentities;
-            frm.MentionedEntities.Add(new GenericPersonInfo(questio.BankRef.LegalPerson));
-            frm.CentralAssetID = questio.BankRef.LegalPerson.GenericID;
+            //frm.MentionedEntities.Add(new GenericPersonInfo(questio.BankRef.LegalPerson));
+            frm.CentralAssetID = questio.BankRef.LegalPerson;
             frm.DataSource = questio.BankExistingCommonImplicitOwners;
             frm.ShowDialog();
         }

@@ -21,7 +21,7 @@ namespace BGU.DRPL.SignificantOwnership.Tests.BasicUI
             Appx2OwnershipStructLPChecker checker = new Appx2OwnershipStructLPChecker();
             checker.Questionnaire = gb.Appx2Questionnaire;
             UltimateOwnersForm frm = new UltimateOwnersForm();
-            frm.DataSource = checker.ListUltimateBeneficiaries(gb.Appx2Questionnaire.BankRef.LegalPerson.GenericID);
+            frm.DataSource = checker.ListUltimateBeneficiaries(gb.Appx2Questionnaire.BankRef.LegalPerson);
             frm.ShowDialog();
         }
 
@@ -33,8 +33,8 @@ namespace BGU.DRPL.SignificantOwnership.Tests.BasicUI
             //checker.Questionnaire = gb.Appx2Questionnaire;
             UltimateOwnershipTreeForm frm = new UltimateOwnershipTreeForm();
             frm.MentionedEntities = gb.Appx2Questionnaire.MentionedIdentities;
-            frm.MentionedEntities.Add(new GenericPersonInfo(gb.Appx2Questionnaire.BankRef.LegalPerson));
-            frm.CentralAssetID = gb.Appx2Questionnaire.BankRef.LegalPerson.GenericID;
+//            frm.MentionedEntities.Add(new GenericPersonInfo(gb.Appx2Questionnaire.BankRef.LegalPerson));
+            frm.CentralAssetID = gb.Appx2Questionnaire.BankRef.LegalPerson;
             frm.DataSource = gb.Appx2Questionnaire.BankExistingCommonImplicitOwners;
             frm.ShowDialog();
         }

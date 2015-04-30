@@ -11,6 +11,7 @@ using BGU.DRPL.SignificantOwnership.EmpiricalData.Examples;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 using BGU.DRPL.SignificantOwnership.BasicUILib.Forms;
 using BGU.DRPL.SignificantOwnership.Core.Questionnaires;
+using BGU.DRPL.SignificantOwnership.Core.Checks;
 
 namespace BGU.DRPL.SignificantOwnership.UI
 {
@@ -31,7 +32,8 @@ namespace BGU.DRPL.SignificantOwnership.UI
         private void acqToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Appx2OwnStruLPFrm frm = new Appx2OwnStruLPFrm();
-            frm.LegalPersonDS = (new GrantBank()).Appx2Questionnaire.Acquiree;
+            Appx2OwnershipStructLP quest = (new GrantBank()).Appx2Questionnaire;
+            frm.LegalPersonDS = QuestionnaireCheckUtils.FindPersonByID(quest.MentionedIdentities, quest.Acquiree).LegalPerson;
             frm.ShowDialog();
 
         }

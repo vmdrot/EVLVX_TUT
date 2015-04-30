@@ -48,9 +48,9 @@ namespace BGU.DRPL.SignificantOwnership.Tests.WebUIRelated
                     bi.MFO = mfo;
                     bi.Code = glb;
                     bi.RegistryNr = prkb;
-                    bi.LegalPerson = new LegalPersonInfo() { TaxCodeOrHandelsRegNr = yedrpou, Name = dr["FULLNAME"] as string, Address = LocationInfo.Parse(address), ResidenceCountry = CountryInfo.UKRAINE };
-                    bi.LegalPerson.Address.City = city;
-                    bi.LegalPerson.Address.ZipCode = zipCode;
+                    bi.LegalPerson = (new LegalPersonInfo() { TaxCodeOrHandelsRegNr = yedrpou, Name = dr["FULLNAME"] as string, Address = LocationInfo.Parse(address), ResidenceCountry = CountryInfo.UKRAINE }).GenericID;
+                    //bi.LegalPerson.Address.City = city;
+                    //bi.LegalPerson.Address.ZipCode = zipCode;
                     rcuKurBanks.Add(bi);
                 }
                 catch { }
