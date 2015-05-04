@@ -125,6 +125,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         [Description("(найменування юридичної особи, її місцезнаходження, код за ЄДРПОУ, контактні телефони, вид діяльності юридичної особи, опис Ваших функцій)")]
         public List<CouncilBodyInfo> MembershipIn3rdPartyBoards { get; set; }
 
+        /// <summary>
+        /// 11. Чи маєте Ви участь у банку, у який призначаєтесь/рекомендуєтесь:
+        /// </summary>
         public bool HasTheBankOwnership { get; set; }
 
         /// <summary>
