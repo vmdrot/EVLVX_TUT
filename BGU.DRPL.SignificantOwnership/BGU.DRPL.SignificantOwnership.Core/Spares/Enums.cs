@@ -504,4 +504,163 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
         [Description("Ліквідовано")]
         Liquidated
     }
+
+    /// <summary>
+    /// http://en.wikipedia.org/wiki/Fitch_Ratings#Long-term_credit_ratings
+    /// http://en.wikipedia.org/wiki/DBRS
+    /// http://en.wikipedia.org/wiki/Dagong_Global_Credit_Rating
+    /// 
+    /// </summary>
+    /// <seealso cref="http://en.wikipedia.org/wiki/Moody%27s_Investors_Service#Moody.27s_credit_ratings"/>
+    public enum WellKnownCreditRatingAgencyType
+    {
+        [Description("Не вказано")]
+        None = 0,
+        [Description("Moody's Investor Service")]
+        Moodys,
+        [Description("Fitch Ratings")]
+        Fitch,
+        [Description("Не вказано")]
+        SAndP,
+        [Description("Standard & Poors")]
+        DRBS,
+        [Description("Dagong Credit Rating (та дочірні рейтингові компанії)")]
+        Dagong,
+        [Description("Japan Credit Rating")]
+        JCR,
+        [Description("ARC Ratings, S.A.")]
+        ACR,
+        [Description("Українська кредитна рейтингова аґенція")]
+        UCRA,
+        [Description("Інша")]
+        Other
+    }
+
+    public enum LongTermCreditRatingType
+    {
+        [Description("Не вказано")]
+        None = 0,
+        [Description("A")]
+        A,
+        [Description("A1")]
+        A1,
+        [Description("A2")]
+        A2,
+        [Description("A3")]
+        A3,
+        [Description("AA")]
+        AA,
+        [Description("Aa1")]
+        Aa1,
+        [Description("Aa2")]
+        Aa2,
+        [Description("Aa3")]
+        Aa3,
+        [Description("AAA")]
+        AAA,
+        [Description("AAA-")]
+        AAAMinus,
+        [Description("AAA+")]
+        AAAPlus,
+        [Description("AA-")]
+        AAMinus,
+        [Description("AA+")]
+        AAPlus,
+        [Description("A-")]
+        AMinus,
+        [Description("A+")]
+        APlus,
+        [Description("B")]
+        B,
+        [Description("B1")]
+        B1,
+        [Description("B2")]
+        B2,
+        [Description("B3")]
+        B3,
+        [Description("Ba1")]
+        Ba1,
+        [Description("Ba2")]
+        Ba2,
+        [Description("Ba3")]
+        Ba3,
+        [Description("Baa1")]
+        Baa1,
+        [Description("Baa2")]
+        Baa2,
+        [Description("Baa3")]
+        Baa3,
+        [Description("BB")]
+        BB,
+        [Description("BBB")]
+        BBB,
+        [Description("BBB-")]
+        BBBMinus,
+        [Description("BBB+")]
+        BBBPlus,
+        [Description("BB-")]
+        BBMinus,
+        [Description("BB+")]
+        BBPlus,
+        [Description("B-")]
+        BMinus,
+        [Description("B+")]
+        BPlus,
+        [Description("C")]
+        C,
+        [Description("Ca")]
+        Ca,
+        [Description("Caa1")]
+        Caa1,
+        [Description("Caa2")]
+        Caa2,
+        [Description("Caa3")]
+        Caa3,
+        [Description("CC")]
+        CC,
+        [Description("CCC")]
+        CCC,
+        [Description("CCC-")]
+        CCCMinus,
+        [Description("CCC+")]
+        CCCPlus,
+        [Description("CC-")]
+        CCMinus,
+        [Description("CC+")]
+        CCPlus,
+        [Description("C-")]
+        CMinus,
+        [Description("C+")]
+        CPlus,
+        [Description("D")]
+        D,
+        [Description("LD")]
+        LD,
+        [Description("NR")]
+        NR,
+        [Description("R")]
+        R,
+        [Description("Інше (вказати)")]
+        Other
+    }
+
+    public enum ShortTermCreditRatingType
+    {
+        [Description("Не вказано")]
+        None = 0,
+        [Description("A-1")]
+        A1,
+        [Description("A-2")]
+        A2,
+        [Description("A-3")]
+        A3,
+        [Description("B")]
+        B,
+        [Description("C")]
+        C,
+        [Description("D")]
+        D,
+        [Description("Інше (вказати)")]
+        Other
+    }
 }

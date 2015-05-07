@@ -331,6 +331,20 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         #endregion
 
         /// <summary>
+        /// _____________________
+        ///  (дата підписання анкети)
+        /// _______________________
+        ///  (підпис призначеного/
+        /// Рекомендованого керівника)
+	    /// _______________________
+        ///  (ініціали, прізвище)
+        /// </summary>
+        [DisplayName("Підписант")]
+        [Description("Відомості по особу, що підписала анкету")]
+        [Required]
+        public SignatoryInfo Signatory { get; set; }
+
+        /// <summary>
         /// Усі реквізити усіх осіб-фігурантів
         /// </summary>
         public List<GenericPersonInfo> MentionedIdentities { get; set; }
