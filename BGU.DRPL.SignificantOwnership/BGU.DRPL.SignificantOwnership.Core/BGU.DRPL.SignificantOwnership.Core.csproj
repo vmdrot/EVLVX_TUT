@@ -128,11 +128,14 @@
     <Compile Include="Spares\Dict\BankAccountInfo.cs" />
     <Compile Include="Spares\Dict\BankInfo.cs" />
     <Compile Include="Spares\Dict\CountryInfo.cs" />
+    <Compile Include="Spares\Dict\CreditRatingInfo.cs" />
+    <Compile Include="Spares\Dict\EconomicActivityType.cs" />
     <Compile Include="Spares\Dict\FinancialOversightAuthorityInfo.cs" />
     <Compile Include="Spares\Dict\LegalPersonInfo.cs" />
     <Compile Include="Spares\Dict\ProfessionLicensingBodyInfo.cs" />
     <Compile Include="Spares\Dict\PublicationInfo.cs" />
     <Compile Include="Spares\Dict\PublishingHouseInfo.cs" />
+    <Compile Include="Spares\Dict\RatingAgencyInfo.cs" />
     <Compile Include="Spares\Dict\RegistrarAuthority.cs" />
     <Compile Include="Spares\Dict\LocationInfo.cs" />
     <Compile Include="Spares\Dict\PhysicalPersonInfo.cs" />
