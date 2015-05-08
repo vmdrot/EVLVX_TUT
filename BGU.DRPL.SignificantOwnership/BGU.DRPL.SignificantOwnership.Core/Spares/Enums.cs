@@ -663,4 +663,39 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
         [Description("Інше (вказати)")]
         Other
     }
+
+    public enum BankruptcyCaseResolutionType
+    { 
+        //todo
+    }
+
+    /// <summary>
+    /// Перелік як у випадаючому списку "Інстанція"
+    /// </summary>
+    /// <seealso cref="http://www.reyestr.court.gov.ua/"/>
+    public enum CourtInstanceType
+    { 
+        [Description("Перша")]
+        First,
+        [Description("Апеляційна")]
+        Appeal,
+        [Description("Касаційна")]
+        Cassation
+    }
+
+    public enum CourtDecisionType
+    {
+        [Description("Вирок")]
+        Sentence,
+        [Description("Постанова")]
+        Ruling,
+        [Description("Рішення")]
+        Decision,
+        [Description("Судовий наказ")]
+        CourtOrder,
+        [Description("Ухвала суду")]
+        CourtResolution,
+        [Description("Окрема ухвала")]
+        SpecialResolution
+    }
 }

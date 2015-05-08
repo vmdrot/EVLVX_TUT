@@ -76,6 +76,8 @@
     <Compile Include="Spares2\GenericFinancialInstitutionInfo.cs" />
     <Compile Include="Spares2\NonBankFinInstitutionInfo.cs" />
     <Compile Include="Spares2\NonBankingFinInstLicenseInfo.cs" />
+    <Compile Include="Spares\Data\BankruptcyInvestigationInfo.cs" />
+    <Compile Include="Spares\Data\CourtDecisionInfo.cs" />
     <Compile Include="Spares\Data\EmailInfo.cs" />
     <Compile Include="Spares\Data\LicenseQualificationInfo.cs" />
     <Compile Include="Spares\Data\LiquidatedEntityOwnershipInfo.cs" />
@@ -128,6 +130,7 @@
     <Compile Include="Spares\Dict\BankAccountInfo.cs" />
     <Compile Include="Spares\Dict\BankInfo.cs" />
     <Compile Include="Spares\Dict\CountryInfo.cs" />
+    <Compile Include="Spares\Dict\CourtInfo.cs" />
     <Compile Include="Spares\Dict\CreditRatingInfo.cs" />
     <Compile Include="Spares\Dict\EconomicActivityType.cs" />
     <Compile Include="Spares\Dict\FinancialOversightAuthorityInfo.cs" />
