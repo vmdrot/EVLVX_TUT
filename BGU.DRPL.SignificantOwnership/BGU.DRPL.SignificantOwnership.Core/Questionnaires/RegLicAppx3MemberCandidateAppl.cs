@@ -165,6 +165,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// 3.3. Чи притягувалися Ви до відповідальності за порушення антимонопольного, податкового, 
         /// банківського, валютного законодавства, правил діяльності на ринку цінних паперів тощо? _____
         /// </summary>
+        [Required]
         public bool HadIndustrySpecificBreaches { get; set; }
         
         /// <summary>
