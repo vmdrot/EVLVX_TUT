@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
+using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 
 namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
 {
@@ -21,9 +23,25 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
     /// </summary>
     public class RegLicAppx6EquityFormationTable : IQuestionnaire
     {
+        public BankInfo BankRef { get; set; }
+
+        public DateTime AsOfDate { get; set; }
+
+        public CurrencyAmount CharterCapital { get; set; }
+        public List<CharterCapitalTableRecord> ShareholderStakes { get; set; }
+        public CharterCapitalTableTotalsRecord LegalPersonsSubtotals { get; set; }
+        public CharterCapitalTableTotalsRecord PhysPersonsSubtotals { get; set; }
+        public CharterCapitalTableTotalsRecord Totals { get; set; }
+
+        public List<GenericPersonInfo> MentionedIdentities { get; set; }
+
+        public SignatoryInfo CEOSignature { get; set; }
+        public SignatoryInfo ChiefBookkeeperSignature { get; set; }
+
+
         public string SuggestSaveAsFileName()
         {
-            throw new NotImplementedException();
+            return "regLicDod6ChartCapFormTbl";
         }
     }
 }
