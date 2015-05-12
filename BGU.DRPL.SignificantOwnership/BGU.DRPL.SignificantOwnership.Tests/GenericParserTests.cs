@@ -5,7 +5,7 @@ using System.Text;
 using NUnit.Framework;
 using BGU.DRPL.SignificantOwnership.Utility;
 using System.Data;
-using GenericParsing;
+//using GenericParsing;
 
 namespace BGU.DRPL.SignificantOwnership.Tests
 {
