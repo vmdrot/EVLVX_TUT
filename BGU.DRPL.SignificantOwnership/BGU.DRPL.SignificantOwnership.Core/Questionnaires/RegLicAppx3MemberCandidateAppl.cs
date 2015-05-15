@@ -212,11 +212,17 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// стверджую, що інформація, надана в анкеті, є правдивою і повною, та не заперечую проти перевірки 
         /// Національним банком України достовірності поданих документів і персональних даних, що в них містяться.
         /// </summary>
+        [DisplayName("Підтверджую правдивість інформації?")]
+        [Description("Я, (прізвище, ім'я, по батькові) стверджую, що інформація,  надана в анкеті,\n є правдивою і повною, та не заперечую проти перевірки Національним банком України достовірності поданих документів і персональних даних, що в них містяться.\n")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [Required]
         public bool IsApplicationInfoAccurateAndTrue { get; set; }
 
 
         /// У разі будь-яких змін в інформації, що зазначена в цій анкеті, зобов'язуюся повідомити про них Національний банк України протягом 10-ти днів з дня їх виникнення.
+        [DisplayName("Зобов'язуюсь повідомляти про зміни?")]
+        [Description("У разі будь-яких змін в інформації, що зазначена в цій анкеті, зобов'язуюся повідомити про них Національний банк України протягом 10-ти днів з дня їх виникнення.")]
+        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
         [Required]
         public bool AmObligingToKeepUp2DateWithin10Days { get; set; }
 
