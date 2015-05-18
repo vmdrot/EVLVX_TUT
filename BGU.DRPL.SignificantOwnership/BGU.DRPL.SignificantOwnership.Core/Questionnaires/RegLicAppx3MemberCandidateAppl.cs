@@ -32,6 +32,10 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// ___________________________________________________________________________________
         /// (найменування юридичної особи)
         /// </summary>
+        [DisplayName("Повне офіційне найменування банку")]
+        [Description("Ідентифікація банку, в якому подавач планує набути членство у відповідному органі управління")]
+        [Browsable(true)]
+        [Required]
         public BankInfo BankRef { get; set; }
         
         /// <summary>
@@ -48,6 +52,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// </summary>
         [DisplayName("Кандидат")]
         [Description("Реквізити фізособи-кандидата на посаду...")]
+        [Browsable(true)]
         [Required]
         public GenericPersonID Candidate { get; set; }
         
@@ -58,6 +63,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// __________________________________________________________________________________.
         /// причина звільнення; якщо трудовий стаж переривався, то слід зазначити причину)
         /// </summary>
+        [DisplayName("1.6. Займані посади за останні п'ять років")]
+        [Description("Займані посади за останні п'ять років: найменування юридичної особи, найменування посади;  період перебування на посаді з _ до _, причина звільнення; якщо трудовий стаж переривався, то слід зазначити причину.")]
+        [Browsable(true)]
         [Required]
         public List<EmploymentRecordInfo> Last5YrsWorkExperience { get; set; }
 
@@ -66,6 +74,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// </summary>
         [DisplayName("Місце роботи")]
         [Description("9. Місце роботи і посада на дату заповнення анкети ")]
+        [Browsable(true)]
         [Required]
         public EmploymentRecordInfo LastEmploymentRecord { get; set; }
 
@@ -75,20 +84,36 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// __________________________________________________________________________________.
         /// професійна ліцензія, номер, дата видачі диплома, ким виданий, спеціальність і кваліфікація)
         /// </summary>
+        [DisplayName("1.8. Освіта та професійна кваліфікація")]
+        [Description("1.8. Освіта та професійна кваліфікація - науковий ступінь, номер, дата видачі диплома, ким виданий, спеціальність і кваліфікація")]
+        [Browsable(true)]
         [Required]
         public List<EducationRecordInfo> Education { get; set; }
 
         /// <summary>
         /// Покриває п.1.8 (у частині проф.ліцензій)
         /// </summary>
+        [DisplayName("1.8. Чи має заявник професійну(-і) ліцензію(-ї)?")]
+        [Description("п.1.8 (у частині проф.ліцензій)")]
+        [Browsable(true)]
         [Required]
         public bool HasProfessionalLicenses { get; set; }
+
         /// <summary>
-        /// Поле необов'язкове - якщо є професійні ліцензії ( HasProfessionalLicenses == true )
+        /// Поле обов'язкове лише якщо є професійні ліцензії ( HasProfessionalLicenses == true )
         /// Покриває п.1.8 (у частині проф.ліцензій)
         /// </summary>
+        [DisplayName("1.8. Професійна(-і) ліцензія(-ї)")]
+        [Description("п.1.8 (у частині проф.ліцензій)")]
+        [Browsable(true)]
         public List<ProfessionLicenseInfo> ProfessionalLicenses {get;set;}
 
+        /// <summary>
+        /// 
+        /// </summary>
+        [DisplayName("1.9. Чи маєте намір набувати істотну участь?")]
+        [Description("Чи очікується, що заявник (напряму, чи через пов'язаних осіб) стане власником істотної участі в банку?")]
+        [Browsable(true)]
         [Required]
         public bool IsAppyingForSignificantOwnership {get;set;}
         /// <summary>
@@ -99,15 +124,22 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// ----
         /// Вимагати, якщо IsAppyingForSignificantOwnership == true
         /// </summary>
-        public List<OwnershipStructure> OwnershipStakeWithLPAcquiree {get;set;}
+        [DisplayName("1.9. Розмір участі в юридичній особі, яка має намір набути або збільшити істотну участь у банку-емітенті")]
+        [Description("Заповнюється власниками істотної участі в банку або особами, які мають намір набути істотну участь у банку")]
+        [Browsable(true)]
+        public List<OwnershipStructure> OwnershipStakeWithLPAcquiree { get; set; }
 
         /// <summary>
         /// 1.10. Розмір отриманих  доходів за останній звітний період (рік)*  
         /// __________________________________________________________________________________.
         /// 
         /// * Заповнюється власниками істотної участі в банку або особами, які мають намір набути істотну участь у банку.
+        /// -------------
+        /// Обов'язкове, якщо IsAppyingForSignificantOwnership == true
         /// </summary>
-        [Required]
+        [DisplayName("1.10. Розмір отриманих  доходів за останній звітний період (рік)")]
+        [Description("Заповнюється власниками істотної участі в банку або особами, які мають намір набути істотну участь у банку")]
+        [Browsable(true)]
         public CurrencyAmount LastYearIncome {get;set;}
 
 
@@ -116,23 +148,54 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// 2.1. Чи є Ви учасником банку-емітента? _______________________________________________:
         /// (так, ні)
         /// </summary>
+        [DisplayName("2.1. Чи є Ви учасником банку-емітента?")]
+        [Description("Чи є Ви учасником банку-емітента, прямо чи опосередковано (у т.ч. через пов'язаних осіб).")]
+        [Browsable(true)]
         public bool IsIssuerBankStakeholder { get; set; }
 
         /// <summary>
+        /// 2. Відносини власності з банком-емітентом
         /// а) пряме володіння - ____ відсотків статутного капіталу банку, що  становить ________________ 
         ///                                                                                (кількість)
         /// акцій (паїв),  загальною номінальною вартістю ______________ гривень;
+        /// ------
+        /// Обов'язкове, якщо IsIssuerBankStakeholder == true
         /// </summary>
+        [DisplayName("2.1. а) Пряме володіння у банку-емітенті")]
+        [Description("Частка прямого володіння у банкові-емітенті")]
+        [Browsable(true)]
         public SharesAcquisitionInfo DirectOwnershipWithBankSummary { get; set; }
 
+        /// <summary>
+        /// 2. Відносини власності з банком-емітентом
         /// б) опосередковане володіння - ______ відсотків 
+        /// ------
+        /// Обов'язкове, якщо IsIssuerBankStakeholder == true
+        /// </summary>
+        [DisplayName("2.1. б) Опосередковане володіння у банку-емітенті")]
+        [Description("Частка опосередкованого володіння у банкові-емітенті")]
+        [Browsable(true)]
         public SharesAcquisitionInfo ImplicitOwnershipWithBankSummary { get; set; }
+
+        /// <summary>
         /// через _______________________
         /// __________________________________________________________________________________.
         /// (найменування учасника банку та розмір його прямого володіння в банку)
-        
+        /// ------
+        /// Обов'язкове і непуста колекція, якщо ImplicitOwnershipWithBankSummary > 0%
+        /// </summary>
+        [DisplayName("2.1. б) Опосередковане володіння у банку-емітенті - деталі")]
+        [Description("Розшифровка опосередкованого володіння у банкові-емітенті")]
+        [Browsable(true)]
         public List<OwnershipStructure> ImplicitOwnershipWithBank { get; set; }
-        /// 2.2. Чи маєте Ви (як фізична особа) намір збільшити частку в статутному капіталі банку-емітента? _________________________________________________________________________.
+
+        /// <summary>
+        /// 2.2. Чи маєте Ви (як фізична особа) намір збільшити частку в статутному капіталі банку-емітента? 
+        /// _________________________________________________________________________.
+        /// </summary>
+        [DisplayName("2.2. Маєте намір збільшити частку в капіталі банку?")]
+        [Description("2.2. Чи маєте Ви (як фізична особа) намір збільшити частку в статутному капіталі банку-емітента?")]
+        [Browsable(true)]
         public bool HasIntentToIncreaseEquityShareAsPhysPerson { get; set; }
 
         /// <summary>
@@ -142,6 +205,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// ---------------
         /// Якщо "так", то треба розкрити природу зв'язку в полі PersonsLinks
         /// </summary>
+        [DisplayName("2.3. Чи є Ви пов'язаною з банком-емітентом особою?")]
+        [Description("2.3. Чи є Ви пов'язаною з банком-емітентом особою? (так/ні), якщо \"так\" - то треба розкрити природу зв'язку в полі PersonsLinks")]
+        [Browsable(true)]
         public bool IsAssociatedPersonWithBank { get; set; }
 
         /// 3. Інші питання
@@ -150,14 +216,18 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// <summary>
         /// 3.1. Чи притягувалися Ви до кримінальної відповідальності? ______________________________
         /// </summary>
+        [DisplayName("3.1. Чи притягувалися Ви до кримінальної відповідальності?")]
+        [Description("(так або ні)")]
+        [Browsable(true)]
         [Required]
         public bool WasCriminallyProsecuted { get; set; }
 
         /// <summary>
-        /// __________________________________________________________________________________.
-        /// (якщо так, то зазначити де і коли, за якою статтею/статтями Кримінального кодексу України)
         /// 3.2. Чи маєте Ви судимість не погашену,  не зняту в установленому законодавством порядку? 
         /// </summary>
+        [DisplayName("3.2. Чи маєте Ви судимість не погашену,  не зняту в установленому законодавством порядку?")]
+        [Description("(так або ні)")]
+        [Browsable(true)]
         [Required]
         public bool HasOutstandingSentencesToServe { get; set; }
 
@@ -165,6 +235,9 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// 3.3. Чи притягувалися Ви до відповідальності за порушення антимонопольного, податкового, 
         /// банківського, валютного законодавства, правил діяльності на ринку цінних паперів тощо? _____
         /// </summary>
+        [DisplayName("3.3. Чи була відповідальніть за порушення галузевого/господарського законодавства?")]
+        [Description("3.3. Чи притягувалися Ви до відповідальності за порушення антимонопольного, податкового, банківського, валютного законодавства, правил діяльності на ринку цінних паперів тощо?")]
+        [Browsable(true)]
         [Required]
         public bool HadIndustrySpecificBreaches { get; set; }
         
@@ -175,35 +248,73 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// (якщо так, то зазначити детальну інформацію)
         /// __________________________________________________________________________________.
         /// (коли вчинено порушення, зміст порушення, які накладені санкції)
+        /// -------
+        /// Поле обов'язкове й непусте, якщо: 
+        ///   HadIndustrySpecificBreaches == true 
+        ///   АБО HasOutstandingSentencesToServe == true 
+        ///   АБО WasCriminallyProsecuted == true
         /// </summary>
+        [DisplayName("п.3.1, 3.2. і 3.3. Розшифрока правопорушень/судимостей")]
+        [Description("Якщо були порушення законодавства, судимості (у т.ч. непогашені), галузеві правопорушення, тощо (зазначені у пп.3.1, 3.2. і 3.3.), то зазначити детальну інформацію, коли вчинено порушення, зміст порушення, які накладені санкції")]
+        [Browsable(true)]
         public List<BreachOfLawRecordInfo> BreachesOfLaw { get; set; }
 
 
         /// <summary>
         /// 3.4. Чи маєте Ви невиконані майнові (фінансові) зобов'язання  перед іншими особами? 
         /// </summary>
+        [DisplayName("3.4. Чи маєте невиконані майнові зобов'язання  перед іншими?")]
+        [Description("3.4. Чи маєте Ви невиконані майнові (фінансові) зобов'язання  перед іншими особами?")]
+        [Browsable(true)]
         [Required]
         public bool HasMiscNonRepaidDebts { get; set; }
 
         /// <summary>
+        /// 3.4. 
         /// ___________________________________________________________________________________
         /// (якщо так, то зазначити, які саме зобов'язання,
         /// ___________________________________________________________________________________
         ///  у якому розмірі, перед якою особою та з яких причин не були виконані,
         /// __________________________________________________________________________________.
         ///  а також подальші плани щодо виконання/невиконання цих зобов'язань)
+        ///  ------------
+        ///  Обов'язкове й непусте, якщо HasMiscNonRepaidDebts == true
         /// </summary>
+        [DisplayName("3.4. Невиконані зобов'язання  перед іншими особами - розшифровка")]
+        [Description("якщо так, то зазначити, які саме зобов'язання, у якому розмірі, перед якою особою та з яких причин не були виконані, а також подальші плани щодо виконання/невиконання цих зобов'язань.")]
+        [Browsable(true)]
         [Required]
         public List<IndebtnessInfo> MiscNonRepaidDebts { get; set; }
 
 
- 
-        
+
+        /// <summary>
+        /// Зв'язки між особами-фігурантами анкети
+        /// ----
+        /// Колекція має бути непустою, як мінімум, якщо:
+        /// IsAssociatedPersonWithBank == true
+        /// АБО ImplicitOwnershipWithBankSummary > сума вирахуваної через непряме особисте володіння банком на особу-заявника
+        /// АБО якщо серед фігурантів анкети є особи з прізвищем заявника.
+        /// </summary>
+        [DisplayName("Зв'язки між особами-фігурантами анкети")]
+        [Description("Природа зв'язків між усіма пов'язанами особами, що згадуються в анкеті")]
+        [Browsable(true)]
+        [Required]
+        public List<PersonsAssociation> PersonsLinks { get; set; }
+
+        /// <summary>
+        /// Реквізити усіх осіб-фігурантів
+        /// </summary>
+        public List<GenericPersonInfo> MentionedIdentities { get; set; }
+
         /// <summary>
         /// 3.5. Стверджую, що я належним чином виконую вимоги законодавства України з питань 
         /// запобігання та протидії легалізації (відмиванню) доходів, одержаних злочинним шляхом, 
         /// або фінансуванню тероризму.
         /// </summary>
+        [DisplayName("")]
+        [Description("")]
+        [Browsable(true)]
         public bool IsAMLLegislationKept { get; set; }
 
         /// <summary>
