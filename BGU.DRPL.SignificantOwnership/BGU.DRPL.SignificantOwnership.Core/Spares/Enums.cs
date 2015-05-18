@@ -665,8 +665,21 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares
     }
 
     public enum BankruptcyCaseResolutionType
-    { 
-        //todo
+    {
+        [Description("Не вказано")]
+        None = 0,
+        [Description("Порушено справу")]
+        CaseFiled,
+        [Description("Оголошено банкрутом")]
+        DeclaredBankrupt,
+        [Description("У стані санації")]
+        InFinRecovery,
+        [Description("Відновлено (після банкрутства)")]
+        BankruptedRecovered,
+        [Description("Ліквідовано")]
+        Liquidated,
+        [Description("Сановано")]
+        FinRecovered
     }
 
     /// <summary>
