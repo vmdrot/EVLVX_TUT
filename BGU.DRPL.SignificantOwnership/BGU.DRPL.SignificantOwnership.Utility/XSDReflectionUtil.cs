@@ -237,8 +237,21 @@ namespace BGU.DRPL.SignificantOwnership.Utility
             PropertyInfo pi = typ.GetProperty(prop);
             if (Attribute.IsDefined(pi, typeof(RequiredAttribute)))
             {
-                target.Attributes["minOccurs"].Value = "1";
-                sbComment.AppendLine("ОБОВЯ'ЗКОВЕ ПОЛЕ!");
+
+                Attribute reqAttr0 = Attribute.GetCustomAttribute((MemberInfo)pi, typeof(RequiredAttribute));
+                if (reqAttr0 is RequiredAttribute)
+                {
+                    RequiredAttribute reqAttr = (RequiredAttribute)reqAttr0;
+                    if (string.IsNullOrEmpty(reqAttr.Condition))
+                    {
+                        target.Attributes["minOccurs"].Value = "1";
+                        sbComment.AppendLine("ОБОВЯ'ЗКОВЕ ПОЛЕ!");
+                    }
+                    else
+                    {
+                        sbComment.AppendLine(string.Format("(!)ПОЛЕ ОБОВЯ'ЗКОВЕ ЗА УМОВИ(!):\n   {0}", reqAttr.Condition));
+                    }
+                }
             }
             
             if (Attribute.IsDefined(pi, typeof(ObsoleteAttribute)))
