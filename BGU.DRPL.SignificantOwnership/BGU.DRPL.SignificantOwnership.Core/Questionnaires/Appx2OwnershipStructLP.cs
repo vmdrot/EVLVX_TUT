@@ -79,7 +79,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         
         /// <summary>
         /// p.1.5
-       /// Чекбокс, щоб вказати, що її не існує (не передбачено), цього органу
+        /// Чекбокс, щоб вказати, що її не існує (не передбачено), цього органу
         /// </summary>
         [Browsable(true)]
         [DisplayName("Виконавчий орган юридичної особи?")]
