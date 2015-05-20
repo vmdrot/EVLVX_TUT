@@ -163,6 +163,7 @@
     <Compile Include="ValidationSchemes\ValidationSchemeBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="FXLicensing\Questionnares\" />
     <Folder Include="TypeEditors\Interfaces\" />
     <Folder Include="TypeEditors\TypeConverters\" />
   </ItemGroup>
