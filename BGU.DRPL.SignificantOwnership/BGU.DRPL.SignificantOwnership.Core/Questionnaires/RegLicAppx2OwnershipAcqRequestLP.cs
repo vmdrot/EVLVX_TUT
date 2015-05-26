@@ -27,6 +27,31 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
     public class RegLicAppx2OwnershipAcqRequestLP : IQuestionnaire
     {
 
+        #region cctor(s)
+        public RegLicAppx2OwnershipAcqRequestLP()
+        { 
+            this.AccountsWithBanks = new List<BankInfo>();
+            this.AccountsWithBanksToBePaidFrom = new List<BankInfo>();
+            this.ExistingOwnershipWithBankDetails = new List<OwnershipStructure>();
+            this.AppliedForOwnershipDetails = new List<OwnershipStructure>();
+            this.TargetedOwnershipDetails = new List<OwnershipStructure>();
+            this.FundsOrigin = new List<IncomeOriginInfo>();
+            this.PaymentDeadLines = new List<PaymentDeadlineInfo>();
+            this.LoansWithIssuingBank = new List<LoanInfo>();
+            this.LoansWithOtherBank = new List<LoanInfo>();
+            this.AcquireeOwnershipOtherThanBankRef = new List<OwnershipStructure>();
+            this.AssociatedPersonsInOtherCouncils = new List<CouncilBodyInfo>();
+            this.AssociatedOrOwnerWithBanks = new List<BankInfo>();
+            this.AcquireeOwners = new List<OwnershipStructure>();
+            this.BankruptcyInvestigations = new List<BankruptcyInvestigationInfo>();
+            this.MiscNonRepaidDebts = new List<IndebtnessInfo>();
+            this.BreachesOfLaw = new List<BreachOfLawRecordInfo>();
+            this.LiquidatedSignOwnershipLastYear = new List<LiquidatedEntityOwnershipInfo>();
+            this.MentionedIdentities = new List<GenericPersonInfo>();
+            this.PersonsLinks = new List<PersonsAssociation>();
+        }
+        #endregion
+
         /// <summary>
         /// стосовно участі в ___________________________________
         /// (повне офіційне найменування банку)
