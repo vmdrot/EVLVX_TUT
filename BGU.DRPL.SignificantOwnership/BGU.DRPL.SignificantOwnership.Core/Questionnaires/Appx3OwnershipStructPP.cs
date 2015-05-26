@@ -19,6 +19,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
     /// (=остаточно узгоджено 
     /// з бізнес-користувачами)
     /// </summary>
+    [Obsolete]
     public class Appx3OwnershipStructPP : IQuestionnaire
     {
         public string SuggestSaveAsFileName()

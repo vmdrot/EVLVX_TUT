@@ -25,6 +25,13 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
     /// </summary>
     public class RegLicAppx3MemberCandidateAppl : IQuestionnaire
     {
+        #region cctor(s)
+        public RegLicAppx3MemberCandidateAppl()
+        { 
+            //todo
+        }
+        #endregion
+
         #region Original fields
         /// <summary>
         /// Стосовно участі в ___________________________________________________________________

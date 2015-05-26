@@ -26,6 +26,28 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
     /// </summary>
     public class RegLicAppx12HeadCandidateAppl : IQuestionnaire
     {
+        #region cctor(s)
+        public RegLicAppx12HeadCandidateAppl()
+        {
+            this.Education = new List<EducationRecordInfo>();
+            this.MembershipIn3rdPartyBoards = new List<CouncilBodyInfo>();
+            this.BankOwnership = new List<OwnershipStructure>();
+            this.ThirdPartiesOwnership = new List<OwnershipStructure>();
+            this.PartiesMgmtBodiesAttorneys = new List<CouncilBodyInfo>();
+            this.ThirdPartiesBeingRepresented = new List<GenericPersonID>();
+            this.OtherBanksSignificantOwnership = new List<OwnershipStructure>();
+            this.OtherBanksWithSignificantOwnership = new List<BankInfo>();
+            this.EmploymentGaps = new List<EmploymentRecordInfo>();
+            this.LiquidatedOrInsolventManagements = new List<LiquidatedOrInsolventEntityMgmtRecordInfo>();
+            this.PersonsLinks = new List<PersonsAssociation>();
+            this.RelativesInBankBoards = new List<CouncilBodyInfo>();
+            this.MiscNonRepaidDebts = new List<IndebtnessInfo>();
+            this.BreachesOfLaw = new List<BreachOfLawRecordInfo>();
+            this.MentionedIdentities = new List<GenericPersonInfo>();
+        }
+        #endregion
+
+
         #region Original fields
         /// <summary>
         /// у ___________________________________________________

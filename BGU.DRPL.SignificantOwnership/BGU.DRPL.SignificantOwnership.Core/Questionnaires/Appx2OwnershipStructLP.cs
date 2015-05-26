@@ -24,6 +24,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
     /// (=остаточно узгоджено 
     /// з бізнес-користувачами)
     /// </summary>
+    [Obsolete]
     [Description("АНКЕТА юридичної особи (у тому числі банку),Додаток 2 до Положення про порядок подання відомостей про структуру власності")]
     [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.Appx2OwnershipStructLP_Editor), typeof(System.Drawing.Design.UITypeEditor))]
     public class Appx2OwnershipStructLP : QuestionnaireBase, IGenericPersonsService, IAddressesService
