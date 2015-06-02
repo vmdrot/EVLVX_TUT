@@ -68,6 +68,11 @@
     <Compile Include="FXLicensing\Questionnares\IndividualFXLicenseCancelApplAppx7.cs" />
     <Compile Include="FXLicensing\Questionnares\IndividualFXLisenceChangesApplAppx6.cs" />
     <Compile Include="Interfaces\IModule.cs" />
+    <Compile Include="Messages\DossierMessageBase.cs" />
+    <Compile Include="Messages\IDossierMessageBody.cs" />
+    <Compile Include="Messages\Post315AppxBankAssocPersons.cs" />
+    <Compile Include="Spares2\DossierMsgs\NbuCommonMgsTrail.cs" />
+    <Compile Include="Spares2\DossierMsgs\NbuCommonMsgHead.cs" />
     <Compile Include="Spares2\Post315AppxBankAssocPerson.cs" />
     <Compile Include="Messages\RegLicAppx2OwnershipAcqRequestLP_MoneyOriginsLtr.cs" />
     <Compile Include="Misc\Utils.cs" />
