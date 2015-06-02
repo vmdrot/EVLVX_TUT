@@ -68,6 +68,8 @@
     <Compile Include="FXLicensing\Questionnares\IndividualFXLicenseCancelApplAppx7.cs" />
     <Compile Include="FXLicensing\Questionnares\IndividualFXLisenceChangesApplAppx6.cs" />
     <Compile Include="Interfaces\IModule.cs" />
+    <Compile Include="Spares2\Post315AppxBankAssocPerson.cs" />
+    <Compile Include="Messages\RegLicAppx2OwnershipAcqRequestLP_MoneyOriginsLtr.cs" />
     <Compile Include="Misc\Utils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyNames.Designer.cs">
@@ -123,6 +125,7 @@
     <Compile Include="Spares\Data\LiquidatedOrInsolventEntityInfoBase.cs" />
     <Compile Include="Spares\Data\LiquidatedOrInsolventEntityMgmtRecordInfo.cs" />
     <Compile Include="Spares\Data\LoanInfo.cs" />
+    <Compile Include="Spares\Data\LPRegisteredDateRecordId.cs" />
     <Compile Include="Spares\Data\OwnershipStructure.cs" />
     <Compile Include="Spares\Data\PaymentDeadlineInfo.cs" />
     <Compile Include="Spares\Data\PaymentModeInfo.cs" />

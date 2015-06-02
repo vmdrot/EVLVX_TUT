@@ -65,6 +65,14 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         [DisplayName("Держорган-реєстратор")]
         [Description("Державний орган, який здійснив реєстрацію юридичної особи")]
         public RegistrarAuthority Registrar { get; set; }
+
+        /// <summary>
+        /// Дата та номер запису про проведення державної реєстрації фізичної особи-підприємця
+        /// </summary>
+        [DisplayName("Дата/№ запису в держреєстрі")]
+        [Description("Дата та номер запису в Єдиному державному реєстрі юридичних осіб та фізичних осіб-підприємців")]
+        public LPRegisteredDateRecordId RegisteredDateID { get; set; }
+
         /// <summary>
         /// Якщо передбачений представник
         /// </summary>
