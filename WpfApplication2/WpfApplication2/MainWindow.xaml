@@ -10,6 +10,7 @@
         <Menu HorizontalAlignment="Left" Height="31" Margin="0,-19,0,0" VerticalAlignment="Top" Width="479.49">
             <Button Content="Stack panel" Click="Button_Click" />
         </Menu>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="54,184,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

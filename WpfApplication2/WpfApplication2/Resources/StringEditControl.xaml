@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <DataTemplate x:Key="stringPropEditControl">
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Label Name="lblDisplayName" Content="{Binding DisplayName}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="auto"/>
+        <ComboBox Name="cbx" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top" Width="auto"/>
+        <Label Name="lblDescription" Content="Description" HorizontalAlignment="Left" Margin="12,53,0,0" VerticalAlignment="Top" Width="auto" FontStyle="Italic" />
+        </Grid>
+    </DataTemplate>    
+</ResourceDictionary>

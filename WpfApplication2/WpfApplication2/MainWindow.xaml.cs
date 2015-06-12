@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BGU.DRPL.SignificantOwnership.Core.Spares;
 using BGU.DRPL.SignificantOwnership.Utility;
+using WpfApplication2.Forms;
 
 namespace WpfApplication2
 {
@@ -45,6 +46,12 @@ namespace WpfApplication2
         {
             StackPanelWindow wnd = new StackPanelWindow();
             wnd.ShowDialog();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Appx2OwnershipStructLPFrm frm = new Appx2OwnershipStructLPFrm();
+            frm.ShowDialog();
         }
 
     }
