@@ -1,0 +1,67 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfApplication2"
+                    xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+                    xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Styles.xaml" />
+        <ResourceDictionary Source="Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <DataTemplate DataType="{x:Type bguq:Appx2OwnershipStructLP}" >
+        <Grid>
+            <!--<Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+                
+            <ContentControl Grid.Row="6" Content="{Binding Signatory}" />-->
+            <StackPanel>
+                <Expander Header="Банк" ToolTip="Банк" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                
+                </Expander>
+                <Expander Header="Юр.особа-заявник" ToolTip="1. Інформація про юридичну особу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                    <ContentControl Content="{Binding Acquiree}" />
+                </Expander>
+                <Expander Header="1.4. Наглядова (спостережна) рада юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                    <StackPanel>
+                        <CheckBox IsChecked="{Binding IsSupervisoryCouncilPresent}" />
+                        <TextBlock Text="Наглядова (спостережна) рада юридичної особи?" ToolTip="1.4. Чи існує наглядова (спостережна) рада юридичної особи"/>
+                        <ContentControl Content="{Binding SupervisoryCouncil}" Visibility="{Binding Path=IsSupervisoryCouncilPresent , Converter={StaticResource bool2Vis}}" />
+                    </StackPanel>
+                </Expander>
+                <Expander Header="1.4. Виконавчий орган юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                    <StackPanel>
+                        <CheckBox IsChecked="{Binding IsExecutivesPresent}" />
+                        <TextBlock Text="Виконавчий орган юридичної особи?" ToolTip="1.4. Чи існує виконавчий орган юридичної особи" Visibility="{Binding IsSupervisoryCouncilPresent}"/>
+                        <ContentControl Content="{Binding Executives}" Visibility="{Binding Path=IsExecutivesPresent, Converter={StaticResource bool2Vis}}" />
+                    </StackPanel>
+                </Expander>
+                <Expander Header="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                <ContentControl Content="{Binding Signatory}" />
+                </Expander>
+                <Expander Header="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                <ContentControl Content="{Binding Signatory}" />
+                </Expander>
+                <Expander Header="7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                <ContentControl Content="{Binding Signatory}" />
+                </Expander>
+                <Expander Header="Expander" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                <ContentControl Content="{Binding Signatory}" />
+                </Expander>
+                <Expander Header="Signatory" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                <ContentControl Content="{Binding Signatory}" />
+                </Expander>
+            </StackPanel>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>
