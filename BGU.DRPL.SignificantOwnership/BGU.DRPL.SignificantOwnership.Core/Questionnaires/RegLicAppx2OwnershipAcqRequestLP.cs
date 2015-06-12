@@ -31,7 +31,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         public RegLicAppx2OwnershipAcqRequestLP()
         { 
             this.AccountsWithBanks = new List<BankInfo>();
-            this.AccountsWithBanksToBePaidFrom = new List<BankInfo>();
+            //this.AccountsWithBanksToBePaidFrom = new List<BankInfo>();
             this.ExistingOwnershipWithBankDetails = new List<OwnershipStructure>();
             this.AppliedForOwnershipDetails = new List<OwnershipStructure>();
             this.TargetedOwnershipDetails = new List<OwnershipStructure>();
@@ -40,7 +40,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
             this.LoansWithIssuingBank = new List<LoanInfo>();
             this.LoansWithOtherBank = new List<LoanInfo>();
             this.AcquireeOwnershipOtherThanBankRef = new List<OwnershipStructure>();
-            this.AssociatedPersonsInOtherCouncils = new List<CouncilBodyInfo>();
+            //this.AssociatedPersonsInOtherCouncils = new List<CouncilBodyInfo>();
             this.AssociatedOrOwnerWithBanks = new List<BankInfo>();
             this.AcquireeOwners = new List<OwnershipStructure>();
             this.BankruptcyInvestigations = new List<BankruptcyInvestigationInfo>();
@@ -72,6 +72,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// 
         /// 1.3. Код за ЄДРПОУ _____________________________________________________________.
         /// 1.4. Код платника податків ________________________________________________________.
+        /// 1.6. Основний вид діяльності юридичної особи _______________________________________.
         /// ---- 
         /// Самі реквізити мають потрапити до MentionedIdentities
         /// </summary>
@@ -88,15 +89,14 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         [DisplayName("1.5. Рейтингова оцінка")]
         [Description("(за рейтингом, який підтверджений у бюлетені, однієї  з провідних рейтингових компаній IBCA,Standart & Poor's, Moody's)")]
         [Required]
-        public CreditRatingInfo CreditRatingGrade { get; set; }
+        public List<CreditRatingInfo> CreditRatingGrade { get; set; }
 
-        /// <summary>
-        /// 1.6. Основний вид діяльності юридичної особи _______________________________________.
-        /// </summary>
-        [DisplayName("1.6. Основний вид діяльності юридичної особи")]
-        [Description("1.6. Основний вид діяльності юридичної особи")]
-        [Required]
-        public EconomicActivityType AcquireeCoreActivity { get; set; }
+        ///// <summary>
+        ///// </summary>
+        //[DisplayName("1.6. Основний вид діяльності юридичної особи")]
+        //[Description("1.6. Основний вид діяльності юридичної особи")]
+        //[Required]
+        //public EconomicActivityType AcquireeCoreActivity { get; set; }
 
         /// <summary>
         /// 1.7. Повні  офіційні  найменування банків,  у яких юридична особа має рахунки (не заповнюється банками), 
@@ -108,56 +108,57 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         [Description("(не заповнюється банками)")]
         public List<BankInfo> AccountsWithBanks { get; set; }
 
-        /// <summary>
-        /// 1.8. Повні  офіційні найменування банків,  які надають інформацію про стан рахунків юридичної особи, з яких має здійснюватися  оплата за акції/паї (не заповнюється банками), ________________________________________________________________________________
-        /// _______________________________________________________________________________.
-        /// ------
-        /// Поле обов'язкове, лише якщо заявник не є банком.
-        /// </summary>
-        [DisplayName("1.8 Банки, з яких має здійснюватися  оплата за акції/паї")]
-        [Description("1.8. Повні  офіційні найменування банків,  які надають інформацію про стан рахунків юридичної особи, з яких має здійснюватися  оплата за акції/паї (не заповнюється банками)")]
-        public List<BankInfo> AccountsWithBanksToBePaidFrom { get; set; }
-        /// <summary>
-        /// Чекбокс, щоб вказати, що її не існує (не передбачено), цього органу
-        /// </summary>
-        [Browsable(true)]
-        [DisplayName("Наглядова (спостережна) рада юридичної особи?")]
-        [Description("1.9. Голова та  члени наглядової (спостережної) ради юридичної  особи - Чи існує наглядова (спостережна) рада юридичної особи?")]
-        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
-        [Required]
-        public bool IsSupervisoryCouncilPresent { get; set; }
-        /// <summary>
-        /// 1.9. Голова та  члени наглядової (спостережної) ради юридичної  особи _______________________________________________________________________________.
-        ///                                                                                           (прізвища, імена, по батькові)
-        /// ------
-        /// Поле обов'язкове, тільки якщо IsSupervisoryCouncilPresent == true
-        /// </summary>
-        [Browsable(true)]
-        [DisplayName("1.9. Особовий склад наглядової ради")]
-        [Description("1.9. Голова та  члени наглядової (спостережної) ради юридичної  особи")]
-        public CouncilBodyInfo SupervisoryCouncil { get; set; }
+        ///// <summary>
+        ///// 1.8. Повні  офіційні найменування банків,  які надають інформацію про стан рахунків юридичної особи, з яких має здійснюватися  оплата за акції/паї (не заповнюється банками), ________________________________________________________________________________
+        ///// _______________________________________________________________________________.
+        ///// ------
+        ///// Поле обов'язкове, лише якщо заявник не є банком.
+        ///// </summary>
+        //[DisplayName("1.8 Банки, з яких має здійснюватися  оплата за акції/паї")]
+        //[Description("1.8. Повні  офіційні найменування банків,  які надають інформацію про стан рахунків юридичної особи, з яких має здійснюватися  оплата за акції/паї (не заповнюється банками)")]
+        //public List<BankInfo> AccountsWithBanksToBePaidFrom { get; set; }
+        
+        ///// <summary>
+        ///// Чекбокс, щоб вказати, що її не існує (не передбачено), цього органу
+        ///// </summary>
+        //[Browsable(true)]
+        //[DisplayName("Наглядова (спостережна) рада юридичної особи?")]
+        //[Description("1.9. Голова та  члени наглядової (спостережної) ради юридичної  особи - Чи існує наглядова (спостережна) рада юридичної особи?")]
+        //[Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        //[Required]
+        //public bool IsSupervisoryCouncilPresent { get; set; }
+        ///// <summary>
+        ///// 1.9. Голова та  члени наглядової (спостережної) ради юридичної  особи _______________________________________________________________________________.
+        /////                                                                                           (прізвища, імена, по батькові)
+        ///// ------
+        ///// Поле обов'язкове, тільки якщо IsSupervisoryCouncilPresent == true
+        ///// </summary>
+        //[Browsable(true)]
+        //[DisplayName("1.9. Особовий склад наглядової ради")]
+        //[Description("1.9. Голова та  члени наглядової (спостережної) ради юридичної  особи")]
+        //public CouncilBodyInfo SupervisoryCouncil { get; set; }
 
-        /// <summary>
-        /// 1.10. Голова та члени виконавчого органу юридичної особи
-        /// Чекбокс, щоб вказати, що її не існує (не передбачено), цього органу
-        /// </summary>
-        [Browsable(true)]
-        [DisplayName("1.4. Виконавчий орган існує?")]
-        [Description("1.4. Чи існує виконавчий орган юридичної особи")]
-        [Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
-        [Required]
-        public bool IsExecutivesPresent { get; set; }
-        /// <summary>
-        /// 
-        /// 1.10. Голова та члени виконавчого органу юридичної особи ____________________________
-        /// _______________________________________________________________________________.
-        ///            (прізвища, імена, по батькові)
-        /// </summary>
-        [Browsable(true)]
-        [DisplayName("1.10. Особовий склад виконавчого органу")]
-        [Description("1.10. Голова та члени виконавчого органу юридичної особи")]
-        [Required("IsExecutivesPresent == true")]
-        public CouncilBodyInfo Executives { get; set; }
+        ///// <summary>
+        ///// 1.10. Голова та члени виконавчого органу юридичної особи
+        ///// Чекбокс, щоб вказати, що її не існує (не передбачено), цього органу
+        ///// </summary>
+        //[Browsable(true)]
+        //[DisplayName("1.4. Виконавчий орган існує?")]
+        //[Description("1.4. Чи існує виконавчий орган юридичної особи")]
+        //[Editor(typeof(BGU.DRPL.SignificantOwnership.Core.TypeEditors.BooleanEditor), typeof(System.Drawing.Design.UITypeEditor))]
+        //[Required]
+        //public bool IsExecutivesPresent { get; set; }
+        ///// <summary>
+        ///// 
+        ///// 1.10. Голова та члени виконавчого органу юридичної особи ____________________________
+        ///// _______________________________________________________________________________.
+        /////            (прізвища, імена, по батькові)
+        ///// </summary>
+        //[Browsable(true)]
+        //[DisplayName("1.10. Особовий склад виконавчого органу")]
+        //[Description("1.10. Голова та члени виконавчого органу юридичної особи")]
+        //[Required("IsExecutivesPresent == true")]
+        //public CouncilBodyInfo Executives { get; set; }
         
         /// <summary>
         /// 1.11. Державний орган, що здійснює контроль (нагляд) за діяльністю юридичної особи,
@@ -184,27 +185,38 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// <summary>
         /// 2. Відносини з банком-емітентом
         /// </summary>
-        [DisplayName("2.1. Це первинне розміщення?")]
-        [Description("2.1. Подається заявка на придбання частки істотної участі в рамках первинного розміщення акцій банку?")]
+        [DisplayName("2.2. Це первинне розміщення?")]
+        [Description("2.2. Подається заявка на придбання частки істотної участі в рамках первинного розміщення акцій банку?")]
         [Required]
         public bool IsIPO { get; set; }
-      
-        /// <summary>
-        /// 2.1. Найменування, номер і дата офіційного видання, у якому опубліковано оголошення про емісію (у разі первинного розміщення), _____________________________________________.
-        /// </summary>
-        [DisplayName("2.1. Публікація про первинне розміщення")]
-        [Description("2.1. Найменування, номер і дата офіційного видання, у якому опубліковано оголошення про емісію (у разі первинного розміщення)")]
-        [Required("IsIPO == true")]
-        public PublicationInfo IPOPublication { get; set; }
 
-        /// <summary>
-        /// 2.2. Андеррайтер (за наявності)
-        /// ____________________________________________________.
-        ///           (найменування, код за ЄДРПОУ)
-        /// </summary>
-        [DisplayName("2.2. Андеррайтер (за наявності)")]
-        [Description("Найменування, код за ЄДРПОУ андеррайтера")]
-        public GenericPersonID Underwriter { get; set; }
+
+        [DisplayName("2.2. Придбання на первинному ринку")]
+        [Description("2.2. Інформація стосовно наміру придбання акцій (паїв) банку на первинному ринку")]
+        [Required]
+        public List<IPOSharesPurchaseInfo> IPOPurchase { get; set; }
+
+        [DisplayName("2.3. Придбання на вторинному ринку")]
+        [Description("2.3. Інформація стосовно наміру придбання акцій (паїв) банку на вторинному ринку")]
+        [Required]
+        public List<SecondaryMarketSharesPurchaseInfo> SecondaryMarketPurchase { get; set; }
+
+        ///// <summary>
+        ///// 2.1. Найменування, номер і дата офіційного видання, у якому опубліковано оголошення про емісію (у разі первинного розміщення), _____________________________________________.
+        ///// </summary>
+        //[DisplayName("2.1. Публікація про первинне розміщення")]
+        //[Description("2.1. Найменування, номер і дата офіційного видання, у якому опубліковано оголошення про емісію (у разі первинного розміщення)")]
+        //[Required("IsIPO == true")]
+        //public PublicationInfo IPOPublication { get; set; }
+
+        ///// <summary>
+        ///// 2.2. Андеррайтер (за наявності)
+        ///// ____________________________________________________.
+        /////           (найменування, код за ЄДРПОУ)
+        ///// </summary>
+        //[DisplayName("2.2. Андеррайтер (за наявності)")]
+        //[Description("Найменування, код за ЄДРПОУ андеррайтера")]
+        //public GenericPersonID Underwriter { get; set; }
         
         /// <summary>
         /// 2.3. Наявна участь у банку:
@@ -405,14 +417,14 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         [Required("HasAcquireeOwnershipOtherThanBankRef == true")]
         public List<OwnershipStructure> AcquireeOwnershipOtherThanBankRef { get; set; }
 
-        /// <summary>
-        /// 4.5. Чи  є  працівники  або  довірена  особа  юридичної  особи  в наглядовому органі цієї юридичної особи?
-        /// _______________________________________________________________.
-        /// </summary>
-        [DisplayName("4.5. Працівники  або  довірена  особа  юридичної  особи  в наглядовому органі юридичної особи")]
-        [Description("4.5. Чи  є  працівники  або  довірена  особа  юридичної  особи  в наглядовому органі цієї юридичної особи?")]
-        [Required("HasAcquireeOwnershipOtherThanBankRef == true")]
-        public List<CouncilBodyInfo> AssociatedPersonsInOtherCouncils { get; set; } //todo - ask Bevz
+        ///// <summary>
+        ///// 4.5. Чи  є  працівники  або  довірена  особа  юридичної  особи  в наглядовому органі цієї юридичної особи?
+        ///// _______________________________________________________________.
+        ///// </summary>
+        //[DisplayName("4.5. Працівники  або  довірена  особа  юридичної  особи  в наглядовому органі юридичної особи")]
+        //[Description("4.5. Чи  є  працівники  або  довірена  особа  юридичної  особи  в наглядовому органі цієї юридичної особи?")]
+        //[Required("HasAcquireeOwnershipOtherThanBankRef == true")]
+        //public List<CouncilBodyInfo> AssociatedPersonsInOtherCouncils { get; set; } //todo - ask Bevz
 
 
 
@@ -607,16 +619,16 @@ namespace BGU.DRPL.SignificantOwnership.Core.Questionnaires
         /// <summary>
         /// Реквізити осіб-фігурантів анкети
         /// </summary>
-        [DisplayName("")]
-        [Description("")]
+        [DisplayName("Реквізити осіб-фігурантів анкети")]
+        [Description("Повні реквізити юридичних та фізичних осіб, що згадуються в розділах анкети")]
         [Required("")]
         public List<GenericPersonInfo> MentionedIdentities { get; set; }
 
         /// <summary>
         /// Зв'язки між фігурантами анкети
         /// </summary>
-        [DisplayName("")]
-        [Description("")]
+        [DisplayName("Зв'язки між фігурантами анкети")]
+        [Description("Опис зв'язків між фізичними та юридичними особами, що згадуються в розділах анкети")]
         [Required("")]
         public List<PersonsAssociation> PersonsLinks { get; set; }
 
