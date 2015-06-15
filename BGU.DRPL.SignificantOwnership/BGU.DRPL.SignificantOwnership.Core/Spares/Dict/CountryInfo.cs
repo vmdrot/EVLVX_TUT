@@ -33,7 +33,7 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Dict
         /// Назва країни українською мовою
         /// </summary>
         [Required]
-        public string CountryNameUkr{ get; set; }
+        public string CountryNameUkr { get; set; }
 
         #region specific countries
         public static readonly CountryInfo AALAND_ISLANDS = new CountryInfo() { CountryISO2Code = "AX", CountryISO3Code = "ALA", CountryISONr = "248", CountryNameEng = "AALAND_ISLANDS", CountryNameUkr = "Оландські острови" };
