@@ -325,7 +325,15 @@ namespace BGU.DRPL.SignificantOwnership.EmpiricalData.Examples
 
         private void ComposeSupervisoryBoard()
         {
-            //todo
+            this._appx2Questionnaire.IsSupervisoryCouncilPresent = true;
+            this._appx2Questionnaire.SupervisoryCouncil = new CouncilBodyInfo();
+            this._appx2Questionnaire.SupervisoryCouncil.CouncilBodyName = "Наглядова рада";
+            this._appx2Questionnaire.SupervisoryCouncil.Members = new List<CouncilMemberInfo>();
+            this._appx2Questionnaire.SupervisoryCouncil.Members.Add(new CouncilMemberInfo() { PositionName = "Член", Member = physIliinVV.ID} );
+            this._appx2Questionnaire.SupervisoryCouncil.Members.Add(new CouncilMemberInfo() { PositionName = "Голова", Member = physSymovianSV.ID });
+            this._appx2Questionnaire.SupervisoryCouncil.Members.Add(new CouncilMemberInfo() { PositionName = "Член", Member = physSymovianVS.ID });
+            this._appx2Questionnaire.SupervisoryCouncil.Members.Add(new CouncilMemberInfo() { PositionName = "Член", Member = physTovazhnianskyiVL.ID });
+            this._appx2Questionnaire.SupervisoryCouncil.HeadMember = physSymovianVS.ID;
         }
 
 
@@ -336,7 +344,7 @@ namespace BGU.DRPL.SignificantOwnership.EmpiricalData.Examples
 
         private void ComposeSignatory()
         {
-            //todo
+            this._appx2Questionnaire.Signatory = new BGU.DRPL.SignificantOwnership.Core.Spares.Data.SignatoryInfo() { DateSigned = DateTime.Parse("2015-04-30T00:00:00"), SignatoryPosition = "В.о. Голови правління", SurnameInitials = "Симов'ян В.С." };
         }
     }
 }

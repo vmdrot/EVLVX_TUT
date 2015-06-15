@@ -41,12 +41,14 @@ namespace BGU.DRPL.SignificantOwnership.Core.Spares.Data
         /// Назва органу (мовою оригіналу)
         /// </summary>
         [DisplayName("Назва органу")]
+        [Description("Назва органу (мовою оригіналу)")]
         [Required]
         public string CouncilBodyName { get; set; }
         /// <summary>
         /// Назва органу (українською, для організацій-нерезидентів)
         /// </summary>
         [DisplayName("Назва органу (укр.)")]
+        [Description("Назва органу (українською, для організацій-нерезидентів)")]
         public string CouncilBodyNameUkr { get; set; }
         public override string ToString()
         {
