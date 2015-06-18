@@ -24,9 +24,6 @@ namespace WpfApplication2.Forms
         {
             InitializeComponent();
             _questionnaire = (new GrantBank()).Appx2Questionnaire;
-            _questionnaire.Signatory = new BGU.DRPL.SignificantOwnership.Core.Spares.Data.SignatoryInfo() { DateSigned = DateTime.Parse("2015-04-30T00:00:00"), SignatoryPosition = "В.о. Голови правління", SurnameInitials = "Симов'ян В.С."};
-
-
             quCtrl.Content = Questionnaire;
         }
 

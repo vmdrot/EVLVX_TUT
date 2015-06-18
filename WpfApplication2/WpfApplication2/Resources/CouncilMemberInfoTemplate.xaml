@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfApplication2"
+                    xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+                    xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Styles.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate DataType="{x:Type bgusd:CouncilMemberInfo}">
+        <Border BorderBrush="GreenYellow" BorderThickness="2" CornerRadius="4">
+            <StackPanel>
+                <TextBlock Text="Член органу управління" Style="{StaticResource dispNmStyle}" />
+                <ContentControl Content="{Binding Member}" ToolTip="Член органу управління" />
+                <TextBlock Text="Посада" Style="{StaticResource dispNmStyle}" />
+                <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PositionName}" ToolTip="Посада" />
+                <TextBlock Text="Опис функцій" Style="{StaticResource dispNmStyle}" />
+                <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FunctionsDescription}" ToolTip="Опис функцій члена органу" />
+            </StackPanel>
+        </Border>
+    </DataTemplate>
+</ResourceDictionary>

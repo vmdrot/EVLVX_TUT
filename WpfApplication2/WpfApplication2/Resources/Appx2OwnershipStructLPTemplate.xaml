@@ -10,6 +10,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Styles.xaml" />
         <ResourceDictionary Source="Converters.xaml" />
+        <ResourceDictionary Source="CouncilBodyInfoTemplate.xaml" />
+        <ResourceDictionary Source="CouncilMemberInfoTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <DataTemplate DataType="{x:Type bguq:Appx2OwnershipStructLP}" >
         <Grid>
@@ -27,39 +29,51 @@
             <ContentControl Grid.Row="6" Content="{Binding Signatory}" />-->
             <StackPanel>
                 <Expander Header="Банк" ToolTip="Банк" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
-                
+                    <ContentControl Content="{Binding BankRef}" Margin="5,2" />
                 </Expander>
                 <Expander Header="Юр.особа-заявник" ToolTip="1. Інформація про юридичну особу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
-                    <ContentControl Content="{Binding Acquiree}" />
+                    <ContentControl Content="{Binding Acquiree}" Margin="5,2" />
                 </Expander>
                 <Expander Header="1.4. Наглядова (спостережна) рада юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
-                    <StackPanel>
+                    <StackPanel Margin="5,2">
                         <CheckBox IsChecked="{Binding IsSupervisoryCouncilPresent}" />
                         <TextBlock Text="Наглядова (спостережна) рада юридичної особи?" ToolTip="1.4. Чи існує наглядова (спостережна) рада юридичної особи"/>
                         <ContentControl Content="{Binding SupervisoryCouncil}" Visibility="{Binding Path=IsSupervisoryCouncilPresent , Converter={StaticResource bool2Vis}}" />
                     </StackPanel>
                 </Expander>
                 <Expander Header="1.4. Виконавчий орган юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
-                    <StackPanel>
+                    <StackPanel Margin="5,2" >
                         <CheckBox IsChecked="{Binding IsExecutivesPresent}" />
                         <TextBlock Text="Виконавчий орган юридичної особи?" ToolTip="1.4. Чи існує виконавчий орган юридичної особи" Visibility="{Binding IsSupervisoryCouncilPresent}"/>
                         <ContentControl Content="{Binding Executives}" Visibility="{Binding Path=IsExecutivesPresent, Converter={StaticResource bool2Vis}}" />
                     </StackPanel>
                 </Expander>
-                <Expander Header="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
-                <ContentControl Content="{Binding Signatory}" />
+                <Expander Header="1.7. Відсоток участі в банку" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                    <StackPanel Margin="5,2">
+                        <TextBox Text="{Binding TotalOwneshipPct}" Style="{StaticResource txtEdStyle}" ToolTip="1.7. Відсоток участі в банку становить ... відсотків статутного капіталу банку"/>
+                        <Expander Header="Частка власності юрособи в банку - розподіл">
+                            <ContentControl Content="{Binding TotalOwneshipDetails}" Margin="5,2" ToolTip="1.7. Відсоток участі в банку становить, у т.ч.:"/>
+                        </Expander>
+                    </StackPanel>
                 </Expander>
-                <Expander Header="6" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
-                <ContentControl Content="{Binding Signatory}" />
+                <Expander Header="1.8. Інформація про спільне володіння" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                    <!--<ContentControl Content="{Binding BankExistingCommonImplicitOwners}" Margin="5,2" />-->
+                    <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding BankExistingCommonImplicitOwners}" AutoGenerateColumns="True"></DataGrid>
                 </Expander>
-                <Expander Header="7" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
-                <ContentControl Content="{Binding Signatory}" />
+                <Expander Header="1.10. Інформація про набуття права голосу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                    <ContentControl Content="{Binding SharesAppliedFor}" Margin="5,2" />
                 </Expander>
-                <Expander Header="Expander" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
-                <ContentControl Content="{Binding Signatory}" />
+                <Expander Header="Розшифровка ланцюжка власників юрособи-набувача" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                    <ContentControl Content="{Binding ApplicantOwnershipStructure }" Margin="5,2" />
                 </Expander>
-                <Expander Header="Signatory" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
-                <ContentControl Content="{Binding Signatory}" />
+                <Expander Header="Зв'язки між особами-фігурантами анкети" ToolTip="Відомості про пов'язаних осіб, що згадуються в анкеті"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                    <ContentControl Content="{Binding PersonsLinks }" Margin="5,2" />
+                </Expander>
+                <Expander Header="Підписант" ToolTip="Відомості по особу, що підписала анкету" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                    <ContentControl Content="{Binding Signatory}" Margin="5,2" />
+                </Expander>
+                <Expander Header="Контактні дані відправника анкети" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                    <ContentControl Content="{Binding ContactPerson}" Margin="5,2" />
                 </Expander>
             </StackPanel>
         </Grid>
