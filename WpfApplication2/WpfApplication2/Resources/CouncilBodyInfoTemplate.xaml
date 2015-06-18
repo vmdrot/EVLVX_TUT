@@ -1,0 +1,27 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfApplication2"
+                    xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+                    xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Styles.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate DataType="{x:Type bgusd:CouncilBodyInfo}">
+        <StackPanel>
+            <TextBlock Text="Назва органу" Style="{StaticResource dispNmStyle}" />
+            <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CouncilBodyName}" ToolTip="Назва органу (мовою оригіналу)"/>
+            <TextBlock Text="Назва органу (укр.)" Style="{StaticResource dispNmStyle}" />
+            <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CouncilBodyName}" ToolTip="Назва органу (українською, для організацій-нерезидентів)" />
+            <Expander Header="Члени" ToolTip="Члени органу управління" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Margin="5,0">
+                <ItemsControl ItemsSource="{Binding Members}" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+            </Expander>
+            <!--<DataGrid ItemsSource="{Binding Members}" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsReadOnly="False"/>-->
+            <ContentControl Content="{Binding HeadMember}" />
+        </StackPanel>
+    </DataTemplate>    
+</ResourceDictionary>
