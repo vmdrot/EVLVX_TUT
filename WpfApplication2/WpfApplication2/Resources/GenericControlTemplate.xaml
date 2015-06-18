@@ -1,0 +1,71 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfApplication2"
+                    xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+                    xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Styles.xaml" />
+        <ResourceDictionary Source="Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <DataTemplate DataType="{x:Type bguq:RegLicAppx12HeadCandidateAppl}">
+        <!-- put your template xaml here -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <!-- bool field template -->
+            <!-- http://stackoverflow.com/questions/17465867/text-on-the-left-side-of-checkbox-in-wpf -->
+            <CheckBox Grid.Row="0" Checked="{Binding yourPropertyName}" FlowDirection="RightToLeft">
+                <TextBlock FlowDirection="LeftToRight" Text="yourCheckBoxCaption:" />
+            </CheckBox>
+            
+            <!-- one-line string field template -->
+            <TextBlock Grid.Row="1" Text="yourPropertyDispName" Style="{StaticResource dispNmStyle}" />
+            <TextBox Grid.Row="2" Style="{StaticResource txtEdStyle}" Text="{Binding yourPropertyName}" ToolTip="yourPropertyDescription"/>
+            
+            <!-- multi-line string field template -->
+            <!-- http://stackoverflow.com/questions/17465867/text-on-the-left-side-of-checkbox-in-wpf -->
+            <TextBlock Grid.Row="3" Text="yourPropertyDispName" Style="{StaticResource dispNmStyle}" />
+            <TextBox Grid.Row="4" Style="{StaticResource txtEdStyle}" Text="{Binding yourPropertyName}" ToolTip="yourPropertyDescription" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" />
+            
+            <!-- enum field template -->
+            <TextBlock Grid.Row="5" Text="yourPropertyDispName" Style="{StaticResource dispNmStyle}" />
+            <ComboBox Grid.Row="6" ToolTip="yourPropertyDescription" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.EntityTypeList}, Mode=OneWay}" SelectedValue="{Binding PersonType}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch"/>
+            
+            <!-- date field template -->
+            <TextBlock Grid.Row="7" Text="yourPropertyDispName" Style="{StaticResource dispNmStyle}" />
+            <DatePicker Grid.Row="5" Grid.Column="0" ToolTip="yourPropertyDescription"  Style="{StaticResource dtEdStyle}" SelectedDate="{Binding yourPropertyName}"/>
+            
+            <!-- int field template, todo -->
+            <!-- http://stackoverflow.com/questions/1268552/how-do-i-get-a-textbox-to-only-accept-numeric-input-in-wpf -->
+            <TextBlock Grid.Row="1" Text="yourPropertyDispName" Style="{StaticResource dispNmStyle}" />
+            <TextBox Grid.Row="2" Style="{StaticResource txtEdStyle}" Text="{Binding yourPropertyName}" ToolTip="yourPropertyDescription"/>
+            
+            <!-- decimal field template, todo -->
+            <TextBlock Grid.Row="1" Text="yourPropertyDispName" Style="{StaticResource dispNmStyle}" />
+            <TextBox Grid.Row="2" Style="{StaticResource txtEdStyle}" Text="{Binding yourPropertyName}" ToolTip="yourPropertyDescription"/>
+            
+            <!-- class/struct field template -->
+            <Expander Header="yourPropertyDispName" ToolTip="yourPropertyDescription" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                <ContentControl Content="{Binding yourPropertyName}" Margin="5,2" />
+            </Expander>
+            
+            <!-- List Of T -->
+            <Expander Header="yourPropertyDispName" ToolTip="yourPropertyDescription" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding yourPropertyName}" AutoGenerateColumns="True"></DataGrid>
+            </Expander>
+        </Grid>
+    </DataTemplate>
+</ResourceDictionary>
