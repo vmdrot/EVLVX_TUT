@@ -1,0 +1,96 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfApplication2"
+                    xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+                    xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Styles.xaml" />
+        <ResourceDictionary Source="Converters.xaml" />
+        <ResourceDictionary Source="CouncilBodyInfoTemplate.xaml" />
+        <ResourceDictionary Source="CouncilMemberInfoTemplate.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <DataTemplate DataType="{x:Type bguq:RegLicAppx2OwnershipAcqRequestLP}">
+        <StackPanel>
+            <Expander Header="Банк" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                <ContentControl Content="{Binding BankRef}" Margin="5,2" />
+            </Expander>
+            <Expander Header="І. Інформація про юридичну особу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    
+                    <ContentControl Content="{Binding Acquiree}" Margin="5,2" Grid.Row="0"/>
+                    <ContentControl Content="{Binding CreditRatingGrade}" Margin="5,2" Grid.Row="1"/>
+                    <ContentControl Content="{Binding StateRegulatorAuthorities}" Margin="5,2" Grid.Row="2"/>
+                    <ContentControl Content="{Binding TotalExistingOwnershipWithBank}" Margin="5,2" Grid.Row="3"/>
+                    <ContentControl Content="{Binding AccountsWithBanks}" Margin="5,2" Grid.Row="4"/>
+                </Grid>
+            </Expander>
+            <Expander Header="ІІ. Інформація про наміри щодо набуття (збільшення) істотної участі в банку" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ContentControl Content="{Binding AcquisitionWays}" Margin="5,2" Grid.Row="0"/>
+                    <ContentControl Content="{Binding IPOPurchase}" Margin="5,2" Grid.Row="1"/>
+                    <ContentControl Content="{Binding SecondaryMarketPurchases}" Margin="5,2" Grid.Row="2"/>
+                    <ContentControl Content="{Binding AquisitionByPoAttorneys}" Margin="5,2" Grid.Row="3"/>
+                    <ContentControl Content="{Binding AquisitionByInfluence}" Margin="5,2" Grid.Row="4"/>
+                    <ContentControl Content="{Binding FundsOrigin}" Margin="5,2" Grid.Row="5"/>
+                </Grid>
+            </Expander>
+            <Expander Header="ІІІ. Відносини юридичної особи з іншими особами" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                <ContentControl Content="{Binding ExistingOwnershipDetailsHive}" Margin="5,2" />
+            </Expander>
+            <Expander Header="IV. Ділова репутація" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ContentControl Content="{Binding HasOutstandingLoansWithBanks}" Margin="5,2" Grid.Row="0"/>
+                    <ContentControl Content="{Binding OutstandingLoansWithBanksDetails}" Margin="5,2" Grid.Row="1"/>
+                    <ContentControl Content="{Binding HasNoImperfectReputationSigns}" Margin="5,2" Grid.Row="2"/>
+                    <ContentControl Content="{Binding ImprefectReputationDetails}" Margin="5,2" Grid.Row="3"/>
+                    <ContentControl Content="{Binding IsAMLEtcLegislationKept}" Margin="5,2" Grid.Row="4"/>
+                </Grid>
+            </Expander>
+            <Expander Header="Прикінцеві поля" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <ContentControl Content="{Binding IsApplicationInfoAccurateAndTrue}" Margin="5,2" Grid.Row="0"/>
+                    <ContentControl Content="{Binding MissingInformationResons}" Margin="5,2" Grid.Row="1"/>
+                    <ContentControl Content="{Binding Signatory}" Margin="5,2" Grid.Row="2"/>
+                    <ContentControl Content="{Binding ContactPerson}" Margin="5,2" Grid.Row="3"/>
+                </Grid>
+            </Expander>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

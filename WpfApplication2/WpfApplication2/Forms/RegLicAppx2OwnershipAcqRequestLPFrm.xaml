@@ -1,0 +1,30 @@
+﻿<Window x:Class="WpfApplication2.Forms.RegLicAppx2OwnershipAcqRequestLPFrm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="RegLicAppx2OwnershipAcqRequestLPFrm" Height="600" Width="800"
+        xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core"
+        xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core"
+        xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+        xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms">
+    <Grid Height="573" VerticalAlignment="Top">
+        <Grid.Resources>
+            <ResourceDictionary>
+                <!-- Import the resource dictionary which contains the DataTemplate for the RaceHorse class. -->
+                <ResourceDictionary.MergedDictionaries>
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SignatoryInfoTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonIDTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegLicAppx2OwnershipAcqRequestLPTemplate.xaml" />
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <!--<ContentControl Content="{Binding Questionnaire}" />-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <ContentControl Grid.Row="0" x:Name="quCtrl"/>
+        <Button Grid.Row="1" Click="Button_Click" Content="Signatory" Width="50" Margin="371,0"/>
+    </Grid>
+</Window>
