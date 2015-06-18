@@ -1,0 +1,9 @@
+﻿http://www.codeproject.com/Articles/18303/A-Guided-Tour-of-WPF-Part-Data-templates-and-tri
+http://stackoverflow.com/questions/1188196/wpf-passing-variable-to-converter-inside-data-template
+https://social.msdn.microsoft.com/Forums/ru-RU/1845703f-5df4-45d7-9005-07a4106aa93c/cannot-locate-resource-exception-when-using-wpf-usercontrol-in-winforms?forum=wpf
+https://www.google.com.ua/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=wpf%20rounded%20textbox%20corners =>
+ http://stackoverflow.com/questions/4779777/wpf-rounded-corner-textbox
+http://stackoverflow.com/questions/11468502/twoway-binding-of-a-combobox-to-a-static-property
+http://stackoverflow.com/questions/936304/binding-to-static-property
+http://geekswithblogs.net/thibbard/archive/2007/12/10/wpf---showhide-element-based-on-checkbox.checked.aspx
++++ http://www.wpftutorial.net/datatemplates.html
