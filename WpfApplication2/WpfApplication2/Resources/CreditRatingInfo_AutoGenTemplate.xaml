@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core">
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
@@ -19,19 +19,19 @@
         <RowDefinition Height="*" />
         <RowDefinition Height="*" />
       </Grid.RowDefinitions>
-      <TextBlock Grid.Row="0" Text="Рейтингова аґенція (добре знана)" Style="{StaticResource dispNmStyle}" xmlns="" />
-      <ComboBox Grid.Row="1" ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.WellKnownCreditRatingAgencyTypeList}, Mode=OneWay}" SelectedValue="{Binding WellKnownAgency}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="" />
-      <Expander Grid.Row="2" Header="Рейтингова аґенція (інша)" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
-        <ContentControl Content="{Binding AgencyOther}" Margin="5,2" />
+      <TextBlock Grid.Row="0" Text="Рейтингова аґенція (добре знана)" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox Grid.Row="1" ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.WellKnownCreditRatingAgencyTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding WellKnownAgency, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Grid.Row="2" Header="Рейтингова аґенція (інша)" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding AgencyOther, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <TextBlock Grid.Row="3" Text="Довго- та середньотермінове значення рейтингу(стандартне)" Style="{StaticResource dispNmStyle}" xmlns="" />
-      <ComboBox Grid.Row="4" ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.LongTermCreditRatingTypeList}, Mode=OneWay}" SelectedValue="{Binding LongMidTermRatingValue}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="" />
-      <TextBlock Grid.Row="5" Text="Довго- та середньотермінове значення рейтингу(якщо інше)" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="" />
-      <TextBox Grid.Row="6" Style="{StaticResource txtEdStyle}" Text="{Binding LongMidTermRatingValueOther}" ToolTip="" xmlns="" />
-      <TextBlock Grid.Row="7" Text="Короткотермінове значення рейтингу(стандартне)" Style="{StaticResource dispNmStyle}" xmlns="" />
-      <ComboBox Grid.Row="8" ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.ShortTermCreditRatingTypeList}, Mode=OneWay}" SelectedValue="{Binding ShortTermRatingValue}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="" />
-      <TextBlock Grid.Row="9" Text="Короткотермінове значення рейтингу(якщо інше)" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="" />
-      <TextBox Grid.Row="10" Style="{StaticResource txtEdStyle}" Text="{Binding ShortTermRatingValueOther}" ToolTip="" xmlns="" />
+      <TextBlock Grid.Row="3" Text="Довго- та середньотермінове значення рейтингу(стандартне)" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox Grid.Row="4" ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.LongTermCreditRatingTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding LongMidTermRatingValue, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="5" Text="Довго- та середньотермінове значення рейтингу(якщо інше)" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="6" Style="{StaticResource txtEdStyle}" Text="{Binding LongMidTermRatingValueOther, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="7" Text="Короткотермінове значення рейтингу(стандартне)" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox Grid.Row="8" ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.ShortTermCreditRatingTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding ShortTermRatingValue, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="9" Text="Короткотермінове значення рейтингу(якщо інше)" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="10" Style="{StaticResource txtEdStyle}" Text="{Binding ShortTermRatingValueOther, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </Grid>
   </DataTemplate>
 </ResourceDictionary>

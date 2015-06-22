@@ -1,11 +1,10 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core">
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
     <ResourceDictionary Source="RegistrarAuthority_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="LocationInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="CountryInfo_AutoGenTemplate.xaml" />
-    <ResourceDictionary Source="GenericPersonID_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:PhysicalPersonInfo}">
     <Grid>
@@ -39,45 +38,41 @@
         <RowDefinition Height="*" />
         <RowDefinition Height="*" />
         <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
       </Grid.RowDefinitions>
-      <TextBlock Grid.Row="0" Text="Прізвище (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище, українською" xmlns="" />
-      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding SurnameUkr}" ToolTip="Прізвище, українською" xmlns="" />
-      <TextBlock Grid.Row="2" Text="Ім'я (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="Ім'я, українською" xmlns="" />
-      <TextBox Grid.Row="3" Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr}" ToolTip="Ім'я, українською" xmlns="" />
-      <TextBlock Grid.Row="4" Text="По-батькові/друге ім'я (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="По-батькові/друге ім'я, українською" xmlns="" />
-      <TextBox Grid.Row="5" Style="{StaticResource txtEdStyle}" Text="{Binding MiddleNameUkr}" ToolTip="По-батькові/друге ім'я, українською" xmlns="" />
-      <TextBlock Grid.Row="6" Text="П.І.Б (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="П.І.Б., українською" xmlns="" />
-      <TextBox Grid.Row="7" Style="{StaticResource txtEdStyle}" Text="{Binding FullNameUkr}" ToolTip="П.І.Б., українською" xmlns="" />
-      <TextBlock Grid.Row="8" Text="Прізвище" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище" xmlns="" />
-      <TextBox Grid.Row="9" Style="{StaticResource txtEdStyle}" Text="{Binding Surname}" ToolTip="Прізвище" xmlns="" />
-      <TextBlock Grid.Row="10" Text="Ім'я" Style="{StaticResource dispNmStyle}" ToolTip="Ім'я" xmlns="" />
-      <TextBox Grid.Row="11" Style="{StaticResource txtEdStyle}" Text="{Binding Name}" ToolTip="Ім'я" xmlns="" />
-      <TextBlock Grid.Row="12" Text="По-батькові/друге ім'я" Style="{StaticResource dispNmStyle}" ToolTip="По-батькові/друге ім'я" xmlns="" />
-      <TextBox Grid.Row="13" Style="{StaticResource txtEdStyle}" Text="{Binding MiddleName}" ToolTip="По-батькові/друге ім'я" xmlns="" />
-      <TextBlock Grid.Row="14" Text="П.І.Б." Style="{StaticResource dispNmStyle}" ToolTip="П.І.Б." xmlns="" />
-      <TextBox Grid.Row="15" Style="{StaticResource txtEdStyle}" Text="{Binding FullName}" ToolTip="П.І.Б." xmlns="" />
-      <TextBlock Grid.Row="16" Text="Стать" Style="{StaticResource dispNmStyle}" xmlns="" />
-      <ComboBox Grid.Row="17" ToolTip="Стать" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.SexTypeList}, Mode=OneWay}" SelectedValue="{Binding Sex}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="" />
-      <TextBlock Grid.Row="18" Text="Дата народження" Style="{StaticResource dispNmStyle}" ToolTip="Дата народження" xmlns="" />
-      <DatePicker Grid.Row="19" ToolTip="Дата народження" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding BirthDate}" xmlns="" />
-      <TextBlock Grid.Row="20" Text="Серія № паспорта" Style="{StaticResource dispNmStyle}" ToolTip="Серія № паспорта" xmlns="" />
-      <TextBox Grid.Row="21" Style="{StaticResource txtEdStyle}" Text="{Binding PassportID}" ToolTip="Серія № паспорта" xmlns="" />
-      <TextBlock Grid.Row="22" Text="Дата видачі паспорта" Style="{StaticResource dispNmStyle}" ToolTip="Дата видачі паспорта" xmlns="" />
-      <DatePicker Grid.Row="23" ToolTip="Дата видачі паспорта" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding PassIssuedDate}" xmlns="" />
-      <Expander Grid.Row="24" Header="Орган, що видав паспорт" ToolTip="Орган, що видав паспорт" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
-        <ContentControl Content="{Binding PassIssueAuthority}" Margin="5,2" />
+      <TextBlock Grid.Row="0" Text="Прізвище (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище, українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding SurnameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Прізвище, українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="2" Text="Ім'я (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="Ім'я, українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="3" Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ім'я, українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="4" Text="По-батькові/друге ім'я (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="По-батькові/друге ім'я, українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="5" Style="{StaticResource txtEdStyle}" Text="{Binding MiddleNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="По-батькові/друге ім'я, українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="6" Text="П.І.Б (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="П.І.Б., українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="7" Style="{StaticResource txtEdStyle}" Text="{Binding FullNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="П.І.Б., українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="8" Text="Прізвище" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="9" Style="{StaticResource txtEdStyle}" Text="{Binding Surname, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Прізвище" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="10" Text="Ім'я" Style="{StaticResource dispNmStyle}" ToolTip="Ім'я" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="11" Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ім'я" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="12" Text="По-батькові/друге ім'я" Style="{StaticResource dispNmStyle}" ToolTip="По-батькові/друге ім'я" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="13" Style="{StaticResource txtEdStyle}" Text="{Binding MiddleName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="По-батькові/друге ім'я" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="14" Text="П.І.Б." Style="{StaticResource dispNmStyle}" ToolTip="П.І.Б." xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="15" Style="{StaticResource txtEdStyle}" Text="{Binding FullName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="П.І.Б." xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="16" Text="Стать" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox Grid.Row="17" ToolTip="Стать" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.SexTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Sex, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="18" Text="Дата народження" Style="{StaticResource dispNmStyle}" ToolTip="Дата народження" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker Grid.Row="19" ToolTip="Дата народження" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding BirthDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="20" Text="Серія № паспорта" Style="{StaticResource dispNmStyle}" ToolTip="Серія № паспорта" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="21" Style="{StaticResource txtEdStyle}" Text="{Binding PassportID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Серія № паспорта" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="22" Text="Дата видачі паспорта" Style="{StaticResource dispNmStyle}" ToolTip="Дата видачі паспорта" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker Grid.Row="23" ToolTip="Дата видачі паспорта" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding PassIssuedDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Grid.Row="24" Header="Орган, що видав паспорт" ToolTip="Орган, що видав паспорт" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding PassIssueAuthority, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <TextBlock Grid.Row="25" Text="ІПН" Style="{StaticResource dispNmStyle}" ToolTip="ІПН/№ картки соціального страхування/тощо, дивлячись, що використовується у країні резидентства" xmlns="" />
-      <TextBox Grid.Row="26" Style="{StaticResource txtEdStyle}" Text="{Binding TaxOrSocSecID}" ToolTip="ІПН/№ картки соціального страхування/тощо, дивлячись, що використовується у країні резидентства" xmlns="" />
-      <Expander Grid.Row="27" Header="Місце проживання/реєстрації" ToolTip="Місце проживання/реєстрації" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
-        <ContentControl Content="{Binding Address}" Margin="5,2" />
+      <TextBlock Grid.Row="25" Text="ІПН" Style="{StaticResource dispNmStyle}" ToolTip="ІПН/№ картки соціального страхування/тощо, дивлячись, що використовується у країні резидентства" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="26" Style="{StaticResource txtEdStyle}" Text="{Binding TaxOrSocSecID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ІПН/№ картки соціального страхування/тощо, дивлячись, що використовується у країні резидентства" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Grid.Row="27" Header="Місце проживання/реєстрації" ToolTip="Місце проживання/реєстрації" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding Address, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <Expander Grid.Row="28" Header="Громадянство" ToolTip="Громадянство" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
-        <ContentControl Content="{Binding CitizenshipCountry}" Margin="5,2" />
-      </Expander>
-      <Expander Grid.Row="29" Header="GenericID" ToolTip="GenericID" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
-        <ContentControl Content="{Binding GenericID}" Margin="5,2" />
+      <Expander Grid.Row="28" Header="Громадянство" ToolTip="Громадянство" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding CitizenshipCountry, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
     </Grid>
   </DataTemplate>

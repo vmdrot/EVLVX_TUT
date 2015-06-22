@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core">
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
@@ -23,23 +23,23 @@
         <RowDefinition Height="*" />
         <RowDefinition Height="*" />
       </Grid.RowDefinitions>
-      <TextBlock Grid.Row="0" Text="МФО" Style="{StaticResource dispNmStyle}" ToolTip="МФО" xmlns="" />
-      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding MFO}" ToolTip="МФО" xmlns="" />
-      <TextBlock Grid.Row="2" Text="№ у реєстрі банків" Style="{StaticResource dispNmStyle}" ToolTip="№ у реєстрі банків (лише для головних контор)" xmlns="" />
-      <TextBox Grid.Row="3" Style="{StaticResource txtEdStyle}" Text="{Binding RegistryNr}" ToolTip="№ у реєстрі банків (лише для головних контор)" xmlns="" />
-      <TextBlock Grid.Row="4" Text="Код банку" Style="{StaticResource dispNmStyle}" ToolTip="Код банку (лише для головних контор)" xmlns="" />
-      <TextBox Grid.Row="5" Style="{StaticResource txtEdStyle}" Text="{Binding Code}" ToolTip="Код банку (лише для головних контор)" xmlns="" />
-      <TextBlock Grid.Row="6" Text="Найменування банку" Style="{StaticResource dispNmStyle}" ToolTip="Найменування банку (в оригіналі)" xmlns="" />
-      <TextBox Grid.Row="7" Style="{StaticResource txtEdStyle}" Text="{Binding Name}" ToolTip="Найменування банку (в оригіналі)" xmlns="" />
-      <TextBlock Grid.Row="8" Text="Найменування банку(українською)" Style="{StaticResource dispNmStyle}" ToolTip="Найменування банку(українською)" xmlns="" />
-      <TextBox Grid.Row="9" Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr}" ToolTip="Найменування банку(українською)" xmlns="" />
-      <Expander Grid.Row="10" Header="Відомості про юрособу-банк" ToolTip="Відомості про юрособу-банк" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
-        <ContentControl Content="{Binding LegalPerson}" Margin="5,2" />
+      <TextBlock Grid.Row="0" Text="МФО" Style="{StaticResource dispNmStyle}" ToolTip="МФО" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding MFO, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="МФО" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="2" Text="№ у реєстрі банків" Style="{StaticResource dispNmStyle}" ToolTip="№ у реєстрі банків (лише для головних контор)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="3" Style="{StaticResource txtEdStyle}" Text="{Binding RegistryNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="№ у реєстрі банків (лише для головних контор)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="4" Text="Код банку" Style="{StaticResource dispNmStyle}" ToolTip="Код банку (лише для головних контор)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="5" Style="{StaticResource txtEdStyle}" Text="{Binding Code, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Код банку (лише для головних контор)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="6" Text="Найменування банку" Style="{StaticResource dispNmStyle}" ToolTip="Найменування банку (в оригіналі)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="7" Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування банку (в оригіналі)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="8" Text="Найменування банку(українською)" Style="{StaticResource dispNmStyle}" ToolTip="Найменування банку(українською)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="9" Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування банку(українською)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Grid.Row="10" Header="Відомості про юрособу-банк" ToolTip="Відомості про юрособу-банк" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding LegalPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <TextBlock Grid.Row="11" Text="SWIFT адреса" Style="{StaticResource dispNmStyle}" ToolTip="Див. http://www.swift.com/bsl/" xmlns="" />
-      <TextBox Grid.Row="12" Style="{StaticResource txtEdStyle}" Text="{Binding SWIFTBIC}" ToolTip="Див. http://www.swift.com/bsl/" xmlns="" />
-      <Expander Grid.Row="13" Header="Країна діяльності" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
-        <ContentControl Content="{Binding OperationCountry}" Margin="5,2" />
+      <TextBlock Grid.Row="11" Text="SWIFT адреса" Style="{StaticResource dispNmStyle}" ToolTip="Див. http://www.swift.com/bsl/" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="12" Style="{StaticResource txtEdStyle}" Text="{Binding SWIFTBIC, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Див. http://www.swift.com/bsl/" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Grid.Row="13" Header="Країна діяльності" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding OperationCountry, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
     </Grid>
   </DataTemplate>
