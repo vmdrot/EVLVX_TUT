@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core">
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
@@ -21,21 +21,21 @@
         <RowDefinition Height="*" />
         <RowDefinition Height="*" />
       </Grid.RowDefinitions>
-      <Expander Grid.Row="0" Header="Країна" ToolTip="Країна" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
-        <ContentControl Content="{Binding Country}" Margin="5,2" />
+      <Expander Grid.Row="0" Header="Країна" ToolTip="Країна" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding Country, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <TextBlock Grid.Row="1" Text="область, район/провінція, тощо" Style="{StaticResource dispNmStyle}" ToolTip="область, район/провінція, тощо" xmlns="" />
-      <TextBox Grid.Row="2" Style="{StaticResource txtEdStyle}" Text="{Binding Region}" ToolTip="область, район/провінція, тощо" xmlns="" />
-      <TextBlock Grid.Row="3" Text="Поштовий індекс" Style="{StaticResource dispNmStyle}" ToolTip="Поштовий індекс" xmlns="" />
-      <TextBox Grid.Row="4" Style="{StaticResource txtEdStyle}" Text="{Binding ZipCode}" ToolTip="Поштовий індекс" xmlns="" />
-      <TextBlock Grid.Row="5" Text="Населений пункт" Style="{StaticResource dispNmStyle}" ToolTip="Населений пункт" xmlns="" />
-      <TextBox Grid.Row="6" Style="{StaticResource txtEdStyle}" Text="{Binding City}" ToolTip="Населений пункт" xmlns="" />
-      <TextBlock Grid.Row="7" Text="Вулиця/площа/тощо" Style="{StaticResource dispNmStyle}" ToolTip="Вулиця/площа/тощо" xmlns="" />
-      <TextBox Grid.Row="8" Style="{StaticResource txtEdStyle}" Text="{Binding Street}" ToolTip="Вулиця/площа/тощо" xmlns="" />
-      <TextBlock Grid.Row="9" Text="№ / назва будинку" Style="{StaticResource dispNmStyle}" ToolTip="№ / назва будинку" xmlns="" />
-      <TextBox Grid.Row="10" Style="{StaticResource txtEdStyle}" Text="{Binding HouseNr}" ToolTip="№ / назва будинку" xmlns="" />
-      <TextBlock Grid.Row="11" Text="№ кв./офісу, тощо" Style="{StaticResource dispNmStyle}" ToolTip="№ кв./офісу, тощо" xmlns="" />
-      <TextBox Grid.Row="12" Style="{StaticResource txtEdStyle}" Text="{Binding ApptOfficeNr}" ToolTip="№ кв./офісу, тощо" xmlns="" />
+      <TextBlock Grid.Row="1" Text="область, район/провінція, тощо" Style="{StaticResource dispNmStyle}" ToolTip="область, район/провінція, тощо" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="2" Style="{StaticResource txtEdStyle}" Text="{Binding Region, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="область, район/провінція, тощо" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="3" Text="Поштовий індекс" Style="{StaticResource dispNmStyle}" ToolTip="Поштовий індекс" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="4" Style="{StaticResource txtEdStyle}" Text="{Binding ZipCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Поштовий індекс" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="5" Text="Населений пункт" Style="{StaticResource dispNmStyle}" ToolTip="Населений пункт" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="6" Style="{StaticResource txtEdStyle}" Text="{Binding City, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Населений пункт" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="7" Text="Вулиця/площа/тощо" Style="{StaticResource dispNmStyle}" ToolTip="Вулиця/площа/тощо" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="8" Style="{StaticResource txtEdStyle}" Text="{Binding Street, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Вулиця/площа/тощо" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="9" Text="№ / назва будинку" Style="{StaticResource dispNmStyle}" ToolTip="№ / назва будинку" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="10" Style="{StaticResource txtEdStyle}" Text="{Binding HouseNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="№ / назва будинку" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="11" Text="№ кв./офісу, тощо" Style="{StaticResource dispNmStyle}" ToolTip="№ кв./офісу, тощо" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="12" Style="{StaticResource txtEdStyle}" Text="{Binding ApptOfficeNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="№ кв./офісу, тощо" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </Grid>
   </DataTemplate>
 </ResourceDictionary>

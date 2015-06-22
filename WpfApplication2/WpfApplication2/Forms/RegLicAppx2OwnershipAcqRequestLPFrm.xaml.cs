@@ -1,4 +1,6 @@
 ﻿using BGU.DRPL.SignificantOwnership.Core.Questionnaires;
+using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
+using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +27,8 @@ namespace WpfApplication2.Forms
             InitializeComponent();
             _questionnaire = new RegLicAppx2OwnershipAcqRequestLP();
             quCtrl.Content = Questionnaire;
+            //quCtrl.Content = new BankInfo();
+            //quCtrl.Content = new SignificantOwnershipAcquisitionWaysInfo();
         }
 
 

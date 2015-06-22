@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase">
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
@@ -12,25 +12,13 @@
         <RowDefinition Height="*" />
         <RowDefinition Height="*" />
         <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
       </Grid.RowDefinitions>
-      <TextBlock Grid.Row="0" Text="CountryISO3Code" Style="{StaticResource dispNmStyle}" ToolTip="CountryISO3Code" xmlns="" />
-      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding CountryISO3Code}" ToolTip="CountryISO3Code" xmlns="" />
-      <TextBlock Grid.Row="2" Text="PersonType" Style="{StaticResource dispNmStyle}" xmlns="" />
-      <ComboBox Grid.Row="3" ToolTip="PersonType" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.EntityTypeList}, Mode=OneWay}" SelectedValue="{Binding PersonType}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="" />
-      <TextBlock Grid.Row="4" Text="PersonCode" Style="{StaticResource dispNmStyle}" ToolTip="PersonCode" xmlns="" />
-      <TextBox Grid.Row="5" Style="{StaticResource txtEdStyle}" Text="{Binding PersonCode}" ToolTip="PersonCode" xmlns="" />
-      <TextBlock Grid.Row="6" Text="DisplayName" Style="{StaticResource dispNmStyle}" ToolTip="DisplayName" xmlns="" />
-      <TextBox Grid.Row="7" Style="{StaticResource txtEdStyle}" Text="{Binding DisplayName}" ToolTip="DisplayName" xmlns="" />
-      <TextBlock Grid.Row="8" Text="HashID" Style="{StaticResource dispNmStyle}" ToolTip="HashID" xmlns="" />
-      <TextBox Grid.Row="9" Style="{StaticResource txtEdStyle}" Text="{Binding HashID}" ToolTip="HashID" xmlns="" />
-      <CheckBox Grid.Row="10" Checked="{Binding IsEmpty}" FlowDirection="RightToLeft" xmlns="">
-        <TextBlock FlowDirection="LeftToRight" Text="IsEmpty:" ToolTip="IsEmpty" />
-      </CheckBox>
+      <TextBlock Grid.Row="0" Text="CountryISO3Code" Style="{StaticResource dispNmStyle}" ToolTip="CountryISO3Code" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding CountryISO3Code, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CountryISO3Code" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="2" Text="PersonType" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox Grid.Row="3" ToolTip="PersonType" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.EntityTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding PersonType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="4" Text="PersonCode" Style="{StaticResource dispNmStyle}" ToolTip="PersonCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="5" Style="{StaticResource txtEdStyle}" Text="{Binding PersonCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="PersonCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </Grid>
   </DataTemplate>
 </ResourceDictionary>
