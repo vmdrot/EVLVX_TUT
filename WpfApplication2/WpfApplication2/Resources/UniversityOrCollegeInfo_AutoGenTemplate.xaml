@@ -1,0 +1,29 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="LocationInfo_AutoGenTemplate.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgud:UniversityOrCollegeInfo}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0" Text="Назва ВНЗ" Style="{StaticResource dispNmStyle}" ToolTip="Назва вищого навчального закладу оригінальною мовою" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding UniversityName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва вищого навчального закладу оригінальною мовою" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="2" Text="Назва ВНЗ (українською)" Style="{StaticResource dispNmStyle}" ToolTip="Назва вищого навчального закладу оригінальною мовою українською (якщо оригінальна мова інша" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="3" Style="{StaticResource txtEdStyle}" Text="{Binding UniversityNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва вищого навчального закладу оригінальною мовою українською (якщо оригінальна мова інша" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Grid.Row="4" Header="Адреса ВНЗ" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding Address, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      </Expander>
+      <TextBlock Grid.Row="5" Text="Ідентифікатор ВНЗ" Style="{StaticResource dispNmStyle}" ToolTip="Ідентифікатор ВНЗ - якщо є/передбачений" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="6" Style="{StaticResource txtEdStyle}" Text="{Binding UniversityID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ідентифікатор ВНЗ - якщо є/передбачений" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

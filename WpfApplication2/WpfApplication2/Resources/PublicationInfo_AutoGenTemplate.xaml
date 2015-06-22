@@ -1,0 +1,37 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="PublishingHouseInfo_AutoGenTemplate.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgud:PublicationInfo}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <Expander Grid.Row="0" Header="Видавництво" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding Publisher, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      </Expander>
+      <TextBlock Grid.Row="1" Text="ІSBN ідентифікатор" Style="{StaticResource dispNmStyle}" ToolTip="ІSBN ідентифікатор видання (якщо є)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="2" Style="{StaticResource txtEdStyle}" Text="{Binding ISBN, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ІSBN ідентифікатор видання (якщо є)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="3" Text="Назва ЗМІ" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="4" Style="{StaticResource txtEdStyle}" Text="{Binding MediaName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="5" Text="Дата публікації" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker Grid.Row="6" ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding PubDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="7" Text="Число публікації" Style="{StaticResource dispNmStyle}" ToolTip="Число/№ публікації (випуск газети, журналу, тощо)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="8" Style="{StaticResource txtEdStyle}" Text="{Binding IssueNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Число/№ публікації (випуск газети, журналу, тощо)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="9" Text="URL публікації" Style="{StaticResource dispNmStyle}" ToolTip="Ланка на публікацію (адреса публікації в інтернет)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="10" Style="{StaticResource txtEdStyle}" Text="{Binding PubUrl, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ланка на публікацію (адреса публікації в інтернет)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>
