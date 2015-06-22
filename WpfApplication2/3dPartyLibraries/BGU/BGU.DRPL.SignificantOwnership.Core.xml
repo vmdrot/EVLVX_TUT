@@ -497,6 +497,27 @@
             Значення за змовчанням - Україна (UA, UKR, 804, Ukraine)
             </summary>
         </member>
+        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.MissingInformationResonInfo">
+            <summary>
+            Причина відсутності відомостей
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.MissingInformationResonInfo.PropertyName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.SignificantOwnershipAcquisitionWaysInfo">
+            <summary>
+            Способи, у які відбуватиметься набуття/збільшення істотної участі в банку:
+            
+            - придбання акцій (паїв) банку на первинному ринку;
+            - придбання акцій (паїв) банку на вторинному ринку;
+            - набуття/збільшення істотної участі в банку опосередковано шляхом придбання корпоративних прав юридичних осіб у структурі власності банку;
+            - набуття/збільшення істотної участі в банку у зв’язку з передаванням права голосу за довіреністю;
+            - набуття опосередкованої істотної участі в банку у зв’язку із здійсненням значного або вирішального впливу на управління та діяльність банку незалежно від формального володіння. 
+            </summary>
+        </member>
         <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.PaymentDeadlineInfo">
             <summary>
             Інформація про крайній термін сплати (deadline) якогось зобов'язання
@@ -1642,6 +1663,11 @@
             ... займану Вами в цій юридичний особі посаду
             </summary>
         </member>
+        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.PowerOfAttorneyInfo">
+            <summary>
+            Реквізити довіреності
+            </summary>
+        </member>
         <member name="T:BGU.DRPL.SignificantOwnership.Core.FXLicensing.Questionnares.FXFundsMovesRptAppx10">
             <summary>
                                                  Додаток 10                                       до Положення про порядок                                       видачі Національним банком                                       України індивідуальних                                       ліцензій на розміщення                                       резидентами (юридичними                                       та фізичними особами)                                       валютних цінностей                                       на рахунках за межами                                       України
@@ -1868,6 +1894,55 @@
         <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.IndebtnessInfo">
             <summary>
             Інформація про іншу заборгованість (окрім позики)
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.ImperfectBusinessReputationInfo.BankruptcyInvestigations">
+            <summary>
+            6.1. Деталі порушуваної(-их) справи(справ) про банкрутство юридичної особи
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.ImperfectBusinessReputationInfo.HasMiscNonRepaidDebts">
+            <summary>
+            6.2. Чи  має   юридична  особа  невиконані  майнові  (фінансові)  зобов'язання перед іншими особами?
+            _______________________________________________________________________
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.ImperfectBusinessReputationInfo.MiscNonRepaidDebts">
+            <summary>
+            6.2. Чи  має   юридична  особа  невиконані  майнові  (фінансові)  зобов'язання перед іншими особами?
+            ________________________________________________________________________________
+             (якщо так, то зазначити, які саме зобов'язання, у якому розмірі,
+            
+            _______________________________________________________________________________.
+             перед якою особою та з яких причин не були виконані, а також подальші плани
+              щодо виконання/невиконання цих зобов'язань)
+            
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.ImperfectBusinessReputationInfo.HadIndustrySpecificBreaches">
+            <summary>
+            6.3. Чи  притягувалася  юридична  особа  до  відповідальності  за  порушення антимонопольного,  податкового, банківського, валютного  законодавства, правил діяльності на ринку цінних паперів тощо?
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.ImperfectBusinessReputationInfo.BreachesOfLaw">
+            <summary>
+            6.3. ________________________________________________________________________________
+                  (зазначити, коли вчинено порушення, зміст порушення, накладені санкції)
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.ImperfectBusinessReputationInfo.HasLiquidatedSignOwnershipLastYear">
+            <summary>
+            6.4. Чи була юридична особа протягом останнього року, що передував прийняттю рішення про ліквідацію юридичної особи,  
+            власником істотної участі (10 і більше відсотків) у цій особі? 
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.ImperfectBusinessReputationInfo.LiquidatedSignOwnershipLastYear">
+            <summary>
+            6.4. __________________________________________________________________________
+             (найменування юридичної особи,
+            
+            _______________________________________________________________________________.
+             код за ЄДРПОУ, відсоток володіння в ній, докладна інформація про причини та підстави ліквідації)
             </summary>
         </member>
         <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.ProfessionLicensingBodyInfo">
@@ -2214,6 +2289,18 @@
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Questionnaires.RegLicAppx2OwnershipAcqRequestLP.AccountsWithBanks">
             <summary>
             Поле обов'язкове, лише якщо заявник не є банком.
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Questionnaires.RegLicAppx2OwnershipAcqRequestLP.TotalOwnershipWithBankDiff">
+            <summary>
+            6. Інформація про розмір участі, що набувається (збільшується):
+            Наміри щодо набуття/збільшення участі в банку
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Questionnaires.RegLicAppx2OwnershipAcqRequestLP.TotalTargetedOwnershipWithBank">
+            <summary>
+            6. Інформація про розмір участі, що набувається (збільшується):
+            Майбутня участь особи в банку з урахуванням намірів щодо набуття/збільшення істотної участі
             </summary>
         </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Questionnaires.RegLicAppx2OwnershipAcqRequestLP.AcquisitionWays">
@@ -2804,11 +2891,6 @@
              друкованими літерами)
             </summary>
         </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Messages.RegLicAppx2OwnershipAcqRequestLP_MoneyOriginsLtr.CanProveMoneyOrigins">
-            <summary>
-            Стверджую, що юридична особа має можливість підтвердити походження джерел коштів, за рахунок яких придбає акції банку.
-            </summary>
-        </member>
         <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.LegalTransactionInfo">
             <summary>
             Інформація про правочин
@@ -2816,79 +2898,9 @@
             </summary>
             <see cref="!:https://uk.wikipedia.org/wiki/%D0%9F%D1%80%D0%B0%D0%B2%D0%BE%D1%87%D0%B8%D0%BD"/>
         </member>
-        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.SignificantOwnershipAcquisitionWaysInfo">
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Messages.RegLicAppx2OwnershipAcqRequestLP_MoneyOriginsLtr.CanProveMoneyOrigins">
             <summary>
-            Способи, у які відбуватиметься набуття/збільшення істотної участі в банку:
-            
-            - придбання акцій (паїв) банку на первинному ринку;
-            - придбання акцій (паїв) банку на вторинному ринку;
-            - набуття/збільшення істотної участі в банку опосередковано шляхом придбання корпоративних прав юридичних осіб у структурі власності банку;
-            - набуття/збільшення істотної участі в банку у зв’язку з передаванням права голосу за довіреністю;
-            - набуття опосередкованої істотної участі в банку у зв’язку із здійсненням значного або вирішального впливу на управління та діяльність банку незалежно від формального володіння. 
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.ImperfectBusinessReputationInfo.BankruptcyInvestigations">
-            <summary>
-            6.1. Деталі порушуваної(-их) справи(справ) про банкрутство юридичної особи
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.ImperfectBusinessReputationInfo.HasMiscNonRepaidDebts">
-            <summary>
-            6.2. Чи  має   юридична  особа  невиконані  майнові  (фінансові)  зобов'язання перед іншими особами?
-            _______________________________________________________________________
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.ImperfectBusinessReputationInfo.MiscNonRepaidDebts">
-            <summary>
-            6.2. Чи  має   юридична  особа  невиконані  майнові  (фінансові)  зобов'язання перед іншими особами?
-            ________________________________________________________________________________
-             (якщо так, то зазначити, які саме зобов'язання, у якому розмірі,
-            
-            _______________________________________________________________________________.
-             перед якою особою та з яких причин не були виконані, а також подальші плани
-              щодо виконання/невиконання цих зобов'язань)
-            
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.ImperfectBusinessReputationInfo.HadIndustrySpecificBreaches">
-            <summary>
-            6.3. Чи  притягувалася  юридична  особа  до  відповідальності  за  порушення антимонопольного,  податкового, банківського, валютного  законодавства, правил діяльності на ринку цінних паперів тощо?
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.ImperfectBusinessReputationInfo.BreachesOfLaw">
-            <summary>
-            6.3. ________________________________________________________________________________
-                  (зазначити, коли вчинено порушення, зміст порушення, накладені санкції)
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.ImperfectBusinessReputationInfo.HasLiquidatedSignOwnershipLastYear">
-            <summary>
-            6.4. Чи була юридична особа протягом останнього року, що передував прийняттю рішення про ліквідацію юридичної особи,  
-            власником істотної участі (10 і більше відсотків) у цій особі? 
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.ImperfectBusinessReputationInfo.LiquidatedSignOwnershipLastYear">
-            <summary>
-            6.4. __________________________________________________________________________
-             (найменування юридичної особи,
-            
-            _______________________________________________________________________________.
-             код за ЄДРПОУ, відсоток володіння в ній, докладна інформація про причини та підстави ліквідації)
-            </summary>
-        </member>
-        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.PowerOfAttorneyInfo">
-            <summary>
-            Реквізити довіреності
-            </summary>
-        </member>
-        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.MissingInformationResonInfo">
-            <summary>
-            Причина відсутності відомостей
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.MissingInformationResonInfo.PropertyName">
-            <summary>
-            
+            Стверджую, що юридична особа має можливість підтвердити походження джерел коштів, за рахунок яких придбає акції банку.
             </summary>
         </member>
     </members>

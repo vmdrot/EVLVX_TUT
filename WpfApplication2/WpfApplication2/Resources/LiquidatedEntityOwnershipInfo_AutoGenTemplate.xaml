@@ -1,0 +1,38 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="TotalOwnershipDetailsInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="GenericPersonID_AutoGenTemplate.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgusd:LiquidatedEntityOwnershipInfo}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <Expander Grid.Row="0" Header="Частки власності" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding Stake}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="1" Header="Ліквідована юрособа" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding Asset}" Margin="5,2" />
+      </Expander>
+      <TextBlock Grid.Row="2" Text="Статус (ліквідації чи банкрутства)" Style="{StaticResource dispNmStyle}" xmlns="" />
+      <ComboBox Grid.Row="3" ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.InsolvencyStatusList}, Mode=OneWay}" SelectedValue="{Binding Status}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="" />
+      <TextBlock Grid.Row="4" Text="Дата набуття статусу (ліквідації чи банкрутства)" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="" />
+      <DatePicker Grid.Row="5" ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding DateEffective}" xmlns="" />
+      <TextBlock Grid.Row="6" Text="Причина ліквідації/банкрутства" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="" />
+      <TextBox Grid.Row="7" Style="{StaticResource txtEdStyle}" Text="{Binding LiquidationReason}" ToolTip="" xmlns="" />
+      <TextBlock Grid.Row="8" Text="Підстава ліквідації/банкрутства" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="" />
+      <TextBox Grid.Row="9" Style="{StaticResource txtEdStyle}" Text="{Binding LiquidationPretext}" ToolTip="" xmlns="" />
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

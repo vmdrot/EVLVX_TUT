@@ -1,0 +1,123 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="BankInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="GenericPersonID_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="TotalOwnershipSummaryInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="SignificantOwnershipAcquisitionWaysInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="ImperfectBusinessReputationInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="SignatoryInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="ContactInfo_AutoGenTemplate.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bguq:RegLicAppx2OwnershipAcqRequestLP}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <Expander Grid.Row="0" Header="Повне офіційне найменування банку" ToolTip="стосовно участі в ..." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding BankRef}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="1" Header="Юр.особа-заявник" ToolTip="1. Інформація про юридичну особу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding Acquiree}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="2" Header="2. Ідентифікаційні дані::Рейтингова оцінка" ToolTip="(за рейтингом, який підтверджений у бюлетені, однієї з провідних рейтингових компаній IBCA,Standart &amp; Poor's, Moody's)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding CreditRatingGrade}" AutoGenerateColumns="True" />
+      </Expander>
+      <Expander Grid.Row="3" Header="3. (4-5) Державний(-і) наглядовий(-і) орган(-и)" ToolTip="3. Відомості про державну реєстрацію юридичної особи та відносини з контролюючими державними органами" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding StateRegulatorAuthorities}" AutoGenerateColumns="True" />
+      </Expander>
+      <Expander Grid.Row="4" Header="5. Наявна участь юридичної особи в банку" ToolTip="5. Інформація про розмір наявної участі юридичної особи в банку" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding TotalExistingOwnershipWithBank}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="5" Header="4. Банківські рахунки юридичної особи" ToolTip="(не заповнюється банками)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding AccountsWithBanks}" AutoGenerateColumns="True" />
+      </Expander>
+      <Expander Grid.Row="6" Header="6. Наміри щодо набуття/збільшення участі" ToolTip="6. Інформація про розмір участі, що набувається (збільшується): Наміри щодо набуття/збільшення участі в банку" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding TotalOwnershipWithBankDiff}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="7" Header="6. Майбутня участь особи в банку" ToolTip="6. Інформація про розмір участі, що набувається (збільшується): Майбутня участь особи в банку з урахуванням намірів щодо набуття/збільшення істотної участі" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding TotalTargetedOwnershipWithBank}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="8" Header="7. Спосіб(-оби) набуття/збільшення істотної участі в банку" ToolTip="7. Набуття/збільшення істотної участі в банку відбуватиметься у спосіб (зазначити необхідне)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding AcquisitionWays}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="9" Header="Придбання на первинному ринку" ToolTip="8. Інформація про намір щодо придбання акцій (паїв) банку на первинному ринку:" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding IPOPurchase}" AutoGenerateColumns="True" />
+      </Expander>
+      <Expander Grid.Row="10" Header="9. Придбання на вторинному ринку" ToolTip="9. Інформація про намір щодо придбання акцій (паїв) банку на вторинному ринку та/або стосовно правочинів щодо набуття (збільшення) опосередкованої участі в банку (крім набуття істотної участі в результаті передавання особі права голосу або незалежно від формального володіння)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding SecondaryMarketPurchases}" AutoGenerateColumns="True" />
+      </Expander>
+      <Expander Grid.Row="11" Header="10. Набуття за довіреністю" ToolTip="10. Інформація про намір щодо набуття опосередкованої істотної участі в банку за довіреністю" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding AquisitionByPoAttorneys}" AutoGenerateColumns="True" />
+      </Expander>
+      <Expander Grid.Row="12" Header="11. Набуття у зв’язку із здійсненням впливу" ToolTip="11. Інформація про набуття опосередкованої істотної участі в банку у зв’язку із здійсненням значного або вирішального впливу на управління та діяльність банку незалежно від формального володіння" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding AquisitionByInfluence}" AutoGenerateColumns="True" />
+      </Expander>
+      <Expander Grid.Row="13" Header="12. Джерела  походження коштів юридичної особи" ToolTip="12. Джерела походження коштів юридичної особи, за рахунок яких набуватиметься істотна участь у банку" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding FundsOrigin}" AutoGenerateColumns="True" />
+      </Expander>
+      <Expander Grid.Row="14" Header="13, 14, 15. Розшифровка ланцюжків власності" ToolTip="Розшифровка ланцюжків власності усіх структур-фігурантів анкети:&#xA; 13. Перелік юридичних осіб, у тому числі банків, в яких юридична особа має істотну участь або є ключовим учасником&#xA; 14. Інформація про фізичних осіб, які володіють істотною участю в цій юридичній особі або є ключовими учасниками юридичної особи&#xA; 15. Інформація про юридичних осіб, які володіють істотною участю в цій юридичній особі або є ключовими учасниками юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding ExistingOwnershipDetailsHive}" AutoGenerateColumns="True" />
+      </Expander>
+      <CheckBox Grid.Row="15" Checked="{Binding HasOutstandingLoansWithBanks}" FlowDirection="RightToLeft" xmlns="">
+        <TextBlock FlowDirection="LeftToRight" Text="16. Чи є кредити, одержані й непогашені юридичною  особою  в  банках?:" ToolTip="(Станом на дату подання анкети)" />
+      </CheckBox>
+      <Expander Grid.Row="16" Header="16. Інформація про кредити, одержані юридичною особою" ToolTip="(номер і дата договору про надання кредиту, сума кредиту, термін погашення кредиту, сума заборгованості за договором на дату подання анкети)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding OutstandingLoansWithBanksDetails}" AutoGenerateColumns="True" />
+      </Expander>
+      <CheckBox Grid.Row="17" Checked="{Binding HasNoImperfectReputationSigns}" FlowDirection="RightToLeft" xmlns="">
+        <TextBlock FlowDirection="LeftToRight" Text="17. Стверджую, що немає ознак відсутності бездоганної ділової репутації:" ToolTip="Стверджую, що немає ознак відсутності бездоганної ділової репутації стосовно _______ (зазначається повне найменування юридичної особи" />
+      </CheckBox>
+      <Expander Grid.Row="18" Header="17. Ознаки відсутності бездоганної ділової репутації" ToolTip="Опис наявних ознак відсутності бездоганної ділової репутації" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding ImprefectReputationDetails}" Margin="5,2" />
+      </Expander>
+      <CheckBox Grid.Row="19" Checked="{Binding IsAMLEtcLegislationKept}" FlowDirection="RightToLeft" xmlns="">
+        <TextBlock FlowDirection="LeftToRight" Text="18. Вимоги законодавства дотримано:" ToolTip="18. Стверджую, що юридична особа _______ (зазначається повне найменування юридичної особи) належним чином виконує вимоги законодавства України або законодавства країни свого громадянства з питань запобігання та протидії легалізації (відмиванню) доходів, одержаних злочинним шляхом, та фінансування тероризму." />
+      </CheckBox>
+      <CheckBox Grid.Row="20" Checked="{Binding IsApplicationInfoAccurateAndTrue}" FlowDirection="RightToLeft" xmlns="">
+        <TextBlock FlowDirection="LeftToRight" Text="Підтверджую правдивість інформації?:" ToolTip="Стверджую, що інформація, зазначена в анкеті, є правдивою і повною, та не заперечую проти перевірки Національним банком України її достовірності та повноти." />
+      </CheckBox>
+      <Expander Grid.Row="21" Header="Примітка. Якщо немає змоги надати інформацію за відповідними пунктами анкети, то слід зазначити причину." ToolTip="..." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding MissingInformationResons}" AutoGenerateColumns="True" />
+      </Expander>
+      <Expander Grid.Row="22" Header="Підписант" ToolTip="Відомості по особу, що підписала анкету" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding Signatory}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="23" Header="Контакти" ToolTip="Контактні дані відправника анкети" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding ContactPerson}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="24" Header="Реквізити осіб-фігурантів анкети" ToolTip="Повні реквізити юридичних та фізичних осіб, що згадуються в розділах анкети" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding MentionedIdentities}" AutoGenerateColumns="True" />
+      </Expander>
+      <Expander Grid.Row="25" Header="Зв'язки між фігурантами анкети" ToolTip="Опис зв'язків між фізичними та юридичними особами, що згадуються в розділах анкети" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding PersonsLinks}" AutoGenerateColumns="True" />
+      </Expander>
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

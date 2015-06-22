@@ -1,0 +1,57 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="CountryInfo_AutoGenTemplate.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgusd:BreachOfLawRecordInfo}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0" Text="Тип правопорушення" Style="{StaticResource dispNmStyle}" xmlns="" />
+      <ComboBox Grid.Row="1" ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.BreachOfLawTypeList}, Mode=OneWay}" SelectedValue="{Binding BreachType}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="" />
+      <TextBlock Grid.Row="2" Text="Суд" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="" />
+      <TextBox Grid.Row="3" Style="{StaticResource txtEdStyle}" Text="{Binding CourtName}" ToolTip="" xmlns="" />
+      <TextBlock Grid.Row="4" Text="Суд (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="" />
+      <TextBox Grid.Row="5" Style="{StaticResource txtEdStyle}" Text="{Binding CourtNameUkr}" ToolTip="" xmlns="" />
+      <Expander Grid.Row="6" Header="Країна підсудності" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding JurisdictionCountry}" Margin="5,2" />
+      </Expander>
+      <TextBlock Grid.Row="7" Text="Дата вироку" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="" />
+      <DatePicker Grid.Row="8" ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding SentenceDate}" xmlns="" />
+      <TextBlock Grid.Row="9" Text="Закон/кодекс" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="" />
+      <TextBox Grid.Row="10" Style="{StaticResource txtEdStyle}" Text="{Binding CodeOrLaw}" ToolTip="" xmlns="" />
+      <TextBlock Grid.Row="11" Text="Стаття(-і)" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="" />
+      <TextBox Grid.Row="12" Style="{StaticResource txtEdStyle}" Text="{Binding Articles}" ToolTip="" xmlns="" />
+      <TextBlock Grid.Row="13" Text="Тип вироку" Style="{StaticResource dispNmStyle}" xmlns="" />
+      <ComboBox Grid.Row="14" ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.SentenceTypeList}, Mode=OneWay}" SelectedValue="{Binding Sentence}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="" />
+      <TextBlock Grid.Row="15" Text="Інші санкції" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="" />
+      <TextBox Grid.Row="16" Style="{StaticResource txtEdStyle}" Text="{Binding OtherSanctionDetails}" ToolTip="" xmlns="" />
+      <CheckBox Grid.Row="17" Checked="{Binding IsConvictionSettled}" FlowDirection="RightToLeft" xmlns="">
+        <TextBlock FlowDirection="LeftToRight" Text="Судимість погашена?:" ToolTip="" />
+      </CheckBox>
+      <Expander Grid.Row="18" Header="Дата погашення судимості" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding SettledDate}" AutoGenerateColumns="True" />
+      </Expander>
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>
