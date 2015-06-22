@@ -1,0 +1,28 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgusd:AttachmentInfo}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0" Text="Файл" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding FileName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="2" Text="Тип (з переліку)" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox Grid.Row="3" ToolTip="Тип додатку із переліку типових долучень; якщо &quot;Інше&quot; - обов'язково вказати, що саме у полі &quot;Опис файлу&quot;." ItemsSource="{Binding Source={x:Static bgus:EnumsLister.TypicalApplicationAttachementList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding AttachmentType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="4" Text="Опис файлу" Style="{StaticResource dispNmStyle}" ToolTip="Що у файлі?" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="5" Style="{StaticResource txtEdStyle}" Text="{Binding Description, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Що у файлі?" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Grid.Row="6" Text="Формат" Style="{StaticResource dispNmStyle}" ToolTip="Тип MIME, напр. pdf, xls, xlsx, doc, docs, rtf, тощо" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Grid.Row="7" Style="{StaticResource txtEdStyle}" Text="{Binding ContentType, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Тип MIME, напр. pdf, xls, xlsx, doc, docs, rtf, тощо" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>
