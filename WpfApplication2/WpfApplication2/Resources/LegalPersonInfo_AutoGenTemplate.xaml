@@ -1,0 +1,62 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="LocationInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="CountryInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="RegistrarAuthority_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="LPRegisteredDateRecordId_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="GenericPersonID_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="CurrencyAmount_AutoGenTemplate.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgud:LegalPersonInfo}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0" Text="Податковий №" Style="{StaticResource dispNmStyle}" ToolTip="ЄДРПОУ/Податковий ID/HandelsregisterNr.(для нерезидентів)" xmlns="" />
+      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding TaxCodeOrHandelsRegNr}" ToolTip="ЄДРПОУ/Податковий ID/HandelsregisterNr.(для нерезидентів)" xmlns="" />
+      <TextBlock Grid.Row="2" Text="Найменування" Style="{StaticResource dispNmStyle}" ToolTip="Найменування юридичної особи (оригінальною мовою)" xmlns="" />
+      <TextBox Grid.Row="3" Style="{StaticResource txtEdStyle}" Text="{Binding Name}" ToolTip="Найменування юридичної особи (оригінальною мовою)" xmlns="" />
+      <TextBlock Grid.Row="4" Text="Найменування українською" Style="{StaticResource dispNmStyle}" ToolTip="Найменування юридичної особи українською мовою (для нерезидентів)" xmlns="" />
+      <TextBox Grid.Row="5" Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr}" ToolTip="Найменування юридичної особи українською мовою (для нерезидентів)" xmlns="" />
+      <Expander Grid.Row="6" Header="Місцезнаходження" ToolTip="місцезнаходження юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding Address}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="7" Header="Країна юрисдикції" ToolTip="Країна юрисдикції юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding ResidenceCountry}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="8" Header="Держорган-реєстратор" ToolTip="Державний орган, який здійснив реєстрацію юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding Registrar}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="9" Header="Дата/№ запису в держреєстрі" ToolTip="Дата та номер запису в Єдиному державному реєстрі юридичних осіб та фізичних осіб-підприємців" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding RegisteredDateID}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="10" Header="Представник юрособи" ToolTip="Особа, що представляє юрособу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding RepresentedBy}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="11" Header="Статутний капітал" ToolTip="Статутний фонд/капітал" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding Equity}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="12" Header="Основний вид діяльності" ToolTip="Основний(-і) вид(-и) діяльності юрособи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding PrincipalActivities}" AutoGenerateColumns="True" />
+      </Expander>
+      <Expander Grid.Row="13" Header="GenericID" ToolTip="GenericID" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding GenericID}" Margin="5,2" />
+      </Expander>
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

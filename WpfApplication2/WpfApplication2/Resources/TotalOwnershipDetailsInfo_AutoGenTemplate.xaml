@@ -1,0 +1,34 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="OwnershipSummaryInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="OwnershipVotesInfo_AutoGenTemplate.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgusd:TotalOwnershipDetailsInfo}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <Expander Grid.Row="0" Header="Пряма власність" ToolTip="Пряма власність" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding DirectOwnership}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="1" Header="Опосередкована власність" ToolTip="Опосередкована власність" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding ImplicitOwnership}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="2" Header="Власність, що набувається" ToolTip="Власність, що набувається" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding AcquiredVotes}" Margin="5,2" />
+      </Expander>
+      <TextBlock Grid.Row="3" Text="Усього % у загальній власності" Style="{StaticResource dispNmStyle}" ToolTip="Усього % у загальній власності" xmlns="" />
+      <TextBox Grid.Row="4" Style="{StaticResource txtEdStyle}" Text="{Binding TotalCapitalSharePct}" ToolTip="Усього % у загальній власності" xmlns="" />
+      <TextBlock Grid.Row="5" Text="Усього голосів" Style="{StaticResource dispNmStyle}" xmlns="" />
+      <TextBox Grid.Row="6" Style="{StaticResource txtEdStyle}" Text="{Binding TotalVotes}" ToolTip="Усього голосів" xmlns="" />
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

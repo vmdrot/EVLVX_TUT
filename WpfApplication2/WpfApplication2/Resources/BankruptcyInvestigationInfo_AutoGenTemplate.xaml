@@ -1,0 +1,28 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgusd:BankruptcyInvestigationInfo}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0" Text="Дата порушення справи про банкрутство" Style="{StaticResource dispNmStyle}" ToolTip="Дата відкриття справи" xmlns="" />
+      <DatePicker Grid.Row="1" ToolTip="Дата відкриття справи" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding CaseFiledDt}" xmlns="" />
+      <TextBlock Grid.Row="2" Text="Статус" Style="{StaticResource dispNmStyle}" xmlns="" />
+      <ComboBox Grid.Row="3" ToolTip="Поточний статус справи" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.BankruptcyCaseResolutionTypeList}, Mode=OneWay}" SelectedValue="{Binding CurrentStatus}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="" />
+      <Expander Grid.Row="4" Header="Дата набуття поточного статусу" ToolTip="Перебуває в нинішньому статусі починаючи з..." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding InCurrentStatusSince}" AutoGenerateColumns="True" />
+      </Expander>
+      <Expander Grid.Row="5" Header="Список судових рішень у справі" ToolTip="Перелік судових рішень по справі банкрутства" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding CourtDecisions}" AutoGenerateColumns="True" />
+      </Expander>
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

@@ -1,0 +1,33 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="CurrencyAmount_AutoGenTemplate.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgusd:IPOSharesPurchaseInfo}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0" Text="SharesCount" Style="{StaticResource dispNmStyle}" xmlns="" />
+      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding SharesCount}" ToolTip="SharesCount" xmlns="" />
+      <Expander Grid.Row="2" Header="NominalSharePrice" ToolTip="NominalSharePrice" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding NominalSharePrice}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="3" Header="NominalTotalSharesValue" ToolTip="NominalTotalSharesValue" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding NominalTotalSharesValue}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="4" Header="ActualTotalSharesValue" ToolTip="ActualTotalSharesValue" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding ActualTotalSharesValue}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="5" Header="PaymentDeadlines" ToolTip="PaymentDeadlines" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding PaymentDeadlines}" AutoGenerateColumns="True" />
+      </Expander>
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

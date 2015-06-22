@@ -1,0 +1,37 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="CountryInfo_AutoGenTemplate.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgud:CourtInfo}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0" Text="Name" Style="{StaticResource dispNmStyle}" ToolTip="Name" xmlns="" />
+      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding Name}" ToolTip="Name" xmlns="" />
+      <TextBlock Grid.Row="2" Text="NameUkr" Style="{StaticResource dispNmStyle}" ToolTip="NameUkr" xmlns="" />
+      <TextBox Grid.Row="3" Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr}" ToolTip="NameUkr" xmlns="" />
+      <Expander Grid.Row="4" Header="JurisdictionCountry" ToolTip="JurisdictionCountry" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding JurisdictionCountry}" Margin="5,2" />
+      </Expander>
+      <TextBlock Grid.Row="5" Text="CourtRegion" Style="{StaticResource dispNmStyle}" ToolTip="CourtRegion" xmlns="" />
+      <TextBox Grid.Row="6" Style="{StaticResource txtEdStyle}" Text="{Binding CourtRegion}" ToolTip="CourtRegion" xmlns="" />
+      <TextBlock Grid.Row="7" Text="CourtID" Style="{StaticResource dispNmStyle}" ToolTip="CourtID" xmlns="" />
+      <TextBox Grid.Row="8" Style="{StaticResource txtEdStyle}" Text="{Binding CourtID}" ToolTip="CourtID" xmlns="" />
+      <TextBlock Grid.Row="9" Text="Instance" Style="{StaticResource dispNmStyle}" xmlns="" />
+      <ComboBox Grid.Row="10" ToolTip="Instance" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.CourtInstanceTypeList}, Mode=OneWay}" SelectedValue="{Binding Instance}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="" />
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>

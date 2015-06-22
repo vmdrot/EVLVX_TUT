@@ -1,0 +1,34 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="CountryInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="ContactInfo_AutoGenTemplate.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgud:RatingAgencyInfo}">
+    <Grid>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+        <RowDefinition Height="*" />
+      </Grid.RowDefinitions>
+      <TextBlock Grid.Row="0" Text="Name" Style="{StaticResource dispNmStyle}" ToolTip="Name" xmlns="" />
+      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding Name}" ToolTip="Name" xmlns="" />
+      <TextBlock Grid.Row="2" Text="NameUkr" Style="{StaticResource dispNmStyle}" ToolTip="NameUkr" xmlns="" />
+      <TextBox Grid.Row="3" Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr}" ToolTip="NameUkr" xmlns="" />
+      <CheckBox Grid.Row="4" Checked="{Binding IsGlobal}" FlowDirection="RightToLeft" xmlns="">
+        <TextBlock FlowDirection="LeftToRight" Text="IsGlobal:" ToolTip="IsGlobal" />
+      </CheckBox>
+      <Expander Grid.Row="5" Header="CoverageCountry" ToolTip="CoverageCountry" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding CoverageCountry}" Margin="5,2" />
+      </Expander>
+      <Expander Grid.Row="6" Header="Contacts" ToolTip="Contacts" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="">
+        <ContentControl Content="{Binding Contacts}" Margin="5,2" />
+      </Expander>
+    </Grid>
+  </DataTemplate>
+</ResourceDictionary>
