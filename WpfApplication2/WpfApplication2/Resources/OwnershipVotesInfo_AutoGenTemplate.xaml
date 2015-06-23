@@ -4,17 +4,11 @@
     <ResourceDictionary Source="Converters.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:OwnershipVotesInfo}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-      <TextBlock Grid.Row="0" Text="%" Style="{StaticResource dispNmStyle}" ToolTip="%" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding Pct, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="%" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="2" Text="Кількість голосів" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="3" Style="{StaticResource txtEdStyle}" Text="{Binding Votes, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Кількість голосів" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-    </Grid>
+    <StackPanel>
+      <TextBlock Text="%" Style="{StaticResource dispNmStyle}" ToolTip="%" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Pct, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="%" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Кількість голосів" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Votes, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Кількість голосів" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+    </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

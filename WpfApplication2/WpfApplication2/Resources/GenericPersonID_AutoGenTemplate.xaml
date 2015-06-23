@@ -4,21 +4,13 @@
     <ResourceDictionary Source="Converters.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:GenericPersonID}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-      <TextBlock Grid.Row="0" Text="CountryISO3Code" Style="{StaticResource dispNmStyle}" ToolTip="CountryISO3Code" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding CountryISO3Code, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CountryISO3Code" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="2" Text="PersonType" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox Grid.Row="3" ToolTip="PersonType" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.EntityTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding PersonType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="4" Text="PersonCode" Style="{StaticResource dispNmStyle}" ToolTip="PersonCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="5" Style="{StaticResource txtEdStyle}" Text="{Binding PersonCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="PersonCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-    </Grid>
+    <StackPanel>
+      <TextBlock Text="CountryISO3Code" Style="{StaticResource dispNmStyle}" ToolTip="CountryISO3Code" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CountryISO3Code, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CountryISO3Code" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="PersonType" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="PersonType" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.EntityTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding PersonType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="PersonCode" Style="{StaticResource dispNmStyle}" ToolTip="PersonCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PersonCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="PersonCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+    </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

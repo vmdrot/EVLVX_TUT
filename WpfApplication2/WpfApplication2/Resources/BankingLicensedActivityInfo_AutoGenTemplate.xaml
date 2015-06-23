@@ -4,21 +4,13 @@
     <ResourceDictionary Source="Converters.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:BankingLicensedActivityInfo}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-      <TextBlock Grid.Row="0" Text="Вид банківської діяльності" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox Grid.Row="1" ToolTip="Вид банківської діяльності зг. зі ст.47 з-ну про Банки й банківську діяльність" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.BankingActivityTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding ActivityType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="2" Text="Вид фінансових послуг" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox Grid.Row="3" ToolTip="Вид фінансових послуг зг. зі ст. 4 з-ну Про фінансові послуги" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.FinancialServicesTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding ServiceType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="4" Text="Вид діяльності - власна інтерпретація" Style="{StaticResource dispNmStyle}" ToolTip="Власна назва та/або опис виду діяльності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="5" Style="{StaticResource txtEdStyle}" Text="{Binding ActivityName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Власна назва та/або опис виду діяльності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-    </Grid>
+    <StackPanel>
+      <TextBlock Text="Вид банківської діяльності" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="Вид банківської діяльності зг. зі ст.47 з-ну про Банки й банківську діяльність" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.BankingActivityTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding ActivityType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Вид фінансових послуг" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="Вид фінансових послуг зг. зі ст. 4 з-ну Про фінансові послуги" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.FinancialServicesTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding ServiceType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Вид діяльності - власна інтерпретація" Style="{StaticResource dispNmStyle}" ToolTip="Власна назва та/або опис виду діяльності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ActivityName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Власна назва та/або опис виду діяльності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+    </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

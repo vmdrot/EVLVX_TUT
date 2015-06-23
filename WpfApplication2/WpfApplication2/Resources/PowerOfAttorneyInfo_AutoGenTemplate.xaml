@@ -5,33 +5,22 @@
     <ResourceDictionary Source="GenericPersonID_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:PowerOfAttorneyInfo}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-      <Expander Grid.Row="0" Header="Довірена особа" ToolTip="Кому видано довіреність" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <StackPanel>
+      <Expander Header="Довірена особа" ToolTip="Кому видано довіреність" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding ActingPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <Expander Grid.Row="1" Header="Від імені" ToolTip="Особа, яку представляють (від імені якої діє довірена особа)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Від імені" ToolTip="Особа, яку представляють (від імені якої діє довірена особа)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding OnBehalfOfPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <TextBlock Grid.Row="2" Text="Назва/титул довіреності" Style="{StaticResource dispNmStyle}" ToolTip="Короткий зміст предмету довіреності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="3" Style="{StaticResource txtEdStyle}" Text="{Binding Title, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Короткий зміст предмету довіреності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="4" Text="Дійсна з" Style="{StaticResource dispNmStyle}" ToolTip="Дата початку дії довіреності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker Grid.Row="5" ToolTip="Дата початку дії довіреності" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding ValidSince, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Grid.Row="6" Header="Дійсна до" ToolTip="Дата закінчення дії довіреності" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <TextBlock Text="Назва/титул довіреності" Style="{StaticResource dispNmStyle}" ToolTip="Короткий зміст предмету довіреності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Title, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Короткий зміст предмету довіреності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Дійсна з" Style="{StaticResource dispNmStyle}" ToolTip="Дата початку дії довіреності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="Дата початку дії довіреності" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding ValidSince, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Header="Дійсна до" ToolTip="Дата закінчення дії довіреності" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding ValidThru, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="True" />
       </Expander>
-      <TextBlock Grid.Row="7" Text="Інші відомості" Style="{StaticResource dispNmStyle}" ToolTip="Додаткові (значущі) відомості про довіреність" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="8" Style="{StaticResource txtEdStyle}" Text="{Binding OtherInfo, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Додаткові (значущі) відомості про довіреність" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-    </Grid>
+      <TextBlock Text="Інші відомості" Style="{StaticResource dispNmStyle}" ToolTip="Додаткові (значущі) відомості про довіреність" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding OtherInfo, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Додаткові (значущі) відомості про довіреність" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+    </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

@@ -10,49 +10,34 @@
     <ResourceDictionary Source="CurrencyAmount_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:LegalPersonInfo}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-      <TextBlock Grid.Row="0" Text="Податковий №" Style="{StaticResource dispNmStyle}" ToolTip="ЄДРПОУ/Податковий ID/HandelsregisterNr.(для нерезидентів)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding TaxCodeOrHandelsRegNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ЄДРПОУ/Податковий ID/HandelsregisterNr.(для нерезидентів)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="2" Text="Найменування" Style="{StaticResource dispNmStyle}" ToolTip="Найменування юридичної особи (оригінальною мовою)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="3" Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування юридичної особи (оригінальною мовою)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="4" Text="Найменування українською" Style="{StaticResource dispNmStyle}" ToolTip="Найменування юридичної особи українською мовою (для нерезидентів)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="5" Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування юридичної особи українською мовою (для нерезидентів)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Grid.Row="6" Header="Місцезнаходження" ToolTip="місцезнаходження юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <StackPanel>
+      <TextBlock Text="Податковий №" Style="{StaticResource dispNmStyle}" ToolTip="ЄДРПОУ/Податковий ID/HandelsregisterNr.(для нерезидентів)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TaxCodeOrHandelsRegNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ЄДРПОУ/Податковий ID/HandelsregisterNr.(для нерезидентів)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Найменування" Style="{StaticResource dispNmStyle}" ToolTip="Найменування юридичної особи (оригінальною мовою)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування юридичної особи (оригінальною мовою)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Найменування українською" Style="{StaticResource dispNmStyle}" ToolTip="Найменування юридичної особи українською мовою (для нерезидентів)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування юридичної особи українською мовою (для нерезидентів)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Header="Місцезнаходження" ToolTip="місцезнаходження юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Address, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <Expander Grid.Row="7" Header="Країна юрисдикції" ToolTip="Країна юрисдикції юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Країна юрисдикції" ToolTip="Країна юрисдикції юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding ResidenceCountry, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <Expander Grid.Row="8" Header="Держорган-реєстратор" ToolTip="Державний орган, який здійснив реєстрацію юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Держорган-реєстратор" ToolTip="Державний орган, який здійснив реєстрацію юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Registrar, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <Expander Grid.Row="9" Header="Дата/№ запису в держреєстрі" ToolTip="Дата та номер запису в Єдиному державному реєстрі юридичних осіб та фізичних осіб-підприємців" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Дата/№ запису в держреєстрі" ToolTip="Дата та номер запису в Єдиному державному реєстрі юридичних осіб та фізичних осіб-підприємців" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding RegisteredDateID, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <Expander Grid.Row="10" Header="Представник юрособи" ToolTip="Особа, що представляє юрособу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Представник юрособи" ToolTip="Особа, що представляє юрособу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding RepresentedBy, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <Expander Grid.Row="11" Header="Статутний капітал" ToolTip="Статутний фонд/капітал" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Статутний капітал" ToolTip="Статутний фонд/капітал" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Equity, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <Expander Grid.Row="12" Header="Основний вид діяльності" ToolTip="Основний(-і) вид(-и) діяльності юрособи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Основний вид діяльності" ToolTip="Основний(-і) вид(-и) діяльності юрособи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding PrincipalActivities, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="True" />
       </Expander>
-    </Grid>
+    </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

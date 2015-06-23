@@ -4,41 +4,31 @@
     <ResourceDictionary Source="Converters.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:ImperfectBusinessReputationInfo}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-      <CheckBox Grid.Row="0" IsChecked="{Binding HadBankruptcyInvestigation, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <StackPanel>
+      <CheckBox IsChecked="{Binding HadBankruptcyInvestigation, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="Чи порушувалася справа про банкрутство юридичної особи?:" ToolTip="Чи порушувалася справа про банкрутство юридичної особи?" />
       </CheckBox>
-      <Expander Grid.Row="1" Header="Деталі порушуваної(-их) справи(справ) про банкрутство юридичної особи" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Деталі порушуваної(-их) справи(справ) про банкрутство юридичної особи" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding BankruptcyInvestigations, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="True" />
       </Expander>
-      <CheckBox Grid.Row="2" IsChecked="{Binding HasMiscNonRepaidDebts, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <CheckBox IsChecked="{Binding HasMiscNonRepaidDebts, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="Є невиконані  зобов'язання перед іншими особами?:" ToolTip="Чи  має   юридична  особа  невиконані  майнові  (фінансові)  зобов'язання перед іншими особами?" />
       </CheckBox>
-      <Expander Grid.Row="3" Header="Невиконані  зобов'язання перед іншими особами - розшифровка" ToolTip="(зазначити, які саме зобов'язання, у якому розмірі, перед якою особою та з яких причин не були виконані, а також подальші плани щодо виконання/невиконання цих зобов'язань)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Невиконані  зобов'язання перед іншими особами - розшифровка" ToolTip="(зазначити, які саме зобов'язання, у якому розмірі, перед якою особою та з яких причин не були виконані, а також подальші плани щодо виконання/невиконання цих зобов'язань)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding MiscNonRepaidDebts, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="True" />
       </Expander>
-      <CheckBox Grid.Row="4" IsChecked="{Binding HadIndustrySpecificBreaches, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <CheckBox IsChecked="{Binding HadIndustrySpecificBreaches, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="Були порушення галузевого законодавства?:" ToolTip="Чи  притягувалася  юридична  особа  до  відповідальності  за  порушення антимонопольного,  податкового, банківського, валютного  законодавства, правил діяльності на ринку цінних паперів тощо?" />
       </CheckBox>
-      <Expander Grid.Row="5" Header="Порушення галузевого законодавства - деталі" ToolTip="(зазначити, коли вчинено порушення антимонопольного,  податкового, банківського, валютного  законодавства, правил діяльності на ринку цінних паперів тощо, зміст порушення, накладені санкції)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Порушення галузевого законодавства - деталі" ToolTip="(зазначити, коли вчинено порушення антимонопольного,  податкового, банківського, валютного  законодавства, правил діяльності на ринку цінних паперів тощо, зміст порушення, накладені санкції)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding BreachesOfLaw, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="True" />
       </Expander>
-      <CheckBox Grid.Row="6" IsChecked="{Binding HasLiquidatedSignOwnershipLastYear, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <CheckBox IsChecked="{Binding HasLiquidatedSignOwnershipLastYear, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="Були власником ліквідованих юросіб протягом останнього року?:" ToolTip="Чи була юридична особа протягом останнього року, що передував прийняттю рішення про ліквідацію юридичної особи, власником істотної участі (10 і більше відсотків) у цій особі?" />
       </CheckBox>
-      <Expander Grid.Row="7" Header="Ліквідовані протягом останнього року юрособи у власності" ToolTip="Протягом останнього року, що передував прийняттю рішення про ліквідацію юридичної особи, власник істотної участі (10 і більше відсотків) у ... (найменування юридичної особи, код за ЄДРПОУ, відсоток володіння в ній, докладна інформація про причини та підстави ліквідації)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Ліквідовані протягом останнього року юрособи у власності" ToolTip="Протягом останнього року, що передував прийняттю рішення про ліквідацію юридичної особи, власник істотної участі (10 і більше відсотків) у ... (найменування юридичної особи, код за ЄДРПОУ, відсоток володіння в ній, докладна інформація про причини та підстави ліквідації)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding LiquidatedSignOwnershipLastYear, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="True" />
       </Expander>
-    </Grid>
+    </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

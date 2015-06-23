@@ -5,21 +5,14 @@
     <ResourceDictionary Source="GenericPersonID_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:CouncilMemberInfo}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-      <Expander Grid.Row="0" Header="Член органу управління" ToolTip="Член органу управління" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <StackPanel>
+      <Expander Header="Член органу управління" ToolTip="Член органу управління" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Member, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <TextBlock Grid.Row="1" Text="Посада" Style="{StaticResource dispNmStyle}" ToolTip="Посада" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="2" Style="{StaticResource txtEdStyle}" Text="{Binding PositionName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Посада" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="3" Text="Опис функцій" Style="{StaticResource dispNmStyle}" ToolTip="Опис функцій" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="4" Style="{StaticResource txtEdStyle}" Text="{Binding FunctionsDescription, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Опис функцій" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-    </Grid>
+      <TextBlock Text="Посада" Style="{StaticResource dispNmStyle}" ToolTip="Посада" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PositionName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Посада" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Опис функцій" Style="{StaticResource dispNmStyle}" ToolTip="Опис функцій" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FunctionsDescription, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Опис функцій" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+    </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

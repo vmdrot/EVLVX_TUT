@@ -4,29 +4,22 @@
     <ResourceDictionary Source="Converters.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:SignificantOwnershipAcquisitionWaysInfo}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-      <CheckBox Grid.Row="0" IsChecked="{Binding IsIPO, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <StackPanel>
+      <CheckBox IsChecked="{Binding IsIPO, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="придбання акцій (паїв) банку на первинному ринку:" ToolTip="..." />
       </CheckBox>
-      <CheckBox Grid.Row="1" IsChecked="{Binding IsSecondaryMarketPurchase, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <CheckBox IsChecked="{Binding IsSecondaryMarketPurchase, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="придбання акцій (паїв) банку на вторинному ринку:" ToolTip="..." />
       </CheckBox>
-      <CheckBox Grid.Row="2" IsChecked="{Binding IsPurchaseByImplicitOwnership, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <CheckBox IsChecked="{Binding IsPurchaseByImplicitOwnership, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="опосередковане набуття:" ToolTip="набуття/збільшення істотної участі в банку опосередковано шляхом придбання корпоративних прав юридичних осіб у структурі власності банку" />
       </CheckBox>
-      <CheckBox Grid.Row="3" IsChecked="{Binding IsPurchaseByPowOfAtt, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <CheckBox IsChecked="{Binding IsPurchaseByPowOfAtt, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="набуття за довіренністю:" ToolTip="набуття/збільшення істотної участі в банку у зв’язку з передаванням права голосу за довіреністю;" />
       </CheckBox>
-      <CheckBox Grid.Row="4" IsChecked="{Binding IsAcquireByImplicitInfluence, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <CheckBox IsChecked="{Binding IsAcquireByImplicitInfluence, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="набуття через здійснення впливу:" ToolTip="набуття опосередкованої істотної участі в банку у зв’язку із здійсненням значного або вирішального впливу на управління та діяльність банку незалежно від формального володіння" />
       </CheckBox>
-    </Grid>
+    </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

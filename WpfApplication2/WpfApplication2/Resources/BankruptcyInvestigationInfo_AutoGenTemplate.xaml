@@ -4,25 +4,17 @@
     <ResourceDictionary Source="Converters.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:BankruptcyInvestigationInfo}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-      <TextBlock Grid.Row="0" Text="Дата порушення справи про банкрутство" Style="{StaticResource dispNmStyle}" ToolTip="Дата відкриття справи" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker Grid.Row="1" ToolTip="Дата відкриття справи" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding CaseFiledDt, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="2" Text="Статус" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox Grid.Row="3" ToolTip="Поточний статус справи" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.BankruptcyCaseResolutionTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding CurrentStatus, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Grid.Row="4" Header="Дата набуття поточного статусу" ToolTip="Перебуває в нинішньому статусі починаючи з..." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <StackPanel>
+      <TextBlock Text="Дата порушення справи про банкрутство" Style="{StaticResource dispNmStyle}" ToolTip="Дата відкриття справи" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="Дата відкриття справи" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding CaseFiledDt, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Статус" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="Поточний статус справи" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.BankruptcyCaseResolutionTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding CurrentStatus, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Header="Дата набуття поточного статусу" ToolTip="Перебуває в нинішньому статусі починаючи з..." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding InCurrentStatusSince, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="True" />
       </Expander>
-      <Expander Grid.Row="5" Header="Список судових рішень у справі" ToolTip="Перелік судових рішень по справі банкрутства" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Список судових рішень у справі" ToolTip="Перелік судових рішень по справі банкрутства" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding CourtDecisions, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="True" />
       </Expander>
-    </Grid>
+    </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

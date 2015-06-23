@@ -4,17 +4,11 @@
     <ResourceDictionary Source="Converters.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:LicenseQualificationInfo}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-      <TextBlock Grid.Row="0" Text="Код професії/діяльності (якщо існує)" Style="{StaticResource dispNmStyle}" ToolTip="Код професії згідно відповідного класифікатору/довідника професій (напр.http://kodeksy.com.ua/buh/kp.htm)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding QualificationCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Код професії згідно відповідного класифікатору/довідника професій (напр.http://kodeksy.com.ua/buh/kp.htm)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="2" Text="Назва професії/діяльності" Style="{StaticResource dispNmStyle}" ToolTip="Назва професії/виду ліцензованої діяльності згідно відповідного класифікатору/довідника професій (напр.http://kodeksy.com.ua/buh/kp.htm)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="3" Style="{StaticResource txtEdStyle}" Text="{Binding QualificationName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва професії/виду ліцензованої діяльності згідно відповідного класифікатору/довідника професій (напр.http://kodeksy.com.ua/buh/kp.htm)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-    </Grid>
+    <StackPanel>
+      <TextBlock Text="Код професії/діяльності (якщо існує)" Style="{StaticResource dispNmStyle}" ToolTip="Код професії згідно відповідного класифікатору/довідника професій (напр.http://kodeksy.com.ua/buh/kp.htm)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding QualificationCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Код професії згідно відповідного класифікатору/довідника професій (напр.http://kodeksy.com.ua/buh/kp.htm)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Назва професії/діяльності" Style="{StaticResource dispNmStyle}" ToolTip="Назва професії/виду ліцензованої діяльності згідно відповідного класифікатору/довідника професій (напр.http://kodeksy.com.ua/buh/kp.htm)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding QualificationName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва професії/виду ліцензованої діяльності згідно відповідного класифікатору/довідника професій (напр.http://kodeksy.com.ua/buh/kp.htm)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+    </StackPanel>
   </DataTemplate>
 </ResourceDictionary>
