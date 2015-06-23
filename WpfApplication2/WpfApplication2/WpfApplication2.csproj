@@ -89,6 +89,10 @@
     <Compile Include="Forms\RegLicAppx2OwnershipAcqRequestLPFrm.xaml.cs">
       <DependentUpon>RegLicAppx2OwnershipAcqRequestLPFrm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SelectedObjectFrm.xaml.cs">
+      <DependentUpon>SelectedObjectFrm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyCommands.cs" />
     <Compile Include="StackPanelWindow.xaml.cs">
       <DependentUpon>StackPanelWindow.xaml</DependentUpon>
     </Compile>
@@ -117,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Forms\RegLicAppx2OwnershipAcqRequestLPFrm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\SelectedObjectFrm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

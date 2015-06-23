@@ -41,7 +41,8 @@
         <ContentControl Content="{Binding AcquisitionWays, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
             <Expander Header="Придбання на первинному ринку" ToolTip="8. Інформація про намір щодо придбання акцій (паїв) банку на первинному ринку:" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=AcquisitionWays.IsIPO , Converter={StaticResource bool2Vis}}">
-                <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding IPOPurchase, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Visibility="{Binding Path=AcquisitionWays.IsIPO , Converter={StaticResource bool2Vis}}">
+                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Visibility="{Binding Path=AcquisitionWays.IsIPO , Converter={StaticResource bool2Vis}}">
+                <DataGrid x:Name="gridIPOPurchase" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding IPOPurchase, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Visibility="{Binding Path=AcquisitionWays.IsIPO , Converter={StaticResource bool2Vis}}">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість акцій">
                             <DataGridTextColumn.HeaderStyle>
@@ -171,12 +172,24 @@
                         http://stackoverflow.com/questions/20858692/button-inside-datagrid-wpf-mvvm-->
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="..." />
+                                    <Button Content="..." Command="{x:Static local:MyCommands.DoSomethingCommand}" CommandParameter="{Binding ElementName=gridIPOPurchase, Path=SelectedItem}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
+                    
                 </DataGrid>
+                    <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}" IsEnabled="{Binding Path=AcquisitionWays.IsIPO}" Visibility="{Binding Path=AcquisitionWays.IsIPO, Converter={StaticResource bool2Vis}}">
+                        <Button.CommandParameter>
+                            <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding Path="ItemsSource" ElementName="gridIPOPuchase"/>
+                                <Binding Path="DataContext" ElementName="gridIPOPurchase" />
+                                <Binding Path="IPOPurchase" />
+                        </MultiBinding>
+                        </Button.CommandParameter>
+                    </Button>
+                    <!--<Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}" IsEnabled="{Binding Path=AcquisitionWays.IsIPO}" Visibility="{Binding Path=AcquisitionWays.IsIPO, Converter={StaticResource bool2Vis}}"></Button>-->
+                </StackPanel>
             </Expander>
       <Expander Header="9. Придбання на вторинному ринку" ToolTip="9. Інформація про намір щодо придбання акцій (паїв) банку на вторинному ринку та/або стосовно правочинів щодо набуття (збільшення) опосередкованої участі в банку (крім набуття істотної участі в результаті передавання особі права голосу або незалежно від формального володіння)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
                 Visibility="{Binding Path=AcquisitionWays.IsSecondaryMarketPurchase, Converter={StaticResource bool2Vis}}">
