@@ -1,0 +1,81 @@
+﻿<Window x:Class="WpfApplication2.Forms.SelectedObjectFrm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SelectedObjectFrm" Height="300" Width="500">
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="auto" Width="auto">
+        <Grid.Resources>
+            <ResourceDictionary>
+                <!-- Import the resource dictionary which contains the DataTemplate for the RaceHorse class. -->
+                <ResourceDictionary.MergedDictionaries>
+                    <!--<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SignatoryInfoTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonIDTemplate.xaml" />-->
+                    <!--<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegLicAppx2OwnershipAcqRequestLPTemplate.xaml" />-->
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegLicAppx2OwnershipAcqRequestLP_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonID_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CreditRatingInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RatingAgencyInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ContactInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhysicalPersonInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegistrarAuthority_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LocationInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhoneInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EmailInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/FinancialOversightAuthorityInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/TotalOwnershipSummaryInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/OwnershipSummaryInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CurrencyAmount_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SignificantOwnershipAcquisitionWaysInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/IPOSharesPurchaseInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PaymentDeadlineInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SecondaryMarketSharesPurchaseInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LegalTransactionInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PowerOfAttorneySharesPurchaseInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PowerOfAttorneyInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SignificantOrDecisiveInfulenceInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/IncomeOriginInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/OwnershipStructure_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LoanInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ImperfectBusinessReputationInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankruptcyInvestigationInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CourtDecisionInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CourtInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/IndebtnessInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BreachOfLawRecordInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LiquidatedEntityOwnershipInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/TotalOwnershipDetailsInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/OwnershipVotesInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/MissingInformationResonInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SignatoryInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LegalPersonInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LPRegisteredDateRecordId_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EconomicActivityType_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PersonsAssociation_AutoGenTemplate.xaml" />
+                </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary>
+        </Grid.Resources>
+        <!--<ContentControl Content="{Binding Questionnaire}" />-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="auto" Height="auto" IsMainMenu="True">
+            <MenuItem Header="_File">
+                <MenuItem Header="Sa_ve" ></MenuItem>
+                <MenuItem Header="Save _As" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Help" />
+        </Menu>
+        <ScrollViewer  Grid.Row="1" Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ContentControl x:Name="quCtrl" Margin="0,2,0,28"/>
+        </ScrollViewer>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="auto" Width="auto" FlowDirection="LeftToRight">
+            <Button Click="OKButton_Click" Content="OK" Width="50" Margin="50,-20" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+            <Button Click="CancelButton_Click" Content="Cancel" Width="50" Margin="0,0" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+        </StackPanel>
+
+    </Grid>
+</Window>

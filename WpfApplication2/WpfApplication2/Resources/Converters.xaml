@@ -3,4 +3,5 @@
                     xmlns:convs="clr-namespace:WpfApplication2.Converters;assembly=">
     <convs:BoolToVisibilityConverter x:Key="bool2Vis" />
     <convs:DoubleToIntegerConverter x:Key="double2Int" />
+    <convs:MultiValueConverter x:Key="multiValConv" />
 </ResourceDictionary>
