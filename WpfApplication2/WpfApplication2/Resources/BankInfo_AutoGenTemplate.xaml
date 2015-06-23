@@ -6,41 +6,25 @@
     <ResourceDictionary Source="CountryInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:BankInfo}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-      <TextBlock Grid.Row="0" Text="МФО" Style="{StaticResource dispNmStyle}" ToolTip="МФО" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="1" Style="{StaticResource txtEdStyle}" Text="{Binding MFO, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="МФО" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="2" Text="№ у реєстрі банків" Style="{StaticResource dispNmStyle}" ToolTip="№ у реєстрі банків (лише для головних контор)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="3" Style="{StaticResource txtEdStyle}" Text="{Binding RegistryNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="№ у реєстрі банків (лише для головних контор)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="4" Text="Код банку" Style="{StaticResource dispNmStyle}" ToolTip="Код банку (лише для головних контор)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="5" Style="{StaticResource txtEdStyle}" Text="{Binding Code, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Код банку (лише для головних контор)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="6" Text="Найменування банку" Style="{StaticResource dispNmStyle}" ToolTip="Найменування банку (в оригіналі)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="7" Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування банку (в оригіналі)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="8" Text="Найменування банку(українською)" Style="{StaticResource dispNmStyle}" ToolTip="Найменування банку(українською)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="9" Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування банку(українською)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Grid.Row="10" Header="Відомості про юрособу-банк" ToolTip="Відомості про юрособу-банк" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <StackPanel>
+      <TextBlock Text="МФО" Style="{StaticResource dispNmStyle}" ToolTip="МФО" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MFO, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="МФО" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="№ у реєстрі банків" Style="{StaticResource dispNmStyle}" ToolTip="№ у реєстрі банків (лише для головних контор)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistryNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="№ у реєстрі банків (лише для головних контор)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Код банку" Style="{StaticResource dispNmStyle}" ToolTip="Код банку (лише для головних контор)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Code, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Код банку (лише для головних контор)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Найменування банку" Style="{StaticResource dispNmStyle}" ToolTip="Найменування банку (в оригіналі)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування банку (в оригіналі)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Найменування банку(українською)" Style="{StaticResource dispNmStyle}" ToolTip="Найменування банку(українською)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування банку(українською)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Header="Відомості про юрособу-банк" ToolTip="Відомості про юрособу-банк" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding LegalPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <TextBlock Grid.Row="11" Text="SWIFT адреса" Style="{StaticResource dispNmStyle}" ToolTip="Див. http://www.swift.com/bsl/" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="12" Style="{StaticResource txtEdStyle}" Text="{Binding SWIFTBIC, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Див. http://www.swift.com/bsl/" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Grid.Row="13" Header="Країна діяльності" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <TextBlock Text="SWIFT адреса" Style="{StaticResource dispNmStyle}" ToolTip="Див. http://www.swift.com/bsl/" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SWIFTBIC, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Див. http://www.swift.com/bsl/" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Header="Країна діяльності" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding OperationCountry, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-    </Grid>
+    </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

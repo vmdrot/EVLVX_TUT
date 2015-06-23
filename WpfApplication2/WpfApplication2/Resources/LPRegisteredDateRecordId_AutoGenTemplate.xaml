@@ -4,17 +4,11 @@
     <ResourceDictionary Source="Converters.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:LPRegisteredDateRecordId}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-      <TextBlock Grid.Row="0" Text="Дата запису" Style="{StaticResource dispNmStyle}" ToolTip="Дата запису про проведення державної реєстрації фізичної особи-підприємця" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker Grid.Row="1" ToolTip="Дата запису про проведення державної реєстрації фізичної особи-підприємця" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding RegisteredDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="2" Text="Номер запису" Style="{StaticResource dispNmStyle}" ToolTip="Номер запису про проведення державної реєстрації фізичної особи-підприємця" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="3" Style="{StaticResource txtEdStyle}" Text="{Binding RegistryRecordId, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Номер запису про проведення державної реєстрації фізичної особи-підприємця" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-    </Grid>
+    <StackPanel>
+      <TextBlock Text="Дата запису" Style="{StaticResource dispNmStyle}" ToolTip="Дата запису про проведення державної реєстрації фізичної особи-підприємця" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="Дата запису про проведення державної реєстрації фізичної особи-підприємця" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding RegisteredDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Номер запису" Style="{StaticResource dispNmStyle}" ToolTip="Номер запису про проведення державної реєстрації фізичної особи-підприємця" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistryRecordId, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Номер запису про проведення державної реєстрації фізичної особи-підприємця" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+    </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

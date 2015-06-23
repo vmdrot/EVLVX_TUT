@@ -5,25 +5,16 @@
     <ResourceDictionary Source="CourtInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:CourtDecisionInfo}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-      <Expander Grid.Row="0" Header="Court" ToolTip="Court" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <StackPanel>
+      <Expander Header="Court" ToolTip="Court" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Court, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <TextBlock Grid.Row="1" Text="DecisionType" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox Grid.Row="2" ToolTip="DecisionType" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.CourtDecisionTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding DecisionType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="3" Text="DecisionDate" Style="{StaticResource dispNmStyle}" ToolTip="DecisionDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker Grid.Row="4" ToolTip="DecisionDate" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding DecisionDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="5" Text="DecisionText" Style="{StaticResource dispNmStyle}" ToolTip="DecisionText" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="6" Style="{StaticResource txtEdStyle}" Text="{Binding DecisionText, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="DecisionText" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-    </Grid>
+      <TextBlock Text="DecisionType" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="DecisionType" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.CourtDecisionTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding DecisionType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="DecisionDate" Style="{StaticResource dispNmStyle}" ToolTip="DecisionDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="DecisionDate" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding DecisionDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="DecisionText" Style="{StaticResource dispNmStyle}" ToolTip="DecisionText" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding DecisionText, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="DecisionText" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+    </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

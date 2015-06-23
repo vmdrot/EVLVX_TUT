@@ -10,69 +10,51 @@
     <ResourceDictionary Source="ContactInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bguq:Appx2OwnershipStructLP}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-      <Expander Grid.Row="0" Header="Банк" ToolTip="Банк" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <StackPanel>
+      <Expander Header="Банк" ToolTip="Банк" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding BankRef, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <Expander Grid.Row="1" Header="Юр.особа-заявник" ToolTip="1. Інформація про юридичну особу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Юр.особа-заявник" ToolTip="1. Інформація про юридичну особу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Acquiree, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <CheckBox Grid.Row="2" IsChecked="{Binding IsSupervisoryCouncilPresent, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <CheckBox IsChecked="{Binding IsSupervisoryCouncilPresent, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="Наглядова (спостережна) рада юридичної особи?:" ToolTip="1.4. Чи існує наглядова (спостережна) рада юридичної особи" />
       </CheckBox>
-      <Expander Grid.Row="3" Header="Особовий склад наглядової(спостережної)ради юрособи" ToolTip="1.4. Голова та члени наглядової (спостережної) ради юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Особовий склад наглядової(спостережної)ради юрособи" ToolTip="1.4. Голова та члени наглядової (спостережної) ради юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding SupervisoryCouncil, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <CheckBox Grid.Row="4" IsChecked="{Binding IsExecutivesPresent, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <CheckBox IsChecked="{Binding IsExecutivesPresent, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="Виконавчий орган юридичної особи?:" ToolTip="1.4. Чи існує виконавчий орган юридичної особи" />
       </CheckBox>
-      <Expander Grid.Row="5" Header="Особовий склад виконавчого органу юрособи" ToolTip="1.5. Голова та члени виконавчого органу юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Особовий склад виконавчого органу юрособи" ToolTip="1.5. Голова та члени виконавчого органу юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Executives, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <TextBlock Grid.Row="6" Text="% власності юрособи у капіталі банку" Style="{StaticResource dispNmStyle}" ToolTip="1.7. Відсоток участі в банку становить ... відсотків статутного капіталу банку" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="7" Style="{StaticResource txtEdStyle}" Text="{Binding TotalOwneshipPct, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="1.7. Відсоток участі в банку становить ... відсотків статутного капіталу банку" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Grid.Row="8" Header="Частка власності юрособи в банку - розподіл" ToolTip="1.7. Відсоток участі в банку становить, у т.ч.:" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <TextBlock Text="% власності юрособи у капіталі банку" Style="{StaticResource dispNmStyle}" ToolTip="1.7. Відсоток участі в банку становить ... відсотків статутного капіталу банку" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TotalOwneshipPct, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="1.7. Відсоток участі в банку становить ... відсотків статутного капіталу банку" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Header="Частка власності юрособи в банку - розподіл" ToolTip="1.7. Відсоток участі в банку становить, у т.ч.:" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding TotalOwneshipDetails, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <Expander Grid.Row="9" Header="Розшифровка ланцюжка власників банку" ToolTip="1.8. Інформація про спільне володіння (=розкриття усього ланцюжка власників, у т.ч. й пов'язаних юросіб)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Розшифровка ланцюжка власників банку" ToolTip="1.8. Інформація про спільне володіння (=розкриття усього ланцюжка власників, у т.ч. й пов'язаних юросіб)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding BankExistingCommonImplicitOwners, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="True" />
       </Expander>
-      <Expander Grid.Row="10" Header="Частка власності, що набувається" ToolTip="1.10. Інформація про набуття права голосу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Частка власності, що набувається" ToolTip="1.10. Інформація про набуття права голосу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding SharesAppliedFor, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="True" />
       </Expander>
-      <Expander Grid.Row="11" Header="Розшифровка ланцюжка власників юрособи-набувача" ToolTip="2.1. Інформація про осіб (юр. і фіз.), які володіють істотною участю в юридичній особі&#xA;(якщо не було розкрито у п.1.8.)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Розшифровка ланцюжка власників юрособи-набувача" ToolTip="2.1. Інформація про осіб (юр. і фіз.), які володіють істотною участю в юридичній особі&#xA;(якщо не було розкрито у п.1.8.)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding ApplicantOwnershipStructure, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="True" />
       </Expander>
-      <Expander Grid.Row="12" Header="Реквізити осіб-фігурантів анкети" ToolTip="Повна інформація про осіб, що згадуються в анкеті" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Реквізити осіб-фігурантів анкети" ToolTip="Повна інформація про осіб, що згадуються в анкеті" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding MentionedIdentities, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="True" />
       </Expander>
-      <Expander Grid.Row="13" Header="Зв'язки між особами-фігурантами анкети" ToolTip="Відомості про пов'язаних осіб, що згадуються в анкеті" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Зв'язки між особами-фігурантами анкети" ToolTip="Відомості про пов'язаних осіб, що згадуються в анкеті" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding PersonsLinks, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="True" />
       </Expander>
-      <Expander Grid.Row="14" Header="Підписант" ToolTip="Відомості по особу, що підписала анкету" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Підписант" ToolTip="Відомості по особу, що підписала анкету" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Signatory, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <Expander Grid.Row="15" Header="Контакти" ToolTip="Контактні дані відправника анкети" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Контакти" ToolTip="Контактні дані відправника анкети" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding ContactPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-    </Grid>
+    </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

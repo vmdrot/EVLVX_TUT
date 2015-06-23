@@ -4,33 +4,21 @@
     <ResourceDictionary Source="Converters.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:LegalTransactionInfo}">
-    <Grid>
-      <Grid.RowDefinitions>
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-        <RowDefinition Height="*" />
-      </Grid.RowDefinitions>
-      <CheckBox Grid.Row="0" IsChecked="{Binding IsCommitted, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <StackPanel>
+      <CheckBox IsChecked="{Binding IsCommitted, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="Правочин відбувся?:" ToolTip="Чи правочин уже відбувся чи лише планується?" />
       </CheckBox>
-      <TextBlock Grid.Row="1" Text="Тип правочину" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox Grid.Row="2" ToolTip="..." ItemsSource="{Binding Source={x:Static bgus:EnumsLister.LegalTransactionTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding TransactionType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="3" Text="№ правочину" Style="{StaticResource dispNmStyle}" ToolTip="напр. №/серія договору, тощо - якщо правочин вже відбувся та/або цей реквізит відомий" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="4" Style="{StaticResource txtEdStyle}" Text="{Binding TransactionNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="напр. №/серія договору, тощо - якщо правочин вже відбувся та/або цей реквізит відомий" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Grid.Row="5" Text="Дата правочину" Style="{StaticResource dispNmStyle}" ToolTip="якщо правочин вже відбувся та/або цей реквізит відомий" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker Grid.Row="6" ToolTip="якщо правочин вже відбувся та/або цей реквізит відомий" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding TransactionDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Grid.Row="7" Header="Сторони" ToolTip="Сторони правочину" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <TextBlock Text="Тип правочину" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="..." ItemsSource="{Binding Source={x:Static bgus:EnumsLister.LegalTransactionTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding TransactionType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="№ правочину" Style="{StaticResource dispNmStyle}" ToolTip="напр. №/серія договору, тощо - якщо правочин вже відбувся та/або цей реквізит відомий" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TransactionNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="напр. №/серія договору, тощо - якщо правочин вже відбувся та/або цей реквізит відомий" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Дата правочину" Style="{StaticResource dispNmStyle}" ToolTip="якщо правочин вже відбувся та/або цей реквізит відомий" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="якщо правочин вже відбувся та/або цей реквізит відомий" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding TransactionDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Header="Сторони" ToolTip="Сторони правочину" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding Parties, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="True" />
       </Expander>
-      <TextBlock Grid.Row="8" Text="Зміст правочину" Style="{StaticResource dispNmStyle}" ToolTip="Стислий опис змісту правочину" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Grid.Row="9" Style="{StaticResource txtEdStyle}" Text="{Binding TransactionText, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Стислий опис змісту правочину" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-    </Grid>
+      <TextBlock Text="Зміст правочину" Style="{StaticResource dispNmStyle}" ToolTip="Стислий опис змісту правочину" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TransactionText, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Стислий опис змісту правочину" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+    </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

@@ -17,18 +17,10 @@
     </ResourceDictionary.MergedDictionaries>
     <DataTemplate DataType="{x:Type bguq:Appx2OwnershipStructLP}" >
         <Grid>
-            <!--<Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
+            <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-                
-            <ContentControl Grid.Row="6" Content="{Binding Signatory}" />-->
+            <ScrollViewer Grid.Row="0" Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <StackPanel>
                 <Expander Header="Банк" ToolTip="Банк" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
                     <ContentControl Content="{Binding BankRef}" Margin="5,2" />
@@ -60,7 +52,7 @@
                 </Expander>
                 <Expander Header="1.8. Інформація про спільне володіння" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
                     <!--<ContentControl Content="{Binding BankExistingCommonImplicitOwners}" Margin="5,2" />-->
-                    <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding BankExistingCommonImplicitOwners}" AutoGenerateColumns="True"></DataGrid>
+                    <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding BankExistingCommonImplicitOwners}" AutoGenerateColumns="True" IsReadOnly="False"></DataGrid>
                 </Expander>
                 <Expander Header="1.10. Інформація про набуття права голосу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False">
                     <ContentControl Content="{Binding SharesAppliedFor}" Margin="5,2" />
@@ -78,6 +70,7 @@
                     <ContentControl Content="{Binding ContactPerson}" Margin="5,2" />
                 </Expander>
             </StackPanel>
+            </ScrollViewer>
         </Grid>
     </DataTemplate>
 </ResourceDictionary>

@@ -68,9 +68,9 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-        
-
-            <ContentControl x:Name="quCtrl" Margin="0,-28,0,28"/>
+        <ScrollViewer  Grid.Row="0" Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ContentControl x:Name="quCtrl" Margin="0,2,0,28"/>
+        </ScrollViewer>
         <Button Grid.Row="1" Click="Button_Click" Content="Signatory" Width="50" Margin="371,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
     </Grid>
     <!--</ScrollContentPresenter>-->
