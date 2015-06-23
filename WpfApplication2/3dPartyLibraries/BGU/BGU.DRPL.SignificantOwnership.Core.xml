@@ -2023,6 +2023,11 @@
             голосу або незалежно від формального володіння)
             </summary>
         </member>
+        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.IPOSharesPurchaseInfo">
+            <summary>
+            Інформація про придбання на акцій на первинному ринку
+            </summary>
+        </member>
         <member name="T:BGU.DRPL.SignificantOwnership.Core.FXLicensing.Questionnares.ForeignAccountOpenMsgAppx1">
             <summary>
                                                 Додаток 1                                       до Положення про порядок                                       видачі Національним банком                                       України індивідуальних                                       ліцензій на розміщення                                       резидентами (юридичними                                       та фізичними особами)                                       валютних цінностей на                                       рахунках за межами України  

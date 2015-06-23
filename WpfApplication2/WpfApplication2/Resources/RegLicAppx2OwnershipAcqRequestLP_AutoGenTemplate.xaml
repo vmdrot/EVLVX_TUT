@@ -42,7 +42,7 @@
       </Expander>
             <DataGrid CanUserAddRows="True" CanUserDeleteRows="True" ItemsSource="{Binding IPOPurchase, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding SharesCount}" Header="Кількість акцій">
+                    <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість акцій">
                         <DataGridTextColumn.HeaderStyle>
                             <Style TargetType="dataprimitives:DataGridColumnHeader">
                                 <Setter Property="ContentTemplate">
@@ -59,7 +59,122 @@
                             </Style>
                         </DataGridTextColumn.HeaderStyle>
                     </DataGridTextColumn>
-                    </DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Номінальна ціна">
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="dataprimitives:DataGridColumnHeader">
+                                <Setter Property="ContentTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <ContentControl Content="{Binding}">
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip Content="Номінальна вартість однієї акції (одного паю), грн." />
+                                                </ToolTipService.ToolTip>
+                                            </ContentControl>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <!--http://stackoverflow.com/questions/1168976/wpf-datagrid-button-in-a-column-getting-the-row-from-which-it-came-on-the-cli
+                        https://social.msdn.microsoft.com/Forums/vstudio/en-US/f1dff16f-5a0f-474a-8f47-eb35ecb0b2d5/mvvm-data-bindingcommanding-to-button-inside-datagrid?forum=wpf
+                        http://stackoverflow.com/questions/20858692/button-inside-datagrid-wpf-mvvm-->
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="4*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Grid.Column="0" Text="{Binding Path=NominalSharePrice.CCY, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" />
+                                    <TextBox Grid.Column="1" Text="{Binding Path=NominalSharePrice.Amt, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" />
+                                </Grid>
+                                <!--<ContentControl Content="{Binding Path=NominalSharePrice, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}"></ContentControl>-->
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Загальна номінальна вартість">
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="dataprimitives:DataGridColumnHeader">
+                                <Setter Property="ContentTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <ContentControl Content="{Binding}">
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip Content="Загальна номінальна вартість акцій (паїв), які юридична особа має намір придбати, грн." />
+                                                </ToolTipService.ToolTip>
+                                            </ContentControl>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ContentControl Content="{Binding Path=NominalTotalSharesValue, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <!--<DataGridTemplateColumn Header="Термін оплати">
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="dataprimitives:DataGridColumnHeader">
+                                <Setter Property="ContentTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <ContentControl Content="{Binding}">
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip Content="Запланований термін здійснення оплати" />
+                                                </ToolTipService.ToolTip>
+                                            </ContentControl>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="80%" />
+                                        <ColumnDefinition Width="20%" />
+                                    </Grid.ColumnDefinitions>
+                                    -->
+                    <!--<TextBlock Grid.Column="0" Text="{Binding PaymentDeadlines}" Height="auto" Width="auto" HorizontalAlignment="Stretch" />-->
+                    <!--<TextBlock Grid.Column="0" Text="{Binding PaymentDeadlines.Count}" Height="auto" Width="auto" HorizontalAlignment="Stretch" />-->
+                    <!--
+                                    <Button Grid.Column="1" Content="Deadline(s)" Height="auto" Width="auto" />
+                                </Grid>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>-->
+
+
+                    <DataGridTemplateColumn Header="Редагувати">
+                        <DataGridTemplateColumn.HeaderStyle>
+                            <Style TargetType="dataprimitives:DataGridColumnHeader">
+                                <Setter Property="ContentTemplate">
+                                    <Setter.Value>
+                                        <DataTemplate>
+                                            <ContentControl Content="{Binding}">
+                                                <ToolTipService.ToolTip>
+                                                    <ToolTip Content="Натисніть ґудзик, щоб редагувати рядок" />
+                                                </ToolTipService.ToolTip>
+                                            </ContentControl>
+                                        </DataTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </DataGridTemplateColumn.HeaderStyle>
+                        <!--http://stackoverflow.com/questions/1168976/wpf-datagrid-button-in-a-column-getting-the-row-from-which-it-came-on-the-cli
+                        https://social.msdn.microsoft.com/Forums/vstudio/en-US/f1dff16f-5a0f-474a-8f47-eb35ecb0b2d5/mvvm-data-bindingcommanding-to-button-inside-datagrid?forum=wpf
+                        http://stackoverflow.com/questions/20858692/button-inside-datagrid-wpf-mvvm-->
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="..." />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
             </DataGrid>
             <Expander Header="Придбання на первинному ринку" ToolTip="8. Інформація про намір щодо придбання акцій (паїв) банку на первинному ринку:" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             </Expander>

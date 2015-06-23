@@ -65,13 +65,22 @@
         </Grid.Resources>
         <!--<ContentControl Content="{Binding Questionnaire}" />-->
         <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
             <RowDefinition Height="*" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-        <ScrollViewer  Grid.Row="0" Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Menu Grid.Row="0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="auto" Height="auto" IsMainMenu="True">
+            <MenuItem Header="_File">
+                <MenuItem Header="Sa_ve" Click="SaveMenuItem_Click"></MenuItem>
+                <MenuItem Header="Save _As" Click="SaveAsMenuItem_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Help" Click="MenuItem_Click" />
+        </Menu>
+        <ScrollViewer  Grid.Row="1" Width="auto" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <ContentControl x:Name="quCtrl" Margin="0,2,0,28"/>
         </ScrollViewer>
-        <Button Grid.Row="1" Click="Button_Click" Content="Signatory" Width="50" Margin="371,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+        <Button Grid.Row="2" Click="Button_Click" Content="Signatory" Width="50" Margin="371,0" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+        
     </Grid>
     <!--</ScrollContentPresenter>-->
 </Window>
