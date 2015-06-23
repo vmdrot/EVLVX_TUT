@@ -43,12 +43,32 @@ namespace WpfApplication2
 
         private void EditRow(object sender, ExecutedRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            object[] prms = (object[])e.Parameter;
+            if (prms == null || prms.Length == 0)
+            {
+                e.Handled = true;
+                return;
+            }
+            object di = prms[0];
+            object dg = prms.Length >= 2 ? prms[1] : null;
+
+            SelectedObjectFrm frm = new SelectedObjectFrm();
+            frm.DataSource = di;
+            bool? hr = frm.ShowDialog();
+            if (hr != null && (bool)hr)
+            {
+                //if (dg != null && dg is System.Windows.Controls.DataGrid)
+                //    ((System.Windows.Controls.DataGrid)dg).Items.Refresh();
+            }
+
+            e.Handled = true;
         }
 
         private void CanEditRow(object sender, CanExecuteRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            e.CanExecute = true;
+            e.Handled = true;
+            return;
         }
 
         private void CanAddNewRow(object sender, CanExecuteRoutedEventArgs e)
@@ -67,6 +87,8 @@ namespace WpfApplication2
             object ds = prms[0];
             object dataContext = prms.Length >= 2 ? prms[1] : null;
             object list = prms.Length >= 3 ? prms[2] : null;
+            object dg = prms.Length >= 4 ? prms[3] : null;
+
             if (!list.GetType().IsGenericType)
             {
                 e.Handled = true;
@@ -78,6 +100,7 @@ namespace WpfApplication2
             if (gnrcArgs != null && gnrcArgs.Length > 0)
             {
                 newItem = ReflectionUtil.InstantiateObject(gnrcArgs[0]);
+                ReflectionUtil.InstantiateAllProps(newItem, newItem.GetType().Assembly);
             }
             if (newItem == null)
             {
@@ -88,8 +111,13 @@ namespace WpfApplication2
             frm.DataSource = newItem;
             bool? hr = frm.ShowDialog();
             if (hr != null && (bool)hr)
-                ;// e.Parameter = frm.DataSource; //todo
-            
+            {
+                list.GetType().GetMethod("Add").Invoke(list, new[] { frm.DataSource });
+                //;// e.Parameter = frm.DataSource; //todo
+                if (dg != null && dg is System.Windows.Controls.DataGrid)
+                    ((System.Windows.Controls.DataGrid)dg).Items.Refresh();
+            }
+
             e.Handled = true;
         }
 
