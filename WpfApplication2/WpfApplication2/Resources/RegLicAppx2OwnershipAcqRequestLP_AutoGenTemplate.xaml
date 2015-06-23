@@ -172,7 +172,14 @@
                         http://stackoverflow.com/questions/20858692/button-inside-datagrid-wpf-mvvm-->
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Content="..." Command="{x:Static local:MyCommands.DoSomethingCommand}" CommandParameter="{Binding ElementName=gridIPOPurchase, Path=SelectedItem}" />
+                                        <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                                            <Button.CommandParameter>
+                                                <MultiBinding Converter="{StaticResource multiValConv}">
+                                                    <Binding Path="SelectedItem" ElementName="gridIPOPurchase" />
+                                                    <Binding ElementName="gridIPOPurchase" />
+                                                </MultiBinding>
+                                            </Button.CommandParameter>
+                                        </Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -185,6 +192,7 @@
                                 <Binding Path="ItemsSource" ElementName="gridIPOPuchase"/>
                                 <Binding Path="DataContext" ElementName="gridIPOPurchase" />
                                 <Binding Path="IPOPurchase" />
+                                <Binding ElementName="gridIPOPurchase" />
                         </MultiBinding>
                         </Button.CommandParameter>
                     </Button>
