@@ -43,7 +43,7 @@ namespace WpfApplication2
             object diIdx = prms.Length >= 2 ? prms[1] : null;
             object dg = prms.Length >= 3 ? prms[2] : null;
 
-            if (System.Windows.MessageBox.Show(String.Format("Do you really want to delete row #{0} ({1})", (int)diIdx, di)) != MessageBoxResult.OK)
+            if (System.Windows.MessageBox.Show(String.Format("Do you really want to delete row #{0} ({1})", (int)diIdx, di), "Confirm delete", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) != MessageBoxResult.Yes)
                 return;
             if (dg != null && dg is System.Windows.Controls.DataGrid)
             {
