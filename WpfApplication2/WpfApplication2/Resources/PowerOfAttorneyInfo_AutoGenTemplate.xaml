@@ -16,65 +16,8 @@
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Title, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Короткий зміст предмету довіреності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Дійсна з" Style="{StaticResource dispNmStyle}" ToolTip="Дата початку дії довіреності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <DatePicker ToolTip="Дата початку дії довіреності" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding ValidSince, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Header="Дійсна до" ToolTip="Дата закінчення дії довіреності" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridValidThru" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding ValidThru, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-              <DataGridTemplateColumn Header="дії">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
-                <DataGridTemplateColumn.CellTemplate>
-                  <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
-                        <Button.CommandParameter>
-                          <MultiBinding Converter="{StaticResource multiValConv}">
-                            <Binding Path="SelectedItem" ElementName="gridValidThru" />
-                            <Binding ElementName="gridValidThru" />
-                          </MultiBinding>
-                        </Button.CommandParameter>
-                      </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
-                        <Button.CommandParameter>
-                          <MultiBinding Converter="{StaticResource multiValConv}">
-                            <Binding Path="SelectedItem" ElementName="gridValidThru" />
-                            <Binding Path="SelectedIndex" ElementName="gridValidThru" />
-                            <Binding ElementName="gridValidThru" />
-                          </MultiBinding>
-                        </Button.CommandParameter>
-                      </Button>
-                    </StackPanel>
-                  </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-              </DataGridTemplateColumn>
-            </DataGrid.Columns>
-          </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
-            <Button.CommandParameter>
-              <MultiBinding Converter="{StaticResource multiValConv}">
-                <Binding Path="ItemsSource" ElementName="gridValidThru" />
-                <Binding Path="DataContext" ElementName="gridValidThru" />
-                <Binding Path="ValidThru" />
-                <Binding ElementName="gridValidThru" />
-              </MultiBinding>
-            </Button.CommandParameter>
-          </Button>
-        </StackPanel>
-      </Expander>
+      <TextBlock Text="Дійсна до" Style="{StaticResource dispNmStyle}" ToolTip="Дата закінчення дії довіреності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="Дата закінчення дії довіреності" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding ValidThru, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Інші відомості" Style="{StaticResource dispNmStyle}" ToolTip="Додаткові (значущі) відомості про довіреність" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding OtherInfo, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Додаткові (значущі) відомості про довіреність" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>

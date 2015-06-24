@@ -2896,6 +2896,11 @@
              друкованими літерами)
             </summary>
         </member>
+        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.PowerOfAttorneySharesPurchaseInfo">
+            <summary>
+            Інформація про намір щодо набуття опосередкованої істотної участі в банку за довіреністю
+            </summary>
+        </member>
         <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.LegalTransactionInfo">
             <summary>
             Інформація про правочин
