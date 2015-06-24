@@ -151,7 +151,7 @@
                     </DataGridTemplateColumn>-->
 
 
-                        <DataGridTemplateColumn Header="Редагувати">
+                        <DataGridTemplateColumn Header="команди">
                             <DataGridTemplateColumn.HeaderStyle>
                                 <Style TargetType="dataprimitives:DataGridColumnHeader">
                                     <Setter Property="ContentTemplate">
@@ -172,6 +172,7 @@
                         http://stackoverflow.com/questions/20858692/button-inside-datagrid-wpf-mvvm-->
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
                                         <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
                                             <Button.CommandParameter>
                                                 <MultiBinding Converter="{StaticResource multiValConv}">
@@ -180,7 +181,17 @@
                                                 </MultiBinding>
                                             </Button.CommandParameter>
                                         </Button>
-                                </DataTemplate>
+                                        <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                                            <Button.CommandParameter>
+                                                <MultiBinding Converter="{StaticResource multiValConv}">
+                                                    <Binding Path="SelectedItem" ElementName="gridIPOPurchase" />
+                                                        <Binding Path="SelectedIndex" ElementName="gridIPOPurchase" />
+                                                        <Binding ElementName="gridIPOPurchase" />
+                                                </MultiBinding>
+                                            </Button.CommandParameter>
+                                        </Button>
+                                        </StackPanel>
+                                    </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
