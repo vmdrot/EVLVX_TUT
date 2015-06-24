@@ -28,65 +28,8 @@
       <CheckBox IsChecked="{Binding IsConvictionSettled, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="Судимість погашена?:" ToolTip="" />
       </CheckBox>
-      <Expander Header="Дата погашення судимості" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridSettledDate" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding SettledDate, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-              <DataGridTemplateColumn Header="дії">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
-                <DataGridTemplateColumn.CellTemplate>
-                  <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
-                        <Button.CommandParameter>
-                          <MultiBinding Converter="{StaticResource multiValConv}">
-                            <Binding Path="SelectedItem" ElementName="gridSettledDate" />
-                            <Binding ElementName="gridSettledDate" />
-                          </MultiBinding>
-                        </Button.CommandParameter>
-                      </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
-                        <Button.CommandParameter>
-                          <MultiBinding Converter="{StaticResource multiValConv}">
-                            <Binding Path="SelectedItem" ElementName="gridSettledDate" />
-                            <Binding Path="SelectedIndex" ElementName="gridSettledDate" />
-                            <Binding ElementName="gridSettledDate" />
-                          </MultiBinding>
-                        </Button.CommandParameter>
-                      </Button>
-                    </StackPanel>
-                  </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-              </DataGridTemplateColumn>
-            </DataGrid.Columns>
-          </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
-            <Button.CommandParameter>
-              <MultiBinding Converter="{StaticResource multiValConv}">
-                <Binding Path="ItemsSource" ElementName="gridSettledDate" />
-                <Binding Path="DataContext" ElementName="gridSettledDate" />
-                <Binding Path="SettledDate" />
-                <Binding ElementName="gridSettledDate" />
-              </MultiBinding>
-            </Button.CommandParameter>
-          </Button>
-        </StackPanel>
-      </Expander>
+      <TextBlock Text="Дата погашення судимості" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding SettledDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

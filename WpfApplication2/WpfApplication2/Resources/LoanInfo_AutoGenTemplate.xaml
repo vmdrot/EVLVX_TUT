@@ -11,65 +11,8 @@
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding AgreementNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Дата договору" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding AgreementDt, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Header="Прострочено з ... (дата)" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridOverdueSince" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding OverdueSince, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-              <DataGridTemplateColumn Header="дії">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
-                <DataGridTemplateColumn.CellTemplate>
-                  <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
-                        <Button.CommandParameter>
-                          <MultiBinding Converter="{StaticResource multiValConv}">
-                            <Binding Path="SelectedItem" ElementName="gridOverdueSince" />
-                            <Binding ElementName="gridOverdueSince" />
-                          </MultiBinding>
-                        </Button.CommandParameter>
-                      </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
-                        <Button.CommandParameter>
-                          <MultiBinding Converter="{StaticResource multiValConv}">
-                            <Binding Path="SelectedItem" ElementName="gridOverdueSince" />
-                            <Binding Path="SelectedIndex" ElementName="gridOverdueSince" />
-                            <Binding ElementName="gridOverdueSince" />
-                          </MultiBinding>
-                        </Button.CommandParameter>
-                      </Button>
-                    </StackPanel>
-                  </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-              </DataGridTemplateColumn>
-            </DataGrid.Columns>
-          </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
-            <Button.CommandParameter>
-              <MultiBinding Converter="{StaticResource multiValConv}">
-                <Binding Path="ItemsSource" ElementName="gridOverdueSince" />
-                <Binding Path="DataContext" ElementName="gridOverdueSince" />
-                <Binding Path="OverdueSince" />
-                <Binding ElementName="gridOverdueSince" />
-              </MultiBinding>
-            </Button.CommandParameter>
-          </Button>
-        </StackPanel>
-      </Expander>
+      <TextBlock Text="Прострочено з ... (дата)" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding OverdueSince, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <Expander Header="Кредитор" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Lender, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
@@ -81,65 +24,8 @@
       <Expander Header="Основна сума боргу" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Principal, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <Expander Header="Дата погашення" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridRepaymentDueDate" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding RepaymentDueDate, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-              <DataGridTemplateColumn Header="дії">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
-                <DataGridTemplateColumn.CellTemplate>
-                  <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
-                        <Button.CommandParameter>
-                          <MultiBinding Converter="{StaticResource multiValConv}">
-                            <Binding Path="SelectedItem" ElementName="gridRepaymentDueDate" />
-                            <Binding ElementName="gridRepaymentDueDate" />
-                          </MultiBinding>
-                        </Button.CommandParameter>
-                      </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
-                        <Button.CommandParameter>
-                          <MultiBinding Converter="{StaticResource multiValConv}">
-                            <Binding Path="SelectedItem" ElementName="gridRepaymentDueDate" />
-                            <Binding Path="SelectedIndex" ElementName="gridRepaymentDueDate" />
-                            <Binding ElementName="gridRepaymentDueDate" />
-                          </MultiBinding>
-                        </Button.CommandParameter>
-                      </Button>
-                    </StackPanel>
-                  </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-              </DataGridTemplateColumn>
-            </DataGrid.Columns>
-          </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
-            <Button.CommandParameter>
-              <MultiBinding Converter="{StaticResource multiValConv}">
-                <Binding Path="ItemsSource" ElementName="gridRepaymentDueDate" />
-                <Binding Path="DataContext" ElementName="gridRepaymentDueDate" />
-                <Binding Path="RepaymentDueDate" />
-                <Binding ElementName="gridRepaymentDueDate" />
-              </MultiBinding>
-            </Button.CommandParameter>
-          </Button>
-        </StackPanel>
-      </Expander>
+      <TextBlock Text="Дата погашення" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding RepaymentDueDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <Expander Header="Залишок заборгованості" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding OutstandingPricipal, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
