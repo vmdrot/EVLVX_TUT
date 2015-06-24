@@ -33,12 +33,37 @@ namespace WpfApplication2
 
         private void DeleteRow(object sender, ExecutedRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            object[] prms = (object[])e.Parameter;
+            if (prms == null || prms.Length == 0)
+            {
+                e.Handled = true;
+                return;
+            }
+            object di = prms[0];
+            object diIdx = prms.Length >= 2 ? prms[1] : null;
+            object dg = prms.Length >= 3 ? prms[2] : null;
+
+            if (System.Windows.MessageBox.Show(String.Format("Do you really want to delete row #{0} ({1})", (int)diIdx, di)) != MessageBoxResult.OK)
+                return;
+            if (dg != null && dg is System.Windows.Controls.DataGrid)
+            {
+                object ds = ((System.Windows.Controls.DataGrid)dg).ItemsSource;
+                if (ds.GetType().IsGenericType)
+                {
+                    ds.GetType().GetMethod("Remove").Invoke(ds, new[] { di });
+                    ((System.Windows.Controls.DataGrid)dg).Items.Refresh();
+
+                }
+            }
+
+            e.Handled = true;
         }
 
         private void CanDeleteRow(object sender, CanExecuteRoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            e.CanExecute = true;
+            e.Handled = true;
+            return;
         }
 
         private void EditRow(object sender, ExecutedRoutedEventArgs e)
@@ -58,7 +83,7 @@ namespace WpfApplication2
             if (hr != null && (bool)hr)
             {
                 //if (dg != null && dg is System.Windows.Controls.DataGrid)
-                //    ((System.Windows.Controls.DataGrid)dg).Items.Refresh();
+                //    ((System.Windows.Controls.DataGrid)dg).Items;
             }
 
             e.Handled = true;
