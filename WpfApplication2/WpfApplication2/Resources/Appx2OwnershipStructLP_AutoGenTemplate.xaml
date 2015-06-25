@@ -42,9 +42,14 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridBankExistingCommonImplicitOwners" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding BankExistingCommonImplicitOwners, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Об'єкт власності">
+              <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Об'єкт власності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -59,9 +64,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Owner, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Власник">
+              <DataGridTextColumn Binding="{Binding Path=Owner, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Власник" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -76,9 +86,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OwnershipKind, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип володіння">
+              <DataGridTextColumn Binding="{Binding Path=OwnershipKind, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип володіння" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -93,9 +108,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Share, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частка у власності (сума)">
+              <DataGridTextColumn Binding="{Binding Path=Share, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частка у власності (сума)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -110,9 +130,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="SharesCount">
+              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="SharesCount" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -127,9 +152,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SharePct, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частка (%)">
+              <DataGridTextColumn Binding="{Binding Path=SharePct, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частка (%)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -144,9 +174,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Votes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість голосів в управлінні">
+              <DataGridTextColumn Binding="{Binding Path=Votes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість голосів в управлінні" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -161,7 +196,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії">
+              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTemplateColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="ContentTemplate">
@@ -220,9 +255,14 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridSharesAppliedFor" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding SharesAppliedFor, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Transferror, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Передавач власності">
+              <DataGridTextColumn Binding="{Binding Path=Transferror, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Передавач власності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -237,9 +277,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PurchaseVotes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Набувані голоси/частка">
+              <DataGridTextColumn Binding="{Binding Path=PurchaseVotes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Набувані голоси/частка" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -254,9 +299,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=VotesTransferPath, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Шлях передачі/купівлі голосів/власності">
+              <DataGridTextColumn Binding="{Binding Path=VotesTransferPath, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Шлях передачі/купівлі голосів/власності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -271,7 +321,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії">
+              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTemplateColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="ContentTemplate">
@@ -330,9 +380,14 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridApplicantOwnershipStructure" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding ApplicantOwnershipStructure, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Об'єкт власності">
+              <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Об'єкт власності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -347,9 +402,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Owner, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Власник">
+              <DataGridTextColumn Binding="{Binding Path=Owner, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Власник" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -364,9 +424,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OwnershipKind, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип володіння">
+              <DataGridTextColumn Binding="{Binding Path=OwnershipKind, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип володіння" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -381,9 +446,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Share, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частка у власності (сума)">
+              <DataGridTextColumn Binding="{Binding Path=Share, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частка у власності (сума)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -398,9 +468,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="SharesCount">
+              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="SharesCount" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -415,9 +490,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SharePct, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частка (%)">
+              <DataGridTextColumn Binding="{Binding Path=SharePct, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частка (%)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -432,9 +512,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Votes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість голосів в управлінні">
+              <DataGridTextColumn Binding="{Binding Path=Votes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість голосів в управлінні" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -449,7 +534,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії">
+              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTemplateColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="ContentTemplate">
@@ -508,9 +593,14 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridMentionedIdentities" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding MentionedIdentities, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=PersonType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип особи">
+              <DataGridTextColumn Binding="{Binding Path=PersonType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип особи" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -525,9 +615,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PhysicalPerson, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Фізична особа">
+              <DataGridTextColumn Binding="{Binding Path=PhysicalPerson, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Фізична особа" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -542,9 +637,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=LegalPerson, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Юридична особа">
+              <DataGridTextColumn Binding="{Binding Path=LegalPerson, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Юридична особа" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -559,7 +659,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії">
+              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTemplateColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="ContentTemplate">
@@ -618,9 +718,14 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridPersonsLinks" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PersonsLinks, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=One, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Перша особа">
+              <DataGridTextColumn Binding="{Binding Path=One, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Перша особа" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -635,9 +740,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Two, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Друга особа">
+              <DataGridTextColumn Binding="{Binding Path=Two, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Друга особа" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -652,9 +762,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=AssociationType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип зв'язку">
+              <DataGridTextColumn Binding="{Binding Path=AssociationType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип зв'язку" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -669,9 +784,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=AssociationRoleOneVsTwo, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Ким приходиться перша особа другій">
+              <DataGridTextColumn Binding="{Binding Path=AssociationRoleOneVsTwo, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Ким приходиться перша особа другій" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -686,9 +806,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=AssociationRoleTwoVsOne, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Ким приходиться друга особа першій">
+              <DataGridTextColumn Binding="{Binding Path=AssociationRoleTwoVsOne, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Ким приходиться друга особа першій" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -703,9 +828,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=AssociationRolesIfOther, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Ролі осіособи одна одній (якщо інше)">
+              <DataGridTextColumn Binding="{Binding Path=AssociationRolesIfOther, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Ролі осіособи одна одній (якщо інше)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -720,7 +850,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії">
+              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTemplateColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="ContentTemplate">

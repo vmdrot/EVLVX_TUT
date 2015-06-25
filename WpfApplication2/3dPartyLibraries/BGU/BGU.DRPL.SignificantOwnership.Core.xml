@@ -544,6 +544,11 @@
             Обов'язкове, якщо IsOverdue == true 
             </summary>
         </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.IndebtnessInfoBase.OverdueDetails">
+            <summary>
+            Обов'язкове, якщо IsOverdue == true 
+            </summary>
+        </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.IndebtnessInfoBase.OverdueReasons">
             <summary>
             Обов'язкове, якщо IsOverdue == true 
@@ -2911,6 +2916,11 @@
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Messages.RegLicAppx2OwnershipAcqRequestLP_MoneyOriginsLtr.CanProveMoneyOrigins">
             <summary>
             Стверджую, що юридична особа має можливість підтвердити походження джерел коштів, за рахунок яких придбає акції банку.
+            </summary>
+        </member>
+        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.LegalTransactionPartyInfo">
+            <summary>
+            Інформація про сторону правочину
             </summary>
         </member>
     </members>

@@ -12,7 +12,7 @@
       <TextBlock Text="Посада" Style="{StaticResource dispNmStyle}" ToolTip="Посада" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PositionName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Посада" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Опис функцій" Style="{StaticResource dispNmStyle}" ToolTip="Опис функцій" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FunctionsDescription, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Опис функцій" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FunctionsDescription, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Опис функцій" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

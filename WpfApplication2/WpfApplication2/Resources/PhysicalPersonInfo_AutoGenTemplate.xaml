@@ -4,7 +4,7 @@
     <ResourceDictionary Source="Converters.xaml" />
     <ResourceDictionary Source="RegistrarAuthority_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="LocationInfo_AutoGenTemplate.xaml" />
-    <ResourceDictionary Source="CountryInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="CountryInfo_Template.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:PhysicalPersonInfo}">
     <StackPanel>

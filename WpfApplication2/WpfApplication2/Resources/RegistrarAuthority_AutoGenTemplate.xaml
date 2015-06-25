@@ -2,7 +2,7 @@
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
-    <ResourceDictionary Source="CountryInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="CountryInfo_Template.xaml" />
     <ResourceDictionary Source="LocationInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:RegistrarAuthority}">
