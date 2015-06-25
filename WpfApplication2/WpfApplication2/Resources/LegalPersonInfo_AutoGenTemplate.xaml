@@ -40,9 +40,14 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridPrincipalActivities" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PrincipalActivities, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=KVEDCode, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Код діяльності за КВЕД">
+              <DataGridTextColumn Binding="{Binding Path=KVEDCode, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Код діяльності за КВЕД" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -57,9 +62,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=KVEDActivityName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Назва діяльності за КВЕД">
+              <DataGridTextColumn Binding="{Binding Path=KVEDActivityName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Назва діяльності за КВЕД" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -74,9 +84,14 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=ActivitySelfName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Власна фактична назва діяльності">
+              <DataGridTextColumn Binding="{Binding Path=ActivitySelfName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Власна фактична назва діяльності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
@@ -91,7 +106,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії">
+              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTemplateColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="ContentTemplate">

@@ -2,7 +2,7 @@
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
-    <ResourceDictionary Source="GenericPersonID_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="LegalTransactionPartyInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:LegalTransactionInfo}">
     <StackPanel>
@@ -19,15 +19,20 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridParties" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Parties, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=CountryISO3Code, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="CountryISO3Code">
+              <DataGridTextColumn Binding="{Binding Path=Party, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Сторона" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
-                              <ToolTip Content="CountryISO3Code" />
+                              <ToolTip Content="Ідентифікація сторони правочину" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -36,15 +41,20 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PersonType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="PersonType">
+              <DataGridTextColumn Binding="{Binding Path=Role, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Роль" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
-                              <ToolTip Content="PersonType" />
+                              <ToolTip Content="Роль сторони у правочині" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -53,15 +63,20 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PersonCode, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="PersonCode">
+              <DataGridTextColumn Binding="{Binding Path=RoleIfOther, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Роль (інше)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
                     <Setter Property="ContentTemplate">
                       <Setter.Value>
                         <DataTemplate>
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
-                              <ToolTip Content="PersonCode" />
+                              <ToolTip Content="Роль сторони у правочині, як в полі &quot;Роль&quot; вказано інше" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -70,7 +85,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії">
+              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTemplateColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="ContentTemplate">
@@ -126,7 +141,7 @@
         </StackPanel>
       </Expander>
       <TextBlock Text="Зміст правочину" Style="{StaticResource dispNmStyle}" ToolTip="Стислий опис змісту правочину" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TransactionText, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Стислий опис змісту правочину" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TransactionText, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Стислий опис змісту правочину" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

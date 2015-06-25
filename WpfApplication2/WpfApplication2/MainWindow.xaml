@@ -1,16 +1,36 @@
 ﻿<Window x:Class="WpfApplication2.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:local="clr-namespace:WpfApplication2.Controls"
-        xmlns:cmds="WpfApplication2.Commands"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="600" Width="800">
     <Grid>
-        <local:SimpleDropDownControl2 x:Name="cbxBank" HorizontalAlignment="Left" VerticalAlignment="Top" Width="479.49" DisplayName="Банк заявника" Description="1.1 У банку...." />
-        <local:SimpleDropDownControl2 x:Name="cbxBreach" HorizontalAlignment="Left" VerticalAlignment="Top" Width="479.49" DisplayName="Тип правопорушення" Description="1.2 Правопорушення..." Margin="0,81,0,0" />
-        <Menu HorizontalAlignment="Left" Height="31" Margin="0,-19,0,0" VerticalAlignment="Top" Width="479.49">
-            <Button Content="Stack panel" Click="Button_Click" />
+        <Grid.Resources></Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20px" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="auto" Height="auto" IsMainMenu="True">
+            <MenuItem Header="_File">
+                <MenuItem Header="E_xit" Click="ExitMenuItem_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="ДРПЛ">
+                <MenuItem Header="Істотка">
+                    <MenuItem Header="Анкети">
+                        <MenuItem Header="Пост.306, Додаток 2 (ЮО)" Click="RegLicAppx2OwnershipAcqRequestLP_MenuItemClick" />
+                        <MenuItem Header="Пост.306, Додаток 3" Click="RegLicAppx3MemberCandidateAppl_MenuItemClick" />
+                        <MenuItem Header="Пост.306, Додаток 4 (ФО)" Click="RegLicAppx4OwnershipAcqRequestPP_MenuItemClick" />
+                    </MenuItem>
+                    <MenuItem Header="Повідомлення">
+                        <MenuItem Header="Пост.315, Пов'язані особи (додаток)" Click="Post315AppxBankAssocPersons_MenuItemClick" />
+                        <MenuItem Header="Пост.306, Лист про джерела коштів" Click="RegLicAppx2OwnershipAcqRequestLP_MoneyOriginsLtr_MenuItemClick" />
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem Header="Держреєстр" Visibility="Collapsed">
+                    
+                </MenuItem>
+                <MenuItem Header="Валютне ліцензування" Visibility="Collapsed"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Help" Click="HelpMenuItem_Click" />
         </Menu>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="54,184,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

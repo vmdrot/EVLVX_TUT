@@ -8,7 +8,7 @@
       <TextBlock Text="" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <ComboBox ToolTip="Тип впливу" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.InfluenceTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding TypeOfInfluence, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="InfluenceCircumstances" Style="{StaticResource dispNmStyle}" ToolTip="InfluenceCircumstances" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding InfluenceCircumstances, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="InfluenceCircumstances" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding InfluenceCircumstances, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="InfluenceCircumstances" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

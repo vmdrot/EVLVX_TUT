@@ -7,13 +7,50 @@
             <ResourceDictionary>
                 <!-- Import the resource dictionary which contains the DataTemplate for the RaceHorse class. -->
                 <ResourceDictionary.MergedDictionaries>
-                    <!--<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SignatoryInfoTemplate.xaml" />
-                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonIDTemplate.xaml" />-->
-                    <!--<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegLicAppx2OwnershipAcqRequestLPTemplate.xaml" />-->
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/Appx2OwnershipStructLP_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonID_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_Template.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CouncilBodyInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CouncilMemberInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/TotalOwnershipDetailsInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/OwnershipSummaryInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CurrencyAmount_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/OwnershipVotesInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/OwnershipStructure_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PurchasedVoteInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhysicalPersonInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegistrarAuthority_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LocationInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LegalPersonInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LPRegisteredDateRecordId_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EconomicActivityType_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PersonsAssociation_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SignatoryInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PowerOfAttorneyInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ContactInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhoneInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EmailInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegLicAppx14NewSvc_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonID_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_Template.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankingLicenseInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankingLicensedActivityInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ContactInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhysicalPersonInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegistrarAuthority_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LocationInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhoneInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EmailInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/AttachmentInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SignatoryInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PowerOfAttorneyInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegLicAppx2OwnershipAcqRequestLP_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonID_AutoGenTemplate.xaml" />
-                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_Template.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CreditRatingInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RatingAgencyInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ContactInfo_AutoGenTemplate.xaml" />
@@ -53,6 +90,77 @@
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LPRegisteredDateRecordId_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EconomicActivityType_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PersonsAssociation_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegLicAppx3MemberCandidateAppl_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonID_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_Template.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EmploymentRecordInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ContactInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhysicalPersonInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegistrarAuthority_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LocationInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhoneInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EmailInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EducationRecordInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/UniversityOrCollegeInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ProfessionLicenseInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ProfessionLicensingBodyInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LegalPersonInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LPRegisteredDateRecordId_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CurrencyAmount_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EconomicActivityType_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LicenseQualificationInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/OwnershipStructure_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SharesAcquisitionInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BreachOfLawRecordInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/IndebtnessInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PersonsAssociation_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SignatoryInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PowerOfAttorneyInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegLicAppx4OwnershipAcqRequestPP_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonID_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_Template.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhysicalPersonInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegistrarAuthority_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LocationInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankAccountInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EmploymentRecordInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ContactInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhoneInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EmailInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EducationRecordInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/UniversityOrCollegeInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ProfessionLicenseInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ProfessionLicensingBodyInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LegalPersonInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LPRegisteredDateRecordId_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CurrencyAmount_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EconomicActivityType_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LicenseQualificationInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/FinancialOversightAuthorityInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PublicationInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PublishingHouseInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/TotalOwnershipDetailsInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/OwnershipSummaryInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/OwnershipVotesInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/OwnershipStructure_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SharesAcquisitionInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/IncomeOriginInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PaymentModeInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PaymentDeadlineInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LoanInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CouncilBodyInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CouncilMemberInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/FinancialGuaranteeInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BreachOfLawRecordInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/IndebtnessInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LiquidatedEntityOwnershipInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PersonsAssociation_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SignatoryInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PowerOfAttorneyInfo_AutoGenTemplate.xaml" />
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Grid.Resources>
@@ -64,8 +172,10 @@
         </Grid.RowDefinitions>
         <Menu Grid.Row="0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="auto" Height="auto" IsMainMenu="True">
             <MenuItem Header="_File">
-                <MenuItem Header="Sa_ve" ></MenuItem>
-                <MenuItem Header="Save _As" ></MenuItem>
+                <MenuItem Header="Load" Click="LoadMenuItem_Click"></MenuItem>
+                <MenuItem Header="Open" Click="OpenMenuItem_Click"></MenuItem>
+                <MenuItem Header="Sa_ve" Click="SaveMenuItem_Click"></MenuItem>
+                <MenuItem Header="Save _As" Click="SaveAsMenuItem_Click"></MenuItem>
             </MenuItem>
             <MenuItem Header="_Help" />
         </Menu>

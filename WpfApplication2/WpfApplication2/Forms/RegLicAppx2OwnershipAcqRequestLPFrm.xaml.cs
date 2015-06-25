@@ -149,7 +149,6 @@ namespace WpfApplication2.Forms
         private string CurrentSave2File { get; set; }
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void SaveMenuItem_Click(object sender, RoutedEventArgs e)

@@ -1,8 +1,10 @@
-﻿using System;
+﻿using BGU.DRPL.SignificantOwnership.Core.Messages;
+using BGU.DRPL.SignificantOwnership.Core.Questionnaires;
+using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -10,10 +12,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BGU.DRPL.SignificantOwnership.Core.Spares;
-using BGU.DRPL.SignificantOwnership.Utility;
 using WpfApplication2.Forms;
 
 namespace WpfApplication2
@@ -26,33 +25,73 @@ namespace WpfApplication2
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += MainWindow_Loaded;
         }
 
-        void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            cbxBank.ValueMember = "LCID";
-            cbxBank.DisplayMember = "NativeName";
-            cbxBank.ListSource = CultureInfo.GetCultures(CultureTypes.AllCultures);
-            cbxBank.SelectedValue = CultureInfo.GetCultureInfoByIetfLanguageTag("de").LCID;
 
-            cbxBreach.ValueMember = "EnumValue";
-            cbxBreach.DisplayMember = "Value";
-            cbxBreach.ListSource = EnumType.GetEnumList(typeof(BGU.DRPL.SignificantOwnership.Core.Spares.BreachOfLawType));
-            cbxBreach.SelectedValue = (Enum)BreachOfLawType.Criminal;
+
+        #region Menu items click handlers
+        private void RegLicAppx2OwnershipAcqRequestLP_MenuItemClick(object sender, RoutedEventArgs e)
+        {
+            ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, new RegLicAppx2OwnershipAcqRequestLP());
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void RegLicAppx3MemberCandidateAppl_MenuItemClick(object sender, RoutedEventArgs e)
         {
-            StackPanelWindow wnd = new StackPanelWindow();
-            wnd.ShowDialog();
+            ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, new RegLicAppx3MemberCandidateAppl());
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void RegLicAppx4OwnershipAcqRequestPP_MenuItemClick(object sender, RoutedEventArgs e)
         {
-            Appx2OwnershipStructLPFrm frm = new Appx2OwnershipStructLPFrm();
+            ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, new RegLicAppx4OwnershipAcqRequestPP());
+        }
+
+
+        private void Post315AppxBankAssocPersons_MenuItemClick(object sender, RoutedEventArgs e)
+        {
+            ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, new Post315AppxBankAssocPersons());
+        }
+
+        private void RegLicAppx2OwnershipAcqRequestLP_MoneyOriginsLtr_MenuItemClick(object sender, RoutedEventArgs e)
+        {
+            ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, new RegLicAppx2OwnershipAcqRequestLP_MoneyOriginsLtr());
+        }
+
+        private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void HelpMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            //todo
+            MessageBox.Show("Прототип для анкет, повідомлень та стуктурування\nіншої інформації у рамках розбудови Бази пруденційної \nінформації НБУ.\n\n Департамент реєстраційних питань і ліцензування,\n Національний банк © 2015");
+        }
+        #endregion
+
+        private void ShowQuestionnaireEditForm(System.Windows.Controls.MenuItem menuItem, object questio)
+        {
+            ShowQuestionnaireEditForm(menuItem, questio, false);
+        }
+        private void ShowQuestionnaireEditForm(System.Windows.Controls.MenuItem menuItem, object questio, bool showMoreMenu)
+        {
+            BGU.DRPL.SignificantOwnership.Utility.ReflectionUtil.InstantiateAllProps(questio, questio.GetType().Assembly);
+            SelectedObjectFrm frm = new SelectedObjectFrm();
+            frm.DataSource = questio;
+            StringBuilder sbFormCaption = new StringBuilder();
+            if (menuItem != null && menuItem.Parent != null)
+                sbFormCaption.AppendFormat("{0}: ", ((System.Windows.Controls.MenuItem)menuItem.Parent).Header);
+            if (menuItem != null)
+                sbFormCaption.Append(menuItem.Header);
+            frm.Title = sbFormCaption.ToString();
+            //frm.ShowMenu = true;
+            //frm.ShowMoreMenu = showMoreMenu;
+            //frm.IsRootObjectEditForm = true;
+            //frm.Size = new System.Drawing.Size(1208, 728);
+            frm.Icon = this.Icon;
             frm.ShowDialog();
         }
+
+
 
     }
 }
