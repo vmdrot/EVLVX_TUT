@@ -93,6 +93,7 @@
         <Setter Property="Background" Value="#FFC0F7B7" />
         <Setter Property="BorderBrush" Value="#FFF19FF9" />
         <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="Margin" Value="0,5" />
     </Style>
     <Style TargetType="{x:Type DataGridColumnHeader}">
         <Setter Property="VerticalContentAlignment" Value="Center"/>

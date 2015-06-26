@@ -317,6 +317,7 @@
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.CurrencyAmount.CCY">
             <summary>
             Значення за змовчанням - UAH
+            http://www.iso.org/iso/en-US/home/standards/currency_codes.htm
             </summary>
             <seealso cref="!:http://www.currency-iso.org/en/home/tables/table-a1.html"/>
         </member>
@@ -507,6 +508,11 @@
             
             </summary>
         </member>
+        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.LegalTransactionPartyInfo">
+            <summary>
+            Інформація про сторону правочину
+            </summary>
+        </member>
         <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.SignificantOwnershipAcquisitionWaysInfo">
             <summary>
             Способи, у які відбуватиметься набуття/збільшення істотної участі в банку:
@@ -539,6 +545,11 @@
             обов'язкове, якщо передбачена дата погашення; може бути й безстрокова позика.
             </summary>
         </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.IndebtnessInfoBase.OverdueSince">
+            <summary>
+            якщо є прострочка
+            </summary>
+        </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.IndebtnessInfoBase.PrincipalOverdue">
             <summary>
             Обов'язкове, якщо IsOverdue == true 
@@ -562,11 +573,6 @@
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.LoanInfo.AgreementDt">
             <summary>
             обов'язкове
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.LoanInfo.OverdueSince">
-            <summary>
-            якщо є прострочка
             </summary>
         </member>
         <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.GenericPersonInfo">
@@ -919,7 +925,7 @@
             <summary>
             Код країни резидентності
             </summary>
-            <seealso cref="!:CountryInfo"/>
+            <seealso cref="T:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CountryInfo"/>
         </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.GenericPersonID.PersonType">
             <summary>
@@ -2918,10 +2924,36 @@
             Стверджую, що юридична особа має можливість підтвердити походження джерел коштів, за рахунок яких придбає акції банку.
             </summary>
         </member>
-        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.LegalTransactionPartyInfo">
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.CountryNm">
             <summary>
-            Інформація про сторону правочину
+            ENTITY за стандартом ISO
             </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.CCYName">
+            <summary>
+            ENTITY за стандартом ISO
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.CCYCode">
+            <summary>
+            ENTITY за стандартом ISO
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.CCYCode3D">
+            <summary>
+            ENTITY за стандартом ISO
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.CCYMinorUnit">
+            <summary>
+            ENTITY за стандартом ISO
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.AllCurrencies">
+            <summary>
+            
+            </summary>
+            <seealso cref="!:http://www.iso.org/iso/en-US/home/standards/currency_codes.htm"/>
         </member>
     </members>
 </doc>

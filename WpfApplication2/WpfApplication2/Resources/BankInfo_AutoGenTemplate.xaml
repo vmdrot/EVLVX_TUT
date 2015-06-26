@@ -23,9 +23,8 @@
       <TextBlock Text="SWIFT адреса" Style="{StaticResource dispNmStyle}" ToolTip="Див. http://www.swift.com/bsl/" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SWIFTBIC, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Див. http://www.swift.com/bsl/" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <Expander Header="Країна діяльності" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding OperationCountry, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-
-                <!--<ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedItem="{Binding Path=OperationCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />-->
+        <!--<ContentControl Content="{Binding OperationCountry, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />-->
+                <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedItem="{Binding Path=OperationCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}"  DisplayMemberPath="CountryNameUkr" HorizontalAlignment="Stretch" />
             </Expander>
     </StackPanel>
   </DataTemplate>
