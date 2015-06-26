@@ -14,7 +14,7 @@
       <TextBlock Text="DecisionDate" Style="{StaticResource dispNmStyle}" ToolTip="DecisionDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <DatePicker ToolTip="DecisionDate" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding DecisionDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="DecisionText" Style="{StaticResource dispNmStyle}" ToolTip="DecisionText" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding DecisionText, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="DecisionText" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding DecisionText, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="DecisionText" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

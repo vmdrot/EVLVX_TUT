@@ -10,7 +10,7 @@
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/Appx2OwnershipStructLP_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonID_AutoGenTemplate.xaml" />
-                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_Template.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CouncilBodyInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CouncilMemberInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/TotalOwnershipDetailsInfo_AutoGenTemplate.xaml" />
@@ -35,7 +35,7 @@
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegLicAppx14NewSvc_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonID_AutoGenTemplate.xaml" />
-                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_Template.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankingLicenseInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankingLicensedActivityInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ContactInfo_AutoGenTemplate.xaml" />
@@ -50,7 +50,7 @@
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegLicAppx2OwnershipAcqRequestLP_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonID_AutoGenTemplate.xaml" />
-                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_Template.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CreditRatingInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RatingAgencyInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ContactInfo_AutoGenTemplate.xaml" />
@@ -93,7 +93,7 @@
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegLicAppx3MemberCandidateAppl_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonID_AutoGenTemplate.xaml" />
-                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_Template.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EmploymentRecordInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ContactInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhysicalPersonInfo_AutoGenTemplate.xaml" />
@@ -121,7 +121,7 @@
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegLicAppx4OwnershipAcqRequestPP_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonID_AutoGenTemplate.xaml" />
-                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_Template.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhysicalPersonInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegistrarAuthority_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LocationInfo_AutoGenTemplate.xaml" />

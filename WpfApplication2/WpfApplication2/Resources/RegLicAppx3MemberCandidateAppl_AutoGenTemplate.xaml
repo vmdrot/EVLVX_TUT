@@ -786,7 +786,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="SharesCount" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість акцій" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -799,7 +799,7 @@
                         <DataTemplate>
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
-                              <ToolTip Content="SharesCount" />
+                              <ToolTip Content="Кількість акцій, що належать Власникові в об'єкті власності" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -1011,7 +1011,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="SharesCount" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість акцій" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1024,7 +1024,7 @@
                         <DataTemplate>
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
-                              <ToolTip Content="SharesCount" />
+                              <ToolTip Content="Кількість акцій, що належать Власникові в об'єкті власності" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -1667,6 +1667,28 @@
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
                               <ToolTip Content="Прострочена заборгованість?" />
+                            </ToolTipService.ToolTip>
+                          </ContentControl>
+                        </DataTemplate>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>
+                </DataGridTextColumn.HeaderStyle>
+              </DataGridTextColumn>
+              <DataGridTextColumn Binding="{Binding Path=OverdueSince, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Прострочено з ... (дата)" Width="*" TextBlock.TextAlignment="Center">
+                <DataGridTextColumn.HeaderStyle>
+                  <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
+                    <Setter Property="ContentTemplate">
+                      <Setter.Value>
+                        <DataTemplate>
+                          <ContentControl Content="{Binding}">
+                            <ToolTipService.ToolTip>
+                              <ToolTip Content="Прострочено з ... (дата)" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>

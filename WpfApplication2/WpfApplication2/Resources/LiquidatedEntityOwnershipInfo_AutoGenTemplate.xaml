@@ -18,9 +18,9 @@
       <TextBlock Text="Дата набуття статусу (ліквідації чи банкрутства)" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding DateEffective, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Причина ліквідації/банкрутства" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding LiquidationReason, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding LiquidationReason, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Підстава ліквідації/банкрутства" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding LiquidationPretext, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding LiquidationPretext, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

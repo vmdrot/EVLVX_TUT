@@ -12,7 +12,7 @@
         <ContentControl Content="{Binding Income, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
       <TextBlock Text="Опис та деталі щодо джерела доходу" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding IncomeOriginNotes, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding IncomeOriginNotes, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>
