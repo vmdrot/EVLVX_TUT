@@ -19,7 +19,7 @@
       <TextBlock Text="Дійсна до" Style="{StaticResource dispNmStyle}" ToolTip="Дата закінчення дії довіреності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <DatePicker ToolTip="Дата закінчення дії довіреності" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding ValidThru, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Інші відомості" Style="{StaticResource dispNmStyle}" ToolTip="Додаткові (значущі) відомості про довіреність" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding OtherInfo, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Додаткові (значущі) відомості про довіреність" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding OtherInfo, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Додаткові (значущі) відомості про довіреність" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

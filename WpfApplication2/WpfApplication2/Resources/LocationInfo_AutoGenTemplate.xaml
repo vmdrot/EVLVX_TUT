@@ -2,13 +2,13 @@
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
-    <ResourceDictionary Source="CountryInfo_Template.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:LocationInfo}">
     <StackPanel>
-      <Expander Header="Країна" ToolTip="Країна" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Country, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
+      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock Text="Країна" Style="{StaticResource dispNmStyle}" ToolTip="Країна" />
+        <ComboBox ToolTip="Країна" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=Country, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="50" />
+      </StackPanel>
       <TextBlock Text="область, район/провінція, тощо" Style="{StaticResource dispNmStyle}" ToolTip="область, район/провінція, тощо" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Region, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="область, район/провінція, тощо" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Поштовий індекс" Style="{StaticResource dispNmStyle}" ToolTip="Поштовий індекс" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

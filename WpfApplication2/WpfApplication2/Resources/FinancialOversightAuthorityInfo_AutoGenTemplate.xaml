@@ -2,15 +2,15 @@
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
-    <ResourceDictionary Source="CountryInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="LocationInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="ContactInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:FinancialOversightAuthorityInfo}">
     <StackPanel>
-      <Expander Header="Країна юрисдикції" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Jurisdiction, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
+      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock Text="Країна юрисдикції" Style="{StaticResource dispNmStyle}" ToolTip="" />
+        <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=Jurisdiction, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="50" />
+      </StackPanel>
       <TextBlock Text="Назва органу" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding AuthorityName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Назва органу(українською)" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

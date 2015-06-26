@@ -30,7 +30,7 @@
       <Expander Header="Юр.особа-заявник" ToolTip="1. Інформація про юридичну особу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Acquiree, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <Expander Header="2. Ідентифікаційні дані::Рейтингова оцінка" ToolTip="(за рейтингом, який підтверджений у бюлетені, однієї з провідних рейтингових компаній IBCA,Standart &amp; Poor's, Moody's)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Margin="0,5">
+      <Expander Header="2. Ідентифікаційні дані::Рейтингова оцінка" ToolTip="(за рейтингом, який підтверджений у бюлетені, однієї з провідних рейтингових компаній IBCA,Standart &amp; Poor's, Moody's)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridCreditRatingGrade" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding CreditRatingGrade, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
@@ -221,7 +221,7 @@
           </Button>
         </StackPanel>
       </Expander>
-            <Expander Header="3. (4-5) Державний(-і) наглядовий(-і) орган(-и)" ToolTip="3. Відомості про державну реєстрацію юридичної особи та відносини з контролюючими державними органами" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Margin="0,5">
+      <Expander Header="3. (4-5) Державний(-і) наглядовий(-і) орган(-и)" ToolTip="3. Відомості про державну реєстрацію юридичної особи та відносини з контролюючими державними органами" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridStateRegulatorAuthorities" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding StateRegulatorAuthorities, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
@@ -390,7 +390,7 @@
           </Button>
         </StackPanel>
       </Expander>
-            <Expander Header="5. Наявна участь юридичної особи в банку" ToolTip="5. Інформація про розмір наявної участі юридичної особи в банку" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"  Margin="0,5">
+      <Expander Header="5. Наявна участь юридичної особи в банку" ToolTip="5. Інформація про розмір наявної участі юридичної особи в банку" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding TotalExistingOwnershipWithBank, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
       <Expander Header="4. Банківські рахунки юридичної особи" ToolTip="(не заповнюється банками)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
@@ -1574,7 +1574,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="SharesCount" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість акцій" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1587,7 +1587,7 @@
                         <DataTemplate>
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
-                              <ToolTip Content="SharesCount" />
+                              <ToolTip Content="Кількість акцій, що належать Власникові в об'єкті власності" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -1746,28 +1746,6 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OverdueSince, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Прострочено з ... (дата)" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Прострочено з ... (дата)" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
               <DataGridTextColumn Binding="{Binding Path=Lender, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кредитор" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
@@ -1914,6 +1892,28 @@
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
                               <ToolTip Content="Прострочена заборгованість?" />
+                            </ToolTipService.ToolTip>
+                          </ContentControl>
+                        </DataTemplate>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>
+                </DataGridTextColumn.HeaderStyle>
+              </DataGridTextColumn>
+              <DataGridTextColumn Binding="{Binding Path=OverdueSince, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Прострочено з ... (дата)" Width="*" TextBlock.TextAlignment="Center">
+                <DataGridTextColumn.HeaderStyle>
+                  <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
+                    <Setter Property="ContentTemplate">
+                      <Setter.Value>
+                        <DataTemplate>
+                          <ContentControl Content="{Binding}">
+                            <ToolTipService.ToolTip>
+                              <ToolTip Content="Прострочено з ... (дата)" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>

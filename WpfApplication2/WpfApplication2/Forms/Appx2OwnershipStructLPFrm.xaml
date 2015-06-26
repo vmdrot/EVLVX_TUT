@@ -20,7 +20,7 @@
                     <!--<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/Appx2OwnershipStructLP_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonID_AutoGenTemplate.xaml" />
-                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_Template.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CouncilBodyInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CouncilMemberInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/TotalOwnershipDetailsInfo_AutoGenTemplate.xaml" />
