@@ -19,7 +19,7 @@
                     <!--<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegLicAppx2OwnershipAcqRequestLPTemplate.xaml" />-->
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegLicAppx2OwnershipAcqRequestLP_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankInfo_AutoGenTemplate.xaml" />
-                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonID_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonID_ManualTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CreditRatingInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RatingAgencyInfo_AutoGenTemplate.xaml" />

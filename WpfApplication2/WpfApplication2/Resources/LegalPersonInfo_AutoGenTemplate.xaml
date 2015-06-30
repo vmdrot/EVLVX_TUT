@@ -5,7 +5,7 @@
     <ResourceDictionary Source="LocationInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="RegistrarAuthority_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="LPRegisteredDateRecordId_AutoGenTemplate.xaml" />
-    <ResourceDictionary Source="GenericPersonID_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="GenericPersonID_ManualTemplate.xaml" />
     <ResourceDictionary Source="CurrencyAmount_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="EconomicActivityType_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
@@ -22,7 +22,7 @@
       </Expander>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock Text="Країна юрисдикції" Style="{StaticResource dispNmStyle}" ToolTip="Країна юрисдикції юридичної особи" />
-        <ComboBox ToolTip="Країна юрисдикції юридичної особи" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=ResidenceCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="50" />
+        <ComboBox ToolTip="Країна юрисдикції юридичної особи" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=ResidenceCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175" />
       </StackPanel>
       <Expander Header="Держорган-реєстратор" ToolTip="Державний орган, який здійснив реєстрацію юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Registrar, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />

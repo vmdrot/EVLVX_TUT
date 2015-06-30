@@ -15,7 +15,7 @@
       </CheckBox>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock Text="CoverageCountry" Style="{StaticResource dispNmStyle}" ToolTip="CoverageCountry" />
-        <ComboBox ToolTip="CoverageCountry" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=CoverageCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="50" />
+        <ComboBox ToolTip="CoverageCountry" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=CoverageCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175" />
       </StackPanel>
       <Expander Header="Contacts" ToolTip="Contacts" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Contacts, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />

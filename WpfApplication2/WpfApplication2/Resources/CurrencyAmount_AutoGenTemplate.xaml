@@ -7,7 +7,7 @@
     <StackPanel>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock Text="Валюта" Style="{StaticResource dispNmStyle}" ToolTip="Валюта" />
-        <ComboBox ToolTip="Валюта" ItemsSource="{Binding Source={x:Static bgud:CurrencyInfo.AllCurrencies}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CCYCode" SelectedValuePath="CCYCode" SelectedValue="{Binding Path=CCY, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="30" />
+        <ComboBox ToolTip="Валюта" ItemsSource="{Binding Source={x:Static bgud:CurrencyInfo.AllCurrencies}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CCYCode" SelectedValuePath="CCYCode" SelectedValue="{Binding Path=CCY, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="50" />
       </StackPanel>
       <TextBlock Text="Сума" Style="{StaticResource dispNmStyle}" ToolTip="Сума" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Amt, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Сума" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

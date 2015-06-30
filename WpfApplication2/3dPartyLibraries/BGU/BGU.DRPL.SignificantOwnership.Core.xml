@@ -1978,6 +1978,37 @@
             обов'язкові поля: Назва(-и), Адреса, країна резидентності
             </summary>
         </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.CountryNm">
+            <summary>
+            ENTITY за стандартом ISO
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.CCYName">
+            <summary>
+            ENTITY за стандартом ISO
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.CCYCode">
+            <summary>
+            ENTITY за стандартом ISO
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.CCYCode3D">
+            <summary>
+            ENTITY за стандартом ISO
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.CCYMinorUnit">
+            <summary>
+            ENTITY за стандартом ISO
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.AllCurrencies">
+            <summary>
+            
+            </summary>
+            <seealso cref="!:http://www.iso.org/iso/en-US/home/standards/currency_codes.htm"/>
+        </member>
         <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.BankingLicensedActivityInfo">
             <summary>
             Інформація вид банківської діяльності/фін. послугу
@@ -2923,37 +2954,6 @@
             <summary>
             Стверджую, що юридична особа має можливість підтвердити походження джерел коштів, за рахунок яких придбає акції банку.
             </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.CountryNm">
-            <summary>
-            ENTITY за стандартом ISO
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.CCYName">
-            <summary>
-            ENTITY за стандартом ISO
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.CCYCode">
-            <summary>
-            ENTITY за стандартом ISO
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.CCYCode3D">
-            <summary>
-            ENTITY за стандартом ISO
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.CCYMinorUnit">
-            <summary>
-            ENTITY за стандартом ISO
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.CurrencyInfo.AllCurrencies">
-            <summary>
-            
-            </summary>
-            <seealso cref="!:http://www.iso.org/iso/en-US/home/standards/currency_codes.htm"/>
         </member>
     </members>
 </doc>
