@@ -3,7 +3,7 @@
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
     <ResourceDictionary Source="BankInfo_AutoGenTemplate.xaml" />
-    <ResourceDictionary Source="GenericPersonID_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="GenericPersonID_ManualTemplate.xaml" />
     <ResourceDictionary Source="CouncilBodyInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="TotalOwnershipDetailsInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="OwnershipStructure_AutoGenTemplate.xaml" />

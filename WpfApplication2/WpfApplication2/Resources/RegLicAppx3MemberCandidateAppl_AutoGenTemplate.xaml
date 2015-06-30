@@ -3,7 +3,7 @@
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
     <ResourceDictionary Source="BankInfo_AutoGenTemplate.xaml" />
-    <ResourceDictionary Source="GenericPersonID_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="GenericPersonID_ManualTemplate.xaml" />
     <ResourceDictionary Source="EmploymentRecordInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="EducationRecordInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="ProfessionLicenseInfo_AutoGenTemplate.xaml" />

@@ -10,7 +10,7 @@
     <ResourceDictionary Source="ProfessionLicenseInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="FinancialOversightAuthorityInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="PublicationInfo_AutoGenTemplate.xaml" />
-    <ResourceDictionary Source="GenericPersonID_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="GenericPersonID_ManualTemplate.xaml" />
     <ResourceDictionary Source="TotalOwnershipDetailsInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="OwnershipStructure_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="OwnershipSummaryInfo_AutoGenTemplate.xaml" />

@@ -22,15 +22,18 @@ namespace WpfApplication2
             var addRowBinding = new CommandBinding(MyCommands.AddNewRowCommand, AddNewRow, CanAddNewRow);
             var editRowBinding = new CommandBinding(MyCommands.EditRowCommand, EditRow, CanEditRow);
             var deleteRowBinding = new CommandBinding(MyCommands.DeleteRowCommand, DeleteRow, CanDeleteRow);
+            var addMentionedPersonBinding = new CommandBinding(MyCommands.AddMentionedPersonCommand, AddMentionedPerson, CanAddMentionedPerson);
 
             // Register CommandBinding for all windows.
             CommandManager.RegisterClassCommandBinding(typeof(Window), binding);
             CommandManager.RegisterClassCommandBinding(typeof(Window), addRowBinding);
             CommandManager.RegisterClassCommandBinding(typeof(Window), editRowBinding);
             CommandManager.RegisterClassCommandBinding(typeof(Window), deleteRowBinding);
+            CommandManager.RegisterClassCommandBinding(typeof(Window), addMentionedPersonBinding);
 
         }
 
+        #region DeleteRow
         private void DeleteRow(object sender, ExecutedRoutedEventArgs e)
         {
             object[] prms = (object[])e.Parameter;
@@ -65,7 +68,9 @@ namespace WpfApplication2
             e.Handled = true;
             return;
         }
+        #endregion
 
+        #region EditRow
         private void EditRow(object sender, ExecutedRoutedEventArgs e)
         {
             object[] prms = (object[])e.Parameter;
@@ -96,6 +101,9 @@ namespace WpfApplication2
             return;
         }
 
+        #endregion
+
+        #region AddNewRow
         private void CanAddNewRow(object sender, CanExecuteRoutedEventArgs e)
         {
             e.CanExecute = true;
@@ -146,6 +154,30 @@ namespace WpfApplication2
             e.Handled = true;
         }
 
+        #endregion
+
+        #region
+        private void CanAddMentionedPerson(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void AddMentionedPerson(object sender, ExecutedRoutedEventArgs e)
+        {
+            object[] prms = (object[])e.Parameter;
+            if (prms == null || prms.Length == 0)
+            {
+                e.Handled = true;
+                return;
+            }
+            object dataContext = prms[0];
+
+            e.Handled = true;
+        }
+        #endregion
+
+
+        #region DoSomething
         private void DoSomething(object sender, ExecutedRoutedEventArgs e)
         {
             //MessageBox.Show(string.Format("Doing something with {0}", e.Parameter));
@@ -160,5 +192,6 @@ namespace WpfApplication2
         {
             e.CanExecute = true;
         }
+        #endregion
     }
 }

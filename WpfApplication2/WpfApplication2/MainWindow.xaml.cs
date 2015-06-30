@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApplication2.Data;
 using WpfApplication2.Forms;
 
 namespace WpfApplication2
@@ -75,6 +76,8 @@ namespace WpfApplication2
         private void ShowQuestionnaireEditForm(System.Windows.Controls.MenuItem menuItem, object questio, bool showMoreMenu)
         {
             BGU.DRPL.SignificantOwnership.Utility.ReflectionUtil.InstantiateAllProps(questio, questio.GetType().Assembly);
+            if (questio is IQuestionnaire)
+                DataModule.CurrentQuestionnare = (IQuestionnaire)questio;
             SelectedObjectFrm frm = new SelectedObjectFrm();
             frm.DataSource = questio;
             StringBuilder sbFormCaption = new StringBuilder();
