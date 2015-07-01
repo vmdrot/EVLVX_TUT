@@ -1,4 +1,5 @@
-﻿using BGU.DRPL.SignificantOwnership.Utility;
+﻿using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
+using BGU.DRPL.SignificantOwnership.Utility;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Input;
+using WpfApplication2.Data;
 using WpfApplication2.Forms;
 
 namespace WpfApplication2
@@ -170,8 +172,33 @@ namespace WpfApplication2
                 e.Handled = true;
                 return;
             }
-            object dataContext = prms[0];
+            object oCbx = prms[0];
+            if (oCbx == null || !(oCbx is System.Windows.Controls.ComboBox))
+            {
+                e.Handled = true;
+                return;
+            }
 
+            {
+                System.Windows.Controls.ComboBox cbx = (System.Windows.Controls.ComboBox)oCbx;
+                GenericPersonInfo gpi = new GenericPersonInfo();
+
+                BGU.DRPL.SignificantOwnership.Utility.ReflectionUtil.InstantiateAllProps(gpi, gpi.GetType().Assembly);
+                SelectedObjectFrm frm = new SelectedObjectFrm();
+                frm.DataSource = gpi;
+                frm.Title = "Нова особа";
+                bool? dlgRes = frm.ShowDialog();
+                if (dlgRes == null || (bool)dlgRes != true)
+                    return;
+
+                GenericPersonInfo newGpi = (GenericPersonInfo)frm.DataSource;
+                DataModule.CurrentMentionedIdentities.Add(newGpi);
+                cbx.Items.Refresh();
+                //SetSelectedValue(newGpi.ID);
+                //cbx.SetCurrentValue(SelectedValueProperty, newGpi.ID); //doesn't work either
+                cbx.SelectedValue = newGpi.ID;
+                cbx.Items.Refresh();
+            }
             e.Handled = true;
         }
         #endregion

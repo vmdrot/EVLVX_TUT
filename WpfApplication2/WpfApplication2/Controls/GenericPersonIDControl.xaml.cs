@@ -1,4 +1,5 @@
 ﻿using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
+using Evolvex.Utility.Core.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,14 +26,28 @@ namespace WpfApplication2.Controls
     public partial class GenericPersonIDControl : UserControl
     {
 
-        public static readonly DependencyProperty SelectedValueProperty = DependencyProperty.Register("SelectedValue", typeof(GenericPersonID), typeof(GenericPersonIDControl));
+        private static readonly ILog log = Logging.GetLogger(typeof(GenericPersonIDControl));
+
+        //public static readonly DependencyProperty SelectedValueProperty = DependencyProperty.Register("SelectedValue", typeof(GenericPersonID), typeof(GenericPersonIDControl));
+        public static readonly DependencyProperty SelectedValueProperty = DependencyProperty.Register("SelectedValue", typeof(GenericPersonID), typeof(GenericPersonIDControl), null);
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void SetValueDp(DependencyProperty property, object value, 
+            [System.Runtime.CompilerServices.CallerMemberName] String p = null)
+        {
+            SetValue(property, value);
+            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(p));
+        }
 
         
         
         public GenericPersonIDControl()
         {
             InitializeComponent();
+            (this.Content as FrameworkElement).DataContext = this;
             cbx.ItemsSource = DataModule.CurrentMentionedIdentities;
+            cbx.DataContext = this.DataContext;
+            log.Debug("cctor: DataContext = {0}", this.DataContext);
+            
         }
 
         [Browsable(true)]
@@ -46,22 +61,19 @@ namespace WpfApplication2.Controls
         {
             get
             {
+                log.Debug("get_SelectedValue: {0}", (GenericPersonID)cbx.SelectedValue);
                 //if(cbx.SelectedItem != null && cbx.SelectedItem is GenericPersonInfo)
                 //    return ((GenericPersonInfo)cbx.SelectedItem).ID;
                 //return GenericPersonID.Empty;
-                return (GenericPersonID)cbx.SelectedValue;
+                return (GenericPersonID)GetValue(SelectedValueProperty);
+                //return (GenericPersonID)cbx.SelectedValue;
             }
 
             set
             {
-                cbx.SelectedValue = value;
-                //foreach (var item in cbx.Items)
-                //{
-                //    if (!(item is GenericPersonInfo))
-                //        continue;
-                //    if(((GenericPersonInfo)item).ID == value)
-                //        cbx.Sele
-                //}
+                log.Debug("set_SelectedValue: old = {0}, new = {1}", (GenericPersonID)cbx.SelectedValue, value);
+                SetValueDp(SelectedValueProperty, value);
+                //cbx.SelectedValue = value;
             }
         }
 
@@ -95,11 +107,18 @@ namespace WpfApplication2.Controls
             GenericPersonInfo newGpi = (GenericPersonInfo)frm.DataSource;
             DataModule.CurrentMentionedIdentities.Add(newGpi);
             cbx.Items.Refresh();
-            SetSelectedValue(newGpi.ID);
+            //SetSelectedValue(newGpi.ID);
             //cbx.SetCurrentValue(SelectedValueProperty, newGpi.ID); //doesn't work either
-            //this.SelectedValue = newGpi.ID;
-            //cbx.Items.Refresh();
+            this.SelectedValue = newGpi.ID;
+            cbx.Items.Refresh();
             //cbx.SelectedValue = newGpi.ID;
+        }
+
+        private static void OnSelectedValuePropertyChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
+        {
+            log.Debug("OnSelectedValuePropertyChanged");
+            ComboBox control = source as ComboBox;
+            GenericPersonID val = (GenericPersonID)e.NewValue;
         }
 
     }
