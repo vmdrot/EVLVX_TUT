@@ -6,9 +6,14 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:CouncilMemberInfo}">
     <StackPanel>
-      <Expander Header="Член органу управління" ToolTip="Член органу управління" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Member, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Член органу управління" Style="{StaticResource dispNmStyle}" ToolTip="Член органу управління" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding Member, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Член органу управління" />
+      </Grid>
       <TextBlock Text="Посада" Style="{StaticResource dispNmStyle}" ToolTip="Посада" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PositionName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Посада" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Опис функцій" Style="{StaticResource dispNmStyle}" ToolTip="Опис функцій" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

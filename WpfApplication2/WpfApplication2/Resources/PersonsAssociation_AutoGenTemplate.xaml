@@ -6,12 +6,22 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:PersonsAssociation}">
     <StackPanel>
-      <Expander Header="Перша особа" ToolTip="Перша особа" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding One, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
-      <Expander Header="Друга особа" ToolTip="Друга особа" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Two, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Перша особа" Style="{StaticResource dispNmStyle}" ToolTip="Перша особа" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding One, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Перша особа" />
+      </Grid>
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Друга особа" Style="{StaticResource dispNmStyle}" ToolTip="Друга особа" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding Two, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Друга особа" />
+      </Grid>
       <TextBlock Text="Тип зв'язку" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <ComboBox ToolTip="Тип зв'язку" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.OwnershipTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding AssociationType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Ким приходиться перша особа другій" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

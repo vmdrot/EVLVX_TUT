@@ -7,9 +7,14 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:CouncilBodyInfo}">
     <StackPanel>
-      <Expander Header="Керована організація" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding GovernedEntityID, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Керована організація" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding GovernedEntityID, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" />
+      </Grid>
       <Expander Header="Члени" ToolTip="Члени органу управління" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridMembers" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Members, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
@@ -135,9 +140,14 @@
           </Button>
         </StackPanel>
       </Expander>
-      <Expander Header="Очільник/голова органу" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding HeadMember, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Очільник/голова органу" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding HeadMember, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" />
+      </Grid>
       <TextBlock Text="Назва органу" Style="{StaticResource dispNmStyle}" ToolTip="Назва органу (мовою оригіналу)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CouncilBodyName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва органу (мовою оригіналу)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Назва органу (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="Назва органу (українською, для організацій-нерезидентів)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
