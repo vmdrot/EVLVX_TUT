@@ -29,14 +29,14 @@ namespace WpfApplication2.Controls
         private static readonly ILog log = Logging.GetLogger(typeof(GenericPersonIDControl));
 
         //public static readonly DependencyProperty SelectedValueProperty = DependencyProperty.Register("SelectedValue", typeof(GenericPersonID), typeof(GenericPersonIDControl));
-        public static readonly DependencyProperty SelectedValueProperty = DependencyProperty.Register("SelectedValue", typeof(GenericPersonID), typeof(GenericPersonIDControl), null);
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void SetValueDp(DependencyProperty property, object value, 
-            [System.Runtime.CompilerServices.CallerMemberName] String p = null)
-        {
-            SetValue(property, value);
-            if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(p));
-        }
+        //public static readonly DependencyProperty SelectedValueProperty = DependencyProperty.Register("SelectedValue", typeof(GenericPersonID), typeof(GenericPersonIDControl), null);
+        //public event PropertyChangedEventHandler PropertyChanged;
+        //private void SetValueDp(DependencyProperty property, object value, 
+        //    [System.Runtime.CompilerServices.CallerMemberName] String p = null)
+        //{
+        //    SetValue(property, value);
+        //    if (PropertyChanged != null) PropertyChanged(this, new PropertyChangedEventArgs(p));
+        //}
 
         
         
@@ -63,17 +63,17 @@ namespace WpfApplication2.Controls
             {
                 log.Debug("get_SelectedValue: {0}", (GenericPersonID)cbx.SelectedValue);
                 //if(cbx.SelectedItem != null && cbx.SelectedItem is GenericPersonInfo)
-                //    return ((GenericPersonInfo)cbx.SelectedItem).ID;
+                    return ((GenericPersonInfo)cbx.SelectedItem).ID;
                 //return GenericPersonID.Empty;
-                return (GenericPersonID)GetValue(SelectedValueProperty);
+                //return (GenericPersonID)GetValue(SelectedValueProperty);
                 //return (GenericPersonID)cbx.SelectedValue;
             }
 
             set
             {
                 log.Debug("set_SelectedValue: old = {0}, new = {1}", (GenericPersonID)cbx.SelectedValue, value);
-                SetValueDp(SelectedValueProperty, value);
-                //cbx.SelectedValue = value;
+                //SetValueDp(SelectedValueProperty, value);
+                cbx.SelectedValue = value;
             }
         }
 

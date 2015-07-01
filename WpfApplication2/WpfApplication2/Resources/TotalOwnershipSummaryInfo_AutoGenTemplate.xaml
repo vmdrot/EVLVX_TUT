@@ -7,7 +7,11 @@
   <DataTemplate DataType="{x:Type bgusd:TotalOwnershipSummaryInfo}">
     <StackPanel>
       <Expander Header="Пряма участь" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding DirectOwnershipSummary, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+                <ContentControl Content="{Binding DirectOwnershipSummary, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2">
+                    <DataTemplate>
+                        
+                    </DataTemplate>
+                </ContentControl>
       </Expander>
       <TextBlock Text="Опосередкована участь (%)" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ImplicitPct, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
