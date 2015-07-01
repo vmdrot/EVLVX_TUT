@@ -8,7 +8,7 @@
     <Grid>
         <StackPanel Orientation="Horizontal">
             <TextBlock x:Name="lbl" Height="auto" Width="auto" Text="{Binding DisplayNameLabelText}"/>
-            <ComboBox x:Name="cbx" DisplayMemberPath="DisplayName" SelectedValuePath="ID" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" ToolTip="{Binding DescriptionLabelText}"/>
+            <ComboBox x:Name="cbx" DisplayMemberPath="DisplayName" SelectedValuePath="ID" HorizontalAlignment="Stretch" SelectedValue="{Binding}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" ToolTip="{Binding DescriptionLabelText}" MinWidth="150" />
             <Button x:Name="btn" Content=" + " Click="btnClick"></Button>
     </StackPanel>
     </Grid>
