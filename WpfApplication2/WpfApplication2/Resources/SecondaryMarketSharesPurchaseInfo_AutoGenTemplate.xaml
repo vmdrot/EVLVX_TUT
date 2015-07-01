@@ -9,34 +9,69 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:SecondaryMarketSharesPurchaseInfo}">
     <StackPanel>
-      <Expander Header="Актив, що набувається" ToolTip="Банк або ж юр.особа - власник участі в банку (прямої чи опосередкованої)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Asset, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
-      <Expander Header="Попередній власник" ToolTip="Власник, від якого переходитиме власність" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding PreviousOwner, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Актив, що набувається" Style="{StaticResource dispNmStyle}" ToolTip="Банк або ж юр.особа - власник участі в банку (прямої чи опосередкованої)" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding Asset, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Банк або ж юр.особа - власник участі в банку (прямої чи опосередкованої)" />
+      </Grid>
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Попередній власник" Style="{StaticResource dispNmStyle}" ToolTip="Власник, від якого переходитиме власність" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding PreviousOwner, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Власник, від якого переходитиме власність" />
+      </Grid>
       <Expander Header="Правочин" ToolTip="Інформація про відповідний правочин" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding LegalTransaction, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
       <TextBlock Text="%, що набувається" Style="{StaticResource dispNmStyle}" ToolTip="Відсоток у статутному капіталі юридичної особи або банку, який придбавається" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesPct, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Відсоток у статутному капіталі юридичної особи або банку, який придбавається" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Header="Номінальна вартість" ToolTip="Загальна номінальна вартість акцій (часток, паїв), які придбаваються" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding NominalSharesValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
-      <Expander Header="Ціна реальної угоди" ToolTip="Ціна акцій (часток, паїв), які придбаваються ( Може зазначатися ціна, яка попередньо погоджена сторонами відповідно до проекту договору купівлі-продажу акцій банку ...)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding ActualSharesPrice, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Номінальна вартість" Style="{StaticResource dispNmStyle}" ToolTip="Загальна номінальна вартість акцій (часток, паїв), які придбаваються" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding NominalSharesValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Загальна номінальна вартість акцій (часток, паїв), які придбаваються" />
+      </Grid>
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Ціна реальної угоди" Style="{StaticResource dispNmStyle}" ToolTip="Ціна акцій (часток, паїв), які придбаваються ( Може зазначатися ціна, яка попередньо погоджена сторонами відповідно до проекту договору купівлі-продажу акцій банку ...)" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding ActualSharesPrice, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Ціна акцій (часток, паїв), які придбаваються ( Може зазначатися ціна, яка попередньо погоджена сторонами відповідно до проекту договору купівлі-продажу акцій банку ...)" />
+      </Grid>
       <TextBlock Text="Кількість акцій" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesCount, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Кількість акцій (паїв) банку, які юридична особа має намір придбати, штук" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Header="Номінальна ціна" ToolTip="Номінальна вартість однієї акції (одного паю), грн." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding NominalSharePrice, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
-      <Expander Header="Загальна номінальна вартість" ToolTip="Загальна номінальна вартість акцій (паїв), які юридична особа має намір придбати, грн." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding NominalTotalSharesValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
-      <Expander Header="Реальна ціна акцій" ToolTip="Ціна акцій (паїв), які юридична особа має намір придбати, грн." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding ActualTotalSharesValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Номінальна ціна" Style="{StaticResource dispNmStyle}" ToolTip="Номінальна вартість однієї акції (одного паю), грн." HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding NominalSharePrice, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Номінальна вартість однієї акції (одного паю), грн." />
+      </Grid>
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Загальна номінальна вартість" Style="{StaticResource dispNmStyle}" ToolTip="Загальна номінальна вартість акцій (паїв), які юридична особа має намір придбати, грн." HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding NominalTotalSharesValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Загальна номінальна вартість акцій (паїв), які юридична особа має намір придбати, грн." />
+      </Grid>
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Реальна ціна акцій" Style="{StaticResource dispNmStyle}" ToolTip="Ціна акцій (паїв), які юридична особа має намір придбати, грн." HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding ActualTotalSharesValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Ціна акцій (паїв), які юридична особа має намір придбати, грн." />
+      </Grid>
       <Expander Header="Термін оплати" ToolTip="Запланований термін здійснення оплати" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridPaymentDeadlines" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PaymentDeadlines, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">

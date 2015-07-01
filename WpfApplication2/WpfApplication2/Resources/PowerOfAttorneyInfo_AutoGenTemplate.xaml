@@ -6,12 +6,22 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:PowerOfAttorneyInfo}">
     <StackPanel>
-      <Expander Header="Довірена особа" ToolTip="Кому видано довіреність" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding ActingPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
-      <Expander Header="Від імені" ToolTip="Особа, яку представляють (від імені якої діє довірена особа)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding OnBehalfOfPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Довірена особа" Style="{StaticResource dispNmStyle}" ToolTip="Кому видано довіреність" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding ActingPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Кому видано довіреність" />
+      </Grid>
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Від імені" Style="{StaticResource dispNmStyle}" ToolTip="Особа, яку представляють (від імені якої діє довірена особа)" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding OnBehalfOfPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Особа, яку представляють (від імені якої діє довірена особа)" />
+      </Grid>
       <TextBlock Text="Назва/титул довіреності" Style="{StaticResource dispNmStyle}" ToolTip="Короткий зміст предмету довіреності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Title, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Короткий зміст предмету довіреності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Дійсна з" Style="{StaticResource dispNmStyle}" ToolTip="Дата початку дії довіреності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

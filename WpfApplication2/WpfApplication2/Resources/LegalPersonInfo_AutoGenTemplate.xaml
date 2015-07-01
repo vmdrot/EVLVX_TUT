@@ -30,12 +30,22 @@
       <Expander Header="Дата/№ запису в держреєстрі" ToolTip="Дата та номер запису в Єдиному державному реєстрі юридичних осіб та фізичних осіб-підприємців" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding RegisteredDateID, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <Expander Header="Представник юрособи" ToolTip="Особа, що представляє юрособу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding RepresentedBy, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
-      <Expander Header="Статутний капітал" ToolTip="Статутний фонд/капітал" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Equity, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Представник юрособи" Style="{StaticResource dispNmStyle}" ToolTip="Особа, що представляє юрособу" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding RepresentedBy, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Особа, що представляє юрособу" />
+      </Grid>
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Статутний капітал" Style="{StaticResource dispNmStyle}" ToolTip="Статутний фонд/капітал" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding Equity, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Статутний фонд/капітал" />
+      </Grid>
       <Expander Header="Основний вид діяльності" ToolTip="Основний(-і) вид(-и) діяльності юрособи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridPrincipalActivities" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PrincipalActivities, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
