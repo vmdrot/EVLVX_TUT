@@ -24,6 +24,9 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bguq:RegLicAppx2OwnershipAcqRequestLP}">
     <StackPanel>
+      <Expander Header="Повне офіційне найменування банку" ToolTip="стосовно участі в ..." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding BankRef, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      </Expander>
       <Expander Header="І. Інформація про юридичну особу" ToolTip="І. Інформація про юридичну особу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel Orientation="Vertical" Margin="5,2">
           <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
@@ -630,6 +633,9 @@
             </StackPanel>
           </Expander>
         </StackPanel>
+      </Expander>
+      <Expander Header="5. Наявна участь юридичної особи в банку" ToolTip="5. Інформація про розмір наявної участі юридичної особи в банку" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding TotalExistingOwnershipWithBank, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
       <Expander Header="ІІ. Інформація про наміри щодо набуття (збільшення) істотної участі в банку" ToolTip="ІІ. Інформація про наміри щодо набуття (збільшення) істотної участі в банку" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel Orientation="Vertical" Margin="5,2">
@@ -2373,12 +2379,6 @@
             <ContentControl Content="{Binding ContactPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
           </Expander>
         </StackPanel>
-      </Expander>
-      <Expander Header="Повне офіційне найменування банку" ToolTip="стосовно участі в ..." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding BankRef, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
-      <Expander Header="5. Наявна участь юридичної особи в банку" ToolTip="5. Інформація про розмір наявної участі юридичної особи в банку" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding TotalExistingOwnershipWithBank, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
       <Expander Header="Реквізити осіб-фігурантів анкети" ToolTip="Повні реквізити юридичних та фізичних осіб, що згадуються в розділах анкети" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
