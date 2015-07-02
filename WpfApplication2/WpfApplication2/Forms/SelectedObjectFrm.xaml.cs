@@ -50,7 +50,12 @@ namespace WpfApplication2.Forms
             this.Close();
         }
 
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            //todo
+        }
 
+        
         private void LoadMenuItem_Click(object sender, RoutedEventArgs e)
         {
             DoOpen();

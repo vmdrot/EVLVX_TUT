@@ -9,10 +9,10 @@
     <StackPanel>
       <TextBlock Text="Тип особи" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <ComboBox ToolTip="Тип особи" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.EntityTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding PersonType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Header="Фізична особа" ToolTip="Фізична особа" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Фізична особа" ToolTip="Фізична особа" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsPhysical, Converter={StaticResource bool2Vis}}">
         <ContentControl Content="{Binding PhysicalPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <Expander Header="Юридична особа" ToolTip="Юридична особа" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Юридична особа" ToolTip="Юридична особа" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsLegal, Converter={StaticResource bool2Vis}}">
         <ContentControl Content="{Binding LegalPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
     </StackPanel>
