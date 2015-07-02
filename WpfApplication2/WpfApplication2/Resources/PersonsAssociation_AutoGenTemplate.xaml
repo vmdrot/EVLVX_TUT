@@ -1,27 +1,32 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data">
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
-    <ResourceDictionary Source="GenericPersonID_ManualTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:PersonsAssociation}">
     <StackPanel>
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="1*" />
-          <ColumnDefinition Width="4*" />
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Text="Перша особа" Style="{StaticResource dispNmStyle}" ToolTip="Перша особа" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding One, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Перша особа" />
-      </Grid>
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="1*" />
-          <ColumnDefinition Width="4*" />
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Text="Друга особа" Style="{StaticResource dispNmStyle}" ToolTip="Друга особа" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding Two, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Друга особа" />
-      </Grid>
+      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblOne" Height="auto" Width="auto" Text="Перша особа" Style="{StaticResource dispNmStyle}" ToolTip="Перша особа" />
+        <ComboBox x:Name="cbxOne" DisplayMemberPath="DisplayName" SelectedValuePath="ID" HorizontalAlignment="Stretch" SelectedValue="{Binding Path=One, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Перша особа" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+        <Button x:Name="btnAddOne" Content=" + " Command="{x:Static local:MyCommands.AddMentionedPersonCommand}">
+          <Button.CommandParameter>
+            <MultiBinding Converter="{StaticResource multiValConv}">
+              <Binding ElementName="cbxOne" />
+            </MultiBinding>
+          </Button.CommandParameter>
+        </Button>
+      </StackPanel>
+      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblTwo" Height="auto" Width="auto" Text="Друга особа" Style="{StaticResource dispNmStyle}" ToolTip="Друга особа" />
+        <ComboBox x:Name="cbxTwo" DisplayMemberPath="DisplayName" SelectedValuePath="ID" HorizontalAlignment="Stretch" SelectedValue="{Binding Path=Two, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Друга особа" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+        <Button x:Name="btnAddTwo" Content=" + " Command="{x:Static local:MyCommands.AddMentionedPersonCommand}">
+          <Button.CommandParameter>
+            <MultiBinding Converter="{StaticResource multiValConv}">
+              <Binding ElementName="cbxTwo" />
+            </MultiBinding>
+          </Button.CommandParameter>
+        </Button>
+      </StackPanel>
       <TextBlock Text="Тип зв'язку" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <ComboBox ToolTip="Тип зв'язку" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.OwnershipTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding AssociationType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Ким приходиться перша особа другій" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

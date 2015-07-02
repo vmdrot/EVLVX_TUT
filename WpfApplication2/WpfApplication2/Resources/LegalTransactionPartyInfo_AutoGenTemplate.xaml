@@ -1,19 +1,21 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data">
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
-    <ResourceDictionary Source="GenericPersonID_ManualTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:LegalTransactionPartyInfo}">
     <StackPanel>
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="1*" />
-          <ColumnDefinition Width="4*" />
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Text="Сторона" Style="{StaticResource dispNmStyle}" ToolTip="Ідентифікація сторони правочину" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding Party, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Ідентифікація сторони правочину" />
-      </Grid>
+      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblParty" Height="auto" Width="auto" Text="Сторона" Style="{StaticResource dispNmStyle}" ToolTip="Ідентифікація сторони правочину" />
+        <ComboBox x:Name="cbxParty" DisplayMemberPath="DisplayName" SelectedValuePath="ID" HorizontalAlignment="Stretch" SelectedValue="{Binding Path=Party, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ідентифікація сторони правочину" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+        <Button x:Name="btnAddParty" Content=" + " Command="{x:Static local:MyCommands.AddMentionedPersonCommand}">
+          <Button.CommandParameter>
+            <MultiBinding Converter="{StaticResource multiValConv}">
+              <Binding ElementName="cbxParty" />
+            </MultiBinding>
+          </Button.CommandParameter>
+        </Button>
+      </StackPanel>
       <TextBlock Text="Роль" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <ComboBox ToolTip="Роль сторони у правочині" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.LegalTransactionPartyRoleTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Role, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Роль (інше)" Style="{StaticResource dispNmStyle}" ToolTip="Роль сторони у правочині, як в полі &quot;Роль&quot; вказано інше" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
