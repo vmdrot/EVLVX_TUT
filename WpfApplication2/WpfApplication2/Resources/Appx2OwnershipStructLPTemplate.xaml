@@ -13,7 +13,7 @@
         <ResourceDictionary Source="CouncilBodyInfoTemplate.xaml" />
         <ResourceDictionary Source="CouncilMemberInfoTemplate.xaml" />
         <!--<ResourceDictionary Source="GenericPersonIDTemplate.xaml" />-->
-        <ResourceDictionary Source="GenericPersonInfo_AutoGenTemplate.xaml" />
+        <ResourceDictionary Source="GenericPersonInfo_ManualTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
     <DataTemplate DataType="{x:Type bguq:Appx2OwnershipStructLP}" >
         <Grid>

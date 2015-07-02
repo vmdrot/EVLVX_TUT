@@ -650,7 +650,7 @@
           <Expander Header="7. Спосіб(-оби) набуття/збільшення істотної участі в банку" ToolTip="7. Набуття/збільшення істотної участі в банку відбуватиметься у спосіб (зазначити необхідне)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <ContentControl Content="{Binding AcquisitionWays, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
           </Expander>
-          <Expander Header="Придбання на первинному ринку" ToolTip="8. Інформація про намір щодо придбання акцій (паїв) банку на первинному ринку:" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <Expander Header="Придбання на первинному ринку" ToolTip="8. Інформація про намір щодо придбання акцій (паїв) банку на первинному ринку:" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=AcquisitionWays.IsIPO, Converter={StaticResource bool2Vis}}">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridIPOPurchase" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding IPOPurchase, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
@@ -819,7 +819,7 @@
               </Button>
             </StackPanel>
           </Expander>
-          <Expander Header="9. Придбання на вторинному ринку" ToolTip="9. Інформація про намір щодо придбання акцій (паїв) банку на вторинному ринку та/або стосовно правочинів щодо набуття (збільшення) опосередкованої участі в банку (крім набуття істотної участі в результаті передавання особі права голосу або незалежно від формального володіння)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <Expander Header="9. Придбання на вторинному ринку" ToolTip="9. Інформація про намір щодо придбання акцій (паїв) банку на вторинному ринку та/або стосовно правочинів щодо набуття (збільшення) опосередкованої участі в банку (крім набуття істотної участі в результаті передавання особі права голосу або незалежно від формального володіння)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=AcquisitionWays.IsSecondaryMarketOrImplicitOwnershipPurchase, Converter={StaticResource bool2Vis}}">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridSecondaryMarketPurchases" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding SecondaryMarketPurchases, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
@@ -1120,7 +1120,7 @@
               </Button>
             </StackPanel>
           </Expander>
-          <Expander Header="10. Набуття за довіреністю" ToolTip="10. Інформація про намір щодо набуття опосередкованої істотної участі в банку за довіреністю" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <Expander Header="10. Набуття за довіреністю" ToolTip="10. Інформація про намір щодо набуття опосередкованої істотної участі в банку за довіреністю" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=AcquisitionWays.IsPurchaseByPowOfAtt, Converter={StaticResource bool2Vis}}">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridAquisitionByPoAttorneys" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding AquisitionByPoAttorneys, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
@@ -1267,7 +1267,7 @@
               </Button>
             </StackPanel>
           </Expander>
-          <Expander Header="11. Набуття у зв’язку із здійсненням впливу" ToolTip="11. Інформація про набуття опосередкованої істотної участі в банку у зв’язку із здійсненням значного або вирішального впливу на управління та діяльність банку незалежно від формального володіння" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <Expander Header="11. Набуття у зв’язку із здійсненням впливу" ToolTip="11. Інформація про набуття опосередкованої істотної участі в банку у зв’язку із здійсненням значного або вирішального впливу на управління та діяльність банку незалежно від формального володіння" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=AcquisitionWays.IsAcquireByImplicitInfluence, Converter={StaticResource bool2Vis}}">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridAquisitionByInfluence" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding AquisitionByInfluence, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
@@ -1910,7 +1910,7 @@
           <CheckBox IsChecked="{Binding HasOutstandingLoansWithBanks, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <TextBlock FlowDirection="LeftToRight" Text="16. Чи є кредити, одержані й непогашені юридичною  особою  в  банках?:" ToolTip="(Станом на дату подання анкети)" />
           </CheckBox>
-          <Expander Header="16. Інформація про кредити, одержані юридичною особою" ToolTip="(номер і дата договору про надання кредиту, сума кредиту, термін погашення кредиту, сума заборгованості за договором на дату подання анкети)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <Expander Header="16. Інформація про кредити, одержані юридичною особою" ToolTip="(номер і дата договору про надання кредиту, сума кредиту, термін погашення кредиту, сума заборгованості за договором на дату подання анкети)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=HasOutstandingLoansWithBanks, Converter={StaticResource bool2Vis}}">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridOutstandingLoansWithBanksDetails" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding OutstandingLoansWithBanksDetails, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
                 <DataGrid.Columns>
@@ -2258,7 +2258,7 @@
           <CheckBox IsChecked="{Binding HasNoImperfectReputationSigns, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <TextBlock FlowDirection="LeftToRight" Text="17. Стверджую, що немає ознак відсутності бездоганної ділової репутації:" ToolTip="Стверджую, що немає ознак відсутності бездоганної ділової репутації стосовно _______ (зазначається повне найменування юридичної особи" />
           </CheckBox>
-          <Expander Header="17. Ознаки відсутності бездоганної ділової репутації" ToolTip="Опис наявних ознак відсутності бездоганної ділової репутації" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <Expander Header="17. Ознаки відсутності бездоганної ділової репутації" ToolTip="Опис наявних ознак відсутності бездоганної ділової репутації" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsImprefectReputationDetailsVisible, Converter={StaticResource bool2Vis}}">
             <ContentControl Content="{Binding ImprefectReputationDetails, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
           </Expander>
           <CheckBox IsChecked="{Binding IsAMLEtcLegislationKept, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
