@@ -17,8 +17,12 @@
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CourtRegion, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CourtRegion" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="CourtID" Style="{StaticResource dispNmStyle}" ToolTip="CourtID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CourtID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CourtID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Instance" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="Instance" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.CourtInstanceTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Instance, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
+        <TextBlock Text="Instance" Style="{StaticResource dispNmStyle}" ToolTip="Instance" />
+        <RadioButton Content="Перша" GroupName="rbgInstance" ToolTip="First - Перша" IsChecked="{Binding Path=Instance, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=First}" />
+        <RadioButton Content="Апеляційна" GroupName="rbgInstance" ToolTip="Appeal - Апеляційна" IsChecked="{Binding Path=Instance, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Appeal}" />
+        <RadioButton Content="Касаційна" GroupName="rbgInstance" ToolTip="Cassation - Касаційна" IsChecked="{Binding Path=Instance, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Cassation}" />
+      </StackPanel>
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

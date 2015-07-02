@@ -4,4 +4,5 @@
     <convs:BoolToVisibilityConverter x:Key="bool2Vis" />
     <convs:DoubleToIntegerConverter x:Key="double2Int" />
     <convs:MultiValueConverter x:Key="multiValConv" />
+    <convs:EnumMatchToBooleanConverter x:Key="enum2BoolConv" />
 </ResourceDictionary>

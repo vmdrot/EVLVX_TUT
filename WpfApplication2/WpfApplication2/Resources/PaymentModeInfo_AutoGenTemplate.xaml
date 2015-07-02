@@ -14,8 +14,12 @@
         <TextBlock Grid.Column="0" Text="Сума" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <ContentControl Grid.Column="1" Content="{Binding Amount, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" />
       </Grid>
-      <TextBlock Text="Спосіб сплати" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.PaymentTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding PaymentMode, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
+        <TextBlock Text="Спосіб сплати" Style="{StaticResource dispNmStyle}" ToolTip="" />
+        <RadioButton Content="Готівка" GroupName="rbgPaymentMode" ToolTip="Cash - Готівка" IsChecked="{Binding Path=PaymentMode, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Cash}" />
+        <RadioButton Content="Безготівка" GroupName="rbgPaymentMode" ToolTip="WireTransfer - Безготівка" IsChecked="{Binding Path=PaymentMode, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=WireTransfer}" />
+        <RadioButton Content="Інше" GroupName="rbgPaymentMode" ToolTip="Other - Інше" IsChecked="{Binding Path=PaymentMode, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Other}" />
+      </StackPanel>
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>
