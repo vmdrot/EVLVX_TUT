@@ -19,8 +19,11 @@
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistrarName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва держоргану" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Назва держоргану українською" Style="{StaticResource dispNmStyle}" ToolTip="Назва держоргану українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistrarNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва держоргану українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Тип осіб, що реєструє" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="Тип осіб, що реєструє" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.EntityTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding EntitiesHandled, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
+        <TextBlock Text="Тип осіб, що реєструє" Style="{StaticResource dispNmStyle}" ToolTip="Тип осіб, що реєструє" />
+        <RadioButton Content="Фізична особа" GroupName="rbgEntitiesHandled" ToolTip="Physical - Фізична особа" IsChecked="{Binding Path=EntitiesHandled, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Physical}" />
+        <RadioButton Content="Юридична особа" GroupName="rbgEntitiesHandled" ToolTip="Legal - Юридична особа" IsChecked="{Binding Path=EntitiesHandled, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Legal}" />
+      </StackPanel>
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

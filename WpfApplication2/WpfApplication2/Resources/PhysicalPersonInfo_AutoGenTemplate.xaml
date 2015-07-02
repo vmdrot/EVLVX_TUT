@@ -23,8 +23,12 @@
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MiddleName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="По-батькові/друге ім'я" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="П.І.Б." Style="{StaticResource dispNmStyle}" ToolTip="П.І.Б." xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FullName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="П.І.Б." xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Стать" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="Стать" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.SexTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Sex, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
+        <TextBlock Text="Стать" Style="{StaticResource dispNmStyle}" ToolTip="Стать" />
+        <RadioButton Content="Не вказано" GroupName="rbgSex" ToolTip="None - Не вказано" IsChecked="{Binding Path=Sex, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=None}" />
+        <RadioButton Content="Чол." GroupName="rbgSex" ToolTip="Male - Чол." IsChecked="{Binding Path=Sex, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Male}" />
+        <RadioButton Content="Жін." GroupName="rbgSex" ToolTip="Female - Жін." IsChecked="{Binding Path=Sex, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Female}" />
+      </StackPanel>
       <TextBlock Text="Дата народження" Style="{StaticResource dispNmStyle}" ToolTip="Дата народження" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <DatePicker ToolTip="Дата народження" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding BirthDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Серія № паспорта" Style="{StaticResource dispNmStyle}" ToolTip="Серія № паспорта" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
