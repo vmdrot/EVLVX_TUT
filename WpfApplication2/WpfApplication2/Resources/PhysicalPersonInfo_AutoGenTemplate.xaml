@@ -7,14 +7,6 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:PhysicalPersonInfo}">
     <StackPanel>
-      <TextBlock Text="Прізвище (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище, українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SurnameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Прізвище, українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Ім'я (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="Ім'я, українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ім'я, українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="По-батькові/друге ім'я (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="По-батькові/друге ім'я, українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MiddleNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="По-батькові/друге ім'я, українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="П.І.Б (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="П.І.Б., українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FullNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="П.І.Б., українською" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Прізвище" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Surname, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Прізвище" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Ім'я" Style="{StaticResource dispNmStyle}" ToolTip="Ім'я" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
@@ -23,6 +15,14 @@
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MiddleName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="По-батькові/друге ім'я" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="П.І.Б." Style="{StaticResource dispNmStyle}" ToolTip="П.І.Б." xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FullName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="П.І.Б." xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Прізвище (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище, українською" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SurnameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Прізвище, українською" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Ім'я (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="Ім'я, українською" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ім'я, українською" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="По-батькові/друге ім'я (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="По-батькові/друге ім'я, українською" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MiddleNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="По-батькові/друге ім'я, українською" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="П.І.Б (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="П.І.Б., українською" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FullNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="П.І.Б., українською" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
         <TextBlock Text="Стать" Style="{StaticResource dispNmStyle}" ToolTip="Стать" />
         <RadioButton Content="Не вказано" GroupName="rbgSex" ToolTip="None - Не вказано" IsChecked="{Binding Path=Sex, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=None}" />
