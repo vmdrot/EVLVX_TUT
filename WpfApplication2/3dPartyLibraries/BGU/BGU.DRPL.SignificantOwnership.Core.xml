@@ -657,6 +657,11 @@
             (один "епізод" з трудової біографії)
             </summary>
         </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.EmploymentRecordInfo.State">
+            <summary>
+            обов'язкове поле
+            </summary>
+        </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.EmploymentRecordInfo.Employer">
             <summary>
             Обов'язкове поле
@@ -677,11 +682,6 @@
             <summary>
             з точністю до місяця
             якщо не заповнене, значить він/вона/воно там ще досі працює
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.EmploymentRecordInfo.State">
-            <summary>
-            обов'язкове поле
             </summary>
         </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.EmploymentRecordInfo.TerminationType">
@@ -716,11 +716,6 @@
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.TotalOwnershipDetailsInfoEx.OwnerID">
             <summary>
             Тут лише ідентифікатор особи; як завше, решта її реквізитів - десь у MentionedIdentities
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.TotalOwnershipDetailsInfoEx.OwnerDisplayName">
-            <summary>
-            Чисто для показу на UI; окремого бізнес-значення поле не несе
             </summary>
         </member>
         <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.SignatoryInfo">
@@ -2954,6 +2949,22 @@
             <summary>
             Стверджую, що юридична особа має можливість підтвердити походження джерел коштів, за рахунок яких придбає акції банку.
             </summary>
+        </member>
+        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.IPNRefusalRecordInfo">
+            <summary>
+            Інформація про відмітку в паспорті про право здійснювати будь-які 
+              платежі без ІПН
+             ---------------------------------------------------------
+             У паспорт серія ___ N ____________, який видано громадянину
+             _________________________________________________________________,
+                                (прізвище, ім'я та по батькові)
+             ______ внесено  відмітку  за  N  _____________ про наявність права
+              (дата)
+             здійснювати будь-які платежі без ідентифікаційного номера.
+            ____________             ________________________________________
+              (дата)                           (ПІБ, посада, підпис)
+            </summary>
+            <see cref="!:http://www.uazakon.com/documents/date_4f/pg_imnkxj.htm"/>
         </member>
     </members>
 </doc>

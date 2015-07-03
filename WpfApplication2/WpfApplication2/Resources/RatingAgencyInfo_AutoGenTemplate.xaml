@@ -11,7 +11,7 @@
       <TextBlock Text="Назва українською" Style="{StaticResource dispNmStyle}" ToolTip="Назва рейтингової аґенції українською (якщо оригінальна назва - іншомовна)" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва рейтингової аґенції українською (якщо оригінальна назва - іншомовна)" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <CheckBox IsChecked="{Binding IsGlobal, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Глобальне покриття?:" ToolTip="Аґенція рейтингує компанії глобально, а не прив'язана до якоїсь конкретної країни" />
+        <TextBlock FlowDirection="LeftToRight" Text="Глобальне покриття?" ToolTip="Аґенція рейтингує компанії глобально, а не прив'язана до якоїсь конкретної країни" />
       </CheckBox>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock Text="Країна покриття" Style="{StaticResource dispNmStyle}" ToolTip="Якщо аґенція не є глобальною, а рейтингує компанії однієї конкретної країни" />

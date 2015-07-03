@@ -8,6 +8,9 @@
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhysicalPersonInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegistrarAuthority_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LocationInfo_AutoGenTemplate.xaml" />
+<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/IPNRefusalRecordInfo_AutoGenTemplate.xaml" />
+<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SignatoryInfo_AutoGenTemplate.xaml" />
+<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PowerOfAttorneyInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhoneInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EmailInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/FinancialOversightAuthorityInfo_AutoGenTemplate.xaml" />
@@ -21,7 +24,6 @@
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LegalTransactionInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LegalTransactionPartyInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PowerOfAttorneySharesPurchaseInfo_AutoGenTemplate.xaml" />
-<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PowerOfAttorneyInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SignificantOrDecisiveInfulenceInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/IncomeOriginInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/OwnershipStructure_AutoGenTemplate.xaml" />
@@ -36,7 +38,6 @@
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/TotalOwnershipDetailsInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/OwnershipVotesInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/MissingInformationResonInfo_AutoGenTemplate.xaml" />
-<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SignatoryInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LegalPersonInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LPRegisteredDateRecordId_AutoGenTemplate.xaml" />

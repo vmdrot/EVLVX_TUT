@@ -1908,7 +1908,7 @@
       <Expander Header="IV. Ділова репутація" ToolTip="IV. Ділова репутація" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel Orientation="Vertical" Margin="5,2">
           <CheckBox IsChecked="{Binding HasOutstandingLoansWithBanks, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-            <TextBlock FlowDirection="LeftToRight" Text="16. Чи є кредити, одержані й непогашені юридичною  особою  в  банках?:" ToolTip="(Станом на дату подання анкети)" />
+            <TextBlock FlowDirection="LeftToRight" Text="16. Чи є кредити, одержані й непогашені юридичною  особою  в  банках?" ToolTip="(Станом на дату подання анкети)" />
           </CheckBox>
           <Expander Header="16. Інформація про кредити, одержані юридичною особою" ToolTip="(номер і дата договору про надання кредиту, сума кредиту, термін погашення кредиту, сума заборгованості за договором на дату подання анкети)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=HasOutstandingLoansWithBanks, Converter={StaticResource bool2Vis}}">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
@@ -2046,6 +2046,28 @@
                       </Style>
                     </DataGridTextColumn.HeaderStyle>
                   </DataGridTextColumn>
+                  <DataGridTextColumn Binding="{Binding Path=IndebtnessSubject, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Предмет боргу" Width="*" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.HeaderStyle>
+                      <Style TargetType="dataprimitives:DataGridColumnHeader">
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="SeparatorBrush" Value="Black" />
+                        <Setter Property="ContentTemplate">
+                          <Setter.Value>
+                            <DataTemplate>
+                              <ContentControl Content="{Binding}">
+                                <ToolTipService.ToolTip>
+                                  <ToolTip Content="У зв'язку з чим виник борг; якщо позика - для чого було надано, і т.д." />
+                                </ToolTipService.ToolTip>
+                              </ContentControl>
+                            </DataTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                  </DataGridTextColumn>
                   <DataGridTextColumn Binding="{Binding Path=RepaymentDueDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата погашення" Width="*" TextBlock.TextAlignment="Center">
                     <DataGridTextColumn.HeaderStyle>
                       <Style TargetType="dataprimitives:DataGridColumnHeader">
@@ -2169,7 +2191,7 @@
                             <DataTemplate>
                               <ContentControl Content="{Binding}">
                                 <ToolTipService.ToolTip>
-                                  <ToolTip Content="Деталі прострочки" />
+                                  <ToolTip Content="Додаткова інформація (окрім дати й суми) щодо простроченої заборгованості" />
                                 </ToolTipService.ToolTip>
                               </ContentControl>
                             </DataTemplate>
@@ -2178,7 +2200,7 @@
                       </Style>
                     </DataGridTextColumn.HeaderStyle>
                   </DataGridTextColumn>
-                  <DataGridTextColumn Binding="{Binding Path=OverdueReasons, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Прични прострочки" Width="*" TextBlock.TextAlignment="Center">
+                  <DataGridTextColumn Binding="{Binding Path=OverdueReasons, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Причини прострочки" Width="*" TextBlock.TextAlignment="Center">
                     <DataGridTextColumn.HeaderStyle>
                       <Style TargetType="dataprimitives:DataGridColumnHeader">
                         <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2191,7 +2213,7 @@
                             <DataTemplate>
                               <ContentControl Content="{Binding}">
                                 <ToolTipService.ToolTip>
-                                  <ToolTip Content="Прични прострочки" />
+                                  <ToolTip Content="Причини виникнення простроченої заборгованості" />
                                 </ToolTipService.ToolTip>
                               </ContentControl>
                             </DataTemplate>
@@ -2256,20 +2278,20 @@
             </StackPanel>
           </Expander>
           <CheckBox IsChecked="{Binding HasNoImperfectReputationSigns, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-            <TextBlock FlowDirection="LeftToRight" Text="17. Стверджую, що немає ознак відсутності бездоганної ділової репутації:" ToolTip="Стверджую, що немає ознак відсутності бездоганної ділової репутації стосовно _______ (зазначається повне найменування юридичної особи" />
+            <TextBlock FlowDirection="LeftToRight" Text="17. Стверджую, що немає ознак відсутності бездоганної ділової репутації" ToolTip="Стверджую, що немає ознак відсутності бездоганної ділової репутації стосовно _______ (зазначається повне найменування юридичної особи" />
           </CheckBox>
           <Expander Header="17. Ознаки відсутності бездоганної ділової репутації" ToolTip="Опис наявних ознак відсутності бездоганної ділової репутації" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsImprefectReputationDetailsVisible, Converter={StaticResource bool2Vis}}">
             <ContentControl Content="{Binding ImprefectReputationDetails, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
           </Expander>
           <CheckBox IsChecked="{Binding IsAMLEtcLegislationKept, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-            <TextBlock FlowDirection="LeftToRight" Text="18. Вимоги законодавства дотримано:" ToolTip="18. Стверджую, що юридична особа _______ (зазначається повне найменування юридичної особи) належним чином виконує вимоги законодавства України або законодавства країни свого громадянства з питань запобігання та протидії легалізації (відмиванню) доходів, одержаних злочинним шляхом, та фінансування тероризму." />
+            <TextBlock FlowDirection="LeftToRight" Text="18. Вимоги законодавства дотримано" ToolTip="18. Стверджую, що юридична особа _______ (зазначається повне найменування юридичної особи) належним чином виконує вимоги законодавства України або законодавства країни свого громадянства з питань запобігання та протидії легалізації (відмиванню) доходів, одержаних злочинним шляхом, та фінансування тероризму." />
           </CheckBox>
         </StackPanel>
       </Expander>
       <Expander Header="Підписи і т.п." ToolTip="Підписи і т.п." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel Orientation="Vertical" Margin="5,2">
           <CheckBox IsChecked="{Binding IsApplicationInfoAccurateAndTrue, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-            <TextBlock FlowDirection="LeftToRight" Text="Підтверджую правдивість інформації?:" ToolTip="Стверджую, що інформація, зазначена в анкеті, є правдивою і повною, та не заперечую проти перевірки Національним банком України її достовірності та повноти." />
+            <TextBlock FlowDirection="LeftToRight" Text="Підтверджую правдивість інформації?" ToolTip="Стверджую, що інформація, зазначена в анкеті, є правдивою і повною, та не заперечую проти перевірки Національним банком України її достовірності та повноти." />
           </CheckBox>
           <Expander Header="Примітка. Якщо немає змоги надати інформацію за відповідними пунктами анкети, то слід зазначити причину." ToolTip="..." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">

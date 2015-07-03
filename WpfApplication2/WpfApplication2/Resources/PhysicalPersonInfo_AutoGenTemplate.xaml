@@ -3,6 +3,7 @@
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
     <ResourceDictionary Source="RegistrarAuthority_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="IPNRefusalRecordInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="LocationInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:PhysicalPersonInfo}">
@@ -38,8 +39,14 @@
       <Expander Header="Орган, що видав паспорт" ToolTip="Орган, що видав паспорт" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding PassIssueAuthority, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
-      <TextBlock Text="ІПН" Style="{StaticResource dispNmStyle}" ToolTip="ІПН/№ картки соціального страхування/тощо, дивлячись, що використовується у країні резидентства" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TaxOrSocSecID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ІПН/№ картки соціального страхування/тощо, дивлячись, що використовується у країні резидентства" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <CheckBox IsChecked="{Binding IsIPNRefused, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="ІПН немає" ToolTip="Особа у встановленому порядку відмовилася від індивідувального податкового номера?" />
+      </CheckBox>
+      <Expander Header="Відміка про відсутність ІПН-у" ToolTip="Відомості про відповідний запи/відмітку в паспорті громадянина (про відмові від ІПН та погодження такої відмови)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsIPNRefused, Converter={StaticResource bool2Vis}}">
+        <ContentControl Content="{Binding IPNRefusalEvidence, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      </Expander>
+      <TextBlock Text="ІПН" Style="{StaticResource dispNmStyle}" ToolTip="ІПН/№ картки соціального страхування/тощо, дивлячись, що використовується у країні резидентства" Visibility="{Binding Path=HasIPN, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TaxOrSocSecID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ІПН/№ картки соціального страхування/тощо, дивлячись, що використовується у країні резидентства" Visibility="{Binding Path=HasIPN, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <Expander Header="Місце проживання/реєстрації" ToolTip="Місце проживання/реєстрації" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Address, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>

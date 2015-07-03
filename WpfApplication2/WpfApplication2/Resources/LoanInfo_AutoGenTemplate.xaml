@@ -42,6 +42,8 @@
         <TextBlock Grid.Column="0" Text="Основна сума боргу" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <ContentControl Grid.Column="1" Content="{Binding Principal, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" />
       </Grid>
+      <TextBlock Text="Предмет боргу" Style="{StaticResource dispNmStyle}" ToolTip="У зв'язку з чим виник борг; якщо позика - для чого було надано, і т.д." xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding IndebtnessSubject, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="У зв'язку з чим виник борг; якщо позика - для чого було надано, і т.д." xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Дата погашення" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding RepaymentDueDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
@@ -53,11 +55,11 @@
         <ContentControl Grid.Column="1" Content="{Binding OutstandingPricipal, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" />
       </Grid>
       <CheckBox IsChecked="{Binding IsOverdue, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Прострочена заборгованість?:" ToolTip="" />
+        <TextBlock FlowDirection="LeftToRight" Text="Прострочена заборгованість?" ToolTip="" />
       </CheckBox>
-      <TextBlock Text="Прострочено з ... (дата)" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding OverdueSince, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <TextBlock Text="Прострочено з ... (дата)" Style="{StaticResource dispNmStyle}" ToolTip="" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding OverdueSince, diag:PresentationTraceSources.TraceLevel=High}" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*" />
           <ColumnDefinition Width="4*" />
@@ -65,10 +67,10 @@
         <TextBlock Grid.Column="0" Text="Сума простроченої заборгованості" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <ContentControl Grid.Column="1" Content="{Binding PrincipalOverdue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" />
       </Grid>
-      <TextBlock Text="Деталі прострочки" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding OverdueDetails, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Прични прострочки" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding OverdueReasons, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Деталі прострочки" Style="{StaticResource dispNmStyle}" ToolTip="Додаткова інформація (окрім дати й суми) щодо простроченої заборгованості" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding OverdueDetails, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Додаткова інформація (окрім дати й суми) щодо простроченої заборгованості" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Причини прострочки" Style="{StaticResource dispNmStyle}" ToolTip="Причини виникнення простроченої заборгованості" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding OverdueReasons, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Причини виникнення простроченої заборгованості" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

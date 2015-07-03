@@ -13,7 +13,7 @@
       <TextBlock Text="Прізвище й ініціали (підписанта)" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище й ініціали (підписанта)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SurnameInitials, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Прізвище й ініціали (підписанта)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <CheckBox IsChecked="{Binding IsActingByPowOfAttorney, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="За довіреністю?:" ToolTip="Підписант діє на підставі довіреності" />
+        <TextBlock FlowDirection="LeftToRight" Text="За довіреністю?" ToolTip="Підписант діє на підставі довіреності" />
       </CheckBox>
       <Expander Header="За довіреністю?" ToolTip="Підписант діє на підставі довіреності" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding PowerOfAttorney, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />

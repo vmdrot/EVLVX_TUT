@@ -29,13 +29,13 @@
         </Button>
       </StackPanel>
       <CheckBox IsChecked="{Binding IsSupervisoryCouncilPresent, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Наглядова (спостережна) рада юридичної особи?:" ToolTip="1.4. Чи існує наглядова (спостережна) рада юридичної особи" />
+        <TextBlock FlowDirection="LeftToRight" Text="Наглядова (спостережна) рада юридичної особи?" ToolTip="1.4. Чи існує наглядова (спостережна) рада юридичної особи" />
       </CheckBox>
       <Expander Header="Особовий склад наглядової(спостережної)ради юрособи" ToolTip="1.4. Голова та члени наглядової (спостережної) ради юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding SupervisoryCouncil, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
       <CheckBox IsChecked="{Binding IsExecutivesPresent, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Виконавчий орган юридичної особи?:" ToolTip="1.4. Чи існує виконавчий орган юридичної особи" />
+        <TextBlock FlowDirection="LeftToRight" Text="Виконавчий орган юридичної особи?" ToolTip="1.4. Чи існує виконавчий орган юридичної особи" />
       </CheckBox>
       <Expander Header="Особовий склад виконавчого органу юрособи" ToolTip="1.5. Голова та члени виконавчого органу юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Executives, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />

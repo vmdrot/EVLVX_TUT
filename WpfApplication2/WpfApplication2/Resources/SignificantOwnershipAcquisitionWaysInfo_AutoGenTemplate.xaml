@@ -6,19 +6,19 @@
   <DataTemplate DataType="{x:Type bgusd:SignificantOwnershipAcquisitionWaysInfo}">
     <StackPanel>
       <CheckBox IsChecked="{Binding IsIPO, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="придбання акцій (паїв) банку на первинному ринку:" ToolTip="..." />
+        <TextBlock FlowDirection="LeftToRight" Text="придбання акцій (паїв) банку на первинному ринку" ToolTip="..." />
       </CheckBox>
       <CheckBox IsChecked="{Binding IsSecondaryMarketPurchase, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="придбання акцій (паїв) банку на вторинному ринку:" ToolTip="..." />
+        <TextBlock FlowDirection="LeftToRight" Text="придбання акцій (паїв) банку на вторинному ринку" ToolTip="..." />
       </CheckBox>
       <CheckBox IsChecked="{Binding IsPurchaseByImplicitOwnership, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="опосередковане набуття:" ToolTip="набуття/збільшення істотної участі в банку опосередковано шляхом придбання корпоративних прав юридичних осіб у структурі власності банку" />
+        <TextBlock FlowDirection="LeftToRight" Text="опосередковане набуття" ToolTip="набуття/збільшення істотної участі в банку опосередковано шляхом придбання корпоративних прав юридичних осіб у структурі власності банку" />
       </CheckBox>
       <CheckBox IsChecked="{Binding IsPurchaseByPowOfAtt, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="набуття за довіренністю:" ToolTip="набуття/збільшення істотної участі в банку у зв’язку з передаванням права голосу за довіреністю;" />
+        <TextBlock FlowDirection="LeftToRight" Text="набуття за довіренністю" ToolTip="набуття/збільшення істотної участі в банку у зв’язку з передаванням права голосу за довіреністю;" />
       </CheckBox>
       <CheckBox IsChecked="{Binding IsAcquireByImplicitInfluence, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="набуття через здійснення впливу:" ToolTip="набуття опосередкованої істотної участі в банку у зв’язку із здійсненням значного або вирішального впливу на управління та діяльність банку незалежно від формального володіння" />
+        <TextBlock FlowDirection="LeftToRight" Text="набуття через здійснення впливу" ToolTip="набуття опосередкованої істотної участі в банку у зв’язку із здійсненням значного або вирішального впливу на управління та діяльність банку незалежно від формального володіння" />
       </CheckBox>
     </StackPanel>
   </DataTemplate>

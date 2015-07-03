@@ -18,8 +18,8 @@
       </StackPanel>
       <TextBlock Text="Роль" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <ComboBox ToolTip="Роль сторони у правочині" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.LegalTransactionPartyRoleTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Role, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Роль (інше)" Style="{StaticResource dispNmStyle}" ToolTip="Роль сторони у правочині, як в полі &quot;Роль&quot; вказано інше" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RoleIfOther, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Роль сторони у правочині, як в полі &quot;Роль&quot; вказано інше" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Роль (інше)" Style="{StaticResource dispNmStyle}" ToolTip="Роль сторони у правочині, як в полі &quot;Роль&quot; вказано інше" Visibility="{Binding Path=IsRoleOther, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RoleIfOther, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Роль сторони у правочині, як в полі &quot;Роль&quot; вказано інше" Visibility="{Binding Path=IsRoleOther, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>
