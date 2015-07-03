@@ -20,7 +20,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridLicenseQualifications" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding LicenseQualifications, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=QualificationCode, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Код професії/діяльності (якщо існує)" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=QualificationCode, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Код професії/діяльності (якщо існує)" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -42,7 +42,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=QualificationName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Назва професії/діяльності" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=QualificationName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Назва професії/діяльності" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />

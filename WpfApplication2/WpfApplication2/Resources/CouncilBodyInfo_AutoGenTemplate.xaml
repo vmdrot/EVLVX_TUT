@@ -21,7 +21,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridMembers" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Members, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Member, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Член органу управління" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Member, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Член органу управління" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -43,7 +43,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PositionName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Посада" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=PositionName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Посада" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -65,7 +65,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=FunctionsDescription, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Опис функцій" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=FunctionsDescription, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Опис функцій" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />

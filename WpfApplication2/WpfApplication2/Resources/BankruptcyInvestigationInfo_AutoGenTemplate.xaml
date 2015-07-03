@@ -16,7 +16,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridCourtDecisions" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding CourtDecisions, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Court, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Court" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Court, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Court" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -38,7 +38,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DecisionType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="DecisionType" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=DecisionType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="DecisionType" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -60,7 +60,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DecisionDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="DecisionDate" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=DecisionDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="DecisionDate" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -82,7 +82,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DecisionText, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="DecisionText" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=DecisionText, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="DecisionText" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />

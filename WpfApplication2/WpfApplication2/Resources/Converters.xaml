@@ -5,4 +5,6 @@
     <convs:DoubleToIntegerConverter x:Key="double2Int" />
     <convs:MultiValueConverter x:Key="multiValConv" />
     <convs:EnumMatchToBooleanConverter x:Key="enum2BoolConv" />
+    <convs:PropertyValueStringConverter x:Key="toStringConv" />
+    
 </ResourceDictionary>
