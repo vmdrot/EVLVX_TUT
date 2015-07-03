@@ -15,7 +15,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridPhones" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Phones, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=PhoneName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип/назва телефону" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=PhoneName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Тип/назва телефону" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -37,7 +37,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PhoneNr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="№ телефону" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=PhoneNr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="№ телефону" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -59,7 +59,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PhoneNotes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Примітки щодо телефону" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=PhoneNotes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Примітки щодо телефону" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -142,7 +142,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridEmails" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Emails, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Email, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Адреса ел.пошти" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Email, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Адреса ел.пошти" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -164,7 +164,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=EmailDescription, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Примітки (необов'язково)" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=EmailDescription, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Примітки (необов'язково)" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />

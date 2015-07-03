@@ -115,10 +115,23 @@
         <Setter Property="BorderBrush" Value="LightGray"/>
         <Setter Property="BorderThickness" Value="0, 0, 1, 0"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Height" Value="auto" />
+        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+        <Setter Property="TextBlock.Height" Value="auto" />
+        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
     </Style>
+
     <Style x:Key="{x:Type ContentControl}" TargetType="{x:Type ContentControl}">
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="Background" Value="AntiqueWhite" />
     </Style>
-
+    <Style x:Key="addNewRowBtnStyle" TargetType="Button">
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Content">
+            <Setter.Value>
+                <Image Source="Icons/add_btn.png" />
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

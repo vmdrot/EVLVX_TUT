@@ -19,7 +19,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridParties" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Parties, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Party, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Сторона" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Party, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Сторона" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -41,7 +41,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Role, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Роль" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Role, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Роль" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -63,7 +63,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=RoleIfOther, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Роль (інше)" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=RoleIfOther, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Роль (інше)" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
