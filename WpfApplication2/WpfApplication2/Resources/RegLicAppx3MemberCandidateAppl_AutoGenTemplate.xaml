@@ -35,6 +35,28 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridLast5YrsWorkExperience" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Last5YrsWorkExperience, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
+              <DataGridTextColumn Binding="{Binding Path=State, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип зайнятості" Width="*" TextBlock.TextAlignment="Center">
+                <DataGridTextColumn.HeaderStyle>
+                  <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
+                    <Setter Property="ContentTemplate">
+                      <Setter.Value>
+                        <DataTemplate>
+                          <ContentControl Content="{Binding}">
+                            <ToolTipService.ToolTip>
+                              <ToolTip Content="Тип зайнятості" />
+                            </ToolTipService.ToolTip>
+                          </ContentControl>
+                        </DataTemplate>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>
+                </DataGridTextColumn.HeaderStyle>
+              </DataGridTextColumn>
               <DataGridTextColumn Binding="{Binding Path=Employer, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Роботодавець" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
@@ -49,6 +71,50 @@
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
                               <ToolTip Content="Роботодавець" />
+                            </ToolTipService.ToolTip>
+                          </ContentControl>
+                        </DataTemplate>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>
+                </DataGridTextColumn.HeaderStyle>
+              </DataGridTextColumn>
+              <DataGridTextColumn Binding="{Binding Path=PrincipalContractor, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Основний замовник" Width="*" TextBlock.TextAlignment="Center">
+                <DataGridTextColumn.HeaderStyle>
+                  <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
+                    <Setter Property="ContentTemplate">
+                      <Setter.Value>
+                        <DataTemplate>
+                          <ContentControl Content="{Binding}">
+                            <ToolTipService.ToolTip>
+                              <ToolTip Content="Основний замовник - для самозайнятих/фрілансерів" />
+                            </ToolTipService.ToolTip>
+                          </ContentControl>
+                        </DataTemplate>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>
+                </DataGridTextColumn.HeaderStyle>
+              </DataGridTextColumn>
+              <DataGridTextColumn Binding="{Binding Path=PrincipalFreelanceActivity, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Основний вид діяльності" Width="*" TextBlock.TextAlignment="Center">
+                <DataGridTextColumn.HeaderStyle>
+                  <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
+                    <Setter Property="ContentTemplate">
+                      <Setter.Value>
+                        <DataTemplate>
+                          <ContentControl Content="{Binding}">
+                            <ToolTipService.ToolTip>
+                              <ToolTip Content="Основний вид діяльності - для самозайнятих/фрілансерів" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -92,7 +158,29 @@
                         <DataTemplate>
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
-                              <ToolTip Content="Дата початку роботи" />
+                              <ToolTip Content="Дата початку роботи чи переходу в нинішній статус (фрілансер, безробітний, тощо)" />
+                            </ToolTipService.ToolTip>
+                          </ContentControl>
+                        </DataTemplate>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>
+                </DataGridTextColumn.HeaderStyle>
+              </DataGridTextColumn>
+              <DataGridTextColumn Binding="{Binding Path=IsStillWorkingThere, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="чинне місце роботи/статус" Width="*" TextBlock.TextAlignment="Center">
+                <DataGridTextColumn.HeaderStyle>
+                  <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
+                    <Setter Property="ContentTemplate">
+                      <Setter.Value>
+                        <DataTemplate>
+                          <ContentControl Content="{Binding}">
+                            <ToolTipService.ToolTip>
+                              <ToolTip Content="(відзначити, якщо це - чинне місце роботи на дату заповнення анкети)" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -115,28 +203,6 @@
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
                               <ToolTip Content="Дата кінця роботи" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=State, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип зайнятості" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Тип зайнятості" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -189,7 +255,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=EmployerContact, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Контакти роботодавця" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=EmployerContact, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Контакти роботодавця / замовника" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -202,7 +268,7 @@
                         <DataTemplate>
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
-                              <ToolTip Content="Контакти роботодавця" />
+                              <ToolTip Content="Для найманих працівників - контакти роботодавця, для фрілансерів і самозайнятих - основного замовника" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -505,7 +571,7 @@
         </StackPanel>
       </Expander>
       <CheckBox IsChecked="{Binding HasProfessionalLicenses, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="1.8. Чи має заявник професійну(-і) ліцензію(-ї)?:" ToolTip="п.1.8 (у частині проф.ліцензій)" />
+        <TextBlock FlowDirection="LeftToRight" Text="1.8. Чи має заявник професійну(-і) ліцензію(-ї)?" ToolTip="п.1.8 (у частині проф.ліцензій)" />
       </CheckBox>
       <Expander Header="1.8. Професійна(-і) ліцензія(-ї)" ToolTip="п.1.8 (у частині проф.ліцензій)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
@@ -699,7 +765,7 @@
         </StackPanel>
       </Expander>
       <CheckBox IsChecked="{Binding IsAppyingForSignificantOwnership, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="1.9. Чи маєте намір набувати істотну участь?:" ToolTip="Чи очікується, що заявник (напряму, чи через пов'язаних осіб) стане власником істотної участі в банку?" />
+        <TextBlock FlowDirection="LeftToRight" Text="1.9. Чи маєте намір набувати істотну участь?" ToolTip="Чи очікується, що заявник (напряму, чи через пов'язаних осіб) стане власником істотної участі в банку?" />
       </CheckBox>
       <Expander Header="1.9. Розмір участі в юридичній особі, яка має намір набути або збільшити істотну участь у банку-емітенті" ToolTip="Заповнюється власниками істотної участі в банку або особами, які мають намір набути істотну участь у банку" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
@@ -923,7 +989,7 @@
         <ContentControl Grid.Column="1" Content="{Binding LastYearIncome, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Заповнюється власниками істотної участі в банку або особами, які мають намір набути істотну участь у банку" />
       </Grid>
       <CheckBox IsChecked="{Binding IsIssuerBankStakeholder, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="2.1. Чи є Ви учасником банку-емітента?:" ToolTip="Чи є Ви учасником банку-емітента, прямо чи опосередковано (у т.ч. через пов'язаних осіб)." />
+        <TextBlock FlowDirection="LeftToRight" Text="2.1. Чи є Ви учасником банку-емітента?" ToolTip="Чи є Ви учасником банку-емітента, прямо чи опосередковано (у т.ч. через пов'язаних осіб)." />
       </CheckBox>
       <Expander Header="2.1. а) Пряме володіння у банку-емітенті" ToolTip="Частка прямого володіння у банкові-емітенті" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding DirectOwnershipWithBankSummary, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
@@ -1145,19 +1211,19 @@
         </StackPanel>
       </Expander>
       <CheckBox IsChecked="{Binding HasIntentToIncreaseEquityShareAsPhysPerson, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="2.2. Маєте намір збільшити частку в капіталі банку?:" ToolTip="2.2. Чи маєте Ви (як фізична особа) намір збільшити частку в статутному капіталі банку-емітента?" />
+        <TextBlock FlowDirection="LeftToRight" Text="2.2. Маєте намір збільшити частку в капіталі банку?" ToolTip="2.2. Чи маєте Ви (як фізична особа) намір збільшити частку в статутному капіталі банку-емітента?" />
       </CheckBox>
       <CheckBox IsChecked="{Binding IsAssociatedPersonWithBank, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="2.3. Чи є Ви пов'язаною з банком-емітентом особою?:" ToolTip="2.3. Чи є Ви пов'язаною з банком-емітентом особою? (так/ні), якщо &quot;так&quot; - то треба розкрити природу зв'язку в полі PersonsLinks" />
+        <TextBlock FlowDirection="LeftToRight" Text="2.3. Чи є Ви пов'язаною з банком-емітентом особою?" ToolTip="2.3. Чи є Ви пов'язаною з банком-емітентом особою? (так/ні), якщо &quot;так&quot; - то треба розкрити природу зв'язку в полі PersonsLinks" />
       </CheckBox>
       <CheckBox IsChecked="{Binding WasCriminallyProsecuted, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="3.1. Чи притягувалися Ви до кримінальної відповідальності?:" ToolTip="(так або ні)" />
+        <TextBlock FlowDirection="LeftToRight" Text="3.1. Чи притягувалися Ви до кримінальної відповідальності?" ToolTip="(так або ні)" />
       </CheckBox>
       <CheckBox IsChecked="{Binding HasOutstandingSentencesToServe, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="3.2. Чи маєте Ви судимість не погашену,  не зняту в установленому законодавством порядку?:" ToolTip="(так або ні)" />
+        <TextBlock FlowDirection="LeftToRight" Text="3.2. Чи маєте Ви судимість не погашену,  не зняту в установленому законодавством порядку?" ToolTip="(так або ні)" />
       </CheckBox>
       <CheckBox IsChecked="{Binding HadIndustrySpecificBreaches, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="3.3. Чи була відповідальніть за порушення галузевого/господарського законодавства?:" ToolTip="3.3. Чи притягувалися Ви до відповідальності за порушення антимонопольного, податкового, банківського, валютного законодавства, правил діяльності на ринку цінних паперів тощо?" />
+        <TextBlock FlowDirection="LeftToRight" Text="3.3. Чи була відповідальніть за порушення галузевого/господарського законодавства?" ToolTip="3.3. Чи притягувалися Ви до відповідальності за порушення антимонопольного, податкового, банківського, валютного законодавства, правил діяльності на ринку цінних паперів тощо?" />
       </CheckBox>
       <Expander Header="п.3.1, 3.2. і 3.3. Розшифрока правопорушень/судимостей" ToolTip="Якщо були порушення законодавства, судимості (у т.ч. непогашені), галузеві правопорушення, тощо (зазначені у пп.3.1, 3.2. і 3.3.), то зазначити детальну інформацію, коли вчинено порушення, зміст порушення, які накладені санкції" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
@@ -1461,7 +1527,7 @@
         </StackPanel>
       </Expander>
       <CheckBox IsChecked="{Binding HasMiscNonRepaidDebts, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="3.4. Чи маєте невиконані майнові зобов'язання  перед іншими?:" ToolTip="3.4. Чи маєте Ви невиконані майнові (фінансові) зобов'язання  перед іншими особами?" />
+        <TextBlock FlowDirection="LeftToRight" Text="3.4. Чи маєте невиконані майнові зобов'язання  перед іншими?" ToolTip="3.4. Чи маєте Ви невиконані майнові (фінансові) зобов'язання  перед іншими особами?" />
       </CheckBox>
       <Expander Header="3.4. Невиконані зобов'язання  перед іншими особами - розшифровка" ToolTip="якщо так, то зазначити, які саме зобов'язання, у якому розмірі, перед якою особою та з яких причин не були виконані, а також подальші плани щодо виконання/невиконання цих зобов'язань." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
@@ -1621,6 +1687,28 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
+              <DataGridTextColumn Binding="{Binding Path=IndebtnessSubject, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Предмет боргу" Width="*" TextBlock.TextAlignment="Center">
+                <DataGridTextColumn.HeaderStyle>
+                  <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
+                    <Setter Property="ContentTemplate">
+                      <Setter.Value>
+                        <DataTemplate>
+                          <ContentControl Content="{Binding}">
+                            <ToolTipService.ToolTip>
+                              <ToolTip Content="У зв'язку з чим виник борг; якщо позика - для чого було надано, і т.д." />
+                            </ToolTipService.ToolTip>
+                          </ContentControl>
+                        </DataTemplate>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>
+                </DataGridTextColumn.HeaderStyle>
+              </DataGridTextColumn>
               <DataGridTextColumn Binding="{Binding Path=RepaymentDueDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата погашення" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
@@ -1744,7 +1832,7 @@
                         <DataTemplate>
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
-                              <ToolTip Content="Деталі прострочки" />
+                              <ToolTip Content="Додаткова інформація (окрім дати й суми) щодо простроченої заборгованості" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -1753,7 +1841,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OverdueReasons, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Прични прострочки" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=OverdueReasons, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Причини прострочки" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1766,7 +1854,7 @@
                         <DataTemplate>
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
-                              <ToolTip Content="Прични прострочки" />
+                              <ToolTip Content="Причини виникнення простроченої заборгованості" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -2147,13 +2235,13 @@
         </StackPanel>
       </Expander>
       <CheckBox IsChecked="{Binding IsAMLLegislationKept, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="IsAMLLegislationKept:" ToolTip="IsAMLLegislationKept" />
+        <TextBlock FlowDirection="LeftToRight" Text="IsAMLLegislationKept" ToolTip="IsAMLLegislationKept" />
       </CheckBox>
       <CheckBox IsChecked="{Binding IsApplicationInfoAccurateAndTrue, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Підтверджую правдивість інформації?:" ToolTip="Я, (прізвище, ім'я, по батькові) стверджую, що інформація,  надана в анкеті,&#xA; є правдивою і повною, та не заперечую проти перевірки Національним банком України достовірності поданих документів і персональних даних, що в них містяться.&#xA;" />
+        <TextBlock FlowDirection="LeftToRight" Text="Підтверджую правдивість інформації?" ToolTip="Я, (прізвище, ім'я, по батькові) стверджую, що інформація,  надана в анкеті,&#xA; є правдивою і повною, та не заперечую проти перевірки Національним банком України достовірності поданих документів і персональних даних, що в них містяться.&#xA;" />
       </CheckBox>
       <CheckBox IsChecked="{Binding AmObligingToKeepUp2DateWithin10Days, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Зобов'язуюсь повідомляти про зміни?:" ToolTip="У разі будь-яких змін в інформації, що зазначена в цій анкеті, зобов'язуюся повідомити про них Національний банк України протягом 10-ти днів з дня їх виникнення." />
+        <TextBlock FlowDirection="LeftToRight" Text="Зобов'язуюсь повідомляти про зміни?" ToolTip="У разі будь-яких змін в інформації, що зазначена в цій анкеті, зобов'язуюся повідомити про них Національний банк України протягом 10-ти днів з дня їх виникнення." />
       </CheckBox>
       <Expander Header="Підписант" ToolTip="Відомості по особу, що підписала анкету" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Signatory, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
