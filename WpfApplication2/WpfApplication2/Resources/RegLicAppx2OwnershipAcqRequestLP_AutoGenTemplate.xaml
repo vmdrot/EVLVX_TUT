@@ -416,7 +416,7 @@
                             <DataTemplate>
                               <ContentControl Content="{Binding}">
                                 <ToolTipService.ToolTip>
-                                  <ToolTip Content="МФО" />
+                                  <ToolTip Content="МФО - для українського банку, для іноземного банку - національний кліринговий ідентифікатор (Sorted Chaps, BLZ, Code Guichet, тощо)" />
                                 </ToolTipService.ToolTip>
                               </ContentControl>
                             </DataTemplate>

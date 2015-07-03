@@ -388,6 +388,14 @@
             Інформація про фіз.особу (реквізити)
             </summary>
         </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.PhysicalPersonInfo.FullName">
+            <summary>
+            Вказувати достатньо повного імені; 
+            Якщо є натхнення (або вимагає анкета) - можна й деталізацію по полях
+            Для нерезидентів бажано вимагати як окремих частин імені, 
+            так і повного (повністю) (бо хто його там зна, як до нього звертатися)
+            </summary>
+        </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.PhysicalPersonInfo.SurnameUkr">
             <summary>
             для нерезидентів
@@ -406,14 +414,6 @@
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.PhysicalPersonInfo.FullNameUkr">
             <summary>
             для нерезидентів
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.PhysicalPersonInfo.FullName">
-            <summary>
-            Вказувати достатньо повного імені; 
-            Якщо є натхнення (або вимагає анкета) - можна й деталізацію по полях
-            Для нерезидентів бажано вимагати як окремих частин імені, 
-            так і повного (повністю) (бо хто його там зна, як до нього звертатися)
             </summary>
         </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.PhysicalPersonInfo.Sex">
@@ -1791,7 +1791,7 @@
         <!-- Badly formed XML comment ignored for member "P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.RegistrarAuthority.EntitiesHandled" -->
         <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.RatingAgencyInfo">
             <summary>
-            
+            Відомості про кредитно-рейтингову аґенцію (якщо інша, окрім Big Three)
             </summary>
             <seealso cref="!:http://en.wikipedia.org/wiki/Category:Credit_rating_agencies"/>
         </member>
