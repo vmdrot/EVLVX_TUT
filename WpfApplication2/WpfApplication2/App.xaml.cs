@@ -1,4 +1,5 @@
-﻿using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
+﻿using BGU.DRPL.SignificantOwnership.Core.Questionnaires;
+using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using BGU.DRPL.SignificantOwnership.Utility;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace WpfApplication2
             var editRowBinding = new CommandBinding(MyCommands.EditRowCommand, EditRow, CanEditRow);
             var deleteRowBinding = new CommandBinding(MyCommands.DeleteRowCommand, DeleteRow, CanDeleteRow);
             var addMentionedPersonBinding = new CommandBinding(MyCommands.AddMentionedPersonCommand, AddMentionedPerson, CanAddMentionedPerson);
+            var reOpenSelectedObjectFormBinding = new CommandBinding(MyCommands.ReOpenSelectedObjectFormCommand, ReOpenSelectedObjectForm, CanReOpenSelectedObjectForm);
 
             // Register CommandBinding for all windows.
             CommandManager.RegisterClassCommandBinding(typeof(Window), binding);
@@ -32,8 +34,57 @@ namespace WpfApplication2
             CommandManager.RegisterClassCommandBinding(typeof(Window), editRowBinding);
             CommandManager.RegisterClassCommandBinding(typeof(Window), deleteRowBinding);
             CommandManager.RegisterClassCommandBinding(typeof(Window), addMentionedPersonBinding);
+            CommandManager.RegisterClassCommandBinding(typeof(Window), reOpenSelectedObjectFormBinding);
 
         }
+
+        private void CanReOpenSelectedObjectForm(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void ReOpenSelectedObjectForm(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Parameter == null)
+            {
+                e.Handled = true;
+                return;
+            }
+
+            object[] args = (object[])e.Parameter;
+            if (args == null || args.Length < 1)
+            {
+                e.Handled = true;
+                return;
+            }
+            string frmCaption = string.Empty;
+            if(args.Length > 1 && args[1] is Window)
+            {
+                frmCaption = ((Window)args[1]).Title;
+                ((Window)args[1]).Close();
+            }
+            System.Windows.Forms.Cursor prevCursors = System.Windows.Forms.Cursor.Current;
+            System.Windows.Forms.Cursor.Current = System.Windows.Forms.Cursors.WaitCursor;
+            ShowQuestionnaireEditForm(frmCaption, args[0]);
+            e.Handled = true;
+            System.Windows.Forms.Cursor.Current = prevCursors;
+            return;
+        }
+
+
+        private void ShowQuestionnaireEditForm(string frmCaption, object questio)
+        {
+            BGU.DRPL.SignificantOwnership.Utility.ReflectionUtil.InstantiateAllProps(questio, questio.GetType().Assembly);
+
+            if (questio is IQuestionnaire)
+                DataModule.CurrentQuestionnare = (IQuestionnaire)questio;
+            SelectedObjectFrm frm = new SelectedObjectFrm();
+            frm.DataSource = questio;
+            frm.Title = frmCaption;
+            frm.Focus();
+            frm.ShowDialog();
+        }
+
 
         #region DeleteRow
         private void DeleteRow(object sender, ExecutedRoutedEventArgs e)
