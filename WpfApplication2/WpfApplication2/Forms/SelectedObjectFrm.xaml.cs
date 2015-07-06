@@ -13,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApplication2.Data;
 
 namespace WpfApplication2.Forms
 {
@@ -92,7 +93,8 @@ namespace WpfApplication2.Forms
                 try
                 {
                     DataSource = BGU.DRPL.SignificantOwnership.Utility.Tools.ReadXML(_openFileDlg.FileName, DataSource.GetType());
-                    
+                    if (DataSource is IQuestionnaire)
+                        DataModule.CurrentQuestionnare = (IQuestionnaire)DataSource;
                 }
                 catch (Exception exc)
                 {
