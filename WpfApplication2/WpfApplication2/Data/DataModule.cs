@@ -41,7 +41,8 @@ namespace WpfApplication2.Data
                 if (_currentBanks == null)
                 {
                     _currentBanks = new List<BankInfo>();
-                    DataTable dt = RcuKruReader.Read("RCUKRU.DBF");
+                    DataTable dt = RcuKruReader.Filter(RcuKruReader.Read("RCUKRU.DBF"), true, new List<string>("1,2,5,6".Split(',')));
+                    
                     foreach (DataRow dr in dt.Rows)
                     {
                         BankInfo bi = BankInfo.ParseFromRcuKruRow(dr);
