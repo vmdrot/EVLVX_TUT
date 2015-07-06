@@ -11,7 +11,7 @@
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblAsset" Height="auto" Width="auto" Text="Актив, що набувається" Style="{StaticResource dispNmStyle}" ToolTip="Банк або ж юр.особа - власник участі в банку (прямої чи опосередкованої)" />
         <ComboBox x:Name="cbxAsset" DisplayMemberPath="DisplayName" SelectedValuePath="ID" HorizontalAlignment="Stretch" SelectedValue="{Binding Path=Asset, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Банк або ж юр.особа - власник участі в банку (прямої чи опосередкованої)" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-        <Button x:Name="btnAddAsset" Content=" + " Command="{x:Static local:MyCommands.AddMentionedPersonCommand}">
+        <Button x:Name="btnAddAsset" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
           <Button.CommandParameter>
             <MultiBinding Converter="{StaticResource multiValConv}">
               <Binding ElementName="cbxAsset" />
@@ -22,7 +22,7 @@
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblPreviousOwner" Height="auto" Width="auto" Text="Попередній власник" Style="{StaticResource dispNmStyle}" ToolTip="Власник, від якого переходитиме власність" />
         <ComboBox x:Name="cbxPreviousOwner" DisplayMemberPath="DisplayName" SelectedValuePath="ID" HorizontalAlignment="Stretch" SelectedValue="{Binding Path=PreviousOwner, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Власник, від якого переходитиме власність" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-        <Button x:Name="btnAddPreviousOwner" Content=" + " Command="{x:Static local:MyCommands.AddMentionedPersonCommand}">
+        <Button x:Name="btnAddPreviousOwner" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
           <Button.CommandParameter>
             <MultiBinding Converter="{StaticResource multiValConv}">
               <Binding ElementName="cbxPreviousOwner" />
@@ -81,7 +81,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridPaymentDeadlines" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PaymentDeadlines, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Amount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Сума" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Amount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Сума" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -103,7 +103,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Deadline, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Дата" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Deadline, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -125,26 +125,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridPaymentDeadlines" />
@@ -152,7 +138,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridPaymentDeadlines" />
@@ -167,8 +154,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridPaymentDeadlines" />

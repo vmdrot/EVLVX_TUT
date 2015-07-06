@@ -15,6 +15,7 @@ namespace WpfApplication2
         private static readonly RoutedUICommand _deleteRowCommand = new RoutedUICommand("description", "DeleteRowCommand", typeof(MyCommands));
         private static readonly RoutedUICommand _addMentionedPersonCommand = new RoutedUICommand("description", "AddMentionedPersonCommand", typeof(MyCommands));
         private static readonly RoutedUICommand _reOpenSelectedObjectFormCommand = new RoutedUICommand("description", "ReOpenSelectedObjectFormCommand", typeof(MyCommands));
+        private static readonly RoutedUICommand _addBankCommand = new RoutedUICommand("description", "AddBankCommand", typeof(MyCommands));
         
         public static RoutedUICommand DoSomethingCommand
         {
@@ -59,6 +60,14 @@ namespace WpfApplication2
             get
             {
                 return _reOpenSelectedObjectFormCommand;
+            }
+        }
+
+        public static RoutedUICommand AddBankCommand
+        {
+            get
+            {
+                return _addBankCommand;
             }
         }
     }

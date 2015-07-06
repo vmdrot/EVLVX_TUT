@@ -8,7 +8,7 @@
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblActingPerson" Height="auto" Width="auto" Text="Довірена особа" Style="{StaticResource dispNmStyle}" ToolTip="Кому видано довіреність" />
         <ComboBox x:Name="cbxActingPerson" DisplayMemberPath="DisplayName" SelectedValuePath="ID" HorizontalAlignment="Stretch" SelectedValue="{Binding Path=ActingPerson, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Кому видано довіреність" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-        <Button x:Name="btnAddActingPerson" Content=" + " Command="{x:Static local:MyCommands.AddMentionedPersonCommand}">
+        <Button x:Name="btnAddActingPerson" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
           <Button.CommandParameter>
             <MultiBinding Converter="{StaticResource multiValConv}">
               <Binding ElementName="cbxActingPerson" />
@@ -19,7 +19,7 @@
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblOnBehalfOfPerson" Height="auto" Width="auto" Text="Від імені" Style="{StaticResource dispNmStyle}" ToolTip="Особа, яку представляють (від імені якої діє довірена особа)" />
         <ComboBox x:Name="cbxOnBehalfOfPerson" DisplayMemberPath="DisplayName" SelectedValuePath="ID" HorizontalAlignment="Stretch" SelectedValue="{Binding Path=OnBehalfOfPerson, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Особа, яку представляють (від імені якої діє довірена особа)" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-        <Button x:Name="btnAddOnBehalfOfPerson" Content=" + " Command="{x:Static local:MyCommands.AddMentionedPersonCommand}">
+        <Button x:Name="btnAddOnBehalfOfPerson" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
           <Button.CommandParameter>
             <MultiBinding Converter="{StaticResource multiValConv}">
               <Binding ElementName="cbxOnBehalfOfPerson" />

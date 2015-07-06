@@ -2,14 +2,13 @@
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
-    <ResourceDictionary Source="BankInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:BankAccountInfo}">
     <StackPanel>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblAccountOwner" Height="auto" Width="auto" Text="Власник рахунку" Style="{StaticResource dispNmStyle}" ToolTip="" />
         <ComboBox x:Name="cbxAccountOwner" DisplayMemberPath="DisplayName" SelectedValuePath="ID" HorizontalAlignment="Stretch" SelectedValue="{Binding Path=AccountOwner, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-        <Button x:Name="btnAddAccountOwner" Content=" + " Command="{x:Static local:MyCommands.AddMentionedPersonCommand}">
+        <Button x:Name="btnAddAccountOwner" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
           <Button.CommandParameter>
             <MultiBinding Converter="{StaticResource multiValConv}">
               <Binding ElementName="cbxAccountOwner" />
@@ -17,9 +16,17 @@
           </Button.CommandParameter>
         </Button>
       </StackPanel>
-      <Expander Header="У банку..." ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Bank, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
+      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblBank" Height="auto" Width="auto" Text="У банку..." Style="{StaticResource dispNmStyle}" ToolTip="" />
+        <ComboBox x:Name="cbxBank" DisplayMemberPath="Name" SelectedValuePath="ID" HorizontalAlignment="Stretch" SelectedValue="{Binding Acquiree, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedItem="{Binding Path=Bank, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
+        <Button x:Name="btnAddBank" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}">
+          <Button.CommandParameter>
+            <MultiBinding Converter="{StaticResource multiValConv}">
+              <Binding ElementName="cbxBank" />
+            </MultiBinding>
+          </Button.CommandParameter>
+        </Button>
+      </StackPanel>
       <TextBlock Text="№ рахунку" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding AccountNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">

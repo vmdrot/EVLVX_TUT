@@ -2,7 +2,6 @@
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
-    <ResourceDictionary Source="BankInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="PhysicalPersonInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="BankAccountInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="EmploymentRecordInfo_AutoGenTemplate.xaml" />
@@ -30,9 +29,17 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bguq:RegLicAppx4OwnershipAcqRequestPP}">
     <StackPanel>
-      <Expander Header="Банк" ToolTip="Банк" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding BankRef, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
+      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblBankRef" Height="auto" Width="auto" Text="Банк" Style="{StaticResource dispNmStyle}" ToolTip="Банк" />
+        <ComboBox x:Name="cbxBankRef" DisplayMemberPath="Name" SelectedValuePath="ID" HorizontalAlignment="Stretch" SelectedValue="{Binding Acquiree, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Банк" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedItem="{Binding Path=BankRef, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
+        <Button x:Name="btnAddBankRef" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}">
+          <Button.CommandParameter>
+            <MultiBinding Converter="{StaticResource multiValConv}">
+              <Binding ElementName="cbxBankRef" />
+            </MultiBinding>
+          </Button.CommandParameter>
+        </Button>
+      </StackPanel>
       <Expander Header="Фізособа-заявник" ToolTip="1. Інформація про особу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Acquiree, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
@@ -40,7 +47,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridBankingAccounts" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding BankingAccounts, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=AccountOwner, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Власник рахунку" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=AccountOwner, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Власник рахунку" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -62,7 +69,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Bank, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="У банку..." TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Bank, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="У банку..." Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -84,7 +91,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=AccountNr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="№ рахунку" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=AccountNr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="№ рахунку" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -106,7 +113,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=AccountCCY, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Валюта рахунку" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=AccountCCY, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Валюта рахунку" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -128,7 +135,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=AccountDescription, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Опис/примітки/призначення рахунку" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=AccountDescription, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Опис/примітки/призначення рахунку" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -150,26 +157,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridBankingAccounts" />
@@ -177,7 +170,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridBankingAccounts" />
@@ -192,8 +186,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridBankingAccounts" />
@@ -205,14 +198,22 @@
           </Button>
         </StackPanel>
       </Expander>
-      <Expander Header="Банк, що відрекомендовує іноземця" ToolTip="1.7. Банк, який надає інформацію про наявні кошти і репутацію власника рахунку (для іноземців)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding ReferenceBank, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
-      </Expander>
+      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblReferenceBank" Height="auto" Width="auto" Text="Банк, що відрекомендовує іноземця" Style="{StaticResource dispNmStyle}" ToolTip="1.7. Банк, який надає інформацію про наявні кошти і репутацію власника рахунку (для іноземців)" />
+        <ComboBox x:Name="cbxReferenceBank" DisplayMemberPath="Name" SelectedValuePath="ID" HorizontalAlignment="Stretch" SelectedValue="{Binding Acquiree, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="1.7. Банк, який надає інформацію про наявні кошти і репутацію власника рахунку (для іноземців)" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedItem="{Binding Path=ReferenceBank, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
+        <Button x:Name="btnAddReferenceBank" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}">
+          <Button.CommandParameter>
+            <MultiBinding Converter="{StaticResource multiValConv}">
+              <Binding ElementName="cbxReferenceBank" />
+            </MultiBinding>
+          </Button.CommandParameter>
+        </Button>
+      </StackPanel>
       <Expander Header="Досвід роботи" ToolTip="1.8. Займані посади за останні п'ять років" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridEmploymentRecords" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding EmploymentRecords, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=State, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Тип зайнятості" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=State, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип зайнятості" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -234,7 +235,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Employer, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Роботодавець" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Employer, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Роботодавець" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -256,7 +257,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PrincipalContractor, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Основний замовник" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=PrincipalContractor, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Основний замовник" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -278,7 +279,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PrincipalFreelanceActivity, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Основний вид діяльності" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=PrincipalFreelanceActivity, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Основний вид діяльності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -300,7 +301,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=JobTitle, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Посада/функція" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=JobTitle, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Посада/функція" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -322,7 +323,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DateStarted, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Дата початку роботи" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=DateStarted, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата початку роботи" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -344,7 +345,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=IsStillWorkingThere, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="чинне місце роботи/статус" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=IsStillWorkingThere, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="чинне місце роботи/статус" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -366,7 +367,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DateQuit, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Дата кінця роботи" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=DateQuit, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата кінця роботи" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -388,7 +389,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=TerminationType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Тип закінчення діяльності" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=TerminationType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип закінчення діяльності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -410,7 +411,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DismissalOrUnemployedReason, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Причина звільнення" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=DismissalOrUnemployedReason, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Причина звільнення" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -432,7 +433,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=EmployerContact, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Контакти роботодавця / замовника" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=EmployerContact, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Контакти роботодавця / замовника" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -454,26 +455,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridEmploymentRecords" />
@@ -481,7 +468,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridEmploymentRecords" />
@@ -496,8 +484,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridEmploymentRecords" />
@@ -513,7 +500,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridEducationRecords" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding EducationRecords, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=UniOrCollege, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="ВНЗ" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=UniOrCollege, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="ВНЗ" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -535,7 +522,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=GraduationDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Дата закінчення" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=GraduationDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата закінчення" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -557,7 +544,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DegreeType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Тип диплома" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=DegreeType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип диплома" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -579,7 +566,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=HonourType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Тип відзнаки" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=HonourType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип відзнаки" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -601,7 +588,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DegreeSeries, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Серія диплома" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=DegreeSeries, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Серія диплома" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -623,7 +610,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DegreeID, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="№ диплома" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=DegreeID, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="№ диплома" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -645,7 +632,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Trade, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Спеціальність/фах" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Trade, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Спеціальність/фах" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -667,7 +654,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Qualification, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Спеціалізація" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Qualification, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Спеціалізація" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -689,26 +676,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridEducationRecords" />
@@ -716,7 +689,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridEducationRecords" />
@@ -731,8 +705,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridEducationRecords" />
@@ -748,7 +721,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridProfessionalLicenses" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding ProfessionalLicenses, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=LicenseIssuer, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Ліцензор" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=LicenseIssuer, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Ліцензор" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -770,7 +743,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=LicenseIssueDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Дата видачі" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=LicenseIssueDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата видачі" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -792,7 +765,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=LicenseValidTill, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Дійсна до" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=LicenseValidTill, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дійсна до" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -814,7 +787,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=LicenseIDNr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="№ ліцензії" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=LicenseIDNr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="№ ліцензії" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -836,7 +809,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=LicenseQualifications, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Кваліфікації/види діяльності за ліцензією" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=LicenseQualifications, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кваліфікації/види діяльності за ліцензією" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -858,7 +831,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=LicenseClause, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Формулювання/текст ліцензії" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=LicenseClause, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Формулювання/текст ліцензії" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -880,26 +853,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridProfessionalLicenses" />
@@ -907,7 +866,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridProfessionalLicenses" />
@@ -922,8 +882,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridProfessionalLicenses" />
@@ -950,7 +909,7 @@
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblUnderwriter" Height="auto" Width="auto" Text="Андеррайтер" Style="{StaticResource dispNmStyle}" ToolTip="2.2. Андеррайтер (якщо є) - реквізити" />
         <ComboBox x:Name="cbxUnderwriter" DisplayMemberPath="DisplayName" SelectedValuePath="ID" HorizontalAlignment="Stretch" SelectedValue="{Binding Path=Underwriter, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="2.2. Андеррайтер (якщо є) - реквізити" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-        <Button x:Name="btnAddUnderwriter" Content=" + " Command="{x:Static local:MyCommands.AddMentionedPersonCommand}">
+        <Button x:Name="btnAddUnderwriter" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
           <Button.CommandParameter>
             <MultiBinding Converter="{StaticResource multiValConv}">
               <Binding ElementName="cbxUnderwriter" />
@@ -965,7 +924,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridExistingOwnershipWithBankDetails" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding ExistingOwnershipWithBankDetails, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Об'єкт власності" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Об'єкт власності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -987,7 +946,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Owner, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Власник" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Owner, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Власник" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1009,7 +968,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OwnershipKind, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Тип володіння" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=OwnershipKind, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип володіння" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1031,7 +990,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Share, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Частка у власності (сума)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Share, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частка у власності (сума)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1053,7 +1012,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Кількість акцій" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість акцій" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1075,7 +1034,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SharePct, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Частка (%)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=SharePct, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частка (%)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1097,7 +1056,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Votes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Кількість голосів в управлінні" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Votes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість голосів в управлінні" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1119,26 +1078,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridExistingOwnershipWithBankDetails" />
@@ -1146,7 +1091,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridExistingOwnershipWithBankDetails" />
@@ -1161,8 +1107,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridExistingOwnershipWithBankDetails" />
@@ -1181,7 +1126,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridTargetedOwnershipWithBankDiffDetails" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding TargetedOwnershipWithBankDiffDetails, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Об'єкт власності" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Об'єкт власності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1203,7 +1148,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Owner, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Власник" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Owner, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Власник" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1225,7 +1170,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OwnershipKind, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Тип володіння" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=OwnershipKind, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип володіння" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1247,7 +1192,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Share, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Частка у власності (сума)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Share, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частка у власності (сума)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1269,7 +1214,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Кількість акцій" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість акцій" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1291,7 +1236,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SharePct, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Частка (%)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=SharePct, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частка (%)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1313,7 +1258,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Votes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Кількість голосів в управлінні" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Votes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість голосів в управлінні" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1335,26 +1280,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridTargetedOwnershipWithBankDiffDetails" />
@@ -1362,7 +1293,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridTargetedOwnershipWithBankDiffDetails" />
@@ -1377,8 +1309,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridTargetedOwnershipWithBankDiffDetails" />
@@ -1400,7 +1331,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridTargetedOwnershipWithBankDetails" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding TargetedOwnershipWithBankDetails, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Об'єкт власності" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Об'єкт власності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1422,7 +1353,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Owner, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Власник" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Owner, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Власник" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1444,7 +1375,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OwnershipKind, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Тип володіння" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=OwnershipKind, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип володіння" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1466,7 +1397,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Share, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Частка у власності (сума)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Share, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частка у власності (сума)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1488,7 +1419,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Кількість акцій" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість акцій" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1510,7 +1441,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SharePct, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Частка (%)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=SharePct, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частка (%)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1532,7 +1463,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Votes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Кількість голосів в управлінні" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Votes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість голосів в управлінні" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1554,26 +1485,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridTargetedOwnershipWithBankDetails" />
@@ -1581,7 +1498,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridTargetedOwnershipWithBankDetails" />
@@ -1596,8 +1514,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridTargetedOwnershipWithBankDetails" />
@@ -1619,7 +1536,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridFundsOrigins" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding FundsOrigins, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Origin, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Тип походження" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Origin, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип походження" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1641,7 +1558,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Income, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Сума доходу" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Income, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Сума доходу" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1663,7 +1580,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=IncomeOriginNotes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Опис та деталі щодо джерела доходу" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=IncomeOriginNotes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Опис та деталі щодо джерела доходу" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1685,26 +1602,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridFundsOrigins" />
@@ -1712,7 +1615,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridFundsOrigins" />
@@ -1727,8 +1631,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridFundsOrigins" />
@@ -1744,7 +1647,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridPaymentModes" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PaymentModes, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Amount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Сума" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Amount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Сума" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1766,7 +1669,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PaymentMode, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Спосіб сплати" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=PaymentMode, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Спосіб сплати" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1788,26 +1691,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridPaymentModes" />
@@ -1815,7 +1704,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridPaymentModes" />
@@ -1830,8 +1720,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridPaymentModes" />
@@ -1847,7 +1736,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridPaymentDeadlines" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PaymentDeadlines, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Amount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Сума" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Amount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Сума" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1869,7 +1758,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Deadline, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Дата" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Deadline, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1891,26 +1780,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridPaymentDeadlines" />
@@ -1918,7 +1793,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridPaymentDeadlines" />
@@ -1933,8 +1809,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridPaymentDeadlines" />
@@ -1950,7 +1825,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridLoansWithBanks" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding LoansWithBanks, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=AgreementNr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="№ договору" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=AgreementNr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="№ договору" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1972,7 +1847,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=AgreementDt, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Дата договору" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=AgreementDt, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата договору" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -1994,7 +1869,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Lender, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Кредитор" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Lender, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кредитор" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2016,7 +1891,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Borrower, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Позичальник" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Borrower, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Позичальник" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2038,7 +1913,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DebtSubject, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Суть заборгованості" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=DebtSubject, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Суть заборгованості" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2060,7 +1935,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Principal, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Основна сума боргу" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Principal, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Основна сума боргу" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2082,7 +1957,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=IndebtnessSubject, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Предмет боргу" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=IndebtnessSubject, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Предмет боргу" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2104,7 +1979,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=RepaymentDueDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Дата погашення" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=RepaymentDueDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата погашення" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2126,7 +2001,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OutstandingPricipal, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Залишок заборгованості" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=OutstandingPricipal, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Залишок заборгованості" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2148,7 +2023,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=IsOverdue, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Прострочена заборгованість?" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=IsOverdue, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Прострочена заборгованість?" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2170,7 +2045,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OverdueSince, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Прострочено з ... (дата)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=OverdueSince, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Прострочено з ... (дата)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2192,7 +2067,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PrincipalOverdue, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Сума простроченої заборгованості" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=PrincipalOverdue, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Сума простроченої заборгованості" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2214,7 +2089,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OverdueDetails, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Деталі прострочки" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=OverdueDetails, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Деталі прострочки" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2236,7 +2111,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OverdueReasons, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Причини прострочки" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=OverdueReasons, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Причини прострочки" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2258,26 +2133,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridLoansWithBanks" />
@@ -2285,7 +2146,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridLoansWithBanks" />
@@ -2300,8 +2162,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridLoansWithBanks" />
@@ -2320,7 +2181,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridAcquireeOwnershipOtherThanBankRef" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding AcquireeOwnershipOtherThanBankRef, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Об'єкт власності" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Об'єкт власності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2342,7 +2203,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Owner, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Власник" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Owner, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Власник" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2364,7 +2225,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OwnershipKind, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Тип володіння" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=OwnershipKind, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип володіння" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2386,7 +2247,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Share, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Частка у власності (сума)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Share, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частка у власності (сума)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2408,7 +2269,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Кількість акцій" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=SharesCount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість акцій" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2430,7 +2291,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SharePct, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Частка (%)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=SharePct, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частка (%)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2452,7 +2313,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Votes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Кількість голосів в управлінні" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Votes, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кількість голосів в управлінні" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2474,26 +2335,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridAcquireeOwnershipOtherThanBankRef" />
@@ -2501,7 +2348,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridAcquireeOwnershipOtherThanBankRef" />
@@ -2516,8 +2364,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridAcquireeOwnershipOtherThanBankRef" />
@@ -2536,7 +2383,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridBoardsMembershipOtherThanBankRef" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding BoardsMembershipOtherThanBankRef, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=GovernedEntityID, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Керована організація" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=GovernedEntityID, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Керована організація" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2558,7 +2405,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Members, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Члени" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Members, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Члени" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2580,7 +2427,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=HeadMember, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Очільник/голова органу" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=HeadMember, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Очільник/голова органу" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2602,7 +2449,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=CouncilBodyName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Назва органу" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=CouncilBodyName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Назва органу" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2624,7 +2471,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=CouncilBodyNameUkr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Назва органу (укр.)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=CouncilBodyNameUkr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Назва органу (укр.)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2646,26 +2493,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridBoardsMembershipOtherThanBankRef" />
@@ -2673,7 +2506,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridBoardsMembershipOtherThanBankRef" />
@@ -2688,8 +2522,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridBoardsMembershipOtherThanBankRef" />
@@ -2708,7 +2541,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridLinkedBanksGoverningBodiesMembers" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding LinkedBanksGoverningBodiesMembers, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=GovernedEntityID, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Керована організація" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=GovernedEntityID, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Керована організація" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2730,7 +2563,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Members, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Члени" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Members, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Члени" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2752,7 +2585,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=HeadMember, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Очільник/голова органу" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=HeadMember, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Очільник/голова органу" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2774,7 +2607,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=CouncilBodyName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Назва органу" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=CouncilBodyName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Назва органу" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2796,7 +2629,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=CouncilBodyNameUkr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Назва органу (укр.)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=CouncilBodyNameUkr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Назва органу (укр.)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2818,26 +2651,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridLinkedBanksGoverningBodiesMembers" />
@@ -2845,7 +2664,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridLinkedBanksGoverningBodiesMembers" />
@@ -2860,8 +2680,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridLinkedBanksGoverningBodiesMembers" />
@@ -2880,7 +2699,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridFinGuaranteesDetails" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding FinGuaranteesDetails, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Person, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Особа, щодо якої гарантую/ручаюся,тощо" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Person, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Особа, щодо якої гарантую/ручаюся,тощо" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2902,7 +2721,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Role, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Роль" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Role, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Роль" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2924,7 +2743,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PledgeAmt, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Сума гарантії/поруки/тощо" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=PledgeAmt, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Сума гарантії/поруки/тощо" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2946,7 +2765,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=GuaranteeDetails, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Деталі" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=GuaranteeDetails, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Деталі" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -2968,26 +2787,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridFinGuaranteesDetails" />
@@ -2995,7 +2800,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridFinGuaranteesDetails" />
@@ -3010,8 +2816,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridFinGuaranteesDetails" />
@@ -3033,7 +2838,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridBreachesOfLaw" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding BreachesOfLaw, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=BreachType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Тип правопорушення" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=BreachType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип правопорушення" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3055,7 +2860,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=CourtName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Суд" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=CourtName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Суд" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3077,7 +2882,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=CourtNameUkr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Суд (укр.)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=CourtNameUkr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Суд (укр.)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3099,7 +2904,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=JurisdictionCountry, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Країна підсудності" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=JurisdictionCountry, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Країна підсудності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3121,7 +2926,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SentenceDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Дата вироку" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=SentenceDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата вироку" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3143,7 +2948,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=CodeOrLaw, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Закон/кодекс" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=CodeOrLaw, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Закон/кодекс" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3165,7 +2970,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Articles, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Стаття(-і)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Articles, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Стаття(-і)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3187,7 +2992,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Sentence, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Тип вироку" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Sentence, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип вироку" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3209,7 +3014,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OtherSanctionDetails, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Інші санкції" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=OtherSanctionDetails, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Інші санкції" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3231,7 +3036,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=IsConvictionSettled, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Судимість погашена?" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=IsConvictionSettled, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Судимість погашена?" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3253,7 +3058,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SettledDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Дата погашення судимості" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=SettledDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата погашення судимості" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3275,26 +3080,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridBreachesOfLaw" />
@@ -3302,7 +3093,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridBreachesOfLaw" />
@@ -3317,8 +3109,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridBreachesOfLaw" />
@@ -3334,7 +3125,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridOtherLiabilities" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding OtherLiabilities, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=IsRepaymentPlanned, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Чи планую погашення?" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=IsRepaymentPlanned, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Чи планую погашення?" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3356,7 +3147,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PlannedRepaymentDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Планована дата погашення" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=PlannedRepaymentDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Планована дата погашення" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3378,7 +3169,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=RepaymentPlans, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Плани щодо погашення" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=RepaymentPlans, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Плани щодо погашення" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3400,7 +3191,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Lender, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Кредитор" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Lender, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кредитор" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3422,7 +3213,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Borrower, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Позичальник" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Borrower, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Позичальник" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3444,7 +3235,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DebtSubject, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Суть заборгованості" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=DebtSubject, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Суть заборгованості" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3466,7 +3257,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Principal, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Основна сума боргу" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Principal, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Основна сума боргу" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3488,7 +3279,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=IndebtnessSubject, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Предмет боргу" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=IndebtnessSubject, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Предмет боргу" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3510,7 +3301,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=RepaymentDueDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Дата погашення" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=RepaymentDueDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата погашення" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3532,7 +3323,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OutstandingPricipal, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Залишок заборгованості" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=OutstandingPricipal, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Залишок заборгованості" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3554,7 +3345,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=IsOverdue, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Прострочена заборгованість?" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=IsOverdue, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Прострочена заборгованість?" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3576,7 +3367,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OverdueSince, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Прострочено з ... (дата)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=OverdueSince, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Прострочено з ... (дата)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3598,7 +3389,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PrincipalOverdue, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Сума простроченої заборгованості" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=PrincipalOverdue, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Сума простроченої заборгованості" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3620,7 +3411,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OverdueDetails, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Деталі прострочки" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=OverdueDetails, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Деталі прострочки" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3642,7 +3433,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OverdueReasons, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Причини прострочки" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=OverdueReasons, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Причини прострочки" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3664,26 +3455,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridOtherLiabilities" />
@@ -3691,7 +3468,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridOtherLiabilities" />
@@ -3706,8 +3484,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridOtherLiabilities" />
@@ -3726,7 +3503,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridLiquidatedSignOwnershipLastYear" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding LiquidatedSignOwnershipLastYear, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Stake, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Частки власності" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Stake, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частки власності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3748,7 +3525,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Ліквідована юрособа" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Ліквідована юрособа" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3770,7 +3547,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Status, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Статус (ліквідації чи банкрутства)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Status, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Статус (ліквідації чи банкрутства)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3792,7 +3569,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DateEffective, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Дата набуття статусу (ліквідації чи банкрутства)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=DateEffective, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата набуття статусу (ліквідації чи банкрутства)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3814,7 +3591,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=LiquidationReason, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Причина ліквідації/банкрутства" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=LiquidationReason, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Причина ліквідації/банкрутства" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3836,7 +3613,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=LiquidationPretext, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Підстава ліквідації/банкрутства" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=LiquidationPretext, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Підстава ліквідації/банкрутства" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3858,26 +3635,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridLiquidatedSignOwnershipLastYear" />
@@ -3885,7 +3648,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridLiquidatedSignOwnershipLastYear" />
@@ -3900,8 +3664,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridLiquidatedSignOwnershipLastYear" />
@@ -3929,7 +3692,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridMentionedIdentities" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding MentionedIdentities, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=PersonType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Тип особи" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=PersonType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип особи" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3951,7 +3714,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PhysicalPerson, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Фізична особа" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=PhysicalPerson, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Фізична особа" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3973,7 +3736,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=LegalPerson, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Юридична особа" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=LegalPerson, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Юридична особа" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -3995,26 +3758,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridMentionedIdentities" />
@@ -4022,7 +3771,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridMentionedIdentities" />
@@ -4037,8 +3787,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridMentionedIdentities" />
@@ -4054,7 +3803,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridPersonsLinks" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PersonsLinks, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=One, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Перша особа" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=One, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Перша особа" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -4076,7 +3825,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Two, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Друга особа" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Two, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Друга особа" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -4098,7 +3847,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=AssociationType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Тип зв'язку" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=AssociationType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип зв'язку" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -4120,7 +3869,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=AssociationRoleOneVsTwo, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Ким приходиться перша особа другій" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=AssociationRoleOneVsTwo, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Ким приходиться перша особа другій" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -4142,7 +3891,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=AssociationRoleTwoVsOne, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Ким приходиться друга особа першій" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=AssociationRoleTwoVsOne, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Ким приходиться друга особа першій" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -4164,7 +3913,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=AssociationRolesIfOther, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Width="*" Header="Ролі осіособи одна одній (якщо інше)" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=AssociationRolesIfOther, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Ролі осіособи одна одній (якщо інше)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -4186,26 +3935,12 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTemplateColumn Header="дії" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTemplateColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Натисніть ґудзик, щоб редагувати чи видалити рядок" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTemplateColumn.HeaderStyle>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Content="..." Command="{x:Static local:MyCommands.EditRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                        <Image Source="Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridPersonsLinks" />
@@ -4213,7 +3948,8 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Content=" - " Command="{x:Static local:MyCommands.DeleteRowCommand}">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                        <Image Source="Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridPersonsLinks" />
@@ -4228,8 +3964,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button Content="Add new row" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Width="75" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <!--todo IsEnabled="{Binding Path=AcquisitionWays.IsIPO}"-->
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridPersonsLinks" />

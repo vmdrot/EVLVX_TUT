@@ -458,7 +458,7 @@
         </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.BankInfo.RegistryNr">
             <summary>
-            У Rcukru - REGN (тільки дла укр.банків)
+            У Rcukru - REGN (тільки для укр.банків)
             </summary>
         </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.BankInfo.Code">
@@ -1021,6 +1021,22 @@
             <summary>
             якщо IsConvictionSettled == true, то обов'язкове
             </summary>
+        </member>
+        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.IPNRefusalRecordInfo">
+            <summary>
+            Інформація про відмітку в паспорті про право здійснювати будь-які 
+              платежі без ІПН
+             ---------------------------------------------------------
+             У паспорт серія ___ N ____________, який видано громадянину
+             _________________________________________________________________,
+                                (прізвище, ім'я та по батькові)
+             ______ внесено  відмітку  за  N  _____________ про наявність права
+              (дата)
+             здійснювати будь-які платежі без ідентифікаційного номера.
+            ____________             ________________________________________
+              (дата)                           (ПІБ, посада, підпис)
+            </summary>
+            <see cref="!:http://www.uazakon.com/documents/date_4f/pg_imnkxj.htm"/>
         </member>
         <!-- Badly formed XML comment ignored for member "P:BGU.DRPL.SignificantOwnership.Core.Spares2.FinancialInstitutionRating.RatingName" -->
         <member name="T:BGU.DRPL.SignificantOwnership.Core.FXLicensing.Questionnares.IndividualFXLicenseCancelApplAppx7">
@@ -2949,22 +2965,6 @@
             <summary>
             Стверджую, що юридична особа має можливість підтвердити походження джерел коштів, за рахунок яких придбає акції банку.
             </summary>
-        </member>
-        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.IPNRefusalRecordInfo">
-            <summary>
-            Інформація про відмітку в паспорті про право здійснювати будь-які 
-              платежі без ІПН
-             ---------------------------------------------------------
-             У паспорт серія ___ N ____________, який видано громадянину
-             _________________________________________________________________,
-                                (прізвище, ім'я та по батькові)
-             ______ внесено  відмітку  за  N  _____________ про наявність права
-              (дата)
-             здійснювати будь-які платежі без ідентифікаційного номера.
-            ____________             ________________________________________
-              (дата)                           (ПІБ, посада, підпис)
-            </summary>
-            <see cref="!:http://www.uazakon.com/documents/date_4f/pg_imnkxj.htm"/>
         </member>
     </members>
 </doc>
