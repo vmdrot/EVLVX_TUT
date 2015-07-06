@@ -33,8 +33,8 @@ namespace WpfApplication2
         #region Menu items click handlers
         private void RegLicAppx2OwnershipAcqRequestLP_MenuItemClick(object sender, RoutedEventArgs e)
         {
-            //ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, new RegLicAppx2OwnershipAcqRequestLP());
-            ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, BGU.DRPL.SignificantOwnership.Utility.Tools.ReadXML(@"D:\home\vmdrot\Testing\regLicDod2IstUchYO.855664.1231564684.xml", typeof(RegLicAppx2OwnershipAcqRequestLP)));
+            ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, new RegLicAppx2OwnershipAcqRequestLP());
+            //ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, BGU.DRPL.SignificantOwnership.Utility.Tools.ReadXML(@"D:\home\vmdrot\Testing\regLicDod2IstUchYO.855664.1231564684.xml", typeof(RegLicAppx2OwnershipAcqRequestLP)));
         }
 
         private void RegLicAppx3MemberCandidateAppl_MenuItemClick(object sender, RoutedEventArgs e)

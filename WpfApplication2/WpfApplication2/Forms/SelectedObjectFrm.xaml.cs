@@ -93,11 +93,13 @@ namespace WpfApplication2.Forms
                 try
                 {
                     object newDS = BGU.DRPL.SignificantOwnership.Utility.Tools.ReadXML(_openFileDlg.FileName, DataSource.GetType());
-                    if (DataSource is IQuestionnaire)
-                        DataModule.CurrentQuestionnare = (IQuestionnaire)newDS;
-                    DataSource = newDS;
+                    object[] args = new object[] { newDS, this };
+                    MyCommands.ReOpenSelectedObjectFormCommand.Execute((object)args, null);
+                    //if (DataSource is IQuestionnaire)
+                    //    DataModule.CurrentQuestionnare = (IQuestionnaire)newDS;
+                    //DataSource = newDS;
 
-                    RefreshGenericPersonsCombos();
+                    //RefreshGenericPersonsCombos();
                 }
                 catch (Exception exc)
                 {
