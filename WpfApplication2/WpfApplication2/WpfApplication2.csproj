@@ -89,6 +89,7 @@
     <Compile Include="Controls\GenericPersonIDControl.xaml.cs">
       <DependentUpon>GenericPersonIDControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ControlUtils.cs" />
     <Compile Include="Data\DataModule.cs" />
     <Compile Include="Forms\Appx2OwnershipStructLPFrm.xaml.cs">
       <DependentUpon>Appx2OwnershipStructLPFrm.xaml</DependentUpon>

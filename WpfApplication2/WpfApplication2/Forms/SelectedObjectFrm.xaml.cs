@@ -92,14 +92,33 @@ namespace WpfApplication2.Forms
                 // Open the selected file to read.
                 try
                 {
-                    DataSource = BGU.DRPL.SignificantOwnership.Utility.Tools.ReadXML(_openFileDlg.FileName, DataSource.GetType());
+                    object newDS = BGU.DRPL.SignificantOwnership.Utility.Tools.ReadXML(_openFileDlg.FileName, DataSource.GetType());
                     if (DataSource is IQuestionnaire)
-                        DataModule.CurrentQuestionnare = (IQuestionnaire)DataSource;
+                        DataModule.CurrentQuestionnare = (IQuestionnaire)newDS;
+                    DataSource = newDS;
+
+                    RefreshGenericPersonsCombos();
                 }
                 catch (Exception exc)
                 {
                     System.Windows.MessageBox.Show(string.Format("Failed to read file '{0}', error - '{1}'", _openFileDlg.FileName, exc.Message), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+            }
+        }
+
+        private void RefreshGenericPersonsCombos()
+        {
+            //below didn't work
+            //System.Windows.Controls.ComboBox cbx = (System.Windows.Controls.ComboBox)quCtrl.Template.FindName("cbxAcquiree", quCtrl);
+            //if (cbx != null)
+            //    cbx.Items.Refresh();
+
+            //this works, but cbx.ItemsSource == null
+            IEnumerable<System.Windows.Controls.ComboBox> cbxs = ControlUtils.FindVisualChildren<System.Windows.Controls.ComboBox>(this);
+            foreach (System.Windows.Controls.ComboBox cbx in cbxs)
+            { 
+                if(cbx.Name == "cbxAcquiree")
+                    cbx.Items.Refresh();
             }
         }
 
