@@ -1,5 +1,6 @@
 ﻿using BGU.DRPL.SignificantOwnership.Core.Questionnaires;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
+using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 using BGU.DRPL.SignificantOwnership.Utility;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,8 @@ namespace WpfApplication2
             var deleteRowBinding = new CommandBinding(MyCommands.DeleteRowCommand, DeleteRow, CanDeleteRow);
             var addMentionedPersonBinding = new CommandBinding(MyCommands.AddMentionedPersonCommand, AddMentionedPerson, CanAddMentionedPerson);
             var reOpenSelectedObjectFormBinding = new CommandBinding(MyCommands.ReOpenSelectedObjectFormCommand, ReOpenSelectedObjectForm, CanReOpenSelectedObjectForm);
+            var addBankBinding = new CommandBinding(MyCommands.AddBankCommand, AddBank, CanAddBank);
+            
 
             // Register CommandBinding for all windows.
             CommandManager.RegisterClassCommandBinding(typeof(Window), binding);
@@ -35,7 +38,50 @@ namespace WpfApplication2
             CommandManager.RegisterClassCommandBinding(typeof(Window), deleteRowBinding);
             CommandManager.RegisterClassCommandBinding(typeof(Window), addMentionedPersonBinding);
             CommandManager.RegisterClassCommandBinding(typeof(Window), reOpenSelectedObjectFormBinding);
+            CommandManager.RegisterClassCommandBinding(typeof(Window), addBankBinding);
+        }
 
+        private void CanAddBank(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void AddBank(object sender, ExecutedRoutedEventArgs e)
+        {
+            object[] prms = (object[])e.Parameter;
+            if (prms == null || prms.Length == 0)
+            {
+                e.Handled = true;
+                return;
+            }
+            object oCbx = prms[0];
+            if (oCbx == null || !(oCbx is System.Windows.Controls.ComboBox))
+            {
+                e.Handled = true;
+                return;
+            }
+
+            {
+                System.Windows.Controls.ComboBox cbx = (System.Windows.Controls.ComboBox)oCbx;
+                BankInfo bi = new BankInfo();
+
+                BGU.DRPL.SignificantOwnership.Utility.ReflectionUtil.InstantiateAllProps(bi, bi.GetType().Assembly);
+                SelectedObjectFrm frm = new SelectedObjectFrm();
+                frm.DataSource = bi;
+                frm.Title = "Новий банк";
+                bool? dlgRes = frm.ShowDialog();
+                if (dlgRes == null || (bool)dlgRes != true)
+                    return;
+
+                BankInfo newBk = (BankInfo)frm.DataSource;
+                DataModule.СurrentBanks.Add(newBk);
+                cbx.Items.Refresh();
+                //SetSelectedValue(newGpi.ID);
+                //cbx.SetCurrentValue(SelectedValueProperty, newGpi.ID); //doesn't work either
+                cbx.SelectedItem = newBk;
+                cbx.Items.Refresh();
+            }
+            e.Handled = true;
         }
 
         private void CanReOpenSelectedObjectForm(object sender, CanExecuteRoutedEventArgs e)
