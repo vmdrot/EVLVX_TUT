@@ -7,8 +7,9 @@
     <StackPanel>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblAccountOwner" Height="auto" Width="auto" Text="Власник рахунку" Style="{StaticResource dispNmStyle}" ToolTip="" />
-        <ComboBox x:Name="cbxAccountOwner" DisplayMemberPath="DisplayName" SelectedValuePath="ID" HorizontalAlignment="Stretch" SelectedValue="{Binding Path=AccountOwner, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+        <ComboBox x:Name="cbxAccountOwner" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=AccountOwner, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
         <Button x:Name="btnAddAccountOwner" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
+          <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
           <Button.CommandParameter>
             <MultiBinding Converter="{StaticResource multiValConv}">
               <Binding ElementName="cbxAccountOwner" />
@@ -18,8 +19,9 @@
       </StackPanel>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblBank" Height="auto" Width="auto" Text="У банку..." Style="{StaticResource dispNmStyle}" ToolTip="" />
-        <ComboBox x:Name="cbxBank" DisplayMemberPath="Name" SelectedValuePath="ID" HorizontalAlignment="Stretch" SelectedValue="{Binding Acquiree, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedItem="{Binding Path=Bank, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
+        <ComboBox x:Name="cbxBank" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedItem="{Binding Path=Bank, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
         <Button x:Name="btnAddBank" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}">
+          <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
           <Button.CommandParameter>
             <MultiBinding Converter="{StaticResource multiValConv}">
               <Binding ElementName="cbxBank" />
