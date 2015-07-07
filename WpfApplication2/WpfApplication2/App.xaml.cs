@@ -180,9 +180,13 @@ namespace WpfApplication2
             }
             object di = prms[0];
             object dg = prms.Length >= 2 ? prms[1] : null;
+            object propDispNm = prms.Length >= 3 ? prms[3] : null;
+            object propDescr = prms.Length >= 4 ? prms[4] : null;
 
             SelectedObjectFrm frm = new SelectedObjectFrm();
             frm.DataSource = di;
+            frm.Title = propDispNm as string;
+            //frm.ToolTip = propDescr as string;
             bool? hr = frm.ShowDialog();
             if (hr != null && (bool)hr)
             {
@@ -220,6 +224,8 @@ namespace WpfApplication2
             object dataContext = prms.Length >= 2 ? prms[1] : null;
             object list = prms.Length >= 3 ? prms[2] : null;
             object dg = prms.Length >= 4 ? prms[3] : null;
+            object propDispNm = prms.Length >= 5 ? prms[4] : null;
+            object propDescr = prms.Length >= 6 ? prms[5] : null;
 
             if (!list.GetType().IsGenericType)
             {
@@ -241,6 +247,8 @@ namespace WpfApplication2
             }
             SelectedObjectFrm frm = new SelectedObjectFrm();
             frm.DataSource = newItem;
+            frm.Title = propDispNm as string;
+            //frm.ToolTip = propDescr as string;
             bool? hr = frm.ShowDialog();
             if (hr != null && (bool)hr)
             {

@@ -9,12 +9,12 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:ImperfectBusinessReputationInfo}">
     <StackPanel>
-      <CheckBox IsChecked="{Binding HadBankruptcyInvestigation, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Чи порушувалася справа про банкрутство юридичної особи?" ToolTip="Чи порушувалася справа про банкрутство юридичної особи?" />
+      <CheckBox IsChecked="{Binding HadBankruptcyInvestigation, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="HadBankruptcyInvestigation" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Чи порушувалася справа про банкрутство юридичної особи?" ToolTip="Чи порушувалася справа про банкрутство юридичної особи?" Tag="HadBankruptcyInvestigation" />
       </CheckBox>
-      <Expander Header="Деталі порушуваної(-их) справи(справ) про банкрутство юридичної особи" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=HadBankruptcyInvestigation, Converter={StaticResource bool2Vis}}">
+      <Expander x:Name="expBankruptcyInvestigations" Header="Деталі порушуваної(-их) справи(справ) про банкрутство юридичної особи" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="BankruptcyInvestigations" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=HadBankruptcyInvestigation, Converter={StaticResource bool2Vis}}">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridBankruptcyInvestigations" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding BankruptcyInvestigations, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
+          <DataGrid x:Name="gridBankruptcyInvestigations" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding BankruptcyInvestigations, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="BankruptcyInvestigations">
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=CaseFiledDt, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата порушення справи про банкрутство" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -114,6 +114,8 @@
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridBankruptcyInvestigations" />
                             <Binding ElementName="gridBankruptcyInvestigations" />
+                            <Binding ElementName="expBankruptcyInvestigations" Path="Header" />
+                            <Binding ElementName="expBankruptcyInvestigations" Path="ToolTip" />
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
@@ -133,25 +135,27 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="BankruptcyInvestigations">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="BankruptcyInvestigations" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridBankruptcyInvestigations" />
                 <Binding Path="DataContext" ElementName="gridBankruptcyInvestigations" />
                 <Binding Path="BankruptcyInvestigations" />
                 <Binding ElementName="gridBankruptcyInvestigations" />
+                <Binding ElementName="expBankruptcyInvestigations" Path="Header" />
+                <Binding ElementName="expBankruptcyInvestigations" Path="ToolTip" />
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
         </StackPanel>
       </Expander>
-      <CheckBox IsChecked="{Binding HasMiscNonRepaidDebts, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Є невиконані  зобов'язання перед іншими особами?" ToolTip="Чи  має   юридична  особа  невиконані  майнові  (фінансові)  зобов'язання перед іншими особами?" />
+      <CheckBox IsChecked="{Binding HasMiscNonRepaidDebts, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="HasMiscNonRepaidDebts" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Є невиконані  зобов'язання перед іншими особами?" ToolTip="Чи  має   юридична  особа  невиконані  майнові  (фінансові)  зобов'язання перед іншими особами?" Tag="HasMiscNonRepaidDebts" />
       </CheckBox>
-      <Expander Header="Невиконані  зобов'язання перед іншими особами - розшифровка" ToolTip="(зазначити, які саме зобов'язання, у якому розмірі, перед якою особою та з яких причин не були виконані, а також подальші плани щодо виконання/невиконання цих зобов'язань)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=HasMiscNonRepaidDebts, Converter={StaticResource bool2Vis}}">
+      <Expander x:Name="expMiscNonRepaidDebts" Header="Невиконані  зобов'язання перед іншими особами - розшифровка" ToolTip="(зазначити, які саме зобов'язання, у якому розмірі, перед якою особою та з яких причин не були виконані, а також подальші плани щодо виконання/невиконання цих зобов'язань)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="MiscNonRepaidDebts" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=HasMiscNonRepaidDebts, Converter={StaticResource bool2Vis}}">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridMiscNonRepaidDebts" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding MiscNonRepaidDebts, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
+          <DataGrid x:Name="gridMiscNonRepaidDebts" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding MiscNonRepaidDebts, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="MiscNonRepaidDebts">
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=IsRepaymentPlanned, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Чи планую погашення?" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -219,6 +223,28 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
+              <DataGridTextColumn Binding="{Binding Path=IsBankDebt, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Позичальник є банком" Width="*" TextBlock.TextAlignment="Center">
+                <DataGridTextColumn.HeaderStyle>
+                  <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
+                    <Setter Property="ContentTemplate">
+                      <Setter.Value>
+                        <DataTemplate>
+                          <ContentControl Content="{Binding}">
+                            <ToolTipService.ToolTip>
+                              <ToolTip Content="(відзначте галочку, якщо позику було взято у банку, або ж зніміть, якщо борг виник перед особою, що не є банком)" />
+                            </ToolTipService.ToolTip>
+                          </ContentControl>
+                        </DataTemplate>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>
+                </DataGridTextColumn.HeaderStyle>
+              </DataGridTextColumn>
               <DataGridTextColumn Binding="{Binding Path=Lender, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кредитор" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
@@ -232,7 +258,7 @@
                         <DataTemplate>
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
-                              <ToolTip Content="Кредитор" />
+                              <ToolTip Content="(інший кредитор, окрім банків)" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -299,28 +325,6 @@
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
                               <ToolTip Content="Основна сума боргу" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=IndebtnessSubject, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Предмет боргу" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="У зв'язку з чим виник борг; якщо позика - для чого було надано, і т.д." />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -493,6 +497,8 @@
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridMiscNonRepaidDebts" />
                             <Binding ElementName="gridMiscNonRepaidDebts" />
+                            <Binding ElementName="expMiscNonRepaidDebts" Path="Header" />
+                            <Binding ElementName="expMiscNonRepaidDebts" Path="ToolTip" />
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
@@ -512,25 +518,27 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="MiscNonRepaidDebts">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="MiscNonRepaidDebts" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridMiscNonRepaidDebts" />
                 <Binding Path="DataContext" ElementName="gridMiscNonRepaidDebts" />
                 <Binding Path="MiscNonRepaidDebts" />
                 <Binding ElementName="gridMiscNonRepaidDebts" />
+                <Binding ElementName="expMiscNonRepaidDebts" Path="Header" />
+                <Binding ElementName="expMiscNonRepaidDebts" Path="ToolTip" />
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
         </StackPanel>
       </Expander>
-      <CheckBox IsChecked="{Binding HadIndustrySpecificBreaches, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Були порушення галузевого законодавства?" ToolTip="Чи  притягувалася  юридична  особа  до  відповідальності  за  порушення антимонопольного,  податкового, банківського, валютного  законодавства, правил діяльності на ринку цінних паперів тощо?" />
+      <CheckBox IsChecked="{Binding HadIndustrySpecificBreaches, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="HadIndustrySpecificBreaches" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Були порушення галузевого законодавства?" ToolTip="Чи  притягувалася  юридична  особа  до  відповідальності  за  порушення антимонопольного,  податкового, банківського, валютного  законодавства, правил діяльності на ринку цінних паперів тощо?" Tag="HadIndustrySpecificBreaches" />
       </CheckBox>
-      <Expander Header="Порушення галузевого законодавства - деталі" ToolTip="(зазначити, коли вчинено порушення антимонопольного,  податкового, банківського, валютного  законодавства, правил діяльності на ринку цінних паперів тощо, зміст порушення, накладені санкції)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=HadIndustrySpecificBreaches, Converter={StaticResource bool2Vis}}">
+      <Expander x:Name="expBreachesOfLaw" Header="Порушення галузевого законодавства - деталі" ToolTip="(зазначити, коли вчинено порушення антимонопольного,  податкового, банківського, валютного  законодавства, правил діяльності на ринку цінних паперів тощо, зміст порушення, накладені санкції)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="BreachesOfLaw" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=HadIndustrySpecificBreaches, Converter={StaticResource bool2Vis}}">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridBreachesOfLaw" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding BreachesOfLaw, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
+          <DataGrid x:Name="gridBreachesOfLaw" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding BreachesOfLaw, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="BreachesOfLaw">
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=BreachType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип правопорушення" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -784,6 +792,8 @@
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridBreachesOfLaw" />
                             <Binding ElementName="gridBreachesOfLaw" />
+                            <Binding ElementName="expBreachesOfLaw" Path="Header" />
+                            <Binding ElementName="expBreachesOfLaw" Path="ToolTip" />
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
@@ -803,25 +813,27 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="BreachesOfLaw">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="BreachesOfLaw" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridBreachesOfLaw" />
                 <Binding Path="DataContext" ElementName="gridBreachesOfLaw" />
                 <Binding Path="BreachesOfLaw" />
                 <Binding ElementName="gridBreachesOfLaw" />
+                <Binding ElementName="expBreachesOfLaw" Path="Header" />
+                <Binding ElementName="expBreachesOfLaw" Path="ToolTip" />
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
         </StackPanel>
       </Expander>
-      <CheckBox IsChecked="{Binding HasLiquidatedSignOwnershipLastYear, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Були власником ліквідованих юросіб протягом останнього року?" ToolTip="Чи була юридична особа протягом останнього року, що передував прийняттю рішення про ліквідацію юридичної особи, власником істотної участі (10 і більше відсотків) у цій особі?" />
+      <CheckBox IsChecked="{Binding HasLiquidatedSignOwnershipLastYear, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="HasLiquidatedSignOwnershipLastYear" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Були власником ліквідованих юросіб протягом останнього року?" ToolTip="Чи була юридична особа протягом останнього року, що передував прийняттю рішення про ліквідацію юридичної особи, власником істотної участі (10 і більше відсотків) у цій особі?" Tag="HasLiquidatedSignOwnershipLastYear" />
       </CheckBox>
-      <Expander Header="Ліквідовані протягом останнього року юрособи у власності" ToolTip="Протягом останнього року, що передував прийняттю рішення про ліквідацію юридичної особи, власник істотної участі (10 і більше відсотків) у ... (найменування юридичної особи, код за ЄДРПОУ, відсоток володіння в ній, докладна інформація про причини та підстави ліквідації)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=HasLiquidatedSignOwnershipLastYear, Converter={StaticResource bool2Vis}}">
+      <Expander x:Name="expLiquidatedSignOwnershipLastYear" Header="Ліквідовані протягом останнього року юрособи у власності" ToolTip="Протягом останнього року, що передував прийняттю рішення про ліквідацію юридичної особи, власник істотної участі (10 і більше відсотків) у ... (найменування юридичної особи, код за ЄДРПОУ, відсоток володіння в ній, докладна інформація про причини та підстави ліквідації)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="LiquidatedSignOwnershipLastYear" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=HasLiquidatedSignOwnershipLastYear, Converter={StaticResource bool2Vis}}">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridLiquidatedSignOwnershipLastYear" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding LiquidatedSignOwnershipLastYear, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
+          <DataGrid x:Name="gridLiquidatedSignOwnershipLastYear" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding LiquidatedSignOwnershipLastYear, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="LiquidatedSignOwnershipLastYear">
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=Stake, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частки власності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -965,6 +977,8 @@
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridLiquidatedSignOwnershipLastYear" />
                             <Binding ElementName="gridLiquidatedSignOwnershipLastYear" />
+                            <Binding ElementName="expLiquidatedSignOwnershipLastYear" Path="Header" />
+                            <Binding ElementName="expLiquidatedSignOwnershipLastYear" Path="ToolTip" />
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
@@ -984,14 +998,16 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="LiquidatedSignOwnershipLastYear">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="LiquidatedSignOwnershipLastYear" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridLiquidatedSignOwnershipLastYear" />
                 <Binding Path="DataContext" ElementName="gridLiquidatedSignOwnershipLastYear" />
                 <Binding Path="LiquidatedSignOwnershipLastYear" />
                 <Binding ElementName="gridLiquidatedSignOwnershipLastYear" />
+                <Binding ElementName="expLiquidatedSignOwnershipLastYear" Path="Header" />
+                <Binding ElementName="expLiquidatedSignOwnershipLastYear" Path="ToolTip" />
               </MultiBinding>
             </Button.CommandParameter>
           </Button>

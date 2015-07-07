@@ -104,6 +104,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyCommands.cs" />
+    <Compile Include="ShowHideControlsByTagInfo.cs" />
     <Compile Include="StackPanelWindow.xaml.cs">
       <DependentUpon>StackPanelWindow.xaml</DependentUpon>
     </Compile>

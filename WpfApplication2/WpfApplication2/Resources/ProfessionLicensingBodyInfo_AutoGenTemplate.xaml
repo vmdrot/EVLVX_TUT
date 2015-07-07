@@ -6,12 +6,12 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:ProfessionLicensingBodyInfo}">
     <StackPanel>
-      <TextBlock Text="Назва ліцензіатора" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Назва ліцензіатора(укр.)" Style="{StaticResource dispNmStyle}" ToolTip="" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Header="Реквізити юрособи (ліцензіатора)" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding LegalPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <TextBlock Text="Назва ліцензіатора" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Назва ліцензіатора(укр.)" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Header="Реквізити юрособи (ліцензіатора)" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="LegalPerson" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding LegalPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="LegalPerson" />
       </Expander>
     </StackPanel>
   </DataTemplate>

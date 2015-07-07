@@ -5,12 +5,12 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:CouncilMemberInfo}">
     <StackPanel>
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblMember" Height="auto" Width="auto" Text="Член органу управління" Style="{StaticResource dispNmStyle}" ToolTip="Член органу управління" />
+      <StackPanel Orientation="Horizontal" Tag="Member" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblMember" Height="auto" Width="auto" Text="Член органу управління" Style="{StaticResource dispNmStyle}" ToolTip="Член органу управління" Tag="Member" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxMember" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Член органу управління" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Member, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddMember" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <ComboBox x:Name="cbxMember" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Член органу управління" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Member" SelectedValuePath="ID" SelectedValue="{Binding Path=Member, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddMember" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Member">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Member" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxMember" />
@@ -19,10 +19,10 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <TextBlock Text="Посада" Style="{StaticResource dispNmStyle}" ToolTip="Посада" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PositionName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Посада" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Опис функцій" Style="{StaticResource dispNmStyle}" ToolTip="Опис функцій" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FunctionsDescription, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Опис функцій" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Посада" Style="{StaticResource dispNmStyle}" ToolTip="Посада" Tag="PositionName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PositionName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Посада" Tag="PositionName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Опис функцій" Style="{StaticResource dispNmStyle}" ToolTip="Опис функцій" Tag="FunctionsDescription" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FunctionsDescription, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Опис функцій" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="FunctionsDescription" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

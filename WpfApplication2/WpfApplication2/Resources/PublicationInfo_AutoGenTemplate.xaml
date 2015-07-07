@@ -6,19 +6,19 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:PublicationInfo}">
     <StackPanel>
-      <Expander Header="Видавництво" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Publisher, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Видавництво" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Publisher" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding Publisher, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Publisher" />
       </Expander>
-      <TextBlock Text="ІSBN ідентифікатор" Style="{StaticResource dispNmStyle}" ToolTip="ІSBN ідентифікатор видання (якщо є)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ISBN, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ІSBN ідентифікатор видання (якщо є)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Назва ЗМІ" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MediaName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Дата публікації" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding PubDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Число публікації" Style="{StaticResource dispNmStyle}" ToolTip="Число/№ публікації (випуск газети, журналу, тощо)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding IssueNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Число/№ публікації (випуск газети, журналу, тощо)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="URL публікації" Style="{StaticResource dispNmStyle}" ToolTip="Ланка на публікацію (адреса публікації в інтернет)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PubUrl, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ланка на публікацію (адреса публікації в інтернет)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="ІSBN ідентифікатор" Style="{StaticResource dispNmStyle}" ToolTip="ІSBN ідентифікатор видання (якщо є)" Tag="ISBN" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ISBN, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ІSBN ідентифікатор видання (якщо є)" Tag="ISBN" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Назва ЗМІ" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="MediaName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MediaName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="MediaName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Дата публікації" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="PubDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding PubDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="PubDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Число публікації" Style="{StaticResource dispNmStyle}" ToolTip="Число/№ публікації (випуск газети, журналу, тощо)" Tag="IssueNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding IssueNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Число/№ публікації (випуск газети, журналу, тощо)" Tag="IssueNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="URL публікації" Style="{StaticResource dispNmStyle}" ToolTip="Ланка на публікацію (адреса публікації в інтернет)" Tag="PubUrl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PubUrl, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ланка на публікацію (адреса публікації в інтернет)" Tag="PubUrl" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

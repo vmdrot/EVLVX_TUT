@@ -10,22 +10,22 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bguq:RegLicAppx14NewSvc}">
     <StackPanel>
-      <TextBlock Text="Дата заявки" Style="{StaticResource dispNmStyle}" ToolTip="Дата" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="Дата" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding QuestDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="№ (Ваш висх.)" Style="{StaticResource dispNmStyle}" ToolTip="номер" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Ref, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="номер" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblBankRef" Height="auto" Width="auto" Text="Банк (назва та ін. реквізити)" Style="{StaticResource dispNmStyle}" ToolTip="Ідентифікація банку, що подає заявку" />
+      <TextBlock Text="Дата заявки" Style="{StaticResource dispNmStyle}" ToolTip="Дата" Tag="QuestDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="Дата" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding QuestDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="QuestDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="№ (Ваш висх.)" Style="{StaticResource dispNmStyle}" ToolTip="номер" Tag="Ref" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Ref, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="номер" Tag="Ref" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <StackPanel Orientation="Horizontal" Tag="BankRef" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblBankRef" Height="auto" Width="auto" Text="Банк (назва та ін. реквізити)" Style="{StaticResource dispNmStyle}" ToolTip="Ідентифікація банку, що подає заявку" Tag="BankRef" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxBankRef" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="Ідентифікація банку, що подає заявку" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedItem="{Binding Path=BankRef, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250">
+          <ComboBox x:Name="cbxBankRef" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="Ідентифікація банку, що подає заявку" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="BankRef" SelectedItem="{Binding Path=BankRef, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250">
             <ComboBox.ItemContainerStyle>
               <Style>
                 <Setter Property="Control.ToolTip" Value="{Binding MFO}" />
               </Style>
             </ComboBox.ItemContainerStyle>
           </ComboBox>
-          <Button x:Name="btnAddBankRef" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <Button x:Name="btnAddBankRef" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="BankRef">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="BankRef" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxBankRef" />
@@ -34,12 +34,12 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <Expander Header="Діюча банківська ліцензія (реквізити)" ToolTip="має  банківську ліцензію" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding ExistingLicenseSpecs, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Діюча банківська ліцензія (реквізити)" ToolTip="має  банківську ліцензію" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ExistingLicenseSpecs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding ExistingLicenseSpecs, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="ExistingLicenseSpecs" />
       </Expander>
-      <Expander Header="Перелік нових видів фінпослуг" ToolTip="перелік нових видів діяльності або нових видів фінансових послуг" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander x:Name="expNewActivitiesList" Header="Перелік нових видів фінпослуг" ToolTip="перелік нових видів діяльності або нових видів фінансових послуг" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="NewActivitiesList" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridNewActivitiesList" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding NewActivitiesList, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
+          <DataGrid x:Name="gridNewActivitiesList" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding NewActivitiesList, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="NewActivitiesList">
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=ActivityType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Вид банківської діяльності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -117,6 +117,8 @@
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridNewActivitiesList" />
                             <Binding ElementName="gridNewActivitiesList" />
+                            <Binding ElementName="expNewActivitiesList" Path="Header" />
+                            <Binding ElementName="expNewActivitiesList" Path="ToolTip" />
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
@@ -136,68 +138,70 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="NewActivitiesList">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="NewActivitiesList" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridNewActivitiesList" />
                 <Binding Path="DataContext" ElementName="gridNewActivitiesList" />
                 <Binding Path="NewActivitiesList" />
                 <Binding ElementName="gridNewActivitiesList" />
+                <Binding ElementName="expNewActivitiesList" Path="Header" />
+                <Binding ElementName="expNewActivitiesList" Path="ToolTip" />
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
         </StackPanel>
       </Expander>
-      <CheckBox IsChecked="{Binding HasSufficientFinancialCapacity, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Фінансові можливості наявні?" ToolTip="Банк має достатні фінансові  можливості  для  початку  нового виду діяльності та/або виду фінансових послуг,  зазначених у цьому повідомленні" />
+      <CheckBox IsChecked="{Binding HasSufficientFinancialCapacity, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="HasSufficientFinancialCapacity" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Фінансові можливості наявні?" ToolTip="Банк має достатні фінансові  можливості  для  початку  нового виду діяльності та/або виду фінансових послуг,  зазначених у цьому повідомленні" Tag="HasSufficientFinancialCapacity" />
       </CheckBox>
-      <TextBlock Text="Тривалість беззбиткового періоду (міс.)" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MonthsWOLosses, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Банк не має збитків протягом останніх ... місяців" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <CheckBox IsChecked="{Binding HasFormedEnoughFundsAndReserves, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Формування фондів та резервів відповідає/не відповідає...?" ToolTip="Банк сформував фонди та резерви відповідно до вимог законодавства України, у тому числі нормативно-правових актів Національного банку України" />
+      <TextBlock Text="Тривалість беззбиткового періоду (міс.)" Style="{StaticResource dispNmStyle}" Tag="MonthsWOLosses" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MonthsWOLosses, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Банк не має збитків протягом останніх ... місяців" Tag="MonthsWOLosses" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <CheckBox IsChecked="{Binding HasFormedEnoughFundsAndReserves, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="HasFormedEnoughFundsAndReserves" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Формування фондів та резервів відповідає/не відповідає...?" ToolTip="Банк сформував фонди та резерви відповідно до вимог законодавства України, у тому числі нормативно-правових актів Національного банку України" Tag="HasFormedEnoughFundsAndReserves" />
       </CheckBox>
-      <TextBlock Text="Тривалість дотримування нормативів обов'язвкового резервування (міс.)" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MonthsObligatoryReservesMet, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Банк дотримується нормативу обов'язкового резервування протягом останніх ... місяців" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Тривалість дотримування економічних нормативів (міс.)" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MonthsEconomicNormativesReqsMet, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Банк дотримується економічних нормативів протягом останніх ... місяців" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <CheckBox IsChecked="{Binding IsRegulatoryCapitalReqsMet, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Регулятивного капіталу достатньо (так/ні)?" ToolTip="Рівень регулятивного капіталу Банку відповідає вимогам Національного банку України" />
+      <TextBlock Text="Тривалість дотримування нормативів обов'язвкового резервування (міс.)" Style="{StaticResource dispNmStyle}" Tag="MonthsObligatoryReservesMet" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MonthsObligatoryReservesMet, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Банк дотримується нормативу обов'язкового резервування протягом останніх ... місяців" Tag="MonthsObligatoryReservesMet" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Тривалість дотримування економічних нормативів (міс.)" Style="{StaticResource dispNmStyle}" Tag="MonthsEconomicNormativesReqsMet" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MonthsEconomicNormativesReqsMet, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Банк дотримується економічних нормативів протягом останніх ... місяців" Tag="MonthsEconomicNormativesReqsMet" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <CheckBox IsChecked="{Binding IsRegulatoryCapitalReqsMet, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsRegulatoryCapitalReqsMet" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Регулятивного капіталу достатньо (так/ні)?" ToolTip="Рівень регулятивного капіталу Банку відповідає вимогам Національного банку України" Tag="IsRegulatoryCapitalReqsMet" />
       </CheckBox>
-      <TextBlock Text="Розміри регулятивного капіталу (грн.)" Style="{StaticResource dispNmStyle}" ToolTip="Рівень регулятивного капіталу Банку становить ... грн." xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegulatoryCapitalAmt, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Рівень регулятивного капіталу Банку становить ... грн." xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Дата розмірів регулятивного капіталу" Style="{StaticResource dispNmStyle}" ToolTip="Дата, на яку подано рівень регулятивного капіталу Банку (вище)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="Дата, на яку подано рівень регулятивного капіталу Банку (вище)" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding RegulatoryCapitalDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <CheckBox IsChecked="{Binding NoPenaltiesWithinLast3Months, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Відсутність заходів упливу" ToolTip="Банк не є об'єктом застосування заходів впливу (крім письмового застереження) упродовж останніх 3 місяців, причому:&#xA;протягом усього періоду діяльності - для банків, які отримали банківську ліцензію менше ніж за три місяці до часу повідомлення Національного банку України про початок нового виду діяльності та/або виду послуг;&#xA;протягом трьох місяців, що передують часу повідомлення Національного банку України про початок нового виду діяльності та/або виду послуг - для банків, які здійснюють банківську діяльність на підставі банківської ліцензії більше ніж три місяці." />
+      <TextBlock Text="Розміри регулятивного капіталу (грн.)" Style="{StaticResource dispNmStyle}" ToolTip="Рівень регулятивного капіталу Банку становить ... грн." Tag="RegulatoryCapitalAmt" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegulatoryCapitalAmt, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Рівень регулятивного капіталу Банку становить ... грн." Tag="RegulatoryCapitalAmt" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Дата розмірів регулятивного капіталу" Style="{StaticResource dispNmStyle}" ToolTip="Дата, на яку подано рівень регулятивного капіталу Банку (вище)" Tag="RegulatoryCapitalDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="Дата, на яку подано рівень регулятивного капіталу Банку (вище)" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding RegulatoryCapitalDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="RegulatoryCapitalDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <CheckBox IsChecked="{Binding NoPenaltiesWithinLast3Months, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="NoPenaltiesWithinLast3Months" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Відсутність заходів упливу" ToolTip="Банк не є об'єктом застосування заходів впливу (крім письмового застереження) упродовж останніх 3 місяців, причому:&#xA;протягом усього періоду діяльності - для банків, які отримали банківську ліцензію менше ніж за три місяці до часу повідомлення Національного банку України про початок нового виду діяльності та/або виду послуг;&#xA;протягом трьох місяців, що передують часу повідомлення Національного банку України про початок нового виду діяльності та/або виду послуг - для банків, які здійснюють банківську діяльність на підставі банківської ліцензії більше ніж три місяці." Tag="NoPenaltiesWithinLast3Months" />
       </CheckBox>
-      <CheckBox IsChecked="{Binding HasDeptsAllocatedForNewBusLines, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Забезпеченість відповідним персоналом та структурою" ToolTip="У Банку створено відповідні підрозділи, що здійснюватимуть зазначений в повідомленні новий вид діяльності та/або вид фінансових послуг, а також підрозділ внутрішнього аудиту та підрозділ з управління ризиками, функції та повноваження яких відповідають вимогам Закону України &quot;Про банки і банківську діяльність&quot; та нормативно-правових актів Національного банку України. Банк забезпечений спеціалістами, які відповідають вимогам нормативно-правових актів Національного банку України. Відповідні відомості додаються." />
+      <CheckBox IsChecked="{Binding HasDeptsAllocatedForNewBusLines, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="HasDeptsAllocatedForNewBusLines" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Забезпеченість відповідним персоналом та структурою" ToolTip="У Банку створено відповідні підрозділи, що здійснюватимуть зазначений в повідомленні новий вид діяльності та/або вид фінансових послуг, а також підрозділ внутрішнього аудиту та підрозділ з управління ризиками, функції та повноваження яких відповідають вимогам Закону України &quot;Про банки і банківську діяльність&quot; та нормативно-правових актів Національного банку України. Банк забезпечений спеціалістами, які відповідають вимогам нормативно-правових актів Національного банку України. Відповідні відомості додаються." Tag="HasDeptsAllocatedForNewBusLines" />
       </CheckBox>
-      <CheckBox IsChecked="{Binding HasFacilitiesForNewBusLines, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Забезпеченість відповідним обладнанням, технікою, ПЗ, тощо" ToolTip="Банк забезпечений належним банківським обладнанням, комп'ютерною технікою, програмним забезпеченням та комунікаційними засобами, що відповідають вимогам Національного банку України" />
+      <CheckBox IsChecked="{Binding HasFacilitiesForNewBusLines, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="HasFacilitiesForNewBusLines" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Забезпеченість відповідним обладнанням, технікою, ПЗ, тощо" ToolTip="Банк забезпечений належним банківським обладнанням, комп'ютерною технікою, програмним забезпеченням та комунікаційними засобами, що відповідають вимогам Національного банку України" Tag="HasFacilitiesForNewBusLines" />
       </CheckBox>
-      <CheckBox IsChecked="{Binding IsGenericLawReqsMetForNewBusLines, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Дотримано вимог законодавства" ToolTip="Банком виконано спеціальні вимоги законодавства України, у тому числі нормативно-правових актів Національного банку України, щодо нового виду діяльності та/або нового виду фінансових послуг" />
+      <CheckBox IsChecked="{Binding IsGenericLawReqsMetForNewBusLines, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsGenericLawReqsMetForNewBusLines" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Дотримано вимог законодавства" ToolTip="Банком виконано спеціальні вимоги законодавства України, у тому числі нормативно-правових актів Національного банку України, щодо нового виду діяльності та/або нового виду фінансових послуг" Tag="IsGenericLawReqsMetForNewBusLines" />
       </CheckBox>
-      <CheckBox IsChecked="{Binding IsBankIndustrySpecificLawReqsMetForNewBusLines, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Готові розпочати новий вид діяльності?" ToolTip="Банк готовий розпочати новий вид діяльності та/або вид фінансових послуг згідно з вимогами банківського законодавства України, нормативно-правових актів Національного банку України" />
+      <CheckBox IsChecked="{Binding IsBankIndustrySpecificLawReqsMetForNewBusLines, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsBankIndustrySpecificLawReqsMetForNewBusLines" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Готові розпочати новий вид діяльності?" ToolTip="Банк готовий розпочати новий вид діяльності та/або вид фінансових послуг згідно з вимогами банківського законодавства України, нормативно-правових актів Національного банку України" Tag="IsBankIndustrySpecificLawReqsMetForNewBusLines" />
       </CheckBox>
-      <CheckBox IsChecked="{Binding IsNewBusLinesPresentInCharter, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Нову діяльність зазначено в статуті?" ToolTip="Здійснення нових видів діяльності/надання нових фінансових послуг зазначено в статуті банку." />
+      <CheckBox IsChecked="{Binding IsNewBusLinesPresentInCharter, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsNewBusLinesPresentInCharter" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Нову діяльність зазначено в статуті?" ToolTip="Здійснення нових видів діяльності/надання нових фінансових послуг зазначено в статуті банку." Tag="IsNewBusLinesPresentInCharter" />
       </CheckBox>
-      <CheckBox IsChecked="{Binding IsInternalRegulationCopiesAttachedForNewBusLines, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Наявність внутрішніх положень, що регламентують нову діяльність - є/немає?" ToolTip="Копії внутрішніх положень, що регулюють здійснення банком нових видів діяльності або надання нового виду фінансових  послуг, додаються" />
+      <CheckBox IsChecked="{Binding IsInternalRegulationCopiesAttachedForNewBusLines, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsInternalRegulationCopiesAttachedForNewBusLines" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Наявність внутрішніх положень, що регламентують нову діяльність - є/немає?" ToolTip="Копії внутрішніх положень, що регулюють здійснення банком нових видів діяльності або надання нового виду фінансових  послуг, додаються" Tag="IsInternalRegulationCopiesAttachedForNewBusLines" />
       </CheckBox>
-      <CheckBox IsChecked="{Binding IsSigneePersonallyLiableForCopiesAttached, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Я персонально відповідаю за достовірність поданої інформації?" ToolTip="Я несу персональну відповідальність за достовірність усіх поданих документів" />
+      <CheckBox IsChecked="{Binding IsSigneePersonallyLiableForCopiesAttached, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsSigneePersonallyLiableForCopiesAttached" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Я персонально відповідаю за достовірність поданої інформації?" ToolTip="Я несу персональну відповідальність за достовірність усіх поданих документів" Tag="IsSigneePersonallyLiableForCopiesAttached" />
       </CheckBox>
-      <Expander Header="Контакти" ToolTip="У разі виникнення будь-яких питань щодо цього повідомлення або документів, що додаються до нього, прошу звертатися до (прізвище, адреса, номер телефону, факсу)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Contacts, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Контакти" ToolTip="У разі виникнення будь-яких питань щодо цього повідомлення або документів, що додаються до нього, прошу звертатися до (прізвище, адреса, номер телефону, факсу)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Contacts" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding Contacts, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Contacts" />
       </Expander>
-      <Expander Header="Додатки" ToolTip="Додатки" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander x:Name="expAttachements" Header="Додатки" ToolTip="Додатки" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Attachements" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridAttachements" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Attachements, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
+          <DataGrid x:Name="gridAttachements" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Attachements, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Attachements">
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=FileName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Файл" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -297,6 +301,8 @@
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridAttachements" />
                             <Binding ElementName="gridAttachements" />
+                            <Binding ElementName="expAttachements" Path="Header" />
+                            <Binding ElementName="expAttachements" Path="ToolTip" />
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
@@ -316,21 +322,23 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="Attachements">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Attachements" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridAttachements" />
                 <Binding Path="DataContext" ElementName="gridAttachements" />
                 <Binding Path="Attachements" />
                 <Binding ElementName="gridAttachements" />
+                <Binding ElementName="expAttachements" Path="Header" />
+                <Binding ElementName="expAttachements" Path="ToolTip" />
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
         </StackPanel>
       </Expander>
-      <Expander Header="Підписант" ToolTip="Інформація про підписанта (Голова правління Банку)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Signee, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Підписант" ToolTip="Інформація про підписанта (Голова правління Банку)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Signee" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding Signee, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Signee" />
       </Expander>
     </StackPanel>
   </DataTemplate>

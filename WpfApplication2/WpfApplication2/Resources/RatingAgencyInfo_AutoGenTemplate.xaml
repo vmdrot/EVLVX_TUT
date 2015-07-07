@@ -6,16 +6,16 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:RatingAgencyInfo}">
     <StackPanel>
-      <TextBlock Text="Назва" Style="{StaticResource dispNmStyle}" ToolTip="Назва рейтингової аґенції (оригінальна, оригінальною мовою)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва рейтингової аґенції (оригінальна, оригінальною мовою)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Назва українською" Style="{StaticResource dispNmStyle}" ToolTip="Назва рейтингової аґенції українською (якщо оригінальна назва - іншомовна)" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва рейтингової аґенції українською (якщо оригінальна назва - іншомовна)" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <CheckBox IsChecked="{Binding IsGlobal, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Глобальне покриття?" ToolTip="Аґенція рейтингує компанії глобально, а не прив'язана до якоїсь конкретної країни" />
+      <TextBlock Text="Назва" Style="{StaticResource dispNmStyle}" ToolTip="Назва рейтингової аґенції (оригінальна, оригінальною мовою)" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва рейтингової аґенції (оригінальна, оригінальною мовою)" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Назва українською" Style="{StaticResource dispNmStyle}" ToolTip="Назва рейтингової аґенції українською (якщо оригінальна назва - іншомовна)" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва рейтингової аґенції українською (якщо оригінальна назва - іншомовна)" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <CheckBox IsChecked="{Binding IsGlobal, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsGlobal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Глобальне покриття?" ToolTip="Аґенція рейтингує компанії глобально, а не прив'язана до якоїсь конкретної країни" Tag="IsGlobal" />
       </CheckBox>
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock Text="Країна покриття" Style="{StaticResource dispNmStyle}" ToolTip="Якщо аґенція не є глобальною, а рейтингує компанії однієї конкретної країни" />
-        <ComboBox ToolTip="Якщо аґенція не є глобальною, а рейтингує компанії однієї конкретної країни" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=CoverageCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
+      <StackPanel Orientation="Horizontal" Tag="CoverageCountry" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock Text="Країна покриття" Style="{StaticResource dispNmStyle}" ToolTip="Якщо аґенція не є глобальною, а рейтингує компанії однієї конкретної країни" Tag="CoverageCountry" />
+        <ComboBox ToolTip="Якщо аґенція не є глобальною, а рейтингує компанії однієї конкретної країни" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" Tag="CoverageCountry" SelectedItem="{Binding Path=CoverageCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
           <ComboBox.ItemContainerStyle>
             <Style>
               <Setter Property="Control.ToolTip" Value="{Binding CountryNameEng}" />
@@ -23,8 +23,8 @@
           </ComboBox.ItemContainerStyle>
         </ComboBox>
       </StackPanel>
-      <Expander Header="Контакти" ToolTip="Контактна інформація рейтингової аґенції (напр. веб-сайт); контакти особи/підрозділу, що відповідальні за Ваш рейтинг (якщо є)." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Contacts, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Контакти" ToolTip="Контактна інформація рейтингової аґенції (напр. веб-сайт); контакти особи/підрозділу, що відповідальні за Ваш рейтинг (якщо є)." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Contacts" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding Contacts, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Contacts" />
       </Expander>
     </StackPanel>
   </DataTemplate>

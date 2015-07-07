@@ -7,19 +7,19 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:TotalOwnershipDetailsInfo}">
     <StackPanel>
-      <Expander Header="Пряма власність" ToolTip="Пряма власність" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding DirectOwnership, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Пряма власність" ToolTip="Пряма власність" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="DirectOwnership" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding DirectOwnership, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="DirectOwnership" />
       </Expander>
-      <Expander Header="Опосередкована власність" ToolTip="Опосередкована власність" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding ImplicitOwnership, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Опосередкована власність" ToolTip="Опосередкована власність" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ImplicitOwnership" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding ImplicitOwnership, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="ImplicitOwnership" />
       </Expander>
-      <Expander Header="Власність, що набувається" ToolTip="Власність, що набувається" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding AcquiredVotes, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Власність, що набувається" ToolTip="Власність, що набувається" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="AcquiredVotes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding AcquiredVotes, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="AcquiredVotes" />
       </Expander>
-      <TextBlock Text="Усього % у загальній власності" Style="{StaticResource dispNmStyle}" ToolTip="Усього % у загальній власності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TotalCapitalSharePct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="Усього % у загальній власності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="100" HorizontalAlignment="Left" />
-      <TextBlock Text="Усього голосів" Style="{StaticResource dispNmStyle}" ToolTip="Усього голосів" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TotalVotes, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N0} }" ToolTip="Усього голосів" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" HorizontalAlignment="Left" />
+      <TextBlock Text="Усього % у загальній власності" Style="{StaticResource dispNmStyle}" ToolTip="Усього % у загальній власності" Tag="TotalCapitalSharePct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TotalCapitalSharePct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="Усього % у загальній власності" Tag="TotalCapitalSharePct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="100" HorizontalAlignment="Left" />
+      <TextBlock Text="Усього голосів" Style="{StaticResource dispNmStyle}" ToolTip="Усього голосів" Tag="TotalVotes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TotalVotes, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N0} }" ToolTip="Усього голосів" Tag="TotalVotes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" HorizontalAlignment="Left" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

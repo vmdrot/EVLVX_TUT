@@ -7,18 +7,18 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:ProfessionLicenseInfo}">
     <StackPanel>
-      <Expander Header="Ліцензор" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding LicenseIssuer, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Ліцензор" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="LicenseIssuer" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding LicenseIssuer, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="LicenseIssuer" />
       </Expander>
-      <TextBlock Text="Дата видачі" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding LicenseIssueDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Дійсна до" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding LicenseValidTill, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="№ ліцензії" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding LicenseIDNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Header="Кваліфікації/види діяльності за ліцензією" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <TextBlock Text="Дата видачі" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="LicenseIssueDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding LicenseIssueDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="LicenseIssueDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Дійсна до" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="LicenseValidTill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding LicenseValidTill, diag:PresentationTraceSources.TraceLevel=High}" Tag="LicenseValidTill" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="№ ліцензії" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="LicenseIDNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding LicenseIDNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="LicenseIDNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander x:Name="expLicenseQualifications" Header="Кваліфікації/види діяльності за ліцензією" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="LicenseQualifications" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridLicenseQualifications" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding LicenseQualifications, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
+          <DataGrid x:Name="gridLicenseQualifications" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding LicenseQualifications, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="LicenseQualifications">
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=QualificationCode, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Код професії/діяльності (якщо існує)" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -74,6 +74,8 @@
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridLicenseQualifications" />
                             <Binding ElementName="gridLicenseQualifications" />
+                            <Binding ElementName="expLicenseQualifications" Path="Header" />
+                            <Binding ElementName="expLicenseQualifications" Path="ToolTip" />
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
@@ -93,21 +95,23 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="LicenseQualifications">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="LicenseQualifications" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridLicenseQualifications" />
                 <Binding Path="DataContext" ElementName="gridLicenseQualifications" />
                 <Binding Path="LicenseQualifications" />
                 <Binding ElementName="gridLicenseQualifications" />
+                <Binding ElementName="expLicenseQualifications" Path="Header" />
+                <Binding ElementName="expLicenseQualifications" Path="ToolTip" />
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
         </StackPanel>
       </Expander>
-      <TextBlock Text="Формулювання/текст ліцензії" Style="{StaticResource dispNmStyle}" ToolTip="Додаткові суттєві відомості про ліцензію" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding LicenseClause, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Додаткові суттєві відомості про ліцензію" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Формулювання/текст ліцензії" Style="{StaticResource dispNmStyle}" ToolTip="Додаткові суттєві відомості про ліцензію" Tag="LicenseClause" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding LicenseClause, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Додаткові суттєві відомості про ліцензію" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="LicenseClause" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

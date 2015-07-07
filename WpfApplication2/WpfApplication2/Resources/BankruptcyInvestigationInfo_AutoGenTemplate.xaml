@@ -6,15 +6,15 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:BankruptcyInvestigationInfo}">
     <StackPanel>
-      <TextBlock Text="Дата порушення справи про банкрутство" Style="{StaticResource dispNmStyle}" ToolTip="Дата відкриття справи" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="Дата відкриття справи" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding CaseFiledDt, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Статус" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="Поточний статус справи" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.BankruptcyCaseResolutionTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding CurrentStatus, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Дата набуття поточного статусу" Style="{StaticResource dispNmStyle}" ToolTip="Перебуває в нинішньому статусі починаючи з..." Visibility="{Binding Path=IsCurrentStatusNotNoneOrCaseFiled, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="Перебуває в нинішньому статусі починаючи з..." Style="{StaticResource dtEdStyle}" SelectedDate="{Binding InCurrentStatusSince, diag:PresentationTraceSources.TraceLevel=High}" Visibility="{Binding Path=IsCurrentStatusNotNoneOrCaseFiled, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Header="Список судових рішень у справі" ToolTip="Перелік судових рішень по справі банкрутства" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <TextBlock Text="Дата порушення справи про банкрутство" Style="{StaticResource dispNmStyle}" ToolTip="Дата відкриття справи" Tag="CaseFiledDt" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="Дата відкриття справи" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding CaseFiledDt, diag:PresentationTraceSources.TraceLevel=High}" Tag="CaseFiledDt" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Статус" Style="{StaticResource dispNmStyle}" Tag="CurrentStatus" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="Поточний статус справи" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.BankruptcyCaseResolutionTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding CurrentStatus, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="CurrentStatus" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Дата набуття поточного статусу" Style="{StaticResource dispNmStyle}" ToolTip="Перебуває в нинішньому статусі починаючи з..." Tag="InCurrentStatusSince" Visibility="{Binding Path=IsCurrentStatusNotNoneOrCaseFiled, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="Перебуває в нинішньому статусі починаючи з..." Style="{StaticResource dtEdStyle}" SelectedDate="{Binding InCurrentStatusSince, diag:PresentationTraceSources.TraceLevel=High}" Tag="InCurrentStatusSince" Visibility="{Binding Path=IsCurrentStatusNotNoneOrCaseFiled, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander x:Name="expCourtDecisions" Header="Список судових рішень у справі" ToolTip="Перелік судових рішень по справі банкрутства" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="CourtDecisions" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridCourtDecisions" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding CourtDecisions, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
+          <DataGrid x:Name="gridCourtDecisions" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding CourtDecisions, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="CourtDecisions">
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=Court, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Court" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -114,6 +114,8 @@
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridCourtDecisions" />
                             <Binding ElementName="gridCourtDecisions" />
+                            <Binding ElementName="expCourtDecisions" Path="Header" />
+                            <Binding ElementName="expCourtDecisions" Path="ToolTip" />
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
@@ -133,14 +135,16 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="CourtDecisions">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="CourtDecisions" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridCourtDecisions" />
                 <Binding Path="DataContext" ElementName="gridCourtDecisions" />
                 <Binding Path="CourtDecisions" />
                 <Binding ElementName="gridCourtDecisions" />
+                <Binding ElementName="expCourtDecisions" Path="Header" />
+                <Binding ElementName="expCourtDecisions" Path="ToolTip" />
               </MultiBinding>
             </Button.CommandParameter>
           </Button>

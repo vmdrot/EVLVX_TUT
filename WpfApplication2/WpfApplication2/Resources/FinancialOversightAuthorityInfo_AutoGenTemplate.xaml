@@ -7,9 +7,9 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:FinancialOversightAuthorityInfo}">
     <StackPanel>
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock Text="Країна юрисдикції" Style="{StaticResource dispNmStyle}" ToolTip="" />
-        <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=Jurisdiction, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
+      <StackPanel Orientation="Horizontal" Tag="Jurisdiction" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock Text="Країна юрисдикції" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Jurisdiction" />
+        <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" Tag="Jurisdiction" SelectedItem="{Binding Path=Jurisdiction, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
           <ComboBox.ItemContainerStyle>
             <Style>
               <Setter Property="Control.ToolTip" Value="{Binding CountryNameEng}" />
@@ -17,15 +17,15 @@
           </ComboBox.ItemContainerStyle>
         </ComboBox>
       </StackPanel>
-      <TextBlock Text="Назва органу" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding AuthorityName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Назва органу(українською)" Style="{StaticResource dispNmStyle}" ToolTip="" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding AuthorityNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Header="Адреса" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Address, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <TextBlock Text="Назва органу" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="AuthorityName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding AuthorityName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="AuthorityName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Назва органу(українською)" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="AuthorityNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding AuthorityNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="AuthorityNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Header="Адреса" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Address" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding Address, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Address" />
       </Expander>
-      <Expander Header="Контакти" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Contacts, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Контакти" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Contacts" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding Contacts, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Contacts" />
       </Expander>
     </StackPanel>
   </DataTemplate>

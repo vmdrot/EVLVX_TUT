@@ -5,22 +5,22 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:BankInfo}">
     <StackPanel>
-      <TextBlock Text="МФО" Style="{StaticResource dispNmStyle}" ToolTip="МФО - для українського банку, для іноземного банку - національний кліринговий ідентифікатор (Sorted Chaps, BLZ, Code Guichet, тощо)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MFO, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="МФО - для українського банку, для іноземного банку - національний кліринговий ідентифікатор (Sorted Chaps, BLZ, Code Guichet, тощо)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="№ у реєстрі банків" Style="{StaticResource dispNmStyle}" ToolTip="№ у реєстрі банків (лише для головних контор)" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistryNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="№ у реєстрі банків (лише для головних контор)" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Код банку" Style="{StaticResource dispNmStyle}" ToolTip="Код банку (лише для головних контор)" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Code, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Код банку (лише для головних контор)" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Найменування банку" Style="{StaticResource dispNmStyle}" ToolTip="Найменування банку (в оригіналі)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування банку (в оригіналі)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Найменування банку(українською)" Style="{StaticResource dispNmStyle}" ToolTip="Найменування банку(українською)" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування банку(українською)" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblLegalPerson" Height="auto" Width="auto" Text="Відомості про юрособу-банк" Style="{StaticResource dispNmStyle}" ToolTip="Відомості про юрособу-банк" />
+      <TextBlock Text="МФО" Style="{StaticResource dispNmStyle}" ToolTip="МФО - для українського банку, для іноземного банку - національний кліринговий ідентифікатор (Sorted Chaps, BLZ, Code Guichet, тощо)" Tag="MFO" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MFO, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="МФО - для українського банку, для іноземного банку - національний кліринговий ідентифікатор (Sorted Chaps, BLZ, Code Guichet, тощо)" Tag="MFO" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="№ у реєстрі банків" Style="{StaticResource dispNmStyle}" ToolTip="№ у реєстрі банків (лише для головних контор)" Tag="RegistryNr" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistryNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="№ у реєстрі банків (лише для головних контор)" Tag="RegistryNr" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Код банку" Style="{StaticResource dispNmStyle}" ToolTip="Код банку (лише для головних контор)" Tag="Code" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Code, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Код банку (лише для головних контор)" Tag="Code" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Найменування банку" Style="{StaticResource dispNmStyle}" ToolTip="Найменування банку (в оригіналі)" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування банку (в оригіналі)" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Найменування банку(українською)" Style="{StaticResource dispNmStyle}" ToolTip="Найменування банку(українською)" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування банку(українською)" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <StackPanel Orientation="Horizontal" Tag="LegalPerson" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblLegalPerson" Height="auto" Width="auto" Text="Відомості про юрособу-банк" Style="{StaticResource dispNmStyle}" ToolTip="Відомості про юрособу-банк" Tag="LegalPerson" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxLegalPerson" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Відомості про юрособу-банк" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=LegalPerson, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddLegalPerson" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <ComboBox x:Name="cbxLegalPerson" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Відомості про юрособу-банк" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="LegalPerson" SelectedValuePath="ID" SelectedValue="{Binding Path=LegalPerson, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddLegalPerson" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="LegalPerson">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="LegalPerson" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxLegalPerson" />
@@ -29,11 +29,11 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <TextBlock Text="SWIFT адреса" Style="{StaticResource dispNmStyle}" ToolTip="Див. http://www.swift.com/bsl/" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SWIFTBIC, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Див. http://www.swift.com/bsl/" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock Text="Країна діяльності" Style="{StaticResource dispNmStyle}" ToolTip="" />
-        <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=OperationCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
+      <TextBlock Text="SWIFT адреса" Style="{StaticResource dispNmStyle}" ToolTip="Див. http://www.swift.com/bsl/" Tag="SWIFTBIC" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SWIFTBIC, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Див. http://www.swift.com/bsl/" Tag="SWIFTBIC" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <StackPanel Orientation="Horizontal" Tag="OperationCountry" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock Text="Країна діяльності" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="OperationCountry" />
+        <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" Tag="OperationCountry" SelectedItem="{Binding Path=OperationCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
           <ComboBox.ItemContainerStyle>
             <Style>
               <Setter Property="Control.ToolTip" Value="{Binding CountryNameEng}" />
