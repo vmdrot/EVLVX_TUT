@@ -436,6 +436,16 @@
             Поле необхідне лише якщо вимагається у анкеті
             </summary>
         </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.PhysicalPersonInfo.IsResidentialAndRegistrationAddressDifferent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.PhysicalPersonInfo.ActualAddress">
+            <summary>
+            Поле необхідне лише якщо вимагається у анкеті, та якщо відрізняється від місця реєстрації.
+            </summary>
+        </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.PhysicalPersonInfo.CitizenshipCountry">
             <summary>
             Обов'язкове поле (окрім хіба ContactInfo)
@@ -851,6 +861,16 @@
             <summary>
             Адреса юрособи. Поле обов'язкове, якщо контекстом не вказано інше.
             Мінімальне заповнення - країна та місто
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.IsActualAndRegistrationAddressDifferent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.ActualAddress">
+            <summary>
+            Поле необхідне лише якщо вимагається у анкеті, та якщо відрізняється від офіційної юридичної адреси.
             </summary>
         </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.ResidenceCountry">

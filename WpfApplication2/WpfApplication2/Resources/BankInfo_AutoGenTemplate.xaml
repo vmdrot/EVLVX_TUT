@@ -31,7 +31,13 @@
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SWIFTBIC, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Див. http://www.swift.com/bsl/" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock Text="Країна діяльності" Style="{StaticResource dispNmStyle}" ToolTip="" />
-        <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=OperationCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175" />
+        <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=OperationCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
+          <ComboBox.ItemContainerStyle>
+            <Style>
+              <Setter Property="Control.ToolTip" Value="{Binding CountryNameEng}" />
+            </Style>
+          </ComboBox.ItemContainerStyle>
+        </ComboBox>
       </StackPanel>
     </StackPanel>
   </DataTemplate>
