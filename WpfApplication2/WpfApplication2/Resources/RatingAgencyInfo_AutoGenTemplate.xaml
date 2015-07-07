@@ -15,7 +15,13 @@
       </CheckBox>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock Text="Країна покриття" Style="{StaticResource dispNmStyle}" ToolTip="Якщо аґенція не є глобальною, а рейтингує компанії однієї конкретної країни" />
-        <ComboBox ToolTip="Якщо аґенція не є глобальною, а рейтингує компанії однієї конкретної країни" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=CoverageCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175" />
+        <ComboBox ToolTip="Якщо аґенція не є глобальною, а рейтингує компанії однієї конкретної країни" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=CoverageCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
+          <ComboBox.ItemContainerStyle>
+            <Style>
+              <Setter Property="Control.ToolTip" Value="{Binding CountryNameEng}" />
+            </Style>
+          </ComboBox.ItemContainerStyle>
+        </ComboBox>
       </StackPanel>
       <Expander Header="Контакти" ToolTip="Контактна інформація рейтингової аґенції (напр. веб-сайт); контакти особи/підрозділу, що відповідальні за Ваш рейтинг (якщо є)." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Contacts, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />

@@ -5,14 +5,14 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:SharesAcquisitionInfo}">
     <StackPanel>
-      <TextBlock Text="Кількість акцій (одиниць)" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesCount, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="У тому числі кількість акцій з правом голосу" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding InclVotingSharesCount, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Кількість акцій (одиниць)" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesCount, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N0} }" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" HorizontalAlignment="Left" />
+      <TextBlock Text="У тому числі кількість акцій з правом голосу" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding InclVotingSharesCount, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N0} }" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" HorizontalAlignment="Left" />
       <TextBlock Text="номінальна вартість однієї акції (паю)" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharePrice, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharePrice, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" HorizontalAlignment="Left" />
       <TextBlock Text="загальна сума ... гривень" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TotalCosts, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TotalCosts, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" HorizontalAlignment="Left" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

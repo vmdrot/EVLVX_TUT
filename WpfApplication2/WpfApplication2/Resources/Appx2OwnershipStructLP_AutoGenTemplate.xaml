@@ -15,7 +15,13 @@
     <StackPanel>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblBankRef" Height="auto" Width="auto" Text="Банк" Style="{StaticResource dispNmStyle}" ToolTip="Банк" />
-        <ComboBox x:Name="cbxBankRef" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="Банк" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedItem="{Binding Path=BankRef, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
+        <ComboBox x:Name="cbxBankRef" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="Банк" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedItem="{Binding Path=BankRef, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250">
+          <ComboBox.ItemContainerStyle>
+            <Style>
+              <Setter Property="Control.ToolTip" Value="{Binding MFO}" />
+            </Style>
+          </ComboBox.ItemContainerStyle>
+        </ComboBox>
         <Button x:Name="btnAddBankRef" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}">
           <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
           <Button.CommandParameter>

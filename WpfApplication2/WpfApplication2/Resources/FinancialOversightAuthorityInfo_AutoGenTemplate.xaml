@@ -9,7 +9,13 @@
     <StackPanel>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock Text="Країна юрисдикції" Style="{StaticResource dispNmStyle}" ToolTip="" />
-        <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=Jurisdiction, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175" />
+        <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=Jurisdiction, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
+          <ComboBox.ItemContainerStyle>
+            <Style>
+              <Setter Property="Control.ToolTip" Value="{Binding CountryNameEng}" />
+            </Style>
+          </ComboBox.ItemContainerStyle>
+        </ComboBox>
       </StackPanel>
       <TextBlock Text="Назва органу" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding AuthorityName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

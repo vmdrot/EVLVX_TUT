@@ -36,7 +36,7 @@
         <ContentControl Content="{Binding LegalTransaction, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
       </Expander>
       <TextBlock Text="%, що набувається" Style="{StaticResource dispNmStyle}" ToolTip="Відсоток у статутному капіталі юридичної особи або банку, який придбавається" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesPct, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Відсоток у статутному капіталі юридичної особи або банку, який придбавається" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesPct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="Відсоток у статутному капіталі юридичної особи або банку, який придбавається" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="100" HorizontalAlignment="Left" />
       <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*" />

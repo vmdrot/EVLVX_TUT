@@ -48,7 +48,7 @@
         <ContentControl Grid.Column="1" Content="{Binding Principal, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" />
       </Grid>
       <TextBlock Text="Предмет боргу" Style="{StaticResource dispNmStyle}" ToolTip="У зв'язку з чим виник борг; якщо позика - для чого було надано, і т.д." xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding IndebtnessSubject, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="У зв'язку з чим виник борг; якщо позика - для чого було надано, і т.д." xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding IndebtnessSubject, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="У зв'язку з чим виник борг; якщо позика - для чого було надано, і т.д." TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Дата погашення" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding RepaymentDueDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
