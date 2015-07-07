@@ -1,0 +1,56 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Styles.xaml" />
+        <ResourceDictionary Source="Converters.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    <DataTemplate DataType="{x:Type bgud:BankInfo}">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+                <TextBlock Text="Країна діяльності" Style="{StaticResource dispNmStyle}" ToolTip="" />
+                <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=OperationCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
+                    <ComboBox.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Control.ToolTip" Value="{Binding CountryNameEng}" />
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}">
+                <TextBlock x:Name="lblBankRef" Height="auto" Width="auto" Text="Обрати український банк" Style="{StaticResource dispNmStyle}" ToolTip="стосовно участі в ..." />
+                <ComboBox x:Name="cbxBankRef" DisplayMemberPath="Name" HorizontalAlignment="Stretch" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedItem="{Binding RelativeSource={RelativeSource TemplatedParent}}" Width="250">
+                    <ComboBox.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Control.ToolTip" Value="{Binding MFO}" />
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}">
+                <TextBlock Text="МФО" Style="{StaticResource dispNmStyle}" ToolTip="МФО - для українського банку, для іноземного банку - національний кліринговий ідентифікатор (Sorted Chaps, BLZ, Code Guichet, тощо)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MFO, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="МФО - для українського банку, для іноземного банку - національний кліринговий ідентифікатор (Sorted Chaps, BLZ, Code Guichet, тощо)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                <TextBlock Text="№ у реєстрі банків" Style="{StaticResource dispNmStyle}" ToolTip="№ у реєстрі банків (лише для головних контор)" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistryNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="№ у реєстрі банків (лише для головних контор)" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                <TextBlock Text="Код банку" Style="{StaticResource dispNmStyle}" ToolTip="Код банку (лише для головних контор)" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Code, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Код банку (лише для головних контор)" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                <TextBlock Text="Найменування банку" Style="{StaticResource dispNmStyle}" ToolTip="Найменування банку (в оригіналі)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування банку (в оригіналі)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                <TextBlock Text="Найменування банку(українською)" Style="{StaticResource dispNmStyle}" ToolTip="Найменування банку(українською)" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування банку(українською)" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+                    <TextBlock x:Name="lblLegalPerson" Height="auto" Width="auto" Text="Відомості про юрособу-банк" Style="{StaticResource dispNmStyle}" ToolTip="Відомості про юрособу-банк" />
+                    <ComboBox x:Name="cbxLegalPerson" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Відомості про юрособу-банк" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=LegalPerson, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+                    <Button x:Name="btnAddLegalPerson" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
+                        <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+                        <Button.CommandParameter>
+                            <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding ElementName="cbxLegalPerson" />
+                            </MultiBinding>
+                        </Button.CommandParameter>
+                    </Button>
+                </StackPanel>
+                <TextBlock Text="SWIFT адреса" Style="{StaticResource dispNmStyle}" ToolTip="Див. http://www.swift.com/bsl/" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SWIFTBIC, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Див. http://www.swift.com/bsl/" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+            </StackPanel>
+        </StackPanel>
+    </DataTemplate>
+</ResourceDictionary>

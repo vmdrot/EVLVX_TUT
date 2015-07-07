@@ -5,7 +5,7 @@
     <ResourceDictionary Source="CreditRatingInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="FinancialOversightAuthorityInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="TotalOwnershipSummaryInfo_AutoGenTemplate.xaml" />
-    <ResourceDictionary Source="BankInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="BankAccountInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="SignificantOwnershipAcquisitionWaysInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="IPOSharesPurchaseInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="SecondaryMarketSharesPurchaseInfo_AutoGenTemplate.xaml" />
@@ -25,35 +25,39 @@
     <StackPanel>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblBankRef" Height="auto" Width="auto" Text="Повне офіційне найменування банку" Style="{StaticResource dispNmStyle}" ToolTip="стосовно участі в ..." />
-        <ComboBox x:Name="cbxBankRef" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="стосовно участі в ..." MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedItem="{Binding Path=BankRef, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250">
-          <ComboBox.ItemContainerStyle>
-            <Style>
-              <Setter Property="Control.ToolTip" Value="{Binding MFO}" />
-            </Style>
-          </ComboBox.ItemContainerStyle>
-        </ComboBox>
-        <Button x:Name="btnAddBankRef" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}">
-          <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
-          <Button.CommandParameter>
-            <MultiBinding Converter="{StaticResource multiValConv}">
-              <Binding ElementName="cbxBankRef" />
-            </MultiBinding>
-          </Button.CommandParameter>
-        </Button>
+        <StackPanel Orientation="Horizontal">
+          <ComboBox x:Name="cbxBankRef" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="стосовно участі в ..." MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedItem="{Binding Path=BankRef, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250">
+            <ComboBox.ItemContainerStyle>
+              <Style>
+                <Setter Property="Control.ToolTip" Value="{Binding MFO}" />
+              </Style>
+            </ComboBox.ItemContainerStyle>
+          </ComboBox>
+          <Button x:Name="btnAddBankRef" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxBankRef" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
+        </StackPanel>
       </StackPanel>
       <Expander Header="І. Інформація про юридичну особу" ToolTip="І. Інформація про юридичну особу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel Orientation="Vertical" Margin="5,2">
           <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <TextBlock x:Name="lblAcquiree" Height="auto" Width="auto" Text="Юр.особа-заявник" Style="{StaticResource dispNmStyle}" ToolTip="1. Інформація про юридичну особу" />
-            <ComboBox x:Name="cbxAcquiree" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="1. Інформація про юридичну особу" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Acquiree, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-            <Button x:Name="btnAddAcquiree" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-              <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
-              <Button.CommandParameter>
-                <MultiBinding Converter="{StaticResource multiValConv}">
-                  <Binding ElementName="cbxAcquiree" />
-                </MultiBinding>
-              </Button.CommandParameter>
-            </Button>
+            <StackPanel Orientation="Horizontal">
+              <ComboBox x:Name="cbxAcquiree" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="1. Інформація про юридичну особу" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Acquiree, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+              <Button x:Name="btnAddAcquiree" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
+                <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+                <Button.CommandParameter>
+                  <MultiBinding Converter="{StaticResource multiValConv}">
+                    <Binding ElementName="cbxAcquiree" />
+                  </MultiBinding>
+                </Button.CommandParameter>
+              </Button>
+            </StackPanel>
           </StackPanel>
           <Expander Header="2. Ідентифікаційні дані::Рейтингова оцінка" ToolTip="(за рейтингом, який підтверджений у бюлетені, однієї з провідних рейтингових компаній IBCA,Standart &amp; Poor's, Moody's)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
