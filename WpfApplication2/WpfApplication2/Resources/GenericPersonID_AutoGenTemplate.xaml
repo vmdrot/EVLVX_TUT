@@ -5,17 +5,17 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:GenericPersonID}">
     <StackPanel>
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock Text="CountryISO3Code" Style="{StaticResource dispNmStyle}" ToolTip="CountryISO3Code" />
-        <ComboBox ToolTip="CountryISO3Code" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedValuePath="CountryISONr" SelectedValue="{Binding Path=CountryISO3Code, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175" />
+      <StackPanel Orientation="Horizontal" Tag="CountryISO3Code" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock Text="CountryISO3Code" Style="{StaticResource dispNmStyle}" ToolTip="CountryISO3Code" Tag="CountryISO3Code" />
+        <ComboBox ToolTip="CountryISO3Code" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" Tag="CountryISO3Code" SelectedValuePath="CountryISONr" SelectedValue="{Binding Path=CountryISO3Code, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175" />
       </StackPanel>
-      <StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
-        <TextBlock Text="PersonType" Style="{StaticResource dispNmStyle}" ToolTip="PersonType" />
-        <RadioButton Content="Фізична особа" GroupName="rbgPersonType" ToolTip="Physical - Фізична особа" IsChecked="{Binding Path=PersonType, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Physical}" />
-        <RadioButton Content="Юридична особа" GroupName="rbgPersonType" ToolTip="Legal - Юридична особа" IsChecked="{Binding Path=PersonType, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Legal}" />
+      <StackPanel Tag="PersonType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
+        <TextBlock Text="PersonType" Style="{StaticResource dispNmStyle}" ToolTip="PersonType" Tag="PersonType" />
+        <RadioButton Content="Фізична особа" GroupName="rbgPersonType" ToolTip="Physical - Фізична особа" IsChecked="{Binding Path=PersonType, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Physical}" Tag="PersonType" />
+        <RadioButton Content="Юридична особа" GroupName="rbgPersonType" ToolTip="Legal - Юридична особа" IsChecked="{Binding Path=PersonType, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Legal}" Tag="PersonType" />
       </StackPanel>
-      <TextBlock Text="PersonCode" Style="{StaticResource dispNmStyle}" ToolTip="PersonCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PersonCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="PersonCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="PersonCode" Style="{StaticResource dispNmStyle}" ToolTip="PersonCode" Tag="PersonCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PersonCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="PersonCode" Tag="PersonCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

@@ -8,12 +8,12 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:ContactInfo}">
     <StackPanel>
-      <Expander Header="Контактна особа" ToolTip="Контактна особа (фізособа)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Person, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Контактна особа" ToolTip="Контактна особа (фізособа)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Person" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding Person, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Person" />
       </Expander>
-      <Expander Header="Телефони" ToolTip="Перелік телефонів" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander x:Name="expPhones" Header="Телефони" ToolTip="Перелік телефонів" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Phones" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridPhones" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Phones, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
+          <DataGrid x:Name="gridPhones" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Phones, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Phones">
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=PhoneName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип/назва телефону" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -91,6 +91,8 @@
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridPhones" />
                             <Binding ElementName="gridPhones" />
+                            <Binding ElementName="expPhones" Path="Header" />
+                            <Binding ElementName="expPhones" Path="ToolTip" />
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
@@ -110,24 +112,26 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="Phones">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Phones" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridPhones" />
                 <Binding Path="DataContext" ElementName="gridPhones" />
                 <Binding Path="Phones" />
                 <Binding ElementName="gridPhones" />
+                <Binding ElementName="expPhones" Path="Header" />
+                <Binding ElementName="expPhones" Path="ToolTip" />
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
         </StackPanel>
       </Expander>
-      <TextBlock Text="Факс" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Fax, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Header="E-mail-и" ToolTip="Перелік адрес електронної пошти" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <TextBlock Text="Факс" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Fax" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Fax, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="Fax" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander x:Name="expEmails" Header="E-mail-и" ToolTip="Перелік адрес електронної пошти" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Emails" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridEmails" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Emails, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
+          <DataGrid x:Name="gridEmails" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Emails, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Emails">
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=Email, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Адреса ел.пошти" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -183,6 +187,8 @@
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridEmails" />
                             <Binding ElementName="gridEmails" />
+                            <Binding ElementName="expEmails" Path="Header" />
+                            <Binding ElementName="expEmails" Path="ToolTip" />
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
@@ -202,21 +208,23 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="Emails">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Emails" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridEmails" />
                 <Binding Path="DataContext" ElementName="gridEmails" />
                 <Binding Path="Emails" />
                 <Binding ElementName="gridEmails" />
+                <Binding ElementName="expEmails" Path="Header" />
+                <Binding ElementName="expEmails" Path="ToolTip" />
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
         </StackPanel>
       </Expander>
-      <TextBlock Text="www" Style="{StaticResource dispNmStyle}" ToolTip="Веб-сайт" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding www, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Веб-сайт" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="www" Style="{StaticResource dispNmStyle}" ToolTip="Веб-сайт" Tag="www" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding www, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Веб-сайт" Tag="www" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

@@ -5,12 +5,12 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:BankAccountInfo}">
     <StackPanel>
-      <StackPanel Orientation="Vertical" Visibility="{Binding Path=WithMoreDetails, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblAccountOwner" Height="auto" Width="auto" Text="Власник рахунку" Style="{StaticResource dispNmStyle}" ToolTip="" />
+      <StackPanel Orientation="Vertical" Tag="AccountOwner" Visibility="{Binding Path=WithMoreDetails, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblAccountOwner" Height="auto" Width="auto" Text="Власник рахунку" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="AccountOwner" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxAccountOwner" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=AccountOwner, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddAccountOwner" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <ComboBox x:Name="cbxAccountOwner" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="AccountOwner" SelectedValuePath="ID" SelectedValue="{Binding Path=AccountOwner, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddAccountOwner" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="AccountOwner">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="AccountOwner" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxAccountOwner" />
@@ -19,18 +19,18 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <StackPanel Orientation="Vertical" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblBank" Height="auto" Width="auto" Text="У банку..." Style="{StaticResource dispNmStyle}" ToolTip="" />
+      <StackPanel Orientation="Vertical" Tag="Bank" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblBank" Height="auto" Width="auto" Text="У банку..." Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Bank" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxBank" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedItem="{Binding Path=Bank, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250">
+          <ComboBox x:Name="cbxBank" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Bank" SelectedItem="{Binding Path=Bank, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250">
             <ComboBox.ItemContainerStyle>
               <Style>
                 <Setter Property="Control.ToolTip" Value="{Binding MFO}" />
               </Style>
             </ComboBox.ItemContainerStyle>
           </ComboBox>
-          <Button x:Name="btnAddBank" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <Button x:Name="btnAddBank" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Bank">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Bank" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxBank" />
@@ -39,14 +39,14 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <CheckBox IsChecked="{Binding WithMoreDetails, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Вказати більше деталей" ToolTip="(відзначити за потреби вказати додаткову інформацію про рахунок)" />
+      <CheckBox IsChecked="{Binding WithMoreDetails, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="WithMoreDetails" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Вказати більше деталей" ToolTip="(відзначити за потреби вказати додаткову інформацію про рахунок)" Tag="WithMoreDetails" />
       </CheckBox>
-      <TextBlock Text="№ рахунку" Style="{StaticResource dispNmStyle}" ToolTip="" Visibility="{Binding Path=WithMoreDetails, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding AccountNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Visibility="{Binding Path=WithMoreDetails, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="350" MinWidth="250" HorizontalAlignment="Left" />
-      <StackPanel Orientation="Vertical" Visibility="{Binding Path=WithMoreDetails, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock Text="Валюта рахунку" Style="{StaticResource dispNmStyle}" ToolTip="" />
-        <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgud:CurrencyInfo.AllCurrencies}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CCYCode" SelectedValuePath="CCYCode" SelectedValue="{Binding Path=AccountCCY, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="85">
+      <TextBlock Text="№ рахунку" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="AccountNr" Visibility="{Binding Path=WithMoreDetails, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding AccountNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="AccountNr" Visibility="{Binding Path=WithMoreDetails, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="350" MinWidth="250" HorizontalAlignment="Left" />
+      <StackPanel Orientation="Vertical" Tag="AccountCCY" Visibility="{Binding Path=WithMoreDetails, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock Text="Валюта рахунку" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="AccountCCY" />
+        <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgud:CurrencyInfo.AllCurrencies}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CCYCode" Tag="AccountCCY" SelectedValuePath="CCYCode" SelectedValue="{Binding Path=AccountCCY, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="85">
           <ComboBox.ItemContainerStyle>
             <Style>
               <Setter Property="Control.ToolTip" Value="{Binding CCYName}" />
@@ -54,8 +54,8 @@
           </ComboBox.ItemContainerStyle>
         </ComboBox>
       </StackPanel>
-      <TextBlock Text="Опис/примітки/призначення рахунку" Style="{StaticResource dispNmStyle}" ToolTip="" Visibility="{Binding Path=WithMoreDetails, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding AccountDescription, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Visibility="{Binding Path=WithMoreDetails, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Опис/примітки/призначення рахунку" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="AccountDescription" Visibility="{Binding Path=WithMoreDetails, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding AccountDescription, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="AccountDescription" Visibility="{Binding Path=WithMoreDetails, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

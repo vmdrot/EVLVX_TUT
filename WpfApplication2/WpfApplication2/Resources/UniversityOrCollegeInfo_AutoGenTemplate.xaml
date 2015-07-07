@@ -6,15 +6,15 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:UniversityOrCollegeInfo}">
     <StackPanel>
-      <TextBlock Text="Назва ВНЗ" Style="{StaticResource dispNmStyle}" ToolTip="Назва вищого навчального закладу оригінальною мовою" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding UniversityName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва вищого навчального закладу оригінальною мовою" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Назва ВНЗ (українською)" Style="{StaticResource dispNmStyle}" ToolTip="Назва вищого навчального закладу оригінальною мовою українською (якщо оригінальна мова інша" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding UniversityNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва вищого навчального закладу оригінальною мовою українською (якщо оригінальна мова інша" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Header="Адреса ВНЗ" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Address, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <TextBlock Text="Назва ВНЗ" Style="{StaticResource dispNmStyle}" ToolTip="Назва вищого навчального закладу оригінальною мовою" Tag="UniversityName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding UniversityName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва вищого навчального закладу оригінальною мовою" Tag="UniversityName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Назва ВНЗ (українською)" Style="{StaticResource dispNmStyle}" ToolTip="Назва вищого навчального закладу оригінальною мовою українською (якщо оригінальна мова інша" Tag="UniversityNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding UniversityNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва вищого навчального закладу оригінальною мовою українською (якщо оригінальна мова інша" Tag="UniversityNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Header="Адреса ВНЗ" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Address" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding Address, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Address" />
       </Expander>
-      <TextBlock Text="Ідентифікатор ВНЗ" Style="{StaticResource dispNmStyle}" ToolTip="Ідентифікатор ВНЗ - якщо є/передбачений" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding UniversityID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ідентифікатор ВНЗ - якщо є/передбачений" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Ідентифікатор ВНЗ" Style="{StaticResource dispNmStyle}" ToolTip="Ідентифікатор ВНЗ - якщо є/передбачений" Tag="UniversityID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding UniversityID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ідентифікатор ВНЗ - якщо є/передбачений" Tag="UniversityID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

@@ -5,9 +5,9 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:LocationInfo}">
     <StackPanel>
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock Text="Країна" Style="{StaticResource dispNmStyle}" ToolTip="Країна" />
-        <ComboBox ToolTip="Країна" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=Country, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
+      <StackPanel Orientation="Horizontal" Tag="Country" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock Text="Країна" Style="{StaticResource dispNmStyle}" ToolTip="Країна" Tag="Country" />
+        <ComboBox ToolTip="Країна" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" Tag="Country" SelectedItem="{Binding Path=Country, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
           <ComboBox.ItemContainerStyle>
             <Style>
               <Setter Property="Control.ToolTip" Value="{Binding CountryNameEng}" />
@@ -15,18 +15,18 @@
           </ComboBox.ItemContainerStyle>
         </ComboBox>
       </StackPanel>
-      <TextBlock Text="область, район/провінція, тощо" Style="{StaticResource dispNmStyle}" ToolTip="область, район/провінція, тощо" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Region, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="область, район/провінція, тощо" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Поштовий індекс" Style="{StaticResource dispNmStyle}" ToolTip="Поштовий індекс" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ZipCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Поштовий індекс" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Населений пункт" Style="{StaticResource dispNmStyle}" ToolTip="Населений пункт" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding City, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Населений пункт" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Вулиця/площа/тощо" Style="{StaticResource dispNmStyle}" ToolTip="Вулиця/площа/тощо" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Street, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Вулиця/площа/тощо" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="№ / назва будинку" Style="{StaticResource dispNmStyle}" ToolTip="№ / назва будинку" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding HouseNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="№ / назва будинку" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="№ кв./офісу, тощо" Style="{StaticResource dispNmStyle}" ToolTip="№ кв./офісу, тощо" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ApptOfficeNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="№ кв./офісу, тощо" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="область, район/провінція, тощо" Style="{StaticResource dispNmStyle}" ToolTip="область, район/провінція, тощо" Tag="Region" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Region, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="область, район/провінція, тощо" Tag="Region" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Поштовий індекс" Style="{StaticResource dispNmStyle}" ToolTip="Поштовий індекс" Tag="ZipCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ZipCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Поштовий індекс" Tag="ZipCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Населений пункт" Style="{StaticResource dispNmStyle}" ToolTip="Населений пункт" Tag="City" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding City, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Населений пункт" Tag="City" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Вулиця/площа/тощо" Style="{StaticResource dispNmStyle}" ToolTip="Вулиця/площа/тощо" Tag="Street" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Street, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Вулиця/площа/тощо" Tag="Street" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="№ / назва будинку" Style="{StaticResource dispNmStyle}" ToolTip="№ / назва будинку" Tag="HouseNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding HouseNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="№ / назва будинку" Tag="HouseNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="№ кв./офісу, тощо" Style="{StaticResource dispNmStyle}" ToolTip="№ кв./офісу, тощо" Tag="ApptOfficeNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ApptOfficeNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="№ кв./офісу, тощо" Tag="ApptOfficeNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

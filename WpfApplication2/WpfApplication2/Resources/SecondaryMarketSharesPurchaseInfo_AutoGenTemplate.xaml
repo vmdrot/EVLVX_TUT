@@ -8,12 +8,12 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:SecondaryMarketSharesPurchaseInfo}">
     <StackPanel>
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblAsset" Height="auto" Width="auto" Text="Актив, що набувається" Style="{StaticResource dispNmStyle}" ToolTip="Банк або ж юр.особа - власник участі в банку (прямої чи опосередкованої)" />
+      <StackPanel Orientation="Vertical" Tag="Asset" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblAsset" Height="auto" Width="auto" Text="Актив, що набувається" Style="{StaticResource dispNmStyle}" ToolTip="Банк або ж юр.особа - власник участі в банку (прямої чи опосередкованої)" Tag="Asset" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxAsset" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Банк або ж юр.особа - власник участі в банку (прямої чи опосередкованої)" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Asset, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddAsset" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <ComboBox x:Name="cbxAsset" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Банк або ж юр.особа - власник участі в банку (прямої чи опосередкованої)" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Asset" SelectedValuePath="ID" SelectedValue="{Binding Path=Asset, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddAsset" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Asset">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Asset" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxAsset" />
@@ -22,12 +22,12 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblPreviousOwner" Height="auto" Width="auto" Text="Попередній власник" Style="{StaticResource dispNmStyle}" ToolTip="Власник, від якого переходитиме власність" />
+      <StackPanel Orientation="Vertical" Tag="PreviousOwner" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblPreviousOwner" Height="auto" Width="auto" Text="Попередній власник" Style="{StaticResource dispNmStyle}" ToolTip="Власник, від якого переходитиме власність" Tag="PreviousOwner" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxPreviousOwner" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Власник, від якого переходитиме власність" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=PreviousOwner, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddPreviousOwner" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <ComboBox x:Name="cbxPreviousOwner" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Власник, від якого переходитиме власність" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="PreviousOwner" SelectedValuePath="ID" SelectedValue="{Binding Path=PreviousOwner, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddPreviousOwner" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PreviousOwner">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="PreviousOwner" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxPreviousOwner" />
@@ -36,56 +36,56 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <Expander Header="Правочин" ToolTip="Інформація про відповідний правочин" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding LegalTransaction, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Правочин" ToolTip="Інформація про відповідний правочин" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="LegalTransaction" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding LegalTransaction, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="LegalTransaction" />
       </Expander>
-      <TextBlock Text="%, що набувається" Style="{StaticResource dispNmStyle}" ToolTip="Відсоток у статутному капіталі юридичної особи або банку, який придбавається" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesPct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="Відсоток у статутному капіталі юридичної особи або банку, який придбавається" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="100" HorizontalAlignment="Left" />
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <TextBlock Text="%, що набувається" Style="{StaticResource dispNmStyle}" ToolTip="Відсоток у статутному капіталі юридичної особи або банку, який придбавається" Tag="SharesPct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesPct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="Відсоток у статутному капіталі юридичної особи або банку, який придбавається" Tag="SharesPct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="100" HorizontalAlignment="Left" />
+      <Grid Tag="NominalSharesValue" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*" />
           <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0" Text="Номінальна вартість" Style="{StaticResource dispNmStyle}" ToolTip="Загальна номінальна вартість акцій (часток, паїв), які придбаваються" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding NominalSharesValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Загальна номінальна вартість акцій (часток, паїв), які придбаваються" />
+        <ContentControl Grid.Column="1" Content="{Binding NominalSharesValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Загальна номінальна вартість акцій (часток, паїв), які придбаваються" Tag="NominalSharesValue" />
       </Grid>
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Grid Tag="ActualSharesPrice" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*" />
           <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0" Text="Ціна реальної угоди" Style="{StaticResource dispNmStyle}" ToolTip="Ціна акцій (часток, паїв), які придбаваються ( Може зазначатися ціна, яка попередньо погоджена сторонами відповідно до проекту договору купівлі-продажу акцій банку ...)" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding ActualSharesPrice, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Ціна акцій (часток, паїв), які придбаваються ( Може зазначатися ціна, яка попередньо погоджена сторонами відповідно до проекту договору купівлі-продажу акцій банку ...)" />
+        <ContentControl Grid.Column="1" Content="{Binding ActualSharesPrice, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Ціна акцій (часток, паїв), які придбаваються ( Може зазначатися ціна, яка попередньо погоджена сторонами відповідно до проекту договору купівлі-продажу акцій банку ...)" Tag="ActualSharesPrice" />
       </Grid>
-      <TextBlock Text="Кількість акцій" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesCount, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Кількість акцій (паїв) банку, які юридична особа має намір придбати, штук" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <TextBlock Text="Кількість акцій" Style="{StaticResource dispNmStyle}" ToolTip="Кількість акцій (паїв) банку, які юридична особа має намір придбати, штук" Tag="SharesCount" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesCount, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N0} }" ToolTip="Кількість акцій (паїв) банку, які юридична особа має намір придбати, штук" Tag="SharesCount" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left" />
+      <Grid Tag="NominalSharePrice" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*" />
           <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0" Text="Номінальна ціна" Style="{StaticResource dispNmStyle}" ToolTip="Номінальна вартість однієї акції (одного паю), грн." HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding NominalSharePrice, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Номінальна вартість однієї акції (одного паю), грн." />
+        <ContentControl Grid.Column="1" Content="{Binding NominalSharePrice, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Номінальна вартість однієї акції (одного паю), грн." Tag="NominalSharePrice" />
       </Grid>
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Grid Tag="NominalTotalSharesValue" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*" />
           <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0" Text="Загальна номінальна вартість" Style="{StaticResource dispNmStyle}" ToolTip="Загальна номінальна вартість акцій (паїв), які юридична особа має намір придбати, грн." HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding NominalTotalSharesValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Загальна номінальна вартість акцій (паїв), які юридична особа має намір придбати, грн." />
+        <ContentControl Grid.Column="1" Content="{Binding NominalTotalSharesValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Загальна номінальна вартість акцій (паїв), які юридична особа має намір придбати, грн." Tag="NominalTotalSharesValue" />
       </Grid>
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Grid Tag="ActualTotalSharesValue" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*" />
           <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0" Text="Реальна ціна акцій" Style="{StaticResource dispNmStyle}" ToolTip="Ціна акцій (паїв), які юридична особа має намір придбати, грн." HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding ActualTotalSharesValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Ціна акцій (паїв), які юридична особа має намір придбати, грн." />
+        <ContentControl Grid.Column="1" Content="{Binding ActualTotalSharesValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Ціна акцій (паїв), які юридична особа має намір придбати, грн." Tag="ActualTotalSharesValue" />
       </Grid>
-      <Expander Header="Термін оплати" ToolTip="Запланований термін здійснення оплати" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander x:Name="expPaymentDeadlines" Header="Термін оплати" ToolTip="Запланований термін здійснення оплати" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PaymentDeadlines" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridPaymentDeadlines" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PaymentDeadlines, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
+          <DataGrid x:Name="gridPaymentDeadlines" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PaymentDeadlines, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="PaymentDeadlines">
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=Amount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Сума" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -141,6 +141,8 @@
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridPaymentDeadlines" />
                             <Binding ElementName="gridPaymentDeadlines" />
+                            <Binding ElementName="expPaymentDeadlines" Path="Header" />
+                            <Binding ElementName="expPaymentDeadlines" Path="ToolTip" />
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
@@ -160,14 +162,16 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="PaymentDeadlines">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="PaymentDeadlines" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridPaymentDeadlines" />
                 <Binding Path="DataContext" ElementName="gridPaymentDeadlines" />
                 <Binding Path="PaymentDeadlines" />
                 <Binding ElementName="gridPaymentDeadlines" />
+                <Binding ElementName="expPaymentDeadlines" Path="Header" />
+                <Binding ElementName="expPaymentDeadlines" Path="ToolTip" />
               </MultiBinding>
             </Button.CommandParameter>
           </Button>

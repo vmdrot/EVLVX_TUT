@@ -7,35 +7,35 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:IPOSharesPurchaseInfo}">
     <StackPanel>
-      <TextBlock Text="Кількість акцій" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesCount, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Кількість акцій (паїв) банку, які юридична особа має намір придбати, штук" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <TextBlock Text="Кількість акцій" Style="{StaticResource dispNmStyle}" ToolTip="Кількість акцій (паїв) банку, які юридична особа має намір придбати, штук" Tag="SharesCount" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesCount, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N0} }" ToolTip="Кількість акцій (паїв) банку, які юридична особа має намір придбати, штук" Tag="SharesCount" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left" />
+      <Grid Tag="NominalSharePrice" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*" />
           <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0" Text="Номінальна ціна" Style="{StaticResource dispNmStyle}" ToolTip="Номінальна вартість однієї акції (одного паю), грн." HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding NominalSharePrice, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Номінальна вартість однієї акції (одного паю), грн." />
+        <ContentControl Grid.Column="1" Content="{Binding NominalSharePrice, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Номінальна вартість однієї акції (одного паю), грн." Tag="NominalSharePrice" />
       </Grid>
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Grid Tag="NominalTotalSharesValue" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*" />
           <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0" Text="Загальна номінальна вартість" Style="{StaticResource dispNmStyle}" ToolTip="Загальна номінальна вартість акцій (паїв), які юридична особа має намір придбати, грн." HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding NominalTotalSharesValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Загальна номінальна вартість акцій (паїв), які юридична особа має намір придбати, грн." />
+        <ContentControl Grid.Column="1" Content="{Binding NominalTotalSharesValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Загальна номінальна вартість акцій (паїв), які юридична особа має намір придбати, грн." Tag="NominalTotalSharesValue" />
       </Grid>
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Grid Tag="ActualTotalSharesValue" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*" />
           <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0" Text="Реальна ціна акцій" Style="{StaticResource dispNmStyle}" ToolTip="Ціна акцій (паїв), які юридична особа має намір придбати, грн." HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding ActualTotalSharesValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Ціна акцій (паїв), які юридична особа має намір придбати, грн." />
+        <ContentControl Grid.Column="1" Content="{Binding ActualTotalSharesValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Ціна акцій (паїв), які юридична особа має намір придбати, грн." Tag="ActualTotalSharesValue" />
       </Grid>
-      <Expander Header="Термін оплати" ToolTip="Запланований термін здійснення оплати" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander x:Name="expPaymentDeadlines" Header="Термін оплати" ToolTip="Запланований термін здійснення оплати" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PaymentDeadlines" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridPaymentDeadlines" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PaymentDeadlines, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
+          <DataGrid x:Name="gridPaymentDeadlines" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PaymentDeadlines, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="PaymentDeadlines">
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=Amount, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Сума" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -91,6 +91,8 @@
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridPaymentDeadlines" />
                             <Binding ElementName="gridPaymentDeadlines" />
+                            <Binding ElementName="expPaymentDeadlines" Path="Header" />
+                            <Binding ElementName="expPaymentDeadlines" Path="ToolTip" />
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
@@ -110,14 +112,16 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="PaymentDeadlines">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="PaymentDeadlines" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridPaymentDeadlines" />
                 <Binding Path="DataContext" ElementName="gridPaymentDeadlines" />
                 <Binding Path="PaymentDeadlines" />
                 <Binding ElementName="gridPaymentDeadlines" />
+                <Binding ElementName="expPaymentDeadlines" Path="Header" />
+                <Binding ElementName="expPaymentDeadlines" Path="ToolTip" />
               </MultiBinding>
             </Button.CommandParameter>
           </Button>

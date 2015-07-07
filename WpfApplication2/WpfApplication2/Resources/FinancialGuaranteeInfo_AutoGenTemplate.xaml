@@ -6,12 +6,12 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:FinancialGuaranteeInfo}">
     <StackPanel>
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblPerson" Height="auto" Width="auto" Text="Особа, щодо якої гарантую/ручаюся,тощо" Style="{StaticResource dispNmStyle}" ToolTip="" />
+      <StackPanel Orientation="Horizontal" Tag="Person" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblPerson" Height="auto" Width="auto" Text="Особа, щодо якої гарантую/ручаюся,тощо" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Person" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxPerson" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Person, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddPerson" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <ComboBox x:Name="cbxPerson" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Person" SelectedValuePath="ID" SelectedValue="{Binding Path=Person, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddPerson" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Person">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Person" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxPerson" />
@@ -20,18 +20,18 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <TextBlock Text="Роль" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="Роль (гарантор, довірена особа, тощо)" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.FinancialGuarantorRoleTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Role, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <TextBlock Text="Роль" Style="{StaticResource dispNmStyle}" Tag="Role" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="Роль (гарантор, довірена особа, тощо)" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.FinancialGuarantorRoleTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Role, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="Role" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Grid Tag="PledgeAmt" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*" />
           <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0" Text="Сума гарантії/поруки/тощо" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding PledgeAmt, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" />
+        <ContentControl Grid.Column="1" Content="{Binding PledgeAmt, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" Tag="PledgeAmt" />
       </Grid>
-      <TextBlock Text="Деталі" Style="{StaticResource dispNmStyle}" ToolTip="з яких питань" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding GuaranteeDetails, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="з яких питань" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Деталі" Style="{StaticResource dispNmStyle}" ToolTip="з яких питань" Tag="GuaranteeDetails" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding GuaranteeDetails, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="з яких питань" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="GuaranteeDetails" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

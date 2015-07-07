@@ -5,10 +5,10 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:BankingLicenseInfo}">
     <StackPanel>
-      <TextBlock Text="№ ліцензії" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding LicenseNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Дата видачі ліцензії" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding IssueDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="№ ліцензії" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="LicenseNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding LicenseNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="LicenseNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Дата видачі ліцензії" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="IssueDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding IssueDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="IssueDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

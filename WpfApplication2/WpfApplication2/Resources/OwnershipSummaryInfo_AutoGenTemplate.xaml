@@ -6,18 +6,18 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:OwnershipSummaryInfo}">
     <StackPanel>
-      <TextBlock Text="кількість акцій (паїв)" Style="{StaticResource dispNmStyle}" ToolTip="кількість акцій (паїв)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesCount, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N0} }" ToolTip="кількість акцій (паїв)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="350" MinWidth="150" HorizontalAlignment="Left" />
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <TextBlock Text="кількість акцій (паїв)" Style="{StaticResource dispNmStyle}" ToolTip="кількість акцій (паїв)" Tag="SharesCount" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesCount, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N0} }" ToolTip="кількість акцій (паїв)" Tag="SharesCount" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="350" MinWidth="150" HorizontalAlignment="Left" />
+      <Grid Tag="SharesNominalValue" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*" />
           <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0" Text="номінальна вартість акцій (паїв)" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding SharesNominalValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" />
+        <ContentControl Grid.Column="1" Content="{Binding SharesNominalValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" Tag="SharesNominalValue" />
       </Grid>
-      <TextBlock Text="%" Style="{StaticResource dispNmStyle}" ToolTip="%" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Pct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="%" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left" />
+      <TextBlock Text="%" Style="{StaticResource dispNmStyle}" ToolTip="%" Tag="Pct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Pct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="%" Tag="Pct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

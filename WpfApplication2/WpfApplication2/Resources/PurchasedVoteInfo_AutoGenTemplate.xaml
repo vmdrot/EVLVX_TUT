@@ -6,12 +6,12 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:PurchasedVoteInfo}">
     <StackPanel>
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblTransferror" Height="auto" Width="auto" Text="Передавач власності" Style="{StaticResource dispNmStyle}" ToolTip="Особа, що передає/передає право голосу/частку власності" />
+      <StackPanel Orientation="Horizontal" Tag="Transferror" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblTransferror" Height="auto" Width="auto" Text="Передавач власності" Style="{StaticResource dispNmStyle}" ToolTip="Особа, що передає/передає право голосу/частку власності" Tag="Transferror" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxTransferror" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Особа, що передає/передає право голосу/частку власності" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Transferror, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddTransferror" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <ComboBox x:Name="cbxTransferror" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Особа, що передає/передає право голосу/частку власності" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Transferror" SelectedValuePath="ID" SelectedValue="{Binding Path=Transferror, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddTransferror" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Transferror">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Transferror" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxTransferror" />
@@ -20,11 +20,11 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <Expander Header="Набувані голоси/частка" ToolTip="Голоси/частка у власності, що купується/отримується" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding PurchaseVotes, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Набувані голоси/частка" ToolTip="Голоси/частка у власності, що купується/отримується" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PurchaseVotes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding PurchaseVotes, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="PurchaseVotes" />
       </Expander>
-      <TextBlock Text="Шлях передачі/купівлі голосів/власності" Style="{StaticResource dispNmStyle}" ToolTip="Шлях передачі/купівлі голосів/власності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding VotesTransferPath, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Шлях передачі/купівлі голосів/власності" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Шлях передачі/купівлі голосів/власності" Style="{StaticResource dispNmStyle}" ToolTip="Шлях передачі/купівлі голосів/власності" Tag="VotesTransferPath" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding VotesTransferPath, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Шлях передачі/купівлі голосів/власності" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="VotesTransferPath" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

@@ -6,19 +6,22 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:IndebtnessInfo}">
     <StackPanel>
-      <CheckBox IsChecked="{Binding IsRepaymentPlanned, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Чи планую погашення?" ToolTip="Чи планую погашення боргу/виконання зобов'язань?" />
+      <CheckBox IsChecked="{Binding IsRepaymentPlanned, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsRepaymentPlanned" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Чи планую погашення?" ToolTip="Чи планую погашення боргу/виконання зобов'язань?" Tag="IsRepaymentPlanned" />
       </CheckBox>
-      <TextBlock Text="Планована дата погашення" Style="{StaticResource dispNmStyle}" ToolTip="" Visibility="{Binding Path=IsRepaymentPlanned, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding PlannedRepaymentDate, diag:PresentationTraceSources.TraceLevel=High}" Visibility="{Binding Path=IsRepaymentPlanned, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Плани щодо погашення" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RepaymentPlans, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblLender" Height="auto" Width="auto" Text="Кредитор" Style="{StaticResource dispNmStyle}" ToolTip="" />
+      <TextBlock Text="Планована дата погашення" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="PlannedRepaymentDate" Visibility="{Binding Path=IsRepaymentPlanned, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding PlannedRepaymentDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="PlannedRepaymentDate" Visibility="{Binding Path=IsRepaymentPlanned, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Плани щодо погашення" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="RepaymentPlans" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RepaymentPlans, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="RepaymentPlans" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <CheckBox IsChecked="{Binding IsBankDebt, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsBankDebt" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Позичальник є банком" ToolTip="(відзначте галочку, якщо позику було взято у банку, або ж зніміть, якщо борг виник перед особою, що не є банком)" Tag="IsBankDebt" />
+      </CheckBox>
+      <StackPanel Orientation="Horizontal" Tag="Lender" Visibility="{Binding Path=IsNonBankDebt, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblLender" Height="auto" Width="auto" Text="Кредитор" Style="{StaticResource dispNmStyle}" ToolTip="(інший кредитор, окрім банків)" Tag="Lender" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxLender" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Lender, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddLender" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <ComboBox x:Name="cbxLender" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="(інший кредитор, окрім банків)" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Lender" SelectedValuePath="ID" SelectedValue="{Binding Path=Lender, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddLender" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Lender">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Lender" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxLender" />
@@ -27,12 +30,12 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblBorrower" Height="auto" Width="auto" Text="Позичальник" Style="{StaticResource dispNmStyle}" ToolTip="" />
+      <StackPanel Orientation="Horizontal" Tag="Borrower" Visibility="{Binding Path=IsBorrowerOtherThanApplicant, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblBorrower" Height="auto" Width="auto" Text="Позичальник" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Borrower" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxBorrower" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Borrower, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddBorrower" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <ComboBox x:Name="cbxBorrower" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Borrower" SelectedValuePath="ID" SelectedValue="{Binding Path=Borrower, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddBorrower" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Borrower">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Borrower" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxBorrower" />
@@ -41,45 +44,43 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <TextBlock Text="Суть заборгованості" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding DebtSubject, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <TextBlock Text="Суть заборгованості" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="DebtSubject" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding DebtSubject, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="DebtSubject" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Grid Tag="Principal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*" />
           <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0" Text="Основна сума боргу" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding Principal, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" />
+        <ContentControl Grid.Column="1" Content="{Binding Principal, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" Tag="Principal" />
       </Grid>
-      <TextBlock Text="Предмет боргу" Style="{StaticResource dispNmStyle}" ToolTip="У зв'язку з чим виник борг; якщо позика - для чого було надано, і т.д." xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding IndebtnessSubject, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="У зв'язку з чим виник борг; якщо позика - для чого було надано, і т.д." TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Дата погашення" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding RepaymentDueDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <TextBlock Text="Дата погашення" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="RepaymentDueDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding RepaymentDueDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="RepaymentDueDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Grid Tag="OutstandingPricipal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*" />
           <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0" Text="Залишок заборгованості" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding OutstandingPricipal, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" />
+        <ContentControl Grid.Column="1" Content="{Binding OutstandingPricipal, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" Tag="OutstandingPricipal" />
       </Grid>
-      <CheckBox IsChecked="{Binding IsOverdue, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Прострочена заборгованість?" ToolTip="" />
+      <CheckBox IsChecked="{Binding IsOverdue, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsOverdue" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Прострочена заборгованість?" ToolTip="" Tag="IsOverdue" />
       </CheckBox>
-      <TextBlock Text="Прострочено з ... (дата)" Style="{StaticResource dispNmStyle}" ToolTip="" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding OverdueSince, diag:PresentationTraceSources.TraceLevel=High}" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}">
+      <TextBlock Text="Прострочено з ... (дата)" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="OverdueSince" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding OverdueSince, diag:PresentationTraceSources.TraceLevel=High}" Tag="OverdueSince" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Grid Tag="PrincipalOverdue" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*" />
           <ColumnDefinition Width="4*" />
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Column="0" Text="Сума простроченої заборгованості" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding PrincipalOverdue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" />
+        <ContentControl Grid.Column="1" Content="{Binding PrincipalOverdue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" Tag="PrincipalOverdue" />
       </Grid>
-      <TextBlock Text="Деталі прострочки" Style="{StaticResource dispNmStyle}" ToolTip="Додаткова інформація (окрім дати й суми) щодо простроченої заборгованості" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding OverdueDetails, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Додаткова інформація (окрім дати й суми) щодо простроченої заборгованості" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Причини прострочки" Style="{StaticResource dispNmStyle}" ToolTip="Причини виникнення простроченої заборгованості" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding OverdueReasons, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Причини виникнення простроченої заборгованості" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Деталі прострочки" Style="{StaticResource dispNmStyle}" ToolTip="Додаткова інформація (окрім дати й суми) щодо простроченої заборгованості" Tag="OverdueDetails" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding OverdueDetails, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Додаткова інформація (окрім дати й суми) щодо простроченої заборгованості" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="OverdueDetails" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Причини прострочки" Style="{StaticResource dispNmStyle}" ToolTip="Причини виникнення простроченої заборгованості" Tag="OverdueReasons" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding OverdueReasons, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Причини виникнення простроченої заборгованості" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="OverdueReasons" Visibility="{Binding Path=IsOverdue, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

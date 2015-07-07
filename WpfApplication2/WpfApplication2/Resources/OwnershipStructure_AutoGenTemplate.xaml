@@ -5,12 +5,12 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:OwnershipStructure}">
     <StackPanel>
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblAsset" Height="auto" Width="auto" Text="Об'єкт власності" Style="{StaticResource dispNmStyle}" ToolTip="Юр.особа, чия власність розкривається" />
+      <StackPanel Orientation="Horizontal" Tag="Asset" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblAsset" Height="auto" Width="auto" Text="Об'єкт власності" Style="{StaticResource dispNmStyle}" ToolTip="Юр.особа, чия власність розкривається" Tag="Asset" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxAsset" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Юр.особа, чия власність розкривається" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Asset, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddAsset" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <ComboBox x:Name="cbxAsset" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Юр.особа, чия власність розкривається" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Asset" SelectedValuePath="ID" SelectedValue="{Binding Path=Asset, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddAsset" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Asset">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Asset" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxAsset" />
@@ -19,12 +19,12 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblOwner" Height="auto" Width="auto" Text="Власник" Style="{StaticResource dispNmStyle}" ToolTip="Власник" />
+      <StackPanel Orientation="Horizontal" Tag="Owner" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblOwner" Height="auto" Width="auto" Text="Власник" Style="{StaticResource dispNmStyle}" ToolTip="Власник" Tag="Owner" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxOwner" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Власник" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Owner, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddOwner" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <ComboBox x:Name="cbxOwner" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Власник" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Owner" SelectedValuePath="ID" SelectedValue="{Binding Path=Owner, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddOwner" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Owner">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Owner" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxOwner" />
@@ -33,16 +33,16 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <TextBlock Text="Тип володіння" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="Тип володіння" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.OwnershipTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding OwnershipKind, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Частка у власності (сума)" Style="{StaticResource dispNmStyle}" ToolTip="Частка (сума)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Share, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="Частка (сума)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" HorizontalAlignment="Left" />
-      <TextBlock Text="Кількість акцій" Style="{StaticResource dispNmStyle}" ToolTip="Кількість акцій, що належать Власникові в об'єкті власності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesCount, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N0} }" ToolTip="Кількість акцій, що належать Власникові в об'єкті власності" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" HorizontalAlignment="Left" />
-      <TextBlock Text="Частка (%)" Style="{StaticResource dispNmStyle}" ToolTip="Частка (%)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharePct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="Частка (%)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="100" HorizontalAlignment="Left" />
-      <TextBlock Text="Кількість голосів в управлінні" Style="{StaticResource dispNmStyle}" ToolTip="Кількість голосів в управлінні" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Votes, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N0} }" ToolTip="Кількість голосів в управлінні" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" HorizontalAlignment="Left" />
+      <TextBlock Text="Тип володіння" Style="{StaticResource dispNmStyle}" Tag="OwnershipKind" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="Тип володіння" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.OwnershipTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding OwnershipKind, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="OwnershipKind" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Частка у власності (сума)" Style="{StaticResource dispNmStyle}" ToolTip="Частка (сума)" Tag="Share" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Share, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="Частка (сума)" Tag="Share" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" HorizontalAlignment="Left" />
+      <TextBlock Text="Кількість акцій" Style="{StaticResource dispNmStyle}" ToolTip="Кількість акцій, що належать Власникові в об'єкті власності" Tag="SharesCount" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesCount, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N0} }" ToolTip="Кількість акцій, що належать Власникові в об'єкті власності" Tag="SharesCount" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" HorizontalAlignment="Left" />
+      <TextBlock Text="Частка (%)" Style="{StaticResource dispNmStyle}" ToolTip="Частка (%)" Tag="SharePct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharePct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="Частка (%)" Tag="SharePct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="100" HorizontalAlignment="Left" />
+      <TextBlock Text="Кількість голосів в управлінні" Style="{StaticResource dispNmStyle}" ToolTip="Кількість голосів в управлінні" Tag="Votes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Votes, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N0} }" ToolTip="Кількість голосів в управлінні" Tag="Votes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" HorizontalAlignment="Left" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

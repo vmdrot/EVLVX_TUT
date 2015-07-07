@@ -5,12 +5,12 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:PhoneInfo}">
     <StackPanel>
-      <TextBlock Text="Тип/назва телефону" Style="{StaticResource dispNmStyle}" ToolTip="Тип/назва телефону" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PhoneName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Тип/назва телефону" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="№ телефону" Style="{StaticResource dispNmStyle}" ToolTip="№ телефону" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PhoneNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="№ телефону" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Примітки щодо телефону" Style="{StaticResource dispNmStyle}" ToolTip="Примітки щодо телефону" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PhoneNotes, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Примітки щодо телефону" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Тип/назва телефону" Style="{StaticResource dispNmStyle}" ToolTip="Тип/назва телефону" Tag="PhoneName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PhoneName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Тип/назва телефону" Tag="PhoneName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="№ телефону" Style="{StaticResource dispNmStyle}" ToolTip="№ телефону" Tag="PhoneNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PhoneNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="№ телефону" Tag="PhoneNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Примітки щодо телефону" Style="{StaticResource dispNmStyle}" ToolTip="Примітки щодо телефону" Tag="PhoneNotes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PhoneNotes, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Примітки щодо телефону" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="PhoneNotes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

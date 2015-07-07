@@ -1,5 +1,6 @@
 ﻿using BGU.DRPL.SignificantOwnership.Core.Messages;
 using BGU.DRPL.SignificantOwnership.Core.Questionnaires;
+using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,6 +68,14 @@ namespace WpfApplication2
         {
             //todo
             MessageBox.Show("Прототип для анкет, повідомлень та стуктурування\nіншої інформації у рамках розбудови Бази пруденційної \nінформації НБУ.\n\n Департамент реєстраційних питань і ліцензування,\n Національний банк © 2015");
+        }
+
+        private void TestShowItemsByTag_Click(object sender, RoutedEventArgs e)
+        {
+            SelectedObjectFrm frm = new SelectedObjectFrm();
+            frm.DataSource = new GenericPersonInfo();
+            frm.ShowOrHideControls = new ShowHideControlsByTagInfo() { ShowOrHide = false, ControlPropNames = "" };
+            frm.ShowDialog();
         }
         #endregion
 

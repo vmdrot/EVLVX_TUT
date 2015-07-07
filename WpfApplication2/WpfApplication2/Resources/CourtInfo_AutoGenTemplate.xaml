@@ -5,13 +5,13 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:CourtInfo}">
     <StackPanel>
-      <TextBlock Text="Name" Style="{StaticResource dispNmStyle}" ToolTip="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="NameUkr" Style="{StaticResource dispNmStyle}" ToolTip="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock Text="JurisdictionCountry" Style="{StaticResource dispNmStyle}" ToolTip="JurisdictionCountry" />
-        <ComboBox ToolTip="JurisdictionCountry" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=JurisdictionCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
+      <TextBlock Text="Name" Style="{StaticResource dispNmStyle}" ToolTip="Name" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Name" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="NameUkr" Style="{StaticResource dispNmStyle}" ToolTip="NameUkr" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="NameUkr" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <StackPanel Orientation="Horizontal" Tag="JurisdictionCountry" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock Text="JurisdictionCountry" Style="{StaticResource dispNmStyle}" ToolTip="JurisdictionCountry" Tag="JurisdictionCountry" />
+        <ComboBox ToolTip="JurisdictionCountry" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" Tag="JurisdictionCountry" SelectedItem="{Binding Path=JurisdictionCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
           <ComboBox.ItemContainerStyle>
             <Style>
               <Setter Property="Control.ToolTip" Value="{Binding CountryNameEng}" />
@@ -19,15 +19,15 @@
           </ComboBox.ItemContainerStyle>
         </ComboBox>
       </StackPanel>
-      <TextBlock Text="CourtRegion" Style="{StaticResource dispNmStyle}" ToolTip="CourtRegion" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CourtRegion, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CourtRegion" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="CourtID" Style="{StaticResource dispNmStyle}" ToolTip="CourtID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CourtID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CourtID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
-        <TextBlock Text="Instance" Style="{StaticResource dispNmStyle}" ToolTip="Instance" />
-        <RadioButton Content="Перша" GroupName="rbgInstance" ToolTip="First - Перша" IsChecked="{Binding Path=Instance, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=First}" />
-        <RadioButton Content="Апеляційна" GroupName="rbgInstance" ToolTip="Appeal - Апеляційна" IsChecked="{Binding Path=Instance, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Appeal}" />
-        <RadioButton Content="Касаційна" GroupName="rbgInstance" ToolTip="Cassation - Касаційна" IsChecked="{Binding Path=Instance, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Cassation}" />
+      <TextBlock Text="CourtRegion" Style="{StaticResource dispNmStyle}" ToolTip="CourtRegion" Tag="CourtRegion" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CourtRegion, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CourtRegion" Tag="CourtRegion" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="CourtID" Style="{StaticResource dispNmStyle}" ToolTip="CourtID" Tag="CourtID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CourtID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CourtID" Tag="CourtID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <StackPanel Tag="Instance" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
+        <TextBlock Text="Instance" Style="{StaticResource dispNmStyle}" ToolTip="Instance" Tag="Instance" />
+        <RadioButton Content="Перша" GroupName="rbgInstance" ToolTip="First - Перша" IsChecked="{Binding Path=Instance, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=First}" Tag="Instance" />
+        <RadioButton Content="Апеляційна" GroupName="rbgInstance" ToolTip="Appeal - Апеляційна" IsChecked="{Binding Path=Instance, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Appeal}" Tag="Instance" />
+        <RadioButton Content="Касаційна" GroupName="rbgInstance" ToolTip="Cassation - Касаційна" IsChecked="{Binding Path=Instance, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Cassation}" Tag="Instance" />
       </StackPanel>
     </StackPanel>
   </DataTemplate>

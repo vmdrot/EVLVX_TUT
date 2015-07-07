@@ -838,6 +838,12 @@
             Реквізити юридичної особи
             </summary>
         </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.ResidenceCountry">
+            <summary>
+            Країна резидентності
+            Обов'язкове. За змовчанням (пропонувати) - Україна.
+            </summary>
+        </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.TaxCodeOrHandelsRegNr">
             <summary>
             Обов'язкове поле (якщо контекстом проперті, де використовується цей тим, не визначено інакше)
@@ -871,12 +877,6 @@
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.ActualAddress">
             <summary>
             Поле необхідне лише якщо вимагається у анкеті, та якщо відрізняється від офіційної юридичної адреси.
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.ResidenceCountry">
-            <summary>
-            Країна резидентності
-            Обов'язкове. За змовчанням (пропонувати) - Україна.
             </summary>
         </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.Registrar">

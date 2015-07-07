@@ -6,13 +6,13 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:TotalOwnershipSummaryInfo}">
     <StackPanel>
-      <Expander Header="Пряма участь" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding DirectOwnershipSummary, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Пряма участь" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="DirectOwnershipSummary" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding DirectOwnershipSummary, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="DirectOwnershipSummary" />
       </Expander>
-      <TextBlock Text="Опосередкована участь (%)" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ImplicitPct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="350" MinWidth="150" HorizontalAlignment="Left" />
-      <TextBlock Text="Сукупна участь, %" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TotalPct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="100" MinWidth="150" HorizontalAlignment="Left" />
+      <TextBlock Text="Опосередкована участь (%)" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="ImplicitPct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ImplicitPct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="" Tag="ImplicitPct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="350" MinWidth="150" HorizontalAlignment="Left" />
+      <TextBlock Text="Сукупна участь, %" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="TotalPct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TotalPct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="" Tag="TotalPct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="100" MinWidth="150" HorizontalAlignment="Left" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

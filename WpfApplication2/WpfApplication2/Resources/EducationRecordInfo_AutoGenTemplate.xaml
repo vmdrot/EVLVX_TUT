@@ -6,23 +6,23 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:EducationRecordInfo}">
     <StackPanel>
-      <Expander Header="ВНЗ" ToolTip="ВНЗ - університет, інститут, коледж, тощо" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding UniOrCollege, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="ВНЗ" ToolTip="ВНЗ - університет, інститут, коледж, тощо" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="UniOrCollege" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding UniOrCollege, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="UniOrCollege" />
       </Expander>
-      <TextBlock Text="Дата закінчення" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding GraduationDate, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Тип диплома" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.HigherEducationDegreeTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding DegreeType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Тип відзнаки" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.DegreeHonourTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding HonourType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Серія диплома" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding DegreeSeries, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="№ диплома" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding DegreeID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Спеціальність/фах" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Trade, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Спеціалізація" Style="{StaticResource dispNmStyle}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Qualification, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Дата закінчення" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="GraduationDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding GraduationDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="GraduationDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Тип диплома" Style="{StaticResource dispNmStyle}" Tag="DegreeType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.HigherEducationDegreeTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding DegreeType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="DegreeType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Тип відзнаки" Style="{StaticResource dispNmStyle}" Tag="HonourType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.DegreeHonourTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding HonourType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="HonourType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Серія диплома" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="DegreeSeries" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding DegreeSeries, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="DegreeSeries" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="№ диплома" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="DegreeID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding DegreeID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="DegreeID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Спеціальність/фах" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Trade" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Trade, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="Trade" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Спеціалізація" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Qualification" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Qualification, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="Qualification" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

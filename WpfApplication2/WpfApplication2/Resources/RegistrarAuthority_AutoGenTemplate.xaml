@@ -6,9 +6,9 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:RegistrarAuthority}">
     <StackPanel>
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock Text="Країна юрисдикції" Style="{StaticResource dispNmStyle}" ToolTip="Країна юрисдикції" />
-        <ComboBox ToolTip="Країна юрисдикції" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" SelectedItem="{Binding Path=JurisdictionCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
+      <StackPanel Orientation="Horizontal" Tag="JurisdictionCountry" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock Text="Країна юрисдикції" Style="{StaticResource dispNmStyle}" ToolTip="Країна юрисдикції" Tag="JurisdictionCountry" />
+        <ComboBox ToolTip="Країна юрисдикції" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" Tag="JurisdictionCountry" SelectedItem="{Binding Path=JurisdictionCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
           <ComboBox.ItemContainerStyle>
             <Style>
               <Setter Property="Control.ToolTip" Value="{Binding CountryNameEng}" />
@@ -16,19 +16,19 @@
           </ComboBox.ItemContainerStyle>
         </ComboBox>
       </StackPanel>
-      <Expander Header="Місцезнаходження" ToolTip="Місцезнаходження" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Address, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Місцезнаходження" ToolTip="Місцезнаходження" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Address" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding Address, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Address" />
       </Expander>
-      <TextBlock Text="Код держоргану (якщо існує)" Style="{StaticResource dispNmStyle}" ToolTip="Код держоргану (якщо існує)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistrarCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Код держоргану (якщо існує)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Назва держоргану" Style="{StaticResource dispNmStyle}" ToolTip="Назва держоргану" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistrarName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва держоргану" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Назва держоргану українською" Style="{StaticResource dispNmStyle}" ToolTip="Назва держоргану українською (для органів у інших країнах)" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistrarNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва держоргану українською (для органів у інших країнах)" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
-        <TextBlock Text="Тип осіб, що реєструє" Style="{StaticResource dispNmStyle}" ToolTip="Тип осіб, що реєструє" />
-        <RadioButton Content="Фізична особа" GroupName="rbgEntitiesHandled" ToolTip="Physical - Фізична особа" IsChecked="{Binding Path=EntitiesHandled, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Physical}" />
-        <RadioButton Content="Юридична особа" GroupName="rbgEntitiesHandled" ToolTip="Legal - Юридична особа" IsChecked="{Binding Path=EntitiesHandled, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Legal}" />
+      <TextBlock Text="Код держоргану (якщо існує)" Style="{StaticResource dispNmStyle}" ToolTip="Код держоргану (якщо існує)" Tag="RegistrarCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistrarCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Код держоргану (якщо існує)" Tag="RegistrarCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Назва держоргану" Style="{StaticResource dispNmStyle}" ToolTip="Назва держоргану" Tag="RegistrarName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistrarName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва держоргану" Tag="RegistrarName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Назва держоргану українською" Style="{StaticResource dispNmStyle}" ToolTip="Назва держоргану українською (для органів у інших країнах)" Tag="RegistrarNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistrarNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва держоргану українською (для органів у інших країнах)" Tag="RegistrarNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <StackPanel Tag="EntitiesHandled" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
+        <TextBlock Text="Тип осіб, що реєструє" Style="{StaticResource dispNmStyle}" ToolTip="Тип осіб, що реєструє" Tag="EntitiesHandled" />
+        <RadioButton Content="Фізична особа" GroupName="rbgEntitiesHandled" ToolTip="Physical - Фізична особа" IsChecked="{Binding Path=EntitiesHandled, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Physical}" Tag="EntitiesHandled" />
+        <RadioButton Content="Юридична особа" GroupName="rbgEntitiesHandled" ToolTip="Legal - Юридична особа" IsChecked="{Binding Path=EntitiesHandled, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Legal}" Tag="EntitiesHandled" />
       </StackPanel>
     </StackPanel>
   </DataTemplate>

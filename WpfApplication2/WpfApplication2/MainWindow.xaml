@@ -28,6 +28,9 @@
                     
                 </MenuItem>
                 <MenuItem Header="Валютне ліцензування" Visibility="Collapsed"></MenuItem>
+                <MenuItem Header="Тестування">
+                    <MenuItem Header="Show controls by tag" Click="TestShowItemsByTag_Click" />
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="_Help" Click="HelpMenuItem_Click" />
         </Menu>

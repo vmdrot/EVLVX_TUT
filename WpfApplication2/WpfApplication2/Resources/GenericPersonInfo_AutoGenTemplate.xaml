@@ -7,16 +7,16 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:GenericPersonInfo}">
     <StackPanel>
-      <StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
-        <TextBlock Text="Тип особи" Style="{StaticResource dispNmStyle}" ToolTip="Тип особи" />
-        <RadioButton Content="Фізична особа" GroupName="rbgPersonType" ToolTip="Physical - Фізична особа" IsChecked="{Binding Path=PersonType, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Physical}" />
-        <RadioButton Content="Юридична особа" GroupName="rbgPersonType" ToolTip="Legal - Юридична особа" IsChecked="{Binding Path=PersonType, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Legal}" />
+      <StackPanel Tag="PersonType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
+        <TextBlock Text="Тип особи" Style="{StaticResource dispNmStyle}" ToolTip="Тип особи" Tag="PersonType" />
+        <RadioButton Content="Фізична особа" GroupName="rbgPersonType" ToolTip="Physical - Фізична особа" IsChecked="{Binding Path=PersonType, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Physical}" Tag="PersonType" />
+        <RadioButton Content="Юридична особа" GroupName="rbgPersonType" ToolTip="Legal - Юридична особа" IsChecked="{Binding Path=PersonType, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Legal}" Tag="PersonType" />
       </StackPanel>
-      <Expander Header="Фізична особа" ToolTip="Фізична особа" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsPhysical, Converter={StaticResource bool2Vis}}">
-        <ContentControl Content="{Binding PhysicalPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Фізична особа" ToolTip="Фізична особа" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PhysicalPerson" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsPhysical, Converter={StaticResource bool2Vis}}">
+        <ContentControl Content="{Binding PhysicalPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="PhysicalPerson" />
       </Expander>
-      <Expander Header="Юридична особа" ToolTip="Юридична особа" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsLegal, Converter={StaticResource bool2Vis}}">
-        <ContentControl Content="{Binding LegalPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Юридична особа" ToolTip="Юридична особа" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="LegalPerson" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsLegal, Converter={StaticResource bool2Vis}}">
+        <ContentControl Content="{Binding LegalPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="LegalPerson" />
       </Expander>
     </StackPanel>
   </DataTemplate>

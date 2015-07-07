@@ -5,12 +5,12 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:LegalTransactionPartyInfo}">
     <StackPanel>
-      <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblParty" Height="auto" Width="auto" Text="Сторона" Style="{StaticResource dispNmStyle}" ToolTip="Ідентифікація сторони правочину" />
+      <StackPanel Orientation="Horizontal" Tag="Party" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblParty" Height="auto" Width="auto" Text="Сторона" Style="{StaticResource dispNmStyle}" ToolTip="Ідентифікація сторони правочину" Tag="Party" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxParty" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Ідентифікація сторони правочину" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Party, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddParty" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <ComboBox x:Name="cbxParty" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Ідентифікація сторони правочину" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Party" SelectedValuePath="ID" SelectedValue="{Binding Path=Party, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddParty" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Party">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Party" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxParty" />
@@ -19,10 +19,10 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <TextBlock Text="Роль" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="Роль сторони у правочині" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.LegalTransactionPartyRoleTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Role, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Роль (інше)" Style="{StaticResource dispNmStyle}" ToolTip="Роль сторони у правочині, як в полі &quot;Роль&quot; вказано інше" Visibility="{Binding Path=IsRoleOther, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RoleIfOther, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Роль сторони у правочині, як в полі &quot;Роль&quot; вказано інше" Visibility="{Binding Path=IsRoleOther, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Роль" Style="{StaticResource dispNmStyle}" Tag="Role" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="Роль сторони у правочині" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.LegalTransactionPartyRoleTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Role, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="Role" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Роль (інше)" Style="{StaticResource dispNmStyle}" ToolTip="Роль сторони у правочині, як в полі &quot;Роль&quot; вказано інше" Tag="RoleIfOther" Visibility="{Binding Path=IsRoleOther, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RoleIfOther, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Роль сторони у правочині, як в полі &quot;Роль&quot; вказано інше" Tag="RoleIfOther" Visibility="{Binding Path=IsRoleOther, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

@@ -5,16 +5,16 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:CountryInfo}">
     <StackPanel>
-      <TextBlock Text="CountryISO2Code" Style="{StaticResource dispNmStyle}" ToolTip="CountryISO2Code" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CountryISO2Code, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CountryISO2Code" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="CountryISO3Code" Style="{StaticResource dispNmStyle}" ToolTip="CountryISO3Code" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CountryISO3Code, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CountryISO3Code" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="CountryISONr" Style="{StaticResource dispNmStyle}" ToolTip="CountryISONr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CountryISONr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CountryISONr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="CountryNameEng" Style="{StaticResource dispNmStyle}" ToolTip="CountryNameEng" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CountryNameEng, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CountryNameEng" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="CountryNameUkr" Style="{StaticResource dispNmStyle}" ToolTip="CountryNameUkr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CountryNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CountryNameUkr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="CountryISO2Code" Style="{StaticResource dispNmStyle}" ToolTip="CountryISO2Code" Tag="CountryISO2Code" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CountryISO2Code, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CountryISO2Code" Tag="CountryISO2Code" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="CountryISO3Code" Style="{StaticResource dispNmStyle}" ToolTip="CountryISO3Code" Tag="CountryISO3Code" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CountryISO3Code, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CountryISO3Code" Tag="CountryISO3Code" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="CountryISONr" Style="{StaticResource dispNmStyle}" ToolTip="CountryISONr" Tag="CountryISONr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CountryISONr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CountryISONr" Tag="CountryISONr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="CountryNameEng" Style="{StaticResource dispNmStyle}" ToolTip="CountryNameEng" Tag="CountryNameEng" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CountryNameEng, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CountryNameEng" Tag="CountryNameEng" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="CountryNameUkr" Style="{StaticResource dispNmStyle}" ToolTip="CountryNameUkr" Tag="CountryNameUkr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CountryNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CountryNameUkr" Tag="CountryNameUkr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

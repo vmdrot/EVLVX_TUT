@@ -2,7 +2,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Styles.xaml" />
         <ResourceDictionary Source="Converters.xaml" />
-        <ResourceDictionary Source="BankInfo_AutoGenTemplate.xaml" />
+        <ResourceDictionary Source="BankInfo_ManualTemplate.xaml" />
         <ResourceDictionary Source="GenericPersonID_ManualTemplate.xaml" />
         <ResourceDictionary Source="CreditRatingInfo_AutoGenTemplate.xaml" />
         <ResourceDictionary Source="FinancialOversightAuthorityInfo_AutoGenTemplate.xaml" />

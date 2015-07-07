@@ -6,18 +6,18 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:LegalTransactionInfo}">
     <StackPanel>
-      <CheckBox IsChecked="{Binding IsCommitted, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Правочин відбувся?" ToolTip="Чи правочин уже відбувся чи лише планується?" />
+      <CheckBox IsChecked="{Binding IsCommitted, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsCommitted" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Правочин відбувся?" ToolTip="Чи правочин уже відбувся чи лише планується?" Tag="IsCommitted" />
       </CheckBox>
-      <TextBlock Text="Тип правочину" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="..." ItemsSource="{Binding Source={x:Static bgus:EnumsLister.LegalTransactionTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding TransactionType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="№ правочину" Style="{StaticResource dispNmStyle}" ToolTip="напр. №/серія договору, тощо - якщо правочин вже відбувся та/або цей реквізит відомий" Visibility="{Binding Path=IsCommitted, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TransactionNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="напр. №/серія договору, тощо - якщо правочин вже відбувся та/або цей реквізит відомий" Visibility="{Binding Path=IsCommitted, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Дата правочину" Style="{StaticResource dispNmStyle}" ToolTip="якщо правочин вже відбувся та/або цей реквізит відомий" Visibility="{Binding Path=IsCommitted, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="якщо правочин вже відбувся та/або цей реквізит відомий" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding TransactionDate, diag:PresentationTraceSources.TraceLevel=High}" Visibility="{Binding Path=IsCommitted, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Header="Сторони" ToolTip="Сторони правочину" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <TextBlock Text="Тип правочину" Style="{StaticResource dispNmStyle}" Tag="TransactionType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="..." ItemsSource="{Binding Source={x:Static bgus:EnumsLister.LegalTransactionTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding TransactionType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="TransactionType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="№ правочину" Style="{StaticResource dispNmStyle}" ToolTip="напр. №/серія договору, тощо - якщо правочин вже відбувся та/або цей реквізит відомий" Tag="TransactionNr" Visibility="{Binding Path=IsCommitted, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TransactionNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="напр. №/серія договору, тощо - якщо правочин вже відбувся та/або цей реквізит відомий" Tag="TransactionNr" Visibility="{Binding Path=IsCommitted, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Дата правочину" Style="{StaticResource dispNmStyle}" ToolTip="якщо правочин вже відбувся та/або цей реквізит відомий" Tag="TransactionDate" Visibility="{Binding Path=IsCommitted, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="якщо правочин вже відбувся та/або цей реквізит відомий" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding TransactionDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="TransactionDate" Visibility="{Binding Path=IsCommitted, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander x:Name="expParties" Header="Сторони" ToolTip="Сторони правочину" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Parties" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridParties" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Parties, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False">
+          <DataGrid x:Name="gridParties" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Parties, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Parties">
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=Party, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Сторона" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -95,6 +95,8 @@
                           <MultiBinding Converter="{StaticResource multiValConv}">
                             <Binding Path="SelectedItem" ElementName="gridParties" />
                             <Binding ElementName="gridParties" />
+                            <Binding ElementName="expParties" Path="Header" />
+                            <Binding ElementName="expParties" Path="ToolTip" />
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
@@ -114,21 +116,23 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="Parties">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Parties" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding Path="ItemsSource" ElementName="gridParties" />
                 <Binding Path="DataContext" ElementName="gridParties" />
                 <Binding Path="Parties" />
                 <Binding ElementName="gridParties" />
+                <Binding ElementName="expParties" Path="Header" />
+                <Binding ElementName="expParties" Path="ToolTip" />
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
         </StackPanel>
       </Expander>
-      <TextBlock Text="Зміст правочину" Style="{StaticResource dispNmStyle}" ToolTip="Стислий опис змісту правочину" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TransactionText, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Стислий опис змісту правочину" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Зміст правочину" Style="{StaticResource dispNmStyle}" ToolTip="Стислий опис змісту правочину" Tag="TransactionText" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TransactionText, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Стислий опис змісту правочину" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="TransactionText" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

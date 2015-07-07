@@ -6,17 +6,17 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:SignatoryInfo}">
     <StackPanel>
-      <TextBlock Text="Дата підпису" Style="{StaticResource dispNmStyle}" ToolTip="Дата підпису" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="Дата підпису" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding DateSigned, diag:PresentationTraceSources.TraceLevel=High}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Посада (підписанта)" Style="{StaticResource dispNmStyle}" ToolTip="Посада (підписанта)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SignatoryPosition, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Посада (підписанта)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Прізвище й ініціали (підписанта)" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище й ініціали (підписанта)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SurnameInitials, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Прізвище й ініціали (підписанта)" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <CheckBox IsChecked="{Binding IsActingByPowOfAttorney, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="За довіреністю?" ToolTip="Підписант діє на підставі довіреності" />
+      <TextBlock Text="Дата підпису" Style="{StaticResource dispNmStyle}" ToolTip="Дата підпису" Tag="DateSigned" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="Дата підпису" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding DateSigned, diag:PresentationTraceSources.TraceLevel=High}" Tag="DateSigned" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Посада (підписанта)" Style="{StaticResource dispNmStyle}" ToolTip="Посада (підписанта)" Tag="SignatoryPosition" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SignatoryPosition, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Посада (підписанта)" Tag="SignatoryPosition" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Прізвище й ініціали (підписанта)" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище й ініціали (підписанта)" Tag="SurnameInitials" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SurnameInitials, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Прізвище й ініціали (підписанта)" Tag="SurnameInitials" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <CheckBox IsChecked="{Binding IsActingByPowOfAttorney, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsActingByPowOfAttorney" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="За довіреністю?" ToolTip="Підписант діє на підставі довіреності" Tag="IsActingByPowOfAttorney" />
       </CheckBox>
-      <Expander Header="За довіреністю?" ToolTip="Підписант діє на підставі довіреності" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding PowerOfAttorney, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />
+      <Expander Header="Довіреність" ToolTip="Реквізити довіреності, на підставі якої діє підписант" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PowerOfAttorney" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsActingByPowOfAttorney, Converter={StaticResource bool2Vis}}">
+        <ContentControl Content="{Binding PowerOfAttorney, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="PowerOfAttorney" />
       </Expander>
     </StackPanel>
   </DataTemplate>

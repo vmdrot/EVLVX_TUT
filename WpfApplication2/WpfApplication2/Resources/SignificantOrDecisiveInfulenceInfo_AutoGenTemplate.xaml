@@ -5,13 +5,13 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:SignificantOrDecisiveInfulenceInfo}">
     <StackPanel>
-      <StackPanel xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
-        <TextBlock Text="" Style="{StaticResource dispNmStyle}" ToolTip="Тип впливу" />
-        <RadioButton Content="Значний" GroupName="rbgTypeOfInfluence" ToolTip="Significant - Значний" IsChecked="{Binding Path=TypeOfInfluence, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Significant}" />
-        <RadioButton Content="Вирішальний" GroupName="rbgTypeOfInfluence" ToolTip="Decisive - Вирішальний" IsChecked="{Binding Path=TypeOfInfluence, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Decisive}" />
+      <StackPanel Tag="TypeOfInfluence" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
+        <TextBlock Text="" Style="{StaticResource dispNmStyle}" ToolTip="Тип впливу" Tag="TypeOfInfluence" />
+        <RadioButton Content="Значний" GroupName="rbgTypeOfInfluence" ToolTip="Significant - Значний" IsChecked="{Binding Path=TypeOfInfluence, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Significant}" Tag="TypeOfInfluence" />
+        <RadioButton Content="Вирішальний" GroupName="rbgTypeOfInfluence" ToolTip="Decisive - Вирішальний" IsChecked="{Binding Path=TypeOfInfluence, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Decisive}" Tag="TypeOfInfluence" />
       </StackPanel>
-      <TextBlock Text="InfluenceCircumstances" Style="{StaticResource dispNmStyle}" ToolTip="InfluenceCircumstances" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding InfluenceCircumstances, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="InfluenceCircumstances" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="InfluenceCircumstances" Style="{StaticResource dispNmStyle}" ToolTip="InfluenceCircumstances" Tag="InfluenceCircumstances" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding InfluenceCircumstances, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="InfluenceCircumstances" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="InfluenceCircumstances" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

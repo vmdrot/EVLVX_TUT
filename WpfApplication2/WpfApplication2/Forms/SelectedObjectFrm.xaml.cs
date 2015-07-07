@@ -25,11 +25,26 @@ namespace WpfApplication2.Forms
         private Microsoft.Win32.SaveFileDialog _saveFileDgl;
         private Microsoft.Win32.OpenFileDialog _openFileDlg;
 
+        Dictionary<String, List<DependencyObject>> _controlsByTag;
+
         public SelectedObjectFrm()
         {
             InitializeComponent();
             _saveFileDgl = new Microsoft.Win32.SaveFileDialog();
             _openFileDlg = new Microsoft.Win32.OpenFileDialog();
+            this.Loaded += SelectedObjectFrm_Loaded;
+        }
+
+        protected void SelectedObjectFrm_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (ShowOrHideControls == null)
+                return;
+            ApplyShowOrHideControlsBasedOnTags();
+        }
+
+        private void ApplyShowOrHideControlsBasedOnTags()
+        {
+            
         }
 
         public object DataSource
@@ -37,6 +52,13 @@ namespace WpfApplication2.Forms
             get { return quCtrl.Content; }
             set { quCtrl.Content = value; }
         }
+
+        public ShowHideControlsByTagInfo ShowOrHideControls
+        {
+            get;
+            set;
+        }
+
 
         private string CurrentSave2File { get; set; }
         private void OKButton_Click(object sender, RoutedEventArgs e)
@@ -56,7 +78,7 @@ namespace WpfApplication2.Forms
             //todo
         }
 
-        
+
         private void LoadMenuItem_Click(object sender, RoutedEventArgs e)
         {
             DoOpen();
@@ -118,8 +140,8 @@ namespace WpfApplication2.Forms
             //this works, but cbx.ItemsSource == null
             IEnumerable<System.Windows.Controls.ComboBox> cbxs = ControlUtils.FindVisualChildren<System.Windows.Controls.ComboBox>(this);
             foreach (System.Windows.Controls.ComboBox cbx in cbxs)
-            { 
-                if(cbx.Name == "cbxAcquiree")
+            {
+                if (cbx.Name == "cbxAcquiree")
                     cbx.Items.Refresh();
             }
         }
@@ -168,6 +190,17 @@ namespace WpfApplication2.Forms
                     System.Windows.MessageBox.Show(string.Format("Не вдалося зберегти файл '{0}', деталі - '{1}'", _saveFileDgl.FileName, exc.Message), "Помилка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
+        }
+
+        private void Window_ContentRendered(object sender, EventArgs e)
+        {
+            InventorizeControlsTags();
+            ApplyShowOrHideControlsBasedOnTags();
+        }
+
+        private void InventorizeControlsTags()
+        {
+            _controlsByTag = new Dictionary<string, List<DependencyObject>>();
         }
 
     }
