@@ -7,10 +7,16 @@
     <StackPanel>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock Text="Валюта" Style="{StaticResource dispNmStyle}" ToolTip="Валюта" />
-                <ComboBox ItemsSource="{Binding Source={x:Static bgud:CurrencyInfo.AllCurrencies}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CCYCode" SelectedValuePath="CCYCode" SelectedValue="{Binding Path=CCY, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="75" ToolTip="Валюта  - {Binding CurrencyToolTip}" />
+                <ComboBox ItemsSource="{Binding Source={x:Static bgud:CurrencyInfo.AllCurrencies}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CCYCode" SelectedValuePath="CCYCode" SelectedValue="{Binding Path=CCY, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="75" ToolTip="Валюта">
+                    <ComboBox.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Control.ToolTip" Value="{Binding CCYName}" />
+                        </Style>
+                    </ComboBox.ItemContainerStyle>
+                </ComboBox>
       </StackPanel>
       <TextBlock Text="Сума" Style="{StaticResource dispNmStyle}" ToolTip="Сума" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-            <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Amt,  diag:PresentationTraceSources.TraceLevel=High, StringFormat={Binding CurrencyFormat}}" ToolTip="Сума" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+            <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Amt,  diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2}}" ToolTip="Сума" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>
