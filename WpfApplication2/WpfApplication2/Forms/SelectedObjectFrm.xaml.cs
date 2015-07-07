@@ -103,7 +103,7 @@ namespace WpfApplication2.Forms
                 }
                 catch (Exception exc)
                 {
-                    System.Windows.MessageBox.Show(string.Format("Failed to read file '{0}', error - '{1}'", _openFileDlg.FileName, exc.Message), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show(string.Format("Не вдалося прочитати файл '{0}', деталі - '{1}'", _openFileDlg.FileName, exc.Message), "Помилка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -135,7 +135,7 @@ namespace WpfApplication2.Forms
                 }
                 catch (Exception exc)
                 {
-                    System.Windows.MessageBox.Show(string.Format("Failed to save file '{0}', error - '{1}'", _saveFileDgl.FileName, exc.Message), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show(string.Format("Не вдалося зберегти файл '{0}', деталі - '{1}'", _saveFileDgl.FileName, exc.Message), "Помилка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
@@ -165,7 +165,7 @@ namespace WpfApplication2.Forms
                 }
                 catch (Exception exc)
                 {
-                    System.Windows.MessageBox.Show(string.Format("Failed to save file '{0}', error - '{1}'", _saveFileDgl.FileName, exc.Message), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show(string.Format("Не вдалося зберегти файл '{0}', деталі - '{1}'", _saveFileDgl.FileName, exc.Message), "Помилка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }

@@ -8,15 +8,17 @@
     <StackPanel>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblTransferror" Height="auto" Width="auto" Text="Передавач власності" Style="{StaticResource dispNmStyle}" ToolTip="Особа, що передає/передає право голосу/частку власності" />
-        <ComboBox x:Name="cbxTransferror" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Особа, що передає/передає право голосу/частку власності" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Transferror, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-        <Button x:Name="btnAddTransferror" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-          <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
-          <Button.CommandParameter>
-            <MultiBinding Converter="{StaticResource multiValConv}">
-              <Binding ElementName="cbxTransferror" />
-            </MultiBinding>
-          </Button.CommandParameter>
-        </Button>
+        <StackPanel Orientation="Horizontal">
+          <ComboBox x:Name="cbxTransferror" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Особа, що передає/передає право голосу/частку власності" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Transferror, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddTransferror" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxTransferror" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
+        </StackPanel>
       </StackPanel>
       <Expander Header="Набувані голоси/частка" ToolTip="Голоси/частка у власності, що купується/отримується" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding PurchaseVotes, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" />

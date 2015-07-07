@@ -2199,6 +2199,11 @@
             для нерезидентів - Назва, назва укр., (SWIFT або MFO), якщо ні - адреса, щоб однозначно ідентифікувати
             </summary>
         </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.BankAccountInfo.WithMoreDetails">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.BankAccountInfo.AccountNr">
             <summary>
             № рахунку

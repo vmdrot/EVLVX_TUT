@@ -7,27 +7,31 @@
     <StackPanel>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblOne" Height="auto" Width="auto" Text="Перша особа" Style="{StaticResource dispNmStyle}" ToolTip="Перша особа" />
-        <ComboBox x:Name="cbxOne" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Перша особа" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=One, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-        <Button x:Name="btnAddOne" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-          <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
-          <Button.CommandParameter>
-            <MultiBinding Converter="{StaticResource multiValConv}">
-              <Binding ElementName="cbxOne" />
-            </MultiBinding>
-          </Button.CommandParameter>
-        </Button>
+        <StackPanel Orientation="Horizontal">
+          <ComboBox x:Name="cbxOne" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Перша особа" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=One, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddOne" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxOne" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
+        </StackPanel>
       </StackPanel>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblTwo" Height="auto" Width="auto" Text="Друга особа" Style="{StaticResource dispNmStyle}" ToolTip="Друга особа" />
-        <ComboBox x:Name="cbxTwo" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Друга особа" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Two, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-        <Button x:Name="btnAddTwo" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-          <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
-          <Button.CommandParameter>
-            <MultiBinding Converter="{StaticResource multiValConv}">
-              <Binding ElementName="cbxTwo" />
-            </MultiBinding>
-          </Button.CommandParameter>
-        </Button>
+        <StackPanel Orientation="Horizontal">
+          <ComboBox x:Name="cbxTwo" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Друга особа" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Two, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddTwo" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxTwo" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
+        </StackPanel>
       </StackPanel>
       <TextBlock Text="Тип зв'язку" Style="{StaticResource dispNmStyle}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <ComboBox ToolTip="Тип зв'язку" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.OwnershipTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding AssociationType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

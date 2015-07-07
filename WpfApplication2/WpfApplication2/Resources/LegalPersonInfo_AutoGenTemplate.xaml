@@ -43,15 +43,17 @@
       </Expander>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblRepresentedBy" Height="auto" Width="auto" Text="Представник юрособи" Style="{StaticResource dispNmStyle}" ToolTip="Особа, що представляє юрособу" />
-        <ComboBox x:Name="cbxRepresentedBy" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Особа, що представляє юрособу" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=RepresentedBy, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-        <Button x:Name="btnAddRepresentedBy" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-          <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
-          <Button.CommandParameter>
-            <MultiBinding Converter="{StaticResource multiValConv}">
-              <Binding ElementName="cbxRepresentedBy" />
-            </MultiBinding>
-          </Button.CommandParameter>
-        </Button>
+        <StackPanel Orientation="Horizontal">
+          <ComboBox x:Name="cbxRepresentedBy" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Особа, що представляє юрособу" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=RepresentedBy, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddRepresentedBy" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxRepresentedBy" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
+        </StackPanel>
       </StackPanel>
       <Grid xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <Grid.ColumnDefinitions>

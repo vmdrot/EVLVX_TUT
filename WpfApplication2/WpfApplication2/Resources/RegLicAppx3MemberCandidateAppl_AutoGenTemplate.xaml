@@ -18,33 +18,37 @@
     <StackPanel>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblBankRef" Height="auto" Width="auto" Text="Повне офіційне найменування банку" Style="{StaticResource dispNmStyle}" ToolTip="Ідентифікація банку, в якому подавач планує набути членство у відповідному органі управління" />
-        <ComboBox x:Name="cbxBankRef" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="Ідентифікація банку, в якому подавач планує набути членство у відповідному органі управління" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedItem="{Binding Path=BankRef, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250">
-          <ComboBox.ItemContainerStyle>
-            <Style>
-              <Setter Property="Control.ToolTip" Value="{Binding MFO}" />
-            </Style>
-          </ComboBox.ItemContainerStyle>
-        </ComboBox>
-        <Button x:Name="btnAddBankRef" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}">
-          <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
-          <Button.CommandParameter>
-            <MultiBinding Converter="{StaticResource multiValConv}">
-              <Binding ElementName="cbxBankRef" />
-            </MultiBinding>
-          </Button.CommandParameter>
-        </Button>
+        <StackPanel Orientation="Horizontal">
+          <ComboBox x:Name="cbxBankRef" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="Ідентифікація банку, в якому подавач планує набути членство у відповідному органі управління" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedItem="{Binding Path=BankRef, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250">
+            <ComboBox.ItemContainerStyle>
+              <Style>
+                <Setter Property="Control.ToolTip" Value="{Binding MFO}" />
+              </Style>
+            </ComboBox.ItemContainerStyle>
+          </ComboBox>
+          <Button x:Name="btnAddBankRef" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxBankRef" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
+        </StackPanel>
       </StackPanel>
       <StackPanel Orientation="Horizontal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblCandidate" Height="auto" Width="auto" Text="Кандидат" Style="{StaticResource dispNmStyle}" ToolTip="Реквізити фізособи-кандидата на посаду..." />
-        <ComboBox x:Name="cbxCandidate" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Реквізити фізособи-кандидата на посаду..." MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Candidate, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-        <Button x:Name="btnAddCandidate" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
-          <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
-          <Button.CommandParameter>
-            <MultiBinding Converter="{StaticResource multiValConv}">
-              <Binding ElementName="cbxCandidate" />
-            </MultiBinding>
-          </Button.CommandParameter>
-        </Button>
+        <StackPanel Orientation="Horizontal">
+          <ComboBox x:Name="cbxCandidate" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Реквізити фізособи-кандидата на посаду..." MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValuePath="ID" SelectedValue="{Binding Path=Candidate, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <Button x:Name="btnAddCandidate" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxCandidate" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
+        </StackPanel>
       </StackPanel>
       <Expander Header="1.6. Займані посади за останні п'ять років" ToolTip="Займані посади за останні п'ять років: найменування юридичної особи, найменування посади;  період перебування на посаді з _ до _, причина звільнення; якщо трудовий стаж переривався, то слід зазначити причину." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
