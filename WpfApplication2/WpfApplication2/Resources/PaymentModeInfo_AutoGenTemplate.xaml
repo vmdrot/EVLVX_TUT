@@ -16,9 +16,15 @@
       </Grid>
       <StackPanel Tag="PaymentMode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
         <TextBlock Text="Спосіб сплати" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="PaymentMode" />
-        <RadioButton Content="Готівка" GroupName="rbgPaymentMode" ToolTip="Cash - Готівка" IsChecked="{Binding Path=PaymentMode, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Cash}" Tag="PaymentMode" />
-        <RadioButton Content="Безготівка" GroupName="rbgPaymentMode" ToolTip="WireTransfer - Безготівка" IsChecked="{Binding Path=PaymentMode, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=WireTransfer}" Tag="PaymentMode" />
-        <RadioButton Content="Інше" GroupName="rbgPaymentMode" ToolTip="Other - Інше" IsChecked="{Binding Path=PaymentMode, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Other}" Tag="PaymentMode" />
+        <RadioButton GroupName="rbgPaymentMode" ToolTip="Cash - Готівка" IsChecked="{Binding Path=PaymentMode, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Cash}" Tag="PaymentMode" Margin="5,0">
+          <TextBlock Text="Готівка" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+        <RadioButton GroupName="rbgPaymentMode" ToolTip="WireTransfer - Безготівка" IsChecked="{Binding Path=PaymentMode, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=WireTransfer}" Tag="PaymentMode" Margin="5,0">
+          <TextBlock Text="Безготівка" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+        <RadioButton GroupName="rbgPaymentMode" ToolTip="Other - Інше" IsChecked="{Binding Path=PaymentMode, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Other}" Tag="PaymentMode" Margin="5,0">
+          <TextBlock Text="Інше" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
       </StackPanel>
     </StackPanel>
   </DataTemplate>

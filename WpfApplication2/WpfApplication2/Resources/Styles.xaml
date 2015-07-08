@@ -54,14 +54,16 @@
         <Setter Property="FontSize" Value="10pt" />
         <Setter Property="Height" Value="16" />
         <Setter Property="Margin" Value="2,2" />
+        <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
     <Style x:Key="descrLblStyle" TargetType="TextBlock">
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="FontStyle" Value="Italic" />
         <Setter Property="FontSize" Value="11pt" />
+        <Setter Property="TextWrapping" Value="Wrap" />
     </Style>
     <Style x:Key="txtEdStyle" TargetType="TextBox">
-        <Setter Property="BorderBrush" Value="GreenYellow" />
+        <Setter Property="BorderBrush" Value="#5D8AA8" />
         <Setter Property="Margin" Value="2,2" />
         <Setter Property="Height" Value="23" />
         <Setter Property="Width" Value="auto" />
@@ -79,7 +81,7 @@
         <!--later...-->
     </Style>
     <Style x:Key="dtEdStyle" TargetType="DatePicker">
-        <Setter Property="BorderBrush" Value="GreenYellow"/>
+        <Setter Property="BorderBrush" Value="#5D8AA8"/>
         <Setter Property="Height" Value="20" />
         <Setter Property="Margin" Value="2,2" />
         <Setter Property="Foreground" Value="Black" />
@@ -95,8 +97,9 @@
     </Style>
     <Style x:Key="{x:Type ToolTip}" TargetType="{x:Type ToolTip}">
         <Setter Property="FontSize" Value="24"/>
-        <Setter Property="Foreground" Value="#FF1D5457" />
-        <Setter Property="Background" Value="#FFF3FF00" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Background" Value="#ACE1AF" />
+        <Setter Property="FontFamily" Value="Verdana" />
         <Setter Property="ContentTemplate">
             <Setter.Value>
                 <DataTemplate>
@@ -111,6 +114,7 @@
         <Setter Property="Margin" Value="2,2"  />
         <Setter Property="VerticalAlignment" Value="Top"  />
         <Setter Property="Width" Value="auto" />
+        <Setter Property="BorderBrush" Value="#5D8AA8" />
     </Style>
     <Style x:Key="{x:Type Expander}" TargetType="{x:Type Expander}">
         <Setter Property="FontSize" Value="16"/>
@@ -180,6 +184,14 @@
     <Style x:Key="addNewRowBtnStyle" TargetType="Button">
         <Setter Property="Height" Value="20" />
         <Setter Property="Width" Value="20" />
+    </Style>
+    <Style TargetType="RadioButton">
+        <Setter Property="Margin" Value="5,0" />
+        <Setter Property="Foreground" Value="#5D8AA8" />
+        <Setter Property="BorderBrush" Value="#007BA7" />
+    </Style>
+    <Style x:Key="rbTextStyle" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Black" />
     </Style>
     <!--<Style x:Key="MyFocusVisual" TargetType="TextBox">
         <Setter Property="BorderBrush" Value="DarkGreen" />

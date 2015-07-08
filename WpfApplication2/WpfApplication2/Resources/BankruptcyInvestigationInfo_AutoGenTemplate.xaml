@@ -16,7 +16,7 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridCourtDecisions" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding CourtDecisions, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="CourtDecisions">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Court, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Court" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=Court, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Суд" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -29,7 +29,7 @@
                         <DataTemplate>
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
-                              <ToolTip Content="Court" />
+                              <ToolTip Content="Суд, що виніс рішення" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -38,7 +38,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DecisionType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="DecisionType" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=DecisionType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип рішення" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -51,7 +51,7 @@
                         <DataTemplate>
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
-                              <ToolTip Content="DecisionType" />
+                              <ToolTip Content="Тип рішення" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -60,7 +60,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DecisionDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="DecisionDate" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=DecisionDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата рішення" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -73,7 +73,7 @@
                         <DataTemplate>
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
-                              <ToolTip Content="DecisionDate" />
+                              <ToolTip Content="Дата винесення судом рішення" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -82,7 +82,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DecisionText, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="DecisionText" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=DecisionRegistryID, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="№ рішення" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
@@ -95,7 +95,29 @@
                         <DataTemplate>
                           <ContentControl Content="{Binding}">
                             <ToolTipService.ToolTip>
-                              <ToolTip Content="DecisionText" />
+                              <ToolTip Content="Реєстраційний № рішення (у відповідному реєстрі судових рішень)" />
+                            </ToolTipService.ToolTip>
+                          </ContentControl>
+                        </DataTemplate>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>
+                </DataGridTextColumn.HeaderStyle>
+              </DataGridTextColumn>
+              <DataGridTextColumn Binding="{Binding Path=DecisionTextSummary, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Зміст рішення" Width="*" TextBlock.TextAlignment="Center">
+                <DataGridTextColumn.HeaderStyle>
+                  <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
+                    <Setter Property="ContentTemplate">
+                      <Setter.Value>
+                        <DataTemplate>
+                          <ContentControl Content="{Binding}">
+                            <ToolTipService.ToolTip>
+                              <ToolTip Content="Резюме чи повний зміст рішення (залежно від того, як того вимагає контекст)" />
                             </ToolTipService.ToolTip>
                           </ContentControl>
                         </DataTemplate>
@@ -108,7 +130,7 @@
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -119,7 +141,7 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -135,7 +157,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="CourtDecisions">
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="CourtDecisions" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="CourtDecisions" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">

@@ -26,9 +26,15 @@
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FullNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="П.І.Б., українською" Tag="FullNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <StackPanel Tag="Sex" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
         <TextBlock Text="Стать" Style="{StaticResource dispNmStyle}" ToolTip="Стать" Tag="Sex" />
-        <RadioButton Content="Не вказано" GroupName="rbgSex" ToolTip="None - Не вказано" IsChecked="{Binding Path=Sex, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=None}" Tag="Sex" />
-        <RadioButton Content="Чол." GroupName="rbgSex" ToolTip="Male - Чол." IsChecked="{Binding Path=Sex, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Male}" Tag="Sex" />
-        <RadioButton Content="Жін." GroupName="rbgSex" ToolTip="Female - Жін." IsChecked="{Binding Path=Sex, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Female}" Tag="Sex" />
+        <RadioButton GroupName="rbgSex" ToolTip="None - Не вказано" IsChecked="{Binding Path=Sex, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=None}" Tag="Sex" Margin="5,0">
+          <TextBlock Text="Не вказано" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+        <RadioButton GroupName="rbgSex" ToolTip="Male - Чол." IsChecked="{Binding Path=Sex, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Male}" Tag="Sex" Margin="5,0">
+          <TextBlock Text="Чол." Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+        <RadioButton GroupName="rbgSex" ToolTip="Female - Жін." IsChecked="{Binding Path=Sex, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Female}" Tag="Sex" Margin="5,0">
+          <TextBlock Text="Жін." Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
       </StackPanel>
       <TextBlock Text="Дата народження" Style="{StaticResource dispNmStyle}" ToolTip="Дата народження" Tag="BirthDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <DatePicker ToolTip="Дата народження" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding BirthDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="BirthDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

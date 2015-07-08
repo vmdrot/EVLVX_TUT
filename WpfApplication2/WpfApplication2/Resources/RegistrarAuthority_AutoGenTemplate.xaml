@@ -27,8 +27,12 @@
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistrarNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва держоргану українською (для органів у інших країнах)" Tag="RegistrarNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <StackPanel Tag="EntitiesHandled" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
         <TextBlock Text="Тип осіб, що реєструє" Style="{StaticResource dispNmStyle}" ToolTip="Тип осіб, що реєструє" Tag="EntitiesHandled" />
-        <RadioButton Content="Фізична особа" GroupName="rbgEntitiesHandled" ToolTip="Physical - Фізична особа" IsChecked="{Binding Path=EntitiesHandled, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Physical}" Tag="EntitiesHandled" />
-        <RadioButton Content="Юридична особа" GroupName="rbgEntitiesHandled" ToolTip="Legal - Юридична особа" IsChecked="{Binding Path=EntitiesHandled, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Legal}" Tag="EntitiesHandled" />
+        <RadioButton GroupName="rbgEntitiesHandled" ToolTip="Physical - Фізична особа" IsChecked="{Binding Path=EntitiesHandled, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Physical}" Tag="EntitiesHandled" Margin="5,0">
+          <TextBlock Text="Фізична особа" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+        <RadioButton GroupName="rbgEntitiesHandled" ToolTip="Legal - Юридична особа" IsChecked="{Binding Path=EntitiesHandled, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Legal}" Tag="EntitiesHandled" Margin="5,0">
+          <TextBlock Text="Юридична особа" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
       </StackPanel>
     </StackPanel>
   </DataTemplate>

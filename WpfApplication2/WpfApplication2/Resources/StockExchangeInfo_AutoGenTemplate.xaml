@@ -1,0 +1,40 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="CurrencyAmount_AutoGenTemplate.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgud:StockExchangeInfo}">
+    <StackPanel>
+      <StackPanel Orientation="Horizontal" Tag="OperationCountry" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock Text="Країна діяльності" Style="{StaticResource dispNmStyle}" ToolTip="Країна, де офіційно зареєстрована біржа" Tag="OperationCountry" />
+        <ComboBox ToolTip="Країна, де офіційно зареєстрована біржа" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" Tag="OperationCountry" SelectedItem="{Binding Path=OperationCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
+          <ComboBox.ItemContainerStyle>
+            <Style>
+              <Setter Property="Control.ToolTip" Value="{Binding CountryNameEng}" />
+            </Style>
+          </ComboBox.ItemContainerStyle>
+        </ComboBox>
+      </StackPanel>
+      <TextBlock Text="Назва біржі" Style="{StaticResource dispNmStyle}" ToolTip="Назва біржі (мовою оригіналу)" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва біржі (мовою оригіналу)" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Назва біржі (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="Назва біржі українською мовою" Tag="NameUkr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва біржі українською мовою" Tag="NameUkr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <CheckBox IsChecked="{Binding IsWorldExchangesMember, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsWorldExchangesMember" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Член світової федерації бірж" ToolTip="Чи є біржа членом світової федерації бірж - World Federation of Exchanges" Tag="IsWorldExchangesMember" />
+      </CheckBox>
+      <TextBlock Text="Назва у переліку WFE" Style="{StaticResource dispNmStyle}" ToolTip="Назва біржі, як вона фігурує у переліку Світової Федерації Бірж - World Federation of Exchanges" Tag="WorldExchangesID" Visibility="{Binding Path=IsWorldExchangesMember, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding WorldExchangesID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва біржі, як вона фігурує у переліку Світової Федерації Бірж - World Federation of Exchanges" Tag="WorldExchangesID" Visibility="{Binding Path=IsWorldExchangesMember, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Grid Tag="MarketCap" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Капіталізація" Style="{StaticResource dispNmStyle}" ToolTip="Сукупна ринкова капіталізація компаній, акції яких уключено до торгів на біржі" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding MarketCap, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Сукупна ринкова капіталізація компаній, акції яких уключено до торгів на біржі" Tag="MarketCap" />
+      </Grid>
+      <TextBlock Text="Дата капіталізації" Style="{StaticResource dispNmStyle}" ToolTip="Дата, на яку була чинною вказана сукупна ринкова капіталізація (вище)" Tag="MarketCapAsOf" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="Дата, на яку була чинною вказана сукупна ринкова капіталізація (вище)" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding MarketCapAsOf, diag:PresentationTraceSources.TraceLevel=High}" Tag="MarketCapAsOf" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+    </StackPanel>
+  </DataTemplate>
+</ResourceDictionary>

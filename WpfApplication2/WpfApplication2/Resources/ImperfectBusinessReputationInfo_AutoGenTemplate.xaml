@@ -16,99 +16,18 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridBankruptcyInvestigations" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding BankruptcyInvestigations, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="BankruptcyInvestigations">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=CaseFiledDt, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата порушення справи про банкрутство" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Дата відкриття справи" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=CurrentStatus, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Статус" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Поточний статус справи" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=InCurrentStatusSince, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата набуття поточного статусу" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Перебуває в нинішньому статусі починаючи з..." />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=CourtDecisions, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Список судових рішень у справі" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Перелік судових рішень по справі банкрутства" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
+              <DataGridTemplateColumn Header="Справи про банкрутство" Width="*" TextBlock.TextAlignment="Left">
+                <DataGridTemplateColumn.CellTemplate>
+                  <DataTemplate>
+                    <TextBlock Text="{Binding}" Width="auto" TextWrapping="Wrap" />
+                  </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+              </DataGridTemplateColumn>
               <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -119,7 +38,7 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -135,7 +54,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="BankruptcyInvestigations">
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="BankruptcyInvestigations" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="BankruptcyInvestigations" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -157,341 +76,18 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridMiscNonRepaidDebts" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding MiscNonRepaidDebts, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="MiscNonRepaidDebts">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=IsRepaymentPlanned, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Чи планую погашення?" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Чи планую погашення боргу/виконання зобов'язань?" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PlannedRepaymentDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Планована дата погашення" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Планована дата погашення" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=RepaymentPlans, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Плани щодо погашення" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Плани щодо погашення" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=IsBankDebt, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Позичальник є банком" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="(відзначте галочку, якщо позику було взято у банку, або ж зніміть, якщо борг виник перед особою, що не є банком)" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Lender, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кредитор" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="(інший кредитор, окрім банків)" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Borrower, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Позичальник" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Позичальник" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DebtSubject, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Суть заборгованості" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Суть заборгованості" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Principal, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Основна сума боргу" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Основна сума боргу" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=RepaymentDueDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата погашення" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Дата погашення" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OutstandingPricipal, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Залишок заборгованості" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Залишок заборгованості" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=IsOverdue, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Прострочена заборгованість?" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Прострочена заборгованість?" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OverdueSince, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Прострочено з ... (дата)" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Прострочено з ... (дата)" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=PrincipalOverdue, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Сума простроченої заборгованості" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Сума простроченої заборгованості" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OverdueDetails, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Деталі прострочки" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Додаткова інформація (окрім дати й суми) щодо простроченої заборгованості" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OverdueReasons, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Причини прострочки" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Причини виникнення простроченої заборгованості" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
+              <DataGridTemplateColumn Header="Зобов'язання" Width="*" TextBlock.TextAlignment="Left">
+                <DataGridTemplateColumn.CellTemplate>
+                  <DataTemplate>
+                    <TextBlock Text="{Binding}" Width="auto" TextWrapping="Wrap" />
+                  </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+              </DataGridTemplateColumn>
               <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -502,7 +98,7 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -518,7 +114,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="MiscNonRepaidDebts">
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="MiscNonRepaidDebts" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="MiscNonRepaidDebts" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -540,253 +136,18 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridBreachesOfLaw" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding BreachesOfLaw, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="BreachesOfLaw">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=BreachType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип правопорушення" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Тип правопорушення" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=CourtName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Суд" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Суд" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=CourtNameUkr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Суд (укр.)" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Суд (укр.)" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=JurisdictionCountry, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Країна підсудності" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Країна підсудності" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SentenceDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата вироку" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Дата вироку" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=CodeOrLaw, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Закон/кодекс" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Закон/кодекс" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Articles, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Стаття(-і)" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Стаття(-і)" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Sentence, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип вироку" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Тип вироку" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=OtherSanctionDetails, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Інші санкції" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Інші санкції" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=IsConvictionSettled, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Судимість погашена?" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Судимість погашена?" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=SettledDate, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата погашення судимості" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Дата погашення судимості" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
+              <DataGridTemplateColumn Header="Порушення" Width="*" TextBlock.TextAlignment="Left">
+                <DataGridTemplateColumn.CellTemplate>
+                  <DataTemplate>
+                    <TextBlock Text="{Binding}" Width="auto" TextWrapping="Wrap" />
+                  </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+              </DataGridTemplateColumn>
               <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -797,7 +158,7 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -813,7 +174,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="BreachesOfLaw">
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="BreachesOfLaw" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="BreachesOfLaw" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -835,143 +196,18 @@
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridLiquidatedSignOwnershipLastYear" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding LiquidatedSignOwnershipLastYear, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="LiquidatedSignOwnershipLastYear">
             <DataGrid.Columns>
-              <DataGridTextColumn Binding="{Binding Path=Stake, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Частки власності" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Частки власності" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Ліквідована юрособа" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Ліквідована юрособа" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=Status, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Статус (ліквідації чи банкрутства)" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Статус (ліквідації чи банкрутства)" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=DateEffective, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дата набуття статусу (ліквідації чи банкрутства)" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Дата набуття статусу (ліквідації чи банкрутства)" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=LiquidationReason, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Причина ліквідації/банкрутства" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Причина ліквідації/банкрутства" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=LiquidationPretext, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Підстава ліквідації/банкрутства" Width="*" TextBlock.TextAlignment="Center">
-                <DataGridTextColumn.HeaderStyle>
-                  <Style TargetType="dataprimitives:DataGridColumnHeader">
-                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
-                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
-                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
-                    <Setter Property="BorderBrush" Value="Black" />
-                    <Setter Property="SeparatorBrush" Value="Black" />
-                    <Setter Property="ContentTemplate">
-                      <Setter.Value>
-                        <DataTemplate>
-                          <ContentControl Content="{Binding}">
-                            <ToolTipService.ToolTip>
-                              <ToolTip Content="Підстава ліквідації/банкрутства" />
-                            </ToolTipService.ToolTip>
-                          </ContentControl>
-                        </DataTemplate>
-                      </Setter.Value>
-                    </Setter>
-                  </Style>
-                </DataGridTextColumn.HeaderStyle>
-              </DataGridTextColumn>
+              <DataGridTemplateColumn Header="Ліквідовані юр.особи" Width="*" TextBlock.TextAlignment="Left">
+                <DataGridTemplateColumn.CellTemplate>
+                  <DataTemplate>
+                    <TextBlock Text="{Binding}" Width="auto" TextWrapping="Wrap" />
+                  </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+              </DataGridTemplateColumn>
               <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -982,7 +218,7 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -998,7 +234,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="LiquidatedSignOwnershipLastYear">
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="LiquidatedSignOwnershipLastYear" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="LiquidatedSignOwnershipLastYear" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">

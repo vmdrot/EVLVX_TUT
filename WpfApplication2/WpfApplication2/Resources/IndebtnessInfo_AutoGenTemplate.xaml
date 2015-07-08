@@ -20,8 +20,8 @@
         <TextBlock x:Name="lblLender" Height="auto" Width="auto" Text="Кредитор" Style="{StaticResource dispNmStyle}" ToolTip="(інший кредитор, окрім банків)" Tag="Lender" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxLender" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="(інший кредитор, окрім банків)" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Lender" SelectedValuePath="ID" SelectedValue="{Binding Path=Lender, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddLender" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Lender">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Lender" />
+          <Button x:Name="btnAddLender" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Lender" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Lender" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxLender" />
@@ -34,8 +34,8 @@
         <TextBlock x:Name="lblBorrower" Height="auto" Width="auto" Text="Позичальник" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Borrower" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxBorrower" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Borrower" SelectedValuePath="ID" SelectedValue="{Binding Path=Borrower, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddBorrower" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Borrower">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Borrower" />
+          <Button x:Name="btnAddBorrower" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Borrower" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Borrower" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxBorrower" />

@@ -12,7 +12,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <DataTemplate DataType="{x:Type bgusd:CouncilMemberInfo}">
-        <Border BorderBrush="GreenYellow" BorderThickness="2" CornerRadius="4">
+        <Border BorderBrush="#5D8AA8" BorderThickness="2" CornerRadius="4">
             <StackPanel>
                 <TextBlock Text="Член органу управління" Style="{StaticResource dispNmStyle}" />
                 <ContentControl Content="{Binding Member}" ToolTip="Член органу управління" />
