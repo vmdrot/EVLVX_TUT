@@ -6,7 +6,7 @@
   <DataTemplate DataType="{x:Type bgusd:CurrencyAmount}">
     <StackPanel>
       <StackPanel Orientation="Horizontal" Tag="CCY" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock Text="Валюта" Style="{StaticResource dispNmStyle}" ToolTip="Валюта" Tag="CCY" />
+        <TextBlock Text="Валюта" Style="{StaticResource dispNmStyle}" ToolTip="Валюта" Tag="CCY" Visibility="Collapsed" />
         <ComboBox ToolTip="Валюта" ItemsSource="{Binding Source={x:Static bgud:CurrencyInfo.AllCurrencies}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CCYCode" Tag="CCY" SelectedValuePath="CCYCode" SelectedValue="{Binding Path=CCY, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="75">
           <ComboBox.ItemContainerStyle>
             <Style>
@@ -15,7 +15,7 @@
           </ComboBox.ItemContainerStyle>
         </ComboBox>
       </StackPanel>
-      <TextBlock Text="Сума" Style="{StaticResource dispNmStyle}" ToolTip="Сума" Tag="Amt" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Сума" Style="{StaticResource dispNmStyle}" ToolTip="Сума" Tag="Amt" Visibility="Collapsed" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Amt, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="Сума" Tag="Amt" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="350" MinWidth="150" HorizontalAlignment="Left" />
     </StackPanel>
   </DataTemplate>

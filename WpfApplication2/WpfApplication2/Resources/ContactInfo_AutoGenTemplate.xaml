@@ -5,6 +5,7 @@
     <ResourceDictionary Source="PhysicalPersonInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="PhoneInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="EmailInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="LocationInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:ContactInfo}">
     <StackPanel>
@@ -15,14 +16,13 @@
               <StackPanel>
                 <TextBlock Text="П.І.Б." Style="{StaticResource dispNmStyle}" ToolTip="П.І.Б." Tag="FullName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
                 <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FullName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="П.І.Б." Tag="FullName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-                <Expander Header="Місце проживання" ToolTip="Місце фактичного проживання (якщо інше, ніж реєстрації)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ActualAddress" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsResidentialAndRegistrationAddressDifferent, Converter={StaticResource bool2Vis}}">
-                  <ContentControl Content="{Binding ActualAddress, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="ActualAddress" />
-                </Expander>
               </StackPanel>
             </DataTemplate>
           </ContentControl.ContentTemplate>
         </ContentControl>
       </Expander>
+      <TextBlock Text="Бажаний засіб комунікації" Style="{StaticResource dispNmStyle}" Tag="PreferrableMeansOfCommunication" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="Оберіть той засіб комунікації, котрий є для Вас бажаним (і заповніть відповідні поля)" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.MeansOfCommunicationList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding PreferrableMeansOfCommunication, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="PreferrableMeansOfCommunication" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <Expander x:Name="expPhones" Header="Телефони" ToolTip="Перелік телефонів" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Phones" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridPhones" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Phones, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Phones">
@@ -237,6 +237,9 @@
       </Expander>
       <TextBlock Text="www" Style="{StaticResource dispNmStyle}" ToolTip="Веб-сайт" Tag="www" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding www, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Веб-сайт" Tag="www" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Header="Адреса для листування" ToolTip="Адреса для звичайної пошти" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Address" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding Address, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Address" />
+      </Expander>
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>
