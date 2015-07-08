@@ -23,8 +23,8 @@
               </Style>
             </ComboBox.ItemContainerStyle>
           </ComboBox>
-          <Button x:Name="btnAddBankRef" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="BankRef">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="BankRef" />
+          <Button x:Name="btnAddBankRef" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="BankRef" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="BankRef" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxBankRef" />
@@ -37,8 +37,8 @@
         <TextBlock x:Name="lblAcquiree" Height="auto" Width="auto" Text="Юр.особа-заявник" Style="{StaticResource dispNmStyle}" ToolTip="1. Інформація про юридичну особу" Tag="Acquiree" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxAcquiree" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="1. Інформація про юридичну особу" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Acquiree" SelectedValuePath="ID" SelectedValue="{Binding Path=Acquiree, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddAcquiree" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Acquiree">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Acquiree" />
+          <Button x:Name="btnAddAcquiree" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Acquiree" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Acquiree" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxAcquiree" />
@@ -226,7 +226,7 @@
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -237,7 +237,7 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -253,7 +253,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="BankExistingCommonImplicitOwners">
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="BankExistingCommonImplicitOwners" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="BankExistingCommonImplicitOwners" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -342,7 +342,7 @@
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -353,7 +353,7 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -369,7 +369,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="SharesAppliedFor">
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="SharesAppliedFor" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="SharesAppliedFor" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -546,7 +546,7 @@
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -557,7 +557,7 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -573,7 +573,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="ApplicantOwnershipStructure">
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="ApplicantOwnershipStructure" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="ApplicantOwnershipStructure" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -662,7 +662,7 @@
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -673,7 +673,7 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -689,7 +689,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="MentionedIdentities">
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="MentionedIdentities" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="MentionedIdentities" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -844,7 +844,7 @@
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -855,7 +855,7 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -871,7 +871,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="PersonsLinks">
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="PersonsLinks" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="PersonsLinks" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">

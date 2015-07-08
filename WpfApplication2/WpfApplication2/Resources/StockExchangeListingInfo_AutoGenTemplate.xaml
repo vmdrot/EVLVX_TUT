@@ -1,0 +1,18 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="StockExchangeInfo_AutoGenTemplate.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgud:StockExchangeListingInfo}">
+    <StackPanel>
+      <Expander Header="Біржа" ToolTip="Біржа, на якій здійснюється котирування" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Exchange" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding Exchange, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Exchange" />
+      </Expander>
+      <TextBlock Text="Назва емітента" Style="{StaticResource dispNmStyle}" ToolTip="Назва емітента, прийнята на вищевказаній біржі" Tag="IssuerName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding IssuerName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва емітента, прийнята на вищевказаній біржі" Tag="IssuerName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="400" MinWidth="250" HorizontalAlignment="Left" />
+      <TextBlock Text="Символ" Style="{StaticResource dispNmStyle}" ToolTip="Символ акцій (головний - якщо їх декілька), під яким торгуються акції емітента на вищевказаній біржі" Tag="MajorStockSymbol" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MajorStockSymbol, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Символ акцій (головний - якщо їх декілька), під яким торгуються акції емітента на вищевказаній біржі" Tag="MajorStockSymbol" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="400" MinWidth="250" HorizontalAlignment="Left" />
+    </StackPanel>
+  </DataTemplate>
+</ResourceDictionary>

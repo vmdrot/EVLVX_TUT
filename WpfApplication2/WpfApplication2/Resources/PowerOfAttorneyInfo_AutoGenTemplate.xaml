@@ -9,8 +9,8 @@
         <TextBlock x:Name="lblActingPerson" Height="auto" Width="auto" Text="Довірена особа" Style="{StaticResource dispNmStyle}" ToolTip="Кому видано довіреність" Tag="ActingPerson" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxActingPerson" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Кому видано довіреність" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="ActingPerson" SelectedValuePath="ID" SelectedValue="{Binding Path=ActingPerson, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddActingPerson" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="ActingPerson">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="ActingPerson" />
+          <Button x:Name="btnAddActingPerson" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="ActingPerson" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="ActingPerson" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxActingPerson" />
@@ -23,8 +23,8 @@
         <TextBlock x:Name="lblOnBehalfOfPerson" Height="auto" Width="auto" Text="Від імені" Style="{StaticResource dispNmStyle}" ToolTip="Особа, яку представляють (від імені якої діє довірена особа)" Tag="OnBehalfOfPerson" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxOnBehalfOfPerson" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Особа, яку представляють (від імені якої діє довірена особа)" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="OnBehalfOfPerson" SelectedValuePath="ID" SelectedValue="{Binding Path=OnBehalfOfPerson, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddOnBehalfOfPerson" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="OnBehalfOfPerson">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="OnBehalfOfPerson" />
+          <Button x:Name="btnAddOnBehalfOfPerson" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="OnBehalfOfPerson" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="OnBehalfOfPerson" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxOnBehalfOfPerson" />

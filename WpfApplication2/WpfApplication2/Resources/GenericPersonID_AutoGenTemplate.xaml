@@ -11,8 +11,12 @@
       </StackPanel>
       <StackPanel Tag="PersonType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
         <TextBlock Text="PersonType" Style="{StaticResource dispNmStyle}" ToolTip="PersonType" Tag="PersonType" />
-        <RadioButton Content="Фізична особа" GroupName="rbgPersonType" ToolTip="Physical - Фізична особа" IsChecked="{Binding Path=PersonType, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Physical}" Tag="PersonType" />
-        <RadioButton Content="Юридична особа" GroupName="rbgPersonType" ToolTip="Legal - Юридична особа" IsChecked="{Binding Path=PersonType, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Legal}" Tag="PersonType" />
+        <RadioButton GroupName="rbgPersonType" ToolTip="Physical - Фізична особа" IsChecked="{Binding Path=PersonType, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Physical}" Tag="PersonType" Margin="5,0">
+          <TextBlock Text="Фізична особа" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+        <RadioButton GroupName="rbgPersonType" ToolTip="Legal - Юридична особа" IsChecked="{Binding Path=PersonType, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Legal}" Tag="PersonType" Margin="5,0">
+          <TextBlock Text="Юридична особа" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
       </StackPanel>
       <TextBlock Text="PersonCode" Style="{StaticResource dispNmStyle}" ToolTip="PersonCode" Tag="PersonCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PersonCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="PersonCode" Tag="PersonCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

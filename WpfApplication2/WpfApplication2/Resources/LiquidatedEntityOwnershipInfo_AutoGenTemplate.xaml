@@ -3,6 +3,7 @@
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
     <ResourceDictionary Source="TotalOwnershipDetailsInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="CourtInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:LiquidatedEntityOwnershipInfo}">
     <StackPanel>
@@ -13,8 +14,8 @@
         <TextBlock x:Name="lblAsset" Height="auto" Width="auto" Text="Ліквідована юрособа" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Asset" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxAsset" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Asset" SelectedValuePath="ID" SelectedValue="{Binding Path=Asset, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddAsset" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Asset">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Asset" />
+          <Button x:Name="btnAddAsset" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Asset" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Asset" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxAsset" />
@@ -23,10 +24,19 @@
           </Button>
         </StackPanel>
       </StackPanel>
+      <Expander Header="Суд" ToolTip="Суд на розгляді/у провадженні якого перебуває справа, чи котрий виніс рішення" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Court" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding Court, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Court" />
+      </Expander>
+      <TextBlock Text="Справа №" Style="{StaticResource dispNmStyle}" ToolTip="№ справи про банкрутство/ліквідацію юр.особи (з реєстру судових рішень)" Tag="CaseNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CaseNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="№ справи про банкрутство/ліквідацію юр.особи (з реєстру судових рішень)" Tag="CaseNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <StackPanel Tag="Status" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
         <TextBlock Text="Статус (ліквідації чи банкрутства)" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Status" />
-        <RadioButton Content="Банкрут" GroupName="rbgStatus" ToolTip="Insolvent - Банкрут" IsChecked="{Binding Path=Status, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Insolvent}" Tag="Status" />
-        <RadioButton Content="Ліквідовано" GroupName="rbgStatus" ToolTip="Liquidated - Ліквідовано" IsChecked="{Binding Path=Status, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Liquidated}" Tag="Status" />
+        <RadioButton GroupName="rbgStatus" ToolTip="Insolvent - Банкрут" IsChecked="{Binding Path=Status, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Insolvent}" Tag="Status" Margin="5,0">
+          <TextBlock Text="Банкрут" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+        <RadioButton GroupName="rbgStatus" ToolTip="Liquidated - Ліквідовано" IsChecked="{Binding Path=Status, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Liquidated}" Tag="Status" Margin="5,0">
+          <TextBlock Text="Ліквідовано" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
       </StackPanel>
       <TextBlock Text="Дата набуття статусу (ліквідації чи банкрутства)" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="DateEffective" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding DateEffective, diag:PresentationTraceSources.TraceLevel=High}" Tag="DateEffective" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

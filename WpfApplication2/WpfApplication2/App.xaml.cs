@@ -180,8 +180,8 @@ namespace WpfApplication2
             }
             object di = prms[0];
             object dg = prms.Length >= 2 ? prms[1] : null;
-            object propDispNm = prms.Length >= 3 ? prms[3] : null;
-            object propDescr = prms.Length >= 4 ? prms[4] : null;
+            object propDispNm = prms.Length >= 3 ? prms[2] : null;
+            object propDescr = prms.Length >= 4 ? prms[3] : null;
 
             SelectedObjectFrm frm = new SelectedObjectFrm();
             frm.DataSource = di;
@@ -190,8 +190,11 @@ namespace WpfApplication2
             bool? hr = frm.ShowDialog();
             if (hr != null && (bool)hr)
             {
-                //if (dg != null && dg is System.Windows.Controls.DataGrid)
-                //    ((System.Windows.Controls.DataGrid)dg).Items;
+                if (dg != null && dg is System.Windows.Controls.DataGrid)
+                {
+                    ((System.Windows.Controls.DataGrid)dg).Items.Refresh();
+                }
+
             }
 
             e.Handled = true;

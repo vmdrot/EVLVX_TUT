@@ -9,17 +9,25 @@
     <StackPanel>
       <StackPanel Tag="State" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
         <TextBlock Text="Тип зайнятості" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="State" />
-        <RadioButton Content="Найманий працівник" GroupName="rbgState" ToolTip="Employed - Найманий працівник" IsChecked="{Binding Path=State, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Employed}" Tag="State" />
-        <RadioButton Content="Самозайнятість" GroupName="rbgState" ToolTip="Selfemployed - Самозайнятість" IsChecked="{Binding Path=State, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Selfemployed}" Tag="State" />
-        <RadioButton Content="Фрілансер" GroupName="rbgState" ToolTip="Freelance - Фрілансер" IsChecked="{Binding Path=State, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Freelance}" Tag="State" />
-        <RadioButton Content="Безробітний" GroupName="rbgState" ToolTip="Unemployed - Безробітний" IsChecked="{Binding Path=State, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Unemployed}" Tag="State" />
+        <RadioButton GroupName="rbgState" ToolTip="Employed - Найманий працівник" IsChecked="{Binding Path=State, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Employed}" Tag="State" Margin="5,0">
+          <TextBlock Text="Найманий працівник" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+        <RadioButton GroupName="rbgState" ToolTip="Selfemployed - Самозайнятість" IsChecked="{Binding Path=State, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Selfemployed}" Tag="State" Margin="5,0">
+          <TextBlock Text="Самозайнятість" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+        <RadioButton GroupName="rbgState" ToolTip="Freelance - Фрілансер" IsChecked="{Binding Path=State, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Freelance}" Tag="State" Margin="5,0">
+          <TextBlock Text="Фрілансер" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+        <RadioButton GroupName="rbgState" ToolTip="Unemployed - Безробітний" IsChecked="{Binding Path=State, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Unemployed}" Tag="State" Margin="5,0">
+          <TextBlock Text="Безробітний" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
       </StackPanel>
       <StackPanel Orientation="Horizontal" Tag="Employer" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblEmployer" Height="auto" Width="auto" Text="Роботодавець" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Employer" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxEmployer" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Employer" SelectedValuePath="ID" SelectedValue="{Binding Path=Employer, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddEmployer" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Employer">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Employer" />
+          <Button x:Name="btnAddEmployer" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Employer" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Employer" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxEmployer" />
@@ -32,8 +40,8 @@
         <TextBlock x:Name="lblPrincipalContractor" Height="auto" Width="auto" Text="Основний замовник" Style="{StaticResource dispNmStyle}" ToolTip="Основний замовник - для самозайнятих/фрілансерів" Tag="PrincipalContractor" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxPrincipalContractor" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Основний замовник - для самозайнятих/фрілансерів" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="PrincipalContractor" SelectedValuePath="ID" SelectedValue="{Binding Path=PrincipalContractor, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddPrincipalContractor" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalContractor">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="PrincipalContractor" />
+          <Button x:Name="btnAddPrincipalContractor" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalContractor" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="PrincipalContractor" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxPrincipalContractor" />

@@ -2,16 +2,15 @@
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="LocationInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:CourtInfo}">
     <StackPanel>
-      <TextBlock Text="Name" Style="{StaticResource dispNmStyle}" ToolTip="Name" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Name" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="NameUkr" Style="{StaticResource dispNmStyle}" ToolTip="NameUkr" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="NameUkr" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Суд" Style="{StaticResource dispNmStyle}" ToolTip="Назва суду (оригінальною мовою)" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва суду (оригінальною мовою)" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <StackPanel Orientation="Horizontal" Tag="JurisdictionCountry" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock Text="JurisdictionCountry" Style="{StaticResource dispNmStyle}" ToolTip="JurisdictionCountry" Tag="JurisdictionCountry" />
-        <ComboBox ToolTip="JurisdictionCountry" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" Tag="JurisdictionCountry" SelectedItem="{Binding Path=JurisdictionCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
+        <TextBlock Text="Країна підсудності" Style="{StaticResource dispNmStyle}" ToolTip="(країна юрисдикції суду)" Tag="JurisdictionCountry" />
+        <ComboBox ToolTip="(країна юрисдикції суду)" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" Tag="JurisdictionCountry" SelectedItem="{Binding Path=JurisdictionCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
           <ComboBox.ItemContainerStyle>
             <Style>
               <Setter Property="Control.ToolTip" Value="{Binding CountryNameEng}" />
@@ -19,16 +18,27 @@
           </ComboBox.ItemContainerStyle>
         </ComboBox>
       </StackPanel>
-      <TextBlock Text="CourtRegion" Style="{StaticResource dispNmStyle}" ToolTip="CourtRegion" Tag="CourtRegion" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CourtRegion, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CourtRegion" Tag="CourtRegion" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="CourtID" Style="{StaticResource dispNmStyle}" ToolTip="CourtID" Tag="CourtID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CourtID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="CourtID" Tag="CourtID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Суд (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="Назва суду українською (якщо іноземний суд)" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва суду українською (якщо іноземний суд)" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <StackPanel Tag="Instance" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
-        <TextBlock Text="Instance" Style="{StaticResource dispNmStyle}" ToolTip="Instance" Tag="Instance" />
-        <RadioButton Content="Перша" GroupName="rbgInstance" ToolTip="First - Перша" IsChecked="{Binding Path=Instance, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=First}" Tag="Instance" />
-        <RadioButton Content="Апеляційна" GroupName="rbgInstance" ToolTip="Appeal - Апеляційна" IsChecked="{Binding Path=Instance, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Appeal}" Tag="Instance" />
-        <RadioButton Content="Касаційна" GroupName="rbgInstance" ToolTip="Cassation - Касаційна" IsChecked="{Binding Path=Instance, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Cassation}" Tag="Instance" />
+        <TextBlock Text="Інстанція суду" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Instance" />
+        <RadioButton GroupName="rbgInstance" ToolTip="First - Перша" IsChecked="{Binding Path=Instance, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=First}" Tag="Instance" Margin="5,0">
+          <TextBlock Text="Перша" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+        <RadioButton GroupName="rbgInstance" ToolTip="Appeal - Апеляційна" IsChecked="{Binding Path=Instance, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Appeal}" Tag="Instance" Margin="5,0">
+          <TextBlock Text="Апеляційна" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+        <RadioButton GroupName="rbgInstance" ToolTip="Cassation - Касаційна" IsChecked="{Binding Path=Instance, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Cassation}" Tag="Instance" Margin="5,0">
+          <TextBlock Text="Касаційна" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
       </StackPanel>
+      <TextBlock Text="Регіон юрисдикції" Style="{StaticResource dispNmStyle}" ToolTip="Область/регіон юрисдикції суду" Tag="CourtRegion" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CourtRegion, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Область/регіон юрисдикції суду" Tag="CourtRegion" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Код суду" Style="{StaticResource dispNmStyle}" ToolTip="Код суду (для українських судів) або ж його еквівалент для іноземних судів (якщо існує)" Tag="CourtID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CourtID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Код суду (для українських судів) або ж його еквівалент для іноземних судів (якщо існує)" Tag="CourtID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Header="Адреса суду" ToolTip="Адреса суду" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="CourtAddress" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding CourtAddress, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="CourtAddress" />
+      </Expander>
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

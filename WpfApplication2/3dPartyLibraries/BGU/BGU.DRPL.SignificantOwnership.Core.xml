@@ -874,6 +874,11 @@
             Мінімальне заповнення - країна та місто
             </summary>
         </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.IsRegistrationAddressActual">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.IsActualAndRegistrationAddressDifferent">
             <summary>
             
@@ -995,26 +1000,6 @@
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.BreachOfLawRecordInfo.BreachType">
             <summary>
             Обрати з переліку, обов'язкове, хоча б Інше
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.BreachOfLawRecordInfo.CourtName">
-            <summary>
-            Суд, що виніс рішення, обов'язкове поле
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.BreachOfLawRecordInfo.CourtNameUkr">
-            <summary>
-            Суд, що виніс рішення - укр. (якщо іноземна юрисдикція)
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.BreachOfLawRecordInfo.JurisdictionCountry">
-            <summary>
-            Юрисдикція, за змовчанням - Україна
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.BreachOfLawRecordInfo.SentenceDate">
-            <summary>
-            обов'язкове
             </summary>
         </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.BreachOfLawRecordInfo.CodeOrLaw">
@@ -1705,6 +1690,12 @@
             </summary>
             <seealso cref="!:http://www.reyestr.court.gov.ua/"/>
         </member>
+        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.OwnershipFormType">
+            <summary>
+            а) ДК 001:2004 – Класифікація форм власності; 
+            б) ДК 002:2004 – Класифікація організаційно-правових форм господарювання.
+            </summary>
+        </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.LiquidatedOrInsolventEntityMgmtRecordInfo.Position">
             <summary>
             ... займану Вами в цій юридичний особі посаду
@@ -2044,6 +2035,11 @@
             
             </summary>
             <seealso cref="!:http://www.iso.org/iso/en-US/home/standards/currency_codes.htm"/>
+        </member>
+        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.CourtDecisionInfo">
+            <summary>
+            Рішення суду
+            </summary>
         </member>
         <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Data.BankingLicensedActivityInfo">
             <summary>
@@ -2995,6 +2991,18 @@
             <summary>
             Стверджую, що юридична особа має можливість підтвердити походження джерел коштів, за рахунок яких придбає акції банку.
             </summary>
+        </member>
+        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.StockExchangeListingInfo">
+            <summary>
+            Інформація про лістинг на біржі (для публічної компанії)
+            </summary>
+        </member>
+        <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.StockExchangeInfo">
+            <summary>
+            Інформація про фондову біржу
+            Список з капіталізацією - http://www.world-exchanges.org/statistics/monthly-reports
+            </summary>
+            <see cref="!:https://en.wikipedia.org/wiki/List_of_stock_exchanges"/>
         </member>
     </members>
 </doc>

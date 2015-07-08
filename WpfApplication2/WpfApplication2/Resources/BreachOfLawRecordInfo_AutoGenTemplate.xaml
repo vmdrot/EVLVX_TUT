@@ -1,34 +1,81 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data">
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="CourtDecisionInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="CurrencyAmount_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:BreachOfLawRecordInfo}">
     <StackPanel>
       <TextBlock Text="Тип правопорушення" Style="{StaticResource dispNmStyle}" Tag="BreachType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.BreachOfLawTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding BreachType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="BreachType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Суд" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="CourtName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CourtName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="CourtName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Суд (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="CourtNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CourtNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="CourtNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <StackPanel Orientation="Horizontal" Tag="JurisdictionCountry" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock Text="Країна підсудності" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="JurisdictionCountry" />
-        <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" Tag="JurisdictionCountry" SelectedItem="{Binding Path=JurisdictionCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
-          <ComboBox.ItemContainerStyle>
-            <Style>
-              <Setter Property="Control.ToolTip" Value="{Binding CountryNameEng}" />
-            </Style>
-          </ComboBox.ItemContainerStyle>
-        </ComboBox>
-      </StackPanel>
-      <TextBlock Text="Дата вироку" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="SentenceDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding SentenceDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="SentenceDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Закон/кодекс" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="CodeOrLaw" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CodeOrLaw, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="CodeOrLaw" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Стаття(-і)" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Articles" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Articles, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="Articles" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Тип вироку" Style="{StaticResource dispNmStyle}" Tag="Sentence" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.SentenceTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Sentence, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="Sentence" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Header="Рішення суду" ToolTip="Відомості про судове відповідне судове рішення" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="CourtDecision" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding CourtDecision, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="CourtDecision" />
+      </Expander>
+      <TextBlock Text="Закон/кодекс" Style="{StaticResource dispNmStyle}" ToolTip="Закон/кодекс, згідно з  яким було засуджено" Tag="CodeOrLaw" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding CodeOrLaw, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Закон/кодекс, згідно з  яким було засуджено" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="CodeOrLaw" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Стаття(-і)" Style="{StaticResource dispNmStyle}" ToolTip="Стаття(-і), згідно з  яким було засуджено" Tag="Articles" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Articles, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Стаття(-і), згідно з  яким було засуджено" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="Articles" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Тип вироку" Style="{StaticResource dispNmStyle}" Tag="Sentence" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=CourtDecision.IsCourtDecisionSentence, Converter={StaticResource bool2Vis}}" />
+      <ComboBox ToolTip="Якщо рішення суду було прийнято у формі вироку" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.SentenceTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Sentence, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="Sentence" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=CourtDecision.IsCourtDecisionSentence, Converter={StaticResource bool2Vis}}" />
+      <Expander x:Name="expPenaltyDurationYrs" Header="Термін (років)" ToolTip="Термін призначеного покарання (у роках)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PenaltyDurationYrs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsDurationPenalty, Converter={StaticResource bool2Vis}}">
+        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
+          <DataGrid x:Name="gridPenaltyDurationYrs" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PenaltyDurationYrs, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="PenaltyDurationYrs">
+            <DataGrid.Columns>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
+                <DataGridTemplateColumn.CellTemplate>
+                  <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
+                        <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
+                        <Button.CommandParameter>
+                          <MultiBinding Converter="{StaticResource multiValConv}">
+                            <Binding Path="SelectedItem" ElementName="gridPenaltyDurationYrs" />
+                            <Binding ElementName="gridPenaltyDurationYrs" />
+                            <Binding ElementName="expPenaltyDurationYrs" Path="Header" />
+                            <Binding ElementName="expPenaltyDurationYrs" Path="ToolTip" />
+                          </MultiBinding>
+                        </Button.CommandParameter>
+                      </Button>
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
+                        <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
+                        <Button.CommandParameter>
+                          <MultiBinding Converter="{StaticResource multiValConv}">
+                            <Binding Path="SelectedItem" ElementName="gridPenaltyDurationYrs" />
+                            <Binding Path="SelectedIndex" ElementName="gridPenaltyDurationYrs" />
+                            <Binding ElementName="gridPenaltyDurationYrs" />
+                          </MultiBinding>
+                        </Button.CommandParameter>
+                      </Button>
+                    </StackPanel>
+                  </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+              </DataGridTemplateColumn>
+            </DataGrid.Columns>
+          </DataGrid>
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="PenaltyDurationYrs" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="PenaltyDurationYrs" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding Path="ItemsSource" ElementName="gridPenaltyDurationYrs" />
+                <Binding Path="DataContext" ElementName="gridPenaltyDurationYrs" />
+                <Binding Path="PenaltyDurationYrs" />
+                <Binding ElementName="gridPenaltyDurationYrs" />
+                <Binding ElementName="expPenaltyDurationYrs" Path="Header" />
+                <Binding ElementName="expPenaltyDurationYrs" Path="ToolTip" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
+        </StackPanel>
+      </Expander>
+      <Grid Tag="FineAmount" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsFinePenalty, Converter={StaticResource bool2Vis}}">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="1*" />
+          <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="0" Text="Штраф" Style="{StaticResource dispNmStyle}" ToolTip="Сума (і валюта) накладеного штрафу" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Column="1" Content="{Binding FineAmount, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Сума (і валюта) накладеного штрафу" Tag="FineAmount" />
+      </Grid>
       <TextBlock Text="Інші санкції" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="OtherSanctionDetails" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding OtherSanctionDetails, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="OtherSanctionDetails" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <CheckBox IsChecked="{Binding IsConvictionSettled, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsConvictionSettled" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">

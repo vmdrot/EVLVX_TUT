@@ -2,6 +2,7 @@
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="StockExchangeListingInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="LocationInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="RegistrarAuthority_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="LPRegisteredDateRecordId_AutoGenTemplate.xaml" />
@@ -20,19 +21,37 @@
           </ComboBox.ItemContainerStyle>
         </ComboBox>
       </StackPanel>
+      <StackPanel Tag="OwnershipForm" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
+        <TextBlock Text="Форма власності" Style="{StaticResource dispNmStyle}" ToolTip="Форма власності юридичної особи" Tag="OwnershipForm" />
+        <RadioButton GroupName="rbgOwnershipForm" ToolTip="Private - Приватна" IsChecked="{Binding Path=OwnershipForm, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Private}" Tag="OwnershipForm" Margin="5,0">
+          <TextBlock Text="Приватна" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+        <RadioButton GroupName="rbgOwnershipForm" ToolTip="State - Державна" IsChecked="{Binding Path=OwnershipForm, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=State}" Tag="OwnershipForm" Margin="5,0">
+          <TextBlock Text="Державна" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+        <RadioButton GroupName="rbgOwnershipForm" ToolTip="Municipal - Комунальна (муніципальна)" IsChecked="{Binding Path=OwnershipForm, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Municipal}" Tag="OwnershipForm" Margin="5,0">
+          <TextBlock Text="Комунальна (муніципальна)" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+      </StackPanel>
       <TextBlock Text="Податковий №" Style="{StaticResource dispNmStyle}" ToolTip="ЄДРПОУ/Податковий ID/HandelsregisterNr.(для нерезидентів)" Tag="TaxCodeOrHandelsRegNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TaxCodeOrHandelsRegNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ЄДРПОУ/Податковий ID/HandelsregisterNr.(для нерезидентів)" Tag="TaxCodeOrHandelsRegNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TaxCodeOrHandelsRegNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ЄДРПОУ/Податковий ID/HandelsregisterNr.(для нерезидентів)" Tag="TaxCodeOrHandelsRegNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="400" MinWidth="250" HorizontalAlignment="Left" />
       <TextBlock Text="Найменування" Style="{StaticResource dispNmStyle}" ToolTip="Найменування юридичної особи (оригінальною мовою)" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування юридичної особи (оригінальною мовою)" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Найменування українською" Style="{StaticResource dispNmStyle}" ToolTip="Найменування юридичної особи українською мовою (для нерезидентів)" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування юридичної особи українською мовою (для нерезидентів)" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <CheckBox IsChecked="{Binding IsStockExchangeListed, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsStockExchangeListed" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Публічна компанія" ToolTip="Публічна компанія згідно з визначенням пост.357" Tag="IsStockExchangeListed" />
+      </CheckBox>
+      <Expander Header="Лістинг" ToolTip="Інформація про біржовий лістинг для публічної компанії" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="StockExchangeListing" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsStockExchangeListed, Converter={StaticResource bool2Vis}}">
+        <ContentControl Content="{Binding StockExchangeListing, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="StockExchangeListing" />
+      </Expander>
       <Expander Header="Юридична адреса" ToolTip="Юридична адреса юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Address" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Address, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Address" />
       </Expander>
-      <CheckBox IsChecked="{Binding IsActualAndRegistrationAddressDifferent, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsActualAndRegistrationAddressDifferent" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Юридична й фактична адреси відрізняються?" ToolTip="(відзначте цю галочку, якщо фактична адреса юр.особи відрізняються від її юридичної адреси)" Tag="IsActualAndRegistrationAddressDifferent" />
+      <CheckBox IsChecked="{Binding IsRegistrationAddressActual, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsRegistrationAddressActual" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Юридична адреса є фактичним місцезнаходженням" ToolTip="(зніміть цю галочку, якщо фактична адреса юр.особи відрізняються від її юридичної адреси)" Tag="IsRegistrationAddressActual" />
       </CheckBox>
-      <Expander Header="Місцезнаходження" ToolTip="Фактичне місцезнаходження юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ActualAddress" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsResidentialAndRegistrationAddressDifferent, Converter={StaticResource bool2Vis}}">
+      <Expander Header="Місцезнаходження" ToolTip="Фактичне місцезнаходження юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ActualAddress" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsActualAndRegistrationAddressDifferent, Converter={StaticResource bool2Vis}}">
         <ContentControl Content="{Binding ActualAddress, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="ActualAddress" />
       </Expander>
       <Expander Header="Держорган-реєстратор" ToolTip="Державний орган, який здійснив реєстрацію юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Registrar" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
@@ -45,8 +64,8 @@
         <TextBlock x:Name="lblRepresentedBy" Height="auto" Width="auto" Text="Представник юрособи" Style="{StaticResource dispNmStyle}" ToolTip="Особа, що представляє юрособу" Tag="RepresentedBy" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxRepresentedBy" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Особа, що представляє юрособу" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="RepresentedBy" SelectedValuePath="ID" SelectedValue="{Binding Path=RepresentedBy, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddRepresentedBy" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="RepresentedBy">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="RepresentedBy" />
+          <Button x:Name="btnAddRepresentedBy" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="RepresentedBy" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="RepresentedBy" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxRepresentedBy" />
@@ -137,7 +156,7 @@
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -148,7 +167,7 @@
                           </MultiBinding>
                         </Button.CommandParameter>
                       </Button>
-                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок">
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
                         <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
                         <Button.CommandParameter>
                           <MultiBinding Converter="{StaticResource multiValConv}">
@@ -164,7 +183,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="PrincipalActivities">
+          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="PrincipalActivities" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="PrincipalActivities" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">

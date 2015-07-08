@@ -6,15 +6,17 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:CourtDecisionInfo}">
     <StackPanel>
-      <Expander Header="Court" ToolTip="Court" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Court" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <Expander Header="Суд" ToolTip="Суд, що виніс рішення" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Court" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <ContentControl Content="{Binding Court, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Court" />
       </Expander>
-      <TextBlock Text="DecisionType" Style="{StaticResource dispNmStyle}" Tag="DecisionType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="DecisionType" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.CourtDecisionTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding DecisionType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="DecisionType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="DecisionDate" Style="{StaticResource dispNmStyle}" ToolTip="DecisionDate" Tag="DecisionDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="DecisionDate" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding DecisionDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="DecisionDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="DecisionText" Style="{StaticResource dispNmStyle}" ToolTip="DecisionText" Tag="DecisionText" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding DecisionText, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="DecisionText" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="DecisionText" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Тип рішення" Style="{StaticResource dispNmStyle}" Tag="DecisionType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="Тип рішення" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.CourtDecisionTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding DecisionType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="DecisionType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Дата рішення" Style="{StaticResource dispNmStyle}" ToolTip="Дата винесення судом рішення" Tag="DecisionDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="Дата винесення судом рішення" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding DecisionDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="DecisionDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="№ рішення" Style="{StaticResource dispNmStyle}" ToolTip="Реєстраційний № рішення (у відповідному реєстрі судових рішень)" Tag="DecisionRegistryID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding DecisionRegistryID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Реєстраційний № рішення (у відповідному реєстрі судових рішень)" Tag="DecisionRegistryID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Зміст рішення" Style="{StaticResource dispNmStyle}" ToolTip="Резюме чи повний зміст рішення (залежно від того, як того вимагає контекст)" Tag="DecisionTextSummary" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding DecisionTextSummary, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Резюме чи повний зміст рішення (залежно від того, як того вимагає контекст)" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="DecisionTextSummary" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

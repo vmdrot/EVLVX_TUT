@@ -9,8 +9,8 @@
         <TextBlock x:Name="lblMember" Height="auto" Width="auto" Text="Член органу управління" Style="{StaticResource dispNmStyle}" ToolTip="Член органу управління" Tag="Member" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxMember" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Член органу управління" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Member" SelectedValuePath="ID" SelectedValue="{Binding Path=Member, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
-          <Button x:Name="btnAddMember" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Member">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Member" />
+          <Button x:Name="btnAddMember" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Member" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Member" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxMember" />
