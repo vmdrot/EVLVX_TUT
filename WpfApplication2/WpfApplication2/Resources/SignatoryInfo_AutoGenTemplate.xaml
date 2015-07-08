@@ -11,7 +11,7 @@
       <TextBlock Text="Посада (підписанта)" Style="{StaticResource dispNmStyle}" ToolTip="Посада (підписанта)" Tag="SignatoryPosition" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SignatoryPosition, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Посада (підписанта)" Tag="SignatoryPosition" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Прізвище й ініціали (підписанта)" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище й ініціали (підписанта)" Tag="SurnameInitials" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SurnameInitials, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Прізвище й ініціали (підписанта)" Tag="SurnameInitials" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SurnameInitials, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Прізвище й ініціали (підписанта)" Tag="SurnameInitials" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="350" MinWidth="250" HorizontalAlignment="Left" />
       <CheckBox IsChecked="{Binding IsActingByPowOfAttorney, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsActingByPowOfAttorney" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="За довіреністю?" ToolTip="Підписант діє на підставі довіреності" Tag="IsActingByPowOfAttorney" />
       </CheckBox>

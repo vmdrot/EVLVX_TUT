@@ -613,6 +613,11 @@
             напр. "Люда, тел. XXX-XXX-XX-XX, e-mail..."
             </summary>
         </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.ContactInfo.PreferrableMeansOfCommunication">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Data.ContactInfo.Phones">
             <summary>
             Бодай один телефон.
