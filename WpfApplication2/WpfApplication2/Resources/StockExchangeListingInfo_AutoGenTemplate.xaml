@@ -2,13 +2,23 @@
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
-    <ResourceDictionary Source="StockExchangeInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:StockExchangeListingInfo}">
     <StackPanel>
-      <Expander Header="Біржа" ToolTip="Біржа, на якій здійснюється котирування" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Exchange" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Exchange, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Exchange" />
-      </Expander>
+      <StackPanel Orientation="Vertical" Tag="Exchange" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblExchange" Height="auto" Width="auto" Text="Біржа" Style="{StaticResource dispNmStyle}" ToolTip="Біржа, на якій здійснюється котирування" Tag="Exchange" />
+        <StackPanel Orientation="Horizontal">
+          <ComboBox x:Name="cbxExchange" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="Біржа, на якій здійснюється котирування" MinWidth="150" ItemsSource="{Binding Source={x:Static bgud:StockExchangeInfo.AllWFExchanges}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Exchange" SelectedItem="{Binding Path=Exchange, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
+          <Button x:Name="btnAddExchange" Command="{x:Static local:MyCommands.AddStockExchangeCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Exchange" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Exchange" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxExchange" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
+        </StackPanel>
+      </StackPanel>
       <TextBlock Text="Назва емітента" Style="{StaticResource dispNmStyle}" ToolTip="Назва емітента, прийнята на вищевказаній біржі" Tag="IssuerName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding IssuerName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва емітента, прийнята на вищевказаній біржі" Tag="IssuerName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="400" MinWidth="250" HorizontalAlignment="Left" />
       <TextBlock Text="Символ" Style="{StaticResource dispNmStyle}" ToolTip="Символ акцій (головний - якщо їх декілька), під яким торгуються акції емітента на вищевказаній біржі" Tag="MajorStockSymbol" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
