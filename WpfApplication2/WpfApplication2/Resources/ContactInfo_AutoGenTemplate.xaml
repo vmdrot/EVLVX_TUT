@@ -14,15 +14,19 @@
           <ContentControl.ContentTemplate>
             <DataTemplate xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
               <StackPanel>
-                <TextBlock Text="П.І.Б." Style="{StaticResource dispNmStyle}" ToolTip="П.І.Б." Tag="FullName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-                <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FullName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="П.І.Б." Tag="FullName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                <Expander Header="Ім'я" ToolTip="Ім'я" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+                  <StackPanel Orientation="Vertical" Margin="5,2">
+                    <TextBlock Text="П.І.Б." Style="{StaticResource dispNmStyle}" ToolTip="П.І.Б." Tag="FullName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+                    <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FullName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="П.І.Б." Tag="FullName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MinWidth="250" HorizontalAlignment="Left" />
+                  </StackPanel>
+                </Expander>
               </StackPanel>
             </DataTemplate>
           </ContentControl.ContentTemplate>
         </ContentControl>
       </Expander>
       <TextBlock Text="Бажаний засіб комунікації" Style="{StaticResource dispNmStyle}" Tag="PreferrableMeansOfCommunication" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="Оберіть той засіб комунікації, котрий є для Вас бажаним (і заповніть відповідні поля)" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.MeansOfCommunicationList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding PreferrableMeansOfCommunication, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="PreferrableMeansOfCommunication" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="Оберіть той засіб комунікації, котрий є для Вас бажаним (і заповніть відповідні поля)" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.MeansOfCommunicationList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding PreferrableMeansOfCommunication, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="PreferrableMeansOfCommunication" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <Expander x:Name="expPhones" Header="Телефони" ToolTip="Перелік телефонів" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Phones" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridPhones" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Phones, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Phones">

@@ -6,11 +6,11 @@
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankingLicensedActivityInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ContactInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhysicalPersonInfo_AutoGenTemplate.xaml" />
-<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegistrarAuthority_AutoGenTemplate.xaml" />
-<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LocationInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/IPNRefusalRecordInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SignatoryInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PowerOfAttorneyInfo_AutoGenTemplate.xaml" />
+<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegistrarAuthority_AutoGenTemplate.xaml" />
+<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LocationInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhoneInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EmailInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/AttachmentInfo_AutoGenTemplate.xaml" />

@@ -20,7 +20,7 @@
         <ContentControl Content="{Binding Address, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Address" />
       </Expander>
       <TextBlock Text="Код держоргану (якщо існує)" Style="{StaticResource dispNmStyle}" ToolTip="Код держоргану (якщо існує)" Tag="RegistrarCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistrarCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Код держоргану (якщо існує)" Tag="RegistrarCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistrarCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Код держоргану (якщо існує)" Tag="RegistrarCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="350" MinWidth="150" HorizontalAlignment="Left" />
       <TextBlock Text="Назва держоргану" Style="{StaticResource dispNmStyle}" ToolTip="Назва держоргану" Tag="RegistrarName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegistrarName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва держоргану" Tag="RegistrarName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Назва держоргану українською" Style="{StaticResource dispNmStyle}" ToolTip="Назва держоргану українською (для органів у інших країнах)" Tag="RegistrarNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

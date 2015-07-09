@@ -3,11 +3,11 @@
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonID_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CountryInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhysicalPersonInfo_AutoGenTemplate.xaml" />
-<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegistrarAuthority_AutoGenTemplate.xaml" />
-<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LocationInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/IPNRefusalRecordInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/SignatoryInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PowerOfAttorneyInfo_AutoGenTemplate.xaml" />
+<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegistrarAuthority_AutoGenTemplate.xaml" />
+<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LocationInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankAccountInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EmploymentRecordInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EconomicActivityType_AutoGenTemplate.xaml" />
@@ -19,10 +19,10 @@
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ProfessionLicenseInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ProfessionLicensingBodyInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LegalPersonInfo_AutoGenTemplate.xaml" />
+<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LPRegisteredDateRecordId_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/StockExchangeListingInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/StockExchangeInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CurrencyAmount_AutoGenTemplate.xaml" />
-<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LPRegisteredDateRecordId_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LicenseQualificationInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/FinancialOversightAuthorityInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PublicationInfo_AutoGenTemplate.xaml" />

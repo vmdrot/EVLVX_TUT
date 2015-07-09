@@ -17,7 +17,7 @@
         <ContentControl Content="{Binding AcquiredVotes, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="AcquiredVotes" />
       </Expander>
       <TextBlock Text="Усього % у загальній власності" Style="{StaticResource dispNmStyle}" ToolTip="Усього % у загальній власності" Tag="TotalCapitalSharePct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TotalCapitalSharePct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="Усього % у загальній власності" Tag="TotalCapitalSharePct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="100" HorizontalAlignment="Left" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TotalCapitalSharePct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N4} }" ToolTip="Усього % у загальній власності" Tag="TotalCapitalSharePct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="100" HorizontalAlignment="Left" />
       <TextBlock Text="Усього голосів" Style="{StaticResource dispNmStyle}" ToolTip="Усього голосів" Tag="TotalVotes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TotalVotes, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N0} }" ToolTip="Усього голосів" Tag="TotalVotes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" HorizontalAlignment="Left" />
     </StackPanel>

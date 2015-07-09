@@ -388,6 +388,12 @@
             Інформація про фіз.особу (реквізити)
             </summary>
         </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.PhysicalPersonInfo.CitizenshipCountry">
+            <summary>
+            Обов'язкове поле (окрім хіба ContactInfo)
+            За змовчанням (пропонувати) - Україна
+            </summary>
+        </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.PhysicalPersonInfo.FullName">
             <summary>
             Вказувати достатньо повного імені; 
@@ -416,21 +422,6 @@
             для нерезидентів
             </summary>
         </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.PhysicalPersonInfo.Sex">
-            <summary>
-            Бажано вимагати; дивитися за контекстом конкретного поля 
-            у конкретній анкеті
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.PhysicalPersonInfo.BirthDate">
-            <summary>
-            Як правило, необов'язкове поле
-            Буває, що онука називають як діда, і у ланцюжку володіння фігурують обидва
-            Тоді корисно мати ще й дату народження, щоб відрізняти; 
-            буває, що онук ще неповнолітній та не має паспорта/кода
-            (реальний випадок - банк "Грант", щоправда, там, був код ІПН)
-            </summary>
-        </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.PhysicalPersonInfo.Address">
             <summary>
             Поле необхідне лише якщо вимагається у анкеті
@@ -446,10 +437,19 @@
             Поле необхідне лише якщо вимагається у анкеті, та якщо відрізняється від місця реєстрації.
             </summary>
         </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.PhysicalPersonInfo.CitizenshipCountry">
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.PhysicalPersonInfo.Sex">
             <summary>
-            Обов'язкове поле (окрім хіба ContactInfo)
-            За змовчанням (пропонувати) - Україна
+            Бажано вимагати; дивитися за контекстом конкретного поля 
+            у конкретній анкеті
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.PhysicalPersonInfo.BirthDate">
+            <summary>
+            Як правило, необов'язкове поле
+            Буває, що онука називають як діда, і у ланцюжку володіння фігурують обидва
+            Тоді корисно мати ще й дату народження, щоб відрізняти; 
+            буває, що онук ще неповнолітній та не має паспорта/кода
+            (реальний випадок - банк "Грант", щоправда, там, був код ІПН)
             </summary>
         </member>
         <member name="T:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.BankInfo">
@@ -849,14 +849,6 @@
             Обов'язкове. За змовчанням (пропонувати) - Україна.
             </summary>
         </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.TaxCodeOrHandelsRegNr">
-            <summary>
-            Обов'язкове поле (якщо контекстом проперті, де використовується цей тим, не визначено інакше)
-            Для резидентів - ЄДРПОУ
-            Для нерезидентів - еквівалентний ідентифікатор
-            </summary>
-            <seealso cref="!:http://irc.gov.ua/ua/Poshuk-v-YeDR.html"/>
-        </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.Name">
             <summary>
             Обов'язкове поле.
@@ -866,6 +858,24 @@
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.NameUkr">
             <summary>
             Назва українською (якщо оригінальна - іншою мовою).
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.TaxCodeOrHandelsRegNr">
+            <summary>
+            Обов'язкове поле (якщо контекстом проперті, де використовується цей тим, не визначено інакше)
+            Для резидентів - ЄДРПОУ
+            Для нерезидентів - еквівалентний ідентифікатор
+            </summary>
+            <seealso cref="!:http://irc.gov.ua/ua/Poshuk-v-YeDR.html"/>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.Registrar">
+            <summary>
+            Обов'язкове поле, якщо контекстом не визначено інше
+            </summary>
+        </member>
+        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.RegisteredDateID">
+            <summary>
+            Дата та номер запису про проведення державної реєстрації фізичної особи-підприємця
             </summary>
         </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.Address">
@@ -887,16 +897,6 @@
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.ActualAddress">
             <summary>
             Поле необхідне лише якщо вимагається у анкеті, та якщо відрізняється від офіційної юридичної адреси.
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.Registrar">
-            <summary>
-            Обов'язкове поле, якщо контекстом не визначено інше
-            </summary>
-        </member>
-        <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.RegisteredDateID">
-            <summary>
-            Дата та номер запису про проведення державної реєстрації фізичної особи-підприємця
             </summary>
         </member>
         <member name="P:BGU.DRPL.SignificantOwnership.Core.Spares.Dict.LegalPersonInfo.RepresentedBy">
