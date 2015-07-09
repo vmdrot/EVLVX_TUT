@@ -10,11 +10,11 @@
         <ContentControl Content="{Binding PowerOfAttorney, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="PowerOfAttorney" />
       </Expander>
       <TextBlock Text="% участі довірителя" Style="{StaticResource dispNmStyle}" ToolTip="Розмір участі довірителя в банку, %" Tag="SharesPct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesPct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="Розмір участі довірителя в банку, %" Tag="SharesPct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="100" HorizontalAlignment="Left" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesPct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N4} }" ToolTip="Розмір участі довірителя в банку, %" Tag="SharesPct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="100" HorizontalAlignment="Left" />
       <TextBlock Text="Кількість голосів" Style="{StaticResource dispNmStyle}" ToolTip="Кількість голосів у банку, щодо яких передається право голосу" Tag="Votes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Votes, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N0} }" ToolTip="Кількість голосів у банку, щодо яких передається право голосу" Tag="Votes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" HorizontalAlignment="Left" />
       <TextBlock Text="% голосів" Style="{StaticResource dispNmStyle}" ToolTip="Відсоток голосів у банку, щодо яких передається право голосу" Tag="VotesPct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding VotesPct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N2} }" ToolTip="Відсоток голосів у банку, щодо яких передається право голосу" Tag="VotesPct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="100" HorizontalAlignment="Left" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding VotesPct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N4} }" ToolTip="Відсоток голосів у банку, щодо яких передається право голосу" Tag="VotesPct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="100" HorizontalAlignment="Left" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

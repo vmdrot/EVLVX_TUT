@@ -33,14 +33,24 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <TextBlock Text="Тип зв'язку" Style="{StaticResource dispNmStyle}" Tag="AssociationType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="Тип зв'язку" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.OwnershipTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding AssociationType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="AssociationType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Ким приходиться перша особа другій" Style="{StaticResource dispNmStyle}" Tag="AssociationRoleOneVsTwo" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="Назва, ким приходиться перша особа другій" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.AssociatedPersonRoleList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding AssociationRoleOneVsTwo, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="AssociationRoleOneVsTwo" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Ким приходиться друга особа першій" Style="{StaticResource dispNmStyle}" Tag="AssociationRoleTwoVsOne" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="Назва, ким приходиться друга особа першій" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.AssociatedPersonRoleList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding AssociationRoleTwoVsOne, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="AssociationRoleTwoVsOne" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <StackPanel Tag="AssociationType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
+        <TextBlock Text="Тип зв'язку" Style="{StaticResource dispNmStyle}" ToolTip="Тип зв'язку" Tag="AssociationType" />
+        <RadioButton GroupName="rbgAssociationType" ToolTip="Relative - Родич" IsChecked="{Binding Path=AssociationType, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Relative}" Tag="AssociationType" Margin="5,0">
+          <TextBlock Text="Родич" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+        <RadioButton GroupName="rbgAssociationType" ToolTip="Attorney - Довірена особа" IsChecked="{Binding Path=AssociationType, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Attorney}" Tag="AssociationType" Margin="5,0">
+          <TextBlock Text="Довірена особа" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+        <RadioButton GroupName="rbgAssociationType" ToolTip="Other - Інший тип зв'язку" IsChecked="{Binding Path=AssociationType, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Other}" Tag="AssociationType" Margin="5,0">
+          <TextBlock Text="Інший тип зв'язку" Style="{StaticResource rbTextStyle}" />
+        </RadioButton>
+      </StackPanel>
+      <TextBlock Text="Ким приходиться перша особа другій" Style="{StaticResource dispNmStyle}" Tag="AssociationRoleOneVsTwo" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsRelative, Converter={StaticResource bool2Vis}}" />
+      <ComboBox ToolTip="Назва, ким приходиться перша особа другій" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.AssociatedPersonRoleList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding AssociationRoleOneVsTwo, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="AssociationRoleOneVsTwo" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsRelative, Converter={StaticResource bool2Vis}}" />
+      <TextBlock Text="Ким приходиться друга особа першій" Style="{StaticResource dispNmStyle}" Tag="AssociationRoleTwoVsOne" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsRelative, Converter={StaticResource bool2Vis}}" />
+      <ComboBox ToolTip="Назва, ким приходиться друга особа першій" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.AssociatedPersonRoleList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding AssociationRoleTwoVsOne, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="AssociationRoleTwoVsOne" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsRelative, Converter={StaticResource bool2Vis}}" />
       <TextBlock Text="Ролі осіособи одна одній (якщо інше)" Style="{StaticResource dispNmStyle}" ToolTip="Ким приходяться особи одна одній (якщо інше)" Tag="AssociationRolesIfOther" Visibility="{Binding Path=IsOtherRole, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding AssociationRolesIfOther, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ким приходяться особи одна одній (якщо інше)" Tag="AssociationRolesIfOther" Visibility="{Binding Path=IsOtherRole, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding AssociationRolesIfOther, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ким приходяться особи одна одній (якщо інше)" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="AssociationRolesIfOther" Visibility="{Binding Path=IsOtherRole, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

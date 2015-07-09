@@ -21,7 +21,7 @@
         </StackPanel>
       </StackPanel>
       <TextBlock Text="Роль" Style="{StaticResource dispNmStyle}" Tag="Role" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="Роль (гарантор, довірена особа, тощо)" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.FinancialGuarantorRoleTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Role, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Stretch" Tag="Role" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="Роль (гарантор, довірена особа, тощо)" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.FinancialGuarantorRoleTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Role, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="Role" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <Grid Tag="PledgeAmt" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <Grid.ColumnDefinitions>
           <ColumnDefinition Width="1*" />

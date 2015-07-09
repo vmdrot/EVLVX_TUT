@@ -2,66 +2,12 @@
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
-    <ResourceDictionary Source="RegistrarAuthority_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="IPNRefusalRecordInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="RegistrarAuthority_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="LocationInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:PhysicalPersonInfo}">
     <StackPanel>
-      <TextBlock Text="Прізвище" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище" Tag="Surname" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Surname, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Прізвище" Tag="Surname" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Ім'я" Style="{StaticResource dispNmStyle}" ToolTip="Ім'я" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ім'я" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="По-батькові/друге ім'я" Style="{StaticResource dispNmStyle}" ToolTip="По-батькові/друге ім'я" Tag="MiddleName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MiddleName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="По-батькові/друге ім'я" Tag="MiddleName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="П.І.Б." Style="{StaticResource dispNmStyle}" ToolTip="П.І.Б." Tag="FullName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FullName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="П.І.Б." Tag="FullName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Прізвище (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище, українською" Tag="SurnameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SurnameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Прізвище, українською" Tag="SurnameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Ім'я (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="Ім'я, українською" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ім'я, українською" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="По-батькові/друге ім'я (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="По-батькові/друге ім'я, українською" Tag="MiddleNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MiddleNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="По-батькові/друге ім'я, українською" Tag="MiddleNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="П.І.Б (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="П.І.Б., українською" Tag="FullNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FullNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="П.І.Б., українською" Tag="FullNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <StackPanel Tag="Sex" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
-        <TextBlock Text="Стать" Style="{StaticResource dispNmStyle}" ToolTip="Стать" Tag="Sex" />
-        <RadioButton GroupName="rbgSex" ToolTip="None - Не вказано" IsChecked="{Binding Path=Sex, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=None}" Tag="Sex" Margin="5,0">
-          <TextBlock Text="Не вказано" Style="{StaticResource rbTextStyle}" />
-        </RadioButton>
-        <RadioButton GroupName="rbgSex" ToolTip="Male - Чол." IsChecked="{Binding Path=Sex, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Male}" Tag="Sex" Margin="5,0">
-          <TextBlock Text="Чол." Style="{StaticResource rbTextStyle}" />
-        </RadioButton>
-        <RadioButton GroupName="rbgSex" ToolTip="Female - Жін." IsChecked="{Binding Path=Sex, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Female}" Tag="Sex" Margin="5,0">
-          <TextBlock Text="Жін." Style="{StaticResource rbTextStyle}" />
-        </RadioButton>
-      </StackPanel>
-      <TextBlock Text="Дата народження" Style="{StaticResource dispNmStyle}" ToolTip="Дата народження" Tag="BirthDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="Дата народження" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding BirthDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="BirthDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Серія № паспорта" Style="{StaticResource dispNmStyle}" ToolTip="Серія № паспорта" Tag="PassportID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PassportID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Серія № паспорта" Tag="PassportID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBlock Text="Дата видачі паспорта" Style="{StaticResource dispNmStyle}" ToolTip="Дата видачі паспорта" Tag="PassIssuedDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <DatePicker ToolTip="Дата видачі паспорта" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding PassIssuedDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="PassIssuedDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Header="Орган, що видав паспорт" ToolTip="Орган, що видав паспорт" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PassIssueAuthority" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding PassIssueAuthority, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="PassIssueAuthority" />
-      </Expander>
-      <CheckBox IsChecked="{Binding IsIPNRefused, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsIPNRefused" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="ІПН немає" ToolTip="Особа у встановленому порядку відмовилася від індивідувального податкового номера?" Tag="IsIPNRefused" />
-      </CheckBox>
-      <Expander Header="Відміка про відсутність ІПН-у" ToolTip="Відомості про відповідний запи/відмітку в паспорті громадянина (про відмові від ІПН та погодження такої відмови)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="IPNRefusalEvidence" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsIPNRefused, Converter={StaticResource bool2Vis}}">
-        <ContentControl Content="{Binding IPNRefusalEvidence, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="IPNRefusalEvidence" />
-      </Expander>
-      <TextBlock Text="ІПН" Style="{StaticResource dispNmStyle}" ToolTip="ІПН/№ картки соціального страхування/тощо, дивлячись, що використовується у країні резидентства" Tag="TaxOrSocSecID" Visibility="{Binding Path=HasIPN, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TaxOrSocSecID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ІПН/№ картки соціального страхування/тощо, дивлячись, що використовується у країні резидентства" Tag="TaxOrSocSecID" Visibility="{Binding Path=HasIPN, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Header="Місце реєстрації" ToolTip="Місце реєстрації" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Address" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding Address, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Address" />
-      </Expander>
-      <CheckBox IsChecked="{Binding IsResidentialAndRegistrationAddressDifferent, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsResidentialAndRegistrationAddressDifferent" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Місце проживання й реєстрації відрізняються?" ToolTip="Відзначте цю галочку, якщо місце фактичного проживання цієї особи відрізняються від адреси її офіційної реєстрації" Tag="IsResidentialAndRegistrationAddressDifferent" />
-      </CheckBox>
-      <Expander Header="Місце проживання" ToolTip="Місце фактичного проживання (якщо інше, ніж реєстрації)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ActualAddress" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsResidentialAndRegistrationAddressDifferent, Converter={StaticResource bool2Vis}}">
-        <ContentControl Content="{Binding ActualAddress, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="ActualAddress" />
-      </Expander>
       <StackPanel Orientation="Horizontal" Tag="CitizenshipCountry" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock Text="Громадянство" Style="{StaticResource dispNmStyle}" ToolTip="Громадянство" Tag="CitizenshipCountry" />
         <ComboBox ToolTip="Громадянство" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" Tag="CitizenshipCountry" SelectedItem="{Binding Path=CitizenshipCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
@@ -72,6 +18,80 @@
           </ComboBox.ItemContainerStyle>
         </ComboBox>
       </StackPanel>
+      <Expander Header="Ім'я" ToolTip="Ім'я" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <TextBlock Text="Прізвище" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище" Tag="Surname" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Surname, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Прізвище" Tag="Surname" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MinWidth="250" HorizontalAlignment="Left" />
+          <TextBlock Text="Ім'я" Style="{StaticResource dispNmStyle}" ToolTip="Ім'я" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ім'я" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MinWidth="250" HorizontalAlignment="Left" />
+          <TextBlock Text="По-батькові/друге ім'я" Style="{StaticResource dispNmStyle}" ToolTip="По-батькові/друге ім'я" Tag="MiddleName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MiddleName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="По-батькові/друге ім'я" Tag="MiddleName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MinWidth="250" HorizontalAlignment="Left" />
+          <TextBlock Text="П.І.Б." Style="{StaticResource dispNmStyle}" ToolTip="П.І.Б." Tag="FullName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FullName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="П.І.Б." Tag="FullName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MinWidth="250" HorizontalAlignment="Left" />
+          <TextBlock Text="Прізвище (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище, українською" Tag="SurnameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SurnameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Прізвище, українською" Tag="SurnameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MinWidth="250" HorizontalAlignment="Left" />
+          <TextBlock Text="Ім'я (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="Ім'я, українською" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ім'я, українською" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MinWidth="250" HorizontalAlignment="Left" />
+          <TextBlock Text="По-батькові/друге ім'я (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="По-батькові/друге ім'я, українською" Tag="MiddleNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MiddleNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="По-батькові/друге ім'я, українською" Tag="MiddleNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MinWidth="250" HorizontalAlignment="Left" />
+          <TextBlock Text="П.І.Б (укр.)" Style="{StaticResource dispNmStyle}" ToolTip="П.І.Б., українською" Tag="FullNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FullNameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="П.І.Б., українською" Tag="FullNameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MinWidth="250" HorizontalAlignment="Left" />
+        </StackPanel>
+      </Expander>
+      <Expander Header="Індивідуальний податковий номер" ToolTip="Індивідуальний податковий номер" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <CheckBox IsChecked="{Binding IsIPNRefused, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsIPNRefused" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <TextBlock FlowDirection="LeftToRight" Text="ІПН немає" ToolTip="Особа у встановленому порядку відмовилася від індивідувального податкового номера?" Tag="IsIPNRefused" />
+          </CheckBox>
+          <Expander Header="Відміка про відсутність ІПН-у" ToolTip="Відомості про відповідний запи/відмітку в паспорті громадянина (про відмові від ІПН та погодження такої відмови)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="IPNRefusalEvidence" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsIPNRefused, Converter={StaticResource bool2Vis}}">
+            <ContentControl Content="{Binding IPNRefusalEvidence, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="IPNRefusalEvidence" />
+          </Expander>
+          <TextBlock Text="ІПН" Style="{StaticResource dispNmStyle}" ToolTip="ІПН/№ картки соціального страхування/тощо, дивлячись, що використовується у країні резидентства" Tag="TaxOrSocSecID" Visibility="{Binding Path=HasIPN, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TaxOrSocSecID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ІПН/№ картки соціального страхування/тощо, дивлячись, що використовується у країні резидентства" Tag="TaxOrSocSecID" Visibility="{Binding Path=HasIPN, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="400" MinWidth="250" HorizontalAlignment="Left" />
+        </StackPanel>
+      </Expander>
+      <Expander Header="Паспортні дані" ToolTip="Паспортні дані" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <TextBlock Text="Серія № паспорта" Style="{StaticResource dispNmStyle}" ToolTip="Серія № паспорта" Tag="PassportID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PassportID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Серія № паспорта" Tag="PassportID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MinWidth="200" HorizontalAlignment="Left" />
+          <TextBlock Text="Дата видачі паспорта" Style="{StaticResource dispNmStyle}" ToolTip="Дата видачі паспорта" Tag="PassIssuedDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <DatePicker ToolTip="Дата видачі паспорта" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding PassIssuedDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="PassIssuedDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <Expander Header="Орган, що видав паспорт" ToolTip="Орган, що видав паспорт" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PassIssueAuthority" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <ContentControl Content="{Binding PassIssueAuthority, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="PassIssueAuthority" />
+          </Expander>
+        </StackPanel>
+      </Expander>
+      <Expander Header="Адреса(-и)" ToolTip="Адреса(-и)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <Expander Header="Місце реєстрації" ToolTip="Місце реєстрації" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Address" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <ContentControl Content="{Binding Address, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Address" />
+          </Expander>
+          <CheckBox IsChecked="{Binding IsResidentialAndRegistrationAddressDifferent, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsResidentialAndRegistrationAddressDifferent" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <TextBlock FlowDirection="LeftToRight" Text="Місце проживання й реєстрації відрізняються" ToolTip="Відзначте цю галочку, якщо місце фактичного проживання цієї особи відрізняються від адреси її офіційної реєстрації" Tag="IsResidentialAndRegistrationAddressDifferent" />
+          </CheckBox>
+          <Expander Header="Місце проживання" ToolTip="Місце фактичного проживання (якщо інше, ніж реєстрації)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ActualAddress" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsResidentialAndRegistrationAddressDifferent, Converter={StaticResource bool2Vis}}">
+            <ContentControl Content="{Binding ActualAddress, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="ActualAddress" />
+          </Expander>
+        </StackPanel>
+      </Expander>
+      <Expander Header="Додаткова інформація" ToolTip="Додаткова інформація" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <StackPanel Tag="Sex" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
+            <TextBlock Text="Стать" Style="{StaticResource dispNmStyle}" ToolTip="Стать" Tag="Sex" />
+            <RadioButton GroupName="rbgSex" ToolTip="None - Не вказано" IsChecked="{Binding Path=Sex, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=None}" Tag="Sex" Margin="5,0">
+              <TextBlock Text="Не вказано" Style="{StaticResource rbTextStyle}" />
+            </RadioButton>
+            <RadioButton GroupName="rbgSex" ToolTip="Male - Чол." IsChecked="{Binding Path=Sex, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Male}" Tag="Sex" Margin="5,0">
+              <TextBlock Text="Чол." Style="{StaticResource rbTextStyle}" />
+            </RadioButton>
+            <RadioButton GroupName="rbgSex" ToolTip="Female - Жін." IsChecked="{Binding Path=Sex, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Female}" Tag="Sex" Margin="5,0">
+              <TextBlock Text="Жін." Style="{StaticResource rbTextStyle}" />
+            </RadioButton>
+          </StackPanel>
+          <TextBlock Text="Дата народження" Style="{StaticResource dispNmStyle}" ToolTip="Дата народження" Tag="BirthDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <DatePicker ToolTip="Дата народження" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding BirthDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="BirthDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+        </StackPanel>
+      </Expander>
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>
