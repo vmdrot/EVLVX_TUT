@@ -114,7 +114,10 @@
         <Setter Property="Margin" Value="2,2"  />
         <Setter Property="VerticalAlignment" Value="Top"  />
         <Setter Property="Width" Value="auto" />
+        <Setter Property="Border.BorderBrush" Value="#5D8AA8" />
         <Setter Property="BorderBrush" Value="#5D8AA8" />
+        <Setter Property="BorderThickness" Value="2" />
+        <Setter Property="FontSize" Value="15" />
     </Style>
     <Style x:Key="{x:Type Expander}" TargetType="{x:Type Expander}">
         <Setter Property="FontSize" Value="16"/>
@@ -193,7 +196,7 @@
     <Style x:Key="rbTextStyle" TargetType="TextBlock">
         <Setter Property="Foreground" Value="Black" />
     </Style>
-    <!--<Style x:Key="MyFocusVisual" TargetType="TextBox">
-        <Setter Property="BorderBrush" Value="DarkGreen" />
-    </Style>-->
+    <Style TargetType="CheckBox">
+        <Setter Property="BorderBrush" Value="#5D8AA8" />
+    </Style>
 </ResourceDictionary>
