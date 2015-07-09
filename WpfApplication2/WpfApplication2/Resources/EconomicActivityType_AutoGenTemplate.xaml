@@ -6,11 +6,11 @@
   <DataTemplate DataType="{x:Type bgud:EconomicActivityType}">
     <StackPanel>
       <TextBlock Text="Код діяльності за КВЕД" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="KVEDCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding KVEDCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="KVEDCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding KVEDCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="KVEDCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="150" MinWidth="75" HorizontalAlignment="Left" />
       <TextBlock Text="Назва діяльності за КВЕД" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="KVEDActivityName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding KVEDActivityName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="KVEDActivityName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding KVEDActivityName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="KVEDActivityName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="400" MinWidth="250" HorizontalAlignment="Left" />
       <TextBlock Text="Власна фактична назва діяльності" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="ActivitySelfName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ActivitySelfName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="ActivitySelfName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ActivitySelfName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="ActivitySelfName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="400" MinWidth="250" HorizontalAlignment="Left" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

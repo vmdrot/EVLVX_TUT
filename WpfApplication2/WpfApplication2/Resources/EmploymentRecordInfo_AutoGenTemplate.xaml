@@ -1,8 +1,7 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core">
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
-    <ResourceDictionary Source="EconomicActivityType_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="ContactInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:EmploymentRecordInfo}">
@@ -50,9 +49,20 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <Expander Header="Основний вид діяльності" ToolTip="Основний вид діяльності - для самозайнятих/фрілансерів" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PrincipalFreelanceActivity" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsSelfEmployedOrFreelance, Converter={StaticResource bool2Vis}}">
-        <ContentControl Content="{Binding PrincipalFreelanceActivity, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="PrincipalFreelanceActivity" />
-      </Expander>
+      <StackPanel Orientation="Vertical" Tag="PrincipalFreelanceActivity" Visibility="{Binding Path=IsSelfEmployedOrFreelance, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblPrincipalFreelanceActivity" Height="auto" Width="auto" Text="Основний вид діяльності" Style="{StaticResource dispNmStyle}" ToolTip="Основний вид діяльності - для самозайнятих/фрілансерів" Tag="PrincipalFreelanceActivity" />
+        <StackPanel Orientation="Horizontal">
+          <ComboBox x:Name="cbxPrincipalFreelanceActivity" DisplayMemberPath="DispName" HorizontalAlignment="Stretch" ToolTip="Основний вид діяльності - для самозайнятих/фрілансерів" MinWidth="150" ItemsSource="{Binding Source={x:Static bgud:EconomicActivityType.AllKVEDs}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="PrincipalFreelanceActivity" SelectedItem="{Binding Path=PrincipalFreelanceActivity, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
+                    <Button x:Name="btnAddPrincipalFreelanceActivity" Command="{x:Static local:MyCommands.AddEconomicActivityTypeCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalFreelanceActivity" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="PrincipalFreelanceActivity" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxPrincipalFreelanceActivity" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
+        </StackPanel>
+      </StackPanel>
       <TextBlock Text="Посада/функція" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="JobTitle" Visibility="{Binding Path=IsEmployee, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding JobTitle, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="JobTitle" Visibility="{Binding Path=IsEmployee, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Дата початку роботи" Style="{StaticResource dispNmStyle}" ToolTip="Дата початку роботи чи переходу в нинішній статус (фрілансер, безробітний, тощо)" Tag="DateStarted" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
