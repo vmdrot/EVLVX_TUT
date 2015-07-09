@@ -8,7 +8,7 @@
       <StackPanel Orientation="Vertical" Tag="AccountOwner" Visibility="{Binding Path=WithMoreDetails, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblAccountOwner" Height="auto" Width="auto" Text="Власник рахунку" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="AccountOwner" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxAccountOwner" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="AccountOwner" SelectedValuePath="ID" SelectedValue="{Binding Path=AccountOwner, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <ComboBox x:Name="cbxAccountOwner" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="AccountOwner" SelectedValuePath="ID" SelectedValue="{Binding Path=AccountOwner, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
           <Button x:Name="btnAddAccountOwner" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="AccountOwner" Height="27" Width="27" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="AccountOwner" />
             <Button.CommandParameter>

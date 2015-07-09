@@ -14,7 +14,7 @@
       <DatePicker ToolTip="Дата" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding QuestDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="QuestDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="№ (Ваш висх.)" Style="{StaticResource dispNmStyle}" ToolTip="номер" Tag="Ref" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Ref, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="номер" Tag="Ref" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <StackPanel Orientation="Horizontal" Tag="BankRef" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <StackPanel Orientation="Vertical" Tag="BankRef" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblBankRef" Height="auto" Width="auto" Text="Банк (назва та ін. реквізити)" Style="{StaticResource dispNmStyle}" ToolTip="Ідентифікація банку, що подає заявку" Tag="BankRef" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxBankRef" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="Ідентифікація банку, що подає заявку" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="BankRef" SelectedItem="{Binding Path=BankRef, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250">

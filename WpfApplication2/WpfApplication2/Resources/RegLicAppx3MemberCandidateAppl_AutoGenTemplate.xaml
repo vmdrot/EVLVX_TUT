@@ -16,7 +16,7 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bguq:RegLicAppx3MemberCandidateAppl}">
     <StackPanel>
-      <StackPanel Orientation="Horizontal" Tag="BankRef" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <StackPanel Orientation="Vertical" Tag="BankRef" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblBankRef" Height="auto" Width="auto" Text="Повне офіційне найменування банку" Style="{StaticResource dispNmStyle}" ToolTip="Ідентифікація банку, в якому подавач планує набути членство у відповідному органі управління" Tag="BankRef" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxBankRef" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="Ідентифікація банку, в якому подавач планує набути членство у відповідному органі управління" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="BankRef" SelectedItem="{Binding Path=BankRef, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250">
@@ -36,10 +36,10 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <StackPanel Orientation="Horizontal" Tag="Candidate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <StackPanel Orientation="Vertical" Tag="Candidate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblCandidate" Height="auto" Width="auto" Text="Кандидат" Style="{StaticResource dispNmStyle}" ToolTip="Реквізити фізособи-кандидата на посаду..." Tag="Candidate" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxCandidate" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Реквізити фізособи-кандидата на посаду..." MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Candidate" SelectedValuePath="ID" SelectedValue="{Binding Path=Candidate, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <ComboBox x:Name="cbxCandidate" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Реквізити фізособи-кандидата на посаду..." MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Candidate" SelectedValuePath="ID" SelectedValue="{Binding Path=Candidate, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
           <Button x:Name="btnAddCandidate" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Candidate" Height="27" Width="27" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Candidate" />
             <Button.CommandParameter>
