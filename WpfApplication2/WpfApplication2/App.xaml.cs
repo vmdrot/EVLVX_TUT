@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using System.Windows.Input;
 using WpfApplication2.Data;
 using WpfApplication2.Forms;
+using System.ComponentModel;
+using BGU.DRPL.SignificantOwnership.Core.Spares;
 
 namespace WpfApplication2
 {
@@ -30,7 +32,7 @@ namespace WpfApplication2
             var reOpenSelectedObjectFormBinding = new CommandBinding(MyCommands.ReOpenSelectedObjectFormCommand, ReOpenSelectedObjectForm, CanReOpenSelectedObjectForm);
             var addBankBinding = new CommandBinding(MyCommands.AddBankCommand, AddBank, CanAddBank);
             var addStockExchangeBinding = new CommandBinding(MyCommands.AddStockExchangeCommand, AddStockExchange, CanAddStockExchange);
-            
+            var addEconomicActivityTypeBinding = new CommandBinding(MyCommands.AddEconomicActivityTypeCommand, AddEconomicActivityType, CanAddEconomicActivityType);
 
             // Register CommandBinding for all windows.
             CommandManager.RegisterClassCommandBinding(typeof(Window), binding);
@@ -41,6 +43,50 @@ namespace WpfApplication2
             CommandManager.RegisterClassCommandBinding(typeof(Window), reOpenSelectedObjectFormBinding);
             CommandManager.RegisterClassCommandBinding(typeof(Window), addBankBinding);
             CommandManager.RegisterClassCommandBinding(typeof(Window), addStockExchangeBinding);
+            CommandManager.RegisterClassCommandBinding(typeof(Window), addEconomicActivityTypeBinding);
+        }
+
+        private void CanAddEconomicActivityType(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void AddEconomicActivityType(object sender, ExecutedRoutedEventArgs e)
+        {
+            object[] prms = (object[])e.Parameter;
+            if (prms == null || prms.Length == 0)
+            {
+                e.Handled = true;
+                return;
+            }
+            object oCbx = prms[0];
+            if (oCbx == null || !(oCbx is System.Windows.Controls.ComboBox))
+            {
+                e.Handled = true;
+                return;
+            }
+
+            {
+                System.Windows.Controls.ComboBox cbx = (System.Windows.Controls.ComboBox)oCbx;
+                EconomicActivityType bi = new EconomicActivityType();
+
+                BGU.DRPL.SignificantOwnership.Utility.ReflectionUtil.InstantiateAllProps(bi, bi.GetType().Assembly);
+                SelectedObjectFrm frm = new SelectedObjectFrm();
+                frm.DataSource = bi;
+                frm.Title = "Нова вид господарської діяльності";
+                bool? dlgRes = frm.ShowDialog();
+                if (dlgRes == null || (bool)dlgRes != true)
+                    return;
+
+                EconomicActivityType newEATyp = (EconomicActivityType)frm.DataSource;
+                EconomicActivityType.AllKVEDs.Add(newEATyp);
+                cbx.Items.Refresh();
+                //SetSelectedValue(newGpi.ID);
+                //cbx.SetCurrentValue(SelectedValueProperty, newGpi.ID); //doesn't work either
+                cbx.SelectedItem = newEATyp;
+                cbx.Items.Refresh();
+            }
+            e.Handled = true;
         }
 
         private void CanAddStockExchange(object sender, CanExecuteRoutedEventArgs e)
@@ -351,6 +397,7 @@ namespace WpfApplication2
                 //cbx.SetCurrentValue(SelectedValueProperty, newGpi.ID); //doesn't work either
                 cbx.SelectedValue = newGpi.ID;
                 cbx.Items.Refresh();
+                (DataModule.CurrentQuestionnare as NotifyPropertyChangedBase).OnPropertyChanged("MentionedIdentities");
             }
             e.Handled = true;
         }
