@@ -11,7 +11,7 @@
       <StackPanel Orientation="Vertical" Tag="Asset" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblAsset" Height="auto" Width="auto" Text="Актив, що набувається" Style="{StaticResource dispNmStyle}" ToolTip="Банк або ж юр.особа - власник участі в банку (прямої чи опосередкованої)" Tag="Asset" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxAsset" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Банк або ж юр.особа - власник участі в банку (прямої чи опосередкованої)" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Asset" SelectedValuePath="ID" SelectedValue="{Binding Path=Asset, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <ComboBox x:Name="cbxAsset" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Банк або ж юр.особа - власник участі в банку (прямої чи опосередкованої)" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Asset" SelectedValuePath="ID" SelectedValue="{Binding Path=Asset, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
           <Button x:Name="btnAddAsset" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Asset" Height="27" Width="27" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Asset" />
             <Button.CommandParameter>
@@ -25,7 +25,7 @@
       <StackPanel Orientation="Vertical" Tag="PreviousOwner" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblPreviousOwner" Height="auto" Width="auto" Text="Попередній власник" Style="{StaticResource dispNmStyle}" ToolTip="Власник, від якого переходитиме власність" Tag="PreviousOwner" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxPreviousOwner" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Власник, від якого переходитиме власність" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="PreviousOwner" SelectedValuePath="ID" SelectedValue="{Binding Path=PreviousOwner, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <ComboBox x:Name="cbxPreviousOwner" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Власник, від якого переходитиме власність" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="PreviousOwner" SelectedValuePath="ID" SelectedValue="{Binding Path=PreviousOwner, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
           <Button x:Name="btnAddPreviousOwner" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PreviousOwner" Height="27" Width="27" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="PreviousOwner" />
             <Button.CommandParameter>

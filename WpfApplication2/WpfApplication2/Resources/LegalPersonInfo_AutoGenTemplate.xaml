@@ -70,10 +70,10 @@
       </Expander>
       <Expander Header="Додаткова інформація" ToolTip="Додаткова інформація" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel Orientation="Vertical" Margin="5,2">
-          <StackPanel Orientation="Horizontal" Tag="RepresentedBy" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <StackPanel Orientation="Vertical" Tag="RepresentedBy" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <TextBlock x:Name="lblRepresentedBy" Height="auto" Width="auto" Text="Представник юрособи" Style="{StaticResource dispNmStyle}" ToolTip="Особа, що представляє юрособу" Tag="RepresentedBy" />
             <StackPanel Orientation="Horizontal">
-              <ComboBox x:Name="cbxRepresentedBy" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Особа, що представляє юрособу" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="RepresentedBy" SelectedValuePath="ID" SelectedValue="{Binding Path=RepresentedBy, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+              <ComboBox x:Name="cbxRepresentedBy" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Особа, що представляє юрособу" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="RepresentedBy" SelectedValuePath="ID" SelectedValue="{Binding Path=RepresentedBy, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
               <Button x:Name="btnAddRepresentedBy" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="RepresentedBy" Height="27" Width="27" Background="White">
                 <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="RepresentedBy" />
                 <Button.CommandParameter>

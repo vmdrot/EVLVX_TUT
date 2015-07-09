@@ -13,7 +13,7 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bguq:Appx2OwnershipStructLP}">
     <StackPanel>
-      <StackPanel Orientation="Horizontal" Tag="BankRef" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <StackPanel Orientation="Vertical" Tag="BankRef" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblBankRef" Height="auto" Width="auto" Text="Банк" Style="{StaticResource dispNmStyle}" ToolTip="Банк" Tag="BankRef" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxBankRef" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="Банк" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="BankRef" SelectedItem="{Binding Path=BankRef, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250">
@@ -33,10 +33,10 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <StackPanel Orientation="Horizontal" Tag="Acquiree" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <StackPanel Orientation="Vertical" Tag="Acquiree" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblAcquiree" Height="auto" Width="auto" Text="Юр.особа-заявник" Style="{StaticResource dispNmStyle}" ToolTip="1. Інформація про юридичну особу" Tag="Acquiree" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxAcquiree" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="1. Інформація про юридичну особу" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Acquiree" SelectedValuePath="ID" SelectedValue="{Binding Path=Acquiree, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <ComboBox x:Name="cbxAcquiree" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="1. Інформація про юридичну особу" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Acquiree" SelectedValuePath="ID" SelectedValue="{Binding Path=Acquiree, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
           <Button x:Name="btnAddAcquiree" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Acquiree" Height="27" Width="27" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Acquiree" />
             <Button.CommandParameter>

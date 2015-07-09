@@ -22,10 +22,10 @@
           <TextBlock Text="Безробітний" Style="{StaticResource rbTextStyle}" />
         </RadioButton>
       </StackPanel>
-      <StackPanel Orientation="Horizontal" Tag="Employer" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <StackPanel Orientation="Vertical" Tag="Employer" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblEmployer" Height="auto" Width="auto" Text="Роботодавець" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Employer" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxEmployer" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Employer" SelectedValuePath="ID" SelectedValue="{Binding Path=Employer, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <ComboBox x:Name="cbxEmployer" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Employer" SelectedValuePath="ID" SelectedValue="{Binding Path=Employer, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
           <Button x:Name="btnAddEmployer" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Employer" Height="27" Width="27" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Employer" />
             <Button.CommandParameter>
@@ -36,10 +36,10 @@
           </Button>
         </StackPanel>
       </StackPanel>
-      <StackPanel Orientation="Horizontal" Tag="PrincipalContractor" Visibility="{Binding Path=IsSelfEmployedOrFreelance, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <StackPanel Orientation="Vertical" Tag="PrincipalContractor" Visibility="{Binding Path=IsSelfEmployedOrFreelance, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblPrincipalContractor" Height="auto" Width="auto" Text="Основний замовник" Style="{StaticResource dispNmStyle}" ToolTip="Основний замовник - для самозайнятих/фрілансерів" Tag="PrincipalContractor" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxPrincipalContractor" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Основний замовник - для самозайнятих/фрілансерів" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="PrincipalContractor" SelectedValuePath="ID" SelectedValue="{Binding Path=PrincipalContractor, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <ComboBox x:Name="cbxPrincipalContractor" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Основний замовник - для самозайнятих/фрілансерів" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="PrincipalContractor" SelectedValuePath="ID" SelectedValue="{Binding Path=PrincipalContractor, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
           <Button x:Name="btnAddPrincipalContractor" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalContractor" Height="27" Width="27" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="PrincipalContractor" />
             <Button.CommandParameter>

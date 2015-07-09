@@ -29,7 +29,7 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bguq:RegLicAppx4OwnershipAcqRequestPP}">
     <StackPanel>
-      <StackPanel Orientation="Horizontal" Tag="BankRef" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <StackPanel Orientation="Vertical" Tag="BankRef" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblBankRef" Height="auto" Width="auto" Text="Банк" Style="{StaticResource dispNmStyle}" ToolTip="Банк" Tag="BankRef" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxBankRef" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="Банк" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="BankRef" SelectedItem="{Binding Path=BankRef, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250">
@@ -234,7 +234,7 @@
           </Button>
         </StackPanel>
       </Expander>
-      <StackPanel Orientation="Horizontal" Tag="ReferenceBank" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <StackPanel Orientation="Vertical" Tag="ReferenceBank" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblReferenceBank" Height="auto" Width="auto" Text="Банк, що відрекомендовує іноземця" Style="{StaticResource dispNmStyle}" ToolTip="1.7. Банк, який надає інформацію про наявні кошти і репутацію власника рахунку (для іноземців)" Tag="ReferenceBank" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxReferenceBank" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="1.7. Банк, який надає інформацію про наявні кошти і репутацію власника рахунку (для іноземців)" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="ReferenceBank" SelectedItem="{Binding Path=ReferenceBank, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250">
@@ -966,10 +966,10 @@
       <CheckBox IsChecked="{Binding IsUnderwritten, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsUnderwritten" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="Чи є андеррайтер" ToolTip="2.2. Андеррайтер ..." Tag="IsUnderwritten" />
       </CheckBox>
-      <StackPanel Orientation="Horizontal" Tag="Underwriter" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <StackPanel Orientation="Vertical" Tag="Underwriter" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblUnderwriter" Height="auto" Width="auto" Text="Андеррайтер" Style="{StaticResource dispNmStyle}" ToolTip="2.2. Андеррайтер (якщо є) - реквізити" Tag="Underwriter" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxUnderwriter" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="2.2. Андеррайтер (якщо є) - реквізити" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Underwriter" SelectedValuePath="ID" SelectedValue="{Binding Path=Underwriter, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="150" />
+          <ComboBox x:Name="cbxUnderwriter" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="2.2. Андеррайтер (якщо є) - реквізити" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Underwriter" SelectedValuePath="ID" SelectedValue="{Binding Path=Underwriter, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
           <Button x:Name="btnAddUnderwriter" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Underwriter" Height="27" Width="27" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Underwriter" />
             <Button.CommandParameter>
