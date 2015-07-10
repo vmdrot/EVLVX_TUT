@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data" xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:localcmds="clr-namespace:WpfApplication2.Commands">
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
@@ -12,7 +12,7 @@
         <TextBlock x:Name="lblAsset" Height="auto" Width="auto" Text="Актив, що набувається" Style="{StaticResource dispNmStyle}" ToolTip="Банк або ж юр.особа - власник участі в банку (прямої чи опосередкованої)" Tag="Asset" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxAsset" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Банк або ж юр.особа - власник участі в банку (прямої чи опосередкованої)" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Asset" SelectedValuePath="ID" SelectedValue="{Binding Path=Asset, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
-          <Button x:Name="btnAddAsset" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Asset" Height="27" Width="27" Background="White">
+          <Button x:Name="btnAddAsset" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Asset" Height="27" Width="27" Background="White" ToolTip="додати новий до списку">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Asset" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -20,7 +20,7 @@
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
-          <Button x:Name="btnRefreshAsset" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Asset" Height="27" Width="27" Background="White">
+          <Button x:Name="btnRefreshAsset" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Asset" Height="27" Width="27" Background="White" ToolTip="освіжити список">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="Asset" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -34,7 +34,7 @@
         <TextBlock x:Name="lblPreviousOwner" Height="auto" Width="auto" Text="Попередній власник" Style="{StaticResource dispNmStyle}" ToolTip="Власник, від якого переходитиме власність" Tag="PreviousOwner" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxPreviousOwner" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Власник, від якого переходитиме власність" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="PreviousOwner" SelectedValuePath="ID" SelectedValue="{Binding Path=PreviousOwner, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
-          <Button x:Name="btnAddPreviousOwner" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PreviousOwner" Height="27" Width="27" Background="White">
+          <Button x:Name="btnAddPreviousOwner" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PreviousOwner" Height="27" Width="27" Background="White" ToolTip="додати новий до списку">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="PreviousOwner" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -42,7 +42,7 @@
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
-          <Button x:Name="btnRefreshPreviousOwner" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PreviousOwner" Height="27" Width="27" Background="White">
+          <Button x:Name="btnRefreshPreviousOwner" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PreviousOwner" Height="27" Width="27" Background="White" ToolTip="освіжити список">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="PreviousOwner" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -102,6 +102,9 @@
       <Expander x:Name="expPaymentDeadlines" Header="Термін оплати" ToolTip="Запланований термін здійснення оплати" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PaymentDeadlines" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridPaymentDeadlines" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PaymentDeadlines, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="PaymentDeadlines">
+            <i:Interaction.Behaviors>
+              <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+            </i:Interaction.Behaviors>
             <DataGrid.Columns>
               <DataGridTemplateColumn Header="Терміни сплати" Width="*" TextBlock.TextAlignment="Left">
                 <DataGridTemplateColumn.CellTemplate>

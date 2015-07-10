@@ -63,9 +63,10 @@ namespace WpfApplication2
         private void DataGridKeyUp(object sender, ExecutedRoutedEventArgs e)
         {
             
-            if(e.Parameter == null || !(e.Parameter is object[]) || ((object[])e.Parameter).Length <2)
+            if(e.Parameter == null || !(e.Parameter is object[]) || ((object[])e.Parameter).Length <2 || !( ((object[])e.Parameter)[1] is Key) || (Key)((object[])e.Parameter)[1] != Key.Delete)
                 return;
             System.Windows.Controls.DataGrid dg = (System.Windows.Controls.DataGrid)((object[])e.Parameter)[0];
+
 
             object[] prms = new object[] { dg.SelectedItem, dg.SelectedIndex, dg };
             MyCommands.DeleteRowCommand.Execute((object)prms, dg);
@@ -300,10 +301,43 @@ namespace WpfApplication2
             }
             object di = prms[0];
             object diIdx = prms.Length >= 2 ? prms[1] : null;
-            object dg = prms.Length >= 3 ? prms[2] : null;
+            object oDG = prms.Length >= 3 ? prms[2] : null;
 
-            if (System.Windows.MessageBox.Show(String.Format("Ви певні, що хочете видалити рядок № {0} ({1})", (int)diIdx, di), "Підтвердіть видалення рядка", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            if(!(oDG is System.Windows.Controls.DataGrid))
+            {
+                e.Handled = true;
                 return;
+            }
+
+            System.Windows.Controls.DataGrid dg = (System.Windows.Controls.DataGrid)oDG;
+            if (dg.SelectedItems != null && dg.SelectedItems.Count > 1)
+            {
+                if (System.Windows.MessageBox.Show(String.Format("Ви певні, що хочете видалити {0} рядків?", dg.SelectedItems.Count), "Підтвердіть видалення рядків", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) != MessageBoxResult.Yes)
+                {
+                    e.Handled = true;
+                    return;
+                }
+               
+                object ds = ((System.Windows.Controls.DataGrid)dg).ItemsSource;
+                if (ds.GetType().IsGenericType)
+                {
+                    foreach(object di0 in dg.SelectedItems)
+                    { 
+                        ds.GetType().GetMethod("Remove").Invoke(ds, new[] { di0 });
+                    }
+                    ((System.Windows.Controls.DataGrid)dg).Items.Refresh();
+                }
+                e.Handled = true;
+                return;
+            }
+
+
+
+            else if (System.Windows.MessageBox.Show(String.Format("Ви певні, що хочете видалити рядок № {0} ({1})", (int)diIdx, di), "Підтвердіть видалення рядка", MessageBoxButton.YesNoCancel, MessageBoxImage.Question) != MessageBoxResult.Yes)
+            {
+                e.Handled = true;
+                return;
+            }
             if (dg != null && dg is System.Windows.Controls.DataGrid)
             {
                 object ds = ((System.Windows.Controls.DataGrid)dg).ItemsSource;

@@ -78,6 +78,9 @@
           <Expander x:Name="expCreditRatingGrade" Header="2. Ідентифікаційні дані::Рейтингова оцінка" ToolTip="(за рейтингом, який підтверджений у бюлетені, однієї з провідних рейтингових компаній IBCA,Standart &amp; Poor's, Moody's)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="CreditRatingGrade" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridCreditRatingGrade" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding CreditRatingGrade, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="CreditRatingGrade">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
                 <DataGrid.Columns>
                   <DataGridTemplateColumn Header="Рейтингова оцінка" Width="*" TextBlock.TextAlignment="Left">
                     <DataGridTemplateColumn.CellTemplate>
@@ -148,6 +151,9 @@
           <Expander x:Name="expForeignOwnAcqLicensingAuthority" Header="3.4. Державний дозвільний орган (для іноземців)" ToolTip="3. Найменування іноземного державного контролюючого органу, що дає дозвіл на набуття (збільшення) участі в банку (для іноземців)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ForeignOwnAcqLicensingAuthority" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=ShowForeignOwnAcqLicensingAuthority, Converter={StaticResource bool2Vis}}">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridForeignOwnAcqLicensingAuthority" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding ForeignOwnAcqLicensingAuthority, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="ForeignOwnAcqLicensingAuthority">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
                 <DataGrid.Columns>
                   <DataGridTemplateColumn Header="Іноземний(-і) державний(-і) контролюючий(-і) орган(-и)" Width="*" TextBlock.TextAlignment="Left">
                     <DataGridTemplateColumn.CellTemplate>
@@ -215,6 +221,9 @@
           <Expander x:Name="expStateRegulatorAuthorities" Header="3. (4-5) Державний(-і) наглядовий(-і) орган(-и)" ToolTip="3. Відомості про державну реєстрацію юридичної особи та відносини з контролюючими державними органами" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="StateRegulatorAuthorities" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridStateRegulatorAuthorities" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding StateRegulatorAuthorities, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="StateRegulatorAuthorities">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
                 <DataGrid.Columns>
                   <DataGridTemplateColumn Header="Наглядовий(-і) орган(-и)" Width="*" TextBlock.TextAlignment="Left">
                     <DataGridTemplateColumn.CellTemplate>
@@ -282,6 +291,9 @@
           <Expander x:Name="expAccountsWithBanks" Header="4. Банківські рахунки юридичної особи" ToolTip="(не заповнюється банками)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="AccountsWithBanks" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridAccountsWithBanks" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding AccountsWithBanks, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="AccountsWithBanks">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
                 <DataGrid.Columns>
                   <DataGridTemplateColumn Header="Рахунки" Width="*" TextBlock.TextAlignment="Left">
                     <DataGridTemplateColumn.CellTemplate>
@@ -365,6 +377,9 @@
           <Expander x:Name="expIPOPurchase" Header="Придбання на первинному ринку" ToolTip="8. Інформація про намір щодо придбання акцій (паїв) банку на первинному ринку:" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="IPOPurchase" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=AcquisitionWays.IsIPO, Converter={StaticResource bool2Vis}}">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridIPOPurchase" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding IPOPurchase, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="IPOPurchase">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
                 <DataGrid.Columns>
                   <DataGridTemplateColumn Header="Придбання на IPO" Width="*" TextBlock.TextAlignment="Left">
                     <DataGridTemplateColumn.CellTemplate>
@@ -432,6 +447,9 @@
           <Expander x:Name="expSecondaryMarketPurchases" Header="9. Придбання на вторинному ринку" ToolTip="9. Інформація про намір щодо придбання акцій (паїв) банку на вторинному ринку та/або стосовно правочинів щодо набуття (збільшення) опосередкованої участі в банку (крім набуття істотної участі в результаті передавання особі права голосу або незалежно від формального володіння)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="SecondaryMarketPurchases" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=AcquisitionWays.IsSecondaryMarketOrImplicitOwnershipPurchase, Converter={StaticResource bool2Vis}}">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridSecondaryMarketPurchases" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding SecondaryMarketPurchases, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="SecondaryMarketPurchases">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
                 <DataGrid.Columns>
                   <DataGridTemplateColumn Header="Придбання на вторинному ринку" Width="*" TextBlock.TextAlignment="Left">
                     <DataGridTemplateColumn.CellTemplate>
@@ -499,6 +517,9 @@
           <Expander x:Name="expAquisitionByPoAttorneys" Header="10. Набуття за довіреністю" ToolTip="10. Інформація про намір щодо набуття опосередкованої істотної участі в банку за довіреністю" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="AquisitionByPoAttorneys" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=AcquisitionWays.IsPurchaseByPowOfAtt, Converter={StaticResource bool2Vis}}">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridAquisitionByPoAttorneys" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding AquisitionByPoAttorneys, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="AquisitionByPoAttorneys">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
                 <DataGrid.Columns>
                   <DataGridTemplateColumn Header="Набуття за довіренністю" Width="*" TextBlock.TextAlignment="Left">
                     <DataGridTemplateColumn.CellTemplate>
@@ -566,6 +587,9 @@
           <Expander x:Name="expAquisitionByInfluence" Header="11. Набуття у зв’язку із здійсненням впливу" ToolTip="11. Інформація про набуття опосередкованої істотної участі в банку у зв’язку із здійсненням значного або вирішального впливу на управління та діяльність банку незалежно від формального володіння" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="AquisitionByInfluence" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=AcquisitionWays.IsAcquireByImplicitInfluence, Converter={StaticResource bool2Vis}}">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridAquisitionByInfluence" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding AquisitionByInfluence, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="AquisitionByInfluence">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
                 <DataGrid.Columns>
                   <DataGridTemplateColumn Header="Набуття за впливом" Width="*" TextBlock.TextAlignment="Left">
                     <DataGridTemplateColumn.CellTemplate>
@@ -633,6 +657,9 @@
           <Expander x:Name="expFundsOrigin" Header="12. Джерела  походження коштів юридичної особи" ToolTip="12. Джерела походження коштів юридичної особи, за рахунок яких набуватиметься істотна участь у банку" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="FundsOrigin" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridFundsOrigin" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding FundsOrigin, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="FundsOrigin">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
                 <DataGrid.Columns>
                   <DataGridTemplateColumn Header="Джерело" Width="*" TextBlock.TextAlignment="Left">
                     <DataGridTemplateColumn.CellTemplate>
@@ -704,6 +731,9 @@
           <Expander x:Name="expExistingOwnershipDetailsHive" Header="13, 14, 15. Розшифровка ланцюжків власності" ToolTip="Розшифровка ланцюжків власності усіх структур-фігурантів анкети:&#xA; 13. Перелік юридичних осіб, у тому числі банків, в яких юридична особа має істотну участь або є ключовим учасником&#xA; 14. Інформація про фізичних осіб, які володіють істотною участю в цій юридичній особі або є ключовими учасниками юридичної особи&#xA; 15. Інформація про юридичних осіб, які володіють істотною участю в цій юридичній особі або є ключовими учасниками юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ExistingOwnershipDetailsHive" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridExistingOwnershipDetailsHive" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding ExistingOwnershipDetailsHive, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="ExistingOwnershipDetailsHive">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
                 <DataGrid.Columns>
                   <DataGridTemplateColumn Header="Ланцюжки власності" Width="*" TextBlock.TextAlignment="Left">
                     <DataGridTemplateColumn.CellTemplate>
@@ -771,6 +801,9 @@
           <Expander x:Name="expPersonsLinks" Header="Зв'язки між фігурантами анкети" ToolTip="Опис зв'язків між фізичними та юридичними особами, що згадуються в розділах анкети" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PersonsLinks" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridPersonsLinks" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PersonsLinks, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="PersonsLinks">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
                 <DataGrid.Columns>
                   <DataGridTemplateColumn Header="Опис зв'язку" Width="*" TextBlock.TextAlignment="Left">
                     <DataGridTemplateColumn.CellTemplate>
@@ -845,6 +878,9 @@
           <Expander x:Name="expOutstandingLoansWithBanksDetails" Header="16. Інформація про кредити, одержані юридичною особою" ToolTip="(номер і дата договору про надання кредиту, сума кредиту, термін погашення кредиту, сума заборгованості за договором на дату подання анкети)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="OutstandingLoansWithBanksDetails" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=HasOutstandingLoansWithBanks, Converter={StaticResource bool2Vis}}">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridOutstandingLoansWithBanksDetails" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding OutstandingLoansWithBanksDetails, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="OutstandingLoansWithBanksDetails">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
                 <DataGrid.Columns>
                   <DataGridTemplateColumn Header="Деталі по кредитам" Width="*" TextBlock.TextAlignment="Left">
                     <DataGridTemplateColumn.CellTemplate>
@@ -928,6 +964,9 @@
           <Expander x:Name="expMissingInformationResons" Header="Примітка. Якщо немає змоги надати інформацію за відповідними пунктами анкети, то слід зазначити причину." ToolTip="..." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="MissingInformationResons" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridMissingInformationResons" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding MissingInformationResons, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="MissingInformationResons">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
                 <DataGrid.Columns>
                   <DataGridTemplateColumn Header="Поля й причини" Width="*" TextBlock.TextAlignment="Left">
                     <DataGridTemplateColumn.CellTemplate>
@@ -1003,10 +1042,10 @@
       <Expander x:Name="expMentionedIdentities" Header="Реквізити осіб-фігурантів анкети" ToolTip="Повні реквізити юридичних та фізичних осіб, що згадуються в розділах анкети" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="MentionedIdentities" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridMentionedIdentities" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding MentionedIdentities, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="MentionedIdentities">
-                        <i:Interaction.Behaviors>
-                            <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
-                        </i:Interaction.Behaviors>
-                        <DataGrid.Columns>
+            <i:Interaction.Behaviors>
+              <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+            </i:Interaction.Behaviors>
+            <DataGrid.Columns>
               <DataGridTemplateColumn Header="Особа" Width="*" TextBlock.TextAlignment="Left">
                 <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>

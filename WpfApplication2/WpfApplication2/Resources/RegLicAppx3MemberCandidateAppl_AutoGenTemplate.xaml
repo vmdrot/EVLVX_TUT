@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data" xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:localcmds="clr-namespace:WpfApplication2.Commands">
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
@@ -26,7 +26,7 @@
               </Style>
             </ComboBox.ItemContainerStyle>
           </ComboBox>
-          <Button x:Name="btnAddBankRef" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="BankRef" Height="27" Width="27" Background="White">
+          <Button x:Name="btnAddBankRef" Command="{x:Static local:MyCommands.AddBankCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="BankRef" Height="27" Width="27" Background="White" ToolTip="додати новий до списку">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="BankRef" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -34,7 +34,7 @@
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
-          <Button x:Name="btnRefreshBankRef" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="BankRef" Height="27" Width="27" Background="White">
+          <Button x:Name="btnRefreshBankRef" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="BankRef" Height="27" Width="27" Background="White" ToolTip="освіжити список">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="BankRef" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -48,7 +48,7 @@
         <TextBlock x:Name="lblCandidate" Height="auto" Width="auto" Text="Кандидат" Style="{StaticResource dispNmStyle}" ToolTip="Реквізити фізособи-кандидата на посаду..." Tag="Candidate" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxCandidate" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Реквізити фізособи-кандидата на посаду..." MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Candidate" SelectedValuePath="ID" SelectedValue="{Binding Path=Candidate, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
-          <Button x:Name="btnAddCandidate" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Candidate" Height="27" Width="27" Background="White">
+          <Button x:Name="btnAddCandidate" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Candidate" Height="27" Width="27" Background="White" ToolTip="додати новий до списку">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Candidate" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -56,7 +56,7 @@
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
-          <Button x:Name="btnRefreshCandidate" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Candidate" Height="27" Width="27" Background="White">
+          <Button x:Name="btnRefreshCandidate" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Candidate" Height="27" Width="27" Background="White" ToolTip="освіжити список">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="Candidate" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -69,6 +69,9 @@
       <Expander x:Name="expLast5YrsWorkExperience" Header="1.6. Займані посади за останні п'ять років" ToolTip="Займані посади за останні п'ять років: найменування юридичної особи, найменування посади;  період перебування на посаді з _ до _, причина звільнення; якщо трудовий стаж переривався, то слід зазначити причину." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Last5YrsWorkExperience" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridLast5YrsWorkExperience" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Last5YrsWorkExperience, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Last5YrsWorkExperience">
+            <i:Interaction.Behaviors>
+              <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+            </i:Interaction.Behaviors>
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=State, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип зайнятості" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -374,6 +377,9 @@
       <Expander x:Name="expEducation" Header="1.8. Освіта та професійна кваліфікація" ToolTip="1.8. Освіта та професійна кваліфікація - науковий ступінь, номер, дата видачі диплома, ким виданий, спеціальність і кваліфікація" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Education" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridEducation" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Education, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Education">
+            <i:Interaction.Behaviors>
+              <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+            </i:Interaction.Behaviors>
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=UniOrCollege, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="ВНЗ" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -613,6 +619,9 @@
       <Expander x:Name="expProfessionalLicenses" Header="1.8. Професійна(-і) ліцензія(-ї)" ToolTip="п.1.8 (у частині проф.ліцензій)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ProfessionalLicenses" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridProfessionalLicenses" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding ProfessionalLicenses, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="ProfessionalLicenses">
+            <i:Interaction.Behaviors>
+              <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+            </i:Interaction.Behaviors>
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=LicenseIssuer, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Ліцензор" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -808,6 +817,9 @@
       <Expander x:Name="expOwnershipStakeWithLPAcquiree" Header="1.9. Розмір участі в юридичній особі, яка має намір набути або збільшити істотну участь у банку-емітенті" ToolTip="Заповнюється власниками істотної участі в банку або особами, які мають намір набути істотну участь у банку" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="OwnershipStakeWithLPAcquiree" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridOwnershipStakeWithLPAcquiree" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding OwnershipStakeWithLPAcquiree, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="OwnershipStakeWithLPAcquiree">
+            <i:Interaction.Behaviors>
+              <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+            </i:Interaction.Behaviors>
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Об'єкт власності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -1039,6 +1051,9 @@
       <Expander x:Name="expImplicitOwnershipWithBank" Header="2.1. б) Опосередковане володіння у банку-емітенті - деталі" ToolTip="Розшифровка опосередкованого володіння у банкові-емітенті" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ImplicitOwnershipWithBank" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridImplicitOwnershipWithBank" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding ImplicitOwnershipWithBank, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="ImplicitOwnershipWithBank">
+            <i:Interaction.Behaviors>
+              <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+            </i:Interaction.Behaviors>
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=Asset, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Об'єкт власності" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -1268,6 +1283,9 @@
       <Expander x:Name="expBreachesOfLaw" Header="п.3.1, 3.2. і 3.3. Розшифрока правопорушень/судимостей" ToolTip="Якщо були порушення законодавства, судимості (у т.ч. непогашені), галузеві правопорушення, тощо (зазначені у пп.3.1, 3.2. і 3.3.), то зазначити детальну інформацію, коли вчинено порушення, зміст порушення, які накладені санкції" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="BreachesOfLaw" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridBreachesOfLaw" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding BreachesOfLaw, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="BreachesOfLaw">
+            <i:Interaction.Behaviors>
+              <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+            </i:Interaction.Behaviors>
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=BreachType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип правопорушення" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -1551,6 +1569,9 @@
       <Expander x:Name="expMiscNonRepaidDebts" Header="3.4. Невиконані зобов'язання  перед іншими особами - розшифровка" ToolTip="якщо так, то зазначити, які саме зобов'язання, у якому розмірі, перед якою особою та з яких причин не були виконані, а також подальші плани щодо виконання/невиконання цих зобов'язань." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="MiscNonRepaidDebts" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridMiscNonRepaidDebts" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding MiscNonRepaidDebts, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="MiscNonRepaidDebts">
+            <i:Interaction.Behaviors>
+              <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+            </i:Interaction.Behaviors>
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=IsRepaymentPlanned, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Чи планую погашення?" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -1941,6 +1962,9 @@
       <Expander x:Name="expPersonsLinks" Header="Зв'язки між особами-фігурантами анкети" ToolTip="Природа зв'язків між усіма пов'язанами особами, що згадуються в анкеті" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PersonsLinks" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridPersonsLinks" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PersonsLinks, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="PersonsLinks">
+            <i:Interaction.Behaviors>
+              <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+            </i:Interaction.Behaviors>
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=One, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Перша особа" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
@@ -2133,6 +2157,9 @@
       <Expander x:Name="expMentionedIdentities" Header="MentionedIdentities" ToolTip="MentionedIdentities" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="MentionedIdentities" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
           <DataGrid x:Name="gridMentionedIdentities" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding MentionedIdentities, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="MentionedIdentities">
+            <i:Interaction.Behaviors>
+              <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+            </i:Interaction.Behaviors>
             <DataGrid.Columns>
               <DataGridTextColumn Binding="{Binding Path=PersonType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип особи" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
