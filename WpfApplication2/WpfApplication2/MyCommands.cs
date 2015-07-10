@@ -18,6 +18,8 @@ namespace WpfApplication2
         private static readonly RoutedUICommand _addBankCommand = new RoutedUICommand("description", "AddBankCommand", typeof(MyCommands));
         private static readonly RoutedUICommand _addStockExchangeCommand = new RoutedUICommand("description", "AddStockExchangeCommand", typeof(MyCommands));
         private static readonly RoutedUICommand _addEconomicActivityTypeCommand = new RoutedUICommand("description", "AddEconomicActivityTypeCommand", typeof(MyCommands));
+        private static readonly RoutedUICommand _refreshDataGridCommand = new RoutedUICommand("description", "RefreshDataGridCommand", typeof(MyCommands));
+        private static readonly RoutedUICommand _refreshComboCommand = new RoutedUICommand("description", "RefreshComboCommand", typeof(MyCommands));
 
         public static RoutedUICommand DoSomethingCommand
         {
@@ -89,6 +91,24 @@ namespace WpfApplication2
                 return _addEconomicActivityTypeCommand;
             }
         }
+
+
+        public static RoutedUICommand RefreshDataGridCommand
+        {
+            get
+            {
+                return _refreshDataGridCommand;
+            }
+        }
+
+        public static RoutedUICommand RefreshComboCommand
+        {
+            get
+            {
+                return _refreshComboCommand;
+            }
+        }
+        
 
     }
 }
