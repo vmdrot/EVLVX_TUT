@@ -18,6 +18,14 @@
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
+          <Button x:Name="btnRefreshTransferror" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Transferror" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="Transferror" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxTransferror" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
         </StackPanel>
       </StackPanel>
       <Expander Header="Набувані голоси/частка" ToolTip="Голоси/частка у власності, що купується/отримується" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PurchaseVotes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">

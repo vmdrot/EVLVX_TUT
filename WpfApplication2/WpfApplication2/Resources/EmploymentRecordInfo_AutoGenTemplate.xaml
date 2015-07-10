@@ -33,6 +33,14 @@
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
+          <Button x:Name="btnRefreshEmployer" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Employer" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="Employer" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxEmployer" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
         </StackPanel>
       </StackPanel>
       <StackPanel Orientation="Vertical" Tag="PrincipalContractor" Visibility="{Binding Path=IsSelfEmployedOrFreelance, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
@@ -47,14 +55,30 @@
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
+          <Button x:Name="btnRefreshPrincipalContractor" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalContractor" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="PrincipalContractor" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxPrincipalContractor" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
         </StackPanel>
       </StackPanel>
       <StackPanel Orientation="Vertical" Tag="PrincipalFreelanceActivity" Visibility="{Binding Path=IsSelfEmployedOrFreelance, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblPrincipalFreelanceActivity" Height="auto" Width="auto" Text="Основний вид діяльності" Style="{StaticResource dispNmStyle}" ToolTip="Основний вид діяльності - для самозайнятих/фрілансерів" Tag="PrincipalFreelanceActivity" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxPrincipalFreelanceActivity" DisplayMemberPath="DispName" HorizontalAlignment="Stretch" ToolTip="Основний вид діяльності - для самозайнятих/фрілансерів" MinWidth="150" ItemsSource="{Binding Source={x:Static bgud:EconomicActivityType.AllKVEDs}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="PrincipalFreelanceActivity" SelectedItem="{Binding Path=PrincipalFreelanceActivity, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
-                    <Button x:Name="btnAddPrincipalFreelanceActivity" Command="{x:Static local:MyCommands.AddEconomicActivityTypeCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalFreelanceActivity" Height="27" Width="27" Background="White">
+          <Button x:Name="btnAddPrincipalFreelanceActivity" Command="{x:Static local:MyCommands.AddEconomicActivityTypeCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalFreelanceActivity" Height="27" Width="27" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="PrincipalFreelanceActivity" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxPrincipalFreelanceActivity" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
+          <Button x:Name="btnRefreshPrincipalFreelanceActivity" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalFreelanceActivity" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="PrincipalFreelanceActivity" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxPrincipalFreelanceActivity" />

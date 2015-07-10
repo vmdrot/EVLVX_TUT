@@ -157,19 +157,29 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="CourtDecisions" Background="White">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="CourtDecisions" />
-            <Button.CommandParameter>
-              <MultiBinding Converter="{StaticResource multiValConv}">
-                <Binding Path="ItemsSource" ElementName="gridCourtDecisions" />
-                <Binding Path="DataContext" ElementName="gridCourtDecisions" />
-                <Binding Path="CourtDecisions" />
-                <Binding ElementName="gridCourtDecisions" />
-                <Binding ElementName="expCourtDecisions" Path="Header" />
-                <Binding ElementName="expCourtDecisions" Path="ToolTip" />
-              </MultiBinding>
-            </Button.CommandParameter>
-          </Button>
+          <StackPanel Orientation="Horizontal" Margin="0,5">
+            <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="CourtDecisions" Background="White" ToolTip="додати новий запис">
+              <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="CourtDecisions" />
+              <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiValConv}">
+                  <Binding Path="ItemsSource" ElementName="gridCourtDecisions" />
+                  <Binding Path="DataContext" ElementName="gridCourtDecisions" />
+                  <Binding Path="CourtDecisions" />
+                  <Binding ElementName="gridCourtDecisions" />
+                  <Binding ElementName="expCourtDecisions" Path="Header" />
+                  <Binding ElementName="expCourtDecisions" Path="ToolTip" />
+                </MultiBinding>
+              </Button.CommandParameter>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.RefreshDataGridCommand}" Tag="CourtDecisions" Background="White" ToolTip="освіжити записи">
+              <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn.png" Tag="CourtDecisions" />
+              <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiValConv}">
+                  <Binding ElementName="gridCourtDecisions" />
+                </MultiBinding>
+              </Button.CommandParameter>
+            </Button>
+          </StackPanel>
         </StackPanel>
       </Expander>
     </StackPanel>

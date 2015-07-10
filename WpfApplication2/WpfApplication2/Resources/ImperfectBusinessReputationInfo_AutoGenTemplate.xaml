@@ -54,19 +54,29 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="BankruptcyInvestigations" Background="White">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="BankruptcyInvestigations" />
-            <Button.CommandParameter>
-              <MultiBinding Converter="{StaticResource multiValConv}">
-                <Binding Path="ItemsSource" ElementName="gridBankruptcyInvestigations" />
-                <Binding Path="DataContext" ElementName="gridBankruptcyInvestigations" />
-                <Binding Path="BankruptcyInvestigations" />
-                <Binding ElementName="gridBankruptcyInvestigations" />
-                <Binding ElementName="expBankruptcyInvestigations" Path="Header" />
-                <Binding ElementName="expBankruptcyInvestigations" Path="ToolTip" />
-              </MultiBinding>
-            </Button.CommandParameter>
-          </Button>
+          <StackPanel Orientation="Horizontal" Margin="0,5">
+            <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="BankruptcyInvestigations" Background="White" ToolTip="додати новий запис">
+              <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="BankruptcyInvestigations" />
+              <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiValConv}">
+                  <Binding Path="ItemsSource" ElementName="gridBankruptcyInvestigations" />
+                  <Binding Path="DataContext" ElementName="gridBankruptcyInvestigations" />
+                  <Binding Path="BankruptcyInvestigations" />
+                  <Binding ElementName="gridBankruptcyInvestigations" />
+                  <Binding ElementName="expBankruptcyInvestigations" Path="Header" />
+                  <Binding ElementName="expBankruptcyInvestigations" Path="ToolTip" />
+                </MultiBinding>
+              </Button.CommandParameter>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.RefreshDataGridCommand}" Tag="BankruptcyInvestigations" Background="White" ToolTip="освіжити записи">
+              <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn.png" Tag="BankruptcyInvestigations" />
+              <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiValConv}">
+                  <Binding ElementName="gridBankruptcyInvestigations" />
+                </MultiBinding>
+              </Button.CommandParameter>
+            </Button>
+          </StackPanel>
         </StackPanel>
       </Expander>
       <CheckBox IsChecked="{Binding HasMiscNonRepaidDebts, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="HasMiscNonRepaidDebts" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
@@ -114,19 +124,29 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="MiscNonRepaidDebts" Background="White">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="MiscNonRepaidDebts" />
-            <Button.CommandParameter>
-              <MultiBinding Converter="{StaticResource multiValConv}">
-                <Binding Path="ItemsSource" ElementName="gridMiscNonRepaidDebts" />
-                <Binding Path="DataContext" ElementName="gridMiscNonRepaidDebts" />
-                <Binding Path="MiscNonRepaidDebts" />
-                <Binding ElementName="gridMiscNonRepaidDebts" />
-                <Binding ElementName="expMiscNonRepaidDebts" Path="Header" />
-                <Binding ElementName="expMiscNonRepaidDebts" Path="ToolTip" />
-              </MultiBinding>
-            </Button.CommandParameter>
-          </Button>
+          <StackPanel Orientation="Horizontal" Margin="0,5">
+            <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="MiscNonRepaidDebts" Background="White" ToolTip="додати новий запис">
+              <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="MiscNonRepaidDebts" />
+              <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiValConv}">
+                  <Binding Path="ItemsSource" ElementName="gridMiscNonRepaidDebts" />
+                  <Binding Path="DataContext" ElementName="gridMiscNonRepaidDebts" />
+                  <Binding Path="MiscNonRepaidDebts" />
+                  <Binding ElementName="gridMiscNonRepaidDebts" />
+                  <Binding ElementName="expMiscNonRepaidDebts" Path="Header" />
+                  <Binding ElementName="expMiscNonRepaidDebts" Path="ToolTip" />
+                </MultiBinding>
+              </Button.CommandParameter>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.RefreshDataGridCommand}" Tag="MiscNonRepaidDebts" Background="White" ToolTip="освіжити записи">
+              <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn.png" Tag="MiscNonRepaidDebts" />
+              <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiValConv}">
+                  <Binding ElementName="gridMiscNonRepaidDebts" />
+                </MultiBinding>
+              </Button.CommandParameter>
+            </Button>
+          </StackPanel>
         </StackPanel>
       </Expander>
       <CheckBox IsChecked="{Binding HadIndustrySpecificBreaches, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="HadIndustrySpecificBreaches" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
@@ -174,19 +194,29 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="BreachesOfLaw" Background="White">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="BreachesOfLaw" />
-            <Button.CommandParameter>
-              <MultiBinding Converter="{StaticResource multiValConv}">
-                <Binding Path="ItemsSource" ElementName="gridBreachesOfLaw" />
-                <Binding Path="DataContext" ElementName="gridBreachesOfLaw" />
-                <Binding Path="BreachesOfLaw" />
-                <Binding ElementName="gridBreachesOfLaw" />
-                <Binding ElementName="expBreachesOfLaw" Path="Header" />
-                <Binding ElementName="expBreachesOfLaw" Path="ToolTip" />
-              </MultiBinding>
-            </Button.CommandParameter>
-          </Button>
+          <StackPanel Orientation="Horizontal" Margin="0,5">
+            <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="BreachesOfLaw" Background="White" ToolTip="додати новий запис">
+              <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="BreachesOfLaw" />
+              <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiValConv}">
+                  <Binding Path="ItemsSource" ElementName="gridBreachesOfLaw" />
+                  <Binding Path="DataContext" ElementName="gridBreachesOfLaw" />
+                  <Binding Path="BreachesOfLaw" />
+                  <Binding ElementName="gridBreachesOfLaw" />
+                  <Binding ElementName="expBreachesOfLaw" Path="Header" />
+                  <Binding ElementName="expBreachesOfLaw" Path="ToolTip" />
+                </MultiBinding>
+              </Button.CommandParameter>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.RefreshDataGridCommand}" Tag="BreachesOfLaw" Background="White" ToolTip="освіжити записи">
+              <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn.png" Tag="BreachesOfLaw" />
+              <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiValConv}">
+                  <Binding ElementName="gridBreachesOfLaw" />
+                </MultiBinding>
+              </Button.CommandParameter>
+            </Button>
+          </StackPanel>
         </StackPanel>
       </Expander>
       <CheckBox IsChecked="{Binding HasLiquidatedSignOwnershipLastYear, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="HasLiquidatedSignOwnershipLastYear" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
@@ -234,19 +264,29 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="LiquidatedSignOwnershipLastYear" Background="White">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="LiquidatedSignOwnershipLastYear" />
-            <Button.CommandParameter>
-              <MultiBinding Converter="{StaticResource multiValConv}">
-                <Binding Path="ItemsSource" ElementName="gridLiquidatedSignOwnershipLastYear" />
-                <Binding Path="DataContext" ElementName="gridLiquidatedSignOwnershipLastYear" />
-                <Binding Path="LiquidatedSignOwnershipLastYear" />
-                <Binding ElementName="gridLiquidatedSignOwnershipLastYear" />
-                <Binding ElementName="expLiquidatedSignOwnershipLastYear" Path="Header" />
-                <Binding ElementName="expLiquidatedSignOwnershipLastYear" Path="ToolTip" />
-              </MultiBinding>
-            </Button.CommandParameter>
-          </Button>
+          <StackPanel Orientation="Horizontal" Margin="0,5">
+            <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="LiquidatedSignOwnershipLastYear" Background="White" ToolTip="додати новий запис">
+              <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="LiquidatedSignOwnershipLastYear" />
+              <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiValConv}">
+                  <Binding Path="ItemsSource" ElementName="gridLiquidatedSignOwnershipLastYear" />
+                  <Binding Path="DataContext" ElementName="gridLiquidatedSignOwnershipLastYear" />
+                  <Binding Path="LiquidatedSignOwnershipLastYear" />
+                  <Binding ElementName="gridLiquidatedSignOwnershipLastYear" />
+                  <Binding ElementName="expLiquidatedSignOwnershipLastYear" Path="Header" />
+                  <Binding ElementName="expLiquidatedSignOwnershipLastYear" Path="ToolTip" />
+                </MultiBinding>
+              </Button.CommandParameter>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.RefreshDataGridCommand}" Tag="LiquidatedSignOwnershipLastYear" Background="White" ToolTip="освіжити записи">
+              <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn.png" Tag="LiquidatedSignOwnershipLastYear" />
+              <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiValConv}">
+                  <Binding ElementName="gridLiquidatedSignOwnershipLastYear" />
+                </MultiBinding>
+              </Button.CommandParameter>
+            </Button>
+          </StackPanel>
         </StackPanel>
       </Expander>
     </StackPanel>

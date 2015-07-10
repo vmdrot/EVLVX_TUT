@@ -17,6 +17,14 @@
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
+          <Button x:Name="btnRefreshOne" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="One" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="One" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxOne" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
         </StackPanel>
       </StackPanel>
       <StackPanel Orientation="Vertical" Tag="Two" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
@@ -25,6 +33,14 @@
           <ComboBox x:Name="cbxTwo" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Друга особа" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Two" SelectedValuePath="ID" SelectedValue="{Binding Path=Two, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
           <Button x:Name="btnAddTwo" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Two" Height="27" Width="27" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Two" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxTwo" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
+          <Button x:Name="btnRefreshTwo" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Two" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="Two" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
                 <Binding ElementName="cbxTwo" />

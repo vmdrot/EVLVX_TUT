@@ -117,7 +117,7 @@
         <Setter Property="Border.BorderBrush" Value="#5D8AA8" />
         <Setter Property="BorderBrush" Value="#5D8AA8" />
         <Setter Property="BorderThickness" Value="2" />
-        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontSize" Value="14" />
     </Style>
     <Style x:Key="{x:Type Expander}" TargetType="{x:Type Expander}">
         <Setter Property="FontSize" Value="16"/>

@@ -9,12 +9,12 @@
       <TextBlock Text="кількість акцій (паїв)" Style="{StaticResource dispNmStyle}" ToolTip="кількість акцій (паїв)" Tag="SharesCount" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SharesCount, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N0} }" ToolTip="кількість акцій (паїв)" Tag="SharesCount" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="350" MinWidth="150" HorizontalAlignment="Left" />
       <Grid Tag="SharesNominalValue" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="1*" />
-          <ColumnDefinition Width="4*" />
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Text="номінальна вартість акцій (паїв)" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding SharesNominalValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" Tag="SharesNominalValue" />
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="номінальна вартість акцій (паїв)" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Row="1" Content="{Binding SharesNominalValue, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" Tag="SharesNominalValue" />
       </Grid>
       <TextBlock Text="%" Style="{StaticResource dispNmStyle}" ToolTip="%" Tag="Pct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Pct, diag:PresentationTraceSources.TraceLevel=High, StringFormat={}{0:N4} }" ToolTip="%" Tag="Pct" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="250" MinWidth="150" HorizontalAlignment="Left" />

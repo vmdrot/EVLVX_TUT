@@ -8,13 +8,15 @@
     <StackPanel>
       <TextBlock Text="Тип походження" Style="{StaticResource dispNmStyle}" Tag="Origin" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.FundsOriginTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Origin, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="Origin" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="OriginOther" Style="{StaticResource dispNmStyle}" ToolTip="OriginOther" Tag="OriginOther" Visibility="{Binding Path=IsOtherOrigin, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding OriginOther, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="OriginOther" Tag="OriginOther" Visibility="{Binding Path=IsOtherOrigin, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <Grid Tag="Income" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="1*" />
-          <ColumnDefinition Width="4*" />
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Text="Сума доходу" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding Income, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" Tag="Income" />
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Сума доходу" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Row="1" Content="{Binding Income, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" Tag="Income" />
       </Grid>
       <TextBlock Text="Опис та деталі щодо джерела доходу" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="IncomeOriginNotes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding IncomeOriginNotes, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="IncomeOriginNotes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

@@ -18,17 +18,25 @@
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
+          <Button x:Name="btnRefreshPerson" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Person" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="Person" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxPerson" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
         </StackPanel>
       </StackPanel>
       <TextBlock Text="Роль" Style="{StaticResource dispNmStyle}" Tag="Role" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <ComboBox ToolTip="Роль (гарантор, довірена особа, тощо)" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.FinancialGuarantorRoleTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Role, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="Role" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <Grid Tag="PledgeAmt" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="1*" />
-          <ColumnDefinition Width="4*" />
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Text="Сума гарантії/поруки/тощо" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding PledgeAmt, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" Tag="PledgeAmt" />
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Сума гарантії/поруки/тощо" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Row="1" Content="{Binding PledgeAmt, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" Tag="PledgeAmt" />
       </Grid>
       <TextBlock Text="Деталі" Style="{StaticResource dispNmStyle}" ToolTip="з яких питань" Tag="GuaranteeDetails" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding GuaranteeDetails, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="з яких питань" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="GuaranteeDetails" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

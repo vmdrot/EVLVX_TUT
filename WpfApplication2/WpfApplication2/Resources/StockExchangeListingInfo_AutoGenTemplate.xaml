@@ -17,6 +17,14 @@
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
+          <Button x:Name="btnRefreshExchange" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Exchange" Height="27" Width="27" Background="White">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="Exchange" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxExchange" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
         </StackPanel>
       </StackPanel>
       <TextBlock Text="Назва емітента" Style="{StaticResource dispNmStyle}" ToolTip="Назва емітента, прийнята на вищевказаній біржі" Tag="IssuerName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

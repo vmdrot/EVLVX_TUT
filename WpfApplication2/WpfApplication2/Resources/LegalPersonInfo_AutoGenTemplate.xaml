@@ -11,7 +11,10 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:LegalPersonInfo}">
     <StackPanel>
-      <StackPanel Orientation="Horizontal" Tag="ResidenceCountry" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <CheckBox IsChecked="{Binding IsIntFinOrIntOrg, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsIntFinOrIntOrg" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Міжнародна фінансова чи міжнародна організація" ToolTip="Відзначити, якщо юридична особа є міжнародною організацією;&#xA;міжнародна фінансова установа – установа, з якою Уряд України уклав угоду про співробітництво та для якої згідно із законами України встановлено привілеї та імунітети." Tag="IsIntFinOrIntOrg" />
+      </CheckBox>
+      <StackPanel Orientation="Horizontal" Tag="ResidenceCountry" Visibility="{Binding Path=ShowCountrySpecificControls, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock Text="Країна юрисдикції" Style="{StaticResource dispNmStyle}" ToolTip="Країна юрисдикції юридичної особи" Tag="ResidenceCountry" />
         <ComboBox ToolTip="Країна юрисдикції юридичної особи" ItemsSource="{Binding Source={x:Static bgud:CountryInfo.AllCountries}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="CountryNameUkr" Tag="ResidenceCountry" SelectedItem="{Binding Path=ResidenceCountry, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="175">
           <ComboBox.ItemContainerStyle>
@@ -25,7 +28,7 @@
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування юридичної особи (оригінальною мовою)" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Найменування українською" Style="{StaticResource dispNmStyle}" ToolTip="Найменування юридичної особи українською мовою (для нерезидентів)" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameUkr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Найменування юридичної особи українською мовою (для нерезидентів)" Tag="NameUkr" Visibility="{Binding Path=IsNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <StackPanel Tag="OwnershipForm" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Orientation="Horizontal">
+      <StackPanel Tag="OwnershipForm" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=ShowCountrySpecificControls, Converter={StaticResource bool2Vis}}" Orientation="Horizontal">
         <TextBlock Text="Форма власності" Style="{StaticResource dispNmStyle}" ToolTip="Форма власності юридичної особи" Tag="OwnershipForm" />
         <RadioButton GroupName="rbgOwnershipForm" ToolTip="Private - Приватна" IsChecked="{Binding Path=OwnershipForm, Mode=TwoWay, Converter={StaticResource enum2BoolConv}, ConverterParameter=Private}" Tag="OwnershipForm" Margin="5,0">
           <TextBlock Text="Приватна" Style="{StaticResource rbTextStyle}" />
@@ -37,19 +40,19 @@
           <TextBlock Text="Комунальна (муніципальна)" Style="{StaticResource rbTextStyle}" />
         </RadioButton>
       </StackPanel>
-      <TextBlock Text="Податковий №" Style="{StaticResource dispNmStyle}" ToolTip="ЄДРПОУ (для резидентів), податковий ID / HandelsregisterNr., тощо (для нерезидентів)" Tag="TaxCodeOrHandelsRegNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TaxCodeOrHandelsRegNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ЄДРПОУ (для резидентів), податковий ID / HandelsregisterNr., тощо (для нерезидентів)" Tag="TaxCodeOrHandelsRegNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="400" MinWidth="250" HorizontalAlignment="Left" />
+      <TextBlock Text="Податковий №" Style="{StaticResource dispNmStyle}" ToolTip="ЄДРПОУ (для резидентів), податковий ID / HandelsregisterNr., тощо (для нерезидентів)" Tag="TaxCodeOrHandelsRegNr" Visibility="{Binding Path=ShowCountrySpecificControls, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding TaxCodeOrHandelsRegNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ЄДРПОУ (для резидентів), податковий ID / HandelsregisterNr., тощо (для нерезидентів)" Tag="TaxCodeOrHandelsRegNr" Visibility="{Binding Path=ShowCountrySpecificControls, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="400" MinWidth="250" HorizontalAlignment="Left" />
       <Expander Header="Реєстраційні дані" ToolTip="Реєстраційні дані" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel Orientation="Vertical" Margin="5,2">
-          <Expander Header="Держорган-реєстратор" ToolTip="Державний орган, який здійснив реєстрацію юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Registrar" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <Expander Header="Держорган-реєстратор" ToolTip="Державний орган, який здійснив реєстрацію юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Registrar" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=ShowCountrySpecificControls, Converter={StaticResource bool2Vis}}">
             <ContentControl Content="{Binding Registrar, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Registrar" />
           </Expander>
-          <Expander Header="Дата/№ запису в держреєстрі" ToolTip="Дата та номер запису в Єдиному державному реєстрі юридичних осіб та фізичних осіб-підприємців" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="RegisteredDateID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <Expander Header="Дата/№ запису в держреєстрі" ToolTip="Дата та номер запису в Єдиному державному реєстрі юридичних осіб та фізичних осіб-підприємців" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="RegisteredDateID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=ShowCountrySpecificControls, Converter={StaticResource bool2Vis}}">
             <ContentControl Content="{Binding RegisteredDateID, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="RegisteredDateID" />
           </Expander>
         </StackPanel>
       </Expander>
-      <CheckBox IsChecked="{Binding IsStockExchangeListed, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsStockExchangeListed" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <CheckBox IsChecked="{Binding IsStockExchangeListed, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsStockExchangeListed" Visibility="{Binding Path=ShowCountrySpecificControls, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="Публічна компанія" ToolTip="Публічна компанія згідно з визначенням пост.357" Tag="IsStockExchangeListed" />
       </CheckBox>
       <Expander Header="Лістинг" ToolTip="Інформація про біржовий лістинг для публічної компанії" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="StockExchangeListing" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsStockExchangeListed, Converter={StaticResource bool2Vis}}">
@@ -82,15 +85,23 @@
                   </MultiBinding>
                 </Button.CommandParameter>
               </Button>
+              <Button x:Name="btnRefreshRepresentedBy" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="RepresentedBy" Height="27" Width="27" Background="White">
+                <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="RepresentedBy" />
+                <Button.CommandParameter>
+                  <MultiBinding Converter="{StaticResource multiValConv}">
+                    <Binding ElementName="cbxRepresentedBy" />
+                  </MultiBinding>
+                </Button.CommandParameter>
+              </Button>
             </StackPanel>
           </StackPanel>
           <Grid Tag="Equity" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width="1*" />
-              <ColumnDefinition Width="4*" />
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Text="Статутний капітал" Style="{StaticResource dispNmStyle}" ToolTip="Статутний фонд/капітал" HorizontalAlignment="Left" VerticalAlignment="Top" />
-            <ContentControl Grid.Column="1" Content="{Binding Equity, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Статутний фонд/капітал" Tag="Equity" />
+            <Grid.RowDefinitions>
+              <RowDefinition />
+              <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="Статутний капітал" Style="{StaticResource dispNmStyle}" ToolTip="Статутний фонд/капітал" HorizontalAlignment="Left" VerticalAlignment="Top" />
+            <ContentControl Grid.Row="1" Content="{Binding Equity, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Статутний фонд/капітал" Tag="Equity" />
           </Grid>
           <Expander x:Name="expPrincipalActivities" Header="Основний вид діяльності" ToolTip="Основний(-і) вид(-и) діяльності юрособи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PrincipalActivities" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
@@ -193,19 +204,29 @@
                   </DataGridTemplateColumn>
                 </DataGrid.Columns>
               </DataGrid>
-              <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="PrincipalActivities" Background="White">
-                <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="PrincipalActivities" />
-                <Button.CommandParameter>
-                  <MultiBinding Converter="{StaticResource multiValConv}">
-                    <Binding Path="ItemsSource" ElementName="gridPrincipalActivities" />
-                    <Binding Path="DataContext" ElementName="gridPrincipalActivities" />
-                    <Binding Path="PrincipalActivities" />
-                    <Binding ElementName="gridPrincipalActivities" />
-                    <Binding ElementName="expPrincipalActivities" Path="Header" />
-                    <Binding ElementName="expPrincipalActivities" Path="ToolTip" />
-                  </MultiBinding>
-                </Button.CommandParameter>
-              </Button>
+              <StackPanel Orientation="Horizontal" Margin="0,5">
+                <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="PrincipalActivities" Background="White" ToolTip="додати новий запис">
+                  <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="PrincipalActivities" />
+                  <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource multiValConv}">
+                      <Binding Path="ItemsSource" ElementName="gridPrincipalActivities" />
+                      <Binding Path="DataContext" ElementName="gridPrincipalActivities" />
+                      <Binding Path="PrincipalActivities" />
+                      <Binding ElementName="gridPrincipalActivities" />
+                      <Binding ElementName="expPrincipalActivities" Path="Header" />
+                      <Binding ElementName="expPrincipalActivities" Path="ToolTip" />
+                    </MultiBinding>
+                  </Button.CommandParameter>
+                </Button>
+                <Button HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.RefreshDataGridCommand}" Tag="PrincipalActivities" Background="White" ToolTip="освіжити записи">
+                  <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn.png" Tag="PrincipalActivities" />
+                  <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource multiValConv}">
+                      <Binding ElementName="gridPrincipalActivities" />
+                    </MultiBinding>
+                  </Button.CommandParameter>
+                </Button>
+              </StackPanel>
             </StackPanel>
           </Expander>
         </StackPanel>
