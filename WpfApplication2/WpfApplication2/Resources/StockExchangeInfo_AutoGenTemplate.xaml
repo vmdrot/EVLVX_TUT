@@ -26,12 +26,12 @@
       <TextBlock Text="Назва у переліку WFE" Style="{StaticResource dispNmStyle}" ToolTip="Назва біржі, як вона фігурує у переліку Світової Федерації Бірж - World Federation of Exchanges" Tag="WorldExchangesID" Visibility="{Binding Path=IsWorldExchangesMember, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding WorldExchangesID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва біржі, як вона фігурує у переліку Світової Федерації Бірж - World Federation of Exchanges" Tag="WorldExchangesID" Visibility="{Binding Path=IsWorldExchangesMember, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <Grid Tag="MarketCap" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="1*" />
-          <ColumnDefinition Width="4*" />
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Text="Капіталізація" Style="{StaticResource dispNmStyle}" ToolTip="Сукупна ринкова капіталізація компаній, акції яких уключено до торгів на біржі" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding MarketCap, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Сукупна ринкова капіталізація компаній, акції яких уключено до торгів на біржі" Tag="MarketCap" />
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Капіталізація" Style="{StaticResource dispNmStyle}" ToolTip="Сукупна ринкова капіталізація компаній, акції яких уключено до торгів на біржі" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Row="1" Content="{Binding MarketCap, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Сукупна ринкова капіталізація компаній, акції яких уключено до торгів на біржі" Tag="MarketCap" />
       </Grid>
       <TextBlock Text="Дата капіталізації" Style="{StaticResource dispNmStyle}" ToolTip="Дата, на яку була чинною вказана сукупна ринкова капіталізація (вище)" Tag="MarketCapAsOf" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <DatePicker ToolTip="Дата, на яку була чинною вказана сукупна ринкова капіталізація (вище)" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding MarketCapAsOf, diag:PresentationTraceSources.TraceLevel=High}" Tag="MarketCapAsOf" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

@@ -53,28 +53,38 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="PenaltyDurationYrs" Background="White">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="PenaltyDurationYrs" />
-            <Button.CommandParameter>
-              <MultiBinding Converter="{StaticResource multiValConv}">
-                <Binding Path="ItemsSource" ElementName="gridPenaltyDurationYrs" />
-                <Binding Path="DataContext" ElementName="gridPenaltyDurationYrs" />
-                <Binding Path="PenaltyDurationYrs" />
-                <Binding ElementName="gridPenaltyDurationYrs" />
-                <Binding ElementName="expPenaltyDurationYrs" Path="Header" />
-                <Binding ElementName="expPenaltyDurationYrs" Path="ToolTip" />
-              </MultiBinding>
-            </Button.CommandParameter>
-          </Button>
+          <StackPanel Orientation="Horizontal" Margin="0,5">
+            <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="PenaltyDurationYrs" Background="White" ToolTip="додати новий запис">
+              <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="PenaltyDurationYrs" />
+              <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiValConv}">
+                  <Binding Path="ItemsSource" ElementName="gridPenaltyDurationYrs" />
+                  <Binding Path="DataContext" ElementName="gridPenaltyDurationYrs" />
+                  <Binding Path="PenaltyDurationYrs" />
+                  <Binding ElementName="gridPenaltyDurationYrs" />
+                  <Binding ElementName="expPenaltyDurationYrs" Path="Header" />
+                  <Binding ElementName="expPenaltyDurationYrs" Path="ToolTip" />
+                </MultiBinding>
+              </Button.CommandParameter>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.RefreshDataGridCommand}" Tag="PenaltyDurationYrs" Background="White" ToolTip="освіжити записи">
+              <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn.png" Tag="PenaltyDurationYrs" />
+              <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiValConv}">
+                  <Binding ElementName="gridPenaltyDurationYrs" />
+                </MultiBinding>
+              </Button.CommandParameter>
+            </Button>
+          </StackPanel>
         </StackPanel>
       </Expander>
       <Grid Tag="FineAmount" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsFinePenalty, Converter={StaticResource bool2Vis}}">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="1*" />
-          <ColumnDefinition Width="4*" />
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Text="Штраф" Style="{StaticResource dispNmStyle}" ToolTip="Сума (і валюта) накладеного штрафу" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding FineAmount, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Сума (і валюта) накладеного штрафу" Tag="FineAmount" />
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Штраф" Style="{StaticResource dispNmStyle}" ToolTip="Сума (і валюта) накладеного штрафу" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Row="1" Content="{Binding FineAmount, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Сума (і валюта) накладеного штрафу" Tag="FineAmount" />
       </Grid>
       <TextBlock Text="Інші санкції" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="OtherSanctionDetails" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding OtherSanctionDetails, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="OtherSanctionDetails" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

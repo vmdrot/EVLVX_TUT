@@ -527,6 +527,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Resources\Icons\refresh_btn_27.png" />
+    <Resource Include="Resources\Icons\refresh_btn.png" />
     <Resource Include="Resources\Icons\add_btn_27.png" />
     <Resource Include="Resources\Icons\add_btn.png" />
     <Resource Include="Resources\Icons\del_btn.jpg" />

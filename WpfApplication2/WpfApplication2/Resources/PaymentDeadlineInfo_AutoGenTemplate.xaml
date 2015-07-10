@@ -7,12 +7,12 @@
   <DataTemplate DataType="{x:Type bgusd:PaymentDeadlineInfo}">
     <StackPanel>
       <Grid Tag="Amount" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <Grid.ColumnDefinitions>
-          <ColumnDefinition Width="1*" />
-          <ColumnDefinition Width="4*" />
-        </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Text="Сума" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
-        <ContentControl Grid.Column="1" Content="{Binding Amount, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" Tag="Amount" />
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Сума" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Row="1" Content="{Binding Amount, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" Tag="Amount" />
       </Grid>
       <TextBlock Text="Дата" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Deadline" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding Deadline, diag:PresentationTraceSources.TraceLevel=High}" Tag="Deadline" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
