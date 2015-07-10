@@ -1,4 +1,4 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data" xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:localcmds="clr-namespace:WpfApplication2.Commands" xmlns:bgud="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Dict;assembly=BGU.DRPL.SignificantOwnership.Core">
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
@@ -25,7 +25,7 @@
         <TextBlock x:Name="lblEmployer" Height="auto" Width="auto" Text="Роботодавець" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Employer" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxEmployer" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Employer" SelectedValuePath="ID" SelectedValue="{Binding Path=Employer, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
-          <Button x:Name="btnAddEmployer" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Employer" Height="27" Width="27" Background="White">
+          <Button x:Name="btnAddEmployer" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Employer" Height="27" Width="27" Background="White" ToolTip="додати новий до списку">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Employer" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -33,7 +33,7 @@
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
-          <Button x:Name="btnRefreshEmployer" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Employer" Height="27" Width="27" Background="White">
+          <Button x:Name="btnRefreshEmployer" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Employer" Height="27" Width="27" Background="White" ToolTip="освіжити список">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="Employer" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -47,7 +47,7 @@
         <TextBlock x:Name="lblPrincipalContractor" Height="auto" Width="auto" Text="Основний замовник" Style="{StaticResource dispNmStyle}" ToolTip="Основний замовник - для самозайнятих/фрілансерів" Tag="PrincipalContractor" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxPrincipalContractor" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Основний замовник - для самозайнятих/фрілансерів" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="PrincipalContractor" SelectedValuePath="ID" SelectedValue="{Binding Path=PrincipalContractor, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
-          <Button x:Name="btnAddPrincipalContractor" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalContractor" Height="27" Width="27" Background="White">
+          <Button x:Name="btnAddPrincipalContractor" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalContractor" Height="27" Width="27" Background="White" ToolTip="додати новий до списку">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="PrincipalContractor" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -55,7 +55,7 @@
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
-          <Button x:Name="btnRefreshPrincipalContractor" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalContractor" Height="27" Width="27" Background="White">
+          <Button x:Name="btnRefreshPrincipalContractor" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalContractor" Height="27" Width="27" Background="White" ToolTip="освіжити список">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="PrincipalContractor" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -69,7 +69,7 @@
         <TextBlock x:Name="lblPrincipalFreelanceActivity" Height="auto" Width="auto" Text="Основний вид діяльності" Style="{StaticResource dispNmStyle}" ToolTip="Основний вид діяльності - для самозайнятих/фрілансерів" Tag="PrincipalFreelanceActivity" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxPrincipalFreelanceActivity" DisplayMemberPath="DispName" HorizontalAlignment="Stretch" ToolTip="Основний вид діяльності - для самозайнятих/фрілансерів" MinWidth="150" ItemsSource="{Binding Source={x:Static bgud:EconomicActivityType.AllKVEDs}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="PrincipalFreelanceActivity" SelectedItem="{Binding Path=PrincipalFreelanceActivity, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
-          <Button x:Name="btnAddPrincipalFreelanceActivity" Command="{x:Static local:MyCommands.AddEconomicActivityTypeCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalFreelanceActivity" Height="27" Width="27" Background="White">
+          <Button x:Name="btnAddPrincipalFreelanceActivity" Command="{x:Static local:MyCommands.AddEconomicActivityTypeCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalFreelanceActivity" Height="27" Width="27" Background="White" ToolTip="додати новий до списку">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="PrincipalFreelanceActivity" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -77,7 +77,7 @@
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
-          <Button x:Name="btnRefreshPrincipalFreelanceActivity" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalFreelanceActivity" Height="27" Width="27" Background="White">
+          <Button x:Name="btnRefreshPrincipalFreelanceActivity" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalFreelanceActivity" Height="27" Width="27" Background="White" ToolTip="освіжити список">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="PrincipalFreelanceActivity" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
