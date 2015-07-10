@@ -41,7 +41,15 @@
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
-        </StackPanel>
+                    <Button x:Name="btnRefreshBankRef" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="BankRef" Height="27" Width="27" Background="White">
+                        <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="BankRef" />
+                        <Button.CommandParameter>
+                            <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding ElementName="cbxBankRef" />
+                            </MultiBinding>
+                        </Button.CommandParameter>
+                    </Button>
+                </StackPanel>
       </StackPanel>
       <Expander Header="І. Інформація про юридичну особу" ToolTip="І. Інформація про юридичну особу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel Orientation="Vertical" Margin="5,2">
@@ -56,7 +64,15 @@
                     <Binding ElementName="cbxAcquiree" />
                   </MultiBinding>
                 </Button.CommandParameter>
-              </Button>
+                            </Button>
+                            <Button x:Name="btnRefreshAcquiree" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Acquiree" Height="27" Width="27" Background="White">
+                                    <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="Acquiree" />
+                                    <Button.CommandParameter>
+                                        <MultiBinding Converter="{StaticResource multiValConv}">
+                                            <Binding ElementName="cbxAcquiree" />
+                                        </MultiBinding>
+                                    </Button.CommandParameter>
+                                </Button>
             </StackPanel>
           </StackPanel>
           <Expander x:Name="expCreditRatingGrade" Header="2. Ідентифікаційні дані::Рейтингова оцінка" ToolTip="(за рейтингом, який підтверджений у бюлетені, однієї з провідних рейтингових компаній IBCA,Standart &amp; Poor's, Moody's)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="CreditRatingGrade" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
@@ -111,6 +127,66 @@
                     <Binding ElementName="gridCreditRatingGrade" />
                     <Binding ElementName="expCreditRatingGrade" Path="Header" />
                     <Binding ElementName="expCreditRatingGrade" Path="ToolTip" />
+                  </MultiBinding>
+                </Button.CommandParameter>
+              </Button>
+            </StackPanel>
+          </Expander>
+          <CheckBox IsChecked="{Binding IsNonResidentLicenseRequired, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsNonResidentLicenseRequired" Visibility="{Binding Path=IsAcquireeNonResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <TextBlock FlowDirection="LeftToRight" Text="3.4. Потрібен дозвіл державного органу (для іноземців)" ToolTip="3.4 (Нерезидентам) Для набуття (збільшення) участі в банку потрібно отримувати дозівл іноземного державного контролюючого органу(-ів)?" Tag="IsNonResidentLicenseRequired" />
+          </CheckBox>
+          <Expander x:Name="expForeignOwnAcqLicensingAuthority" Header="3.4. Державний дозвільний орган (для іноземців)" ToolTip="3. Найменування іноземного державного контролюючого органу, що дає дозвіл на набуття (збільшення) участі в банку (для іноземців)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ForeignOwnAcqLicensingAuthority" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=ShowForeignOwnAcqLicensingAuthority, Converter={StaticResource bool2Vis}}">
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
+              <DataGrid x:Name="gridForeignOwnAcqLicensingAuthority" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding ForeignOwnAcqLicensingAuthority, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="ForeignOwnAcqLicensingAuthority">
+                <DataGrid.Columns>
+                  <DataGridTemplateColumn Header="Іноземний(-і) державний(-і) контролюючий(-і) орган(-и)" Width="*" TextBlock.TextAlignment="Left">
+                    <DataGridTemplateColumn.CellTemplate>
+                      <DataTemplate>
+                        <TextBlock Text="{Binding}" Width="auto" TextWrapping="Wrap" />
+                      </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                  </DataGridTemplateColumn>
+                  <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
+                    <DataGridTemplateColumn.CellTemplate>
+                      <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                          <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
+                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
+                            <Button.CommandParameter>
+                              <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding Path="SelectedItem" ElementName="gridForeignOwnAcqLicensingAuthority" />
+                                <Binding ElementName="gridForeignOwnAcqLicensingAuthority" />
+                                <Binding ElementName="expForeignOwnAcqLicensingAuthority" Path="Header" />
+                                <Binding ElementName="expForeignOwnAcqLicensingAuthority" Path="ToolTip" />
+                              </MultiBinding>
+                            </Button.CommandParameter>
+                          </Button>
+                          <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
+                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
+                            <Button.CommandParameter>
+                              <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding Path="SelectedItem" ElementName="gridForeignOwnAcqLicensingAuthority" />
+                                <Binding Path="SelectedIndex" ElementName="gridForeignOwnAcqLicensingAuthority" />
+                                <Binding ElementName="gridForeignOwnAcqLicensingAuthority" />
+                              </MultiBinding>
+                            </Button.CommandParameter>
+                          </Button>
+                        </StackPanel>
+                      </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                  </DataGridTemplateColumn>
+                </DataGrid.Columns>
+              </DataGrid>
+              <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="ForeignOwnAcqLicensingAuthority" Background="White">
+                <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="ForeignOwnAcqLicensingAuthority" />
+                <Button.CommandParameter>
+                  <MultiBinding Converter="{StaticResource multiValConv}">
+                    <Binding Path="ItemsSource" ElementName="gridForeignOwnAcqLicensingAuthority" />
+                    <Binding Path="DataContext" ElementName="gridForeignOwnAcqLicensingAuthority" />
+                    <Binding Path="ForeignOwnAcqLicensingAuthority" />
+                    <Binding ElementName="gridForeignOwnAcqLicensingAuthority" />
+                    <Binding ElementName="expForeignOwnAcqLicensingAuthority" Path="Header" />
+                    <Binding ElementName="expForeignOwnAcqLicensingAuthority" Path="ToolTip" />
                   </MultiBinding>
                 </Button.CommandParameter>
               </Button>
@@ -836,7 +912,8 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <Button HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="MentionedIdentities" Background="White">
+                    <StackPanel Orientation="Horizontal" Margin="0,5">
+                        <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="MentionedIdentities" Background="White">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="MentionedIdentities" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
@@ -849,7 +926,16 @@
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
-        </StackPanel>
+                    <Button HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.RefreshDataGridCommand}" Tag="MentionedIdentities" Background="White">
+                        <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn.png" Tag="MentionedIdentities" />
+                        <Button.CommandParameter>
+                            <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding ElementName="gridMentionedIdentities" />
+                            </MultiBinding>
+                        </Button.CommandParameter>
+                    </Button>
+                    </StackPanel>
+                </StackPanel>
       </Expander>
     </StackPanel>
   </DataTemplate>
