@@ -33,6 +33,10 @@ namespace WpfApplication2
             var addBankBinding = new CommandBinding(MyCommands.AddBankCommand, AddBank, CanAddBank);
             var addStockExchangeBinding = new CommandBinding(MyCommands.AddStockExchangeCommand, AddStockExchange, CanAddStockExchange);
             var addEconomicActivityTypeBinding = new CommandBinding(MyCommands.AddEconomicActivityTypeCommand, AddEconomicActivityType, CanAddEconomicActivityType);
+            var refreshDataGridBinding = new CommandBinding(MyCommands.RefreshDataGridCommand, RefreshDataGrid, CanRefreshDataGrid);
+            var refreshComboBinding = new CommandBinding(MyCommands.RefreshComboCommand, RefreshCombo, CanRefreshCombo);
+            
+            
 
             // Register CommandBinding for all windows.
             CommandManager.RegisterClassCommandBinding(typeof(Window), binding);
@@ -44,6 +48,49 @@ namespace WpfApplication2
             CommandManager.RegisterClassCommandBinding(typeof(Window), addBankBinding);
             CommandManager.RegisterClassCommandBinding(typeof(Window), addStockExchangeBinding);
             CommandManager.RegisterClassCommandBinding(typeof(Window), addEconomicActivityTypeBinding);
+            CommandManager.RegisterClassCommandBinding(typeof(Window), refreshDataGridBinding);
+            CommandManager.RegisterClassCommandBinding(typeof(Window), refreshComboBinding);
+            
+        }
+
+        private void CanRefreshCombo(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void RefreshCombo(object sender, ExecutedRoutedEventArgs e)
+        {
+            object[] prms = (object[])e.Parameter;
+            if (prms == null || prms.Length == 0)
+            {
+                e.Handled = true;
+                return;
+            }
+            object cbx = prms[0];
+            if (cbx != null && cbx is System.Windows.Controls.ComboBox)
+                ((System.Windows.Controls.ComboBox)cbx).Items.Refresh();
+
+            e.Handled = true;
+        }
+
+        private void RefreshDataGrid(object sender, ExecutedRoutedEventArgs e)
+        {
+            object[] prms = (object[])e.Parameter;
+            if (prms == null || prms.Length == 0)
+            {
+                e.Handled = true;
+                return;
+            }
+            object dg = prms[0];
+            if (dg != null && dg is System.Windows.Controls.DataGrid)
+                ((System.Windows.Controls.DataGrid)dg).Items.Refresh();
+
+            e.Handled = true;
+        }
+
+        private void CanRefreshDataGrid(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
         }
 
         private void CanAddEconomicActivityType(object sender, CanExecuteRoutedEventArgs e)
