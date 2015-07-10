@@ -203,5 +203,10 @@ namespace WpfApplication2.Forms
             _controlsByTag = new Dictionary<string, List<DependencyObject>>();
         }
 
+        private void KeyUp_Grid(object sender, EventArgs e)
+        {
+            int i = 0;
+        }
+
     }
 }

@@ -35,6 +35,8 @@ namespace WpfApplication2
             var addEconomicActivityTypeBinding = new CommandBinding(MyCommands.AddEconomicActivityTypeCommand, AddEconomicActivityType, CanAddEconomicActivityType);
             var refreshDataGridBinding = new CommandBinding(MyCommands.RefreshDataGridCommand, RefreshDataGrid, CanRefreshDataGrid);
             var refreshComboBinding = new CommandBinding(MyCommands.RefreshComboCommand, RefreshCombo, CanRefreshCombo);
+            var dataGridKeyUpBinding = new CommandBinding(MyCommands.DataGridKeyUpCommand, DataGridKeyUp, CanDataGridKeyUp);
+            
             
             
 
@@ -50,7 +52,24 @@ namespace WpfApplication2
             CommandManager.RegisterClassCommandBinding(typeof(Window), addEconomicActivityTypeBinding);
             CommandManager.RegisterClassCommandBinding(typeof(Window), refreshDataGridBinding);
             CommandManager.RegisterClassCommandBinding(typeof(Window), refreshComboBinding);
+            CommandManager.RegisterClassCommandBinding(typeof(Window), dataGridKeyUpBinding);
+        }
+
+        private void CanDataGridKeyUp(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = true;
+        }
+
+        private void DataGridKeyUp(object sender, ExecutedRoutedEventArgs e)
+        {
             
+            if(e.Parameter == null || !(e.Parameter is object[]) || ((object[])e.Parameter).Length <2)
+                return;
+            System.Windows.Controls.DataGrid dg = (System.Windows.Controls.DataGrid)((object[])e.Parameter)[0];
+
+            object[] prms = new object[] { dg.SelectedItem, dg.SelectedIndex, dg };
+            MyCommands.DeleteRowCommand.Execute((object)prms, dg);
+            //DeleteRow(sender, new ExecutedRoutedEventArgs() { });
         }
 
         private void CanRefreshCombo(object sender, CanExecuteRoutedEventArgs e)
