@@ -20,7 +20,7 @@
       <ComboBox ToolTip="Якщо рішення суду було прийнято у формі вироку" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.SentenceTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Sentence, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="Sentence" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=CourtDecision.IsCourtDecisionSentence, Converter={StaticResource bool2Vis}}" />
       <Expander x:Name="expPenaltyDurationYrs" Header="Термін (років)" ToolTip="Термін призначеного покарання (у роках)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PenaltyDurationYrs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsDurationPenalty, Converter={StaticResource bool2Vis}}">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridPenaltyDurationYrs" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PenaltyDurationYrs, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="PenaltyDurationYrs">
+          <DataGrid x:Name="gridPenaltyDurationYrs" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PenaltyDurationYrs, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="PenaltyDurationYrs" Margin="3,0">
             <i:Interaction.Behaviors>
               <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
             </i:Interaction.Behaviors>
@@ -56,7 +56,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <StackPanel Orientation="Horizontal" Margin="0,5">
+          <StackPanel Orientation="Horizontal" Margin="3,5">
             <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="PenaltyDurationYrs" Background="White" ToolTip="додати новий запис">
               <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="PenaltyDurationYrs" />
               <Button.CommandParameter>

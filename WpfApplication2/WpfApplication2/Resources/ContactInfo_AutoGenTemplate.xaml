@@ -29,7 +29,7 @@
       <ComboBox ToolTip="Оберіть той засіб комунікації, котрий є для Вас бажаним (і заповніть відповідні поля)" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.MeansOfCommunicationList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding PreferrableMeansOfCommunication, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="PreferrableMeansOfCommunication" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <Expander x:Name="expPhones" Header="Телефони" ToolTip="Перелік телефонів" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Phones" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridPhones" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Phones, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Phones">
+          <DataGrid x:Name="gridPhones" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Phones, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Phones" Margin="3,0">
             <i:Interaction.Behaviors>
               <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
             </i:Interaction.Behaviors>
@@ -131,7 +131,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <StackPanel Orientation="Horizontal" Margin="0,5">
+          <StackPanel Orientation="Horizontal" Margin="3,5">
             <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="Phones" Background="White" ToolTip="додати новий запис">
               <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Phones" />
               <Button.CommandParameter>
@@ -160,7 +160,7 @@
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Fax, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="Fax" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <Expander x:Name="expEmails" Header="E-mail-и" ToolTip="Перелік адрес електронної пошти" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Emails" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridEmails" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Emails, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Emails">
+          <DataGrid x:Name="gridEmails" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Emails, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Emails" Margin="3,0">
             <i:Interaction.Behaviors>
               <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
             </i:Interaction.Behaviors>
@@ -240,7 +240,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <StackPanel Orientation="Horizontal" Margin="0,5">
+          <StackPanel Orientation="Horizontal" Margin="3,5">
             <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="Emails" Background="White" ToolTip="додати новий запис">
               <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Emails" />
               <Button.CommandParameter>

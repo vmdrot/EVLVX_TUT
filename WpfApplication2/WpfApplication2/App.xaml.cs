@@ -14,6 +14,7 @@ using WpfApplication2.Data;
 using WpfApplication2.Forms;
 using System.ComponentModel;
 using BGU.DRPL.SignificantOwnership.Core.Spares;
+using Evolvex.Utility.Core.Common;
 
 namespace WpfApplication2
 {
@@ -22,6 +23,8 @@ namespace WpfApplication2
     /// </summary>
     public partial class App : System.Windows.Application
     {
+        private static readonly ILog log = Logging.GetLogger(typeof(App));
+
         public App()
         {
             var binding = new CommandBinding(MyCommands.DoSomethingCommand, DoSomething, CanDoSomething);
@@ -53,6 +56,19 @@ namespace WpfApplication2
             CommandManager.RegisterClassCommandBinding(typeof(Window), refreshDataGridBinding);
             CommandManager.RegisterClassCommandBinding(typeof(Window), refreshComboBinding);
             CommandManager.RegisterClassCommandBinding(typeof(Window), dataGridKeyUpBinding);
+
+            this.DispatcherUnhandledException += App_DispatcherUnhandledException;
+        }
+
+        private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            log.Error("An exception occured: {0}", e.Exception);
+            if (e.Exception.Message.IndexOf("An ItemsControl is inconsistent with its items source") != -1)
+            {
+                e.Handled = true;
+            }
+            else
+                throw new ApplicationException(e.Exception.Message, e.Exception);
         }
 
         private void CanDataGridKeyUp(object sender, CanExecuteRoutedEventArgs e)
