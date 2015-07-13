@@ -18,7 +18,7 @@
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding LicenseIDNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="LicenseIDNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <Expander x:Name="expLicenseQualifications" Header="Кваліфікації/види діяльності за ліцензією" ToolTip="" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="LicenseQualifications" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridLicenseQualifications" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding LicenseQualifications, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="LicenseQualifications">
+          <DataGrid x:Name="gridLicenseQualifications" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding LicenseQualifications, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="LicenseQualifications" Margin="3,0">
             <i:Interaction.Behaviors>
               <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
             </i:Interaction.Behaviors>
@@ -98,7 +98,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <StackPanel Orientation="Horizontal" Margin="0,5">
+          <StackPanel Orientation="Horizontal" Margin="3,5">
             <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="LicenseQualifications" Background="White" ToolTip="додати новий запис">
               <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="LicenseQualifications" />
               <Button.CommandParameter>

@@ -68,7 +68,7 @@
       </StackPanel>
       <Expander x:Name="expLast5YrsWorkExperience" Header="1.6. Займані посади за останні п'ять років" ToolTip="Займані посади за останні п'ять років: найменування юридичної особи, найменування посади;  період перебування на посаді з _ до _, причина звільнення; якщо трудовий стаж переривався, то слід зазначити причину." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Last5YrsWorkExperience" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridLast5YrsWorkExperience" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Last5YrsWorkExperience, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Last5YrsWorkExperience">
+          <DataGrid x:Name="gridLast5YrsWorkExperience" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Last5YrsWorkExperience, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Last5YrsWorkExperience" Margin="3,0">
             <i:Interaction.Behaviors>
               <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
             </i:Interaction.Behaviors>
@@ -346,7 +346,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <StackPanel Orientation="Horizontal" Margin="0,5">
+          <StackPanel Orientation="Horizontal" Margin="3,5">
             <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="Last5YrsWorkExperience" Background="White" ToolTip="додати новий запис">
               <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Last5YrsWorkExperience" />
               <Button.CommandParameter>
@@ -376,7 +376,7 @@
       </Expander>
       <Expander x:Name="expEducation" Header="1.8. Освіта та професійна кваліфікація" ToolTip="1.8. Освіта та професійна кваліфікація - науковий ступінь, номер, дата видачі диплома, ким виданий, спеціальність і кваліфікація" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Education" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridEducation" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Education, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Education">
+          <DataGrid x:Name="gridEducation" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Education, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Education" Margin="3,0">
             <i:Interaction.Behaviors>
               <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
             </i:Interaction.Behaviors>
@@ -588,7 +588,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <StackPanel Orientation="Horizontal" Margin="0,5">
+          <StackPanel Orientation="Horizontal" Margin="3,5">
             <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="Education" Background="White" ToolTip="додати новий запис">
               <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Education" />
               <Button.CommandParameter>
@@ -618,7 +618,7 @@
       </CheckBox>
       <Expander x:Name="expProfessionalLicenses" Header="1.8. Професійна(-і) ліцензія(-ї)" ToolTip="п.1.8 (у частині проф.ліцензій)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ProfessionalLicenses" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridProfessionalLicenses" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding ProfessionalLicenses, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="ProfessionalLicenses">
+          <DataGrid x:Name="gridProfessionalLicenses" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding ProfessionalLicenses, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="ProfessionalLicenses" Margin="3,0">
             <i:Interaction.Behaviors>
               <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
             </i:Interaction.Behaviors>
@@ -786,7 +786,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <StackPanel Orientation="Horizontal" Margin="0,5">
+          <StackPanel Orientation="Horizontal" Margin="3,5">
             <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="ProfessionalLicenses" Background="White" ToolTip="додати новий запис">
               <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="ProfessionalLicenses" />
               <Button.CommandParameter>
@@ -816,7 +816,7 @@
       </CheckBox>
       <Expander x:Name="expOwnershipStakeWithLPAcquiree" Header="1.9. Розмір участі в юридичній особі, яка має намір набути або збільшити істотну участь у банку-емітенті" ToolTip="Заповнюється власниками істотної участі в банку або особами, які мають намір набути істотну участь у банку" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="OwnershipStakeWithLPAcquiree" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridOwnershipStakeWithLPAcquiree" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding OwnershipStakeWithLPAcquiree, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="OwnershipStakeWithLPAcquiree">
+          <DataGrid x:Name="gridOwnershipStakeWithLPAcquiree" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding OwnershipStakeWithLPAcquiree, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="OwnershipStakeWithLPAcquiree" Margin="3,0">
             <i:Interaction.Behaviors>
               <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
             </i:Interaction.Behaviors>
@@ -1006,7 +1006,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <StackPanel Orientation="Horizontal" Margin="0,5">
+          <StackPanel Orientation="Horizontal" Margin="3,5">
             <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="OwnershipStakeWithLPAcquiree" Background="White" ToolTip="додати новий запис">
               <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="OwnershipStakeWithLPAcquiree" />
               <Button.CommandParameter>
@@ -1050,7 +1050,7 @@
       </Expander>
       <Expander x:Name="expImplicitOwnershipWithBank" Header="2.1. б) Опосередковане володіння у банку-емітенті - деталі" ToolTip="Розшифровка опосередкованого володіння у банкові-емітенті" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ImplicitOwnershipWithBank" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridImplicitOwnershipWithBank" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding ImplicitOwnershipWithBank, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="ImplicitOwnershipWithBank">
+          <DataGrid x:Name="gridImplicitOwnershipWithBank" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding ImplicitOwnershipWithBank, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="ImplicitOwnershipWithBank" Margin="3,0">
             <i:Interaction.Behaviors>
               <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
             </i:Interaction.Behaviors>
@@ -1240,7 +1240,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <StackPanel Orientation="Horizontal" Margin="0,5">
+          <StackPanel Orientation="Horizontal" Margin="3,5">
             <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="ImplicitOwnershipWithBank" Background="White" ToolTip="додати новий запис">
               <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="ImplicitOwnershipWithBank" />
               <Button.CommandParameter>
@@ -1282,7 +1282,7 @@
       </CheckBox>
       <Expander x:Name="expBreachesOfLaw" Header="п.3.1, 3.2. і 3.3. Розшифрока правопорушень/судимостей" ToolTip="Якщо були порушення законодавства, судимості (у т.ч. непогашені), галузеві правопорушення, тощо (зазначені у пп.3.1, 3.2. і 3.3.), то зазначити детальну інформацію, коли вчинено порушення, зміст порушення, які накладені санкції" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="BreachesOfLaw" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridBreachesOfLaw" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding BreachesOfLaw, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="BreachesOfLaw">
+          <DataGrid x:Name="gridBreachesOfLaw" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding BreachesOfLaw, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="BreachesOfLaw" Margin="3,0">
             <i:Interaction.Behaviors>
               <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
             </i:Interaction.Behaviors>
@@ -1538,7 +1538,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <StackPanel Orientation="Horizontal" Margin="0,5">
+          <StackPanel Orientation="Horizontal" Margin="3,5">
             <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="BreachesOfLaw" Background="White" ToolTip="додати новий запис">
               <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="BreachesOfLaw" />
               <Button.CommandParameter>
@@ -1568,7 +1568,7 @@
       </CheckBox>
       <Expander x:Name="expMiscNonRepaidDebts" Header="3.4. Невиконані зобов'язання  перед іншими особами - розшифровка" ToolTip="якщо так, то зазначити, які саме зобов'язання, у якому розмірі, перед якою особою та з яких причин не були виконані, а також подальші плани щодо виконання/невиконання цих зобов'язань." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="MiscNonRepaidDebts" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridMiscNonRepaidDebts" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding MiscNonRepaidDebts, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="MiscNonRepaidDebts">
+          <DataGrid x:Name="gridMiscNonRepaidDebts" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding MiscNonRepaidDebts, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="MiscNonRepaidDebts" Margin="3,0">
             <i:Interaction.Behaviors>
               <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
             </i:Interaction.Behaviors>
@@ -1934,7 +1934,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <StackPanel Orientation="Horizontal" Margin="0,5">
+          <StackPanel Orientation="Horizontal" Margin="3,5">
             <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="MiscNonRepaidDebts" Background="White" ToolTip="додати новий запис">
               <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="MiscNonRepaidDebts" />
               <Button.CommandParameter>
@@ -1961,7 +1961,7 @@
       </Expander>
       <Expander x:Name="expPersonsLinks" Header="Зв'язки між особами-фігурантами анкети" ToolTip="Природа зв'язків між усіма пов'язанами особами, що згадуються в анкеті" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PersonsLinks" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridPersonsLinks" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PersonsLinks, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="PersonsLinks">
+          <DataGrid x:Name="gridPersonsLinks" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PersonsLinks, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="PersonsLinks" Margin="3,0">
             <i:Interaction.Behaviors>
               <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
             </i:Interaction.Behaviors>
@@ -2129,7 +2129,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <StackPanel Orientation="Horizontal" Margin="0,5">
+          <StackPanel Orientation="Horizontal" Margin="3,5">
             <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="PersonsLinks" Background="White" ToolTip="додати новий запис">
               <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="PersonsLinks" />
               <Button.CommandParameter>
@@ -2156,7 +2156,7 @@
       </Expander>
       <Expander x:Name="expMentionedIdentities" Header="MentionedIdentities" ToolTip="MentionedIdentities" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="MentionedIdentities" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-          <DataGrid x:Name="gridMentionedIdentities" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding MentionedIdentities, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="MentionedIdentities">
+          <DataGrid x:Name="gridMentionedIdentities" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding MentionedIdentities, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="MentionedIdentities" Margin="3,0">
             <i:Interaction.Behaviors>
               <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
             </i:Interaction.Behaviors>
@@ -2258,7 +2258,7 @@
               </DataGridTemplateColumn>
             </DataGrid.Columns>
           </DataGrid>
-          <StackPanel Orientation="Horizontal" Margin="0,5">
+          <StackPanel Orientation="Horizontal" Margin="3,5">
             <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="MentionedIdentities" Background="White" ToolTip="додати новий запис">
               <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="MentionedIdentities" />
               <Button.CommandParameter>
