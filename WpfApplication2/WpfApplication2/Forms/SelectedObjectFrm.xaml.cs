@@ -115,6 +115,7 @@ namespace WpfApplication2.Forms
                 try
                 {
                     object newDS = BGU.DRPL.SignificantOwnership.Utility.Tools.ReadXML(_openFileDlg.FileName, DataSource.GetType());
+                    DataModule.RefreshMentionedIdentitiesDispNames(newDS);
                     object[] args = new object[] { newDS, this };
                     MyCommands.ReOpenSelectedObjectFormCommand.Execute((object)args, null);
                     //if (DataSource is IQuestionnaire)

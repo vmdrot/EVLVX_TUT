@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,5 +56,12 @@ namespace WpfApplication2.Data
             }
         }
 
+
+        public static void RefreshMentionedIdentitiesDispNames(object newDS)
+        {
+            if (!(newDS is IGenericPersonsService))
+                return;
+            ((IGenericPersonsService)newDS).RefreshGenericPersonsDisplayNames();
+        }
     }
 }
