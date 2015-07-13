@@ -77,7 +77,7 @@
           </StackPanel>
           <Expander x:Name="expCreditRatingGrade" Header="2. Ідентифікаційні дані::Рейтингова оцінка" ToolTip="(за рейтингом, який підтверджений у бюлетені, однієї з провідних рейтингових компаній IBCA,Standart &amp; Poor's, Moody's)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="CreditRatingGrade" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-              <DataGrid x:Name="gridCreditRatingGrade" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding CreditRatingGrade, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="CreditRatingGrade">
+              <DataGrid x:Name="gridCreditRatingGrade" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding CreditRatingGrade, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="CreditRatingGrade" Margin="3,0">
                 <i:Interaction.Behaviors>
                   <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
                 </i:Interaction.Behaviors>
@@ -120,7 +120,7 @@
                   </DataGridTemplateColumn>
                 </DataGrid.Columns>
               </DataGrid>
-              <StackPanel Orientation="Horizontal" Margin="0,5">
+              <StackPanel Orientation="Horizontal" Margin="3,5">
                 <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="CreditRatingGrade" Background="White" ToolTip="додати новий запис">
                   <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="CreditRatingGrade" />
                   <Button.CommandParameter>
