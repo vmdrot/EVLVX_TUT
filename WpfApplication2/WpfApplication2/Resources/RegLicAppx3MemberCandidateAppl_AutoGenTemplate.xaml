@@ -293,7 +293,7 @@
                   </Style>
                 </DataGridTextColumn.HeaderStyle>
               </DataGridTextColumn>
-              <DataGridTextColumn Binding="{Binding Path=EmployerContact, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Контакти роботодавця / замовника" Width="*" TextBlock.TextAlignment="Center">
+              <DataGridTextColumn Binding="{Binding Path=EmployerOrContractorContact, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Контакти роботодавця / замовника" Width="*" TextBlock.TextAlignment="Center">
                 <DataGridTextColumn.HeaderStyle>
                   <Style TargetType="dataprimitives:DataGridColumnHeader">
                     <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
