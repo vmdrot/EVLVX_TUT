@@ -21,7 +21,7 @@
           <TextBlock Text="Безробітний" Style="{StaticResource rbTextStyle}" />
         </RadioButton>
       </StackPanel>
-      <StackPanel Orientation="Vertical" Tag="Employer" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+      <StackPanel Orientation="Vertical" Tag="Employer" Visibility="{Binding Path=IsEmployee, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblEmployer" Height="auto" Width="auto" Text="Роботодавець" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Employer" />
         <StackPanel Orientation="Horizontal">
           <ComboBox x:Name="cbxEmployer" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Employer" SelectedValuePath="ID" SelectedValue="{Binding Path=Employer, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
@@ -68,7 +68,7 @@
       <StackPanel Orientation="Vertical" Tag="PrincipalFreelanceActivity" Visibility="{Binding Path=IsSelfEmployedOrFreelance, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblPrincipalFreelanceActivity" Height="auto" Width="auto" Text="Основний вид діяльності" Style="{StaticResource dispNmStyle}" ToolTip="Основний вид діяльності - для самозайнятих/фрілансерів" Tag="PrincipalFreelanceActivity" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxPrincipalFreelanceActivity" DisplayMemberPath="DispName" HorizontalAlignment="Stretch" ToolTip="Основний вид діяльності - для самозайнятих/фрілансерів" MinWidth="150" ItemsSource="{Binding Source={x:Static bgud:EconomicActivityType.AllKVEDs}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="PrincipalFreelanceActivity" SelectedItem="{Binding Path=PrincipalFreelanceActivity, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
+          <ComboBox x:Name="cbxPrincipalFreelanceActivity" DisplayMemberPath="DispName" HorizontalAlignment="Stretch" ToolTip="Основний вид діяльності - для самозайнятих/фрілансерів" MinWidth="150" ItemsSource="{Binding Source={x:Static bgud:EconomicActivityType.AllKVEDs}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="PrincipalFreelanceActivity" SelectedItem="{Binding Path=PrincipalFreelanceActivity, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="350" />
           <Button x:Name="btnAddPrincipalFreelanceActivity" Command="{x:Static local:MyCommands.AddEconomicActivityTypeCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="PrincipalFreelanceActivity" Height="27" Width="27" Background="White" ToolTip="додати новий до списку">
             <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="PrincipalFreelanceActivity" />
             <Button.CommandParameter>
@@ -100,8 +100,8 @@
       <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.EmploymentTerminationTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding TerminationType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="TerminationType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsAlreadyFinished, Converter={StaticResource bool2Vis}}" />
       <TextBlock Text="Причина звільнення" Style="{StaticResource dispNmStyle}" ToolTip="причина звільнення; якщо трудовий стаж переривався, то слід зазначити причину" Tag="DismissalOrUnemployedReason" Visibility="{Binding Path=IsQuitDismissedOrOtherLeave, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding DismissalOrUnemployedReason, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="причина звільнення; якщо трудовий стаж переривався, то слід зазначити причину" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="DismissalOrUnemployedReason" Visibility="{Binding Path=IsQuitDismissedOrOtherLeave, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <Expander Header="Контакти роботодавця / замовника" ToolTip="Для найманих працівників - контакти роботодавця, для фрілансерів і самозайнятих - основного замовника" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="EmployerContact" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <ContentControl Content="{Binding EmployerContact, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="EmployerContact" />
+      <Expander Header="Контакти роботодавця / замовника" ToolTip="Для найманих працівників - контакти роботодавця, для фрілансерів і самозайнятих - основного замовника" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="EmployerOrContractorContact" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsBusy, Converter={StaticResource bool2Vis}}">
+        <ContentControl Content="{Binding EmployerOrContractorContact, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="EmployerOrContractorContact" />
       </Expander>
     </StackPanel>
   </DataTemplate>
