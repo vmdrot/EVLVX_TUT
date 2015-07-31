@@ -1,0 +1,654 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data" xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:localcmds="clr-namespace:WpfApplication2.Commands" xmlns:bgudr="clr-namespace:BGU.DRPL.SignificantOwnership.Core.EKDRBU;assembly=BGU.DRPL.SignificantOwnership.Core">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="LocationInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="WorkHoursInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="BankBranchOperationInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="AttachmentInfo_AutoGenTemplate.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgudr:StateBankRegistryEntry}">
+    <StackPanel>
+      <Expander Header="Ієрархія" ToolTip="Ієрархія" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <TextBlock Text="Батьківський підрозділ" Style="{StaticResource dispNmStyle}" ToolTip="Батьківський підрозділ" Tag="ParentID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ParentID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Батьківський підрозділ" Tag="ParentID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+        </StackPanel>
+      </Expander>
+      <Expander Header="Назви" ToolTip="Назви" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <TextBlock Text="Назва (254 символів)" Style="{StaticResource dispNmStyle}" ToolTip="Назва (254 символів)" Tag="NameFull" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameFull, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва (254 символів)" Tag="NameFull" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="Скорочена назва (80 символів)" Style="{StaticResource dispNmStyle}" ToolTip="Скорочена назва (80 символів)" Tag="NameShort" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameShort, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Скорочена назва (80 символів)" Tag="NameShort" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="Назва для друку (40 символів)" Style="{StaticResource dispNmStyle}" ToolTip="Назва для друку (40 символів)" Tag="NamePrint" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NamePrint, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва для друку (40 символів)" Tag="NamePrint" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="Назва для СЕП (38 символів)" Style="{StaticResource dispNmStyle}" ToolTip="Назва для СЕП (38 символів)" Tag="NameSEP" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameSEP, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва для СЕП (38 символів)" Tag="NameSEP" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="Назва для СТАТЗВІТНОСТІ (27 символів)" Style="{StaticResource dispNmStyle}" ToolTip="Назва для СТАТЗВІТНОСТІ (27 символів)" Tag="NameStats" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding NameStats, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва для СТАТЗВІТНОСТІ (27 символів)" Tag="NameStats" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+        </StackPanel>
+      </Expander>
+      <Expander Header="Номери" ToolTip="Номери" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <TextBlock Text="МФО" Style="{StaticResource dispNmStyle}" ToolTip="МФО" Tag="MFO" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MFO, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="МФО" Tag="MFO" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="ЄДРПОУ" Style="{StaticResource dispNmStyle}" ToolTip="ЄДРПОУ" Tag="YeDRPOU" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding YeDRPOU, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ЄДРПОУ" Tag="YeDRPOU" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="реєстраційний номер" Style="{StaticResource dispNmStyle}" ToolTip="реєстраційний номер" Tag="RegNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RegNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="реєстраційний номер" Tag="RegNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="внутрішньобанківський номер" Style="{StaticResource dispNmStyle}" ToolTip="внутрішньобанківський номер" Tag="InternalNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding InternalNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="внутрішньобанківський номер" Tag="InternalNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="номер підрозділу за внутрішньобанківським номером" Style="{StaticResource dispNmStyle}" ToolTip="номер підрозділу за внутрішньобанківським номером" Tag="BranchNrInternal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding BranchNrInternal, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="номер підрозділу за внутрішньобанківським номером" Tag="BranchNrInternal" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="дата відкриття" Style="{StaticResource dispNmStyle}" ToolTip="дата відкриття" Tag="OpenDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <DatePicker ToolTip="дата відкриття" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding OpenDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="OpenDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="дата внесення до Державного реєстру банків" Style="{StaticResource dispNmStyle}" ToolTip="дата внесення до Державного реєстру банків" Tag="RegisteredDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <DatePicker ToolTip="дата внесення до Державного реєстру банків" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding RegisteredDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="RegisteredDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+        </StackPanel>
+      </Expander>
+      <Expander Header="Адреса" ToolTip="Адреса" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <TextBlock Text="область або код області" Style="{StaticResource dispNmStyle}" ToolTip="область або код області" Tag="Oblast" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Oblast, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="область або код області" Tag="Oblast" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="назва району" Style="{StaticResource dispNmStyle}" ToolTip="назва району" Tag="Raion" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Raion, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="назва району" Tag="Raion" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="тип та назва населеного пункту" Style="{StaticResource dispNmStyle}" ToolTip="тип та назва населеного пункту" Tag="Town" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Town, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="тип та назва населеного пункту" Tag="Town" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <Expander Header="адреса" ToolTip="адреса" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Address" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <ContentControl Content="{Binding Address, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Address" />
+          </Expander>
+          <TextBlock Text="поштовий індекс" Style="{StaticResource dispNmStyle}" ToolTip="поштовий індекс" Tag="ZipCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ZipCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="поштовий індекс" Tag="ZipCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+        </StackPanel>
+      </Expander>
+      <Expander Header="Діяльність" ToolTip="Діяльність" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <Expander x:Name="expWorkHours" Header="Графік роботи" ToolTip="Графік роботи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="WorkHours" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
+              <DataGrid x:Name="gridWorkHours" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding WorkHours, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="WorkHours" Margin="3,0">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
+                <DataGrid.Columns>
+                  <DataGridTextColumn Binding="{Binding Path=Day, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Дні" Width="*" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.HeaderStyle>
+                      <Style TargetType="dataprimitives:DataGridColumnHeader">
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="SeparatorBrush" Value="Black" />
+                        <Setter Property="ContentTemplate">
+                          <Setter.Value>
+                            <DataTemplate>
+                              <ContentControl Content="{Binding}">
+                                <ToolTipService.ToolTip>
+                                  <ToolTip Content="Означення днів" />
+                                </ToolTipService.ToolTip>
+                              </ContentControl>
+                            </DataTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                  </DataGridTextColumn>
+                  <DataGridTextColumn Binding="{Binding Path=ParticularDay, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Конкретний день тижня" Width="*" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.HeaderStyle>
+                      <Style TargetType="dataprimitives:DataGridColumnHeader">
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="SeparatorBrush" Value="Black" />
+                        <Setter Property="ContentTemplate">
+                          <Setter.Value>
+                            <DataTemplate>
+                              <ContentControl Content="{Binding}">
+                                <ToolTipService.ToolTip>
+                                  <ToolTip Content="Конкретний день тижня( якщо у полі 'Дні' вказано 'Конкретний день')" />
+                                </ToolTipService.ToolTip>
+                              </ContentControl>
+                            </DataTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                  </DataGridTextColumn>
+                  <DataGridTextColumn Binding="{Binding Path=StartTime, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Початок інтервалу" Width="*" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.HeaderStyle>
+                      <Style TargetType="dataprimitives:DataGridColumnHeader">
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="SeparatorBrush" Value="Black" />
+                        <Setter Property="ContentTemplate">
+                          <Setter.Value>
+                            <DataTemplate>
+                              <ContentControl Content="{Binding}">
+                                <ToolTipService.ToolTip>
+                                  <ToolTip Content="Час початку інтервалу (робочого чи, навпаки, неробочого)" />
+                                </ToolTipService.ToolTip>
+                              </ContentControl>
+                            </DataTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                  </DataGridTextColumn>
+                  <DataGridTextColumn Binding="{Binding Path=EndTime, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Кінець інтервалу" Width="*" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.HeaderStyle>
+                      <Style TargetType="dataprimitives:DataGridColumnHeader">
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="SeparatorBrush" Value="Black" />
+                        <Setter Property="ContentTemplate">
+                          <Setter.Value>
+                            <DataTemplate>
+                              <ContentControl Content="{Binding}">
+                                <ToolTipService.ToolTip>
+                                  <ToolTip Content="Час кінця інтервалу (робочого чи, навпаки, неробочого)" />
+                                </ToolTipService.ToolTip>
+                              </ContentControl>
+                            </DataTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                  </DataGridTextColumn>
+                  <DataGridTextColumn Binding="{Binding Path=IsWorkingOrIdle, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Працює" Width="*" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.HeaderStyle>
+                      <Style TargetType="dataprimitives:DataGridColumnHeader">
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="SeparatorBrush" Value="Black" />
+                        <Setter Property="ContentTemplate">
+                          <Setter.Value>
+                            <DataTemplate>
+                              <ContentControl Content="{Binding}">
+                                <ToolTipService.ToolTip>
+                                  <ToolTip Content="Відзначити галочкою, якщо вказується робочий інтервал, зняти галочку - якщо навпаки, не робочий" />
+                                </ToolTipService.ToolTip>
+                              </ContentControl>
+                            </DataTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                  </DataGridTextColumn>
+                  <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
+                    <DataGridTemplateColumn.CellTemplate>
+                      <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                          <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
+                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
+                            <Button.CommandParameter>
+                              <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding Path="SelectedItem" ElementName="gridWorkHours" />
+                                <Binding ElementName="gridWorkHours" />
+                                <Binding ElementName="expWorkHours" Path="Header" />
+                                <Binding ElementName="expWorkHours" Path="ToolTip" />
+                              </MultiBinding>
+                            </Button.CommandParameter>
+                          </Button>
+                          <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
+                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
+                            <Button.CommandParameter>
+                              <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding Path="SelectedItem" ElementName="gridWorkHours" />
+                                <Binding Path="SelectedIndex" ElementName="gridWorkHours" />
+                                <Binding ElementName="gridWorkHours" />
+                              </MultiBinding>
+                            </Button.CommandParameter>
+                          </Button>
+                        </StackPanel>
+                      </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                  </DataGridTemplateColumn>
+                </DataGrid.Columns>
+              </DataGrid>
+              <StackPanel Orientation="Horizontal" Margin="3,5">
+                <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="WorkHours" Background="White" ToolTip="додати новий запис">
+                  <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="WorkHours" />
+                  <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource multiValConv}">
+                      <Binding Path="ItemsSource" ElementName="gridWorkHours" />
+                      <Binding Path="DataContext" ElementName="gridWorkHours" />
+                      <Binding Path="WorkHours" />
+                      <Binding ElementName="gridWorkHours" />
+                      <Binding ElementName="expWorkHours" Path="Header" />
+                      <Binding ElementName="expWorkHours" Path="ToolTip" />
+                    </MultiBinding>
+                  </Button.CommandParameter>
+                </Button>
+                <Button HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.RefreshDataGridCommand}" Tag="WorkHours" Background="White" ToolTip="освіжити записи">
+                  <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn.png" Tag="WorkHours" />
+                  <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource multiValConv}">
+                      <Binding ElementName="gridWorkHours" />
+                    </MultiBinding>
+                  </Button.CommandParameter>
+                </Button>
+              </StackPanel>
+            </StackPanel>
+          </Expander>
+          <Expander x:Name="expOperationsListing" Header="Перелік операцій" ToolTip="Перелік операцій" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="OperationsListing" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
+              <DataGrid x:Name="gridOperationsListing" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding OperationsListing, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="OperationsListing" Margin="3,0">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
+                <DataGrid.Columns>
+                  <DataGridTextColumn Binding="{Binding Path=LawActivityOrService, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="LawActivityOrService" Width="*" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.HeaderStyle>
+                      <Style TargetType="dataprimitives:DataGridColumnHeader">
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="SeparatorBrush" Value="Black" />
+                        <Setter Property="ContentTemplate">
+                          <Setter.Value>
+                            <DataTemplate>
+                              <ContentControl Content="{Binding}">
+                                <ToolTipService.ToolTip>
+                                  <ToolTip Content="LawActivityOrService" />
+                                </ToolTipService.ToolTip>
+                              </ContentControl>
+                            </DataTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                  </DataGridTextColumn>
+                  <DataGridTextColumn Binding="{Binding Path=PartialActivityOrService, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="PartialActivityOrService" Width="*" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.HeaderStyle>
+                      <Style TargetType="dataprimitives:DataGridColumnHeader">
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="SeparatorBrush" Value="Black" />
+                        <Setter Property="ContentTemplate">
+                          <Setter.Value>
+                            <DataTemplate>
+                              <ContentControl Content="{Binding}">
+                                <ToolTipService.ToolTip>
+                                  <ToolTip Content="PartialActivityOrService" />
+                                </ToolTipService.ToolTip>
+                              </ContentControl>
+                            </DataTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                  </DataGridTextColumn>
+                  <DataGridTextColumn Binding="{Binding Path=ResidenceDimensions, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="ResidenceDimensions" Width="*" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.HeaderStyle>
+                      <Style TargetType="dataprimitives:DataGridColumnHeader">
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="SeparatorBrush" Value="Black" />
+                        <Setter Property="ContentTemplate">
+                          <Setter.Value>
+                            <DataTemplate>
+                              <ContentControl Content="{Binding}">
+                                <ToolTipService.ToolTip>
+                                  <ToolTip Content="ResidenceDimensions" />
+                                </ToolTipService.ToolTip>
+                              </ContentControl>
+                            </DataTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                  </DataGridTextColumn>
+                  <DataGridTextColumn Binding="{Binding Path=CCYDimensions, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="CCYDimensions" Width="*" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.HeaderStyle>
+                      <Style TargetType="dataprimitives:DataGridColumnHeader">
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="SeparatorBrush" Value="Black" />
+                        <Setter Property="ContentTemplate">
+                          <Setter.Value>
+                            <DataTemplate>
+                              <ContentControl Content="{Binding}">
+                                <ToolTipService.ToolTip>
+                                  <ToolTip Content="CCYDimensions" />
+                                </ToolTipService.ToolTip>
+                              </ContentControl>
+                            </DataTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                  </DataGridTextColumn>
+                  <DataGridTextColumn Binding="{Binding Path=ClientTypeDimensions, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="ClientTypeDimensions" Width="*" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.HeaderStyle>
+                      <Style TargetType="dataprimitives:DataGridColumnHeader">
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="SeparatorBrush" Value="Black" />
+                        <Setter Property="ContentTemplate">
+                          <Setter.Value>
+                            <DataTemplate>
+                              <ContentControl Content="{Binding}">
+                                <ToolTipService.ToolTip>
+                                  <ToolTip Content="ClientTypeDimensions" />
+                                </ToolTipService.ToolTip>
+                              </ContentControl>
+                            </DataTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                  </DataGridTextColumn>
+                  <DataGridTextColumn Binding="{Binding Path=LimitsDimensions, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="LimitsDimensions" Width="*" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.HeaderStyle>
+                      <Style TargetType="dataprimitives:DataGridColumnHeader">
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="SeparatorBrush" Value="Black" />
+                        <Setter Property="ContentTemplate">
+                          <Setter.Value>
+                            <DataTemplate>
+                              <ContentControl Content="{Binding}">
+                                <ToolTipService.ToolTip>
+                                  <ToolTip Content="LimitsDimensions" />
+                                </ToolTipService.ToolTip>
+                              </ContentControl>
+                            </DataTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                  </DataGridTextColumn>
+                  <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
+                    <DataGridTemplateColumn.CellTemplate>
+                      <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                          <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
+                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
+                            <Button.CommandParameter>
+                              <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding Path="SelectedItem" ElementName="gridOperationsListing" />
+                                <Binding ElementName="gridOperationsListing" />
+                                <Binding ElementName="expOperationsListing" Path="Header" />
+                                <Binding ElementName="expOperationsListing" Path="ToolTip" />
+                              </MultiBinding>
+                            </Button.CommandParameter>
+                          </Button>
+                          <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
+                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
+                            <Button.CommandParameter>
+                              <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding Path="SelectedItem" ElementName="gridOperationsListing" />
+                                <Binding Path="SelectedIndex" ElementName="gridOperationsListing" />
+                                <Binding ElementName="gridOperationsListing" />
+                              </MultiBinding>
+                            </Button.CommandParameter>
+                          </Button>
+                        </StackPanel>
+                      </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                  </DataGridTemplateColumn>
+                </DataGrid.Columns>
+              </DataGrid>
+              <StackPanel Orientation="Horizontal" Margin="3,5">
+                <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="OperationsListing" Background="White" ToolTip="додати новий запис">
+                  <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="OperationsListing" />
+                  <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource multiValConv}">
+                      <Binding Path="ItemsSource" ElementName="gridOperationsListing" />
+                      <Binding Path="DataContext" ElementName="gridOperationsListing" />
+                      <Binding Path="OperationsListing" />
+                      <Binding ElementName="gridOperationsListing" />
+                      <Binding ElementName="expOperationsListing" Path="Header" />
+                      <Binding ElementName="expOperationsListing" Path="ToolTip" />
+                    </MultiBinding>
+                  </Button.CommandParameter>
+                </Button>
+                <Button HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.RefreshDataGridCommand}" Tag="OperationsListing" Background="White" ToolTip="освіжити записи">
+                  <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn.png" Tag="OperationsListing" />
+                  <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource multiValConv}">
+                      <Binding ElementName="gridOperationsListing" />
+                    </MultiBinding>
+                  </Button.CommandParameter>
+                </Button>
+              </StackPanel>
+            </StackPanel>
+          </Expander>
+        </StackPanel>
+      </Expander>
+      <Expander Header="Контактні дані" ToolTip="Контактні дані" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <TextBlock Text="код телефонного зв’язку" Style="{StaticResource dispNmStyle}" ToolTip="код телефонного зв’язку" Tag="DialCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding DialCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="код телефонного зв’язку" Tag="DialCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="телефон(-и)" Style="{StaticResource dispNmStyle}" ToolTip="телефон(-и)" Tag="Phone" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Phone, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="телефон(-и)" Tag="Phone" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="факс(-и)" Style="{StaticResource dispNmStyle}" ToolTip="факс(-и)" Tag="Fax" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Fax, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="факс(-и)" Tag="Fax" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="e-mail(-и)" Style="{StaticResource dispNmStyle}" ToolTip="e-mail(-и)" Tag="Email" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Email, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="e-mail(-и)" Tag="Email" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="веб-сайт" Style="{StaticResource dispNmStyle}" ToolTip="веб-сайт" Tag="www" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding www, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="веб-сайт" Tag="www" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+        </StackPanel>
+      </Expander>
+      <Expander Header="Керівники/персонал" ToolTip="Керівники/персонал" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <TextBlock Text="посада" Style="{StaticResource dispNmStyle}" ToolTip="посада" Tag="MgrPosition" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MgrPosition, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="посада" Tag="MgrPosition" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="прізвище" Style="{StaticResource dispNmStyle}" ToolTip="прізвище" Tag="MgrSurname" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MgrSurname, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="прізвище" Tag="MgrSurname" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="ім’я" Style="{StaticResource dispNmStyle}" ToolTip="ім’я" Tag="MgrName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MgrName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ім’я" Tag="MgrName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="по-батькові" Style="{StaticResource dispNmStyle}" ToolTip="по-батькові" Tag="MgrPatronymic" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MgrPatronymic, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="по-батькові" Tag="MgrPatronymic" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="Серія № паспорта" Style="{StaticResource dispNmStyle}" ToolTip="Серія № паспорта" Tag="MgrPassID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MgrPassID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Серія № паспорта" Tag="MgrPassID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="ІПН" Style="{StaticResource dispNmStyle}" ToolTip="ІПН" Tag="MgrTaxID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MgrTaxID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ІПН" Tag="MgrTaxID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+        </StackPanel>
+      </Expander>
+      <Expander Header="Оплата" ToolTip="Оплата" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <TextBlock Text="номер платіжного документа" Style="{StaticResource dispNmStyle}" ToolTip="номер платіжного документа" Tag="PayDocNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PayDocNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="номер платіжного документа" Tag="PayDocNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="дата здійснення оплати" Style="{StaticResource dispNmStyle}" ToolTip="дата здійснення оплати" Tag="PayDocDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <DatePicker ToolTip="дата здійснення оплати" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding PayDocDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="PayDocDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+        </StackPanel>
+      </Expander>
+      <Expander Header="Службові" ToolTip="Службові" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <TextBlock Text="дата внесення" Style="{StaticResource dispNmStyle}" ToolTip="дата внесення" Tag="InputDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <DatePicker ToolTip="дата внесення" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding InputDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="InputDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="Дата закриття" Style="{StaticResource dispNmStyle}" ToolTip="Дата закриття" Tag="ClosedDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <DatePicker ToolTip="Дата закриття" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding ClosedDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="ClosedDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="Дата виключення з Державного реєстру банків" Style="{StaticResource dispNmStyle}" ToolTip="Дата виключення з Державного реєстру банків" Tag="UnregisteredDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <DatePicker ToolTip="Дата виключення з Державного реєстру банків" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding UnregisteredDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="UnregisteredDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+        </StackPanel>
+      </Expander>
+      <Expander Header="Інше" ToolTip="Інше" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <TextBlock Text="короткий опис змін" Style="{StaticResource dispNmStyle}" ToolTip="короткий опис змін" Tag="ShortChangesLog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ShortChangesLog, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="короткий опис змін" Tag="ShortChangesLog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+        </StackPanel>
+      </Expander>
+      <Expander Header="Статус" ToolTip="Статус" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <TextBlock Text="Стан" Style="{StaticResource dispNmStyle}" Tag="Status" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <ComboBox ToolTip="Стан" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.BankBranchStatusTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding Status, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="Status" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+        </StackPanel>
+      </Expander>
+      <Expander Header="Додатки" ToolTip="Додатки" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <Expander x:Name="expAttachement_Resolution" Header="Рішення, на підставі якого вносяться зміни" ToolTip="Рішення, на підставі якого вносяться зміни" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Attachement_Resolution" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
+              <DataGrid x:Name="gridAttachement_Resolution" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Attachement_Resolution, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Attachement_Resolution" Margin="3,0">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
+                <DataGrid.Columns>
+                  <DataGridTextColumn Binding="{Binding Path=FileName, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Файл" Width="*" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.HeaderStyle>
+                      <Style TargetType="dataprimitives:DataGridColumnHeader">
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="SeparatorBrush" Value="Black" />
+                        <Setter Property="ContentTemplate">
+                          <Setter.Value>
+                            <DataTemplate>
+                              <ContentControl Content="{Binding}">
+                                <ToolTipService.ToolTip>
+                                  <ToolTip Content="Файл" />
+                                </ToolTipService.ToolTip>
+                              </ContentControl>
+                            </DataTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                  </DataGridTextColumn>
+                  <DataGridTextColumn Binding="{Binding Path=AttachmentType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Тип (з переліку)" Width="*" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.HeaderStyle>
+                      <Style TargetType="dataprimitives:DataGridColumnHeader">
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="SeparatorBrush" Value="Black" />
+                        <Setter Property="ContentTemplate">
+                          <Setter.Value>
+                            <DataTemplate>
+                              <ContentControl Content="{Binding}">
+                                <ToolTipService.ToolTip>
+                                  <ToolTip Content="Тип додатку із переліку типових долучень; якщо &quot;Інше&quot; - обов'язково вказати, що саме у полі &quot;Опис файлу&quot;." />
+                                </ToolTipService.ToolTip>
+                              </ContentControl>
+                            </DataTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                  </DataGridTextColumn>
+                  <DataGridTextColumn Binding="{Binding Path=Description, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Опис файлу" Width="*" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.HeaderStyle>
+                      <Style TargetType="dataprimitives:DataGridColumnHeader">
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="SeparatorBrush" Value="Black" />
+                        <Setter Property="ContentTemplate">
+                          <Setter.Value>
+                            <DataTemplate>
+                              <ContentControl Content="{Binding}">
+                                <ToolTipService.ToolTip>
+                                  <ToolTip Content="Що у файлі?" />
+                                </ToolTipService.ToolTip>
+                              </ContentControl>
+                            </DataTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                  </DataGridTextColumn>
+                  <DataGridTextColumn Binding="{Binding Path=ContentType, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="Формат" Width="*" TextBlock.TextAlignment="Center">
+                    <DataGridTextColumn.HeaderStyle>
+                      <Style TargetType="dataprimitives:DataGridColumnHeader">
+                        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                        <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                        <Setter Property="BorderBrush" Value="Black" />
+                        <Setter Property="SeparatorBrush" Value="Black" />
+                        <Setter Property="ContentTemplate">
+                          <Setter.Value>
+                            <DataTemplate>
+                              <ContentControl Content="{Binding}">
+                                <ToolTipService.ToolTip>
+                                  <ToolTip Content="Тип MIME, напр. pdf, xls, xlsx, doc, docs, rtf, тощо" />
+                                </ToolTipService.ToolTip>
+                              </ContentControl>
+                            </DataTemplate>
+                          </Setter.Value>
+                        </Setter>
+                      </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                  </DataGridTextColumn>
+                  <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
+                    <DataGridTemplateColumn.CellTemplate>
+                      <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                          <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
+                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
+                            <Button.CommandParameter>
+                              <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding Path="SelectedItem" ElementName="gridAttachement_Resolution" />
+                                <Binding ElementName="gridAttachement_Resolution" />
+                                <Binding ElementName="expAttachement_Resolution" Path="Header" />
+                                <Binding ElementName="expAttachement_Resolution" Path="ToolTip" />
+                              </MultiBinding>
+                            </Button.CommandParameter>
+                          </Button>
+                          <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
+                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
+                            <Button.CommandParameter>
+                              <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding Path="SelectedItem" ElementName="gridAttachement_Resolution" />
+                                <Binding Path="SelectedIndex" ElementName="gridAttachement_Resolution" />
+                                <Binding ElementName="gridAttachement_Resolution" />
+                              </MultiBinding>
+                            </Button.CommandParameter>
+                          </Button>
+                        </StackPanel>
+                      </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                  </DataGridTemplateColumn>
+                </DataGrid.Columns>
+              </DataGrid>
+              <StackPanel Orientation="Horizontal" Margin="3,5">
+                <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="Attachement_Resolution" Background="White" ToolTip="додати новий запис">
+                  <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Attachement_Resolution" />
+                  <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource multiValConv}">
+                      <Binding Path="ItemsSource" ElementName="gridAttachement_Resolution" />
+                      <Binding Path="DataContext" ElementName="gridAttachement_Resolution" />
+                      <Binding Path="Attachement_Resolution" />
+                      <Binding ElementName="gridAttachement_Resolution" />
+                      <Binding ElementName="expAttachement_Resolution" Path="Header" />
+                      <Binding ElementName="expAttachement_Resolution" Path="ToolTip" />
+                    </MultiBinding>
+                  </Button.CommandParameter>
+                </Button>
+                <Button HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.RefreshDataGridCommand}" Tag="Attachement_Resolution" Background="White" ToolTip="освіжити записи">
+                  <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn.png" Tag="Attachement_Resolution" />
+                  <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource multiValConv}">
+                      <Binding ElementName="gridAttachement_Resolution" />
+                    </MultiBinding>
+                  </Button.CommandParameter>
+                </Button>
+              </StackPanel>
+            </StackPanel>
+          </Expander>
+        </StackPanel>
+      </Expander>
+    </StackPanel>
+  </DataTemplate>
+</ResourceDictionary>

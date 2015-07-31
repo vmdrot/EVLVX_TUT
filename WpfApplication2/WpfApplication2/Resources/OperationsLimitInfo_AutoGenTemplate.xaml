@@ -1,0 +1,30 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data" xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:localcmds="clr-namespace:WpfApplication2.Commands" xmlns:bgudrs="clr-namespace:BGU.DRPL.SignificantOwnership.Core.EKDRBU.Spares;assembly=BGU.DRPL.SignificantOwnership.Core">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="TimeSpanInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="CurrencyAmount_AutoGenTemplate.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgudrs:OperationsLimitInfo}">
+    <StackPanel>
+      <TextBlock Text="Тип" Style="{StaticResource dispNmStyle}" Tag="LimitType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="Тип ліміту" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.BankOperationLimitTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding LimitType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="LimitType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Grid Tag="TimeSpecs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Часові ознаки" Style="{StaticResource dispNmStyle}" ToolTip="Період, що характеризує ліміт (денний, місячний, річний, інше" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Row="1" Content="{Binding TimeSpecs, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Період, що характеризує ліміт (денний, місячний, річний, інше" Tag="TimeSpecs" />
+      </Grid>
+      <Grid Tag="AmountSpecs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <Grid.RowDefinitions>
+          <RowDefinition />
+          <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Розмір" Style="{StaticResource dispNmStyle}" ToolTip="Розміри ліміту (в грошах)" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <ContentControl Grid.Row="1" Content="{Binding AmountSpecs, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="Розміри ліміту (в грошах)" Tag="AmountSpecs" />
+      </Grid>
+    </StackPanel>
+  </DataTemplate>
+</ResourceDictionary>
