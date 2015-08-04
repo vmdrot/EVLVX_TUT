@@ -1,9 +1,11 @@
-﻿using BGU.DRPL.SignificantOwnership.Core.Questionnaires;
+﻿using BGU.DRPL.SignificantOwnership.Core.EKDRBU.Legacy;
+using BGU.DRPL.SignificantOwnership.Core.Questionnaires;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Data;
 using BGU.DRPL.SignificantOwnership.Core.Spares.Dict;
 using BGU.DRPL.SignificantOwnership.Utility;
 using Evolvex.Utility.Core.Common;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -63,5 +65,28 @@ namespace WpfApplication2.Data
                 return;
             ((IGenericPersonsService)newDS).RefreshGenericPersonsDisplayNames();
         }
+
+        public static List<DeptListEntry> _HierarchedBankDepts;
+        public static IEnumerable HierarchedBankDepts
+        {
+            get
+            { 
+                if(_HierarchedBankDepts == null)
+                {
+                    _HierarchedBankDepts = new List<DeptListEntry>();
+
+                    DataTable dt = RcuKruReader.Read(@"DPTLIST.DBF");
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        _HierarchedBankDepts.Add(DeptListEntry.Parse(dr));
+                    }
+
+                    BGU.DRPL.SignificantOwnership.Facade.EKDRBU.DeptListUtil.BuildHierarchy(_HierarchedBankDepts);
+                }
+                var rslt = _HierarchedBankDepts.Where(dle => (dle.ParentCode == string.Empty));
+                return (IEnumerable)rslt;
+            }
+        }   
+
     }
 }

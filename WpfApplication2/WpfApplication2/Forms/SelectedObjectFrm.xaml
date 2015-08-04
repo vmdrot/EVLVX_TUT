@@ -74,6 +74,11 @@
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/TotalOwnershipDetailsInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/TotalOwnershipSummaryInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/UniversityOrCollegeInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/StateBankRegistryEntry_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/WorkHoursInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankBranchOperationInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankingLicensedActivityInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/OperationsLimitInfo_AutoGenTemplate.xaml" />
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Grid.Resources>

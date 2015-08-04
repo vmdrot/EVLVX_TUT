@@ -24,12 +24,13 @@
                         <MenuItem Header="Пост.306, Лист про джерела коштів" Click="RegLicAppx2OwnershipAcqRequestLP_MoneyOriginsLtr_MenuItemClick" />
                     </MenuItem>
                 </MenuItem>
-                <MenuItem Header="Держреєстр" Visibility="Collapsed">
-                    
+                <MenuItem Header="Держреєстр" Visibility="Visible">
+                    <MenuItem Header="Відділення/філія" Click="StateBankRegistryItem_Click" />
                 </MenuItem>
                 <MenuItem Header="Валютне ліцензування" Visibility="Collapsed"></MenuItem>
                 <MenuItem Header="Тестування">
                     <MenuItem Header="Show controls by tag" Click="TestShowItemsByTag_Click" />
+                    <MenuItem Header="TreeViewTest" Click="TreeViewTest_Click" />
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="_Help" Click="HelpMenuItem_Click" />

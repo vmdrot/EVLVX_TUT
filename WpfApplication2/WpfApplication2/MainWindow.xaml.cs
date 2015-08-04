@@ -59,6 +59,11 @@ namespace WpfApplication2
             ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, new RegLicAppx2OwnershipAcqRequestLP_MoneyOriginsLtr());
         }
 
+        private void StateBankRegistryItem_Click(object sender, RoutedEventArgs e)
+        {
+            ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, new BGU.DRPL.SignificantOwnership.Core.EKDRBU.StateBankRegistryEntry());
+        }
+
         private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -75,6 +80,12 @@ namespace WpfApplication2
             SelectedObjectFrm frm = new SelectedObjectFrm();
             frm.DataSource = new GenericPersonInfo();
             frm.ShowOrHideControls = new ShowHideControlsByTagInfo() { ShowOrHide = false, ControlPropNames = "" };
+            frm.ShowDialog();
+        }
+
+        private void TreeViewTest_Click(object sender, RoutedEventArgs e)
+        {
+            TreeViewTestFrm frm = new TreeViewTestFrm();
             frm.ShowDialog();
         }
         #endregion
