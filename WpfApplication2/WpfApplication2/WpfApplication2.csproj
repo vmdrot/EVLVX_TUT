@@ -614,7 +614,12 @@
   <ItemGroup>
     <Resource Include="Urls.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DrWPF.TreeViewWithCheckBoxesLib\DrWPF.TreeViewWithCheckBoxesLib.csproj">
+      <Project>{1446aa9a-8f89-4682-b98a-eacdeae1a38f}</Project>
+      <Name>DrWPF.TreeViewWithCheckBoxesLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(SolutionDir)Data\RCUKRU.DBF $(TargetDir)*.*</PostBuildEvent>
