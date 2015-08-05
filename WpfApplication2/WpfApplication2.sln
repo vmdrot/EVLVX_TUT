@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication2", "WpfApplication2\WpfApplication2.csproj", "{239A2B6D-6C0E-4A48-9905-87AF50E35289}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrWPF.TreeViewWithCheckBoxesLib", "DrWPF.TreeViewWithCheckBoxesLib\DrWPF.TreeViewWithCheckBoxesLib.csproj", "{1446AA9A-8F89-4682-B98A-EACDEAE1A38F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{239A2B6D-6C0E-4A48-9905-87AF50E35289}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{239A2B6D-6C0E-4A48-9905-87AF50E35289}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{239A2B6D-6C0E-4A48-9905-87AF50E35289}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1446AA9A-8F89-4682-B98A-EACDEAE1A38F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1446AA9A-8F89-4682-B98A-EACDEAE1A38F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1446AA9A-8F89-4682-B98A-EACDEAE1A38F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1446AA9A-8F89-4682-B98A-EACDEAE1A38F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
