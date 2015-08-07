@@ -108,6 +108,9 @@
     <Compile Include="Forms\SelectedObjectFrm.xaml.cs">
       <DependentUpon>SelectedObjectFrm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forms\BankBranchActivitiesFrm.xaml.cs">
+      <DependentUpon>BankBranchActivitiesFrm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TreeViewTestFrm.xaml.cs">
       <DependentUpon>TreeViewTestFrm.xaml</DependentUpon>
     </Compile>
@@ -155,6 +158,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Forms\BankBranchActivitiesFrm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Forms\TreeViewTestFrm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -186,6 +193,10 @@
     <Page Include="Resources\CurrencyAmount_ManualTemplate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\FinSvc_PayDocsIssuance_template.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\GenericPersonID_ManualTemplate.xaml">
       <Generator>MSBuild:Compile</Generator>
