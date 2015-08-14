@@ -75,6 +75,7 @@ namespace WpfApplication2.Data
                             continue;
                         _currentBanks.Add(bi);
                     }
+                    _currentBanks.Sort((bk1, bk2) => bk1.Name.CompareTo(bk2.Name));
                 }
                 return _currentBanks;
             }
@@ -88,27 +89,40 @@ namespace WpfApplication2.Data
             ((IGenericPersonsService)newDS).RefreshGenericPersonsDisplayNames();
         }
 
-        private static void PopulatedHierachedBankDepts()
-        { 
-            _HierarchedBankDepts = new List<DeptListEntry>();
 
-
-            string bkCode = SelectedBank != null ? SelectedBank.Code : string.Empty;
-            if(!string.IsNullOrEmpty(bkCode) && bkCode.Length <3 )
-            {
-                if (bkCode.Length == 1)
-                    bkCode = "00" + bkCode;
-                else if(bkCode.Length == 2)
-                    bkCode = "0" + bkCode;
-            }
-            
+        public static List<DeptListEntry> ReadAllDeptList()
+        {
+            List<DeptListEntry> rslt = new List<DeptListEntry>();
             DataTable dt = RcuKruReader.Read(@"DPTLIST.DBF");
             foreach (DataRow dr in dt.Rows)
             {
                 DeptListEntry dle = DeptListEntry.Parse(dr);
-                if (SelectedBank == null  || (SelectedBank != null && dle.NKB == bkCode))
-                    _HierarchedBankDepts.Add(dle);
+                rslt.Add(dle);
             }
+            return rslt;
+        }
+
+        public static List<DeptListEntry> FilterDeptsByBank(BankInfo bk, List<DeptListEntry> src)
+        {
+            string bkCode = SelectedBank != null ? bk.Code : string.Empty;
+            if (!string.IsNullOrEmpty(bkCode) && bkCode.Length < 3)
+            {
+                if (bkCode.Length == 1)
+                    bkCode = "00" + bkCode;
+                else if (bkCode.Length == 2)
+                    bkCode = "0" + bkCode;
+            }
+            List<DeptListEntry> rslt = new List<DeptListEntry>();
+            foreach (DeptListEntry dle in src)
+            {
+                if (bk == null || (bk != null && dle.NKB == bkCode))
+                    rslt.Add(dle);
+            }
+            return rslt;
+        }
+        private static void PopulatedHierachedBankDepts()
+        {
+            _HierarchedBankDepts = FilterDeptsByBank(SelectedBank, ReadAllDeptList());
             BGU.DRPL.SignificantOwnership.Facade.EKDRBU.DeptListUtil.BuildHierarchy(_HierarchedBankDepts);
         }
 
@@ -142,6 +156,55 @@ namespace WpfApplication2.Data
                     //OnPropertyChanged("SelectedBank");
                     //OnPropertyChanged("HierarchedBankDepts");
                 }
+            }
+        }
+
+        public class OblastInfo
+        {
+            public string Code { get; set; }
+            public string Name { get; set; }
+        }
+
+        private static List<OblastInfo> _oblasts;
+        public static List<OblastInfo> Oblasts
+        {
+            get
+            {
+                if (_oblasts == null)
+                {
+                    _oblasts = new List<OblastInfo>();
+                    _oblasts.AddRange(
+                        new OblastInfo[] { 
+                            new OblastInfo(){Code= "", Name = ""},
+new OblastInfo(){Code= "01", Name = "Вінницька"},
+new OblastInfo(){Code= "02", Name = "Волинська"},
+new OblastInfo(){Code= "03", Name = "Дніпропетровська"},
+new OblastInfo(){Code= "04", Name = "Донецька"},
+new OblastInfo(){Code= "05", Name = "Житомирська"},
+new OblastInfo(){Code= "06", Name = "Закарпатська"},
+new OblastInfo(){Code= "07", Name = "Запорізька"},
+new OblastInfo(){Code= "08", Name = "Івано-Франківська"},
+new OblastInfo(){Code= "09", Name = "Київська"},
+new OblastInfo(){Code= "10", Name = "Кіровоградська"},
+new OblastInfo(){Code= "11", Name = "АР Крим"},
+new OblastInfo(){Code= "12", Name = "Луганська"},
+new OblastInfo(){Code= "13", Name = "Львівська"},
+new OblastInfo(){Code= "14", Name = "Миколаївська"},
+new OblastInfo(){Code= "15", Name = "Одеська"},
+new OblastInfo(){Code= "16", Name = "Полтавська"},
+new OblastInfo(){Code= "17", Name = "Рівненська"},
+new OblastInfo(){Code= "18", Name = "Сумська"},
+new OblastInfo(){Code= "19", Name = "Тернопільська"},
+new OblastInfo(){Code= "20", Name = "Харківська"},
+new OblastInfo(){Code= "21", Name = "Херсонська"},
+new OblastInfo(){Code= "22", Name = "Хмельницька"},
+new OblastInfo(){Code= "23", Name = "Черкаська"},
+new OblastInfo(){Code= "24", Name = "Чернігівська"},
+new OblastInfo(){Code= "25", Name = "Чернівецька"}
+                        }
+                        ); // todo
+                }
+                return _oblasts;
             }
         }
 

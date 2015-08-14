@@ -601,6 +601,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Resources\Icons\Filter_add_condition.png" />
+    <Resource Include="Resources\Icons\Filter_add_group.png" />
+    <Resource Include="Resources\Icons\Filter_clear.png" />
+    <Resource Include="Resources\Icons\Filter_Logical_and.png" />
+    <Resource Include="Resources\Icons\Filter_Logical_not_and.png" />
+    <Resource Include="Resources\Icons\Filter_Logical_not_or.png" />
+    <Resource Include="Resources\Icons\Filter_Logical_or.png" />
+    <Resource Include="Resources\Icons\refresh_btn_orig.png" />
     <Resource Include="Resources\Icons\refresh_btn_27.png" />
     <Resource Include="Resources\Icons\refresh_btn.png" />
     <Resource Include="Resources\Icons\add_btn_27.png" />
