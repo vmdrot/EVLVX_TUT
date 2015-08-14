@@ -12,6 +12,8 @@
             <!-- Load this specific theme because the Aero theme for CheckBox has issues. -->
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/PresentationFramework.Royale;V3.0.0.0;31bf3856ad364e35;component\themes\royale.normalcolor.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/Styles.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/Converters.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <Style x:Key="TreeViewItemStyle" TargetType="TreeViewItem">
@@ -44,17 +46,42 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
         </Grid.RowDefinitions>
-        <ComboBox Grid.Row="0" x:Name="cbxBank" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Bank" SelectedItem="{Binding Path=Bank, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" SelectionChanged="cbxBank_SelectionChanged" >
+        <ComboBox Grid.Row="0" x:Name="cbxBank" DisplayMemberPath="Name" HorizontalAlignment="Left" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Bank" SelectedItem="{Binding Path=Bank, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" SelectionChanged="cbxBank_SelectionChanged" >
             <ComboBox.ItemContainerStyle>
                 <Style>
                     <Setter Property="Control.ToolTip" Value="{Binding MFO}" />
                 </Style>
             </ComboBox.ItemContainerStyle>
         </ComboBox>
-
+        <StackPanel Grid.Row="1"  Orientation="Horizontal">
+            <ComboBox x:Name="cbxFilterCondition" HorizontalAlignment="Stretch" ToolTip="" MinWidth="75">
+                <ComboBox.Items>
+                    <ComboBoxItem Tag="and">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/Filter_Logical_and.png" />
+                            <TextBlock Text=" Та" />
+                        </StackPanel>
+                    </ComboBoxItem>
+                    <ComboBoxItem Tag="or">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/Filter_Logical_or.png" />
+                            <TextBlock Text=" Або" />
+                        </StackPanel>
+                    </ComboBoxItem>
+                </ComboBox.Items>
+            </ComboBox>
+            <TextBlock x:Name="lblSearchTxt" Text="Текст для пошуку:" Style="{StaticResource dispNmStyle}" ToolTip="Текст для пошуку по усьому дереву" />
+            <TextBox x:Name="edSearchTxt" Style="{StaticResource txtEdStyle}" ToolTip="" MinWidth="75"/>
+            <TextBlock x:Name="lblOblast" Text="Область:" Style="{StaticResource dispNmStyle}" ToolTip="Область філії/відділення:" />
+            <ComboBox x:Name="cbxOblast" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.Oblasts}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}"  DisplayMemberPath="Name" SelectedValuePath="Code" Width="250" >
+            </ComboBox>
+            <Button x:Name="btnFilter" Content="Фільтрувати" Click="btnFilter_Click" FontSize="16" />
+        </StackPanel>
 
         <!--<TreeView ItemsSource="{Binding Source={x:Static localdata:DataModule.HierarchedBankDepts}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}">
             <TreeView.ItemTemplate>
@@ -68,11 +95,11 @@
             </TreeView.ItemTemplate>
 
         </TreeView>-->
-        <TreeView x:Name="trvw" Grid.Row="1" ItemContainerStyle="{StaticResource TreeViewItemStyle}"
+        <TreeView x:Name="trvw" Grid.Row="2" ItemContainerStyle="{StaticResource TreeViewItemStyle}"
   ItemsSource="{Binding Source={x:Static localdata:DataModule.HierarchedBankDepts}, Mode=OneTime, diag:PresentationTraceSources.TraceLevel=High}"
   ItemTemplate="{StaticResource CheckBoxItemTemplate}">
         </TreeView>
 
-
+        <TextBox Grid.Row="3" x:Name="edFoundItemsCnt" IsReadOnly="True" /> <!-- Text="{Binding TreeViewItemsCount}" -->
     </Grid>
 </Window>
