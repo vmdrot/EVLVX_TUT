@@ -4,6 +4,9 @@
     <ResourceDictionary Source="Converters.xaml" />
     <ResourceDictionary Source="LocationInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="WorkHoursInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="EducationRecordInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="EmploymentRecordInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="PersonBusinessReputationInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="BankBranchOperationInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="AttachmentInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
@@ -462,6 +465,149 @@
           <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MgrPassID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Серія № паспорта" Tag="MgrPassID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
           <TextBlock Text="ІПН" Style="{StaticResource dispNmStyle}" ToolTip="ІПН" Tag="MgrTaxID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
           <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding MgrTaxID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="ІПН" Tag="MgrTaxID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <Expander x:Name="expMgrEducation" Header="Освіта" ToolTip="Дані про освіту керівника" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="MgrEducation" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
+              <DataGrid x:Name="gridMgrEducation" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding MgrEducation, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="MgrEducation" Margin="3,0">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
+                <DataGrid.Columns>
+                  <DataGridTemplateColumn Header="Освіта керівника" Width="*" TextBlock.TextAlignment="Left">
+                    <DataGridTemplateColumn.CellTemplate>
+                      <DataTemplate>
+                        <TextBlock Text="{Binding}" Width="auto" TextWrapping="Wrap" />
+                      </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                  </DataGridTemplateColumn>
+                  <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
+                    <DataGridTemplateColumn.CellTemplate>
+                      <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                          <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
+                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
+                            <Button.CommandParameter>
+                              <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding Path="SelectedItem" ElementName="gridMgrEducation" />
+                                <Binding ElementName="gridMgrEducation" />
+                                <Binding ElementName="expMgrEducation" Path="Header" />
+                                <Binding ElementName="expMgrEducation" Path="ToolTip" />
+                              </MultiBinding>
+                            </Button.CommandParameter>
+                          </Button>
+                          <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
+                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
+                            <Button.CommandParameter>
+                              <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding Path="SelectedItem" ElementName="gridMgrEducation" />
+                                <Binding Path="SelectedIndex" ElementName="gridMgrEducation" />
+                                <Binding ElementName="gridMgrEducation" />
+                              </MultiBinding>
+                            </Button.CommandParameter>
+                          </Button>
+                        </StackPanel>
+                      </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                  </DataGridTemplateColumn>
+                </DataGrid.Columns>
+              </DataGrid>
+              <StackPanel Orientation="Horizontal" Margin="3,5">
+                <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="MgrEducation" Background="White" ToolTip="додати новий запис">
+                  <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="MgrEducation" />
+                  <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource multiValConv}">
+                      <Binding Path="ItemsSource" ElementName="gridMgrEducation" />
+                      <Binding Path="DataContext" ElementName="gridMgrEducation" />
+                      <Binding Path="MgrEducation" />
+                      <Binding ElementName="gridMgrEducation" />
+                      <Binding ElementName="expMgrEducation" Path="Header" />
+                      <Binding ElementName="expMgrEducation" Path="ToolTip" />
+                    </MultiBinding>
+                  </Button.CommandParameter>
+                </Button>
+                <Button HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.RefreshDataGridCommand}" Tag="MgrEducation" Background="White" ToolTip="освіжити записи">
+                  <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn.png" Tag="MgrEducation" />
+                  <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource multiValConv}">
+                      <Binding ElementName="gridMgrEducation" />
+                    </MultiBinding>
+                  </Button.CommandParameter>
+                </Button>
+              </StackPanel>
+            </StackPanel>
+          </Expander>
+          <Expander x:Name="expMgrWorkExperience" Header="Досвід роботи" ToolTip="Дані про досвід роботи керівника" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="MgrWorkExperience" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
+              <DataGrid x:Name="gridMgrWorkExperience" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding MgrWorkExperience, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="MgrWorkExperience" Margin="3,0">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
+                <DataGrid.Columns>
+                  <DataGridTemplateColumn Header="Досвід роботи керівника" Width="*" TextBlock.TextAlignment="Left">
+                    <DataGridTemplateColumn.CellTemplate>
+                      <DataTemplate>
+                        <TextBlock Text="{Binding}" Width="auto" TextWrapping="Wrap" />
+                      </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                  </DataGridTemplateColumn>
+                  <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
+                    <DataGridTemplateColumn.CellTemplate>
+                      <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                          <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
+                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
+                            <Button.CommandParameter>
+                              <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding Path="SelectedItem" ElementName="gridMgrWorkExperience" />
+                                <Binding ElementName="gridMgrWorkExperience" />
+                                <Binding ElementName="expMgrWorkExperience" Path="Header" />
+                                <Binding ElementName="expMgrWorkExperience" Path="ToolTip" />
+                              </MultiBinding>
+                            </Button.CommandParameter>
+                          </Button>
+                          <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
+                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
+                            <Button.CommandParameter>
+                              <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding Path="SelectedItem" ElementName="gridMgrWorkExperience" />
+                                <Binding Path="SelectedIndex" ElementName="gridMgrWorkExperience" />
+                                <Binding ElementName="gridMgrWorkExperience" />
+                              </MultiBinding>
+                            </Button.CommandParameter>
+                          </Button>
+                        </StackPanel>
+                      </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                  </DataGridTemplateColumn>
+                </DataGrid.Columns>
+              </DataGrid>
+              <StackPanel Orientation="Horizontal" Margin="3,5">
+                <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="MgrWorkExperience" Background="White" ToolTip="додати новий запис">
+                  <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="MgrWorkExperience" />
+                  <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource multiValConv}">
+                      <Binding Path="ItemsSource" ElementName="gridMgrWorkExperience" />
+                      <Binding Path="DataContext" ElementName="gridMgrWorkExperience" />
+                      <Binding Path="MgrWorkExperience" />
+                      <Binding ElementName="gridMgrWorkExperience" />
+                      <Binding ElementName="expMgrWorkExperience" Path="Header" />
+                      <Binding ElementName="expMgrWorkExperience" Path="ToolTip" />
+                    </MultiBinding>
+                  </Button.CommandParameter>
+                </Button>
+                <Button HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.RefreshDataGridCommand}" Tag="MgrWorkExperience" Background="White" ToolTip="освіжити записи">
+                  <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn.png" Tag="MgrWorkExperience" />
+                  <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource multiValConv}">
+                      <Binding ElementName="gridMgrWorkExperience" />
+                    </MultiBinding>
+                  </Button.CommandParameter>
+                </Button>
+              </StackPanel>
+            </StackPanel>
+          </Expander>
+          <Expander Header="Репутація" ToolTip="Ділова репутація керівника" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="MgrBusinessReputation" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <ContentControl Content="{Binding MgrBusinessReputation, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="MgrBusinessReputation" />
+          </Expander>
         </StackPanel>
       </Expander>
       <Expander Header="Оплата" ToolTip="Оплата" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">

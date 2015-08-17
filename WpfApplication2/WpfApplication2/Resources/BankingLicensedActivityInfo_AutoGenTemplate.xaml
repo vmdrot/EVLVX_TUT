@@ -5,6 +5,8 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:BankingLicensedActivityInfo}">
     <StackPanel>
+      <TextBlock Text="Тип" Style="{StaticResource dispNmStyle}" Tag="BankActivityOrService" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="Вкажіть, це буде вид банківської діяльності чи послуга" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.LicensedOperationTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding BankActivityOrService, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="BankActivityOrService" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Вид банківської діяльності" Style="{StaticResource dispNmStyle}" Tag="ActivityType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <ComboBox ToolTip="Вид банківської діяльності зг. зі ст.47 з-ну про Банки й банківську діяльність" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.BankingActivityTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding ActivityType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="ActivityType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Вид фінансових послуг" Style="{StaticResource dispNmStyle}" Tag="ServiceType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
