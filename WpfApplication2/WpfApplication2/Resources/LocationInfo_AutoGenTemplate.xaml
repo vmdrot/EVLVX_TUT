@@ -15,8 +15,10 @@
           </ComboBox.ItemContainerStyle>
         </ComboBox>
       </StackPanel>
-      <TextBlock Text="область, район/провінція, тощо" Style="{StaticResource dispNmStyle}" ToolTip="область, район/провінція, тощо" Tag="Region" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Region, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="область, район/провінція, тощо" Tag="Region" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="400" MinWidth="350" HorizontalAlignment="Left" />
+      <TextBlock Text="область/провінція, тощо" Style="{StaticResource dispNmStyle}" ToolTip="область/провінція, тощо" Tag="Region" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Region, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="область/провінція, тощо" Tag="Region" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="400" MinWidth="350" HorizontalAlignment="Left" />
+      <TextBlock Text="район/графство, тощо" Style="{StaticResource dispNmStyle}" ToolTip="район/графство, тощо" Tag="Raion" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Raion, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="район/графство, тощо" Tag="Raion" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="400" MinWidth="350" HorizontalAlignment="Left" />
       <TextBlock Text="Поштовий індекс" Style="{StaticResource dispNmStyle}" ToolTip="Поштовий індекс" Tag="ZipCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ZipCode, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Поштовий індекс" Tag="ZipCode" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="150" MinWidth="100" HorizontalAlignment="Left" />
       <TextBlock Text="Населений пункт" Style="{StaticResource dispNmStyle}" ToolTip="Населений пункт" Tag="City" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
