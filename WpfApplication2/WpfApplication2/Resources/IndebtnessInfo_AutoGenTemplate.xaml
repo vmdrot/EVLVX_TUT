@@ -14,7 +14,7 @@
       <TextBlock Text="Плани щодо погашення" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="RepaymentPlans" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding RepaymentPlans, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="RepaymentPlans" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <CheckBox IsChecked="{Binding IsBankDebt, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsBankDebt" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Позичальник є банком" ToolTip="(відзначте галочку, якщо позику було взято у банку, або ж зніміть, якщо борг виник перед особою, що не є банком)" Tag="IsBankDebt" />
+        <TextBlock FlowDirection="LeftToRight" Text="Кредитор є банком" ToolTip="(відзначте галочку, якщо позику було взято у банку, або ж зніміть, якщо борг виник перед особою, що не є банком)" Tag="IsBankDebt" />
       </CheckBox>
       <StackPanel Orientation="Vertical" Tag="Lender" Visibility="{Binding Path=IsNonBankDebt, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblLender" Height="auto" Width="auto" Text="Кредитор" Style="{StaticResource dispNmStyle}" ToolTip="(інший кредитор, окрім банків)" Tag="Lender" />
