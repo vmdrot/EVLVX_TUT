@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Net;
 
 namespace Evolvex.VKUtilLib
 {
     public abstract class WebBrowserReaderBase : IDisposable
     {
         protected WebBrowser _wc;
+        private WebClient _wcLight;
         private bool _disposed = false;
         private volatile bool _navigateCompleted = false;
         private static int _maxDiscoverTimeOutSec = 120; //i.e. two minutes
@@ -20,6 +22,16 @@ namespace Evolvex.VKUtilLib
             set { _maxDiscoverTimeOutSec = value; }
         }
 
+
+        protected WebClient WCLight
+        {
+            get
+            {
+                if(_wcLight == null)
+                    _wcLight = new WebClient();
+                return _wcLight;
+            }
+        }
         public WebBrowserReaderBase()
         {
             _wc = new WebBrowser();
@@ -76,6 +88,14 @@ namespace Evolvex.VKUtilLib
             _navigateCompleted = true;
         }
 
+
+        protected long GetFileSize(string url)
+        {
+            WCLight.OpenRead(url);
+            long rslt = (long)Convert.ToInt64(WCLight.ResponseHeaders["Content-Length"]);
+            
+            return rslt;
+        }
         #region IDisposable Members
 
         public void Dispose()
@@ -90,6 +110,11 @@ namespace Evolvex.VKUtilLib
             {
                 _wc.Dispose();
                 _wc = null;
+            }
+            if (_wcLight != null) 
+            {
+                _wcLight.Dispose();
+                _wcLight = null;
             }
         }
 
