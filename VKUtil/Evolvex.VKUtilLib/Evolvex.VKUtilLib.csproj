@@ -48,6 +48,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BGU\BGUSiteReader.cs" />
+    <Compile Include="BGU\Data\BankOwnStructVersionInfo.cs" />
+    <Compile Include="BGU\Data\BGUBankOwnStructInfo.cs" />
     <Compile Include="ExUA\Data\ExUALinkInfo.cs" />
     <Compile Include="ExUA\ExUAPageReader.cs" />
     <Compile Include="Misc\PostTitleReader.cs" />
