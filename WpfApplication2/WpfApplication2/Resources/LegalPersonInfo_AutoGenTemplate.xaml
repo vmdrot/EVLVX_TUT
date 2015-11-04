@@ -11,8 +11,8 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgud:LegalPersonInfo}">
     <StackPanel>
-      <CheckBox IsChecked="{Binding IsIntFinOrIntOrg, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsIntFinOrIntOrg" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock FlowDirection="LeftToRight" Text="Міжнародна фінансова чи міжнародна організація" ToolTip="Відзначити, якщо юридична особа є міжнародною організацією;&#xA;міжнародна фінансова установа – установа, з якою Уряд України уклав угоду про співробітництво та для якої згідно із законами України встановлено привілеї та імунітети." Tag="IsIntFinOrIntOrg" />
+      <CheckBox IsChecked="{Binding IsIntFinOrg, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsIntFinOrg" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Міжнародна фінансова чи міжнародна організація" ToolTip="Відзначити, якщо юридична особа є міжнародною організацією;&#xA;міжнародна фінансова установа – установа, з якою Уряд України уклав угоду про співробітництво та для якої згідно із законами України встановлено привілеї та імунітети." Tag="IsIntFinOrg" />
       </CheckBox>
       <StackPanel Orientation="Horizontal" Tag="ResidenceCountry" Visibility="{Binding Path=ShowCountrySpecificControls, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock Text="Країна юрисдикції" Style="{StaticResource dispNmStyle}" ToolTip="Країна юрисдикції юридичної особи" Tag="ResidenceCountry" />

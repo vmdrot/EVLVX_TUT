@@ -15,7 +15,7 @@
     <ResourceDictionary Source="OwnershipStructure_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="LoanInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="ImperfectBusinessReputationInfo_AutoGenTemplate.xaml" />
-    <ResourceDictionary Source="MissingInformationResonInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="MissingInformationReasonInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="SignatoryInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="ContactInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="GenericPersonInfo_AutoGenTemplate.xaml" />
