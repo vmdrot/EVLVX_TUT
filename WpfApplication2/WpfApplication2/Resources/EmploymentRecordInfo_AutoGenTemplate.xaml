@@ -2,6 +2,7 @@
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="ISCO_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="ContactInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:EmploymentRecordInfo}">
@@ -21,6 +22,9 @@
           <TextBlock Text="Безробітний" Style="{StaticResource rbTextStyle}" />
         </RadioButton>
       </StackPanel>
+      <CheckBox IsChecked="{Binding IsEmploymentBookRegistered, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsEmploymentBookRegistered" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Є в трудовій книзі" ToolTip="Чи відображено запис у трудовій книзі?" Tag="IsEmploymentBookRegistered" />
+      </CheckBox>
       <StackPanel Orientation="Vertical" Tag="Employer" Visibility="{Binding Path=IsEmployee, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock x:Name="lblEmployer" Height="auto" Width="auto" Text="Роботодавець" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Employer" />
         <StackPanel Orientation="Horizontal">
@@ -89,6 +93,15 @@
       </StackPanel>
       <TextBlock Text="Посада/функція" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="JobTitle" Visibility="{Binding Path=IsEmployee, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding JobTitle, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="JobTitle" Visibility="{Binding Path=IsEmployee, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <Expander Header="Код та назва професії за МОП" ToolTip="Код та назва професії за класифікатором Міжнародної організації праці / ДК 003:2010" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ISCOJobSpec" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding ISCOJobSpec, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="ISCOJobSpec" />
+      </Expander>
+      <CheckBox IsChecked="{Binding IsSupervisedIndustryExperience, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsSupervisedIndustryExperience" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Банківський/фінансовий досвід" ToolTip="Чи враховується описуване місце роботи у загальний банкісько-фінансовий стаж" Tag="IsSupervisedIndustryExperience" />
+      </CheckBox>
+      <CheckBox IsChecked="{Binding IsManagingPosition, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsManagingPosition" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Керівна посада" ToolTip="Чи враховується описуване місце роботи у загальний стаж роботи на керівних посадах" Tag="IsManagingPosition" />
+      </CheckBox>
       <TextBlock Text="Дата початку роботи" Style="{StaticResource dispNmStyle}" ToolTip="Дата початку роботи чи переходу в нинішній статус (фрілансер, безробітний, тощо)" Tag="DateStarted" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <DatePicker ToolTip="Дата початку роботи чи переходу в нинішній статус (фрілансер, безробітний, тощо)" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding DateStarted, diag:PresentationTraceSources.TraceLevel=High}" Tag="DateStarted" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <CheckBox IsChecked="{Binding IsStillWorkingThere, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsStillWorkingThere" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
@@ -100,6 +113,8 @@
       <ComboBox ToolTip="" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.EmploymentTerminationTypeList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding TerminationType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="TerminationType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsAlreadyFinished, Converter={StaticResource bool2Vis}}" />
       <TextBlock Text="Причина звільнення" Style="{StaticResource dispNmStyle}" ToolTip="причина звільнення; якщо трудовий стаж переривався, то слід зазначити причину" Tag="DismissalOrUnemployedReason" Visibility="{Binding Path=IsQuitDismissedOrOtherLeave, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding DismissalOrUnemployedReason, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="причина звільнення; якщо трудовий стаж переривався, то слід зазначити причину" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="DismissalOrUnemployedReason" Visibility="{Binding Path=IsQuitDismissedOrOtherLeave, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Стаття, пункт звільнення" Style="{StaticResource dispNmStyle}" ToolTip="Стаття і пункт Кодексу законів про працю, за якою було припинено трудові стосунки" Tag="KZPPArticlePt" Visibility="{Binding Path=IsQuitDismissedOrOtherLeave, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding KZPPArticlePt, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Стаття і пункт Кодексу законів про працю, за якою було припинено трудові стосунки" Tag="KZPPArticlePt" Visibility="{Binding Path=IsQuitDismissedOrOtherLeave, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <Expander Header="Контакти роботодавця / замовника" ToolTip="Для найманих працівників - контакти роботодавця, для фрілансерів і самозайнятих - основного замовника" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="EmployerOrContractorContact" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsBusy, Converter={StaticResource bool2Vis}}">
         <ContentControl Content="{Binding EmployerOrContractorContact, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="EmployerOrContractorContact" />
       </Expander>

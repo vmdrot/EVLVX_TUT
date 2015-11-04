@@ -38,7 +38,7 @@
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LiquidatedEntityOwnershipInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/TotalOwnershipDetailsInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/OwnershipVotesInfo_AutoGenTemplate.xaml" />
-<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/MissingInformationResonInfo_AutoGenTemplate.xaml" />
+<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/MissingInformationReasonInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/GenericPersonInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LegalPersonInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LPRegisteredDateRecordId_AutoGenTemplate.xaml" />

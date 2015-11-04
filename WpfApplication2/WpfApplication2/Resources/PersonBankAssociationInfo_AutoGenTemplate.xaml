@@ -28,7 +28,7 @@
         </StackPanel>
       </StackPanel>
       <TextBlock Text="Код пов'язаності" Style="{StaticResource dispNmStyle}" Tag="AssociationKind" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <ComboBox ToolTip="Оберіть код пов'язаності особи" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.BankAssociatedPeronsCode315pList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding AssociationKind, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="AssociationKind" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <ComboBox ToolTip="Оберіть код пов'язаності особи" ItemsSource="{Binding Source={x:Static bgus:EnumsLister.BankAssociatedPersonsCode315pList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding AssociationKind, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="AssociationKind" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>

@@ -2,6 +2,7 @@
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="CountryInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="IPNRefusalRecordInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="RegistrarAuthority_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="LocationInfo_AutoGenTemplate.xaml" />
@@ -18,10 +19,188 @@
           </ComboBox.ItemContainerStyle>
         </ComboBox>
       </StackPanel>
+      <CheckBox IsChecked="{Binding HasDoubleCitizenship, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="HasDoubleCitizenship" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock FlowDirection="LeftToRight" Text="Має інше громадянство?" ToolTip="Особа має додаткове (подвійне) громадянство іншої(-их) країн(-и)" Tag="HasDoubleCitizenship" />
+      </CheckBox>
+      <Expander x:Name="expDoubleCitizenshipCountries" Header="Додаткове(-і)/подвійне(-і) громадянство(-а)" ToolTip="Відомості про подвійне громадянство інших країн, ніж вказаної в полі 'Громадянство'" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="DoubleCitizenshipCountries" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=HasDoubleCitizenship, Converter={StaticResource bool2Vis}}">
+        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
+          <DataGrid x:Name="gridDoubleCitizenshipCountries" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding DoubleCitizenshipCountries, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="DoubleCitizenshipCountries" Margin="3,0">
+            <i:Interaction.Behaviors>
+              <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+            </i:Interaction.Behaviors>
+            <DataGrid.Columns>
+              <DataGridTextColumn Binding="{Binding Path=CountryISO2Code, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="CountryISO2Code" Width="*" TextBlock.TextAlignment="Center">
+                <DataGridTextColumn.HeaderStyle>
+                  <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
+                    <Setter Property="ContentTemplate">
+                      <Setter.Value>
+                        <DataTemplate>
+                          <ContentControl Content="{Binding}">
+                            <ToolTipService.ToolTip>
+                              <ToolTip Content="CountryISO2Code" />
+                            </ToolTipService.ToolTip>
+                          </ContentControl>
+                        </DataTemplate>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>
+                </DataGridTextColumn.HeaderStyle>
+              </DataGridTextColumn>
+              <DataGridTextColumn Binding="{Binding Path=CountryISO3Code, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="CountryISO3Code" Width="*" TextBlock.TextAlignment="Center">
+                <DataGridTextColumn.HeaderStyle>
+                  <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
+                    <Setter Property="ContentTemplate">
+                      <Setter.Value>
+                        <DataTemplate>
+                          <ContentControl Content="{Binding}">
+                            <ToolTipService.ToolTip>
+                              <ToolTip Content="CountryISO3Code" />
+                            </ToolTipService.ToolTip>
+                          </ContentControl>
+                        </DataTemplate>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>
+                </DataGridTextColumn.HeaderStyle>
+              </DataGridTextColumn>
+              <DataGridTextColumn Binding="{Binding Path=CountryISONr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="CountryISONr" Width="*" TextBlock.TextAlignment="Center">
+                <DataGridTextColumn.HeaderStyle>
+                  <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
+                    <Setter Property="ContentTemplate">
+                      <Setter.Value>
+                        <DataTemplate>
+                          <ContentControl Content="{Binding}">
+                            <ToolTipService.ToolTip>
+                              <ToolTip Content="CountryISONr" />
+                            </ToolTipService.ToolTip>
+                          </ContentControl>
+                        </DataTemplate>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>
+                </DataGridTextColumn.HeaderStyle>
+              </DataGridTextColumn>
+              <DataGridTextColumn Binding="{Binding Path=CountryNameEng, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="CountryNameEng" Width="*" TextBlock.TextAlignment="Center">
+                <DataGridTextColumn.HeaderStyle>
+                  <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
+                    <Setter Property="ContentTemplate">
+                      <Setter.Value>
+                        <DataTemplate>
+                          <ContentControl Content="{Binding}">
+                            <ToolTipService.ToolTip>
+                              <ToolTip Content="CountryNameEng" />
+                            </ToolTipService.ToolTip>
+                          </ContentControl>
+                        </DataTemplate>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>
+                </DataGridTextColumn.HeaderStyle>
+              </DataGridTextColumn>
+              <DataGridTextColumn Binding="{Binding Path=CountryNameUkr, diag:PresentationTraceSources.TraceLevel=High, Mode=TwoWay}" Header="CountryNameUkr" Width="*" TextBlock.TextAlignment="Center">
+                <DataGridTextColumn.HeaderStyle>
+                  <Style TargetType="dataprimitives:DataGridColumnHeader">
+                    <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+                    <Setter Property="TextBlock.TextAlignment" Value="Center" />
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Stretch" />
+                    <Setter Property="BorderBrush" Value="Black" />
+                    <Setter Property="SeparatorBrush" Value="Black" />
+                    <Setter Property="ContentTemplate">
+                      <Setter.Value>
+                        <DataTemplate>
+                          <ContentControl Content="{Binding}">
+                            <ToolTipService.ToolTip>
+                              <ToolTip Content="CountryNameUkr" />
+                            </ToolTipService.ToolTip>
+                          </ContentControl>
+                        </DataTemplate>
+                      </Setter.Value>
+                    </Setter>
+                  </Style>
+                </DataGridTextColumn.HeaderStyle>
+              </DataGridTextColumn>
+              <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
+                <DataGridTemplateColumn.CellTemplate>
+                  <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                      <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
+                        <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
+                        <Button.CommandParameter>
+                          <MultiBinding Converter="{StaticResource multiValConv}">
+                            <Binding Path="SelectedItem" ElementName="gridDoubleCitizenshipCountries" />
+                            <Binding ElementName="gridDoubleCitizenshipCountries" />
+                            <Binding ElementName="expDoubleCitizenshipCountries" Path="Header" />
+                            <Binding ElementName="expDoubleCitizenshipCountries" Path="ToolTip" />
+                          </MultiBinding>
+                        </Button.CommandParameter>
+                      </Button>
+                      <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
+                        <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
+                        <Button.CommandParameter>
+                          <MultiBinding Converter="{StaticResource multiValConv}">
+                            <Binding Path="SelectedItem" ElementName="gridDoubleCitizenshipCountries" />
+                            <Binding Path="SelectedIndex" ElementName="gridDoubleCitizenshipCountries" />
+                            <Binding ElementName="gridDoubleCitizenshipCountries" />
+                          </MultiBinding>
+                        </Button.CommandParameter>
+                      </Button>
+                    </StackPanel>
+                  </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+              </DataGridTemplateColumn>
+            </DataGrid.Columns>
+          </DataGrid>
+          <StackPanel Orientation="Horizontal" Margin="3,5">
+            <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="DoubleCitizenshipCountries" Background="White" ToolTip="додати новий запис">
+              <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="DoubleCitizenshipCountries" />
+              <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiValConv}">
+                  <Binding Path="ItemsSource" ElementName="gridDoubleCitizenshipCountries" />
+                  <Binding Path="DataContext" ElementName="gridDoubleCitizenshipCountries" />
+                  <Binding Path="DoubleCitizenshipCountries" />
+                  <Binding ElementName="gridDoubleCitizenshipCountries" />
+                  <Binding ElementName="expDoubleCitizenshipCountries" Path="Header" />
+                  <Binding ElementName="expDoubleCitizenshipCountries" Path="ToolTip" />
+                </MultiBinding>
+              </Button.CommandParameter>
+            </Button>
+            <Button HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.RefreshDataGridCommand}" Tag="DoubleCitizenshipCountries" Background="White" ToolTip="освіжити записи">
+              <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn.png" Tag="DoubleCitizenshipCountries" />
+              <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource multiValConv}">
+                  <Binding ElementName="gridDoubleCitizenshipCountries" />
+                </MultiBinding>
+              </Button.CommandParameter>
+            </Button>
+          </StackPanel>
+        </StackPanel>
+      </Expander>
       <Expander Header="Ім'я" ToolTip="Ім'я" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel Orientation="Vertical" Margin="5,2">
           <TextBlock Text="Прізвище" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище" Tag="Surname" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
           <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Surname, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Прізвище" Tag="Surname" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MinWidth="250" HorizontalAlignment="Left" />
+          <TextBlock Text="Прізвище при народженні" Style="{StaticResource dispNmStyle}" ToolTip="Прізвище при народженні - дівоче чи у інших випадках, якщо мала місце зміна прізвища" Tag="SurnameAtBirth" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SurnameAtBirth, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Прізвище при народженні - дівоче чи у інших випадках, якщо мала місце зміна прізвища" Tag="SurnameAtBirth" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MinWidth="250" HorizontalAlignment="Left" />
           <TextBlock Text="Ім'я" Style="{StaticResource dispNmStyle}" ToolTip="Ім'я" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
           <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding Name, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ім'я" Tag="Name" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MinWidth="250" HorizontalAlignment="Left" />
           <TextBlock Text="По-батькові/друге ім'я" Style="{StaticResource dispNmStyle}" ToolTip="По-батькові/друге ім'я" Tag="MiddleName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
@@ -40,7 +219,7 @@
       </Expander>
       <Expander Header="Індивідуальний податковий номер" ToolTip="Індивідуальний податковий номер" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel Orientation="Vertical" Margin="5,2">
-          <CheckBox IsChecked="{Binding IsIPNRefused, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsIPNRefused" Visibility="{Binding Path=IsResident, Converter={StaticResource bool2Vis}}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <CheckBox IsChecked="{Binding IsIPNRefused, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsIPNRefused" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <TextBlock FlowDirection="LeftToRight" Text="ІПН немає" ToolTip="Особа у встановленому порядку відмовилася від індивідувального податкового номера?" Tag="IsIPNRefused" />
           </CheckBox>
           <Expander Header="Відміка про відсутність ІПН-у" ToolTip="Відомості про відповідний запи/відмітку в паспорті громадянина (про відмові від ІПН та погодження такої відмови)" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="IPNRefusalEvidence" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsIPNRefused, Converter={StaticResource bool2Vis}}">
