@@ -2,7 +2,7 @@
   <ResourceDictionary.MergedDictionaries>
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
-    <ResourceDictionary Source="EmploymentRecordInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="EmploymentHistoryInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="BankAccountInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="TotalOwnershipSummaryInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="SignificantOwnershipAcquisitionWaysInfo_AutoGenTemplate.xaml" />
@@ -54,9 +54,9 @@
       <Expander Header="І. Інформація про фізичну особу" ToolTip="І. Інформація про фізичну особу" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel Orientation="Vertical" Margin="5,2">
           <StackPanel Orientation="Vertical" Tag="Acquiree" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-            <TextBlock x:Name="lblAcquiree" Height="auto" Width="auto" Text="Фізособа-заявник" Style="{StaticResource dispNmStyle}" ToolTip="1. Інформація про особу" Tag="Acquiree" />
+            <TextBlock x:Name="lblAcquiree" Height="auto" Width="auto" Text="Фізособа-заявник" Style="{StaticResource dispNmStyle}" ToolTip="1. Інформація про фізичну особу - Прізвище, ім’я, по батькові..." Tag="Acquiree" />
             <StackPanel Orientation="Horizontal">
-              <ComboBox x:Name="cbxAcquiree" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="1. Інформація про особу" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Acquiree" SelectedValuePath="ID" SelectedValue="{Binding Path=Acquiree, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
+              <ComboBox x:Name="cbxAcquiree" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="1. Інформація про фізичну особу - Прізвище, ім’я, по батькові..." MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Acquiree" SelectedValuePath="ID" SelectedValue="{Binding Path=Acquiree, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
               <Button x:Name="btnAddAcquiree" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Acquiree" Height="27" Width="27" Background="White" ToolTip="додати новий до списку">
                 <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Acquiree" />
                 <Button.CommandParameter>
@@ -75,77 +75,10 @@
               </Button>
             </StackPanel>
           </StackPanel>
-          <Expander x:Name="expEmploymentRecords" Header="Досвід роботи" ToolTip="1.8. Займані посади за останні п'ять років" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="EmploymentRecords" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
-              <DataGrid x:Name="gridEmploymentRecords" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding EmploymentRecords, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="EmploymentRecords" Margin="3,0">
-                <i:Interaction.Behaviors>
-                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
-                </i:Interaction.Behaviors>
-                <DataGrid.Columns>
-                  <DataGridTemplateColumn Header="Місце роботи" Width="*" TextBlock.TextAlignment="Left">
-                    <DataGridTemplateColumn.CellTemplate>
-                      <DataTemplate>
-                        <TextBlock Text="{Binding}" Width="auto" TextWrapping="Wrap" />
-                      </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                  </DataGridTemplateColumn>
-                  <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
-                    <DataGridTemplateColumn.CellTemplate>
-                      <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                          <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
-                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
-                            <Button.CommandParameter>
-                              <MultiBinding Converter="{StaticResource multiValConv}">
-                                <Binding Path="SelectedItem" ElementName="gridEmploymentRecords" />
-                                <Binding ElementName="gridEmploymentRecords" />
-                                <Binding ElementName="expEmploymentRecords" Path="Header" />
-                                <Binding ElementName="expEmploymentRecords" Path="ToolTip" />
-                              </MultiBinding>
-                            </Button.CommandParameter>
-                          </Button>
-                          <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
-                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
-                            <Button.CommandParameter>
-                              <MultiBinding Converter="{StaticResource multiValConv}">
-                                <Binding Path="SelectedItem" ElementName="gridEmploymentRecords" />
-                                <Binding Path="SelectedIndex" ElementName="gridEmploymentRecords" />
-                                <Binding ElementName="gridEmploymentRecords" />
-                              </MultiBinding>
-                            </Button.CommandParameter>
-                          </Button>
-                        </StackPanel>
-                      </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                  </DataGridTemplateColumn>
-                </DataGrid.Columns>
-              </DataGrid>
-              <StackPanel Orientation="Horizontal" Margin="3,5">
-                <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="EmploymentRecords" Background="White" ToolTip="додати новий запис">
-                  <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="EmploymentRecords" />
-                  <Button.CommandParameter>
-                    <MultiBinding Converter="{StaticResource multiValConv}">
-                      <Binding Path="ItemsSource" ElementName="gridEmploymentRecords" />
-                      <Binding Path="DataContext" ElementName="gridEmploymentRecords" />
-                      <Binding Path="EmploymentRecords" />
-                      <Binding ElementName="gridEmploymentRecords" />
-                      <Binding ElementName="expEmploymentRecords" Path="Header" />
-                      <Binding ElementName="expEmploymentRecords" Path="ToolTip" />
-                    </MultiBinding>
-                  </Button.CommandParameter>
-                </Button>
-                <Button HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.RefreshDataGridCommand}" Tag="EmploymentRecords" Background="White" ToolTip="освіжити записи">
-                  <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn.png" Tag="EmploymentRecords" />
-                  <Button.CommandParameter>
-                    <MultiBinding Converter="{StaticResource multiValConv}">
-                      <Binding ElementName="gridEmploymentRecords" />
-                    </MultiBinding>
-                  </Button.CommandParameter>
-                </Button>
-              </StackPanel>
-            </StackPanel>
+          <Expander Header="Досвід роботи" ToolTip="3. Відомості про трудову діяльність" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="EmploymentHistory" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <ContentControl Content="{Binding EmploymentHistory, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="EmploymentHistory" />
           </Expander>
-          <Expander x:Name="expBankingAccounts" Header="Рахунки в банках" ToolTip="1.6. Перелік банків, у яких відкрито рахунки" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="BankingAccounts" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <Expander x:Name="expBankingAccounts" Header="Рахунки в банках" ToolTip="4. Банківські рахунки фізичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="BankingAccounts" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridBankingAccounts" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding BankingAccounts, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="BankingAccounts" Margin="3,0">
                 <i:Interaction.Behaviors>
