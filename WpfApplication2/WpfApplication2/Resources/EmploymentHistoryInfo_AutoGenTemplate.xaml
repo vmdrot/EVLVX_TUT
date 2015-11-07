@@ -5,30 +5,8 @@
     <ResourceDictionary Source="EmploymentBookInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="EmploymentRecordInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
-  <DataTemplate DataType="{x:Type bgusd:PersonEmploymentRecordsInfo}">
+  <DataTemplate DataType="{x:Type bgusd:EmploymentHistoryInfo}">
     <StackPanel>
-      <StackPanel Orientation="Vertical" Tag="Person" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblPerson" Height="auto" Width="auto" Text="Особа" Style="{StaticResource dispNmStyle}" ToolTip="Особа, чию трудову біографію треба розкрити" Tag="Person" />
-        <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxPerson" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="Особа, чию трудову біографію треба розкрити" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Person" SelectedValuePath="ID" SelectedValue="{Binding Path=Person, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
-          <Button x:Name="btnAddPerson" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Person" Height="27" Width="27" Background="White" ToolTip="додати новий до списку">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Person" />
-            <Button.CommandParameter>
-              <MultiBinding Converter="{StaticResource multiValConv}">
-                <Binding ElementName="cbxPerson" />
-              </MultiBinding>
-            </Button.CommandParameter>
-          </Button>
-          <Button x:Name="btnRefreshPerson" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Person" Height="27" Width="27" Background="White" ToolTip="освіжити список">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="Person" />
-            <Button.CommandParameter>
-              <MultiBinding Converter="{StaticResource multiValConv}">
-                <Binding ElementName="cbxPerson" />
-              </MultiBinding>
-            </Button.CommandParameter>
-          </Button>
-        </StackPanel>
-      </StackPanel>
       <CheckBox IsChecked="{Binding HasEmploymentBook, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="HasEmploymentBook" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <TextBlock FlowDirection="LeftToRight" Text="Є трудова книга?" ToolTip="Чи існує трудова книга особи" Tag="HasEmploymentBook" />
       </CheckBox>
