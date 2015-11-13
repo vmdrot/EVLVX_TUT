@@ -18,6 +18,8 @@
                         <MenuItem Header="Пост.306, Додаток 2 (ЮО)" Click="RegLicAppx2OwnershipAcqRequestLP_MenuItemClick" />
                         <MenuItem Header="Пост.306, Додаток 3" Click="RegLicAppx3MemberCandidateAppl_MenuItemClick" />
                         <MenuItem Header="Пост.306, Додаток 4 (ФО)" Click="RegLicAppx4OwnershipAcqRequestPP_MenuItemClick" />
+                        <MenuItem Header="Пост.306, Додаток 12" Click="RegLicAppx12HeadCandidateAppl_MenuItemClick" />
+                        <MenuItem Header="Пост.306, Додаток 14" Click="RegLicAppx14NewSvc_MenuItemClick" />
                     </MenuItem>
                     <MenuItem Header="Повідомлення">
                         <MenuItem Header="Пост.315, Пов'язані особи (додаток)" Click="Post315AppxBankAssocPersons_MenuItemClick" />

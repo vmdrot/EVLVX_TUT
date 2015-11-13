@@ -48,6 +48,15 @@ namespace WpfApplication2
             ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, new RegLicAppx4OwnershipAcqRequestPP());
         }
 
+        private void RegLicAppx12HeadCandidateAppl_MenuItemClick(object sender, RoutedEventArgs e)
+        {
+            ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, new RegLicAppx12HeadCandidateAppl());
+        }
+
+        private void RegLicAppx14NewSvc_MenuItemClick(object sender, RoutedEventArgs e)
+        {
+            ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, new RegLicAppx14NewSvc());
+        }
 
         private void Post315AppxBankAssocPersons_MenuItemClick(object sender, RoutedEventArgs e)
         {
