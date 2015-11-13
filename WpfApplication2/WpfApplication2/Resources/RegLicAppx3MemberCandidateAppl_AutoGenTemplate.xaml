@@ -10,6 +10,7 @@
     <ResourceDictionary Source="PersonBankAssociationInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="PersonBusinessReputationInfo_AutoGenTemplate.xaml" />
     <ResourceDictionary Source="SignatoryInfo_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="ContactInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bguq:RegLicAppx3MemberCandidateAppl}">
     <StackPanel>
@@ -36,9 +37,9 @@
         </StackPanel>
       </StackPanel>
       <StackPanel Orientation="Vertical" Tag="BankRef" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblBankRef" Height="auto" Width="auto" Text="Повне офіційне найменування банку" Style="{StaticResource dispNmStyle}" ToolTip="Ідентифікація банку, в якому подавачі планують набути членство у відповідному органі управління" Tag="BankRef" />
+        <TextBlock x:Name="lblBankRef" Height="auto" Width="auto" Text="Повне офіційне найменування банку" Style="{StaticResource dispNmStyle}" ToolTip="Ідентифікація банку, в якому подавачі планують набути&#xA;членство у відповідному органі управління&#xA;[стосовно участі в(повне найменування банку)]" Tag="BankRef" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxBankRef" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="Ідентифікація банку, в якому подавачі планують набути членство у відповідному органі управління" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="BankRef" SelectedItem="{Binding Path=BankRef, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250">
+          <ComboBox x:Name="cbxBankRef" DisplayMemberPath="Name" HorizontalAlignment="Stretch" ToolTip="Ідентифікація банку, в якому подавачі планують набути&#xA;членство у відповідному органі управління&#xA;[стосовно участі в(повне найменування банку)]" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.СurrentBanks}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="BankRef" SelectedItem="{Binding Path=BankRef, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250">
             <ComboBox.ItemContainerStyle>
               <Style>
                 <Setter Property="Control.ToolTip" Value="{Binding MFO}" />
@@ -66,22 +67,22 @@
       <Expander Header="I. Перелік членів виконавчого органу та наглядової ради юридичної особи" ToolTip="I. Перелік членів виконавчого органу та наглядової ради юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel Orientation="Vertical" Margin="5,2">
           <CheckBox IsChecked="{Binding IsSupervisoryCouncilPresent, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsSupervisoryCouncilPresent" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-            <TextBlock FlowDirection="LeftToRight" Text="Наглядова (спостережна) рада юридичної особи існує" ToolTip="Чи існує наглядова (спостережна) рада юридичної особи?" Tag="IsSupervisoryCouncilPresent" />
+            <TextBlock FlowDirection="LeftToRight" Text="I. Наглядова (спостережна) рада юридичної особи існує" ToolTip="(I) Чи існує наглядова (спостережна) рада юридичної особи?" Tag="IsSupervisoryCouncilPresent" />
           </CheckBox>
-          <Expander Header="Особовий склад наглядової(спостережної)ради юрособи" ToolTip="Голова та члени наглядової (спостережної) ради юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="SupervisoryCouncil" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsSupervisoryCouncilPresent, Converter={StaticResource bool2Vis}}">
+          <Expander Header="I. Особовий склад наглядової(спостережної)ради юрособи" ToolTip="Голова та члени наглядової (спостережної) ради юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="SupervisoryCouncil" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsSupervisoryCouncilPresent, Converter={StaticResource bool2Vis}}">
             <ContentControl Content="{Binding SupervisoryCouncil, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="SupervisoryCouncil" />
           </Expander>
           <CheckBox IsChecked="{Binding IsExecutiveBodyPresent, diag:PresentationTraceSources.TraceLevel=High}" FlowDirection="LeftToRight" Tag="IsExecutiveBodyPresent" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-            <TextBlock FlowDirection="LeftToRight" Text="Виконавчий орган юридичної особи існує" ToolTip="Чи існує виконавчий орган юридичної особи?" Tag="IsExecutiveBodyPresent" />
+            <TextBlock FlowDirection="LeftToRight" Text="I. Виконавчий орган юридичної особи існує" ToolTip="Чи існує виконавчий орган юридичної особи?" Tag="IsExecutiveBodyPresent" />
           </CheckBox>
-          <Expander Header="Особовий склад виконавчого органу юрособи" ToolTip="Голова та члени виконавчого органу юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ExecutiveBody" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsExecutiveBodyPresent, Converter={StaticResource bool2Vis}}">
+          <Expander Header="I. Особовий склад виконавчого органу юрособи" ToolTip="Голова та члени виконавчого органу юридичної особи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ExecutiveBody" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Visibility="{Binding Path=IsExecutiveBodyPresent, Converter={StaticResource bool2Vis}}">
             <ContentControl Content="{Binding ExecutiveBody, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="ExecutiveBody" />
           </Expander>
         </StackPanel>
       </Expander>
       <Expander Header="II. Загальна інформація про осіб" ToolTip="II. Загальна інформація про осіб" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel Orientation="Vertical" Margin="5,2">
-          <Expander x:Name="expMentionedIdentities" Header="Реквізити усіх осіб-фігурантів" ToolTip="Реквізити усіх осіб, що згадуються в анкеті" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="MentionedIdentities" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <Expander x:Name="expMentionedIdentities" Header="II. Реквізити усіх осіб-фігурантів" ToolTip="Реквізити усіх осіб, що згадуються в анкеті" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="MentionedIdentities" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridMentionedIdentities" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding MentionedIdentities, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="MentionedIdentities" Margin="3,0">
                 <i:Interaction.Behaviors>
@@ -155,7 +156,7 @@
       </Expander>
       <Expander Header="III. Відомості про трудову діяльність" ToolTip="III. Відомості про трудову діяльність" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel Orientation="Vertical" Margin="5,2">
-          <Expander x:Name="expBoardMembersEmploymentHistory5Yrs" Header="Займані посади за останні п’ять років" ToolTip="Деталі трудової біографії погоджуваних членів наглядового та/або виконавчого органів, за останні 5 років." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="BoardMembersEmploymentHistory5Yrs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <Expander x:Name="expBoardMembersEmploymentHistory5Yrs" Header="III. Займані посади за останні п’ять років" ToolTip="Деталі трудової біографії погоджуваних членів наглядового та/або виконавчого органів, за останні 5 років." HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="BoardMembersEmploymentHistory5Yrs" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridBoardMembersEmploymentHistory5Yrs" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding BoardMembersEmploymentHistory5Yrs, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="BoardMembersEmploymentHistory5Yrs" Margin="3,0">
                 <i:Interaction.Behaviors>
@@ -229,7 +230,7 @@
       </Expander>
       <Expander Header="IV. Відносини особи з банком та юридичною особою" ToolTip="IV. Відносини особи з банком та юридичною особою" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel Orientation="Vertical" Margin="5,2">
-          <Expander x:Name="expExistingOwnershipDetailsHive" Header="Відомості про участь осіб в банку" ToolTip="Деталізація існуючих відносин власності між особами, юр.особою та банком" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ExistingOwnershipDetailsHive" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <Expander x:Name="expExistingOwnershipDetailsHive" Header="IV. Відомості про участь осіб в банку" ToolTip="Деталізація існуючих відносин власності між особами, юр.особою та банком" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ExistingOwnershipDetailsHive" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridExistingOwnershipDetailsHive" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding ExistingOwnershipDetailsHive, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="ExistingOwnershipDetailsHive" Margin="3,0">
                 <i:Interaction.Behaviors>
@@ -299,7 +300,7 @@
               </StackPanel>
             </StackPanel>
           </Expander>
-          <Expander x:Name="expTargetedOwnershipDetailsHive" Header="Відомості про намір осіб набути або збільшити участь у банку" ToolTip="Власність, яку особи шукають здобути у банку" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="TargetedOwnershipDetailsHive" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <Expander x:Name="expTargetedOwnershipDetailsHive" Header="IV. Відомості про намір осіб набути або збільшити участь у банку" ToolTip="Власність, яку особи шукають здобути у банку" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="TargetedOwnershipDetailsHive" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridTargetedOwnershipDetailsHive" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding TargetedOwnershipDetailsHive, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="TargetedOwnershipDetailsHive" Margin="3,0">
                 <i:Interaction.Behaviors>
@@ -369,7 +370,7 @@
               </StackPanel>
             </StackPanel>
           </Expander>
-          <Expander x:Name="expPersonsLinks" Header="Зв'язки між особами-фігурантами анкети" ToolTip="Природа зв'язків між усіма пов'язанами особами, що згадуються в анкеті" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PersonsLinks" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <Expander x:Name="expPersonsLinks" Header="IV. Зв'язки між особами-фігурантами анкети" ToolTip="Природа зв'язків між усіма пов'язанами особами, що згадуються в анкеті" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="PersonsLinks" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridPersonsLinks" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding PersonsLinks, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="PersonsLinks" Margin="3,0">
                 <i:Interaction.Behaviors>
@@ -439,7 +440,7 @@
               </StackPanel>
             </StackPanel>
           </Expander>
-          <Expander x:Name="expPerson2BankAssociations" Header="Відомості про пов’язаність осіб із банком" ToolTip="Коди пов'язаності осіб" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Person2BankAssociations" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <Expander x:Name="expPerson2BankAssociations" Header="IV. Відомості про пов’язаність осіб із банком" ToolTip="Коди пов'язаності осіб" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Person2BankAssociations" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridPerson2BankAssociations" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Person2BankAssociations, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Person2BankAssociations" Margin="3,0">
                 <i:Interaction.Behaviors>
@@ -513,7 +514,7 @@
       </Expander>
       <Expander Header="V. Відомості про ділову репутацію" ToolTip="V. Відомості про ділову репутацію" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
         <StackPanel Orientation="Vertical" Margin="5,2">
-          <Expander x:Name="expCandidatesBusinessReputation" Header="Ділова репутація кандидатів" ToolTip="Ділова репутація кандидатів та дотримання законодавства" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="CandidatesBusinessReputation" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+          <Expander x:Name="expCandidatesBusinessReputation" Header="V. Ділова репутація кандидатів" ToolTip="Ділова репутація кандидатів та дотримання законодавства" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="CandidatesBusinessReputation" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
               <DataGrid x:Name="gridCandidatesBusinessReputation" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding CandidatesBusinessReputation, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="CandidatesBusinessReputation" Margin="3,0">
                 <i:Interaction.Behaviors>
@@ -592,6 +593,9 @@
           </CheckBox>
           <Expander Header="Підписант" ToolTip="Відомості по особу, що підписала анкету" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Signatory" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
             <ContentControl Content="{Binding Signatory, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="Signatory" />
+          </Expander>
+          <Expander Header="Контакти" ToolTip="Контактні дані відправника анкети" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="ContactPerson" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <ContentControl Content="{Binding ContactPerson, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="ContactPerson" />
           </Expander>
         </StackPanel>
       </Expander>

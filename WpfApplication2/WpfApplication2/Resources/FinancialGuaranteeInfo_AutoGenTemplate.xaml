@@ -6,23 +6,45 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:FinancialGuaranteeInfo}">
     <StackPanel>
-      <StackPanel Orientation="Vertical" Tag="Person" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-        <TextBlock x:Name="lblPerson" Height="auto" Width="auto" Text="Особа, щодо якої гарантую/ручаюся,тощо" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Person" />
+      <StackPanel Orientation="Vertical" Tag="Debtor" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblDebtor" Height="auto" Width="auto" Text="Особа, щодо якої гарантую/ручаюся,тощо" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Debtor" />
         <StackPanel Orientation="Horizontal">
-          <ComboBox x:Name="cbxPerson" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Person" SelectedValuePath="ID" SelectedValue="{Binding Path=Person, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
-          <Button x:Name="btnAddPerson" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Person" Height="27" Width="27" Background="White" ToolTip="додати новий до списку">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Person" />
+          <ComboBox x:Name="cbxDebtor" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Debtor" SelectedValuePath="ID" SelectedValue="{Binding Path=Debtor, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
+          <Button x:Name="btnAddDebtor" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Debtor" Height="27" Width="27" Background="White" ToolTip="додати новий до списку">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Debtor" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
-                <Binding ElementName="cbxPerson" />
+                <Binding ElementName="cbxDebtor" />
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
-          <Button x:Name="btnRefreshPerson" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Person" Height="27" Width="27" Background="White" ToolTip="освіжити список">
-            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="Person" />
+          <Button x:Name="btnRefreshDebtor" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Debtor" Height="27" Width="27" Background="White" ToolTip="освіжити список">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="Debtor" />
             <Button.CommandParameter>
               <MultiBinding Converter="{StaticResource multiValConv}">
-                <Binding ElementName="cbxPerson" />
+                <Binding ElementName="cbxDebtor" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
+        </StackPanel>
+      </StackPanel>
+      <StackPanel Orientation="Vertical" Tag="Creditor" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <TextBlock x:Name="lblCreditor" Height="auto" Width="auto" Text="Особа, на користь якої порука" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="Creditor" />
+        <StackPanel Orientation="Horizontal">
+          <ComboBox x:Name="cbxCreditor" DisplayMemberPath="DisplayName" HorizontalAlignment="Stretch" ToolTip="" MinWidth="150" ItemsSource="{Binding Source={x:Static localdata:DataModule.CurrentMentionedIdentities}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" Tag="Creditor" SelectedValuePath="ID" SelectedValue="{Binding Path=Creditor, Mode=TwoWay, diag:PresentationTraceSources.TraceLevel=High}" Width="250" />
+          <Button x:Name="btnAddCreditor" Command="{x:Static local:MyCommands.AddMentionedPersonCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Creditor" Height="27" Width="27" Background="White" ToolTip="додати новий до списку">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn_27.png" Tag="Creditor" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxCreditor" />
+              </MultiBinding>
+            </Button.CommandParameter>
+          </Button>
+          <Button x:Name="btnRefreshCreditor" Command="{x:Static local:MyCommands.RefreshComboCommand}" Style="{StaticResource addNewRowBtnStyle}" Tag="Creditor" Height="27" Width="27" Background="White" ToolTip="освіжити список">
+            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn_27.png" Tag="Creditor" />
+            <Button.CommandParameter>
+              <MultiBinding Converter="{StaticResource multiValConv}">
+                <Binding ElementName="cbxCreditor" />
               </MultiBinding>
             </Button.CommandParameter>
           </Button>
@@ -38,8 +60,12 @@
         <TextBlock Grid.Row="0" Text="Сума гарантії/поруки/тощо" Style="{StaticResource dispNmStyle}" ToolTip="" HorizontalAlignment="Left" VerticalAlignment="Top" />
         <ContentControl Grid.Row="1" Content="{Binding PledgeAmt, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" ToolTip="" Tag="PledgeAmt" />
       </Grid>
-      <TextBlock Text="Деталі" Style="{StaticResource dispNmStyle}" ToolTip="з яких питань" Tag="GuaranteeDetails" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding GuaranteeDetails, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="з яких питань" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="GuaranteeDetails" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Дата надання гарантії/поруки/тощо" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="IssueDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding IssueDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="IssueDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Дата погашення зобов'язання, щодо якого надається гарантія/порука" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="UnderlyingObligationSettlementDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <DatePicker ToolTip="" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding UnderlyingObligationSettlementDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="UnderlyingObligationSettlementDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Деталі" Style="{StaticResource dispNmStyle}" ToolTip="Деталі наданої гарантії/поруки" Tag="GuaranteeDetails" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding GuaranteeDetails, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Деталі наданої гарантії/поруки" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="GuaranteeDetails" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
     </StackPanel>
   </DataTemplate>
 </ResourceDictionary>
