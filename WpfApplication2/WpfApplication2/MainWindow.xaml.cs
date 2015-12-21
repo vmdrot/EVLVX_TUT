@@ -73,6 +73,11 @@ namespace WpfApplication2
             ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, new BGU.DRPL.SignificantOwnership.Core.EKDRBU.StateBankRegistryEntry());
         }
 
+        private void StateBankRegistryItemV1_Click(object sender, RoutedEventArgs e)
+        {
+            ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, new BGU.DRPL.SignificantOwnership.Core.EKDRBU.StateBankBranchRegistryEntryV1());
+        }
+
         private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

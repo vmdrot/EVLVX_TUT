@@ -198,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Resources\EKDRBUVariableEntryPartV1_AutoGenTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\EmploymentBookInfo_AutoGenTemplate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -255,6 +259,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\RegLicAppx2OwnershipAcqRequestLP_AmendedTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\StateBankBranchRegistryEntryV1_AutoGenTemplate.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
