@@ -1,0 +1,38 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data" xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:localcmds="clr-namespace:WpfApplication2.Commands" xmlns:bgudr="clr-namespace:BGU.DRPL.SignificantOwnership.Core.EKDRBU;assembly=BGU.DRPL.SignificantOwnership.Core">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+    <ResourceDictionary Source="EKDRBUVariableEntryPartV1_AutoGenTemplate.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgudr:StateBankBranchRegistryEntryV1}">
+    <StackPanel>
+      <Expander Header="Змінна частина" ToolTip="Змінна частина реквізитів повідомлення" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="VariablePart" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <ContentControl Content="{Binding VariablePart, diag:PresentationTraceSources.TraceLevel=High}" Margin="5,2" Tag="VariablePart" />
+      </Expander>
+      <Expander Header="Номери" ToolTip="Номери" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <TextBlock Text="дата відкриття" Style="{StaticResource dispNmStyle}" ToolTip="дата відкриття" Tag="OpenDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <DatePicker ToolTip="дата відкриття" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding OpenDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="OpenDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="дата внесення до Державного реєстру банків" Style="{StaticResource dispNmStyle}" ToolTip="дата внесення до Державного реєстру банків" Tag="RegisteredDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <DatePicker ToolTip="дата внесення до Державного реєстру банків" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding RegisteredDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="RegisteredDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+        </StackPanel>
+      </Expander>
+      <Expander Header="Оплата" ToolTip="Оплата" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <TextBlock Text="номер платіжного документа" Style="{StaticResource dispNmStyle}" ToolTip="номер платіжного документа" Tag="PayDocNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding PayDocNr, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="номер платіжного документа" Tag="PayDocNr" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" MaxWidth="75" MinWidth="100" HorizontalAlignment="Left" />
+          <TextBlock Text="дата здійснення оплати" Style="{StaticResource dispNmStyle}" ToolTip="дата здійснення оплати" Tag="PayDocDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <DatePicker ToolTip="дата здійснення оплати" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding PayDocDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="PayDocDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+        </StackPanel>
+      </Expander>
+      <Expander Header="Службові" ToolTip="Службові" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <TextBlock Text="Дата закриття" Style="{StaticResource dispNmStyle}" ToolTip="Дата закриття" Tag="ClosedDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <DatePicker ToolTip="Дата закриття" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding ClosedDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="ClosedDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="Дата виключення з Державного реєстру банків" Style="{StaticResource dispNmStyle}" ToolTip="Дата виключення з Державного реєстру банків" Tag="UnregisteredDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <DatePicker ToolTip="Дата виключення з Державного реєстру банків" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding UnregisteredDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="UnregisteredDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+        </StackPanel>
+      </Expander>
+    </StackPanel>
+  </DataTemplate>
+</ResourceDictionary>

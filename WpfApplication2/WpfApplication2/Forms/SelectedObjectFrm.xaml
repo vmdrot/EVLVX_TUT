@@ -78,6 +78,14 @@
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/UniversityOrCollegeInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EducationNostrificationInfo_AutoGenTemplate.xaml" />
                     <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/LiquidatedOrInsolventEntityMgmtRecordInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/StateBankBranchRegistryEntryV1_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EKDRBUVariableEntryPartV1_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankBranchOperationInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/BankingLicensedActivityInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/OperationsLimitInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/TimeSpanInfo_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/CurrencyAmount_AutoGenTemplate.xaml" />
+                    <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/AttachmentInfo_AutoGenTemplate.xaml" />
                 </ResourceDictionary.MergedDictionaries>
             </ResourceDictionary>
         </Grid.Resources>

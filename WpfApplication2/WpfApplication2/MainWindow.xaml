@@ -28,6 +28,7 @@
                 </MenuItem>
                 <MenuItem Header="Держреєстр" Visibility="Visible">
                     <MenuItem Header="Відділення/філія" Click="StateBankRegistryItem_Click" />
+                    <MenuItem Header="Відділення/філія (v1)" Click="StateBankRegistryItemV1_Click" />
                 </MenuItem>
                 <MenuItem Header="Валютне ліцензування" Visibility="Collapsed"></MenuItem>
                 <MenuItem Header="Тестування">

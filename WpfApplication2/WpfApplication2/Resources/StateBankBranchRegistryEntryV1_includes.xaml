@@ -1,0 +1,3 @@
+<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/StateBankBranchRegistryEntryV1_AutoGenTemplate.xaml" />
+<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EKDRBUVariableEntryPartV1_AutoGenTemplate.xaml" />
+<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/AttachmentInfo_AutoGenTemplate.xaml" />

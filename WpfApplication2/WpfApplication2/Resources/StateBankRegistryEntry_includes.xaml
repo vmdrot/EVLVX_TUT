@@ -10,8 +10,10 @@
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/RegistrarAuthority_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EducationRecordInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/UniversityOrCollegeInfo_AutoGenTemplate.xaml" />
+<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EducationNostrificationInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EmploymentRecordInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EconomicActivityType_AutoGenTemplate.xaml" />
+<ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ISCO_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/ContactInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/PhoneInfo_AutoGenTemplate.xaml" />
 <ResourceDictionary Source="pack://application:,,,/WpfApplication2;component/Resources/EmailInfo_AutoGenTemplate.xaml" />
