@@ -1,0 +1,31 @@
+(&(objectClass=user)(objectCategory=person)(mail=Valerii.Drotenko@bank.gov.ua))
+
+(&(objectClass=user)(objectCategory=person)(physicaldeliveryofficename=204 11б))
+(&(objectClass=user)(objectCategory=person)(physicaldeliveryofficename=433 1К))
+(&(objectClass=user)(objectCategory=person)(physicaldeliveryofficename=520 2К))
+
+(&(objectClass=user)(objectCategory=person)(department=*секретаріат*))
+:
+---------------------------
+
+---------------------------
+primarygroupid: 513employeeid: 4594adspath: LDAP://CN=XJ4594,OU=CA_XJ_,OU=CA_Users,OU=OU_CA,DC=nbu,DC=bank,DC=gov,DC=uamsexchrecipienttypedetails: 1msexchrecipientdisplaytype: 1073741824msexchversion: 88218628259840mail: Olha.Harkavenko@bank.gov.uasamaccounttype: 805306368msexchelcmailboxflags: 34displayname: Гаркавенко Ольга Володимирівнаdepartment: Відділ реорганізації банків та ведення державного реєстру банківmiddlename: Володимирівнаgivenname: Ольгаtitle: Економіст 1 категоріїmsexcharchivedatabaselink: CN=db1_arch,CN=Databases,CN=Exchange Administrative Group (FYDIBOHF23SPDLT),CN=Administrative Groups,CN=NbuExchangeOrganization,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=nbu,DC=bank,DC=gov,DC=uahomemta: CN=Microsoft MTA,CN=i0mbx01,CN=Servers,CN=Exchange Administrative Group (FYDIBOHF23SPDLT),CN=Administrative Groups,CN=NbuExchangeOrganization,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=nbu,DC=bank,DC=gov,DC=uacodepage: 0countrycode: 0description: Гаркавенко Ольга Володимирівнаinstancetype: 4whenchanged: 03.12.2015 7:02:09msexcharchiveguid: System.Byte[]lastlogoff: 0msexchrbacpolicylink: CN=Default Role Assignment Policy,CN=Policies,CN=RBAC,CN=NbuExchangeOrganization,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=nbu,DC=bank,DC=gov,DC=uausncreated: 21319326proxyaddresses: SMTP:Olha.Harkavenko@bank.gov.uaaccountexpires: 159394408940000000msexchwhenmailboxcreated: 17.09.2015 8:31:34dscorepropagationdata: 21.09.2015 14:35:51
+16.09.2015 15:37:42
+17.02.2014 21:06:49
+30.11.2013 10:23:03
+14.07.1601 22:32:33pwdlastset: 130894493413564178userprincipalname: XJ4594@nbu.bank.gov.uausnchanged: 111684234whencreated: 07.12.2012 7:54:34msexchhomeservername: /o=NbuExchangeOrganization/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Configuration/cn=Servers/cn=i0mbx01distinguishedname: CN=XJ4594,OU=CA_XJ_,OU=CA_Users,OU=OU_CA,DC=nbu,DC=bank,DC=gov,DC=uasamaccountname: XJ4594legacyexchangedn: /o=NbuExchangeOrganization/ou=Exchange Administrative Group (FYDIBOHF23SPDLT)/cn=Recipients/cn=25758f7073064088b3207ab961a6967f-msexchmailboxtemplatelink: CN=Default MRM Policy,CN=Retention Policies Container,CN=NbuExchangeOrganization,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=nbu,DC=bank,DC=gov,DC=uamailnickname: Olha.Harkavenkomsexchpoliciesexcluded: {26491cfc-9e50-4857-861b-0cb8df22b5d7}sn: Гаркавенкоtelephonenumber: 040 7843badpwdcount: 0msexchmailboxguid: System.Byte[]physicaldeliveryofficename: 204 11бobjectsid: System.Byte[]ou: Департамент реєстраційних питань та ліцензуванняobjectclass: top
+person
+organizationalPerson
+usermapirecipient: Falselastlogontimestamp: 130935997279990737msexchuseraccountcontrol: 0cn: XJ4594objectguid: System.Byte[]departmentnumber: 0.XJ.1.04.0.0.00badpasswordtime: 130565312398342493msexcharchivename: Архив на месте - Гаркавенко Ольга Володимирівнаmdbusedefaults: Truemsexchumdtmfmap: emailAddress:65424275283656
+lastNameFirstName:
+firstNameLastName:lockouttime: 0logoncount: 179msexchmailboxsecuritydescriptor: System.Byte[]lastlogon: 130940320297938761homemdb: CN=DB1,CN=Databases,CN=Exchange Administrative Group (FYDIBOHF23SPDLT),CN=Administrative Groups,CN=NbuExchangeOrganization,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=nbu,DC=bank,DC=gov,DC=uaobjectcategory: CN=Person,CN=Schema,CN=Configuration,DC=nbu,DC=bank,DC=gov,DC=uashowinaddressbook: CN=All Mailboxes(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=NbuExchangeOrganization,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=nbu,DC=bank,DC=gov,DC=ua
+CN=Mailboxes(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=NbuExchangeOrganization,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=nbu,DC=bank,DC=gov,DC=ua
+CN=test_global_adl,CN=All Global Address Lists,CN=Address Lists Container,CN=NbuExchangeOrganization,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=nbu,DC=bank,DC=gov,DC=ua
+CN=All Recipients(VLV),CN=All System Address Lists,CN=Address Lists Container,CN=NbuExchangeOrganization,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=nbu,DC=bank,DC=gov,DC=ua
+CN=All Users,CN=All Address Lists,CN=Address Lists Container,CN=NbuExchangeOrganization,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=nbu,DC=bank,DC=gov,DC=ua
+CN=Default Global Address List,CN=All Global Address Lists,CN=Address Lists Container,CN=NbuExchangeOrganization,CN=Microsoft Exchange,CN=Services,CN=Configuration,DC=nbu,DC=bank,DC=gov,DC=ual: Київ, вул. Інститутська, буд. 9internetencoding: 1310720useraccountcontrol: 512msexchtextmessagingstate: 302120705
+16842751name: XJ4594
+---------------------------
+ОК   
+---------------------------
+ (&(objectClass=user)(objectCategory=person)(displayname=Бондаренко Віта Анатоліївна))
