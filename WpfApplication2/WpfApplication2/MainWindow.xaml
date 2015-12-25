@@ -27,8 +27,17 @@
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="Держреєстр" Visibility="Visible">
-                    <MenuItem Header="Відділення/філія" Click="StateBankRegistryItem_Click" />
-                    <MenuItem Header="Відділення/філія (v1)" Click="StateBankRegistryItemV1_Click" />
+                    <MenuItem Header="Пусті форми" Visibility="Visible">
+                        <MenuItem Header="Відділення/філія" Click="StateBankRegistryItem_Click" />
+                        <MenuItem Header="Відділення/філія (v1)" Click="StateBankRegistryItemV1_Click" />
+                        <MenuItem Header="Пакет змін (v1)" Click="StateBankRegistryChangePackageV1Item_Click" />
+                    </MenuItem>
+                    <MenuItem Header="Заповнені приклади" Visibility="Visible">
+                        <MenuItem Header="Пакет змін (v1)" Visibility="Visible">
+                            <MenuItem Header="Жит.обл.масова зміна перелік операцій" Click="StateBankRegistryChangePackageV1_OshchadBulkOpsZhytItem_Click" />
+                            <MenuItem Header="Днп.обл.масова зміна телефонів і кодів" Click="StateBankRegistryChangePackageV1_OshchadBulkPhonesDnpItem_Click" />
+                        </MenuItem>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="Валютне ліцензування" Visibility="Collapsed"></MenuItem>
                 <MenuItem Header="Тестування">

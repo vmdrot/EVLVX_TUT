@@ -3,6 +3,7 @@
     <ResourceDictionary Source="Styles.xaml" />
     <ResourceDictionary Source="Converters.xaml" />
     <ResourceDictionary Source="EKDRBUVariableEntryPartV1_AutoGenTemplate.xaml" />
+    <ResourceDictionary Source="AttachmentInfo_AutoGenTemplate.xaml" />
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgudr:StateBankBranchRegistryEntryV1}">
     <StackPanel>
@@ -31,6 +32,88 @@
           <DatePicker ToolTip="Дата закриття" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding ClosedDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="ClosedDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
           <TextBlock Text="Дата виключення з Державного реєстру банків" Style="{StaticResource dispNmStyle}" ToolTip="Дата виключення з Державного реєстру банків" Tag="UnregisteredDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
           <DatePicker ToolTip="Дата виключення з Державного реєстру банків" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding UnregisteredDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="UnregisteredDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBlock Text="дата внесення" Style="{StaticResource dispNmStyle}" ToolTip="дата внесення" Tag="InputDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <DatePicker ToolTip="дата внесення" Style="{StaticResource dtEdStyle}" SelectedDate="{Binding InputDate, diag:PresentationTraceSources.TraceLevel=High}" Tag="InputDate" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+        </StackPanel>
+      </Expander>
+      <Expander Header="Інше" ToolTip="Інше" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <TextBlock Text="короткий опис змін" Style="{StaticResource dispNmStyle}" ToolTip="короткий опис змін" Tag="ShortChangesLog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+          <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding ShortChangesLog, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="короткий опис змін" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Height="auto" MaxHeight="60" Tag="ShortChangesLog" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" HorizontalAlignment="Left" />
+        </StackPanel>
+      </Expander>
+      <Expander Header="Додатки" ToolTip="Додатки" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <StackPanel Orientation="Vertical" Margin="5,2">
+          <Expander x:Name="expAttachment_Resolution" Header="Рішення, на підставі якого вносяться зміни" ToolTip="Рішення, на підставі якого вносяться зміни" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" IsExpanded="False" Tag="Attachment_Resolution" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="auto" Height="auto" Orientation="Vertical">
+              <DataGrid x:Name="gridAttachment_Resolution" CanUserAddRows="False" CanUserDeleteRows="False" ItemsSource="{Binding Attachment_Resolution, diag:PresentationTraceSources.TraceLevel=High}" AutoGenerateColumns="False" Tag="Attachment_Resolution" Margin="3,0">
+                <i:Interaction.Behaviors>
+                  <localcmds:KeyUpWithArgsBehavior KeyUpCommand="{x:Static local:MyCommands.DataGridKeyUpCommand}" />
+                </i:Interaction.Behaviors>
+                <DataGrid.Columns>
+                  <DataGridTemplateColumn Header="Додатки" Width="*" TextBlock.TextAlignment="Left">
+                    <DataGridTemplateColumn.CellTemplate>
+                      <DataTemplate>
+                        <TextBlock Text="{Binding}" Width="auto" TextWrapping="Wrap" />
+                      </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                  </DataGridTemplateColumn>
+                  <DataGridTemplateColumn Header="дії" Width="75" TextBlock.TextAlignment="Center" HeaderStyle="{StaticResource dgBtnsColHdr}">
+                    <DataGridTemplateColumn.CellTemplate>
+                      <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                          <Button Command="{x:Static local:MyCommands.EditRowCommand}" ToolTip="редагувати рядок" Background="White">
+                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/edit_btn.png" Width="20" Height="20" />
+                            <Button.CommandParameter>
+                              <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding Path="SelectedItem" ElementName="gridAttachment_Resolution" />
+                                <Binding ElementName="gridAttachment_Resolution" />
+                                <Binding ElementName="expAttachment_Resolution" Path="Header" />
+                                <Binding ElementName="expAttachment_Resolution" Path="ToolTip" />
+                              </MultiBinding>
+                            </Button.CommandParameter>
+                          </Button>
+                          <Button Command="{x:Static local:MyCommands.DeleteRowCommand}" ToolTip="видалити рядок" Background="White">
+                            <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/del_btn.jpg" />
+                            <Button.CommandParameter>
+                              <MultiBinding Converter="{StaticResource multiValConv}">
+                                <Binding Path="SelectedItem" ElementName="gridAttachment_Resolution" />
+                                <Binding Path="SelectedIndex" ElementName="gridAttachment_Resolution" />
+                                <Binding ElementName="gridAttachment_Resolution" />
+                              </MultiBinding>
+                            </Button.CommandParameter>
+                          </Button>
+                        </StackPanel>
+                      </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                  </DataGridTemplateColumn>
+                </DataGrid.Columns>
+              </DataGrid>
+              <StackPanel Orientation="Horizontal" Margin="3,5">
+                <Button HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.AddNewRowCommand}" Tag="Attachment_Resolution" Background="White" ToolTip="додати новий запис">
+                  <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/add_btn.png" Tag="Attachment_Resolution" />
+                  <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource multiValConv}">
+                      <Binding Path="ItemsSource" ElementName="gridAttachment_Resolution" />
+                      <Binding Path="DataContext" ElementName="gridAttachment_Resolution" />
+                      <Binding Path="Attachment_Resolution" />
+                      <Binding ElementName="gridAttachment_Resolution" />
+                      <Binding ElementName="expAttachment_Resolution" Path="Header" />
+                      <Binding ElementName="expAttachment_Resolution" Path="ToolTip" />
+                    </MultiBinding>
+                  </Button.CommandParameter>
+                </Button>
+                <Button HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Bottom" Style="{StaticResource addNewRowBtnStyle}" Command="{x:Static local:MyCommands.RefreshDataGridCommand}" Tag="Attachment_Resolution" Background="White" ToolTip="освіжити записи">
+                  <Image Source="pack://application:,,,/WpfApplication2;component/Resources/Icons/refresh_btn.png" Tag="Attachment_Resolution" />
+                  <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource multiValConv}">
+                      <Binding ElementName="gridAttachment_Resolution" />
+                    </MultiBinding>
+                  </Button.CommandParameter>
+                </Button>
+              </StackPanel>
+            </StackPanel>
+          </Expander>
         </StackPanel>
       </Expander>
     </StackPanel>
