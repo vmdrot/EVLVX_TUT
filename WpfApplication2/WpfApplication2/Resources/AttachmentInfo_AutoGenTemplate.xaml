@@ -5,8 +5,10 @@
   </ResourceDictionary.MergedDictionaries>
   <DataTemplate DataType="{x:Type bgusd:AttachmentInfo}">
     <StackPanel>
-      <TextBlock Text="Файл" Style="{StaticResource dispNmStyle}" ToolTip="" Tag="FileName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FileName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="" Tag="FileName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="ID додатку" Style="{StaticResource dispNmStyle}" ToolTip="Ідентифікатор додатку (унікальний в межах пакету)" Tag="AttachmentID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding AttachmentID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Ідентифікатор додатку (унікальний в межах пакету)" Tag="AttachmentID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Файл" Style="{StaticResource dispNmStyle}" ToolTip="Назва файлу" Tag="FileName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding FileName, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Назва файлу" Tag="FileName" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Тип (з переліку)" Style="{StaticResource dispNmStyle}" Tag="AttachmentType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <ComboBox ToolTip="Тип додатку із переліку типових долучень; якщо &quot;Інше&quot; - обов'язково вказати, що саме у полі &quot;Опис файлу&quot;." ItemsSource="{Binding Source={x:Static bgus:EnumsLister.TypicalApplicationAttachementList}, Mode=OneWay, diag:PresentationTraceSources.TraceLevel=High}" SelectedValue="{Binding AttachmentType, diag:PresentationTraceSources.TraceLevel=High}" DisplayMemberPath="Value" SelectedValuePath="EnumValue" HorizontalAlignment="Left" MinWidth="250" MaxWidth="350" Tag="AttachmentType" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
       <TextBlock Text="Опис файлу" Style="{StaticResource dispNmStyle}" ToolTip="Що у файлі?" Tag="Description" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

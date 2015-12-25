@@ -1,0 +1,14 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:WpfApplication2" xmlns:bgus="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bgusd="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Spares.Data;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:bguq="clr-namespace:BGU.DRPL.SignificantOwnership.Core.Questionnaires;assembly=BGU.DRPL.SignificantOwnership.Core" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:window="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms" xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase" xmlns:dataprimitives="clr-namespace:System.Windows.Controls.Primitives;assembly=PresentationFramework" xmlns:localdata="clr-namespace:WpfApplication2.Data" xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:localcmds="clr-namespace:WpfApplication2.Commands" xmlns:bgudrs="clr-namespace:BGU.DRPL.SignificantOwnership.Core.EKDRBU.Spares;assembly=BGU.DRPL.SignificantOwnership.Core">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceDictionary Source="Styles.xaml" />
+    <ResourceDictionary Source="Converters.xaml" />
+  </ResourceDictionary.MergedDictionaries>
+  <DataTemplate DataType="{x:Type bgudrs:BankBranchOpsSvcsSchemeInfo}">
+    <StackPanel>
+      <TextBlock Text="Ідентифікатор/код схеми" Style="{StaticResource dispNmStyle}" ToolTip="Унікальний (в межах пакету) ідентифікатор схеми переліку й обсягу операцій відокремленого підрозділу" Tag="SchemeID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding SchemeID, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Унікальний (в межах пакету) ідентифікатор схеми переліку й обсягу операцій відокремленого підрозділу" Tag="SchemeID" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBlock Text="Перелік та обсяг операцій" Style="{StaticResource dispNmStyle}" ToolTip="Перелік та обсяг операцій (текст)" Tag="OperationsListingText" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+      <TextBox Style="{StaticResource txtEdStyle}" Text="{Binding OperationsListingText, diag:PresentationTraceSources.TraceLevel=High}" ToolTip="Перелік та обсяг операцій (текст)" Tag="OperationsListingText" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
+    </StackPanel>
+  </DataTemplate>
+</ResourceDictionary>

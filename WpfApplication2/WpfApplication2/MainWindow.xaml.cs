@@ -78,6 +78,22 @@ namespace WpfApplication2
             ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, new BGU.DRPL.SignificantOwnership.Core.EKDRBU.StateBankBranchRegistryEntryV1());
         }
 
+        private void StateBankRegistryChangePackageV1Item_Click(object sender, RoutedEventArgs e)
+        {
+            ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, new BGU.DRPL.SignificantOwnership.Core.EKDRBU.StateBankBranchRegistryChangePackageV1());
+        }
+
+
+        private void StateBankRegistryChangePackageV1_OshchadBulkOpsZhytItem_Click(object sender, RoutedEventArgs e)
+        {
+            ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, (new BGU.DRPL.SignificantOwnership.EmpiricalData.Examples.Oshchad()).ZhytomyrOblastBulkChanges);
+        }
+        private void StateBankRegistryChangePackageV1_OshchadBulkPhonesDnpItem_Click(object sender, RoutedEventArgs e)
+        {
+            ShowQuestionnaireEditForm((System.Windows.Controls.MenuItem)sender, (new BGU.DRPL.SignificantOwnership.EmpiricalData.Examples.Oshchad()).DnpPhoneChanges);
+        }
+
+
         private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
