@@ -282,8 +282,18 @@ namespace Evolvex.VKUtilLib.Zaycev
                     sleep = false;
                     Uri uri = new Uri(url);
                     String saveAs = Path.Combine(save2Dir, uri.Segments[uri.Segments.Length - 1]);
-                    if (!File.Exists(saveAs))
+                    bool bSkipCurrent = false;
+                    if (File.Exists(saveAs))
                     {
+                        FileInfo fi = new FileInfo(saveAs);
+                        if (fi.Length > 0)
+                            bSkipCurrent = true;
+                    }
+                    if (!bSkipCurrent)
+                    {
+                        if(File.Exists(saveAs))
+                            File.Delete(saveAs);
+                        int currReTriesCount = 0;
                         while (true)
                         {
                             try
@@ -294,11 +304,28 @@ namespace Evolvex.VKUtilLib.Zaycev
                             }
                             catch (System.Net.WebException exc)
                             {
+                                Console.WriteLine("-----------------------------------------------------------");
+                                Console.WriteLine("Web Error while downloading {0}", url);
+                                Console.WriteLine("Details: {0}", exc.ToString());
+                                Console.WriteLine("-----------------------------------------------------------");
+                                if (exc.Message.IndexOf("(423)") != -1)
+                                    break;
                                 if (exc.Message.IndexOf("(404)") != -1)
+                                    currReTriesCount++;
+
+                                if ((exc.Message.IndexOf("(404)") != -1 || exc.Message.IndexOf("(423)") != -1) && currReTriesCount > 0)
+                                    break;
+                                else
+                                {
                                     System.Threading.Thread.Sleep(2 * 60 * 1000);
+                                }
                             }
-                            catch (System.Exception)
+                            catch (System.Exception gexc)
                             {
+                                Console.WriteLine("-----------------------------------------------------------");
+                                Console.WriteLine("Other Error while downloading {0}", url);
+                                Console.WriteLine("Details: {0}", gexc.ToString());
+                                Console.WriteLine("-----------------------------------------------------------");
                                 break;
                             }
                         }
