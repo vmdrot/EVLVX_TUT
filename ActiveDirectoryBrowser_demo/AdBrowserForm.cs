@@ -9,40 +9,43 @@ using System.DirectoryServices;
 using System.Text;
 using System.IO;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using Newtonsoft.Json;
+//using Newtonsoft.Json;
 
 namespace SimpleAdBrowser
 {
-    /// <summary>
-    /// Summary description for Form1.
-    /// </summary>
-    public class AdBrowserForm : System.Windows.Forms.Form
-    {
-        private enum AdImages
-        {
-            AdRoot,
-            Ou,
-            Container,
-            OpenContainer,
-            Computer,
-            User,
-            Group,
-            Unknown,
-            Unavailable
-        }
+	/// <summary>
+	/// Summary description for Form1.
+	/// </summary>
+	public class AdBrowserForm : System.Windows.Forms.Form
+	{
+		private enum AdImages
+		{
+			AdRoot,
+			Ou,
+			Container,
+			OpenContainer,
+			Computer,
+			User,
+			Group,
+			Unknown,
+			Unavailable
+		}
 
-        private DirectoryEntry _AdRootDSE = null;
-        private DirectoryEntry _AdRoot = null;
+		private DirectoryEntry _AdRootDSE = null;
+		private DirectoryEntry _AdRoot = null;
 
-        // column sorter for the listview
-        private ListViewColumnSorter lvwColumnSorter;
+		// column sorter for the listview
+		private ListViewColumnSorter lvwColumnSorter;
 
-        private System.Windows.Forms.TreeView treeView_ad;
-        private System.Windows.Forms.ListView listView_ad;
-        private System.Windows.Forms.ImageList imageList_adObjects;
-        private System.Windows.Forms.Splitter splitter_mainForm;
-        private System.Windows.Forms.ColumnHeader columnHeader_name;
-        private System.Windows.Forms.ColumnHeader columnHeader_type;
-        private System.Windows.Forms.ColumnHeader columnHeader_description;
+		private System.Windows.Forms.TreeView treeView_ad;
+		private System.Windows.Forms.ListView listView_ad;
+		private System.Windows.Forms.ImageList imageList_adObjects;
+		private System.Windows.Forms.Splitter splitter_mainForm;
+		private System.Windows.Forms.ColumnHeader columnHeader_name;
+		private System.Windows.Forms.ColumnHeader columnHeader_type;
+		private System.Windows.Forms.ColumnHeader columnHeader_description;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem findToolStripMenuItem;
         private ToolStripMenuItem userToolStripMenuItem;
@@ -50,43 +53,44 @@ namespace SimpleAdBrowser
         private ToolStripMenuItem usersByListToolStripMenuItem;
         private OpenFileDialog openFileDialog1;
         private SaveFileDialog saveFileDialog1;
-        private System.ComponentModel.IContainer components;
+        private ToolStripMenuItem allUsersToolStripMenuItem;
+		private System.ComponentModel.IContainer components;
 
-        public AdBrowserForm()
-        {
-            //
-            // Required for Windows Form Designer support
-            //
-            InitializeComponent();
+		public AdBrowserForm()
+		{
+			//
+			// Required for Windows Form Designer support
+			//
+			InitializeComponent();
 
-            //
-            // TODO: Add any constructor code after InitializeComponent call
-            //
-            myInitializeComponent();
-        }
+			//
+			// TODO: Add any constructor code after InitializeComponent call
+			//
+			myInitializeComponent();
+		}
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (components != null)
-                {
-                    components.Dispose();
-                }
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		protected override void Dispose( bool disposing )
+		{
+			if( disposing )
+			{
+				if (components != null) 
+				{
+					components.Dispose();
+				}
+			}
+			base.Dispose( disposing );
+		}
 
-        #region Windows Form Designer generated code
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
+		#region Windows Form Designer generated code
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Computers", 2, 3);
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Example Group", 6, 6);
@@ -130,6 +134,7 @@ namespace SimpleAdBrowser
             this.usersByListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.allUsersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -265,14 +270,15 @@ namespace SimpleAdBrowser
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(96, 22);
             this.userToolStripMenuItem.Text = "User";
             this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.usersByListToolStripMenuItem});
+            this.usersByListToolStripMenuItem,
+            this.allUsersToolStripMenuItem});
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.exportToolStripMenuItem.Text = "Export...";
@@ -287,6 +293,13 @@ namespace SimpleAdBrowser
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // allUsersToolStripMenuItem
+            // 
+            this.allUsersToolStripMenuItem.Name = "allUsersToolStripMenuItem";
+            this.allUsersToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.allUsersToolStripMenuItem.Text = "All Users";
+            this.allUsersToolStripMenuItem.Click += new System.EventHandler(this.allUsersToolStripMenuItem_Click);
             // 
             // AdBrowserForm
             // 
@@ -306,198 +319,201 @@ namespace SimpleAdBrowser
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
-        #endregion
+		}
+		#endregion
 
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            try
-            {
-                Application.Run(new AdBrowserForm());
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("Error occured in application. Need to close. Error was: " + exc.Message);
-            }
-        }
+		/// <summary>
+		/// The main entry point for the application.
+		/// </summary>
+		[STAThread]
+		static void Main() 
+		{
+			try
+			{
+				Application.Run(new AdBrowserForm());
+			}
+			catch (Exception exc)
+			{
+				MessageBox.Show("Error occured in application. Need to close. Error was: " + exc.Message);
+			}
+		}
 
-        private void myInitializeComponent()
-        {
-            lvwColumnSorter = new ListViewColumnSorter();
-            this.listView_ad.ListViewItemSorter = lvwColumnSorter;
+		private void myInitializeComponent()
+		{
+			lvwColumnSorter = new ListViewColumnSorter();
+			this.listView_ad.ListViewItemSorter = lvwColumnSorter;
 
-            try
-            {
-                this._AdRootDSE = new DirectoryEntry("LDAP://rootDSE");
-                this._AdRoot = new DirectoryEntry("LDAP://" + (string)this._AdRootDSE.Properties["defaultNamingContext"].Value);
-                /*
-                foreach(string property in this._AdRoot.Properties.PropertyNames)
-                {
-                    MessageBox.Show(property + " = " + this._AdRoot.Properties[property].Value);
-                }*/
+			try
+			{
+				this._AdRootDSE = new DirectoryEntry("LDAP://rootDSE");
+				this._AdRoot = new DirectoryEntry("LDAP://" + (string)this._AdRootDSE.Properties["defaultNamingContext"].Value);
+				/*
+				foreach(string property in this._AdRoot.Properties.PropertyNames)
+				{
+					MessageBox.Show(property + " = " + this._AdRoot.Properties[property].Value);
+				}*/
 
-                TreeNode root = new TreeNode((string)this._AdRootDSE.Properties["defaultNamingContext"].Value, (int)AdImages.AdRoot, (int)AdImages.AdRoot);
+				TreeNode root = new TreeNode((string)this._AdRootDSE.Properties["defaultNamingContext"].Value,(int)AdImages.AdRoot,(int)AdImages.AdRoot);
+				
+				root.Tag = this._AdRoot;
+				this.treeView_ad.Nodes.Clear();
+				this.treeView_ad.Nodes.Add(root);
+			}
+			catch
+			{
+				throw new Exception("Error connecting to AD");
+			}
+		}
 
-                root.Tag = this._AdRoot;
-                this.treeView_ad.Nodes.Clear();
-                this.treeView_ad.Nodes.Add(root);
-            }
-            catch
-            {
-                throw new Exception("Error connecting to AD");
-            }
-        }
+		private void treeView_ad_AfterSelect(object sender, System.Windows.Forms.TreeViewEventArgs e)
+		{
+			TreeView myTreeView = (TreeView)sender;
+			DirectoryEntry selectedEntry = (DirectoryEntry)e.Node.Tag;
 
-        private void treeView_ad_AfterSelect(object sender, System.Windows.Forms.TreeViewEventArgs e)
-        {
-            TreeView myTreeView = (TreeView)sender;
-            DirectoryEntry selectedEntry = (DirectoryEntry)e.Node.Tag;
+			if (!DirectoryEntry.Exists(selectedEntry.Path))
+			{
+				e.Node.ImageIndex = (int)AdImages.Unavailable;
+				e.Node.SelectedImageIndex = (int)AdImages.Unavailable;
+				
+				return;
+			}
 
-            if (!DirectoryEntry.Exists(selectedEntry.Path))
-            {
-                e.Node.ImageIndex = (int)AdImages.Unavailable;
-                e.Node.SelectedImageIndex = (int)AdImages.Unavailable;
+			// cleanup the current node 
+			this.listView_ad.Items.Clear();
+			e.Node.Nodes.Clear();
 
-                return;
-            }
+			myTreeView.BeginUpdate();
 
-            // cleanup the current node 
-            this.listView_ad.Items.Clear();
-            e.Node.Nodes.Clear();
+			try
+			{
+				foreach (DirectoryEntry child in selectedEntry.Children)
+				{			
+					TreeNode tmpNode = null;
+					ListViewItem tmpItem = null;
 
-            myTreeView.BeginUpdate();
-
-            try
-            {
-                foreach (DirectoryEntry child in selectedEntry.Children)
-                {
-                    TreeNode tmpNode = null;
-                    ListViewItem tmpItem = null;
-
-                    switch (child.SchemaClassName)
-                    {
-                        case "organizationalUnit":
-                            tmpNode = new TreeNode((string)child.Properties["name"].Value, (int)AdImages.Ou, (int)AdImages.OpenContainer);
-                            tmpItem = new ListViewItem(new string[] {
+					switch(child.SchemaClassName)
+					{
+						case "organizationalUnit":
+							tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.Ou,(int)AdImages.OpenContainer);
+							tmpItem = new ListViewItem(new string[] {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
 
-																	}, (int)AdImages.Ou);
-                            break;
-                        case "container":
-                            tmpNode = new TreeNode((string)child.Properties["name"].Value, (int)AdImages.Container, (int)AdImages.OpenContainer);
-                            tmpItem = new ListViewItem(new string[] {
+																	},(int)AdImages.Ou);
+							break;
+						case "container":
+							tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.Container,(int)AdImages.OpenContainer);
+							tmpItem = new ListViewItem(new string[] {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
 
-																	}, (int)AdImages.Container);
-                            break;
-                        case "computer":
-                            //tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.Computer,(int)AdImages.Computer);
-                            tmpItem = new ListViewItem(new string[] {
+																	},(int)AdImages.Container);
+							break;
+						case "computer":
+							//tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.Computer,(int)AdImages.Computer);
+							tmpItem = new ListViewItem(new string[] {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
 
-																	}, (int)AdImages.Computer);
-                            break;
-                        case "user":
-                            //tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.User,(int)AdImages.User);
-                            tmpItem = new ListViewItem(new string[] {
+																	},(int)AdImages.Computer);
+							break;
+						case "user":
+							//tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.User,(int)AdImages.User);
+							tmpItem = new ListViewItem(new string[] {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
 
-																	}, (int)AdImages.User);
-                            break;
-                        case "group":
-                            //tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.Group,(int)AdImages.Group);
-                            tmpItem = new ListViewItem(new string[] {
+																	},(int)AdImages.User);
+							break;
+						case "group":
+							//tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.Group,(int)AdImages.Group);
+							tmpItem = new ListViewItem(new string[] {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
 
-																	}, (int)AdImages.Group);
-                            break;
-                        default:
-                            //tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.Unknown,(int)AdImages.Unknown);
-                            tmpItem = new ListViewItem(new string[] {
+																	},(int)AdImages.Group);
+							break;
+						default:
+							//tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.Unknown,(int)AdImages.Unknown);
+							tmpItem = new ListViewItem(new string[] {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
 
-																	}, (int)AdImages.Unknown);
-                            break;
-                    }
+																	},(int)AdImages.Unknown);
+							break;
+					}
 
-                    // save the directory entry reference in the tag
-                    if (tmpNode != null)
-                    {
-                        tmpNode.Tag = child;
-                        e.Node.Nodes.Add(tmpNode);
-                    }
-                    if (tmpItem != null)
-                    {
-                        tmpItem.Tag = child;
-                        this.listView_ad.Items.Add(tmpItem);
-                    }
-                }
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show(exc.Message);
-                // active directory exception ???
-            }
+					// save the directory entry reference in the tag
+					if (tmpNode!=null) 
+					{ 
+						tmpNode.Tag = child; 
+						e.Node.Nodes.Add(tmpNode);
+					}
+					if (tmpItem!=null) 
+					{ 
+						tmpItem.Tag = child; 
+						this.listView_ad.Items.Add(tmpItem);
+					}					
+				}
+			}
+			catch (Exception exc)
+			{
+				MessageBox.Show(exc.Message);
+				// active directory exception ???
+			}
 
-            e.Node.Expand();
+			e.Node.Expand();
 
-            myTreeView.EndUpdate();
-        }
+			myTreeView.EndUpdate();
+		}
 
-        private void listView_ad_DoubleClick(object sender, System.EventArgs e)
-        {
-            ListView myListView = (ListView)sender;
+		private void listView_ad_DoubleClick(object sender, System.EventArgs e)
+		{
+			ListView myListView = (ListView)sender;
 
-            if (myListView.SelectedItems.Count == 1)
-            {
-                ListViewItem myListViewItem = myListView.SelectedItems[0];
-                DirectoryEntry myObject = (DirectoryEntry)myListViewItem.Tag;
-                if (myObject == null)
-                    return;
+			if (myListView.SelectedItems.Count == 1)
+			{
+				ListViewItem myListViewItem = myListView.SelectedItems[0];
+				DirectoryEntry myObject = (DirectoryEntry)myListViewItem.Tag;
+				if (myObject == null)
+					return;
 
-                switch (myListViewItem.ImageIndex)
-                {
-                    case (int)AdImages.Ou:
-                    case (int)AdImages.Container:
-                        foreach (TreeNode tNode in this.treeView_ad.SelectedNode.Nodes)
-                        {
-                            if (tNode.Text.Equals(myListViewItem.Text))
-                            {
-                                this.treeView_ad.SelectedNode = tNode;
-                                if (myListView.Items.Count > 0)
-                                {
-                                    myListView.Focus();
-                                    myListView.Items[0].Selected = true;
-                                }
-                                break;
-                            }
-                        }
-                        break;
-                    case (int)AdImages.User:
+				switch (myListViewItem.ImageIndex)
+				{
+					case (int) AdImages.Ou:
+					case (int) AdImages.Container:
+						foreach (TreeNode tNode in this.treeView_ad.SelectedNode.Nodes)
+						{
+							if (tNode.Text.Equals(myListViewItem.Text))
+							{
+								this.treeView_ad.SelectedNode = tNode;
+								if (myListView.Items.Count >0)
+								{
+									myListView.Focus();
+									myListView.Items[0].Selected = true;										
+								}
+								break;
+							}
+						}
+						break;	
+					case (int) AdImages.User:
                         ShowUserPropertiesForm(TreeFullPath2DomainRootPath(treeView_ad.SelectedNode.FullPath), myListView.SelectedItems[0].Text);
                         break;
-                    default:
-                        MessageBox.Show("You double-clicked another object");
+                    case (int)AdImages.Computer:
+                        ShowComputerPropertiesForm(TreeFullPath2DomainRootPath(treeView_ad.SelectedNode.FullPath), myListView.SelectedItems[0].Text);
                         break;
-                }
-            }
-        }
+                    default:
+						MessageBox.Show("You double-clicked another object");
+						break;
+				}
+			}
+		}
 
         private string TreeFullPath2DomainPath(string treePath)
         {
@@ -524,6 +540,50 @@ namespace SimpleAdBrowser
         public static void ShowUserPropertiesForm(string itemPath, string usr)
         {
             ShowUserPropertiesForm(SearchResultsForm.GetADUser(itemPath, usr));
+        }
+
+
+        public static void ShowComputerPropertiesForm(string itemPath, string usr)
+        {
+            DirectoryEntry de = new DirectoryEntry(itemPath.Replace("LDAP://", "LDAP://CN=" + usr + ","));
+            //ShowUserPropertiesForm(SearchResultsForm.GetADUser(itemPath, usr));
+        }
+
+
+        public static Dictionary<string, object> ReadUserProps(SearchResult rs)
+        {
+            Dictionary<string, object> rslt = new Dictionary<string, object>();
+
+            foreach (DictionaryEntry prop in rs.Properties)
+            {
+                List<object> currProps = new List<object>();
+                object val = prop.Value;
+                object currPropVal = null;
+                if (prop.Value != null)
+                {
+                    if (prop.Value is System.DirectoryServices.ResultPropertyValueCollection)
+                    {
+                        System.DirectoryServices.ResultPropertyValueCollection propVals = (System.DirectoryServices.ResultPropertyValueCollection)prop.Value;
+                        List<object> currPropValLst = new List<object>();
+                        if (propVals.Count > 0)
+                        {
+                            for (int i = 0; i < propVals.Count; i++)
+                            {
+                                val = propVals[i];
+                                currPropValLst.Add(val);
+                            }
+                            currPropVal = (object)currPropValLst;
+                        }
+                    }
+                    else
+                    {
+                        currPropVal = prop.Value;
+                    }
+                }
+                rslt.Add(prop.Key as string, currPropVal);
+            }
+
+            return rslt;
         }
 
         public static void ShowUserPropertiesForm(SearchResult rs)
@@ -563,71 +623,33 @@ namespace SimpleAdBrowser
             MessageBox.Show(sb.ToString());
         }
 
-        public static Dictionary<string, object> ReadUserProps(SearchResult rs)
-        {
-            Dictionary<string, object> rslt = new Dictionary<string, object>();
+		private void listView_ad_ColumnClick(object sender, System.Windows.Forms.ColumnClickEventArgs e)
+		{
+			ListView myListView = (ListView)sender;
 
-            foreach (DictionaryEntry prop in rs.Properties)
-            {
-                List<object> currProps = new List<object>();
-                object val = prop.Value;
-                object currPropVal = null;
-                if (prop.Value != null)
-                {
-                    if (prop.Value is System.DirectoryServices.ResultPropertyValueCollection)
-                    {
-                        System.DirectoryServices.ResultPropertyValueCollection propVals = (System.DirectoryServices.ResultPropertyValueCollection)prop.Value;
-                        List<object> currPropValLst = new List<object>();
-                        if (propVals.Count > 0)
-                        {
-                            for (int i = 0; i < propVals.Count; i++)
-                            {
-                                val = propVals[i];
-                                currPropValLst.Add(val);
-                            }
-                            currPropVal = (object)currPropValLst;
-                        }
-                    }
-                    else
-                    {
-                        currPropVal = prop.Value;
-                     }
-                }
-                rslt.Add(prop.Key as string, currPropVal);
-            }
+			// Determine if clicked column is already the column that is being sorted.
+			if ( e.Column == lvwColumnSorter.SortColumn )
+			{
+				// Reverse the current sort direction for this column.
+				if (lvwColumnSorter.Order == SortOrder.Ascending)
+				{
+					lvwColumnSorter.Order = SortOrder.Descending;
+				}
+				else
+				{
+					lvwColumnSorter.Order = SortOrder.Ascending;
+				}
+			}
+			else
+			{
+				// Set the column number that is to be sorted; default to ascending.
+				lvwColumnSorter.SortColumn = e.Column;
+				lvwColumnSorter.Order = SortOrder.Ascending;
+			}
 
-            return rslt;
-        }
-
-
-
-        private void listView_ad_ColumnClick(object sender, System.Windows.Forms.ColumnClickEventArgs e)
-        {
-            ListView myListView = (ListView)sender;
-
-            // Determine if clicked column is already the column that is being sorted.
-            if (e.Column == lvwColumnSorter.SortColumn)
-            {
-                // Reverse the current sort direction for this column.
-                if (lvwColumnSorter.Order == SortOrder.Ascending)
-                {
-                    lvwColumnSorter.Order = SortOrder.Descending;
-                }
-                else
-                {
-                    lvwColumnSorter.Order = SortOrder.Ascending;
-                }
-            }
-            else
-            {
-                // Set the column number that is to be sorted; default to ascending.
-                lvwColumnSorter.SortColumn = e.Column;
-                lvwColumnSorter.Order = SortOrder.Ascending;
-            }
-
-            // Perform the sort with these new sort options.
-            myListView.Sort();
-        }
+			// Perform the sort with these new sort options.
+			myListView.Sort();
+		}
 
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -640,12 +662,14 @@ namespace SimpleAdBrowser
         {
             if (openFileDialog1.ShowDialog() != DialogResult.OK)
                 return;
-            if (saveFileDialog1.ShowDialog() != DialogResult.OK)
+            if(saveFileDialog1.ShowDialog() != DialogResult.OK)
                 return;
 
-            string[] lines = File.ReadAllLines(openFileDialog1.FileName);
+            //string[] lines = File.ReadAllLines(openFileDialog1.FileName);
+            Dictionary<string, List<string>> lines = ReadNamesLinesWithPossibleTabDelimitedExtraFields(File.ReadAllLines(openFileDialog1.FileName));
             StringBuilder sb = new StringBuilder();
-            foreach (string line in lines)
+            List<List<SearchResult>> rslts = new List<List<SearchResult>>();
+            foreach (string line in lines.Keys)
             {
                 if (string.IsNullOrEmpty(line))
                     continue;
@@ -656,27 +680,125 @@ namespace SimpleAdBrowser
                 List<SearchResult> currRslt = SearchResultsForm.GetADUsers(_AdRoot.Path, string.Empty, string.Format("(&(objectClass=user)(objectCategory=person)(displayname={0}))", trimmed));
                 if (currRslt == null || currRslt.Count == 0)
                     continue;
+                rslts.Add(currRslt);
                 string dispName = trimmed;
                 string email = ReadStringPropSafe(currRslt[0], "mail");
                 string userId = ReadStringPropSafe(currRslt[0], "samaccountname");
-                string phoneNr = ReadStringPropSafe(currRslt[0], "telephonenumber");
+                string phoneNr = "(" + ReadStringPropSafe(currRslt[0], "telephonenumber").Replace(' ', ')');
                 string position = ReadStringPropSafe(currRslt[0], "title");
                 string tabNr = ReadStringPropSafe(currRslt[0], "employeeid");
+                string addr = ReadStringPropSafe(currRslt[0], "physicaldeliveryofficename");
+                string dept = ReadStringPropSafe(currRslt[0], "department");
+                string compName = FindUserComputer(tabNr, line);
+
+                //sb.AppendLine(string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}{8}", dispName, tabNr, userId, email, phoneNr, position, addr, compName, FormatOtherFields(lines[line])));
+
+                //№ з/п	Прізвище, ім’я,   по батькові користувача
+	
+                //Ідентифікатор користувача (наданий службою захисту)	Повна назва посади корис-тувача
+                //    Назва підрозділу, в якому працює користувач
+                //    Поштова адреса  (вул., буд., корп., кімн.)
+                //користувача
+                //    Телефон міський, внутрішній
+                //корис-тувача
+                //    Мережеве ім’я
+                //корис-тувача
+                //    Повноваження
+                //користувача
+                // (перегляд/ внесення інформації)
 
 
-                sb.AppendLine(string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}", dispName, tabNr, userId, email, phoneNr, position));
+                sb.AppendLine(string.Format("{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}{8}", dispName, userId, position, dept, addr, phoneNr, compName, email, FormatOtherFields(lines[line])));
             }
 
+            //File.WriteAllText(JsonConvert.SerializeObject(rslts, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }), @"D:\home\vmdrot\DEV\ActiveDirectoryBrowser_demo\last_searchres.json", Encoding.Unicode);
+            WriteXML<List<List<SearchResult>>>(rslts, @"D:\home\vmdrot\DEV\ActiveDirectoryBrowser_demo\last_searchres.xml");
             File.WriteAllText(saveFileDialog1.FileName, sb.ToString(), Encoding.Unicode);
+        }
+
+        public static void WriteXML<T>(T obj, string saveAs)
+        {
+            using (FileStream fs = File.Create(saveAs))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(T));
+                serializer.Serialize(fs, obj);
+            }
+        }
+
+        private string FindUserComputer(string tabNr, string dispNm)
+        {
+            List<SearchResult> findings = SearchResultsForm.GetADComputerByUser(_AdRoot.Path, tabNr, dispNm);
+            if (findings == null || findings.Count == 0)
+                return string.Empty;
+            return ReadStringPropSafe(findings[0], "name");
+        }
+
+        private string FormatOtherFields(List<string> list)
+        {
+            if (list == null || list.Count == 0)
+                return string.Empty;
+            return ("\t" + String.Join("\t", list.ToArray()));
+        }
+
+        private Dictionary<string, List<string>> ReadNamesLinesWithPossibleTabDelimitedExtraFields(string[] rawLines)
+        {
+            Dictionary<string, List<string>> rslt = new Dictionary<string, List<string>>();
+            foreach (string rawLine in rawLines)
+            {
+                if (string.IsNullOrEmpty(rawLine))
+                    continue;
+                string[] fields = rawLine.Split('\t');
+                string currName = fields[0];
+                List<string> currOtherFields = new List<string>();
+                if (fields.Length > 1)
+                {
+                    for (int i = 1; i < fields.Length; i++)
+                        currOtherFields.Add(fields[i]);
+                }
+                rslt.Add(currName, currOtherFields);
+            }
+            return rslt;
         }
 
         private string ReadStringPropSafe(SearchResult searchResult, string propName)
         {
-            if (searchResult == null)
-                return string.Empty;
-            if (searchResult.Properties[propName] == null || searchResult.Properties[propName].Count == 0)
+            if(searchResult == null)
+            return string.Empty;
+            if(searchResult.Properties[propName] == null || searchResult.Properties[propName].Count == 0)
                 return string.Empty;
             return searchResult.Properties[propName][0] as string;
         }
-    }
+
+        private void allUsersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            // ReadUserProps
+
+            List<Dictionary<string, object>> usrs = new List<Dictionary<string,object>>();
+            Dictionary<string, int> stats = new Dictionary<string, int>();
+            string allCyrLetters = "АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЧЦШЩЮЯ";
+            List<string> surnameStarts = new List<string>();
+            foreach(char ch in allCyrLetters)
+            {
+                foreach(char ch2 in allCyrLetters)
+                {
+                    string currStart = string.Format("{0}{1}", ch, string.Format("{0}", ch2).ToLower());
+                    surnameStarts.Add(currStart);
+                }
+            }
+
+            foreach(string ch in surnameStarts)
+            {
+                List<SearchResult> currRslt = SearchResultsForm.GetADUsers(_AdRoot.Path, string.Empty, string.Format("(&(objectClass=user)(objectCategory=person)(displayName={0}*))", ch));
+                stats.Add(ch, currRslt.Count);
+                foreach(SearchResult sr in currRslt)
+                {
+                    usrs.Add(ReadUserProps(sr));
+                }
+            }
+            //WriteXML<List<Dictionary<string, object>>>(usrs, @"D:\home\vmdrot\DEV\ActiveDirectoryBrowser_demo\all_users_search_res.xml");
+            File.WriteAllText(@"D:\home\vmdrot\DEV\ActiveDirectoryBrowser_demo\all_users_search_stats.json", JsonConvert.SerializeObject(stats, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }), Encoding.Unicode);
+            File.WriteAllText(@"D:\home\vmdrot\DEV\ActiveDirectoryBrowser_demo\all_users_search_res.json", JsonConvert.SerializeObject(usrs, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }), Encoding.Unicode);
+        }
+	}
 }
