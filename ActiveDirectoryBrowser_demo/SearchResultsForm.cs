@@ -54,6 +54,11 @@ namespace SimpleAdBrowser
             return GetADUsers(adRoot, email, string.Format("(&(objectClass=user)(objectCategory=person)(mail={0}))", email));
         }
 
+        public static List<SearchResult> GetADComputerByUser(string adRoot, string empId, string empDispName)
+        {
+            return GetADUsers(adRoot, string.Empty, string.Format("(&(objectCategory=computer)(name=*-{0})(description=*{1}))", empId, empDispName));
+        }
+
         public static List<SearchResult> GetADUsers(string adRoot, string email, string filter)
         {
             try
@@ -82,10 +87,10 @@ namespace SimpleAdBrowser
                     {
                         string UserNameEmailString = string.Empty;
                         result = resultCol[counter];
-                        if (result.Properties.Contains("samaccountname") &&
-                                 result.Properties.Contains("mail") &&
-                            result.Properties.Contains("displayname"))
-                        {
+                        //if (result.Properties.Contains("samaccountname") &&
+                        //         result.Properties.Contains("mail") &&
+                        //    result.Properties.Contains("displayname"))
+                        //{
                             rslt.Add(result);
                             //Users objSurveyUsers = new Users();
                             //objSurveyUsers.Email = (String)result.Properties["mail"][0] + 
@@ -93,7 +98,7 @@ namespace SimpleAdBrowser
                             //objSurveyUsers.UserName = (String)result.Properties["samaccountname"][0];
                             //objSurveyUsers.DisplayName = (String)result.Properties["displayname"][0];
                             //lstADUsers.Add(objSurveyUsers);
-                        }
+                        //}
                     }
                 }
                 return rslt;
