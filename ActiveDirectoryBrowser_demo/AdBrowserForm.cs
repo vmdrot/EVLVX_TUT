@@ -12,37 +12,37 @@ using System.Collections.Generic;
 
 namespace SimpleAdBrowser
 {
-	/// <summary>
-	/// Summary description for Form1.
-	/// </summary>
-	public class AdBrowserForm : System.Windows.Forms.Form
-	{
-		private enum AdImages
-		{
-			AdRoot,
-			Ou,
-			Container,
-			OpenContainer,
-			Computer,
-			User,
-			Group,
-			Unknown,
-			Unavailable
-		}
+    /// <summary>
+    /// Summary description for Form1.
+    /// </summary>
+    public class AdBrowserForm : System.Windows.Forms.Form
+    {
+        private enum AdImages
+        {
+            AdRoot,
+            Ou,
+            Container,
+            OpenContainer,
+            Computer,
+            User,
+            Group,
+            Unknown,
+            Unavailable
+        }
 
-		private DirectoryEntry _AdRootDSE = null;
-		private DirectoryEntry _AdRoot = null;
+        private DirectoryEntry _AdRootDSE = null;
+        private DirectoryEntry _AdRoot = null;
 
-		// column sorter for the listview
-		private ListViewColumnSorter lvwColumnSorter;
+        // column sorter for the listview
+        private ListViewColumnSorter lvwColumnSorter;
 
-		private System.Windows.Forms.TreeView treeView_ad;
-		private System.Windows.Forms.ListView listView_ad;
-		private System.Windows.Forms.ImageList imageList_adObjects;
-		private System.Windows.Forms.Splitter splitter_mainForm;
-		private System.Windows.Forms.ColumnHeader columnHeader_name;
-		private System.Windows.Forms.ColumnHeader columnHeader_type;
-		private System.Windows.Forms.ColumnHeader columnHeader_description;
+        private System.Windows.Forms.TreeView treeView_ad;
+        private System.Windows.Forms.ListView listView_ad;
+        private System.Windows.Forms.ImageList imageList_adObjects;
+        private System.Windows.Forms.Splitter splitter_mainForm;
+        private System.Windows.Forms.ColumnHeader columnHeader_name;
+        private System.Windows.Forms.ColumnHeader columnHeader_type;
+        private System.Windows.Forms.ColumnHeader columnHeader_description;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem findToolStripMenuItem;
         private ToolStripMenuItem userToolStripMenuItem;
@@ -50,43 +50,43 @@ namespace SimpleAdBrowser
         private ToolStripMenuItem usersByListToolStripMenuItem;
         private OpenFileDialog openFileDialog1;
         private SaveFileDialog saveFileDialog1;
-		private System.ComponentModel.IContainer components;
+        private System.ComponentModel.IContainer components;
 
-		public AdBrowserForm()
-		{
-			//
-			// Required for Windows Form Designer support
-			//
-			InitializeComponent();
+        public AdBrowserForm()
+        {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
 
-			//
-			// TODO: Add any constructor code after InitializeComponent call
-			//
-			myInitializeComponent();
-		}
+            //
+            // TODO: Add any constructor code after InitializeComponent call
+            //
+            myInitializeComponent();
+        }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if (components != null) 
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        #region Windows Form Designer generated code
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Computers", 2, 3);
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Example Group", 6, 6);
@@ -306,198 +306,198 @@ namespace SimpleAdBrowser
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
-		#endregion
+        }
+        #endregion
 
-		/// <summary>
-		/// The main entry point for the application.
-		/// </summary>
-		[STAThread]
-		static void Main() 
-		{
-			try
-			{
-				Application.Run(new AdBrowserForm());
-			}
-			catch (Exception exc)
-			{
-				MessageBox.Show("Error occured in application. Need to close. Error was: " + exc.Message);
-			}
-		}
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            try
+            {
+                Application.Run(new AdBrowserForm());
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error occured in application. Need to close. Error was: " + exc.Message);
+            }
+        }
 
-		private void myInitializeComponent()
-		{
-			lvwColumnSorter = new ListViewColumnSorter();
-			this.listView_ad.ListViewItemSorter = lvwColumnSorter;
+        private void myInitializeComponent()
+        {
+            lvwColumnSorter = new ListViewColumnSorter();
+            this.listView_ad.ListViewItemSorter = lvwColumnSorter;
 
-			try
-			{
-				this._AdRootDSE = new DirectoryEntry("LDAP://rootDSE");
-				this._AdRoot = new DirectoryEntry("LDAP://" + (string)this._AdRootDSE.Properties["defaultNamingContext"].Value);
-				/*
-				foreach(string property in this._AdRoot.Properties.PropertyNames)
-				{
-					MessageBox.Show(property + " = " + this._AdRoot.Properties[property].Value);
-				}*/
+            try
+            {
+                this._AdRootDSE = new DirectoryEntry("LDAP://rootDSE");
+                this._AdRoot = new DirectoryEntry("LDAP://" + (string)this._AdRootDSE.Properties["defaultNamingContext"].Value);
+                /*
+                foreach(string property in this._AdRoot.Properties.PropertyNames)
+                {
+                    MessageBox.Show(property + " = " + this._AdRoot.Properties[property].Value);
+                }*/
 
-				TreeNode root = new TreeNode((string)this._AdRootDSE.Properties["defaultNamingContext"].Value,(int)AdImages.AdRoot,(int)AdImages.AdRoot);
-				
-				root.Tag = this._AdRoot;
-				this.treeView_ad.Nodes.Clear();
-				this.treeView_ad.Nodes.Add(root);
-			}
-			catch
-			{
-				throw new Exception("Error connecting to AD");
-			}
-		}
+                TreeNode root = new TreeNode((string)this._AdRootDSE.Properties["defaultNamingContext"].Value, (int)AdImages.AdRoot, (int)AdImages.AdRoot);
 
-		private void treeView_ad_AfterSelect(object sender, System.Windows.Forms.TreeViewEventArgs e)
-		{
-			TreeView myTreeView = (TreeView)sender;
-			DirectoryEntry selectedEntry = (DirectoryEntry)e.Node.Tag;
+                root.Tag = this._AdRoot;
+                this.treeView_ad.Nodes.Clear();
+                this.treeView_ad.Nodes.Add(root);
+            }
+            catch
+            {
+                throw new Exception("Error connecting to AD");
+            }
+        }
 
-			if (!DirectoryEntry.Exists(selectedEntry.Path))
-			{
-				e.Node.ImageIndex = (int)AdImages.Unavailable;
-				e.Node.SelectedImageIndex = (int)AdImages.Unavailable;
-				
-				return;
-			}
+        private void treeView_ad_AfterSelect(object sender, System.Windows.Forms.TreeViewEventArgs e)
+        {
+            TreeView myTreeView = (TreeView)sender;
+            DirectoryEntry selectedEntry = (DirectoryEntry)e.Node.Tag;
 
-			// cleanup the current node 
-			this.listView_ad.Items.Clear();
-			e.Node.Nodes.Clear();
+            if (!DirectoryEntry.Exists(selectedEntry.Path))
+            {
+                e.Node.ImageIndex = (int)AdImages.Unavailable;
+                e.Node.SelectedImageIndex = (int)AdImages.Unavailable;
 
-			myTreeView.BeginUpdate();
+                return;
+            }
 
-			try
-			{
-				foreach (DirectoryEntry child in selectedEntry.Children)
-				{			
-					TreeNode tmpNode = null;
-					ListViewItem tmpItem = null;
+            // cleanup the current node 
+            this.listView_ad.Items.Clear();
+            e.Node.Nodes.Clear();
 
-					switch(child.SchemaClassName)
-					{
-						case "organizationalUnit":
-							tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.Ou,(int)AdImages.OpenContainer);
-							tmpItem = new ListViewItem(new string[] {
+            myTreeView.BeginUpdate();
+
+            try
+            {
+                foreach (DirectoryEntry child in selectedEntry.Children)
+                {
+                    TreeNode tmpNode = null;
+                    ListViewItem tmpItem = null;
+
+                    switch (child.SchemaClassName)
+                    {
+                        case "organizationalUnit":
+                            tmpNode = new TreeNode((string)child.Properties["name"].Value, (int)AdImages.Ou, (int)AdImages.OpenContainer);
+                            tmpItem = new ListViewItem(new string[] {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
 
-																	},(int)AdImages.Ou);
-							break;
-						case "container":
-							tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.Container,(int)AdImages.OpenContainer);
-							tmpItem = new ListViewItem(new string[] {
+																	}, (int)AdImages.Ou);
+                            break;
+                        case "container":
+                            tmpNode = new TreeNode((string)child.Properties["name"].Value, (int)AdImages.Container, (int)AdImages.OpenContainer);
+                            tmpItem = new ListViewItem(new string[] {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
 
-																	},(int)AdImages.Container);
-							break;
-						case "computer":
-							//tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.Computer,(int)AdImages.Computer);
-							tmpItem = new ListViewItem(new string[] {
+																	}, (int)AdImages.Container);
+                            break;
+                        case "computer":
+                            //tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.Computer,(int)AdImages.Computer);
+                            tmpItem = new ListViewItem(new string[] {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
 
-																	},(int)AdImages.Computer);
-							break;
-						case "user":
-							//tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.User,(int)AdImages.User);
-							tmpItem = new ListViewItem(new string[] {
+																	}, (int)AdImages.Computer);
+                            break;
+                        case "user":
+                            //tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.User,(int)AdImages.User);
+                            tmpItem = new ListViewItem(new string[] {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
 
-																	},(int)AdImages.User);
-							break;
-						case "group":
-							//tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.Group,(int)AdImages.Group);
-							tmpItem = new ListViewItem(new string[] {
+																	}, (int)AdImages.User);
+                            break;
+                        case "group":
+                            //tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.Group,(int)AdImages.Group);
+                            tmpItem = new ListViewItem(new string[] {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
 
-																	},(int)AdImages.Group);
-							break;
-						default:
-							//tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.Unknown,(int)AdImages.Unknown);
-							tmpItem = new ListViewItem(new string[] {
+																	}, (int)AdImages.Group);
+                            break;
+                        default:
+                            //tmpNode = new TreeNode((string)child.Properties["name"].Value,(int)AdImages.Unknown,(int)AdImages.Unknown);
+                            tmpItem = new ListViewItem(new string[] {
 																		(string)child.Properties["name"].Value,
 																		child.SchemaClassName,
 																		(string)child.Properties["description"].Value
 
-																	},(int)AdImages.Unknown);
-							break;
-					}
+																	}, (int)AdImages.Unknown);
+                            break;
+                    }
 
-					// save the directory entry reference in the tag
-					if (tmpNode!=null) 
-					{ 
-						tmpNode.Tag = child; 
-						e.Node.Nodes.Add(tmpNode);
-					}
-					if (tmpItem!=null) 
-					{ 
-						tmpItem.Tag = child; 
-						this.listView_ad.Items.Add(tmpItem);
-					}					
-				}
-			}
-			catch (Exception exc)
-			{
-				MessageBox.Show(exc.Message);
-				// active directory exception ???
-			}
+                    // save the directory entry reference in the tag
+                    if (tmpNode != null)
+                    {
+                        tmpNode.Tag = child;
+                        e.Node.Nodes.Add(tmpNode);
+                    }
+                    if (tmpItem != null)
+                    {
+                        tmpItem.Tag = child;
+                        this.listView_ad.Items.Add(tmpItem);
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+                // active directory exception ???
+            }
 
-			e.Node.Expand();
+            e.Node.Expand();
 
-			myTreeView.EndUpdate();
-		}
+            myTreeView.EndUpdate();
+        }
 
-		private void listView_ad_DoubleClick(object sender, System.EventArgs e)
-		{
-			ListView myListView = (ListView)sender;
+        private void listView_ad_DoubleClick(object sender, System.EventArgs e)
+        {
+            ListView myListView = (ListView)sender;
 
-			if (myListView.SelectedItems.Count == 1)
-			{
-				ListViewItem myListViewItem = myListView.SelectedItems[0];
-				DirectoryEntry myObject = (DirectoryEntry)myListViewItem.Tag;
-				if (myObject == null)
-					return;
+            if (myListView.SelectedItems.Count == 1)
+            {
+                ListViewItem myListViewItem = myListView.SelectedItems[0];
+                DirectoryEntry myObject = (DirectoryEntry)myListViewItem.Tag;
+                if (myObject == null)
+                    return;
 
-				switch (myListViewItem.ImageIndex)
-				{
-					case (int) AdImages.Ou:
-					case (int) AdImages.Container:
-						foreach (TreeNode tNode in this.treeView_ad.SelectedNode.Nodes)
-						{
-							if (tNode.Text.Equals(myListViewItem.Text))
-							{
-								this.treeView_ad.SelectedNode = tNode;
-								if (myListView.Items.Count >0)
-								{
-									myListView.Focus();
-									myListView.Items[0].Selected = true;										
-								}
-								break;
-							}
-						}
-						break;	
-					case (int) AdImages.User:
+                switch (myListViewItem.ImageIndex)
+                {
+                    case (int)AdImages.Ou:
+                    case (int)AdImages.Container:
+                        foreach (TreeNode tNode in this.treeView_ad.SelectedNode.Nodes)
+                        {
+                            if (tNode.Text.Equals(myListViewItem.Text))
+                            {
+                                this.treeView_ad.SelectedNode = tNode;
+                                if (myListView.Items.Count > 0)
+                                {
+                                    myListView.Focus();
+                                    myListView.Items[0].Selected = true;
+                                }
+                                break;
+                            }
+                        }
+                        break;
+                    case (int)AdImages.User:
                         ShowUserPropertiesForm(TreeFullPath2DomainRootPath(treeView_ad.SelectedNode.FullPath), myListView.SelectedItems[0].Text);
                         break;
-					default:
-						MessageBox.Show("You double-clicked another object");
-						break;
-				}
-			}
-		}
+                    default:
+                        MessageBox.Show("You double-clicked another object");
+                        break;
+                }
+            }
+        }
 
         private string TreeFullPath2DomainPath(string treePath)
         {
@@ -563,33 +563,71 @@ namespace SimpleAdBrowser
             MessageBox.Show(sb.ToString());
         }
 
-		private void listView_ad_ColumnClick(object sender, System.Windows.Forms.ColumnClickEventArgs e)
-		{
-			ListView myListView = (ListView)sender;
+        public static Dictionary<string, object> ReadUserProps(SearchResult rs)
+        {
+            Dictionary<string, object> rslt = new Dictionary<string, object>();
 
-			// Determine if clicked column is already the column that is being sorted.
-			if ( e.Column == lvwColumnSorter.SortColumn )
-			{
-				// Reverse the current sort direction for this column.
-				if (lvwColumnSorter.Order == SortOrder.Ascending)
-				{
-					lvwColumnSorter.Order = SortOrder.Descending;
-				}
-				else
-				{
-					lvwColumnSorter.Order = SortOrder.Ascending;
-				}
-			}
-			else
-			{
-				// Set the column number that is to be sorted; default to ascending.
-				lvwColumnSorter.SortColumn = e.Column;
-				lvwColumnSorter.Order = SortOrder.Ascending;
-			}
+            foreach (DictionaryEntry prop in rs.Properties)
+            {
+                List<object> currProps = new List<object>();
+                object val = prop.Value;
+                object currPropVal = null;
+                if (prop.Value != null)
+                {
+                    if (prop.Value is System.DirectoryServices.ResultPropertyValueCollection)
+                    {
+                        System.DirectoryServices.ResultPropertyValueCollection propVals = (System.DirectoryServices.ResultPropertyValueCollection)prop.Value;
+                        List<object> currPropValLst = new List<object>();
+                        if (propVals.Count > 0)
+                        {
+                            for (int i = 0; i < propVals.Count; i++)
+                            {
+                                val = propVals[i];
+                                currPropValLst.Add(val);
+                            }
+                            currPropVal = (object)currPropValLst;
+                        }
+                    }
+                    else
+                    {
+                        currPropVal = prop.Value;
+                     }
+                }
+                rslt.Add(prop.Key as string, currPropVal);
+            }
 
-			// Perform the sort with these new sort options.
-			myListView.Sort();
-		}
+            return rslt;
+        }
+
+
+
+        private void listView_ad_ColumnClick(object sender, System.Windows.Forms.ColumnClickEventArgs e)
+        {
+            ListView myListView = (ListView)sender;
+
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            myListView.Sort();
+        }
 
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -602,7 +640,7 @@ namespace SimpleAdBrowser
         {
             if (openFileDialog1.ShowDialog() != DialogResult.OK)
                 return;
-            if(saveFileDialog1.ShowDialog() != DialogResult.OK)
+            if (saveFileDialog1.ShowDialog() != DialogResult.OK)
                 return;
 
             string[] lines = File.ReadAllLines(openFileDialog1.FileName);
@@ -634,11 +672,11 @@ namespace SimpleAdBrowser
 
         private string ReadStringPropSafe(SearchResult searchResult, string propName)
         {
-            if(searchResult == null)
-            return string.Empty;
-            if(searchResult.Properties[propName] == null || searchResult.Properties[propName].Count == 0)
+            if (searchResult == null)
+                return string.Empty;
+            if (searchResult.Properties[propName] == null || searchResult.Properties[propName].Count == 0)
                 return string.Empty;
             return searchResult.Properties[propName][0] as string;
         }
-	}
+    }
 }
