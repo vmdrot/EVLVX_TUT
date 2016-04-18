@@ -9,6 +9,7 @@ using Evolvex.VKUtilLib.Spares.Data;
 using System.Globalization;
 using Evolvex.VKUtilLib.ExUA;
 using Evolvex.VKUtilLib.Zaycev;
+using Evolvex.VKUtilLib.EDataGovUA;
 
 namespace Evolvex.VKUtil
 {
@@ -30,6 +31,9 @@ namespace Evolvex.VKUtil
             _cmdHandlers.Add("formatdecayingwesthtml", FormatDecayingWestHtml);
             _cmdHandlers.Add("readexualinks", ReadExUALinks);
             _cmdHandlers.Add("readanddownloadzaycevnet", ReadAndDownloadZaycevNet);
+            _cmdHandlers.Add("edatagovuaget", EDataGovUaGet);
+            
+            
             
             #endregion
         }
@@ -37,7 +41,7 @@ namespace Evolvex.VKUtil
         [STAThread]
         static void Main(string[] args)
         {
-            //Console.Read();
+            Console.Read();
             string cmdHandlerKey = string.Empty;
             if (args.Length > 0)
                 cmdHandlerKey = args[0].ToLower();
@@ -203,5 +207,25 @@ namespace Evolvex.VKUtil
 
             //
         }
+
+        [STAThread]
+        public static void EDataGovUaGet(string[] args)
+        {
+            string yedrpou = args[1];
+            using (EDataGovUaReader reader = new EDataGovUaReader())
+            {
+                reader.SearchForYeDRPOU = yedrpou;
+                if (reader.Read(EDataGovUaReader.START_DISPOSERS_SEARCH_URL))
+                {
+                    Console.WriteLine("reader.Read() succeeded");
+                }
+                else
+                    Console.WriteLine("reader.Read() failed");
+                Console.WriteLine(reader.HTML);
+            }
+
+            //
+        }
+
     }
 }

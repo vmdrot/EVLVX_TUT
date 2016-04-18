@@ -1,0 +1,28 @@
+_wc_StatusTextChanged = 'Done'
+_wc_FileDownload
+_wc_ProgressChanged(10000 of 10000)
+_wc_StatusTextChanged = 'Waiting for http://spending.gov.ua/web/guest/disposers?p_p_id=searchdistribportlet_WAR_EdataPortletportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_count=1...'
+_wc_StatusTextChanged = ''
+_wc_StatusTextChanged = ''
+_wc_Navigated
+_wc_StatusTextChanged = 'Done'
+_wc_ProgressChanged(-1 of 10000)
+_wc_ProgressChanged(10000 of 10000)
+_wc_DocumentCompleted
+_wc_StatusTextChanged = '(3 item(s) remaining) Downloading picture data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAYAAAFMandsAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjp'
+_wc_FileDownload
+_wc_StatusTextChanged = 'Done'
+_wc_ProgressChanged(0 of 0)
+_wc_StatusTextChanged = 'Done'
+_wc_StatusTextChanged = 'Done'
+_wc_StatusTextChanged = 'Done'
+_wc_StatusTextChanged = 'Done'
+_wc_StatusTextChanged = 'Done'
+_wc_StatusTextChanged = 'Done'
+_wc_StatusTextChanged = 'Done'
+_wc_StatusTextChanged = 'Done'
+_wc_StatusTextChanged = 'Done'
+_wc_StatusTextChanged = ''
+_wc_StatusTextChanged = 'http://spending.gov.ua/web/guest/transaction'
+_wc_StatusTextChanged = ''
+_wc_StatusTextChanged = ''
