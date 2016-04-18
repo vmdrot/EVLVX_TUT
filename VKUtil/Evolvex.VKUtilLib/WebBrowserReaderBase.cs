@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Net;
+using mshtml;
 
 namespace Evolvex.VKUtilLib
 {
@@ -12,8 +13,9 @@ namespace Evolvex.VKUtilLib
         protected WebBrowser _wc;
         private WebClient _wcLight;
         private bool _disposed = false;
-        private volatile bool _navigateCompleted = false;
+        protected volatile bool _navigateCompleted = false;
         private static int _maxDiscoverTimeOutSec = 120; //i.e. two minutes
+        protected static readonly string DELIM_LN = "----------------------------------------------------------------------";
 
         protected string _url;
         public static int MaxDiscoverTimeOut
@@ -39,16 +41,44 @@ namespace Evolvex.VKUtilLib
             _wc.NewWindow += new System.ComponentModel.CancelEventHandler(_wc_NewWindow);
             //_wc.Navigated += new WebBrowserNavigatedEventHandler(_wc_Navigated);
             _wc.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(_wc_DocumentCompleted);
-
-
+            _wc.Navigated +=new WebBrowserNavigatedEventHandler(_wc_Navigated);
+            _wc.FileDownload += new EventHandler(_wc_FileDownload);
+            _wc.Navigating += new WebBrowserNavigatingEventHandler(_wc_Navigating);
+            _wc.ProgressChanged += new WebBrowserProgressChangedEventHandler(_wc_ProgressChanged);
+            _wc.StatusTextChanged += new EventHandler(_wc_StatusTextChanged);
         }
 
-        protected bool Navigate(string url)
+        void _wc_StatusTextChanged(object sender, EventArgs e)
         {
-            _navigateCompleted = false;
-            //_syncContext.Post(
-            _wc.Navigate(new Uri(url));
-            //Console.WriteLine("just _wc.Navigate -ed");
+            Console.WriteLine("_wc_StatusTextChanged = '{0}'", _wc.StatusText);
+            Console.WriteLine(HTML);
+            Console.WriteLine(DELIM_LN);
+        }
+
+        void _wc_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
+        {
+            Console.WriteLine("_wc_ProgressChanged({0} of {1})", e.CurrentProgress, e.MaximumProgress);
+            Console.WriteLine(HTML);
+            Console.WriteLine(DELIM_LN);
+        }
+
+        void _wc_Navigating(object sender, WebBrowserNavigatingEventArgs e)
+        {
+            Console.WriteLine("_wc_Navigating");
+            Console.WriteLine(HTML);
+            Console.WriteLine(DELIM_LN);
+        }
+
+        void _wc_FileDownload(object sender, EventArgs e)
+        {
+            Console.WriteLine("_wc_FileDownload");
+            Console.WriteLine(HTML);
+            Console.WriteLine(DELIM_LN);
+        }
+
+        protected bool WaitUntilBrowserReady()
+        {
+            Console.WriteLine();
             DateTime dtStart = DateTime.Now;
             while (_wc.ReadyState != WebBrowserReadyState.Complete)
             {
@@ -61,6 +91,14 @@ namespace Evolvex.VKUtilLib
                 }
             }
             return true;
+        }
+        protected bool Navigate(string url)
+        {
+            _navigateCompleted = false;
+            //_syncContext.Post(
+            _wc.Navigate(new Uri(url));
+            //Console.WriteLine("just _wc.Navigate -ed");
+            return WaitUntilBrowserReady();
         }
 
         public bool Read(string url)
@@ -80,12 +118,18 @@ namespace Evolvex.VKUtilLib
 
         private void _wc_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
+            Console.WriteLine("_wc_DocumentCompleted");
             _navigateCompleted = true;
+            Console.WriteLine(HTML);
+            Console.WriteLine(DELIM_LN);
         }
 
         private void _wc_Navigated(object sender, WebBrowserNavigatedEventArgs e)
         {
-            _navigateCompleted = true;
+            Console.WriteLine("_wc_Navigated({0})", e.Url);
+            Console.WriteLine(HTML);
+            Console.WriteLine(DELIM_LN);
+
         }
 
 
@@ -96,6 +140,65 @@ namespace Evolvex.VKUtilLib
             
             return rslt;
         }
+
+        protected static string ReadDivAttribValue(HtmlElement div, string attribName)
+        {
+            string rslt = div.GetAttribute(attribName);
+            if (string.IsNullOrEmpty(rslt))
+            {
+                mshtml.IHTMLElement4 divObj4 = (mshtml.IHTMLElement4)div.DomElement;
+                IHTMLDOMAttribute attr = divObj4.getAttributeNode(attribName);
+                if (attr != null)
+                {
+                    if(attr.nodeValue.GetType() == typeof(System.DBNull))
+                        return null;
+                    rslt = attr.nodeValue;
+                }
+            }
+            return rslt;
+        }
+
+        protected HtmlElement FindElementByTagAttribValue(string tagName, string attrName, string attrVal)
+        {
+            HtmlElementCollection elems = this._wc.Document.GetElementsByTagName(tagName);
+            foreach (HtmlElement elem in elems)
+            {
+                string currAttrVal = ReadDivAttribValue(elem, attrName);
+                if (currAttrVal == attrVal)
+                    return elem;
+            }
+            return null;
+        }
+
+        protected HtmlElement FindElementByTagInnerText(string tagName, string innerTxt)
+        {
+            HtmlElementCollection elems = this._wc.Document.GetElementsByTagName(tagName);
+            foreach (HtmlElement elem in elems)
+            {
+                string currTxt = elem.InnerText;
+                if (currTxt == innerTxt)
+                    return elem;
+            }
+            return null;
+        }
+
+        public void ShowBrowserIn(Control parent)
+        {
+            _wc.Parent = parent;
+            _wc.Dock = DockStyle.Fill;
+            _wc.Visible = true;
+        }
+
+        public string HTML
+        {
+            get
+            {
+                if(_wc != null && _wc.Document != null && _wc.Document.Body != null)
+                    return _wc.Document.Body.OuterHtml;
+                return string.Empty;
+            }
+        }
+
         #region IDisposable Members
 
         public void Dispose()

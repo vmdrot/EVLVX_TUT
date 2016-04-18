@@ -223,20 +223,6 @@ namespace Evolvex.VKUtilLib.Zaycev
             return rslt;
         }
 
-        private static string ReadDivAttribValue(HtmlElement div, string attribName)
-        {
-            string rslt = div.GetAttribute(attribName);
-            if (string.IsNullOrEmpty(rslt))
-            {
-                mshtml.IHTMLElement4 divObj4 = (mshtml.IHTMLElement4)div.DomElement;
-                IHTMLDOMAttribute attr = divObj4.getAttributeNode(attribName);
-                if (attr != null)
-                {
-                    rslt = attr.nodeValue;
-                }
-            }
-            return rslt;
-        }
 
         public static CookieContainer GetUriCookieContainer(Uri uri)
         {
@@ -293,7 +279,7 @@ namespace Evolvex.VKUtilLib.Zaycev
                     {
                         if(File.Exists(saveAs))
                             File.Delete(saveAs);
-                        int currReTriesCount = 0;
+                        
                         while (true)
                         {
                             try
@@ -308,16 +294,13 @@ namespace Evolvex.VKUtilLib.Zaycev
                                 Console.WriteLine("Web Error while downloading {0}", url);
                                 Console.WriteLine("Details: {0}", exc.ToString());
                                 Console.WriteLine("-----------------------------------------------------------");
-                                if (exc.Message.IndexOf("(423)") != -1)
-                                    break;
-                                if (exc.Message.IndexOf("(404)") != -1)
-                                    currReTriesCount++;
 
-                                if ((exc.Message.IndexOf("(404)") != -1 || exc.Message.IndexOf("(423)") != -1) && currReTriesCount > 0)
+                                if (exc.Message.IndexOf("(404)") != -1)
                                     break;
-                                else
+                                if(exc.Message.IndexOf("(423)") != -1)
                                 {
-                                    System.Threading.Thread.Sleep(2 * 60 * 1000);
+                                    System.Threading.Thread.Sleep(4 * 60 * 1000);
+                                    break;
                                 }
                             }
                             catch (System.Exception gexc)

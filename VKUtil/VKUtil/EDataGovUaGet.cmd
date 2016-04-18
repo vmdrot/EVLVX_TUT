@@ -1,0 +1,1 @@
+bin\Debug\Evolvex.VKUtil.exe EDataGovUaGet 00032112
