@@ -116,7 +116,7 @@ namespace Evolvex.VKUtilLib
 
         protected bool WaitUntilBrowserReady()
         {
-            Console.WriteLine("WaitUntilBrowserReady::_wc.ReadyState = {0}", _wc.ReadyState);
+            if(LogDebugEvents) Console.WriteLine("WaitUntilBrowserReady::_wc.ReadyState = {0}", _wc.ReadyState);
             DateTime dtStart = DateTime.Now;
             while (_wc.ReadyState != WebBrowserReadyState.Complete)
             {

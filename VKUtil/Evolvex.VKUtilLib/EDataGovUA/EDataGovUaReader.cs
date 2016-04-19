@@ -14,23 +14,51 @@ namespace Evolvex.VKUtilLib.EDataGovUA
 
         public string SearchForYeDRPOU { get; set; }
         private volatile bool _yeDRPOUSearchNavigated = false;
-
+        public EDataGovUaDisposerInfo Result { get; private set; }
         protected override bool ReadWorker()
         {
             
             if(!string.IsNullOrEmpty(SearchForYeDRPOU))
             {
-                if(!DoYeDRPOUSearch())
+                if (!DoYeDRPOUSearch())
+                {
+                    this.Result = ConstructNotFoundDisposerInfo();
                     return false;
+                }
                 //<div class="disposer_table_col">статус</div> </div> <div class="disposer_table_row" style="cursor: pointer;" id="10149200" senderName="ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО «ДЕРЖАВНИЙ ЕКСПОРТНО-ІМПОРТНИЙ БАНК УКРАЇНИ»" senderCode="00032112">
                 HtmlElement divDisposerRow = FindElementByTagAttribValue("div", "senderCode", SearchForYeDRPOU);
                 if (divDisposerRow != null)
+                {
+                    this.Result = ParseDisposerRow(divDisposerRow);
                     Console.WriteLine("divDisposerRow: {0}", divDisposerRow.OuterHtml);
+                }
                 else
+                {
+                    this.Result = ConstructNotFoundDisposerInfo();
                     Console.WriteLine("divDisposerRow is null");
+                    return false;
+                }
             }
             
-            return true; //todo
+            return true;
+        }
+
+        private EDataGovUaDisposerInfo ConstructNotFoundDisposerInfo()
+        {
+            return new EDataGovUaDisposerInfo() { IsFound = false, YeDRPOU = SearchForYeDRPOU, CheckedDttm = DateTime.Now };
+        }
+
+        private EDataGovUaDisposerInfo ParseDisposerRow(HtmlElement divDisposerRow)
+        {
+            EDataGovUaDisposerInfo rslt = new EDataGovUaDisposerInfo();
+            rslt.IsFound = true;
+            rslt.InternalID = long.Parse(ReadDivAttribValue(divDisposerRow, "id"));
+            rslt.YeDRPOU = ReadDivAttribValue(divDisposerRow, "sendercode");
+            rslt.DisposerName = ReadDivAttribValue(divDisposerRow, "sendername");
+            HtmlElementCollection innerDivs = divDisposerRow.GetElementsByTagName("div");
+            if (innerDivs.Count == 3)
+                rslt.CabinetStatus = innerDivs[2].InnerText;
+            return rslt;
         }
 
         private bool DoYeDRPOUSearch()
@@ -52,15 +80,15 @@ namespace Evolvex.VKUtilLib.EDataGovUA
             base.WC_Navigated += new WebBrowserNavigatedEventHandler(YeDRPOUSearch_WC_Navigated);
             if (btnSubmit != null)
                 btnSubmit.form.submit();
-            Console.WriteLine("Before Ready - {0}", DateTime.Now);
+            if (LogDebugEvents) Console.WriteLine("Before Ready - {0}", DateTime.Now);
             bool bReady = WaitUntilBrowserReady();
-            Console.WriteLine("After Ready - {0}", DateTime.Now);
+            if (LogDebugEvents) Console.WriteLine("After Ready - {0}", DateTime.Now);
             while (!_yeDRPOUSearchNavigated)
             {
                 Application.DoEvents();
                 Thread.Sleep(100);
             }
-            Console.WriteLine("Thread.Sleep(...) - {0}", DateTime.Now);
+            if (LogDebugEvents) Console.WriteLine("Thread.Sleep(...) - {0}", DateTime.Now);
             base.WC_Navigated -= YeDRPOUSearch_WC_Navigated;
             return WaitUntilBrowserReady();
         }
