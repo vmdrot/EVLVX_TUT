@@ -51,6 +51,7 @@
     <Compile Include="BGU\BGUSiteReader.cs" />
     <Compile Include="BGU\Data\BankOwnStructVersionInfo.cs" />
     <Compile Include="BGU\Data\BGUBankOwnStructInfo.cs" />
+    <Compile Include="EDataGovUA\EDataGovUaDisposerInfo.cs" />
     <Compile Include="EDataGovUA\EDataGovUaReader.cs" />
     <Compile Include="ExUA\Data\ExUALinkInfo.cs" />
     <Compile Include="ExUA\ExUAPageReader.cs" />
