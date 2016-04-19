@@ -24,6 +24,12 @@ namespace Evolvex.VKUtilLib
             set { _maxDiscoverTimeOutSec = value; }
         }
 
+        public bool LogDebugEvents
+        {
+            get;
+            set;
+        }
+
 
         protected WebClient WCLight
         {
@@ -36,6 +42,7 @@ namespace Evolvex.VKUtilLib
         }
         public WebBrowserReaderBase()
         {
+            LogDebugEvents = false;
             _wc = new WebBrowser();
             _wc.ScriptErrorsSuppressed = true;
             _wc.NewWindow += new System.ComponentModel.CancelEventHandler(_wc_NewWindow);
@@ -48,37 +55,68 @@ namespace Evolvex.VKUtilLib
             _wc.StatusTextChanged += new EventHandler(_wc_StatusTextChanged);
         }
 
+        #region event(s) propagation
+        protected event System.ComponentModel.CancelEventHandler WC_NewWindow;
+        protected event WebBrowserNavigatedEventHandler WC_Navigated;
+        protected event WebBrowserDocumentCompletedEventHandler WC_DocumentCompleted;
+        protected event EventHandler WC_FileDownload;
+        protected event WebBrowserNavigatingEventHandler WC_Navigating;
+        protected event WebBrowserProgressChangedEventHandler WC_ProgressChanged;
+        protected event EventHandler WC_StatusTextChanged;
+        #endregion
+
+
         void _wc_StatusTextChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("_wc_StatusTextChanged = '{0}'", _wc.StatusText);
-            Console.WriteLine(HTML);
-            Console.WriteLine(DELIM_LN);
+            if (LogDebugEvents)
+            {
+                Console.WriteLine("_wc_StatusTextChanged = '{0}'", _wc.StatusText);
+                Console.WriteLine(HTML);
+                Console.WriteLine(DELIM_LN);
+            }
+            if (WC_StatusTextChanged != null)
+                WC_StatusTextChanged(sender, e);
         }
 
         void _wc_ProgressChanged(object sender, WebBrowserProgressChangedEventArgs e)
         {
-            Console.WriteLine("_wc_ProgressChanged({0} of {1})", e.CurrentProgress, e.MaximumProgress);
-            Console.WriteLine(HTML);
-            Console.WriteLine(DELIM_LN);
+            if (LogDebugEvents)
+            {
+                Console.WriteLine("_wc_ProgressChanged({0} of {1})", e.CurrentProgress, e.MaximumProgress);
+                Console.WriteLine(HTML);
+                Console.WriteLine(DELIM_LN);
+            }
+            if (WC_ProgressChanged != null)
+                WC_ProgressChanged(sender, e);
         }
 
         void _wc_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
-            Console.WriteLine("_wc_Navigating");
-            Console.WriteLine(HTML);
-            Console.WriteLine(DELIM_LN);
+            if (LogDebugEvents)
+            {
+                Console.WriteLine("_wc_Navigating");
+                Console.WriteLine(HTML);
+                Console.WriteLine(DELIM_LN);
+            }
+            if (WC_Navigating != null)
+                WC_Navigating(sender, e);
         }
 
         void _wc_FileDownload(object sender, EventArgs e)
         {
-            Console.WriteLine("_wc_FileDownload");
-            Console.WriteLine(HTML);
-            Console.WriteLine(DELIM_LN);
+            if (LogDebugEvents)
+            {
+                Console.WriteLine("_wc_FileDownload");
+                Console.WriteLine(HTML);
+                Console.WriteLine(DELIM_LN);
+            }
+            if (WC_FileDownload != null)
+                WC_FileDownload(sender, e);
         }
 
         protected bool WaitUntilBrowserReady()
         {
-            Console.WriteLine();
+            Console.WriteLine("WaitUntilBrowserReady::_wc.ReadyState = {0}", _wc.ReadyState);
             DateTime dtStart = DateTime.Now;
             while (_wc.ReadyState != WebBrowserReadyState.Complete)
             {
@@ -113,23 +151,41 @@ namespace Evolvex.VKUtilLib
 
         private void _wc_NewWindow(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            e.Cancel = true;
+            if (LogDebugEvents)
+            {
+                Console.WriteLine("_wc_NewWindow");
+                Console.WriteLine(HTML);
+                Console.WriteLine(DELIM_LN);
+            }
+            if (WC_NewWindow != null)
+                WC_NewWindow(sender, e);
+            else
+                e.Cancel = true;
         }
 
         private void _wc_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            Console.WriteLine("_wc_DocumentCompleted");
             _navigateCompleted = true;
-            Console.WriteLine(HTML);
-            Console.WriteLine(DELIM_LN);
+            if (LogDebugEvents)
+            {
+                Console.WriteLine("_wc_DocumentCompleted");
+                Console.WriteLine(HTML);
+                Console.WriteLine(DELIM_LN);
+            }
+            if (WC_DocumentCompleted != null)
+                WC_DocumentCompleted(sender, e);
         }
 
         private void _wc_Navigated(object sender, WebBrowserNavigatedEventArgs e)
         {
-            Console.WriteLine("_wc_Navigated({0})", e.Url);
-            Console.WriteLine(HTML);
-            Console.WriteLine(DELIM_LN);
-
+            if (LogDebugEvents)
+            {
+                Console.WriteLine("_wc_Navigated({0})", e.Url);
+                Console.WriteLine(HTML);
+                Console.WriteLine(DELIM_LN);
+            }
+            if (WC_Navigated != null)
+                WC_Navigated(sender, e);
         }
 
 

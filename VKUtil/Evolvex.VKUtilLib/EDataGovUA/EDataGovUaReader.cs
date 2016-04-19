@@ -13,7 +13,7 @@ namespace Evolvex.VKUtilLib.EDataGovUA
         public static readonly string START_DISPOSERS_SEARCH_URL = "http://spending.gov.ua/web/guest/disposers";
 
         public string SearchForYeDRPOU { get; set; }
-        
+        private volatile bool _yeDRPOUSearchNavigated = false;
 
         protected override bool ReadWorker()
         {
@@ -48,17 +48,26 @@ namespace Evolvex.VKUtilLib.EDataGovUA
             HtmlElement elemSubmit = spanSubmit.Parent;
             IHTMLButtonElement btnSubmit = (IHTMLButtonElement)(elemSubmit.DomElement);
             base._navigateCompleted = false;
+            _yeDRPOUSearchNavigated = false;
+            base.WC_Navigated += new WebBrowserNavigatedEventHandler(YeDRPOUSearch_WC_Navigated);
             if (btnSubmit != null)
                 btnSubmit.form.submit();
             Console.WriteLine("Before Ready - {0}", DateTime.Now);
             bool bReady = WaitUntilBrowserReady();
             Console.WriteLine("After Ready - {0}", DateTime.Now);
-            //while (!base._navigateCompleted)
-            //{
-            //    Thread.Sleep(100);
-            //}
+            while (!_yeDRPOUSearchNavigated)
+            {
+                Application.DoEvents();
+                Thread.Sleep(100);
+            }
             Console.WriteLine("Thread.Sleep(...) - {0}", DateTime.Now);
+            base.WC_Navigated -= YeDRPOUSearch_WC_Navigated;
             return WaitUntilBrowserReady();
+        }
+
+        void YeDRPOUSearch_WC_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+        {
+            _yeDRPOUSearchNavigated = true;
         }
 
         
