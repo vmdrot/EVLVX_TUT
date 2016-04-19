@@ -15,7 +15,7 @@ namespace Evolvex.VKUtilEtc.Tests
         [STAThread]
         public void GetToSearchTest() 
         {
-            using (EDataGovUaReader reader = new EDataGovUaReader())
+            using (EDataGovUaReader reader = new EDataGovUaReader() { LogDebugEvents = true})
             {
                 reader.SearchForYeDRPOU = "00032112";
                 if (reader.Read(EDataGovUaReader.START_DISPOSERS_SEARCH_URL))
@@ -27,6 +27,7 @@ namespace Evolvex.VKUtilEtc.Tests
                     Console.WriteLine("reader.Read() failed");
                 Console.WriteLine(reader.HTML);
                 Console.WriteLine("--------------------------------------------------------");
+                return;
                 Console.WriteLine("Before Form show");
                 Form1 frm = new Form1();
                 reader.ShowBrowserIn(frm.IEContainer);
