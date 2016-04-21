@@ -14,6 +14,7 @@ namespace Evolvex.VKUtilLib.EDataGovUA
 
         public string SearchForYeDRPOU { get; set; }
         private volatile bool _yeDRPOUSearchNavigated = false;
+        private volatile bool _yeDRPOUSearchStatusTextDone = false;
         public EDataGovUaDisposerInfo Result { get; private set; }
         protected override bool ReadWorker()
         {
@@ -50,6 +51,7 @@ namespace Evolvex.VKUtilLib.EDataGovUA
 
         private EDataGovUaDisposerInfo ParseDisposerRow(HtmlElement divDisposerRow)
         {
+            if (LogDebugEvents) Console.WriteLine("ParseDisposerRow::divDisposerRow = '{0}'", divDisposerRow.OuterHtml);
             EDataGovUaDisposerInfo rslt = new EDataGovUaDisposerInfo();
             rslt.IsFound = true;
             rslt.InternalID = long.Parse(ReadDivAttribValue(divDisposerRow, "id"));
@@ -77,20 +79,32 @@ namespace Evolvex.VKUtilLib.EDataGovUA
             IHTMLButtonElement btnSubmit = (IHTMLButtonElement)(elemSubmit.DomElement);
             base._navigateCompleted = false;
             _yeDRPOUSearchNavigated = false;
+            _yeDRPOUSearchStatusTextDone = false;
             base.WC_Navigated += new WebBrowserNavigatedEventHandler(YeDRPOUSearch_WC_Navigated);
+            base.WC_StatusTextChanged += new EventHandler(YeDRPOUSearch_WC_StatusTextChanged);
             if (btnSubmit != null)
                 btnSubmit.form.submit();
             if (LogDebugEvents) Console.WriteLine("Before Ready - {0}", DateTime.Now);
             bool bReady = WaitUntilBrowserReady();
             if (LogDebugEvents) Console.WriteLine("After Ready - {0}", DateTime.Now);
-            while (!_yeDRPOUSearchNavigated)
+            while (!_yeDRPOUSearchNavigated || !_yeDRPOUSearchStatusTextDone)
             {
                 Application.DoEvents();
                 Thread.Sleep(100);
             }
             if (LogDebugEvents) Console.WriteLine("Thread.Sleep(...) - {0}", DateTime.Now);
             base.WC_Navigated -= YeDRPOUSearch_WC_Navigated;
+            base.WC_StatusTextChanged -= YeDRPOUSearch_WC_StatusTextChanged;
             return WaitUntilBrowserReady();
+        }
+
+        void YeDRPOUSearch_WC_StatusTextChanged(object sender, EventArgs e)
+        {
+            if (!_yeDRPOUSearchNavigated)
+                return;
+            if (_wc.StatusText != "Done")
+                return;
+            _yeDRPOUSearchStatusTextDone = true;
         }
 
         void YeDRPOUSearch_WC_Navigated(object sender, WebBrowserNavigatedEventArgs e)
