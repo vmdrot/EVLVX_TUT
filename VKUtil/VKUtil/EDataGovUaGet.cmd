@@ -1,1 +1,1 @@
-bin\Debug\Evolvex.VKUtil.exe EDataGovUaGet 00032112
+bin\Debug\Evolvex.VKUtil.exe EDataGovUaGet D:\home\vmdrot\DEV\_tut\VKUtil\Evolvex.VKUtilLib\EDataGovUA\test_yedrpous.0.txt D:\home\vmdrot\DEV\_tut\VKUtil\Evolvex.VKUtilLib\EDataGovUA\search_res.json

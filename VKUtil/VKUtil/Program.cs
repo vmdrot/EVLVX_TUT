@@ -10,6 +10,8 @@ using System.Globalization;
 using Evolvex.VKUtilLib.ExUA;
 using Evolvex.VKUtilLib.Zaycev;
 using Evolvex.VKUtilLib.EDataGovUA;
+using Newtonsoft.Json;
+using System.Configuration;
 
 namespace Evolvex.VKUtil
 {
@@ -18,7 +20,7 @@ namespace Evolvex.VKUtil
         private delegate void CmdHandler(string[] args);
 
         private static readonly Dictionary<string, CmdHandler> _cmdHandlers;
-
+        private static readonly bool EdataLogDebugEvents;
         static Program()
         {
             _cmdHandlers = new Dictionary<string, CmdHandler>();
@@ -32,16 +34,21 @@ namespace Evolvex.VKUtil
             _cmdHandlers.Add("readexualinks", ReadExUALinks);
             _cmdHandlers.Add("readanddownloadzaycevnet", ReadAndDownloadZaycevNet);
             _cmdHandlers.Add("edatagovuaget", EDataGovUaGet);
-            
-            
-            
+            _cmdHandlers.Add("disposersjsontotabdelim", DisposersJSONToTabDelim);
             #endregion
+             string strEdataLogDebugEvents = ConfigurationManager.AppSettings["edataLogDebugEvents"];
+            if(!string.IsNullOrEmpty(strEdataLogDebugEvents))
+            {
+                if(!bool.TryParse(strEdataLogDebugEvents, out EdataLogDebugEvents))
+                    EdataLogDebugEvents = false;
+            }
+            
         }
 
         [STAThread]
         static void Main(string[] args)
         {
-            Console.Read();
+            //Console.Read();
             string cmdHandlerKey = string.Empty;
             if (args.Length > 0)
                 cmdHandlerKey = args[0].ToLower();
@@ -211,21 +218,64 @@ namespace Evolvex.VKUtil
         [STAThread]
         public static void EDataGovUaGet(string[] args)
         {
-            string yedrpou = args[1];
-            using (EDataGovUaReader reader = new EDataGovUaReader())
+            string yedrpous_input_file = args[1];
+            string saveAsFormat = args[2];
+            DateTime ds = DateTime.Now;
+            string[] aYeDRPOUs = File.ReadAllLines(yedrpous_input_file);
+            List<EDataGovUaDisposerInfo> rslts = new List<EDataGovUaDisposerInfo>();
+            using (EDataGovUaReader reader = new EDataGovUaReader() { LogDebugEvents = EdataLogDebugEvents })
             {
-                reader.SearchForYeDRPOU = yedrpou;
-                if (reader.Read(EDataGovUaReader.START_DISPOSERS_SEARCH_URL))
+
+                foreach (string yedrpou in aYeDRPOUs)
                 {
-                    Console.WriteLine("reader.Read() succeeded");
+                    try
+                    {
+                        reader.SearchForYeDRPOU = yedrpou;
+                        if (reader.Read(EDataGovUaReader.START_DISPOSERS_SEARCH_URL))
+                        {
+                            Console.WriteLine("reader.Read({0}) succeeded", yedrpou);
+                        }
+                        else
+                            Console.WriteLine("reader.Read({0}) failed", yedrpou);
+                        //Console.WriteLine(reader.HTML);
+                        //Console.WriteLine("--------------------------------------------------------");
+
+                        Console.WriteLine("reader.Result= {0}", JsonConvert.SerializeObject(reader.Result, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+                        rslts.Add(reader.Result);
+                    }
+                    catch (Exception exc)
+                    {
+                        Console.WriteLine("Reading '{0}': exception: {1}", yedrpou, exc);
+                    }
                 }
-                else
-                    Console.WriteLine("reader.Read() failed");
-                Console.WriteLine(reader.HTML);
+                String saveAsFileNameFmt = Path.GetFileNameWithoutExtension(saveAsFormat);
+                String saveAsFinalFileName = string.Format("{0}{1:yyyyMMdd_HHmm}{2}", saveAsFileNameFmt, DateTime.Now, Path.GetExtension(saveAsFormat));
+                String saveAsFinalPath = Path.Combine(Path.GetDirectoryName(saveAsFormat), saveAsFinalFileName);
+                File.WriteAllText(saveAsFinalPath, JsonConvert.SerializeObject(rslts, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }), Encoding.Unicode);
+                DateTime df = DateTime.Now;
+                Console.WriteLine("Started: {0}", ds);
+                Console.WriteLine("Finished: {0}", df);
+                Console.WriteLine("Completed in: {0}", (TimeSpan)(df - ds));
+                Console.WriteLine("Saved to: {0}", saveAsFinalPath);
             }
 
-            //
         }
+
+        private static void DisposersJSONToTabDelim(string[] args)
+        {
+            string inJson = args[1];
+            List<EDataGovUaDisposerInfo> lst = JsonConvert.DeserializeObject<List<EDataGovUaDisposerInfo>>(File.ReadAllText(inJson));
+            using (StreamWriter sw = new StreamWriter(Path.Combine( Path.GetDirectoryName(inJson), String.Format("{0}{1}", Path.GetFileNameWithoutExtension(inJson), ".tab")),false, Encoding.Unicode))
+            {
+                foreach (EDataGovUaDisposerInfo di in lst)
+                {
+                    if (!di.IsFound)
+                        continue;
+                    sw.WriteLine("{0}\t{1}\t{2}\t{3}", di.YeDRPOU, di.InternalID.ToString(), di.CabinetStatus, di.DisposerName);
+                }
+            }
+        }
+
 
     }
 }

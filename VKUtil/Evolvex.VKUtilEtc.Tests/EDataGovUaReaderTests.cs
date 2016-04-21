@@ -59,5 +59,43 @@ namespace Evolvex.VKUtilEtc.Tests
                 Console.WriteLine("--------------------------------------------------------");
             }
         }
+
+        [Test]
+        public void DisposersJSONToTabDelim()
+        {
+            List<EDataGovUaDisposerInfo> lst = JsonConvert.DeserializeObject<List<EDataGovUaDisposerInfo>>(File.ReadAllText(@"D:\home\vmdrot\DEV\_tut\VKUtil\Evolvex.VKUtilLib\EDataGovUA\search_res.json"));
+            using (StreamWriter sw = new StreamWriter(@"D:\home\vmdrot\DEV\_tut\VKUtil\Evolvex.VKUtilLib\EDataGovUA\search_res.tab"))
+            {
+                foreach(EDataGovUaDisposerInfo di in lst)
+                {
+                    if(di.IsFound)
+                        continue;
+                    sw.WriteLine("{0}\t{1}\t{2}\t{3}", di.YeDRPOU, di.InternalID, di.CabinetStatus,  di.DisposerName);
+                }
+            }
+        }
+
+        [Test]
+        public void DisposersJSONToTabDelim2()
+        {
+            List<EDataGovUaDisposerInfo> lst = JsonConvert.DeserializeObject<List<EDataGovUaDisposerInfo>>(File.ReadAllText(@"D:\home\vmdrot\DEV\_tut\VKUtil\Evolvex.VKUtilLib\EDataGovUA\search_res20160420_2016.json"));
+            using (StreamWriter sw = new StreamWriter(@"D:\home\vmdrot\DEV\_tut\VKUtil\Evolvex.VKUtilLib\EDataGovUA\search_res20160420_2016.tab"))
+            {
+                foreach(EDataGovUaDisposerInfo di in lst)
+                {
+                    if(di.IsFound)
+                        continue;
+                    sw.WriteLine("{0}\t{1}\t{2}\t{3}", di.YeDRPOU, di.InternalID, di.CabinetStatus,  di.DisposerName);
+                }
+            }
+        }
+
+
+        [Test]
+        public void PathMisc()
+        {
+            string path = @"D:\home\vmdrot\DEV\_tut\VKUtil\Evolvex.VKUtilLib\EDataGovUA\search_res.json";
+            Console.WriteLine(Path.GetExtension(path));
+        }
     }
 }
