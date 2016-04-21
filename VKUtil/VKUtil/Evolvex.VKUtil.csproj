@@ -89,6 +89,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Evolvex.VKUtil.Utility\Evolvex.VKUtil.Utility.csproj">
+      <Project>{43B3BA35-2F79-4075-9042-DE5A36A698A5}</Project>
+      <Name>Evolvex.VKUtil.Utility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Evolvex.VKUtilLib\Evolvex.VKUtilLib.csproj">
       <Project>{493307F6-E8B4-4BB4-B03F-DAD0C1F74943}</Project>
       <Name>Evolvex.VKUtilLib</Name>
