@@ -6,6 +6,7 @@ using NUnit.Framework;
 using Evolvex.VKUtilLib.EDataGovUA;
 using Newtonsoft.Json;
 using System.IO;
+using Evolvex.VKUtil.Utility;
 
 namespace Evolvex.VKUtilEtc.Tests
 {
@@ -96,6 +97,18 @@ namespace Evolvex.VKUtilEtc.Tests
         {
             string path = @"D:\home\vmdrot\DEV\_tut\VKUtil\Evolvex.VKUtilLib\EDataGovUA\search_res.json";
             Console.WriteLine(Path.GetExtension(path));
+        }
+
+        [Test]
+        public void ConvertJson2XML_SoEsCabinets()
+        {
+            ConvertJson2XMLWorker<EDataGovUaDisposerInfo>(@"D:\home\vmdrot\Testing\OpenData\Output\DSAPIStuff\spending.gov.ua\out\SoEs_edata_status_20160421_1908.json", @"D:\home\vmdrot\Testing\OpenData\Output\DSAPIStuff\Insights\Aggregation");
+        }
+
+        private void ConvertJson2XMLWorker<T>(string jsonPath, string xmlSave2Dir)
+        {
+            List<T> list = JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(jsonPath));
+            Tools.WriteXML<List<T>>(list, Path.Combine(xmlSave2Dir, string.Format("{0}.xml", Path.GetFileNameWithoutExtension(jsonPath))));
         }
     }
 }

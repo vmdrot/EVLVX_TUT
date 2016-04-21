@@ -12,6 +12,7 @@ using Evolvex.VKUtilLib.Zaycev;
 using Evolvex.VKUtilLib.EDataGovUA;
 using Newtonsoft.Json;
 using System.Configuration;
+using Evolvex.VKUtil.Utility;
 
 namespace Evolvex.VKUtil
 {
@@ -35,6 +36,7 @@ namespace Evolvex.VKUtil
             _cmdHandlers.Add("readanddownloadzaycevnet", ReadAndDownloadZaycevNet);
             _cmdHandlers.Add("edatagovuaget", EDataGovUaGet);
             _cmdHandlers.Add("disposersjsontotabdelim", DisposersJSONToTabDelim);
+            _cmdHandlers.Add("convertjson2xml", ConvertJson2XML);
             #endregion
              string strEdataLogDebugEvents = ConfigurationManager.AppSettings["edataLogDebugEvents"];
             if(!string.IsNullOrEmpty(strEdataLogDebugEvents))
@@ -275,6 +277,20 @@ namespace Evolvex.VKUtil
                 }
             }
         }
+
+        private static void ConvertJson2XML(string[] args)
+        {
+            string jsonIn = args[1];
+            string xmlSave2Dir = args[2];
+            ConvertJson2XMLWorker<EDataGovUaDisposerInfo>(jsonIn, xmlSave2Dir);
+        }
+
+        private static void ConvertJson2XMLWorker<T>(string jsonPath, string xmlSave2Dir)
+        {
+            List<T> list = JsonConvert.DeserializeObject<List<T>>(File.ReadAllText(jsonPath));
+            Tools.WriteXML<List<T>>(list, Path.Combine(xmlSave2Dir, string.Format("{0}.xml", Path.GetFileNameWithoutExtension(jsonPath))));
+        }
+
 
 
     }
