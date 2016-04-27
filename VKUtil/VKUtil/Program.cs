@@ -220,10 +220,17 @@ namespace Evolvex.VKUtil
         [STAThread]
         public static void EDataGovUaGet(string[] args)
         {
+            LogCmdArgs("EDataGovUaGet", args);
             string yedrpous_input_file = args[1];
             string saveAsFormat = args[2];
+            string startIdx = args.Length >= 4 ? args[3] : string.Empty;
+            string procLen = args.Length >= 5 ? args[4] : string.Empty;
+
             DateTime ds = DateTime.Now;
-            string[] aYeDRPOUs = File.ReadAllLines(yedrpous_input_file);
+            List<string> aYeDRPOUs = ReadListOfYeDRPOUs(yedrpous_input_file, startIdx, procLen);
+            Console.WriteLine("Processing {0} YeDRPOU's...", aYeDRPOUs.Count);
+            if(aYeDRPOUs.Count > 0)
+                Console.WriteLine("YeDRPOU's from '{0}' to '{1}'...", aYeDRPOUs[0], aYeDRPOUs[aYeDRPOUs.Count-1]);
             List<EDataGovUaDisposerInfo> rslts = new List<EDataGovUaDisposerInfo>();
             using (EDataGovUaReader reader = new EDataGovUaReader() { LogDebugEvents = EdataLogDebugEvents })
             {
@@ -251,7 +258,7 @@ namespace Evolvex.VKUtil
                     }
                 }
                 String saveAsFileNameFmt = Path.GetFileNameWithoutExtension(saveAsFormat);
-                String saveAsFinalFileName = string.Format("{0}{1:yyyyMMdd_HHmm}{2}", saveAsFileNameFmt, DateTime.Now, Path.GetExtension(saveAsFormat));
+                String saveAsFinalFileName = string.Format("{0}{1:yyyyMMdd_HHmmss}{2}", saveAsFileNameFmt, DateTime.Now, Path.GetExtension(saveAsFormat));
                 String saveAsFinalPath = Path.Combine(Path.GetDirectoryName(saveAsFormat), saveAsFinalFileName);
                 File.WriteAllText(saveAsFinalPath, JsonConvert.SerializeObject(rslts, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }), Encoding.Unicode);
                 DateTime df = DateTime.Now;
@@ -263,8 +270,32 @@ namespace Evolvex.VKUtil
 
         }
 
+        private static List<string> ReadListOfYeDRPOUs(string yedrpous_input_file, string startIdxStr, string procLenStr)
+        {
+            List<string> rslt = new List<string>();
+            string[] allLines = File.ReadAllLines(yedrpous_input_file);
+            if (string.IsNullOrEmpty(startIdxStr) && string.IsNullOrEmpty(procLenStr))
+                rslt.AddRange(allLines);
+            int iStart = 0;
+            int iUntil = allLines.Length;
+            int? startIdx = null; int? procLen = null;
+            { int tmp; if(int.TryParse(startIdxStr, out tmp)) startIdx = (int?)tmp; }
+            { int tmp; if (int.TryParse(procLenStr, out tmp)) procLen = (int?)tmp; }
+
+            if (startIdx != null)
+                iStart = (int)startIdx;
+            if (procLen != null)
+                iUntil = iStart + (int)procLen;
+            if (iUntil > allLines.Length)
+                iUntil = allLines.Length;
+            for (int i = iStart; i < iUntil; i++)
+                rslt.Add(allLines[i]);
+            return rslt;
+        }
+
         private static void DisposersJSONToTabDelim(string[] args)
         {
+            //LogCmdArgs("DisposersJSONToTabDelim", args);
             string inJson = args[1];
             List<EDataGovUaDisposerInfo> lst = JsonConvert.DeserializeObject<List<EDataGovUaDisposerInfo>>(File.ReadAllText(inJson));
             using (StreamWriter sw = new StreamWriter(Path.Combine( Path.GetDirectoryName(inJson), String.Format("{0}{1}", Path.GetFileNameWithoutExtension(inJson), ".tab")),false, Encoding.Unicode))
@@ -280,6 +311,7 @@ namespace Evolvex.VKUtil
 
         private static void ConvertJson2XML(string[] args)
         {
+            LogCmdArgs("ConvertJson2XML", args);
             string jsonIn = args[1];
             string xmlSave2Dir = args[2];
             ConvertJson2XMLWorker<EDataGovUaDisposerInfo>(jsonIn, xmlSave2Dir);
@@ -292,6 +324,18 @@ namespace Evolvex.VKUtil
         }
 
 
+        private static void LogCmdArgs(string methodName, string[] args)
+        {
+            StringBuilder sbArgs = new StringBuilder();
+            sbArgs.AppendFormat("routed to method {0}(", methodName);
+            if (args != null)
+            {
+                for (int i = 0; i < args.Length; i++)
+                    sbArgs.AppendLine(string.Format("[{0}]: '{1}'", i, args[i]));
+            }
+            sbArgs.AppendLine(")");
+            Console.WriteLine(sbArgs.ToString());
+        }
 
     }
 }
