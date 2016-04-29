@@ -318,6 +318,20 @@ namespace Evolvex.VKUtilLib.Zaycev
             }
         }
 
+        private static new string ReadDivAttribValue(HtmlElement div, string attribName)
+        {
+            string rslt = div.GetAttribute(attribName);
+            if (string.IsNullOrEmpty(rslt))
+            {
+                mshtml.IHTMLElement4 divObj4 = (mshtml.IHTMLElement4)div.DomElement;
+                IHTMLDOMAttribute attr = divObj4.getAttributeNode(attribName);
+                if (attr != null)
+                {
+                    rslt = attr.nodeValue;
+                }
+            }
+            return rslt;
+        }
         #region inner type(s)
         public class DataUrl
         {
