@@ -40,6 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleLog.cs" />
+    <Compile Include="ILog.cs" />
+    <Compile Include="IProgressTracker.cs" />
+    <Compile Include="ProgressTrackerBase.cs" />
     <Compile Include="Tools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
