@@ -232,9 +232,11 @@ namespace Evolvex.VKUtil
             if(aYeDRPOUs.Count > 0)
                 Console.WriteLine("YeDRPOU's from '{0}' to '{1}'...", aYeDRPOUs[0], aYeDRPOUs[aYeDRPOUs.Count-1]);
             List<EDataGovUaDisposerInfo> rslts = new List<EDataGovUaDisposerInfo>();
+            IProgressTracker progressTracker = new ProgressTrackerBase(); //todo
             using (EDataGovUaReader reader = new EDataGovUaReader() { LogDebugEvents = EdataLogDebugEvents })
             {
 
+                progressTracker.Start(Guid.NewGuid().ToString(), aYeDRPOUs.Count, ConsoleLog.Instance, ds);
                 foreach (string yedrpou in aYeDRPOUs)
                 {
                     try
@@ -251,6 +253,7 @@ namespace Evolvex.VKUtil
 
                         Console.WriteLine("reader.Result= {0}", JsonConvert.SerializeObject(reader.Result, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
                         rslts.Add(reader.Result);
+                        progressTracker.ItemComplete();
                     }
                     catch (Exception exc)
                     {
@@ -335,6 +338,10 @@ namespace Evolvex.VKUtil
             }
             sbArgs.AppendLine(")");
             Console.WriteLine(sbArgs.ToString());
+            System.Diagnostics.Process currProcess = System.Diagnostics.Process.GetCurrentProcess();
+            Console.WriteLine(@"Process info : {{
+ProcessId: {0}, MainWindowTitle: '{1}', ProcessName: '{2}', StartInfo.FileName: '{3}', StartInfo.Arguments: '{4}', StartTime: {5}, StartInfo.RedirectStandardOutput: {6}, StartInfo.RedirectStandardError: {7} }}", currProcess.Id, currProcess.MainWindowTitle, currProcess.ProcessName, currProcess.StartInfo.FileName, currProcess.StartInfo.Arguments, currProcess.StartTime, currProcess.StartInfo.RedirectStandardOutput, currProcess.StartInfo.RedirectStandardError);
+
         }
 
     }
