@@ -59,9 +59,16 @@
     <Compile Include="Misc\PostTitleReader2.cs" />
     <Compile Include="Misc\VKWallTranslationFormatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rexton\RextonReader.cs" />
+    <Compile Include="Rexton\Spares\CcyAmt.cs" />
+    <Compile Include="Rexton\Spares\RextonFBInfo.cs" />
+    <Compile Include="Rexton\Spares\RextonObjectPx.cs" />
+    <Compile Include="Rexton\Spares\RextonRecordInfo.cs" />
     <Compile Include="Spares\Data\VKPostInfo.cs" />
     <Compile Include="Spares\Data\VKWallPostTranslationInfo.cs" />
     <Compile Include="WebBrowserReaderBase.cs" />
+    <Compile Include="YeDR\UsrMinjustGovUaReader.cs" />
+    <Compile Include="YeDR\UsrMinjustSearchResult.cs" />
     <Compile Include="Zaycev\ZaycevNetReader.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +83,19 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="YeDR\Research\Captcha_Heart.htm" />
+    <Content Include="YeDR\Research\Captcha_Iframe_contents.htm" />
+    <Content Include="YeDR\Research\Captcha_Page.htm" />
+    <Content Include="YeDR\Research\Captcha_Page_after_checking.htm" />
+    <Content Include="YeDR\Research\Captcha_widget_complete_after_checking.htm" />
+    <Content Include="YeDR\Research\Captcha_widget_complete_before_checking.htm" />
+    <Content Include="YeDR\Research\DetailedSearchResultPage.htm" />
+    <Content Include="YeDR\Research\MoreDetailsSearchResForm.htm" />
+    <Content Include="YeDR\Research\Proceed2Search_Btn_fragments.htm" />
+    <Content Include="YeDR\Research\SearchResPage.htm" />
+    <Content Include="YeDR\Research\SearchResTable.htm" />
+    <Content Include="YeDR\Research\SearchStartPage.htm" />
+    <Content Include="YeDR\Research\SearchStart_byYeDRPOU_Page.htm" />
     <Content Include="Zaycev\Samples\DoloresORiordan.htm" />
     <Content Include="Zaycev\Samples\FoundDivs.txt" />
     <Content Include="Zaycev\Samples\JohnnyCash.htm" />
@@ -83,6 +103,7 @@
     <Content Include="Zaycev\Samples\zaycevnet_20160109_availabletrack.txt" />
     <Content Include="Zaycev\Samples\zaycevnet_20160109_notavailabletrack.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

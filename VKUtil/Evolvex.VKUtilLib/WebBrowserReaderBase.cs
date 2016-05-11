@@ -226,6 +226,25 @@ namespace Evolvex.VKUtilLib
             return null;
         }
 
+        protected HtmlElement FindElementByTagAttribValues(string tagName, string[] attrNames, string[] attrVals)
+        {
+            HtmlElementCollection elems = this._wc.Document.GetElementsByTagName(tagName);
+            
+            foreach (HtmlElement elem in elems)
+            {
+                int matchedAttrValsNum = 0;
+                for(int ai = 0;ai < attrNames.Length; ai++)
+                {
+                    string currAttrVal = ReadDivAttribValue(elem, attrNames[ai]);
+                    if (currAttrVal == attrVals[ai])
+                        matchedAttrValsNum++;
+                }
+                if(matchedAttrValsNum == attrNames.Length)
+                    return elem;
+            }
+            return null;
+        }
+
         protected HtmlElement FindElementByTagInnerText(string tagName, string innerTxt)
         {
             HtmlElementCollection elems = this._wc.Document.GetElementsByTagName(tagName);
