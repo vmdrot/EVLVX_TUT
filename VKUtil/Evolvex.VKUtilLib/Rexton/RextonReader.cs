@@ -6,6 +6,7 @@ using Evolvex.VKUtilLib.Rexton.Spares;
 using Newtonsoft.Json;
 using System.IO;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Evolvex.VKUtilLib.Rexton
 {
@@ -18,7 +19,9 @@ namespace Evolvex.VKUtilLib.Rexton
         protected override bool ReadWorker()
         {
             List<string> pgsUrls = DetectPages();
+            Console.WriteLine("Detected {0} page urls\r\n{1}", pgsUrls.Count, JsonConvert.SerializeObject(pgsUrls, JSON_SETTINGS));
             List<string> objUrls = PrepareObjLinksList(pgsUrls);
+            Console.WriteLine("Detected {0} object urls\r\n{1}", objUrls.Count, JsonConvert.SerializeObject(objUrls, JSON_SETTINGS));
             //List<RextonRecordInfo> existingObjs = null;
             //if(File.Exists(TargetPath)) 
             //    existingObjs = JsonConvert.DeserializeObject<List<RextonRecordInfo>>(File.ReadAllText(TargetPath), JSON_SETTINGS);
@@ -34,7 +37,7 @@ namespace Evolvex.VKUtilLib.Rexton
             List<RextonRecordInfo> rslt = new List<RextonRecordInfo>();
             foreach (string objUrl in objUrls)
             {
-                _wc.Navigate(objUrl);
+                base.Navigate(objUrl);
                 //todo - wait events, etc.
                 RextonRecordInfo curr = ReadRecord();
                 rslt.Add(curr);
@@ -48,27 +51,94 @@ namespace Evolvex.VKUtilLib.Rexton
             rslt.RextonID = GetID();
             rslt.NYM = GetNYM();
             rslt.PhoneNr = GetPhoneNr();
-            //rslt.Px = ReadPx(); //todo
+            rslt.A1 = GetA1();
+            rslt.TTags = GetTTags();
+            rslt.Px = ReadPx(); //todo
             //todo - the rest of fields
             return rslt;
         }
 
+        private HtmlElement GetCurrObjectDiv()
+        {
+            return FindElementByTagAttribValue("div", "class", "product-view");
+        }
+        private string[] GetTTags()
+        {
+            return null; //todo
+        }
+
+        private int GetA1()
+        {
+            HtmlElement lblSpan = FindElementByTagInnerText(GetCurrObjectDiv(), "span", "Возраст :");
+            if (lblSpan == null || lblSpan.Parent == null || lblSpan.Parent.TagName.ToLower() != "div")
+                return 0;
+            string a1String = lblSpan.Parent.InnerHtml.Replace(lblSpan.OuterHtml, "");
+            int tmp;
+            if (int.TryParse(a1String, out tmp))
+                return tmp;
+            return 0; 
+        }
+
         private RextonObjectPx ReadPx()
         {
-            throw new NotImplementedException();
+
+            HtmlElement pxTitleDiv = FindElementByTagInnerText(GetCurrObjectDiv(), "div", "Стоимость услуг");
+            if (pxTitleDiv == null)
+                return null;
+            HtmlElement pxContDiv = pxTitleDiv.NextSibling;
+            if (pxContDiv.TagName.ToLower() != "div")
+                return null;
+            string pxContDivCls = ReadDivAttribValue(pxContDiv, "class");
+            if (string.IsNullOrEmpty(pxContDivCls) || pxContDivCls.ToLower().Trim() != "line")
+                return null;
+            
+            HtmlElementCollection spans = pxContDiv.GetElementsByTagName("span");
+            if (spans == null || spans.Count == 0)
+                return null;
+
+            RextonObjectPx rslt = new RextonObjectPx();
+            string lastNr = null;
+            string lastCcy = null;
+            foreach (HtmlElement span in spans)
+            {
+                string currCls = ReadDivAttribValue(span, "class");
+                string currTxt = span.InnerText;
+                if (currCls.ToLower().Trim() == "label")
+                    lastNr = currTxt;
+                else if (currCls.ToLower().Trim() == "p5") ;
+                {
+                    lastCcy = currTxt;
+                    if(lastNr.IndexOf("1 ") != -1)
+                    {
+                        rslt.Single = new CcyAmt(lastCcy, lastNr);
+                    }
+                    else if (lastNr.IndexOf("2 ") != -1)
+                    {
+                        rslt.Pair = new CcyAmt(lastCcy, lastNr);
+                    }
+                    else
+                    {
+                        rslt.Wholesale = new CcyAmt(lastCcy, lastNr);
+                    }
+                }
+
+
+            }
+            return rslt;
+
         }
 
         private string GetPhoneNr()
         {
-            HtmlElement el = base.FindElementByTagAttribValue("div", "class", "ico-phone");
+            HtmlElement el = base.FindElementByTagAttribValue(GetCurrObjectDiv(), "div", "class", "ico-phone", false);
             if (el == null)
                 return string.Empty;
-            return el.InnerText.Trim();
+            return el.InnerText.Trim().Replace("(", "").Replace(")","").Replace(" ", "").Replace("-", "").Replace("+", "");
         }
 
         private string GetNYM()
         {
-            HtmlElement el = base.FindElementByTagAttribValue("span", "id", "model_name");
+            HtmlElement el = base.FindElementByTagAttribValue(GetCurrObjectDiv(), "span", "id", "model_name", false);
             if (el == null)
                 return string.Empty;
             return el.InnerText.Trim();
@@ -76,7 +146,7 @@ namespace Evolvex.VKUtilLib.Rexton
 
         private string GetID()
         {
-            HtmlElement el = base.FindElementByTagAttribValue("span", "id", "model_id");
+            HtmlElement el = base.FindElementByTagAttribValue(GetCurrObjectDiv(), "span", "id", "model_id", false);
             if (el == null)
                 return string.Empty;
             return el.InnerText.Trim();
@@ -87,13 +157,19 @@ namespace Evolvex.VKUtilLib.Rexton
             List<string> rslt = new List<string>();
             foreach (string url in pgsUrls)
             {
-                _wc.Navigate(url);
+                base.Navigate(url);
+                //Thread.Sleep(3000); //workaround
+                Console.WriteLine("PrepareObjLinksList: Navigated page {0}", url);
                 //todo - catch / wait events;
                 List<string> curr = ReadObjLinksFromPage();
+                Console.WriteLine("PrepareObjLinksList: ReadObjLinksFromPage() = \r\n {0}", JsonConvert.SerializeObject(curr));
                 foreach(string objUrl in curr)
                 {
                     if (rslt.Contains(objUrl))
+                    {
+                        Console.WriteLine("An object url already exists - {0}", objUrl);
                         continue;
+                    }
                     rslt.Add(objUrl);
                 }
             }
@@ -107,7 +183,7 @@ namespace Evolvex.VKUtilLib.Rexton
             HtmlElementCollection allAnchors = _wc.Document.GetElementsByTagName("a");
             foreach (HtmlElement anc in allAnchors)
             {
-                string currHref = ReadDivAttribValue(anc, "href");
+                string currHref = anc.GetAttribute("href");
                 int markerPos = currHref.IndexOf(marker);
                 if (markerPos == -1)
                     continue;

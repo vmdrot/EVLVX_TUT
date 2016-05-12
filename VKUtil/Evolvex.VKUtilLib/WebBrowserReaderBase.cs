@@ -220,39 +220,60 @@ namespace Evolvex.VKUtilLib
         }
         protected HtmlElement FindElementByTagAttribValue(string tagName, string attrName, string attrVal, bool isCaseSensitive)
         {
-            HtmlElementCollection elems = this._wc.Document.GetElementsByTagName(tagName);
+            return FindElementByTagAttribValue(this._wc.Document.Body, tagName, attrName, attrVal, isCaseSensitive);
+        }
+        protected HtmlElement FindElementByTagAttribValue(HtmlElement parent, string tagName, string attrName, string attrVal, bool isCaseSensitive)
+        {
+            HtmlElementCollection elems = parent.GetElementsByTagName(tagName);
             foreach (HtmlElement elem in elems)
             {
-                string currAttrVal = ReadDivAttribValue(elem, attrName);
-                int cmpRes = String.Compare(currAttrVal, attrVal, !isCaseSensitive);
-                if (cmpRes == 0)
-                    return elem;
+                try
+                {
+                    string currAttrVal = ReadDivAttribValue(elem, attrName);
+                    int cmpRes = String.Compare(currAttrVal, attrVal, !isCaseSensitive);
+                    if (cmpRes == 0)
+                        return elem;
+                }
+                catch { continue; }
             }
             return null;
         }
-
         protected HtmlElement FindElementByTagAttribValues(string tagName, string[] attrNames, string[] attrVals)
         {
-            HtmlElementCollection elems = this._wc.Document.GetElementsByTagName(tagName);
+            return FindElementByTagAttribValues(this._wc.Document.Body, tagName, attrNames, attrVals);
+        }
+
+        protected HtmlElement FindElementByTagAttribValues(HtmlElement parent, string tagName, string[] attrNames, string[] attrVals)
+        {
+            HtmlElementCollection elems = parent.GetElementsByTagName(tagName);
             
             foreach (HtmlElement elem in elems)
             {
-                int matchedAttrValsNum = 0;
-                for(int ai = 0;ai < attrNames.Length; ai++)
+                try
                 {
-                    string currAttrVal = ReadDivAttribValue(elem, attrNames[ai]);
-                    if (currAttrVal == attrVals[ai])
-                        matchedAttrValsNum++;
+                    int matchedAttrValsNum = 0;
+                    for (int ai = 0; ai < attrNames.Length; ai++)
+                    {
+                        string currAttrVal = ReadDivAttribValue(elem, attrNames[ai]);
+                        if (currAttrVal == attrVals[ai])
+                            matchedAttrValsNum++;
+                    }
+                    if (matchedAttrValsNum == attrNames.Length)
+                        return elem;
                 }
-                if(matchedAttrValsNum == attrNames.Length)
-                    return elem;
+                catch { continue; }
             }
             return null;
         }
 
         protected HtmlElement FindElementByTagInnerText(string tagName, string innerTxt)
         {
-            HtmlElementCollection elems = this._wc.Document.GetElementsByTagName(tagName);
+            return FindElementByTagInnerText(this._wc.Document.Body, tagName, innerTxt);
+        }
+
+        protected HtmlElement FindElementByTagInnerText(HtmlElement parent, string tagName, string innerTxt)
+        {
+            HtmlElementCollection elems = parent.GetElementsByTagName(tagName);
             foreach (HtmlElement elem in elems)
             {
                 string currTxt = elem.InnerText;

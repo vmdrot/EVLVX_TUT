@@ -19,5 +19,20 @@ namespace Evolvex.VKUtilLib.Rexton.Spares
         public string[] TJNSTR { get; set; }
         public int[] RelIDs { get; set; }
         public RextonFBInfo[] FB { get; set; }
+
+        public static List<RextonRecordInfo> Merge(List<RextonRecordInfo> newRecs, List<RextonRecordInfo> oldRecs)
+        {
+            List<RextonRecordInfo> rslt = new List<RextonRecordInfo>();
+            foreach(RextonRecordInfo ri in oldRecs)
+            {
+                RextonRecordInfo newRec = null;
+                if(newRecs.Exists( r => r.RextonID == ri.RextonID))
+                    newRec = newRecs.Find(r => r.RextonID == ri.RextonID);
+                if (newRec == null)
+                    rslt.Add(ri);
+            }
+            rslt.AddRange(newRecs);
+            return rslt;
+        }
     }
 }
