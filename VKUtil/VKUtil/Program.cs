@@ -13,6 +13,8 @@ using Evolvex.VKUtilLib.EDataGovUA;
 using Newtonsoft.Json;
 using System.Configuration;
 using Evolvex.VKUtil.Utility;
+using Evolvex.VKUtilLib.Rexton.Spares;
+using Evolvex.VKUtilLib.Rexton;
 
 namespace Evolvex.VKUtil
 {
@@ -37,6 +39,8 @@ namespace Evolvex.VKUtil
             _cmdHandlers.Add("edatagovuaget", EDataGovUaGet);
             _cmdHandlers.Add("disposersjsontotabdelim", DisposersJSONToTabDelim);
             _cmdHandlers.Add("convertjson2xml", ConvertJson2XML);
+            _cmdHandlers.Add("readrexton", ReadRexton);
+            _cmdHandlers.Add("convertrextontoxml", ConvertRextonToXML);
             #endregion
              string strEdataLogDebugEvents = ConfigurationManager.AppSettings["edataLogDebugEvents"];
             if(!string.IsNullOrEmpty(strEdataLogDebugEvents))
@@ -273,6 +277,50 @@ namespace Evolvex.VKUtil
 
         }
 
+        [STAThread]
+        public static void ReadRexton(string[] args)
+        {
+            LogCmdArgs("ReadRexton", args);
+            string startUrl = args[1];
+            string saveAs = args[2];
+
+            DateTime ds = DateTime.Now;
+            List<RextonRecordInfo> rslts = new List<RextonRecordInfo>();
+
+            using (RextonReader reader = new RextonReader() { StartPgUrl = startUrl})
+            {
+
+                try
+                {
+                    if (reader.Read(startUrl))
+                    {
+                        Console.WriteLine("reader.Read({0}) succeeded", startUrl);
+                    }
+                    else
+                        Console.WriteLine("reader.Read({0}) failed", startUrl);
+                    //Console.WriteLine(reader.HTML);
+                    //Console.WriteLine("--------------------------------------------------------");
+
+                    rslts.AddRange(reader.Result);
+                }
+                catch (Exception exc)
+                {
+                    Console.WriteLine("Reading '{0}': exception: {1}", startUrl, exc);
+                }
+                if (File.Exists(saveAs))
+                {
+                    rslts = RextonRecordInfo.Merge(rslts, JsonConvert.DeserializeObject < List<RextonRecordInfo>>(File.ReadAllText(saveAs)));
+                }
+                File.WriteAllText(saveAs, JsonConvert.SerializeObject(rslts, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }), Encoding.Unicode);
+                DateTime df = DateTime.Now;
+                Console.WriteLine("Started: {0}", ds);
+                Console.WriteLine("Finished: {0}", df);
+                Console.WriteLine("Completed in: {0}", (TimeSpan)(df - ds));
+                Console.WriteLine("Saved to: {0}", saveAs);
+            }
+
+        }
+
         private static List<string> ReadListOfYeDRPOUs(string yedrpous_input_file, string startIdxStr, string procLenStr)
         {
             List<string> rslt = new List<string>();
@@ -318,6 +366,14 @@ namespace Evolvex.VKUtil
             string jsonIn = args[1];
             string xmlSave2Dir = args[2];
             ConvertJson2XMLWorker<EDataGovUaDisposerInfo>(jsonIn, xmlSave2Dir);
+        }
+
+
+        private static void ConvertRextonToXML(string[] args)
+        {
+            LogCmdArgs("ConvertRextonToXML", args);
+            string jsonIn = args[1];
+            ConvertJson2XMLWorker<RextonRecordInfo>(jsonIn, Path.GetDirectoryName(jsonIn));
         }
 
         private static void ConvertJson2XMLWorker<T>(string jsonPath, string xmlSave2Dir)
