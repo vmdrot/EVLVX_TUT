@@ -27,7 +27,7 @@ namespace Evolvex.VKUtilLib.EDataGovUA
                     return false;
                 }
                 //<div class="disposer_table_col">статус</div> </div> <div class="disposer_table_row" style="cursor: pointer;" id="10149200" senderName="ПУБЛІЧНЕ АКЦІОНЕРНЕ ТОВАРИСТВО «ДЕРЖАВНИЙ ЕКСПОРТНО-ІМПОРТНИЙ БАНК УКРАЇНИ»" senderCode="00032112">
-                HtmlElement divDisposerRow = FindElementByTagAttribValue("div", "senderCode", SearchForYeDRPOU);
+                HtmlElement divDisposerRow = FindElementByTagAttribValue("div", "senderCode", SearchForYeDRPOU, false);
                 if (divDisposerRow != null)
                 {
                     this.Result = ParseDisposerRow(divDisposerRow);
@@ -54,6 +54,7 @@ namespace Evolvex.VKUtilLib.EDataGovUA
             if (LogDebugEvents) Console.WriteLine("ParseDisposerRow::divDisposerRow = '{0}'", divDisposerRow.OuterHtml);
             EDataGovUaDisposerInfo rslt = new EDataGovUaDisposerInfo();
             rslt.IsFound = true;
+            rslt.CheckedDttm = DateTime.Now;
             rslt.InternalID = long.Parse(ReadDivAttribValue(divDisposerRow, "id"));
             rslt.YeDRPOU = ReadDivAttribValue(divDisposerRow, "sendercode");
             rslt.DisposerName = ReadDivAttribValue(divDisposerRow, "sendername");
