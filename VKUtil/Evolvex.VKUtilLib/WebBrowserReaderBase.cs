@@ -216,11 +216,16 @@ namespace Evolvex.VKUtilLib
 
         protected HtmlElement FindElementByTagAttribValue(string tagName, string attrName, string attrVal)
         {
+            return FindElementByTagAttribValue(tagName, attrName, attrVal, true);
+        }
+        protected HtmlElement FindElementByTagAttribValue(string tagName, string attrName, string attrVal, bool isCaseSensitive)
+        {
             HtmlElementCollection elems = this._wc.Document.GetElementsByTagName(tagName);
             foreach (HtmlElement elem in elems)
             {
                 string currAttrVal = ReadDivAttribValue(elem, attrName);
-                if (currAttrVal == attrVal)
+                int cmpRes = String.Compare(currAttrVal, attrVal, !isCaseSensitive);
+                if (cmpRes == 0)
                     return elem;
             }
             return null;
