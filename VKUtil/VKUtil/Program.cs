@@ -15,6 +15,7 @@ using System.Configuration;
 using Evolvex.VKUtil.Utility;
 using Evolvex.VKUtilLib.Rexton.Spares;
 using Evolvex.VKUtilLib.Rexton;
+using System.Threading;
 
 namespace Evolvex.VKUtil
 {
@@ -42,13 +43,13 @@ namespace Evolvex.VKUtil
             _cmdHandlers.Add("readrexton", ReadRexton);
             _cmdHandlers.Add("convertrextontoxml", ConvertRextonToXML);
             #endregion
-             string strEdataLogDebugEvents = ConfigurationManager.AppSettings["edataLogDebugEvents"];
-            if(!string.IsNullOrEmpty(strEdataLogDebugEvents))
+            string strEdataLogDebugEvents = ConfigurationManager.AppSettings["edataLogDebugEvents"];
+            if (!string.IsNullOrEmpty(strEdataLogDebugEvents))
             {
-                if(!bool.TryParse(strEdataLogDebugEvents, out EdataLogDebugEvents))
+                if (!bool.TryParse(strEdataLogDebugEvents, out EdataLogDebugEvents))
                     EdataLogDebugEvents = false;
             }
-            
+
         }
 
         [STAThread]
@@ -89,11 +90,11 @@ namespace Evolvex.VKUtil
                 foreach (string line in lines)
                 {
                     VKPostInfo pi = reader.Read(line);
-                    if(pi == null)
+                    if (pi == null)
                         Console.WriteLine("{1}\t{0}", line, string.Empty);
                     else
                         Console.WriteLine("{0}\t{1}\t{2}\t{3}", line, pi.Title.Replace('\r', ' ').Replace('\n', ' '), pi.Img, pi.ImgFileName);
-                    
+
                 }
             }
         }
@@ -113,7 +114,7 @@ namespace Evolvex.VKUtil
         {
             string urlsListFile = args[1];
             string saveToDir = args[2];
-            string[] urls = File.ReadAllLines(urlsListFile);            
+            string[] urls = File.ReadAllLines(urlsListFile);
             using (WebClient wc = new WebClient())
             {
                 foreach (string url in urls)
@@ -134,14 +135,14 @@ namespace Evolvex.VKUtil
             string imgsUploaded2Url = args[3];
             string imgsUploadedId = args[4];
             string saveHTMLAs = args[5];
-            string culture = args.Length > 6  ? args[6] : string.Empty;
+            string culture = args.Length > 6 ? args[6] : string.Empty;
 
             #region read input file
             List<VKWallPostTranslationInfo> infos = new List<VKWallPostTranslationInfo>();
             string[] lines = File.ReadAllLines(inputFile);
             foreach (string line in lines)
             {
-                if(string.IsNullOrEmpty(line) || string.IsNullOrEmpty(line.Trim()))
+                if (string.IsNullOrEmpty(line) || string.IsNullOrEmpty(line.Trim()))
                     continue;
                 VKWallPostTranslationInfo info = VKWallPostTranslationInfo.Parse(line);
                 if (info.IsEmpty)
@@ -187,7 +188,7 @@ namespace Evolvex.VKUtil
                     }
                 }
             }
-            
+
             //
         }
 
@@ -206,13 +207,13 @@ namespace Evolvex.VKUtil
                     if (int.TryParse(sleepBtwDownloadsMs, out tmp))
                         sleepMs = tmp;
                 }
-                if(sleepMs != null)
+                if (sleepMs != null)
                     reader.SleepBetweenDownloadsMs = (int)sleepMs;
 
                 if (reader.Read(url))
                 {
                     Console.WriteLine(string.Join("\n", reader.MediaList));
-                    if(sleepMs != null)
+                    if (sleepMs != null)
                         System.Threading.Thread.Sleep((int)sleepMs);
                     reader.DownloadAll(reader.MediaList, save2Dir);
                 }
@@ -222,7 +223,7 @@ namespace Evolvex.VKUtil
         }
 
         [STAThread]
-        public static void EDataGovUaGet(string[] args)
+        public static void EDataGovUaGet_old(string[] args)
         {
             LogCmdArgs("EDataGovUaGet", args);
             string yedrpous_input_file = args[1];
@@ -233,8 +234,8 @@ namespace Evolvex.VKUtil
             DateTime ds = DateTime.Now;
             List<string> aYeDRPOUs = ReadListOfYeDRPOUs(yedrpous_input_file, startIdx, procLen);
             Console.WriteLine("Processing {0} YeDRPOU's...", aYeDRPOUs.Count);
-            if(aYeDRPOUs.Count > 0)
-                Console.WriteLine("YeDRPOU's from '{0}' to '{1}'...", aYeDRPOUs[0], aYeDRPOUs[aYeDRPOUs.Count-1]);
+            if (aYeDRPOUs.Count > 0)
+                Console.WriteLine("YeDRPOU's from '{0}' to '{1}'...", aYeDRPOUs[0], aYeDRPOUs[aYeDRPOUs.Count - 1]);
             List<EDataGovUaDisposerInfo> rslts = new List<EDataGovUaDisposerInfo>();
             IProgressTracker progressTracker = new ProgressTrackerBase(); //todo
             using (EDataGovUaReader reader = new EDataGovUaReader() { LogDebugEvents = EdataLogDebugEvents })
@@ -278,6 +279,98 @@ namespace Evolvex.VKUtil
         }
 
         [STAThread]
+        public static void EDataGovUaGet(string[] args)
+        {
+            LogCmdArgs("EDataGovUaGet", args);
+            string yedrpous_input_file = args[1];
+            string saveAsFormat = args[2];
+            string startIdx = args.Length >= 4 ? args[3] : string.Empty;
+            string procLen = args.Length >= 5 ? args[4] : string.Empty;
+
+            DateTime ds = DateTime.Now;
+            List<string> aYeDRPOUs = ReadListOfYeDRPOUs(yedrpous_input_file, startIdx, procLen);
+            Console.WriteLine("Processing {0} YeDRPOU's...", aYeDRPOUs.Count);
+            if (aYeDRPOUs.Count > 0)
+                Console.WriteLine("YeDRPOU's from '{0}' to '{1}'...", aYeDRPOUs[0], aYeDRPOUs[aYeDRPOUs.Count - 1]);
+            List<EDataGovUaDisposerInfo> rslts = new List<EDataGovUaDisposerInfo>();
+            IProgressTracker progressTracker = new ProgressTrackerBase(); //todo
+
+            progressTracker.Start(Guid.NewGuid().ToString(), aYeDRPOUs.Count, ConsoleLog.Instance, ds);
+            int currbatchIdx = 0;
+            foreach (string yedrpou in aYeDRPOUs)
+            {
+                bool bRepeatCurrentBecauseOfError = false;
+                HttpStatusCode? lastHttpStatus = null;
+                do
+                {
+                    try
+                    {
+                        using (EDataGovUaReader reader = new EDataGovUaReader() { LogDebugEvents = EdataLogDebugEvents })
+                        {
+
+                            reader.SearchForYeDRPOU = yedrpou;
+                            if (reader.Read(EDataGovUaReader.START_DISPOSERS_SEARCH_URL))
+                            {
+                                Console.WriteLine("reader.Read({0}) succeeded", yedrpou);
+                                bRepeatCurrentBecauseOfError = false;
+                            }
+                            else if (reader.LastHttpStatus != null)
+                            {
+                                Console.WriteLine("reader.Read({0}) failed, HTTP error status = {0}", yedrpou, (HttpStatusCode)(int)reader.LastHttpStatus);
+                                lastHttpStatus = (HttpStatusCode)(int)reader.LastHttpStatus;
+                            }
+                            else
+                                Console.WriteLine("reader.Read({0}) failed", yedrpou);
+                            //Console.WriteLine(reader.HTML);
+                            //Console.WriteLine("--------------------------------------------------------");
+                            if (reader.LastHttpStatus == null)
+                            {
+                                Console.WriteLine("reader.Result= {0}", JsonConvert.SerializeObject(reader.Result, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
+                                rslts.Add(reader.Result);
+                                progressTracker.ItemComplete();
+                                bRepeatCurrentBecauseOfError = false;
+                            }
+                            else
+                                bRepeatCurrentBecauseOfError = true;
+                        }
+                    }
+                    catch (Exception exc)
+                    {
+                        Console.WriteLine("Reading '{0}': exception: {1}", yedrpou, exc);
+                        bRepeatCurrentBecauseOfError = true;
+                    }
+
+                    if (bRepeatCurrentBecauseOfError)
+                    {
+                        Console.WriteLine("The request for current YeDRPOU {0} will be repeated because of error, last HTTP status = {1} ({2})", yedrpou, lastHttpStatus, (int?)lastHttpStatus);
+                        System.Threading.Thread.Sleep(EDataGovUaReader.PauseOnHttpErrorMs);
+                    }
+                } while (bRepeatCurrentBecauseOfError);
+                currbatchIdx++;
+                if (EDataGovUaReader.PauseAfterEveryEntryMs != null)
+                    Thread.Sleep((int)EDataGovUaReader.PauseAfterEveryEntryMs);
+                else if (EDataGovUaReader.MakePausesBetweenBatches)
+                {
+                    if (currbatchIdx == EDataGovUaReader.PauseBatchSize)
+                    {
+                        currbatchIdx = 0;
+                        System.Threading.Thread.Sleep(EDataGovUaReader.PauseLengthMs);
+                    }
+                }
+            }
+            String saveAsFileNameFmt = Path.GetFileNameWithoutExtension(saveAsFormat);
+            String saveAsFinalFileName = string.Format("{0}{1:yyyyMMdd_HHmmss}{2}", saveAsFileNameFmt, DateTime.Now, Path.GetExtension(saveAsFormat));
+            String saveAsFinalPath = Path.Combine(Path.GetDirectoryName(saveAsFormat), saveAsFinalFileName);
+            File.WriteAllText(saveAsFinalPath, JsonConvert.SerializeObject(rslts, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }), Encoding.Unicode);
+            DateTime df = DateTime.Now;
+            Console.WriteLine("Started: {0}", ds);
+            Console.WriteLine("Finished: {0}", df);
+            Console.WriteLine("Completed in: {0}", (TimeSpan)(df - ds));
+            Console.WriteLine("Saved to: {0}", saveAsFinalPath);
+
+        }
+
+        [STAThread]
         public static void ReadRexton(string[] args)
         {
             LogCmdArgs("ReadRexton", args);
@@ -287,7 +380,7 @@ namespace Evolvex.VKUtil
             DateTime ds = DateTime.Now;
             List<RextonRecordInfo> rslts = new List<RextonRecordInfo>();
 
-            using (RextonReader reader = new RextonReader() { StartPgUrl = startUrl})
+            using (RextonReader reader = new RextonReader() { StartPgUrl = startUrl })
             {
 
                 try
@@ -309,7 +402,7 @@ namespace Evolvex.VKUtil
                 }
                 if (File.Exists(saveAs))
                 {
-                    rslts = RextonRecordInfo.Merge(rslts, JsonConvert.DeserializeObject < List<RextonRecordInfo>>(File.ReadAllText(saveAs)));
+                    rslts = RextonRecordInfo.Merge(rslts, JsonConvert.DeserializeObject<List<RextonRecordInfo>>(File.ReadAllText(saveAs)));
                 }
                 File.WriteAllText(saveAs, JsonConvert.SerializeObject(rslts, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }), Encoding.Unicode);
                 DateTime df = DateTime.Now;
@@ -330,7 +423,7 @@ namespace Evolvex.VKUtil
             int iStart = 0;
             int iUntil = allLines.Length;
             int? startIdx = null; int? procLen = null;
-            { int tmp; if(int.TryParse(startIdxStr, out tmp)) startIdx = (int?)tmp; }
+            { int tmp; if (int.TryParse(startIdxStr, out tmp)) startIdx = (int?)tmp; }
             { int tmp; if (int.TryParse(procLenStr, out tmp)) procLen = (int?)tmp; }
 
             if (startIdx != null)
@@ -349,7 +442,7 @@ namespace Evolvex.VKUtil
             //LogCmdArgs("DisposersJSONToTabDelim", args);
             string inJson = args[1];
             List<EDataGovUaDisposerInfo> lst = JsonConvert.DeserializeObject<List<EDataGovUaDisposerInfo>>(File.ReadAllText(inJson));
-            using (StreamWriter sw = new StreamWriter(Path.Combine( Path.GetDirectoryName(inJson), String.Format("{0}{1}", Path.GetFileNameWithoutExtension(inJson), ".tab")),false, Encoding.Unicode))
+            using (StreamWriter sw = new StreamWriter(Path.Combine(Path.GetDirectoryName(inJson), String.Format("{0}{1}", Path.GetFileNameWithoutExtension(inJson), ".tab")), false, Encoding.Unicode))
             {
                 foreach (EDataGovUaDisposerInfo di in lst)
                 {

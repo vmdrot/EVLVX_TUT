@@ -38,6 +38,7 @@
       <HintPath>..\3dPartyLibraries\Newtonsoft\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -66,6 +67,7 @@
     <Compile Include="Rexton\Spares\RextonRecordInfo.cs" />
     <Compile Include="Spares\Data\VKPostInfo.cs" />
     <Compile Include="Spares\Data\VKWallPostTranslationInfo.cs" />
+    <Compile Include="Spares\Other\WebBrowserNavigationErrorArgs.cs" />
     <Compile Include="WebBrowserReaderBase.cs" />
     <Compile Include="YeDR\UsrMinjustGovUaReader.cs" />
     <Compile Include="YeDR\UsrMinjustSearchResult.cs" />
@@ -78,6 +80,15 @@
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="SHDocVw">
+      <Guid>{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>

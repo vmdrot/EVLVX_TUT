@@ -13,5 +13,6 @@ namespace Evolvex.VKUtilLib.EDataGovUA
         public string DisposerName { get; set; }
         public string CabinetStatus { get; set; }
         public DateTime CheckedDttm { get; set; }
+        public int? HttpStatus { get; set; }
     }
 }

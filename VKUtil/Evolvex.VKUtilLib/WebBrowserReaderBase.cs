@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net;
 using mshtml;
+using Evolvex.VKUtilLib.Spares.Other;
 
 namespace Evolvex.VKUtilLib
 {
@@ -30,6 +31,11 @@ namespace Evolvex.VKUtilLib
             set;
         }
 
+        public int? LastHttpStatus
+        {
+            get;
+            private set;
+        }
 
         protected WebClient WCLight
         {
@@ -46,13 +52,37 @@ namespace Evolvex.VKUtilLib
             _wc = new WebBrowser();
             _wc.ScriptErrorsSuppressed = true;
             _wc.NewWindow += new System.ComponentModel.CancelEventHandler(_wc_NewWindow);
-            //_wc.Navigated += new WebBrowserNavigatedEventHandler(_wc_Navigated);
             _wc.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(_wc_DocumentCompleted);
             _wc.Navigated +=new WebBrowserNavigatedEventHandler(_wc_Navigated);
             _wc.FileDownload += new EventHandler(_wc_FileDownload);
             _wc.Navigating += new WebBrowserNavigatingEventHandler(_wc_Navigating);
             _wc.ProgressChanged += new WebBrowserProgressChangedEventHandler(_wc_ProgressChanged);
             _wc.StatusTextChanged += new EventHandler(_wc_StatusTextChanged);
+            SHDocVw.WebBrowser shWc = (SHDocVw.WebBrowser)_wc.ActiveXInstance;
+            if (shWc != null)
+            {
+                if (LogDebugEvents) Console.WriteLine("shWc != null");
+                shWc.NavigateComplete2 += new SHDocVw.DWebBrowserEvents2_NavigateComplete2EventHandler(shWc_NavigateComplete2);
+                shWc.NavigateError += new SHDocVw.DWebBrowserEvents2_NavigateErrorEventHandler(shWc_NavigateError);
+            }
+        }
+
+        private void shWc_NavigateError(object pDisp, ref object URL, ref object Frame, ref object StatusCode, ref bool Cancel)
+        {
+            int iStatus = (int)StatusCode;
+            LastHttpStatus = iStatus;
+            if (LogDebugEvents) 
+            {
+                
+                Console.WriteLine("shWc_NavigateError(...,'{0}', {1})", URL as string, iStatus);
+            }
+            if (NavigationError != null)
+                NavigationError(this, new WebBrowserNavigationErrorArgs((HttpStatusCode)iStatus, URL as string));
+        }
+
+        private void shWc_NavigateComplete2(object pDisp, ref object URL)
+        {
+            if (LogDebugEvents) Console.WriteLine("shWc_NavigateComplete2(..., {0})", URL as string);
         }
 
         #region event(s) propagation
@@ -63,6 +93,7 @@ namespace Evolvex.VKUtilLib
         protected event WebBrowserNavigatingEventHandler WC_Navigating;
         protected event WebBrowserProgressChangedEventHandler WC_ProgressChanged;
         protected event EventHandler WC_StatusTextChanged;
+        public event EventHandler<WebBrowserNavigationErrorArgs> NavigationError; 
         #endregion
 
 
@@ -71,8 +102,8 @@ namespace Evolvex.VKUtilLib
             if (LogDebugEvents)
             {
                 Console.WriteLine("_wc_StatusTextChanged = '{0}'", _wc.StatusText);
-                Console.WriteLine(HTML);
-                Console.WriteLine(DELIM_LN);
+                //Console.WriteLine(HTML);
+                //Console.WriteLine(DELIM_LN);
             }
             if (WC_StatusTextChanged != null)
                 WC_StatusTextChanged(sender, e);
@@ -83,8 +114,8 @@ namespace Evolvex.VKUtilLib
             if (LogDebugEvents)
             {
                 Console.WriteLine("_wc_ProgressChanged({0} of {1})", e.CurrentProgress, e.MaximumProgress);
-                Console.WriteLine(HTML);
-                Console.WriteLine(DELIM_LN);
+                //Console.WriteLine(HTML);
+                //Console.WriteLine(DELIM_LN);
             }
             if (WC_ProgressChanged != null)
                 WC_ProgressChanged(sender, e);
@@ -92,11 +123,12 @@ namespace Evolvex.VKUtilLib
 
         void _wc_Navigating(object sender, WebBrowserNavigatingEventArgs e)
         {
+            LastHttpStatus = null;
             if (LogDebugEvents)
             {
                 Console.WriteLine("_wc_Navigating");
-                Console.WriteLine(HTML);
-                Console.WriteLine(DELIM_LN);
+                //Console.WriteLine(HTML);
+                //Console.WriteLine(DELIM_LN);
             }
             if (WC_Navigating != null)
                 WC_Navigating(sender, e);
@@ -107,8 +139,8 @@ namespace Evolvex.VKUtilLib
             if (LogDebugEvents)
             {
                 Console.WriteLine("_wc_FileDownload");
-                Console.WriteLine(HTML);
-                Console.WriteLine(DELIM_LN);
+                //Console.WriteLine(HTML);
+                //Console.WriteLine(DELIM_LN);
             }
             if (WC_FileDownload != null)
                 WC_FileDownload(sender, e);
@@ -134,7 +166,8 @@ namespace Evolvex.VKUtilLib
         {
             _navigateCompleted = false;
             //_syncContext.Post(
-            _wc.Navigate(new Uri(url));
+            _wc.Navigate(url);
+            //if (LogDebugEvents) Console.WriteLine("WebBrowserReaderBase::Navigate('{0}').status = ", _wc.Document.);
             //Console.WriteLine("just _wc.Navigate -ed");
             return WaitUntilBrowserReady();
         }
@@ -154,8 +187,8 @@ namespace Evolvex.VKUtilLib
             if (LogDebugEvents)
             {
                 Console.WriteLine("_wc_NewWindow");
-                Console.WriteLine(HTML);
-                Console.WriteLine(DELIM_LN);
+                //Console.WriteLine(HTML);
+                //Console.WriteLine(DELIM_LN);
             }
             if (WC_NewWindow != null)
                 WC_NewWindow(sender, e);
@@ -168,7 +201,7 @@ namespace Evolvex.VKUtilLib
             _navigateCompleted = true;
             if (LogDebugEvents)
             {
-                Console.WriteLine("_wc_DocumentCompleted");
+                Console.WriteLine("_wc_DocumentCompleted({0})", e.Url);
                 Console.WriteLine(HTML);
                 Console.WriteLine(DELIM_LN);
             }
