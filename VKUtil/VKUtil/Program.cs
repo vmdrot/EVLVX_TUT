@@ -316,7 +316,7 @@ namespace Evolvex.VKUtil
                             }
                             else if (reader.LastHttpStatus != null)
                             {
-                                Console.WriteLine("reader.Read({0}) failed, HTTP error status = {0}", yedrpou, (HttpStatusCode)(int)reader.LastHttpStatus);
+                                Console.WriteLine("reader.Read({0}) failed, HTTP error status = {1}", yedrpou, (HttpStatusCode)(int)reader.LastHttpStatus);
                                 lastHttpStatus = (HttpStatusCode)(int)reader.LastHttpStatus;
                             }
                             else
