@@ -57,7 +57,7 @@ namespace Evolvex.VKUtilEtc.Tests
             {
                 if (reader.Read("http://zaycev.net/artist/555747#works"))
                 {
-                    reader.DownloadAll(reader.MediaList, @"D:\home\Zenet\20150105\MarkForster");
+                    reader.DownloadAll(reader.TrackList, @"D:\home\Zenet\20150105\MarkForster");
                 }
             }
             //
@@ -71,7 +71,7 @@ namespace Evolvex.VKUtilEtc.Tests
             {
                 if (reader.Read("http://zaycev.net/artist/37539#works"))
                 {
-                    reader.DownloadAll(reader.MediaList, @"D:\home\Zenet\20150105\DoloresORiordan");
+                    reader.DownloadAll(reader.TrackList, @"D:\home\Zenet\20150105\DoloresORiordan");
                 }
             }
             //

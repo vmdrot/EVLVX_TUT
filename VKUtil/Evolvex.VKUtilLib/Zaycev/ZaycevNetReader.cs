@@ -25,8 +25,38 @@ namespace Evolvex.VKUtilLib.Zaycev
         private const Int32 InternetCookieHttponly = 0x2000;
 
 
+        #region inner type(s)
+        public class TrackInfo {
+            public string Url { get; set; }
+            public string Artist { get; set; }
+            public string Track { get; set; }
+
+            private string _fullTrackName;
+            private bool _fullTrackNameSet = false;
+            public string FullTrackName 
+            {
+                get {
+                    if (_fullTrackNameSet)
+                        return _fullTrackName;
+                    else
+                    {
+                        string artist = this.Artist ?? string.Empty;
+                        string track = this.Track ?? string.Empty;
+                        return string.Format("{0}_-_{1}.mp3", artist.Trim(), track.Trim());
+                    }
+                }
+                set { 
+                    _fullTrackNameSet = true;
+                    _fullTrackName = value;
+                }
+            }
+        }
+        #endregion
+
         #region field(s)
         private List<string> _mediaList;
+        private List<TrackInfo> _trackList;
+
         #endregion
 
         #region cctor(s)
@@ -45,12 +75,20 @@ namespace Evolvex.VKUtilLib.Zaycev
             }
         }
 
+        public List<TrackInfo> TrackList
+        {
+            get
+            {
+                return _trackList;
+            }
+        }
         public int SleepBetweenDownloadsMs { get; set; }
 
         protected override bool ReadWorker()
         {
-            _mediaList = new List<string>();
-            List<string> dataUrls = new List<string>();
+            //_mediaList = new List<string>();
+            //List<string> dataUrls = new List<string>();
+            _trackList = new List<TrackInfo>();
 
             string nextPageUrl = string.Empty;
             do
@@ -73,23 +111,83 @@ namespace Evolvex.VKUtilLib.Zaycev
                     string dataUrl = ReadDivAttribValue(div, "data-url");
                     if (string.IsNullOrEmpty(dataUrl))
                         continue;
+                    //data-dkey="/504/50431.mp3"
+                    string dataKey = ReadDivAttribValue(div, "data-dkey");
+                    if(!string.IsNullOrEmpty(dataKey))
+                    {
+                        dataKey = TrimPathToFileName(dataKey);
+                    }
                     UriBuilder ub = new UriBuilder();
                     Uri baseUri = new Uri(base._url);
                     ub.Scheme = baseUri.Scheme;
                     ub.Host = baseUri.Host;
                     ub.Path = dataUrl;
-                    dataUrls.Add(ub.Uri.ToString());
+                    //dataUrls.Add(ub.Uri.ToString());
+                    TrackInfo currTI = new TrackInfo();
+                    currTI.Url = ub.Uri.ToString();
+
+                    string artist, trackname;
+                    if(TryReadArtistAndTrack(div, out artist, out trackname))
+                    {
+                        currTI.Artist = artist.Trim();
+                        currTI.Track = trackname.Trim();
+                    }
+                    else
+                        currTI.FullTrackName = dataKey;
 
                     //<div data-duration="297" data-url="/musicset/play/e595f279f2af0c55727544b2eceb3641/171495.json" data-mini-url="" data-id="171495" class="musicset-track musicset-track_new clearfix"><div class="musicset-track__title"><span class="musicset-track__control musicset__button"><i class="musicset-player__icon"></i></span><a target="_blank" class="musicset-track__artist musicset-track__link" href="/artist/37539">Dolores O`riordan</a><div class="musicset-track__track-dash">–</div><div class="musicset-track__track-name"><a href="/pages/1714/171495.shtml" class='musicset-track__link' target="_blank" >Black Widow</a></div></div><div class="musicset-track__duration">04:57</div><div class="musicset-track__download"><a href="/pages/1714/171495.shtml" class='musicset-track__download-link' target="_blank" ><span class="musicset__button musicset__button_download"><i class="musicset-icon musicset-icon_download"></i></span></a></div></div>
 
                     //sample json: '{"url":"http://dl.zaycev.net/37539/171495/dolores_o_riordan_-_black_widow.mp3?dlKind=play&format=json"}'
+                    _trackList.Add(currTI);
                 }
 
                 nextPageUrl = DetectNextPageUrl();
                 
             } while (!string.IsNullOrEmpty(nextPageUrl));
-            _mediaList.AddRange(ResolveData2DLUrls(dataUrls));
+            //_mediaList.AddRange(ResolveData2DLUrls(dataUrls));
+            ResolveTrackInfosUrls(_trackList);
             return true;
+        }
+
+        private bool TryReadArtistAndTrack(HtmlElement parentDiv, out string artist, out string trackname)
+        {
+            List<HtmlElement> titleDivs = FilterDivsContainingClassName(parentDiv.Children, "musicset-track__title");
+            if (titleDivs == null || titleDivs.Count == 0)
+            {
+                artist = string.Empty; trackname = string.Empty;
+                return false;
+            }
+            List<HtmlElement> artistDivs = FilterDivsContainingClassName(titleDivs[0].Children, "musicset-track__artist");
+            List<HtmlElement> trackDivs = FilterDivsContainingClassName(titleDivs[0].Children, "musicset-track__track-name");
+            if ((artistDivs == null || artistDivs.Count ==0) && (trackDivs == null || trackDivs.Count == 0))
+            {
+                artist = string.Empty; trackname = string.Empty;
+                return false;
+            }
+            if (artistDivs.Count > 0)
+                artist = TransFormString4FilName(artistDivs[0].InnerText);
+            else
+                artist = string.Empty;
+            if (trackDivs.Count > 0)
+                trackname = TransFormString4FilName(trackDivs[0].InnerText);
+            else
+                trackname = string.Empty;
+            return true;
+        }
+
+        private static string TransFormString4FilName(string src)
+        {
+            if (string.IsNullOrEmpty(src))
+                return src;
+            return src.Trim().Replace(' ', '_').Replace(',', '_').Replace(':', '_').Replace('/', '_').Replace('\\', '_').Replace('?', '_').Replace('!', '_');
+        }
+
+        private string TrimPathToFileName(string dataKey)
+        {
+            int pos0 = dataKey.LastIndexOf('/');
+            if (pos0 == -1)
+                return dataKey;
+            return dataKey.Substring(pos0 + 1, dataKey.Length - pos0 -1);
         }
 
         private string DetectNextPageUrl()
@@ -139,6 +237,27 @@ namespace Evolvex.VKUtilLib.Zaycev
                 }
             }
             return rslt;
+        }
+
+        private void ResolveTrackInfosUrls(List<TrackInfo> target)
+        {
+            using (WebClient wc = new WebClient())
+            {
+                SetWCHeaders(wc);
+                foreach (TrackInfo ti in target)
+                {
+                    string currJson = wc.DownloadString(ti.Url);
+                    //Console.WriteLine("currJson = '{0}'", currJson);
+                    DataUrl du = JsonConvert.DeserializeObject<DataUrl>(currJson);
+                    if (du == null || string.IsNullOrEmpty(du.url))
+                    {
+                        //Console.WriteLine("du is null or empty");
+                        continue;
+                    }
+                    //Console.WriteLine("du.url = '{0}'", du.url);
+                    ti.Url = du.url;
+                }
+            }
         }
 
         private List<string> ResolveData2DLUrls_IE(List<string> dataUrls)
@@ -253,7 +372,7 @@ namespace Evolvex.VKUtilLib.Zaycev
         }
 
 
-        public void DownloadAll(List<string> urls, string save2Dir)
+        public void DownloadAll(List<TrackInfo> tis, string save2Dir)
         {
             if(!Directory.Exists(save2Dir))
                 Directory.CreateDirectory(save2Dir);
@@ -261,13 +380,18 @@ namespace Evolvex.VKUtilLib.Zaycev
             {
                 SetWCHeaders(wc);
                 bool sleep = false;
-                foreach(string url in urls)
+                foreach(TrackInfo ti in tis)
                 {
                     if (sleep)
                         System.Threading.Thread.Sleep(SleepBetweenDownloadsMs);
                     sleep = false;
-                    Uri uri = new Uri(url);
-                    String saveAs = Path.Combine(save2Dir, uri.Segments[uri.Segments.Length - 1]);
+                    Uri uri = new Uri(ti.Url);
+                    string urlFileName = uri.Segments[uri.Segments.Length - 1];
+                    string urlFileExt = Path.GetExtension(urlFileName);
+                    String saveAs = Path.Combine(save2Dir, urlFileName);
+                    
+                    if((string.IsNullOrEmpty(urlFileExt) || urlFileExt.Length > 4) && !string.IsNullOrEmpty(ti.FullTrackName))
+                        saveAs = Path.Combine(save2Dir, ti.FullTrackName);
                     bool bSkipCurrent = false;
                     if (File.Exists(saveAs))
                     {
@@ -284,14 +408,14 @@ namespace Evolvex.VKUtilLib.Zaycev
                         {
                             try
                             {
-                                wc.DownloadFile(url, saveAs);
+                                wc.DownloadFile(ti.Url, saveAs);
                                 sleep = true;
                                 break;
                             }
                             catch (System.Net.WebException exc)
                             {
                                 Console.WriteLine("-----------------------------------------------------------");
-                                Console.WriteLine("Web Error while downloading {0}", url);
+                                Console.WriteLine("Web Error while downloading {0}", ti.Url);
                                 Console.WriteLine("Details: {0}", exc.ToString());
                                 Console.WriteLine("-----------------------------------------------------------");
 
@@ -306,7 +430,7 @@ namespace Evolvex.VKUtilLib.Zaycev
                             catch (System.Exception gexc)
                             {
                                 Console.WriteLine("-----------------------------------------------------------");
-                                Console.WriteLine("Other Error while downloading {0}", url);
+                                Console.WriteLine("Other Error while downloading {0}", ti.Url);
                                 Console.WriteLine("Details: {0}", gexc.ToString());
                                 Console.WriteLine("-----------------------------------------------------------");
                                 break;

@@ -212,10 +212,13 @@ namespace Evolvex.VKUtil
 
                 if (reader.Read(url))
                 {
-                    Console.WriteLine(string.Join("\n", reader.MediaList));
+                    //Console.WriteLine(string.Join("\n", reader.MediaList));
+                    //foreach (Evolvex.VKUtilLib.Zaycev.ZaycevNetReader.TrackInfo ti in reader.TrackList)
+                    //    Console.WriteLine(ti.Url);
+                    Console.WriteLine(JsonConvert.SerializeObject(reader.TrackList, new JsonSerializerSettings(){NullValueHandling = NullValueHandling.Ignore, Formatting = Formatting.Indented }));
                     if (sleepMs != null)
                         System.Threading.Thread.Sleep((int)sleepMs);
-                    reader.DownloadAll(reader.MediaList, save2Dir);
+                    reader.DownloadAll(reader.TrackList, save2Dir);
                 }
             }
 
