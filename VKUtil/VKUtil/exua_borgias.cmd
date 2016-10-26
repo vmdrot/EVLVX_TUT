@@ -1,0 +1,1 @@
+CALL exua_worker.cmd D:\home\Mozi\Borgias\Borgias_exua_urls.txt http://www.ex.ua/6553175 http://www.ex.ua/14225188 http://www.ex.ua/11814362 http://www.ex.ua/72484213 

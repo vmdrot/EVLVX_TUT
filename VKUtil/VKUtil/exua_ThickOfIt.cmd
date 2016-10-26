@@ -1,0 +1,1 @@
+CALL exua_worker.cmd D:\home\Mozi\ThickOfIt\ThickOfIt_exua_urls.txt "http://www.ex.ua/720930?r=720588" "http://www.ex.ua/16372577" "http://www.ex.ua/724623" "http://www.ex.ua/724624"

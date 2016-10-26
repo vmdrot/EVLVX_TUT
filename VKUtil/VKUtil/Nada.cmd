@@ -1,0 +1,1 @@
+CALL zaycev_worker.cmd http://zaycev.net/artist/73917 D:\home\Zenet\20160601\Nada

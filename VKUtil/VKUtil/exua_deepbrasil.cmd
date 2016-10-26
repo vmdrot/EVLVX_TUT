@@ -1,0 +1,1 @@
+CALL exua_worker.cmd D:\home\Zenet\20160706\DeepForest\DeepBrasil\deepbrasil_exua_urls.txt http://www.ex.ua/9070653

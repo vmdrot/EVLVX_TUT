@@ -1,0 +1,2 @@
+mkdir D:\home\Zenet\20160803\DeepForest\
+CALL exua_worker.cmd D:\home\Zenet\20160803\DeepForest\DeepForest_urls.txt http://www.ex.ua/14390492 http://www.ex.ua/20367732 http://www.ex.ua/97919732 http://www.ex.ua/45739895 http://www.ex.ua/14343383
