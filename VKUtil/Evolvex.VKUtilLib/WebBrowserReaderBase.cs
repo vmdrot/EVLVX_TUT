@@ -316,6 +316,30 @@ namespace Evolvex.VKUtilLib
             return null;
         }
 
+        public static string ParseUrlGetParam(string url, string paramNm) 
+        {
+            Uri uri = new Uri(url);
+            string query = uri.Query;
+            if (query[0] == '?')
+                query = query.Substring(1);
+            string[] quPrms = query.Split('&');
+            foreach (string quPrm in quPrms)
+            {
+                if(string.IsNullOrWhiteSpace(quPrm))
+                    continue;
+                string[] keyVal = quPrm.Split('=');
+                if (keyVal == null || keyVal.Length == 0)
+                    continue;
+                if (keyVal[0] != paramNm)
+                    continue;
+                if (keyVal.Length > 1)
+                    return keyVal[1];
+                else
+                    return null;
+            }
+            return null;
+        }
+
         public void ShowBrowserIn(Control parent)
         {
             _wc.Parent = parent;
@@ -340,6 +364,10 @@ namespace Evolvex.VKUtilLib
             Dispose(true);
             GC.SuppressFinalize(this);
         }
+        
+        protected virtual void DisposeCustomManagedResources() 
+        { 
+        }
 
         private void DisposeManagedResources()
         {
@@ -353,6 +381,7 @@ namespace Evolvex.VKUtilLib
                 _wcLight.Dispose();
                 _wcLight = null;
             }
+            DisposeCustomManagedResources();
         }
 
         protected void Dispose(bool disposing)

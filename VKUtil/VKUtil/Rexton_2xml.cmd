@@ -1,1 +1,0 @@
-bin\Debug\Evolvex.VKUtil.exe ConvertRextonToXML D:\home\vmdrot\Testing\VKUtil\Rexton_all.json >> D:\home\vmdrot\Testing\VKUtil\Rexton_all_2xmlconvert.log

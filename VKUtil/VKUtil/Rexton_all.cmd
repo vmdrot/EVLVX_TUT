@@ -1,6 +1,0 @@
-bin\Debug\Evolvex.VKUtil.exe ReadRexton http://kievlady.com/modeli/new D:\home\vmdrot\Testing\VKUtil\Rexton_all.json >> D:\home\vmdrot\Testing\VKUtil\Rexton_all.log
-bin\Debug\Evolvex.VKUtil.exe ReadRexton http://kievlady.com/modeli/kiev D:\home\vmdrot\Testing\VKUtil\Rexton_all.json >> D:\home\vmdrot\Testing\VKUtil\Rexton_all.log
-bin\Debug\Evolvex.VKUtil.exe ReadRexton http://kievlady.com/modeli/real D:\home\vmdrot\Testing\VKUtil\Rexton_all.json >> D:\home\vmdrot\Testing\VKUtil\Rexton_all.log
-bin\Debug\Evolvex.VKUtil.exe ReadRexton http://kievlady.com/modeli/deshevie-prostitutki D:\home\vmdrot\Testing\VKUtil\Rexton_all.json >> D:\home\vmdrot\Testing\VKUtil\Rexton_all.log
-bin\Debug\Evolvex.VKUtil.exe ReadRexton http://kievlady.com/modeli/vip-lady D:\home\vmdrot\Testing\VKUtil\Rexton_all.json >> D:\home\vmdrot\Testing\VKUtil\Rexton_all.log
-bin\Debug\Evolvex.VKUtil.exe ReadRexton http://kievlady.com/modeli/individualki D:\home\vmdrot\Testing\VKUtil\Rexton_all.json >> D:\home\vmdrot\Testing\VKUtil\Rexton_all.log

@@ -16,6 +16,7 @@ using Evolvex.VKUtil.Utility;
 using Evolvex.VKUtilLib.Rexton.Spares;
 using Evolvex.VKUtilLib.Rexton;
 using System.Threading;
+using Evolvex.VKUtilLib.DataGovUa;
 
 namespace Evolvex.VKUtil
 {
@@ -42,6 +43,9 @@ namespace Evolvex.VKUtil
             _cmdHandlers.Add("convertjson2xml", ConvertJson2XML);
             _cmdHandlers.Add("readrexton", ReadRexton);
             _cmdHandlers.Add("convertrextontoxml", ConvertRextonToXML);
+            _cmdHandlers.Add("readdatagovuadslist", ReadDataGovUaDSList);
+            
+
             #endregion
             string strEdataLogDebugEvents = ConfigurationManager.AppSettings["edataLogDebugEvents"];
             if (!string.IsNullOrEmpty(strEdataLogDebugEvents))
@@ -415,6 +419,75 @@ namespace Evolvex.VKUtil
                 Console.WriteLine("Saved to: {0}", saveAs);
             }
 
+        }
+
+        
+        [STAThread]
+        public static void ReadDataGovUaDSList(string[] args)
+        {
+            DateTime ds = DateTime.Now;
+            LogCmdArgs("ReadDataGovUaDSList", args);
+            Console.WriteLine("Started: {0}", ds);
+            string startFromPageStr = args.Length > 1 ? args[1] : string.Empty;
+            string stopAfterPageStr = args.Length > 2 ? args[2] : string.Empty;
+            string saveRsltsTo = args.Length > 3 ? args[3] : string.Empty;
+            bool saveContinously = false;
+            using (DataGovUaReader reader = new DataGovUaReader())
+            {
+                if (!string.IsNullOrWhiteSpace(startFromPageStr))
+                {
+                    int startFromPg;
+                    if (int.TryParse(startFromPageStr, out startFromPg))
+                        reader.StartFromPage = startFromPg;
+                }
+
+                if (!string.IsNullOrWhiteSpace(stopAfterPageStr))
+                {
+                    int stopAfterPg;
+                    if (int.TryParse(stopAfterPageStr, out stopAfterPg))
+                        reader.StopAfterPage = stopAfterPg;
+                }
+
+                if (!string.IsNullOrWhiteSpace(saveRsltsTo) && Directory.Exists(Path.GetDirectoryName(saveRsltsTo)))
+                {
+                    saveContinously = true;
+                    reader.SaveResultAs = saveRsltsTo;
+                }
+
+                if (reader.Read(""))
+                {
+                    Console.WriteLine("PagesCount = {0}", reader.PagesCount);
+                }
+                if (reader.PassportUrls != null && reader.PassportUrls.Count > 0)
+                {
+
+                    if (!string.IsNullOrWhiteSpace(saveRsltsTo) && !saveContinously)
+                    {
+                        try
+                        {
+                            File.WriteAllLines(saveRsltsTo, reader.PassportUrls.ToArray());
+                        }
+                        catch (Exception exc)
+                        {
+                            Console.WriteLine("Error saving passport urls to file '{0}', details: {1}", saveRsltsTo, exc);
+                            PrintAllLines(reader.PassportUrls);
+                        }
+                    }
+                    else
+                    {
+                        PrintAllLines(reader.PassportUrls);
+                    }
+                }
+            }
+            DateTime df = DateTime.Now;
+            Console.WriteLine("Finished: {0}", df);
+            Console.WriteLine("Took (time): {0}", (TimeSpan)(df-ds));
+
+        }
+
+        private static void PrintAllLines(List<string> lines)
+        {
+            Console.WriteLine(string.Join("\n", lines.ToArray()));
         }
 
         private static List<string> ReadListOfYeDRPOUs(string yedrpous_input_file, string startIdxStr, string procLenStr)
