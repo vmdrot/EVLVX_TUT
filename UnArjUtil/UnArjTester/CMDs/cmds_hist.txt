@@ -1,0 +1,3 @@
+list.cmd D:\DEV\ABS.Stalker\Requirements\Artefacts\DptList.arj
+extract.cmd D:\DEV\ABS.Stalker\Requirements\Artefacts\DptList.arj
+extract.cmd D:\DEV\ABS.Stalker\Requirements\Artefacts\DptList.arj DPTLIST.DBF D:\DEV\Platizhka\Bin\DPTLIST.DBF
