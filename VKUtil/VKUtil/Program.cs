@@ -128,6 +128,7 @@ namespace Evolvex.VKUtil
             int retryIntervalMs = 0; 
             int retryCount = 3;
 
+            int currUrlIdx = 0;
             
             if (!string.IsNullOrWhiteSpace(retryIntervalMsStr))
             {
@@ -160,12 +161,26 @@ namespace Evolvex.VKUtil
                 {
                     if (string.IsNullOrEmpty(url))
                         continue;
+                    currUrlIdx++;
                     string fileName = Path.GetFileName(url);
                     if (!string.IsNullOrWhiteSpace(fileNameQuParam))
                     {
                         string quParam = Evolvex.VKUtilLib.WebBrowserReaderBase.ParseUrlGetParam(url, fileNameQuParam);
                         if (!string.IsNullOrWhiteSpace(quParam))
                             fileName = quParam;
+                    }
+                    else if (string.IsNullOrWhiteSpace(fileName))
+                    {
+                        Uri uri = new Uri(url);
+                        
+                        fileName = uri.Segments[uri.Segments.Length -1];
+                        if (!string.IsNullOrWhiteSpace(fileName))
+                        {
+                            fileName = fileName.Replace("/", "").Replace("\\", "");
+                        }
+                        else
+                            fileName = currUrlIdx.ToString();
+
                     }
 
                     string currSaveAsPath = Path.Combine(saveToDir, fileName);
