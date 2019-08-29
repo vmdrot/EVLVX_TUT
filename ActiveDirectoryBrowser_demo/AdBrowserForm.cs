@@ -346,24 +346,50 @@ namespace SimpleAdBrowser
 			try
 			{
 				this._AdRootDSE = new DirectoryEntry("LDAP://rootDSE");
-				this._AdRoot = new DirectoryEntry("LDAP://" + (string)this._AdRootDSE.Properties["defaultNamingContext"].Value);
-				/*
-				foreach(string property in this._AdRoot.Properties.PropertyNames)
-				{
-					MessageBox.Show(property + " = " + this._AdRoot.Properties[property].Value);
-				}*/
+                this._AdRoot = new DirectoryEntry("LDAP://" + (string)this._AdRootDSE.Properties["defaultNamingContext"].Value);
+            }
+            catch
+            {
+                if( MessageBox.Show("We were unable to connect to the Active directory using current user context. Do you want to try to connect using a advanced dialog?", "No default AD connection", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != System.Windows.Forms.DialogResult.OK)
+                    throw new Exception("Error connecting to AD");
+                if(!ConnectToAD())
+                    throw new Exception("Error connecting to AD");
+            }
+            /*
+            foreach(string property in this._AdRoot.Properties.PropertyNames)
+            {
+                MessageBox.Show(property + " = " + this._AdRoot.Properties[property].Value);
+            }*/
+            
 
-				TreeNode root = new TreeNode((string)this._AdRootDSE.Properties["defaultNamingContext"].Value,(int)AdImages.AdRoot,(int)AdImages.AdRoot);
+			TreeNode root = new TreeNode((string)this._AdRootDSE.Properties["defaultNamingContext"].Value,(int)AdImages.AdRoot,(int)AdImages.AdRoot);
 				
-				root.Tag = this._AdRoot;
-				this.treeView_ad.Nodes.Clear();
-				this.treeView_ad.Nodes.Add(root);
-			}
-			catch
-			{
-				throw new Exception("Error connecting to AD");
-			}
+			root.Tag = this._AdRoot;
+			this.treeView_ad.Nodes.Clear();
+			this.treeView_ad.Nodes.Add(root);
 		}
+
+        private bool ConnectToAD()
+        {
+            try
+            {
+                Connect2ADDlg frm = new Connect2ADDlg();
+                frm.DataSource = ADConnectParameters.Default;
+                if (frm.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                    return false;
+                ADConnectParameters adCnnPrms = frm.DataSource;
+                this._AdRootDSE = new DirectoryEntry(string.Format("LDAP://{0}/{1}", adCnnPrms.Domain, adCnnPrms.Root), adCnnPrms.Usr, adCnnPrms.Pwd);
+                this._AdRoot = new DirectoryEntry("LDAP://" + (string)this._AdRootDSE.Properties["defaultNamingContext"].Value);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
+
+
 
 		private void treeView_ad_AfterSelect(object sender, System.Windows.Forms.TreeViewEventArgs e)
 		{

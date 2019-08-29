@@ -5,6 +5,8 @@ using System.Text;
 using System.Data;
 using System.IO;
 using System.Xml.Serialization;
+using System.Net;
+using System.Text.RegularExpressions;
 
 namespace Evolvex.VKUtil.Utility
 {
@@ -98,6 +100,24 @@ namespace Evolvex.VKUtil.Utility
             }
 
             return true;
+        }
+
+        public static string ParseWebExceptionHttpStatus(WebException webExc)
+        {
+            Regex rPlain = new Regex("\\:[ ]+\\([0-9]{3}\\)[ ]+");
+            Regex rAdv = new Regex("\\:[ ]+\\([0-9]{3}\\.[0-9]{1,}\\)[ ]+");
+            if (rPlain.Matches(webExc.Message).Count > 0)
+                return TrimWebExceptionHttpStatus(rPlain.Matches(webExc.Message)[0].Value);
+            else if (rAdv.Matches(webExc.Message).Count > 0)
+                return TrimWebExceptionHttpStatus(rAdv.Matches(webExc.Message)[0].Value);
+            return string.Empty;
+        }
+
+        private static string TrimWebExceptionHttpStatus(string raw)
+        { 
+            if(string.IsNullOrWhiteSpace(raw))
+                return string.Empty;
+            return raw.Replace("(", "").Replace(")", "").Replace(":", "").Trim();
         }
     }
 }
