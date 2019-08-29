@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Docs">
+      <UniqueIdentifier>{fb9f9ebb-7dd4-438c-bb1c-4ee13e41e959}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DECODE.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ENVIRON.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UNARJ.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UNARJ.H">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BCC32.MAK">
+      <Filter>Docs</Filter>
+    </None>
+    <None Include="BCCUNARJ.MAK">
+      <Filter>Docs</Filter>
+    </None>
+    <None Include="OS2UNARJ.MAK">
+      <Filter>Docs</Filter>
+    </None>
+    <None Include="QCLUNARJ.MAK">
+      <Filter>Docs</Filter>
+    </None>
+    <None Include="TCCUNARJ.MAK">
+      <Filter>Docs</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="readme.unarj.txt">
+      <Filter>Docs</Filter>
+    </Text>
+    <Text Include="TECHNOTE.TXT">
+      <Filter>Docs</Filter>
+    </Text>
+    <Text Include="UNARJ.TXT">
+      <Filter>Docs</Filter>
+    </Text>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>
