@@ -22,7 +22,9 @@ namespace Evolvex.VKUtilLib.DataGovUa
         }
 
         public List<string> PassportUrls { get; set; }
-        public int StartFromPage { get; set; }
+		public List<DataSetInfoSimplified> Passports { get; set; }
+		
+		public int StartFromPage { get; set; }
         public int StopAfterPage { get; set; }
         public string SaveResultAs { get; set; }
         private bool? _writeResultsImmediately;
@@ -41,6 +43,19 @@ namespace Evolvex.VKUtilLib.DataGovUa
             }
         }
 
+		private bool _getJustUrls = true;
+
+		public bool GetJustUrls
+		{
+			get
+			{
+				return this._getJustUrls;
+			}
+			set
+			{
+				this._getJustUrls = value;
+			}
+		}
         public int WriteErrorsCount { get; private set; }
 
         private bool TryOpenResultsStream()
@@ -80,9 +95,16 @@ namespace Evolvex.VKUtilLib.DataGovUa
         }
 
         protected bool ReadPages()
-        { 
-            PassportUrls = new List<string>();
-            for (int i = 0; i < PagesCount; i++)
+        {
+			if (this.GetJustUrls)
+				PassportUrls = new List<string>();
+			else
+			{
+				WriteHeaderForPassports();
+				Passports = new List<DataSetInfoSimplified>();
+			}
+
+			for (int i = 0; i < PagesCount; i++)
             {
                 if (StopAfterPage > 0 && i >= StopAfterPage)
                     break;
@@ -90,16 +112,31 @@ namespace Evolvex.VKUtilLib.DataGovUa
                 string currUrl = string.Format(PAGE_URL_FMT, i);
                 if (!this.Navigate(currUrl))
                     break;
-                List<string> currPageUrls = ParsePassportUrls();
-                PassportUrls.AddRange(currPageUrls);
-                if (WriteResultsImmediately)
-                    WriteResultsUrls(currPageUrls);
-                
-            }
-            return PassportUrls.Count > 0;
+				if (this.GetJustUrls)
+				{
+					List<string> currPageUrls = ParsePassportUrls();
+					PassportUrls.AddRange(currPageUrls);
+					if (WriteResultsImmediately)
+						WriteResultsUrls(currPageUrls);
+				}
+				else
+				{
+
+					Passports.AddRange(ParsePassportUrlsEx());
+					if (WriteResultsImmediately)
+						WriteResults(Passports);
+				}
+
+			}
+            return this.GetJustUrls? PassportUrls.Count > 0 : Passports.Count > 0;
         }
 
-        private void WriteResultsUrls(List<string> currPageUrls)
+		private void WriteHeaderForPassports()
+		{
+			_resultsStream.WriteLine("{0}\t{1}\t{2}", "PassportUrl", "Name", "InformationOwner");
+		}
+
+		private void WriteResultsUrls(List<string> currPageUrls)
         {
             if (currPageUrls == null || currPageUrls.Count == 0)
                 return;
@@ -108,7 +145,87 @@ namespace Evolvex.VKUtilLib.DataGovUa
             _resultsStream.Flush();
         }
 
-        private List<string> ParsePassportUrls()
+		private void WriteResults(List<DataSetInfoSimplified> dsPassports)
+		{
+			if (dsPassports == null || dsPassports.Count == 0)
+				return;
+			foreach (DataSetInfoSimplified dsi in dsPassports)
+				_resultsStream.WriteLine("{0}\t{1}\t{2}", dsi.PassportUrl, dsi.Name, dsi.InformationOwner);
+			//_resultsStream.WriteLine("{0}\t{1}\t{2}", dsi.PassportUrl.Trim(), dsi.Name.Trim(), dsi.InformationOwner.Trim());
+			_resultsStream.Flush();
+		}
+
+		
+		private List<DataSetInfoSimplified> ParsePassportUrlsEx()
+		{
+			List<DataSetInfoSimplified> rslt = new List<DataSetInfoSimplified>();
+			List<string> rsltUrls = new List<string>();
+
+			//http://data.gov.ua/passport/96d3216b-7c35-4053-b6fa-93d37ab7cfd6
+
+			HtmlElementCollection anchors = _wc.Document.GetElementsByTagName("a");
+			if (anchors.Count == 0)
+				return rslt;
+			foreach (HtmlElement currA in anchors)
+			{
+				string href = currA.GetAttribute("href");
+				if (string.IsNullOrWhiteSpace(href))
+					continue;
+				string hrefToL = href.ToLower();
+				if (hrefToL.IndexOf("/passport/") == -1)
+					continue;
+				if (PassGuidRegex.Matches(href).Count == 0)
+					continue;
+				
+				if (!rsltUrls.Contains(href))
+				{ 
+					rsltUrls.Add(href);
+					DataSetInfoSimplified dsi = new DataSetInfoSimplified() { PassportUrl = href, Name = currA.InnerText.Trim() };
+					dsi.InformationOwner = ReadInformationOwnerByDSAnchor(currA);
+					rslt.Add(dsi);
+				}
+			}
+			return rslt;
+		}
+
+		private string ReadInformationOwnerByDSAnchor(HtmlElement currA)
+		{
+			const string RowClassStart = "views-row views-row-";
+			#region find row div
+			HtmlElement currElem = currA;
+			HtmlElement rowDiv = null;
+			while (currElem.Parent != null)
+			{
+				if (currElem.TagName.ToLower() == "div")
+				{
+					string currClass = ReadDivAttribValue(currElem, "class");
+					if(!string.IsNullOrWhiteSpace(currClass))
+					{
+						if (currClass.Length >= RowClassStart.Length)
+						{
+							if (currClass.Substring(0, RowClassStart.Length).ToLower() == RowClassStart)
+							{ 
+								rowDiv = currElem;
+								break;
+							}
+						}
+					}
+				}
+			    currElem = currElem.Parent;
+			}
+			#endregion
+			if(rowDiv == null)
+				return null;
+			HtmlElement bottomFieldsDiv = base.FindChildElementByClass(rowDiv, "div", "bottom views-fieldset");
+			if (bottomFieldsDiv == null)
+				return null;
+			HtmlElement authorOrgField = base.FindChildElementByClass(bottomFieldsDiv, "div", "views-field views-field-author-field-organization views-field-field-organization");
+			if (authorOrgField == null)
+				return null;
+			return authorOrgField.InnerText;
+		}
+
+		private List<string> ParsePassportUrls()
         {
             List<string> rslt = new List<string>();
             
@@ -146,6 +263,8 @@ namespace Evolvex.VKUtilLib.DataGovUa
                     
                     return (_currPgIdx > 0);
                 }
+				if (this.StopAfterPage > 0 && (_currPgIdx + 1) >= this.StopAfterPage)
+					return true;
             }
             return true;
         }
