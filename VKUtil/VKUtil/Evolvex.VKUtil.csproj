@@ -102,9 +102,74 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="CMDs\AlaDosNamorados_zaycev.cmd" />
+    <None Include="CMDs\AlessiaCara_z.cmd" />
+    <None Include="CMDs\Alexa_Feser_zaycev.cmd" />
+    <None Include="CMDs\AndreasBurani_zaycev.cmd" />
+    <None Include="CMDs\AntonioZambujo_zaycev.cmd" />
+    <None Include="CMDs\AntonIshutin.cmd" />
+    <None Include="CMDs\ArianaGrande_zaycev.cmd" />
+    <None Include="CMDs\Bendzko_zaycev.cmd" />
+    <None Include="CMDs\Bosse_zaycev.cmd" />
+    <None Include="CMDs\CarlasDreams_zaycev.cmd" />
+    <None Include="CMDs\Clueso_zaycev.cmd" />
+    <None Include="CMDs\Delerium_zaycev.cmd" />
+    <None Include="CMDs\DisposersJSONToTabDelim.cmd" />
+    <None Include="CMDs\DownloadDataGovUaDSList.cmd" />
+    <None Include="CMDs\EDataGovUaGet.cmd" />
+    <None Include="CMDs\Existence.cmd" />
+    <None Include="CMDs\exua_Avatar_Korra.cmd" />
+    <None Include="CMDs\exua_best_sex_2_2011.cmd" />
+    <None Include="CMDs\exua_BlissEtc.cmd" />
+    <None Include="CMDs\exua_borgias.cmd" />
+    <None Include="CMDs\exua_Dahmani.cmd" />
+    <None Include="CMDs\exua_deepbrasil.cmd" />
+    <None Include="CMDs\exua_DeepForest.cmd" />
+    <None Include="CMDs\exua_LP.cmd" />
+    <None Include="CMDs\exua_Nada.cmd" />
+    <None Include="CMDs\exua_ThickOfIt.cmd" />
+    <None Include="CMDs\exua_tudors.cmd" />
+    <None Include="CMDs\exua_worker.cmd" />
+    <None Include="CMDs\exua_Zhvanetskyi.cmd" />
+    <None Include="CMDs\FridaGold_zaycev.cmd" />
+    <None Include="CMDs\GabrielDresden_zaycev.cmd" />
+    <None Include="CMDs\ImeldaMay_z.cmd" />
+    <None Include="CMDs\Klee_zaycev.cmd" />
+    <None Include="CMDs\Labrinth_z.cmd" />
+    <None Include="CMDs\LeraLynn_Zaycev.cmd" />
+    <None Include="CMDs\Lumier_zaycev.cmd" />
+    <None Include="CMDs\MaxHerre_zaycev.cmd" />
+    <None Include="CMDs\Misc20161027_zaycev.cmd" />
+    <None Include="CMDs\Misc20161027_zaycev.p2.cmd" />
+    <None Include="CMDs\MuslumGursem_zaycev.cmd" />
+    <None Include="CMDs\Nada.cmd" />
+    <None Include="CMDs\OliverShanti_exua.cmd" />
+    <None Include="CMDs\OneRepublic_z.cmd" />
+    <None Include="CMDs\PatrickMiller_zaycev.cmd" />
+    <None Include="CMDs\PattiSmith_z.cmd" />
+    <None Include="CMDs\ReadDataGovUaDSList.cmd" />
+    <None Include="CMDs\ReadDataGovUaDSList_DSISes.cmd" />
+    <None Include="CMDs\SarahConnor_zaycev.cmd" />
+    <None Include="CMDs\SaraTavares_zaycev.cmd" />
+    <None Include="CMDs\ShawnMendes_z.cmd" />
+    <None Include="CMDs\Shura.cmd" />
+    <None Include="CMDs\snap_exterminate_mixes_zaycev.cmd" />
+    <None Include="CMDs\StefanieHeinzmann_z.cmd" />
+    <None Include="CMDs\SteveJablonsky_zaycev.cmd" />
+    <None Include="CMDs\TinSontsia_zaycev.cmd" />
+    <None Include="CMDs\Trust_z.cmd" />
+    <None Include="CMDs\Unheilig_zaycev.cmd" />
+    <None Include="CMDs\VivienneMort_zaycev.cmd" />
+    <None Include="CMDs\zaycev_worker.cmd" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="CMDs\" />
+    <Content Include="CMDs\ReadDataGovUaDSList.Passports.20180313.txt" />
+    <Content Include="CMDs\ReadDataGovUaDSList.PassportUrls.20170213.txt" />
+    <Content Include="CMDs\ReadDataGovUaDSList.PassportUrls.txt" />
+    <Content Include="CMDs\ReadDataGovUaDSList.PassportXmlUrls.20170213.txt" />
+    <Content Include="CMDs\ReadDataGovUaDSList.PassportXmlUrls.all.txt" />
+    <Content Include="CMDs\ReadDataGovUaDSList.PassportXmlUrls.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
