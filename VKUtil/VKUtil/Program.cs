@@ -118,6 +118,41 @@ namespace Evolvex.VKUtil
         {
             string urlsListFile = args[1];
             string saveToDir = args[2];
+            string fileNameQuParam = args.Length > 3 ? args[3] : string.Empty;
+            string sleepBtwRequestsMsStr = args.Length > 4 ? args[4] : string.Empty;
+            string retryIntervalMsStr = args.Length > 5 ? args[5] : string.Empty;
+            string retryCountStr = args.Length > 6 ? args[6] : string.Empty;
+            string stopOnHttpStatusesStr = args.Length > 7 ? args[7] : string.Empty;
+
+                        int sleepBtwRequestsMs = 0;
+            int retryIntervalMs = 0; 
+            int retryCount = 3;
+
+            
+            if (!string.IsNullOrWhiteSpace(retryIntervalMsStr))
+            {
+                int tmp;
+                if (int.TryParse(retryIntervalMsStr, out tmp))
+                    retryIntervalMs = tmp;
+            }
+            if (!string.IsNullOrWhiteSpace(retryCountStr))
+            {
+                int tmp;
+                if (int.TryParse(retryCountStr, out tmp))
+                    retryCount = tmp;
+            }
+
+            if (!string.IsNullOrWhiteSpace(sleepBtwRequestsMsStr))
+            {
+                int tmp;
+                if (int.TryParse(sleepBtwRequestsMsStr, out tmp))
+                    sleepBtwRequestsMs = tmp;
+            }
+
+            List<string> stopOnHttpStatuses = new List<string>();
+            if (!string.IsNullOrWhiteSpace(stopOnHttpStatusesStr))
+                stopOnHttpStatuses.AddRange(stopOnHttpStatusesStr.Split(','));
+
             string[] urls = File.ReadAllLines(urlsListFile);
             using (WebClient wc = new WebClient())
             {
@@ -126,10 +161,49 @@ namespace Evolvex.VKUtil
                     if (string.IsNullOrEmpty(url))
                         continue;
                     string fileName = Path.GetFileName(url);
+                    if (!string.IsNullOrWhiteSpace(fileNameQuParam))
+                    {
+                        string quParam = Evolvex.VKUtilLib.WebBrowserReaderBase.ParseUrlGetParam(url, fileNameQuParam);
+                        if (!string.IsNullOrWhiteSpace(quParam))
+                            fileName = quParam;
+                    }
 
-                    wc.DownloadFile(url, Path.Combine(saveToDir, fileName));
+                    string currSaveAsPath = Path.Combine(saveToDir, fileName);
+                    if(File.Exists(currSaveAsPath))
+                        continue;
+                    if (!TryDownload(wc, url, currSaveAsPath, retryIntervalMs, retryCount, stopOnHttpStatuses))
+                        break;
+                    if (sleepBtwRequestsMs > 0)
+                        Thread.Sleep(sleepBtwRequestsMs);
                 }
             }
+        }
+
+        private static bool TryDownload(WebClient wc, string url, string saveAs, int retryIntervalMs, int retryCount, List<string> stopOnHttpStatuses)
+        {
+            for (int i = 0; i < retryCount; i++)
+            {
+                try 
+                { 
+                    wc.DownloadFile(url, saveAs); 
+                    return true;
+                }
+                catch (WebException webExc) 
+                {
+                    Console.WriteLine("Attempt nr.{0} to download '{1}' failed: {2}", i, url, webExc);
+                    string httpStatus = Tools.ParseWebExceptionHttpStatus(webExc);
+                    if (!string.IsNullOrWhiteSpace(httpStatus) && stopOnHttpStatuses != null && stopOnHttpStatuses.Count > 0 && stopOnHttpStatuses.Contains(httpStatus))
+                    {
+                        Console.WriteLine("An http status is encountered ({0}) upon which the processing is said to be stopped.", httpStatus);
+                        return false;
+                    }
+                    if (retryIntervalMs > 0) 
+                        Thread.Sleep(retryIntervalMs);
+                }
+ 
+            }
+            return true;
+
         }
 
         private static void FormatDecayingWestHtml(string[] args)
@@ -431,10 +505,15 @@ namespace Evolvex.VKUtil
             string startFromPageStr = args.Length > 1 ? args[1] : string.Empty;
             string stopAfterPageStr = args.Length > 2 ? args[2] : string.Empty;
             string saveRsltsTo = args.Length > 3 ? args[3] : string.Empty;
-            bool saveContinously = false;
+			string getJustUrlsStr = args.Length > 4 ? args[4] : "true";
+			bool getJustUrls;
+			if (!bool.TryParse(getJustUrlsStr, out getJustUrls))
+				getJustUrls = true;
+			bool saveContinously = false;
             using (DataGovUaReader reader = new DataGovUaReader())
             {
-                if (!string.IsNullOrWhiteSpace(startFromPageStr))
+				reader.GetJustUrls = getJustUrls;
+				if (!string.IsNullOrWhiteSpace(startFromPageStr))
                 {
                     int startFromPg;
                     if (int.TryParse(startFromPageStr, out startFromPg))

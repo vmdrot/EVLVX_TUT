@@ -53,6 +53,7 @@
     <Compile Include="BGU\Data\BankOwnStructVersionInfo.cs" />
     <Compile Include="BGU\Data\BGUBankOwnStructInfo.cs" />
     <Compile Include="DataGovUa\DataGovUaReader.cs" />
+    <Compile Include="DataGovUa\DataSetInfoSimplified.cs" />
     <Compile Include="DataGovUa\DataSetInfo.cs" />
     <Compile Include="DataGovUa\ProviderCategoryInfo.cs" />
     <Compile Include="DataGovUa\ProviderInfo.cs" />

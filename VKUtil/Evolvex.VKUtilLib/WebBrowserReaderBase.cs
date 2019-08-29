@@ -146,7 +146,24 @@ namespace Evolvex.VKUtilLib
                 WC_FileDownload(sender, e);
         }
 
-        protected bool WaitUntilBrowserReady()
+		protected HtmlElement FindChildElementByClass(HtmlElement parent, string tagName, string  classValue)
+		{
+			if (parent.Children == null || parent.Children.Count == 0)
+				return null;
+			foreach(HtmlElement child in parent.Children)
+			{
+				if (child.TagName.ToLower() != tagName.ToLower())
+					continue;
+				string cssClassName = ReadDivAttribValue(child, "class");
+				if (string.IsNullOrWhiteSpace(cssClassName))
+					continue;
+				if (cssClassName == classValue)
+					return child;
+			}
+			return null;
+		}
+
+		protected bool WaitUntilBrowserReady()
         {
             if(LogDebugEvents) Console.WriteLine("WaitUntilBrowserReady::_wc.ReadyState = {0}", _wc.ReadyState);
             DateTime dtStart = DateTime.Now;
