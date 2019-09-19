@@ -26,6 +26,8 @@ namespace Evolvex.VKUtil
 
         private static readonly Dictionary<string, CmdHandler> _cmdHandlers;
         private static readonly bool EdataLogDebugEvents;
+
+        
         static Program()
         {
             _cmdHandlers = new Dictionary<string, CmdHandler>();
@@ -123,10 +125,12 @@ namespace Evolvex.VKUtil
             string retryIntervalMsStr = args.Length > 5 ? args[5] : string.Empty;
             string retryCountStr = args.Length > 6 ? args[6] : string.Empty;
             string stopOnHttpStatusesStr = args.Length > 7 ? args[7] : string.Empty;
+            string tlsSslCertificateTypeStr = args.Length > 8 ? args[8] : string.Empty;
 
-                        int sleepBtwRequestsMs = 0;
+            int sleepBtwRequestsMs = 0;
             int retryIntervalMs = 0; 
             int retryCount = 3;
+            SecurityProtocolType? tlsSslCertificateTyp = (SecurityProtocolType?)null;
 
             int currUrlIdx = 0;
             
@@ -148,6 +152,21 @@ namespace Evolvex.VKUtil
                 int tmp;
                 if (int.TryParse(sleepBtwRequestsMsStr, out tmp))
                     sleepBtwRequestsMs = tmp;
+            }
+
+            if (!string.IsNullOrWhiteSpace(tlsSslCertificateTypeStr))
+            {
+                SecurityProtocolType sslTyp;
+                if (Enum.TryParse<SecurityProtocolType>(tlsSslCertificateTypeStr, out sslTyp))
+                {
+                    tlsSslCertificateTyp = sslTyp;
+                }
+                else
+                {
+                    int sslIntTmp;
+                    if (int.TryParse(tlsSslCertificateTypeStr, out sslIntTmp))
+                        tlsSslCertificateTyp = (SecurityProtocolType)sslIntTmp;
+                }
             }
 
             List<string> stopOnHttpStatuses = new List<string>();
@@ -186,7 +205,7 @@ namespace Evolvex.VKUtil
                     string currSaveAsPath = Path.Combine(saveToDir, fileName);
                     if(File.Exists(currSaveAsPath))
                         continue;
-                    if (!TryDownload(wc, url, currSaveAsPath, retryIntervalMs, retryCount, stopOnHttpStatuses))
+                    if (!TryDownload(wc, url, currSaveAsPath, retryIntervalMs, retryCount, stopOnHttpStatuses, tlsSslCertificateTyp))
                         break;
                     if (sleepBtwRequestsMs > 0)
                         Thread.Sleep(sleepBtwRequestsMs);
@@ -194,7 +213,7 @@ namespace Evolvex.VKUtil
             }
         }
 
-        private static bool TryDownload(WebClient wc, string url, string saveAs, int retryIntervalMs, int retryCount, List<string> stopOnHttpStatuses)
+        private static bool TryDownload(WebClient wc, string url, string saveAs, int retryIntervalMs, int retryCount, List<string> stopOnHttpStatuses, SecurityProtocolType? tlsSslTyp)
         {
             for (int i = 0; i < retryCount; i++)
             {
@@ -206,11 +225,21 @@ namespace Evolvex.VKUtil
                 catch (WebException webExc) 
                 {
                     Console.WriteLine("Attempt nr.{0} to download '{1}' failed: {2}", i, url, webExc);
-                    string httpStatus = Tools.ParseWebExceptionHttpStatus(webExc);
-                    if (!string.IsNullOrWhiteSpace(httpStatus) && stopOnHttpStatuses != null && stopOnHttpStatuses.Count > 0 && stopOnHttpStatuses.Contains(httpStatus))
+                    if ((new Uri(url)).Scheme == Uri.UriSchemeHttps && webExc.Message.IndexOf("The request was aborted: Could not create SSL/TLS secure channel.") != -1)
                     {
-                        Console.WriteLine("An http status is encountered ({0}) upon which the processing is said to be stopped.", httpStatus);
-                        return false;
+                        ServicePointManager.Expect100Continue = true;
+                        if (tlsSslTyp != null)
+                            ServicePointManager.SecurityProtocol = (SecurityProtocolType)tlsSslTyp;
+                        ServicePointManager.ServerCertificateValidationCallback += new System.Net.Security.RemoteCertificateValidationCallback(AlwaysGoodCertificate);
+                    }
+                    else
+                    {
+                        string httpStatus = Tools.ParseWebExceptionHttpStatus(webExc);
+                        if (!string.IsNullOrWhiteSpace(httpStatus) && stopOnHttpStatuses != null && stopOnHttpStatuses.Count > 0 && stopOnHttpStatuses.Contains(httpStatus))
+                        {
+                            Console.WriteLine("An http status is encountered ({0}) upon which the processing is said to be stopped.", httpStatus);
+                            return false;
+                        }
                     }
                     if (retryIntervalMs > 0) 
                         Thread.Sleep(retryIntervalMs);
@@ -662,6 +691,9 @@ namespace Evolvex.VKUtil
 ProcessId: {0}, MainWindowTitle: '{1}', ProcessName: '{2}', StartInfo.FileName: '{3}', StartInfo.Arguments: '{4}', StartTime: {5}, StartInfo.RedirectStandardOutput: {6}, StartInfo.RedirectStandardError: {7} }}", currProcess.Id, currProcess.MainWindowTitle, currProcess.ProcessName, currProcess.StartInfo.FileName, currProcess.StartInfo.Arguments, currProcess.StartTime, currProcess.StartInfo.RedirectStandardOutput, currProcess.StartInfo.RedirectStandardError);
 
         }
-
+        private static bool AlwaysGoodCertificate(object sender, System.Security.Cryptography.X509Certificates.X509Certificate certificate, System.Security.Cryptography.X509Certificates.X509Chain chain, System.Net.Security.SslPolicyErrors policyErrors)
+        {
+            return true;
+        }
     }
 }
