@@ -1,0 +1,1 @@
+..\bin\Debug\Evolvex.VSUtils.CLI.exe ProjListAllDependentUpon F:\home\vmdrot\EPAM\Projs\USGA-OPS\JIRA\USA-192\TppToMediaGuide.csproj.xml MediaGuide.edmx false 1> MediaGuide.edmx.log 2>&1

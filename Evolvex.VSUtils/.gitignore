@@ -1,0 +1,9 @@
+syntax: glob
+*.user
+*.suo
+/.vs/
+bin
+obj
+msbuild.log
+packages
+*.log

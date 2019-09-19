@@ -1,0 +1,1 @@
+..\bin\Debug\Evolvex.VSUtils.CLI.exe ProjCutOffItemsXmls F:\home\vmdrot\EPAM\Projs\USGA-OPS\JIRA\USA-192\TppToMediaGuide.csproj.xml MediaGuide.edmx.log false 1> MediaGuide.edmx.cutxmls.log 2>&1
