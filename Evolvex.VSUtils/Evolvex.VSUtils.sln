@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evolvex.VSUtils.CLI", "Evolvex.VSUtils.CLI\Evolvex.VSUtils.CLI.csproj", "{541FDCD8-D6C4-4A5B-AF90-4AF97B02C463}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evolvex.VSUtils.Lib", "Evolvex.VSUtils.Lib\Evolvex.VSUtils.Lib.csproj", "{38B54422-C7B9-489A-AF77-16037AFBBAE9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{541FDCD8-D6C4-4A5B-AF90-4AF97B02C463}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{541FDCD8-D6C4-4A5B-AF90-4AF97B02C463}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{541FDCD8-D6C4-4A5B-AF90-4AF97B02C463}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{541FDCD8-D6C4-4A5B-AF90-4AF97B02C463}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38B54422-C7B9-489A-AF77-16037AFBBAE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38B54422-C7B9-489A-AF77-16037AFBBAE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38B54422-C7B9-489A-AF77-16037AFBBAE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38B54422-C7B9-489A-AF77-16037AFBBAE9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98F06B41-885F-4DA3-AC1D-F2687F4D63C6}
+	EndGlobalSection
+EndGlobal

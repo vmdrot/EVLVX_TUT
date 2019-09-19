@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<compiles>
+  <Compile Include="Architect.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="Championship.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="ChampionshipsCours.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="ChampionshipType.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="Course.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="DW_EaglesBirdiesPar.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="DW_FirstTimeMajor.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="DW_HoleDifficulty.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="DW_LowAmByChamp.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="DW_ParCutLine.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="DW_SequentialResults.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="DW_Top5FinisherStats.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="DW_UnderAtOverPar.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="Firm.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="Golfer.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="Hole.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="HoleScore.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="Location.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="LogItem.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="LogType.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="Match.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="MediaGuide.Context.cs">
+    <AutoGen>True</AutoGen>
+    <DesignTime>True</DesignTime>
+    <DependentUpon>MediaGuide.Context.tt</DependentUpon>
+  </Compile>
+  <Compile Include="MediaGuide.cs">
+    <AutoGen>True</AutoGen>
+    <DesignTime>True</DesignTime>
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="MediaGuide.Designer.cs">
+    <AutoGen>True</AutoGen>
+    <DesignTime>True</DesignTime>
+    <DependentUpon>MediaGuide.edmx</DependentUpon>
+  </Compile>
+  <Compile Include="ParDiffType.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="Player.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="Player_RoundTotals.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="Round.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="RoundType.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="ScoringRecord.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="Sector.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="Stroke.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="StrokeFrom.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="StrokeType.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="Team.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="TeamPlayer.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="Team_HoleScores.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="Team_RoundTotals.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="ValidationUser.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <Compile Include="Zone.cs">
+    <DependentUpon>MediaGuide.tt</DependentUpon>
+  </Compile>
+  <EntityDeploy Include="MediaGuide.edmx">
+    <Generator>EntityModelCodeGenerator</Generator>
+    <LastGenOutput>MediaGuide.Designer.cs</LastGenOutput>
+  </EntityDeploy>
+  <None Include="MediaGuide.edmx.diagram">
+    <DependentUpon>MediaGuide.edmx</DependentUpon>
+  </None>
+  <Content Include="MediaGuide.Context.tt">
+    <Generator>TextTemplatingFileGenerator</Generator>
+    <DependentUpon>MediaGuide.edmx</DependentUpon>
+    <LastGenOutput>MediaGuide.Context.cs</LastGenOutput>
+  </Content>
+  <Content Include="MediaGuide.tt">
+    <Generator>TextTemplatingFileGenerator</Generator>
+    <DependentUpon>MediaGuide.edmx</DependentUpon>
+    <LastGenOutput>MediaGuide.cs</LastGenOutput>
+  </Content>
+</compiles>
