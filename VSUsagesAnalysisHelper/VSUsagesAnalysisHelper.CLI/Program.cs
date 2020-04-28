@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using VSUsagesAnalysisHelper.CodeAnalysisLib;
 
 namespace VSUsagesAnalysisHelper.CLI
 {
@@ -82,6 +83,12 @@ namespace VSUsagesAnalysisHelper.CLI
         public static int BuildTree(string[] args)
         {
             //todo
+            return 0;
+        }
+
+        public static int FindUsages(string[] args)
+        {
+            var lst = (new Class1()).FindUsages();
             return 0;
         }
         #endregion
