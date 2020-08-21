@@ -93,7 +93,7 @@ namespace VSUsagesAnalysisHelper.UI
             var refs = DataSource.Where(vsu => vsu.DefType == defType && (string.IsNullOrWhiteSpace(defFile) || vsu.DefFile == defFile)).Distinct(new VSUsageRecFileContTypeMethodEqComparer());
             string project = refs.FirstOrDefault()?.Project;
             if (string.IsNullOrWhiteSpace(project)) project = "<no project>";
-            string dispName = string.Format("{0}.{0}", project, defType);
+            string dispName = string.Format("{0}.{1}", project, defType);
             if (!string.IsNullOrWhiteSpace(defMember))
                 dispName += "." + defMember;
             int realRefsCount = refs.Where(r => !r.IsNoReferences).Count();
@@ -116,6 +116,11 @@ namespace VSUsagesAnalysisHelper.UI
         private void collapseAllToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             trvw.CollapseAll();
+        }
+
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(trvw.SelectedNode.Text);
         }
     }
 }

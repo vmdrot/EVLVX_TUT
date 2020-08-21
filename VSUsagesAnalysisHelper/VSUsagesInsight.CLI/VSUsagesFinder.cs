@@ -4,6 +4,7 @@ using Microsoft.CodeAnalysis.FindSymbols;
 using Microsoft.CodeAnalysis.Text;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,116 +17,175 @@ namespace VSUsagesInsight.CLI
         public VSUsagesFinder()
         {
             this.SkipClasses = new List<string>();
+            this.SearchForUDFs = new List<string>();
         }
 
         public List<string> SkipClasses { get; set; }
+        public List<string> SearchForUDFs { get; set; }
         public List<VSUsageRec> FindUsages(Solution sln, string projectName, string typeName, string memberName, string defFile)
         {
+            return FindUsages(sln, projectName, typeName, memberName, defFile, false);
+        }
+        public List<VSUsageRec> FindUsages(Solution sln, string projectName, string typeName, string memberName, string defFile, bool fillSln = false, string memberSignature = null)
+        {
             List<VSUsageRec> rslt = new List<VSUsageRec>();
-            var proj = sln.Projects.FirstOrDefault(p => p.Name == projectName);
-            if (proj == null)
-                return rslt;
-            //var semModel = proj.Documents.First().GetSemanticModelAsync().Result;
-            //var syntRoot = semModel.SyntaxTree.GetRoot();
-            //var method = syntRoot.DescendantNodes().OfType<MethodDeclarationSyntax>().First();
-            var compilation = proj.GetCompilationAsync().Result;
-            ISymbol symbol2Find = null;
-            var classSymbol = compilation.GetTypeByMetadataName(typeName);
+            INamedTypeSymbol classSymbol = null;
+
+            if (!string.IsNullOrWhiteSpace(projectName))
+            {
+                Project proj = sln.Projects.FirstOrDefault(p => p.Name == projectName);
+                if (proj == null)
+                    return rslt;
+                classSymbol = TryGetClassSymbol(typeName, proj);
+            }
+            else
+                classSymbol = TryGetClassSymbolSolutionWide(typeName, sln);
+            //ISymbol symbol2Find = null;
+            List<ISymbol> symbols2Find = new List<ISymbol>();
             if (classSymbol == null)
             {
-                //Console.WriteLine("Unable to get {0} for '{1}'", nameof(classSymbol), typeName);
+                Console.WriteLine("Unable to get {0} for '{1}'", nameof(classSymbol), typeName);
                 return rslt;
             }
             string defType = classSymbol.Name;
             if (!string.IsNullOrWhiteSpace(memberName))
             {
                 var methSymbols = classSymbol.GetMembers(memberName);
-                if (methSymbols != null)
-                    symbol2Find = methSymbols.FirstOrDefault();
+                if (methSymbols != null && methSymbols.Length > 0)
+                    symbols2Find.AddRange(methSymbols);
+                //else
+                //{
+                //    if (!string.IsNullOrWhiteSpace(memberSignature))
+                //        symbol2Find = methSymbols.FirstOrDefault(s => ParseSignature(s.ToDisplayString()) == memberSignature);
+                //}
             }
             else
-                symbol2Find = classSymbol;
-            if (symbol2Find == null)
+                symbols2Find.Add(classSymbol);
+            if (symbols2Find.Count == 0)
                 return rslt;
-
-            var refs = SymbolFinder.FindReferencesAsync(symbol2Find, sln).Result;
-            if (refs == null)
-                return rslt;
-            foreach (var oRef in refs)
+            foreach (ISymbol symbol2Find in symbols2Find)
             {
-                //Console.WriteLine("Locations = {0}", oRef.Locations.Count());
-                foreach (var oLoc in oRef.Locations)
+                var refs = SymbolFinder.FindReferencesAsync(symbol2Find, sln).Result;
+                if (refs == null)
+                    return rslt;
+                foreach (var oRef in refs)
                 {
-                    //Console.WriteLine("Location = {0}", oLoc.ToString(), oLoc);
-                    //Console.WriteLine("oLoc.Location = {0}", oLoc.Location.ToString(), oLoc);
-                    //Console.WriteLine("SourceSpan: {{Start: {0}, End:{1}, Length:{2} }}", oLoc.Location.SourceSpan.Start, oLoc.Location.SourceSpan.End, oLoc.Location.SourceSpan.Length);
-                    var tree = oLoc.Location.SourceTree;
-                    var treeRoot = tree.GetRootAsync().Result;
-                    SyntaxNode node = treeRoot.FindNode(oLoc.Location.SourceSpan);
-
-                    SourceText srcTxt;
-                    if (tree.TryGetText(out srcTxt))
+                    //Console.WriteLine("Locations = {0}", oRef.Locations.Count());
+                    foreach (var oLoc in oRef.Locations)
                     {
-                        string srcLine = GetSourceTextBySpan(tree, oLoc.Location.SourceSpan, srcTxt);
-                        MethodDeclarationSyntax containingMember = GetContainingMember(node);
-                        ClassDeclarationSyntax containingType = GetContainingType(containingMember);
-                        NamespaceDeclarationSyntax containingNs = GetContainingNameSpace(containingType);
-                        string parentNodeSrc = string.Empty;
-                        string classSrc = string.Empty;
-                        string nsSrc = string.Empty;
-                        if (containingMember != null)
-                        {
-                            parentNodeSrc = GetSourceTextBySpan(tree, containingMember.Span, srcTxt);
+                        //Console.WriteLine("Location = {0}", oLoc.ToString(), oLoc);
+                        //Console.WriteLine("oLoc.Location = {0}", oLoc.Location.ToString(), oLoc);
+                        //Console.WriteLine("SourceSpan: {{Start: {0}, End:{1}, Length:{2} }}", oLoc.Location.SourceSpan.Start, oLoc.Location.SourceSpan.End, oLoc.Location.SourceSpan.Length);
+                        var tree = oLoc.Location.SourceTree;
+                        var treeRoot = tree.GetRootAsync().Result;
+                        SyntaxNode node = treeRoot.FindNode(oLoc.Location.SourceSpan);
+                        List<string> detectedUDFs = new List<string>();
 
-                        }
-                        if (containingType != null)
+                        SourceText srcTxt;
+                        if (tree.TryGetText(out srcTxt))
                         {
-                            classSrc = GetSourceTextBySpan(tree, containingType.Span, srcTxt);
-                        }
+                            string srcLine = GetSourceTextBySpan(tree, oLoc.Location.SourceSpan, srcTxt);
+                            MethodDeclarationSyntax containingMember = GetContainingMember(node);
+                            ClassDeclarationSyntax containingType = GetContainingType(containingMember);
+                            NamespaceDeclarationSyntax containingNs = GetContainingNameSpace(containingType);
+                            string parentNodeSrc = string.Empty;
+                            string classSrc = string.Empty;
+                            string nsSrc = string.Empty;
+                            if (containingMember != null)
+                            {
+                                parentNodeSrc = GetSourceTextBySpan(tree, containingMember.Span, srcTxt);
+                                if (SearchForUDFs?.Count > 0)
+                                {
+                                    foreach (string udf in SearchForUDFs)
+                                    {
+                                        if (parentNodeSrc.IndexOf(udf) != -1)
+                                            detectedUDFs.Add(udf);
+                                    }
+                                }
 
-                        if (nsSrc != null)
-                        {
-                            nsSrc = GetSourceTextBySpan(tree, containingNs.Span, srcTxt);
-                        }
+                            }
+                            if (containingType != null)
+                            {
+                                classSrc = GetSourceTextBySpan(tree, containingType.Span, srcTxt);
+                            }
 
-                        VSUsageRec vsu = new VSUsageRec();
-                        vsu.Code = srcLine;
-                        var srcSpan = tree.GetLineSpan(oLoc.Location.SourceSpan);
-                        vsu.Line = srcSpan.StartLinePosition.Line;
-                        vsu.Column = srcSpan.StartLinePosition.Character;
-                        vsu.ContainingMember = ParseMethodName(parentNodeSrc);
-                        //Console.WriteLine("{0}('{1}') = '{2}'", nameof(ParseMethodName), parentNodeSrc, vsu.ContainingMember);
-                        vsu.ContainingType = ParseClassName(classSrc);
-                        //Console.WriteLine("{0}('{1}') = '{2}'", nameof(ParseClassName), classSrc, vsu.ContainingType);
-                        vsu.ContainingNamespace = ParseNameSpaceName(nsSrc);
-                        vsu.File = oLoc.Document.FilePath;
-                        vsu.Project = oLoc.Document.Project.Name;
-                        vsu.Kind = oLoc.Location.Kind.ToString();
-                        defType = symbol2Find?.ContainingType?.Name;
-                        if (!string.IsNullOrWhiteSpace(defType))
-                            vsu.DefType = defType;
-                        else
-                            vsu.DefType = classSymbol.Name;
-                        vsu.DefMember = symbol2Find?.Name;
-                        vsu.DefFile = defFile;
-                        rslt.Add(vsu);
-                        //Console.WriteLine(new string('-', 20));
-                        //Console.WriteLine("{0} = {1}", nameof(srcLine), srcLine);
-                        //Console.WriteLine(new string('-', 20));
-                        //Console.WriteLine("{0} = {1}", nameof(parentNodeSrc), parentNodeSrc);
-                        //Console.WriteLine(new string('-', 20));
-                        //Console.WriteLine("{0} = {1}", nameof(classSrc), classSrc);
-                        //Console.WriteLine(new string('=', 20));
+                            if (containingNs != null)
+                            {
+                                nsSrc = GetSourceTextBySpan(tree, containingNs.Span, srcTxt);
+                            }
+
+                            VSUsageRec vsu = new VSUsageRec();
+                            vsu.Code = srcLine;
+                            var srcSpan = tree.GetLineSpan(oLoc.Location.SourceSpan);
+                            vsu.Line = srcSpan.StartLinePosition.Line;
+                            vsu.Column = srcSpan.StartLinePosition.Character;
+                            vsu.ContainingMember = ParseMethodName(parentNodeSrc);
+                            vsu.ContainingMemberSignature = containingMember?.ParameterList.ToFullString();
+                            //Console.WriteLine("{0}('{1}') = '{2}'", nameof(ParseMethodName), parentNodeSrc, vsu.ContainingMember);
+                            vsu.ContainingType = ParseClassName(classSrc);
+                            //Console.WriteLine("{0}('{1}') = '{2}'", nameof(ParseClassName), classSrc, vsu.ContainingType);
+                            vsu.ContainingNamespace = ParseNameSpaceName(nsSrc);
+                            vsu.File = oLoc.Document.FilePath;
+                            vsu.Project = oLoc.Document.Project.Name;
+                            vsu.Kind = oLoc.Location.Kind.ToString();
+                            defType = symbol2Find?.ContainingType?.Name;
+                            if (!string.IsNullOrWhiteSpace(defType))
+                                vsu.DefType = defType;
+                            else
+                                vsu.DefType = classSymbol.Name;
+                            vsu.DefMember = symbol2Find?.Name;
+                            vsu.DefMemberSignature = symbol2Find?.OriginalDefinition?.ToDisplayString();
+                            vsu.DefFile = defFile;
+                            if (detectedUDFs?.Count > 0)
+                                vsu.UDF01 = string.Join(",", detectedUDFs.ToArray());
+                            if (fillSln)
+                            {
+                                vsu.Sln = Path.GetFileName(sln.FilePath);
+                                vsu.SlnPath = sln.FilePath;
+                            }
+                            rslt.Add(vsu);
+                            //Console.WriteLine(new string('-', 20));
+                            //Console.WriteLine("{0} = {1}", nameof(srcLine), srcLine);
+                            //Console.WriteLine(new string('-', 20));
+                            //Console.WriteLine("{0} = {1}", nameof(parentNodeSrc), parentNodeSrc);
+                            //Console.WriteLine(new string('-', 20));
+                            //Console.WriteLine("{0} = {1}", nameof(classSrc), classSrc);
+                            //Console.WriteLine(new string('=', 20));
+                        }
+                        //oLoc.Location.GetLineSpan()
                     }
-                    //oLoc.Location.GetLineSpan()
                 }
             }
-
             return rslt;
+        }
+
+        //private string ParseMethodSignature(string displayString)
+        //{
+
+        //}
+
+        private INamedTypeSymbol TryGetClassSymbolSolutionWide(string typeName, Solution sln)
+        {
+            INamedTypeSymbol rslt = null;
+            foreach (var proj in sln.Projects)
+            {
+                rslt = TryGetClassSymbol(typeName, proj);
+                if (rslt != null)
+                    return rslt;
+            }
+            return rslt;
+        }
+
+        private INamedTypeSymbol TryGetClassSymbol(string typeName, Project proj)
+        {
+            var compilation = proj.GetCompilationAsync().Result;
+            return compilation.GetTypeByMetadataName(typeName);
         }
 
         private string ParseNameSpaceName(string defText)
         {
+            if (string.IsNullOrWhiteSpace(defText))
+                return string.Empty;
             //Console.WriteLine("{0}: {1} = '{2}'", nameof(ParseNameSpaceName), nameof(defText), defText);
             const string NSToken = "namespace ";
             int ctPos = defText.IndexOf(NSToken);
@@ -138,6 +198,8 @@ namespace VSUsagesInsight.CLI
 
         private string ParseClassName(string defText)
         {
+            if (string.IsNullOrWhiteSpace(defText))
+                return string.Empty;
             //Console.WriteLine("{0}: {1} = '{2}'", nameof(ParseClassName), nameof(defText), defText);
             const string ClassToken = " class ";
             int ctPos = defText.IndexOf(ClassToken);
@@ -220,11 +282,11 @@ namespace VSUsagesInsight.CLI
                 do
                 {
                     rslt = srcTxt.Lines[srcSpan.StartLinePosition.Line + currLnOffset].ToString();
-                    if (!string.IsNullOrWhiteSpace(rslt) &&  IsAttributeLine(rslt))
+                    if (!string.IsNullOrWhiteSpace(rslt) && IsAttributeLine(rslt))
                         currLnOffset++;
                     else
                         break;
-                } while (currLnOffset <= srcSpan.EndLinePosition.Line -  srcSpan.StartLinePosition.Line);
+                } while (currLnOffset <= srcSpan.EndLinePosition.Line - srcSpan.StartLinePosition.Line);
                 return rslt;
             }
         }
@@ -241,7 +303,7 @@ namespace VSUsagesInsight.CLI
             var all = vsusHive.Where(u => !u.IsNoReferences).Distinct(new VSUsageRecFileContTypeMethodEqComparer()).ToList();
             var missing = all.Where(r => !SkipClasses.Contains(r.ContainingType) && vsusHive.FirstOrDefault(q => q.DefFile == r.File && q.DefType == r.ContainingType && q.DefMember == r.ContainingMember) == null).Distinct(new VSUsageRecFileContTypeMethodEqComparer()).ToList();
             var ds = from m in missing
-                     select new MissingUsageRec() { ContainingMember = m.ContainingMember, ContainingType = m.ContainingType, File = m.File, ContainingNamespace = m.ContainingNamespace, Project = m.Project};
+                     select new MissingUsageRec() { ContainingMember = m.ContainingMember, ContainingType = m.ContainingType, File = m.File, ContainingNamespace = m.ContainingNamespace, Project = m.Project };
             return ds.ToList();
         }
 
@@ -278,7 +340,7 @@ namespace VSUsagesInsight.CLI
                     if (last10MissingCounts.Distinct().Count() == 1)
                         break;
                     else
-                    { 
+                    {
                         last10MissingCounts.RemoveAt(0);
                         last10MissingCounts.Add(missing != null ? missing.Count : 0);
                     }

@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VSUsages.Utilities;
 using VSUsagesAnalysisHelperLib;
+using VSUsagesInsight.CLI.Spares;
 
 namespace VSUsagesInsight.CLI
 {
@@ -109,15 +110,19 @@ namespace VSUsagesInsight.CLI
             string outPath4All = args.Length > 6 ? args[6] : string.Empty;
             string outPath4NotFound = args.Length > 7 ? args[7] : string.Empty;
             string outPathSession = args.Length > 8 ? args[8] : string.Empty;
+            string udfStr = args.Length > 9 ? args[9] : string.Empty;
             List<VSUsageRec> vsus;
             List<MissingUsageRec> notFound = null;
             VSUsagesFinder finder = new VSUsagesFinder();
             if (!string.IsNullOrWhiteSpace(skipClassesStr))
                 finder.SkipClasses = new List<string>(skipClassesStr.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+            if (!string.IsNullOrWhiteSpace(udfStr))
+                finder.SearchForUDFs = new List<string>(udfStr.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries));
+
             using (MSBuildWorkspace _workspace = MSBuildWorkspace.Create())
             {
                 Solution sln = _workspace.OpenSolutionAsync(slnPath).Result;
-                
+
                 if (bFullTree)
                 {
                     vsus = new List<VSUsageRec>();
@@ -147,13 +152,120 @@ namespace VSUsagesInsight.CLI
 
             }
             if (!string.IsNullOrWhiteSpace(outPathSession))
-                File.WriteAllText(outPathSession, JsonConvert.SerializeObject(new VSUsageRecSession() { Usages = vsus, SkipClasses = finder.SkipClasses}, Formatting.None), Encoding.UTF8);
+                File.WriteAllText(outPathSession, JsonConvert.SerializeObject(new VSUsageRecSession() { Usages = vsus, SkipClasses = finder.SkipClasses }, Formatting.None), Encoding.UTF8);
             DateTime de = DateTime.Now;
             Console.WriteLine("Finished output: {0}", de.ToString("s"));
             Console.Beep();
             return 0;
         }
 
+
+        public static int ScanSlns(string[] args)
+        {
+            //Console.Read();
+            string srcRoot = args[0];
+            string typeName = args[1];
+            string memberName = args.Length > 2 ? args[2] : string.Empty;
+            string outPath = args.Length > 3 ? args[3] : string.Empty;
+            string sTryScanRecursively = args.Length > 4 ? args[4] : string.Empty;
+            string outMissing = args.Length > 5 ? args[5] : string.Empty;
+            string outSession = args.Length > 6 ? args[6] : string.Empty;
+            string ignoreSlnsListPath = args.Length > 7 ? args[7] : string.Empty;
+            bool bTryScanRecursively;
+            List<string> ignoreSlns = new List<string>();
+            if (!string.IsNullOrWhiteSpace(ignoreSlnsListPath) && File.Exists(ignoreSlnsListPath))
+                ignoreSlns.AddRange(File.ReadAllLines(ignoreSlnsListPath).Where(s => s != null && s.Trim().Length > 0));
+            if (!string.IsNullOrWhiteSpace(sTryScanRecursively))
+            {
+                if (!bool.TryParse(sTryScanRecursively, out bTryScanRecursively))
+                    bTryScanRecursively = false;
+            }
+            else
+                bTryScanRecursively = false;
+            string[] slns = Directory.GetFiles(srcRoot, "*.sln", SearchOption.AllDirectories);
+            List<VSUsageRec> all = new List<VSUsageRec>();
+            List<MissingUsageRec> allMissing = new List<MissingUsageRec>();
+            Dictionary<string, bool> slnRslts = new Dictionary<string, bool>();
+            foreach (string slnPath in slns)
+            {
+                if (ignoreSlns.Any(s => s.ToLower() == slnPath.ToLower()))
+                    continue;
+                try
+                {
+                    using (MSBuildWorkspace _workspace = MSBuildWorkspace.Create())
+                    {
+                        Solution sln = _workspace.OpenSolutionAsync(slnPath).Result;
+                        VSUsagesFinder finder = new VSUsagesFinder();
+                        List<VSUsageRec> vsus = null;
+                        if (!bTryScanRecursively)
+                        {
+                            vsus = finder.FindUsages(sln, string.Empty, typeName, memberName, string.Empty, true);
+                            if (vsus != null && vsus.Count > 0)
+                                all.AddRange(vsus);
+                        }
+                        else
+                        {
+                            vsus = new List<VSUsageRec>();
+                            List<MissingUsageRec> currMissing;
+                            finder.FindUsagesRecursive(sln, string.Empty, typeName, memberName, vsus, out currMissing);
+                            if (currMissing != null && currMissing.Count > 0)
+                                allMissing.AddRange(currMissing);
+
+                        }
+                        slnRslts.Add(slnPath, true);
+                    }
+                }
+                catch (Exception exc)
+                {
+                    Console.WriteLine("An error occurred scanning sln '{0}': {1}", slnPath, exc);
+                    slnRslts.Add(slnPath, false);
+                }
+            }
+            Console.WriteLine("{0} = {1}", nameof(all.Count), all.Count);
+            if (!string.IsNullOrWhiteSpace(outPath))
+                File.WriteAllText(outPath, JsonConvert.SerializeObject(all, Formatting.Indented), Encoding.UTF8);
+            else
+                Console.WriteLine(JsonConvert.SerializeObject(all, Formatting.Indented));
+            Console.WriteLine(new string('=', 25));
+            Console.WriteLine("suceeded: {0} of {1}", slnRslts.Count(d => d.Value), slnRslts.Count);
+            Console.WriteLine(new string('-', 25));
+            Console.WriteLine(JsonConvert.SerializeObject(slnRslts, Formatting.Indented));
+            Console.WriteLine(new string('-', 25));
+            Console.WriteLine("failed: {0} of {1}", slnRslts.Count(d => !d.Value), slnRslts.Count);
+            Console.WriteLine(string.Join("\n", slnRslts.Where(r => !r.Value).Select(r => r.Key).ToArray()));
+            if (bTryScanRecursively)
+            {
+                if (!string.IsNullOrWhiteSpace(outMissing))
+                    File.WriteAllText(outMissing, JsonConvert.SerializeObject(allMissing), Encoding.UTF8);
+                else
+                {
+                    Console.WriteLine(new string('-', 25));
+                    Console.WriteLine("Missing references({0}):", allMissing.Count);
+                    Console.WriteLine(new string('-', 25));
+                    Console.WriteLine(JsonConvert.SerializeObject(allMissing, Formatting.Indented));
+                }
+            }
+            if (!string.IsNullOrWhiteSpace(outSession))
+                File.WriteAllText(outSession, JsonConvert.SerializeObject(new VSUsageRecSession() { Usages = all }), Encoding.UTF8);
+            Console.Beep();
+            return 0;
+        }
+
+        public static int SolutionProjectsStats(string[] args)
+        {
+            //Console.Read();
+            string slnPath = args[0];
+
+            using (MSBuildWorkspace _workspace = MSBuildWorkspace.Create())
+            {
+                Solution sln = _workspace.OpenSolutionAsync(slnPath).Result;
+                foreach (var proj in sln.Projects)
+                {
+                    Console.WriteLine(proj.CompilationOptions.OutputKind.ToString());
+                }
+            }
+            return 0;
+        }
         public static int Json2Csv(string[] args)
         {
 
@@ -164,6 +276,87 @@ namespace VSUsagesInsight.CLI
                 return 1;
         }
 
+        public static int JoinVSUS(string[] args)
+        {
+            List<VSUsageRec> all = new List<VSUsageRec>();
+            for (int i = 0; i < args.Length - 1; i++)
+            {
+                string file = args[i];
+                if (string.IsNullOrWhiteSpace(file))
+                    continue;
+                if (!File.Exists(file))
+                    continue;
+                List<VSUsageRec> curr = JsonConvert.DeserializeObject<List<VSUsageRec>>(File.ReadAllText(file, Encoding.UTF8));
+                if (curr != null && curr.Count > 0)
+                    all.AddRange(curr);
+            }
+            File.WriteAllText(args[args.Length - 1], JsonConvert.SerializeObject(all, Formatting.Indented), Encoding.UTF8);
+            return 0;
+        }
+
+
+        public static int ListAllSlnsNugetPackages(string[] args)
+        {
+            //Console.Read();
+            string slnsPathsStr = args[0];
+            string detectLatestStableStr = args.Length > 1 ? args[1] : string.Empty;
+            bool detectLatestStable = !string.IsNullOrWhiteSpace(detectLatestStableStr) ? bool.Parse(detectLatestStableStr) : false;
+
+            string[] slnPaths = slnsPathsStr.Split(';');
+            List<NugetPackageRec> allPckgRecs = new List<NugetPackageRec>();
+            foreach (string slnPathRoot in slnPaths)
+            {
+                string[] allSlns = Directory.GetFiles(slnPathRoot, "*.sln", SearchOption.AllDirectories);
+                foreach (string slnPath in allSlns)
+                {
+                    try
+                    {
+                        using (MSBuildWorkspace _workspace = MSBuildWorkspace.Create())
+                        {
+                            Solution sln = _workspace.OpenSolutionAsync(slnPath).Result;
+                            var currPckgs = NugetPackagesHelper.ListAllSlnNugetPackages(sln, detectLatestStable);
+                            if (currPckgs != null && currPckgs.Any())
+                            {
+                                string slnFileName = Path.GetFileName(slnPath);
+                                currPckgs.ForEach(p => { p.SolutionPath = slnPath; p.SolutionName = slnFileName; });
+                                allPckgRecs.AddRange(currPckgs);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Error.WriteLine("Error processing sln '{0}': {1}", slnPath, ex);
+                    }
+                }
+            }
+            Console.WriteLine(JsonConvert.SerializeObject(allPckgRecs, Formatting.Indented));
+            return 0;
+        }
+
+        public static int ListAllSlnNugetPackages(string[] args)
+        {
+            //Console.Read();
+            string slnPath = args[0];
+            string detectLatestStableStr = args.Length > 1 ? args[1] : string.Empty;
+            bool detectLatestStable = !string.IsNullOrWhiteSpace(detectLatestStableStr) ? bool.Parse(detectLatestStableStr) : false;
+
+
+
+            using (MSBuildWorkspace _workspace = MSBuildWorkspace.Create())
+            {
+                Solution sln = _workspace.OpenSolutionAsync(slnPath).Result;
+                Console.WriteLine(JsonConvert.SerializeObject(NugetPackagesHelper.ListAllSlnNugetPackages(sln, detectLatestStable), Formatting.Indented));
+            }
+            return 0;
+        }
+
+        public static int GetLatestStablePackage(string[] args)
+        {
+            Console.Read();
+            Console.WriteLine("{0}\t{1}", args[0], NugetPackagesHelper.DetectLatestStable(args[0]));
+
+            return 0;
+        }
         //public static int FindReferences(string[] args)
         //{
         //    string slnPath = args[0];

@@ -1,0 +1,1 @@
+..\bin\Debug\VSUsagesInsight.CLI.exe ListAllSlnNugetPackages D:\git\VRTF\QQNG\QQCatalystImportData\QQ.NG.ImportData.sln 1> ListAllSlnNugetPackages.cmd.log 2>&1
