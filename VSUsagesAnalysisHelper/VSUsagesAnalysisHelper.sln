@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1022
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSUsagesAnalysisHelper.UI", "VSUsagesAnalysisHelper.UI\VSUsagesAnalysisHelper.UI.csproj", "{5036FE53-4882-4C77-A409-54858CDE6037}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSUsagesAnalysisHelperLib", "VSUsagesAnalysisHelperLib\VSUsagesAnalysisHelperLib.csproj", "{BDC907E8-19AC-473A-A14F-ABEEF5A0031F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSUsagesAnalysisHelper.CLI", "VSUsagesAnalysisHelper.CLI\VSUsagesAnalysisHelper.CLI.csproj", "{64D734A8-FF38-43C9-9077-C714EACFEE71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSUsagesAnalysisHelper.CodeAnalysisLib", "VSUsagesAnalysisHelper.CodeAnalysisLib\VSUsagesAnalysisHelper.CodeAnalysisLib.csproj", "{06E15940-325C-400D-A5B3-3370E25B4759}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSUsagesInsight.CLI", "VSUsagesInsight.CLI\VSUsagesInsight.CLI.csproj", "{0538E940-6BD9-4D8A-BD30-BDF69746CCE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VSUsages.Utilities", "VSUsages.Utilities\VSUsages.Utilities.csproj", "{4BE77B4C-1BFB-4BC7-B7E0-81C5368DF5B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5036FE53-4882-4C77-A409-54858CDE6037}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5036FE53-4882-4C77-A409-54858CDE6037}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5036FE53-4882-4C77-A409-54858CDE6037}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5036FE53-4882-4C77-A409-54858CDE6037}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDC907E8-19AC-473A-A14F-ABEEF5A0031F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDC907E8-19AC-473A-A14F-ABEEF5A0031F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDC907E8-19AC-473A-A14F-ABEEF5A0031F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDC907E8-19AC-473A-A14F-ABEEF5A0031F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64D734A8-FF38-43C9-9077-C714EACFEE71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64D734A8-FF38-43C9-9077-C714EACFEE71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64D734A8-FF38-43C9-9077-C714EACFEE71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64D734A8-FF38-43C9-9077-C714EACFEE71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06E15940-325C-400D-A5B3-3370E25B4759}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06E15940-325C-400D-A5B3-3370E25B4759}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06E15940-325C-400D-A5B3-3370E25B4759}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06E15940-325C-400D-A5B3-3370E25B4759}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0538E940-6BD9-4D8A-BD30-BDF69746CCE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0538E940-6BD9-4D8A-BD30-BDF69746CCE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0538E940-6BD9-4D8A-BD30-BDF69746CCE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0538E940-6BD9-4D8A-BD30-BDF69746CCE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BE77B4C-1BFB-4BC7-B7E0-81C5368DF5B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BE77B4C-1BFB-4BC7-B7E0-81C5368DF5B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BE77B4C-1BFB-4BC7-B7E0-81C5368DF5B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BE77B4C-1BFB-4BC7-B7E0-81C5368DF5B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9FDCA56-6EC2-478C-BAF9-3B318CF038AD}
+	EndGlobalSection
+EndGlobal
