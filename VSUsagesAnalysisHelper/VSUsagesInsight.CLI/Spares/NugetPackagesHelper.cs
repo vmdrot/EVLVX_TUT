@@ -44,6 +44,41 @@ namespace VSUsagesInsight.CLI.Spares
             }
             return rslt;
         }
+        public static List<string> ListAllAssembliesByNugetPackage(Solution sln, string packageId, string version = null)
+        {
+            List<string> rslt = new List<string>();
+            string slnPackagesRoot = GetPackagesRoot(sln.FilePath);
+            string thePackageRoot;
+            if (!string.IsNullOrWhiteSpace(version))
+                thePackageRoot = Path.Combine(slnPackagesRoot, GetPackageFolderName(packageId, version));
+            foreach (var proj in sln.Projects)
+            {
+                if (string.IsNullOrWhiteSpace(version))
+                {
+                    
+                    string currPgkCfg = IdentifyProjectPackageConfig(proj);
+                    if (string.IsNullOrEmpty(currPgkCfg)) continue;
+                    List<NugetPackageRec> currPkgs = ReadOutPackages(currPgkCfg);
+                    string currPkgVersion = currPkgs?.FirstOrDefault(p => p.Id == packageId)?.Version;
+                    if (string.IsNullOrEmpty(currPkgVersion))
+                        continue;
+                    thePackageRoot = Path.Combine(slnPackagesRoot, GetPackageFolderName(packageId, currPkgVersion));
+                }
+                //todo
+            }
+            return rslt;
+        }
+
+        public static string GetPackagesRoot(string slnPath)
+        {
+            string dir = Path.GetDirectoryName(slnPath);
+            return Path.Combine(dir, "packages");
+        }
+
+        public static string GetPackageFolderName(string packageId, string version)
+        {
+            return $"{packageId}.{version}";
+        }
 
         public static string DetectLatestStable_(string pkgId)
         {

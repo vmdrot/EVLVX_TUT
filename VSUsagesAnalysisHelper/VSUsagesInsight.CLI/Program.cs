@@ -194,7 +194,7 @@ namespace VSUsagesInsight.CLI
                 {
                     using (MSBuildWorkspace _workspace = MSBuildWorkspace.Create())
                     {
-                        Solution sln = _workspace.OpenSolutionAsync(slnPath).Result;
+                        Solution sln = _workspace.OpenSolutionAsync(slnPath).ConfigureAwait(false).GetAwaiter().GetResult();
                         VSUsagesFinder finder = new VSUsagesFinder();
                         List<VSUsageRec> vsus = null;
                         if (!bTryScanRecursively)
@@ -258,7 +258,7 @@ namespace VSUsagesInsight.CLI
 
             using (MSBuildWorkspace _workspace = MSBuildWorkspace.Create())
             {
-                Solution sln = _workspace.OpenSolutionAsync(slnPath).Result;
+                Solution sln = _workspace.OpenSolutionAsync(slnPath).ConfigureAwait(false).GetAwaiter().GetResult();
                 foreach (var proj in sln.Projects)
                 {
                     Console.WriteLine(proj.CompilationOptions.OutputKind.ToString());
@@ -313,7 +313,7 @@ namespace VSUsagesInsight.CLI
                     {
                         using (MSBuildWorkspace _workspace = MSBuildWorkspace.Create())
                         {
-                            Solution sln = _workspace.OpenSolutionAsync(slnPath).Result;
+                            Solution sln = _workspace.OpenSolutionAsync(slnPath).ConfigureAwait(false).GetAwaiter().GetResult();
                             var currPckgs = NugetPackagesHelper.ListAllSlnNugetPackages(sln, detectLatestStable);
                             if (currPckgs != null && currPckgs.Any())
                             {
@@ -344,7 +344,7 @@ namespace VSUsagesInsight.CLI
 
             using (MSBuildWorkspace _workspace = MSBuildWorkspace.Create())
             {
-                Solution sln = _workspace.OpenSolutionAsync(slnPath).Result;
+                Solution sln = _workspace.OpenSolutionAsync(slnPath).ConfigureAwait(false).GetAwaiter().GetResult();
                 Console.WriteLine(JsonConvert.SerializeObject(NugetPackagesHelper.ListAllSlnNugetPackages(sln, detectLatestStable), Formatting.Indented));
             }
             return 0;
@@ -365,6 +365,49 @@ namespace VSUsagesInsight.CLI
         //    string
         //    return 0;
         //}
+
+        public static int ListAllAssemblySymbols(string[] args)
+        {
+            string assemblyPath = args[0];
+            //Assembly asm = Assembly.LoadFile(assemblyPath);
+            Assembly asm = Assembly.LoadFrom(assemblyPath);
+            List<string> allPublicTypeNames = new List<string>();
+            foreach (var ti in asm.DefinedTypes)
+            {
+                if (!ti.IsPublic)
+                    continue;
+                allPublicTypeNames.Add(ti.FullName);
+            }
+
+            Console.WriteLine($"Count = {allPublicTypeNames.Count}");
+            Console.WriteLine(JsonConvert.SerializeObject(allPublicTypeNames, Formatting.Indented));
+            return 0;
+        }
+        public static int ListAllAssembliesByNugetPackage(string[] args)
+        {
+            Console.Read();
+            string slnPath = args[0];
+            string packageId = args[1];
+            string pkgVersion = args.Length > 2 ? args[2] : string.Empty;
+            using (MSBuildWorkspace _workspace = MSBuildWorkspace.Create())
+            {
+                Solution sln = _workspace.OpenSolutionAsync(slnPath).ConfigureAwait(false).GetAwaiter().GetResult();
+                Console.WriteLine(JsonConvert.SerializeObject(NugetPackagesHelper.ListAllAssembliesByNugetPackage(sln, packageId, pkgVersion), Formatting.Indented));
+            }
+            return 0;
+        }
+        public static int GetPackagesRoot(string[] args)
+        {
+            Console.WriteLine(NugetPackagesHelper.GetPackagesRoot(args[0]));
+            return 0;
+        }
+
+
+        public static int FindAssemblyUsages(string[] args)
+        {
+            
+            return 0;
+        }
         #endregion
 
         #region FFR

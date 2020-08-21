@@ -1,0 +1,1 @@
+..\bin\Debug\VSUsagesInsight.CLI.exe ListAllAssemblySymbols "D:\git\VRTF\QQNG\QQCatalystQuickBooks\packages\IppDotNetSdkForQuickBooksApiV3.7.5.0\lib\Intuit.Ipp.Core.dll" 1> ListAllAssemblySymbols.cmd.log 2>&1

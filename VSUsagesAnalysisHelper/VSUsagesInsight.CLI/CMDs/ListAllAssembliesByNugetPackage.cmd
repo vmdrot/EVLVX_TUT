@@ -1,0 +1,1 @@
+..\bin\Debug\VSUsagesInsight.CLI.exe ListAllAssembliesByNugetPackage "D:\git\VRTF\QQNG\QQCatalystQuickBooks\QQ.NG.QuickBooks.v3.sln" IppDotNetSdkForQuickBooksApiV3 1> ListAllAssembliesByNugetPackage.cmd.log 2>&1

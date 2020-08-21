@@ -1,0 +1,1 @@
+..\bin\Debug\VSUsagesInsight.CLI.exe GetPackagesRoot "D:\git\VRTF\QQNG\QQCatalystQuickBooks\QQ.NG.QuickBooks.v3.sln" 1> GetPackagesRoot.cmd.log 2>&1
