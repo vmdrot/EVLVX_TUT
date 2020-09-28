@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using Microsoft.Build.Evaluation;
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.FindSymbols;
@@ -13,9 +14,12 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using VSUsages.Utilities;
 using VSUsagesAnalysisHelperLib;
+using VSUsagesAnalysisHelperLib.Spares;
 using VSUsagesInsight.CLI.Spares;
+using Project = Microsoft.CodeAnalysis.Project;
 
 namespace VSUsagesInsight.CLI
 {
@@ -135,9 +139,9 @@ namespace VSUsagesInsight.CLI
             DateTime de1 = DateTime.Now;
             Console.WriteLine("Finished searching: {0}", de1.ToString("s"));
             if (string.IsNullOrWhiteSpace(outPath4All))
-                Console.WriteLine(JsonConvert.SerializeObject(vsus, Formatting.Indented));
+                Console.WriteLine(JsonConvert.SerializeObject(vsus, Newtonsoft.Json.Formatting.Indented));
             else
-                File.WriteAllText(outPath4All, JsonConvert.SerializeObject(vsus, Formatting.Indented), Encoding.UTF8);
+                File.WriteAllText(outPath4All, JsonConvert.SerializeObject(vsus, Newtonsoft.Json.Formatting.Indented), Encoding.UTF8);
             if (notFound != null && notFound.Count > 0)
             {
                 if (string.IsNullOrWhiteSpace(outPath4NotFound))
@@ -145,14 +149,14 @@ namespace VSUsagesInsight.CLI
                     Console.WriteLine(new string('-', 25));
                     Console.WriteLine("Not Found references come here:");
                     Console.WriteLine(new string('-', 25));
-                    Console.WriteLine(JsonConvert.SerializeObject(notFound, Formatting.Indented));
+                    Console.WriteLine(JsonConvert.SerializeObject(notFound, Newtonsoft.Json.Formatting.Indented));
                 }
                 else
-                    File.WriteAllText(outPath4NotFound, JsonConvert.SerializeObject(notFound, Formatting.Indented), Encoding.UTF8);
+                    File.WriteAllText(outPath4NotFound, JsonConvert.SerializeObject(notFound, Newtonsoft.Json.Formatting.Indented), Encoding.UTF8);
 
             }
             if (!string.IsNullOrWhiteSpace(outPathSession))
-                File.WriteAllText(outPathSession, JsonConvert.SerializeObject(new VSUsageRecSession() { Usages = vsus, SkipClasses = finder.SkipClasses }, Formatting.None), Encoding.UTF8);
+                File.WriteAllText(outPathSession, JsonConvert.SerializeObject(new VSUsageRecSession() { Usages = vsus, SkipClasses = finder.SkipClasses }, Newtonsoft.Json.Formatting.None), Encoding.UTF8);
             DateTime de = DateTime.Now;
             Console.WriteLine("Finished output: {0}", de.ToString("s"));
             Console.Beep();
@@ -223,13 +227,13 @@ namespace VSUsagesInsight.CLI
             }
             Console.WriteLine("{0} = {1}", nameof(all.Count), all.Count);
             if (!string.IsNullOrWhiteSpace(outPath))
-                File.WriteAllText(outPath, JsonConvert.SerializeObject(all, Formatting.Indented), Encoding.UTF8);
+                File.WriteAllText(outPath, JsonConvert.SerializeObject(all, Newtonsoft.Json.Formatting.Indented), Encoding.UTF8);
             else
-                Console.WriteLine(JsonConvert.SerializeObject(all, Formatting.Indented));
+                Console.WriteLine(JsonConvert.SerializeObject(all, Newtonsoft.Json.Formatting.Indented));
             Console.WriteLine(new string('=', 25));
             Console.WriteLine("suceeded: {0} of {1}", slnRslts.Count(d => d.Value), slnRslts.Count);
             Console.WriteLine(new string('-', 25));
-            Console.WriteLine(JsonConvert.SerializeObject(slnRslts, Formatting.Indented));
+            Console.WriteLine(JsonConvert.SerializeObject(slnRslts, Newtonsoft.Json.Formatting.Indented));
             Console.WriteLine(new string('-', 25));
             Console.WriteLine("failed: {0} of {1}", slnRslts.Count(d => !d.Value), slnRslts.Count);
             Console.WriteLine(string.Join("\n", slnRslts.Where(r => !r.Value).Select(r => r.Key).ToArray()));
@@ -242,7 +246,7 @@ namespace VSUsagesInsight.CLI
                     Console.WriteLine(new string('-', 25));
                     Console.WriteLine("Missing references({0}):", allMissing.Count);
                     Console.WriteLine(new string('-', 25));
-                    Console.WriteLine(JsonConvert.SerializeObject(allMissing, Formatting.Indented));
+                    Console.WriteLine(JsonConvert.SerializeObject(allMissing, Newtonsoft.Json.Formatting.Indented));
                 }
             }
             if (!string.IsNullOrWhiteSpace(outSession))
@@ -290,7 +294,7 @@ namespace VSUsagesInsight.CLI
                 if (curr != null && curr.Count > 0)
                     all.AddRange(curr);
             }
-            File.WriteAllText(args[args.Length - 1], JsonConvert.SerializeObject(all, Formatting.Indented), Encoding.UTF8);
+            File.WriteAllText(args[args.Length - 1], JsonConvert.SerializeObject(all, Newtonsoft.Json.Formatting.Indented), Encoding.UTF8);
             return 0;
         }
 
@@ -329,7 +333,7 @@ namespace VSUsagesInsight.CLI
                     }
                 }
             }
-            Console.WriteLine(JsonConvert.SerializeObject(allPckgRecs, Formatting.Indented));
+            Console.WriteLine(JsonConvert.SerializeObject(allPckgRecs, Newtonsoft.Json.Formatting.Indented));
             return 0;
         }
 
@@ -345,7 +349,7 @@ namespace VSUsagesInsight.CLI
             using (MSBuildWorkspace _workspace = MSBuildWorkspace.Create())
             {
                 Solution sln = _workspace.OpenSolutionAsync(slnPath).ConfigureAwait(false).GetAwaiter().GetResult();
-                Console.WriteLine(JsonConvert.SerializeObject(NugetPackagesHelper.ListAllSlnNugetPackages(sln, detectLatestStable), Formatting.Indented));
+                Console.WriteLine(JsonConvert.SerializeObject(NugetPackagesHelper.ListAllSlnNugetPackages(sln, detectLatestStable), Newtonsoft.Json.Formatting.Indented));
             }
             return 0;
         }
@@ -380,7 +384,7 @@ namespace VSUsagesInsight.CLI
             }
 
             Console.WriteLine($"Count = {allPublicTypeNames.Count}");
-            Console.WriteLine(JsonConvert.SerializeObject(allPublicTypeNames, Formatting.Indented));
+            Console.WriteLine(JsonConvert.SerializeObject(allPublicTypeNames, Newtonsoft.Json.Formatting.Indented));
             return 0;
         }
         public static int ListAllAssembliesByNugetPackage(string[] args)
@@ -392,7 +396,7 @@ namespace VSUsagesInsight.CLI
             using (MSBuildWorkspace _workspace = MSBuildWorkspace.Create())
             {
                 Solution sln = _workspace.OpenSolutionAsync(slnPath).ConfigureAwait(false).GetAwaiter().GetResult();
-                Console.WriteLine(JsonConvert.SerializeObject(NugetPackagesHelper.ListAllAssembliesByNugetPackage(sln, packageId, pkgVersion), Formatting.Indented));
+                Console.WriteLine(JsonConvert.SerializeObject(NugetPackagesHelper.ListAllAssembliesByNugetPackage(sln, packageId, pkgVersion), Newtonsoft.Json.Formatting.Indented));
             }
             return 0;
         }
@@ -408,6 +412,109 @@ namespace VSUsagesInsight.CLI
             
             return 0;
         }
+
+        public static int ListTargetFrameworks(string[] args)
+        {
+            //Console.Read();
+            string slnPath = args[0];
+            List<VSProjectInfo> rslt = new List<VSProjectInfo>();
+            using (MSBuildWorkspace _workspace = MSBuildWorkspace.Create())
+            {
+                Solution sln = _workspace.OpenSolutionAsync(slnPath).ConfigureAwait(false).GetAwaiter().GetResult();
+                Dictionary<string, int> buildOrders = GetSlnBuildOrder(sln.Projects);
+                foreach (var proj in sln.Projects)
+                {
+                    VSProjectInfo pi = new VSProjectInfo() { Name = proj.Name, BuildOrder = buildOrders[proj.Name] };
+                    XmlDocument projXml = new XmlDocument();
+                    projXml.Load(proj.FilePath);
+                    bool bFound = false;
+                    for (int i = 0; i < projXml.DocumentElement.ChildNodes.Count; i++)
+                    {
+                        var currChild = projXml.DocumentElement.ChildNodes[i];
+                        if (currChild.Name != "PropertyGroup")
+                            continue;
+                        for (int j = 0; j < currChild.ChildNodes.Count; j++)
+                        {
+                            var currPGChild = currChild.ChildNodes[j];
+                            if (currPGChild.Name == "TargetFrameworkVersion")
+                            {
+                                pi.TargetFramework = currPGChild.InnerText;
+                                bFound = true;
+                            }
+                        }
+                        if (bFound)
+                            break;
+                    }
+                    
+                    //rslt.Add(new VSUsagesAnalysisHelperLib.Spares.ProjectInfo() { Name = proj.Name, TargetFramework = "" });
+                    //var tfvNode = projXml.SelectSingleNode("/Project/PropertyGroup/TargetFrameworkVersion");
+                    //if (tfvNode != null)
+                    //    pi.TargetFramework = tfvNode.InnerText;
+                    rslt.Add(pi);
+                }
+                Console.WriteLine(JsonConvert.SerializeObject(rslt, Newtonsoft.Json.Formatting.Indented));
+            }
+            return 0;
+        }
+
+        private static Dictionary<string, int> GetSlnBuildOrder(IEnumerable<Microsoft.CodeAnalysis.Project> projects)
+        {
+            List<Project> lstProjs = new List<Microsoft.CodeAnalysis.Project>(projects);
+            Dictionary<string, int> rslt = new Dictionary<string, int>();
+            Dictionary<string, List<string>> dirDeps = new Dictionary<string, List<string>>();
+            Dictionary<string, List<string>> fullDeps = new Dictionary<string, List<string>>();
+            //get direct dependencies first
+            foreach(var proj in lstProjs)
+            {
+                List<string> currDeps = new List<string>();
+                foreach (var prjRef in proj.AllProjectReferences)
+                {
+                    string refNm = lstProjs.Where(p => p.Id.Equals(prjRef.ProjectId))?.FirstOrDefault()?.Name;
+                    if (!string.IsNullOrWhiteSpace(refNm))
+                        currDeps.Add(refNm);
+                }
+                dirDeps.Add(proj.Name, currDeps);
+            }
+            //then, build a full dependencies graph
+            foreach (string key in dirDeps.Keys)
+            {
+                fullDeps.Add(key, GetAllTransitiveDependencies(key, dirDeps));
+            }
+            var orderedByDeps = fullDeps.OrderBy(p => p.Value.Count);
+            int currOrder = 0;
+            foreach (var orderedDepcy in orderedByDeps)
+            {
+                rslt.Add(orderedDepcy.Key, currOrder++);
+            }
+
+            return rslt;
+        }
+
+        private static List<string> GetAllTransitiveDependencies(string key, Dictionary<string, List<string>> dirDeps)
+        {
+            List<string> rslt = new List<string>(dirDeps[key]);
+            foreach (string dirDepcy in dirDeps[key])
+                IncrementDependencies(dirDepcy, dirDeps, rslt);
+            return rslt;
+        }
+
+        private static void IncrementDependencies(string topDepcy, Dictionary<string, List<string>> dirDeps, List<string> rslt)
+        {
+            foreach(string dirDepcy in dirDeps[topDepcy])
+            {
+                foreach (string trnDepcy in dirDeps[dirDepcy])
+                {
+                    if (!rslt.Contains(trnDepcy))
+                        rslt.Add(trnDepcy);
+                    IncrementDependencies(trnDepcy, dirDeps, rslt);
+                }
+            }
+        }
+
+        private 
+
+        //private static List<string> GetAllTransitiveDependencies()
+
         #endregion
 
         #region FFR
