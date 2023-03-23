@@ -11,10 +11,18 @@ namespace Nunit.TestResultsComparer.Lib.Readers
     {
         public void Read(XmlNode src, NunitTestResultRecordBase target)
         {
-            target.id = GetAttrStr(src, nameof(target.id));
-            target.runstate = (RunState)GetAttrEnum<RunState>(src, nameof(target.runstate));
-            target.result = (TestResult)GetAttrEnum<TestResult>(src, nameof(target.result));
-            target.duration = (int)GetAttrDec(src, nameof(target.duration));
+            try
+            {
+
+                target.id = GetAttrStr(src, nameof(target.id));
+                target.runstate = (RunState)GetAttrEnum<RunState>(src, nameof(target.runstate));
+                target.result = (TestResult)GetAttrEnum<TestResult>(src, nameof(target.result));
+                target.duration = GetAttrDec(src, nameof(target.duration));
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException($"Error reading node {src.OuterXml}", ex);
+            }
         }
 
         protected string GetAttrStr(XmlNode src, string attrName)

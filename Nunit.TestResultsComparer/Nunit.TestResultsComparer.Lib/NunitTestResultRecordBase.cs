@@ -15,7 +15,7 @@ namespace Nunit.TestResultsComparer.Lib
         public RunState runstate { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public TestResult result { get; set; }
-        public decimal duration { get; set; }
+        public decimal? duration { get; set; }
 
     }
 }

@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comparer\DetailedComparisonResult.cs" />
+    <Compile Include="Comparer\NunitTestRunComparer.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="NunitTestCase.cs" />
     <Compile Include="NunitTestResultNodeBase.cs" />

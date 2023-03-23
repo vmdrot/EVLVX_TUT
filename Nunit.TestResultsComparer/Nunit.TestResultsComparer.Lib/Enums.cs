@@ -25,4 +25,13 @@
     {
         None = 0, Test, SetUp, TearDown, Parent, Child
     }
+
+    public enum CompareResult
+    {
+        Equal = 0,
+        IncompatiblePair,
+        Different,
+        Improved,
+        Worsened
+    }
 }

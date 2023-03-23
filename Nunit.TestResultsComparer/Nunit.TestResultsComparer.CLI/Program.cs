@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Nunit.TestResultsComparer.Lib;
+using Nunit.TestResultsComparer.Lib.Comparer;
 using Nunit.TestResultsComparer.Lib.Readers;
 using System;
 using System.Collections.Generic;
@@ -104,9 +105,27 @@ namespace Nunit.TestResultsComparer.CLI
             XmlDocument doc = new XmlDocument();
             doc.Load(xmlPath);
             NunitTestRun ntr = (new TestRunReader()).Read(doc.DocumentElement.SelectSingleNode("/test-run"));
-            Console.WriteLine(JsonConvert.SerializeObject(ntr, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore}));
+            Console.WriteLine(JsonConvert.SerializeObject(ntr, Newtonsoft.Json.Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }));
             return 0;
         }
+
+        public static int CompareTest(string[] args)
+        {
+            string path1 = args[0];
+            string path2 = args[1];
+            DetailedComparisonResult detailed;
+            int cmpRes = (new NunitTestRunComparer()).Compare(ReadTestRunWorker(path1), ReadTestRunWorker(path2), out detailed);
+            Console.WriteLine($"{nameof(cmpRes)}:{cmpRes}");
+            return cmpRes;
+        }
+
+        private static NunitTestRun ReadTestRunWorker(string xmlPath)
+        {
+            XmlDocument doc = new XmlDocument();
+            doc.Load(xmlPath);
+            return (new TestRunReader()).Read(doc.DocumentElement.SelectSingleNode("/test-run"));
+        }
+
         #endregion
         #region aux
         public static int ExitWithComplaints(string msg, int ret)

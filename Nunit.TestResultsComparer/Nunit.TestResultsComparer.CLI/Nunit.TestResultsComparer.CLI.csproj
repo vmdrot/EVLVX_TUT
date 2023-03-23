@@ -51,7 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="CMDs\CompareTest.cmd" />
     <None Include="CMDs\TestRunReadTest.cmd" />
+    <None Include="CMDs\CompareTest_worker.cmd" />
     <None Include="CMDs\TestRunReadTest_worker.cmd" />
     <None Include="packages.config" />
   </ItemGroup>
