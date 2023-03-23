@@ -51,6 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="CMDs\TestRunReadTest.cmd" />
+    <None Include="CMDs\TestRunReadTest_worker.cmd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -59,8 +61,6 @@
       <Name>Nunit.TestResultsComparer.Lib</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CMDs\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
