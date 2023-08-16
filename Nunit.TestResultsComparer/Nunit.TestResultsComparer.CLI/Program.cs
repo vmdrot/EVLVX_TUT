@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Nunit.TestResultsComparer.Lib;
 using Nunit.TestResultsComparer.Lib.Comparer;
+using Nunit.TestResultsComparer.Lib.Data.TestResultsXml;
 using Nunit.TestResultsComparer.Lib.Readers;
 using System;
 using System.Collections.Generic;

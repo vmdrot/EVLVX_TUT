@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nunit.TestResultsComparer.Lib.Data.TestResultsXml;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

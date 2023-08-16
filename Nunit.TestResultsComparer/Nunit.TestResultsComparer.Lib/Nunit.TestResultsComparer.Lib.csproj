@@ -49,13 +49,13 @@
   <ItemGroup>
     <Compile Include="Comparer\DetailedComparisonResult.cs" />
     <Compile Include="Comparer\NunitTestRunComparer.cs" />
-    <Compile Include="Enums.cs" />
-    <Compile Include="NunitTestCase.cs" />
-    <Compile Include="NunitTestResultNodeBase.cs" />
-    <Compile Include="NunitTestResultRecordBase.cs" />
-    <Compile Include="NunitTestRun.cs" />
-    <Compile Include="NunitTestSuite.cs" />
-    <Compile Include="NunitTestSuiteCaseBase.cs" />
+    <Compile Include="Data\TestResultsXml\Enums.cs" />
+    <Compile Include="Data\TestResultsXml\NunitTestCase.cs" />
+    <Compile Include="Data\TestResultsXml\NunitTestResultNodeBase.cs" />
+    <Compile Include="Data\TestResultsXml\NunitTestResultRecordBase.cs" />
+    <Compile Include="Data\TestResultsXml\NunitTestRun.cs" />
+    <Compile Include="Data\TestResultsXml\NunitTestSuite.cs" />
+    <Compile Include="Data\TestResultsXml\NunitTestSuiteCaseBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Readers\ResultRecordNodeBaseReader.cs" />
     <Compile Include="Readers\ResultRecordBaseReader.cs" />
