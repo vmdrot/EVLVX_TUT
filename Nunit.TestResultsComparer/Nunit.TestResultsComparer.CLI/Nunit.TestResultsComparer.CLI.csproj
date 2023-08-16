@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="CMDs\ReadAllureFolder.cmd" />
+    <None Include="CMDs\ReadAllureFolder_worker.cmd" />
     <None Include="CMDs\CompareWebHealthTabbedFiles.cmd" />
     <None Include="CMDs\CompareTest.cmd" />
     <None Include="CMDs\CompareWebHealthTabbedFiles_worker.cmd" />

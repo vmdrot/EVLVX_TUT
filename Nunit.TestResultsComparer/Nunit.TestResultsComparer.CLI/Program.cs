@@ -159,6 +159,23 @@ namespace Nunit.TestResultsComparer.CLI
                 .Any(rb => rb.Field<string>(keyColNm) == ra.Field<string>(keyColNm) && int.Parse(rb.Field<string>(resColNm).Trim()) == int.Parse(ra.Field<string>(resColNm).Trim()))).CopyToDataTable();
             return 100 * (dt1.Rows.Count - merged.Rows.Count);
         }
+
+        public static int ReadAllureFolder(string[] args)
+        {
+            string path = args[0];
+            var hive = AllureScenariosRunHiveReader.Read(path);
+            Console.WriteLine(hive.Containers?.Count);
+            Console.WriteLine(hive.Results?.Count);
+            Console.WriteLine(hive.Attachements?.Count);
+            Console.WriteLine(new string('=', 33));
+            Console.WriteLine(JsonConvert.SerializeObject(hive, Newtonsoft.Json.Formatting.Indented));
+            return 0;//todo
+        }
+
+        public static int AllureExtractFailed(string[] args)
+        {
+            return 0;//todo
+        }
         #endregion
         #region aux
         public static int ExitWithComplaints(string msg, int ret)
