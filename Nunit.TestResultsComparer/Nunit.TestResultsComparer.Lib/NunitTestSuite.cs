@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Nunit.TestResultsComparer.Lib
 {
+    /// <summary>
+    /// <see cref="https://docs.nunit.org/articles/nunit/technical-notes/usage/Test-Result-XML-Format.html#test-suite"/>
+    /// </summary>
     public class NunitTestSuite : NunitTestSuiteCaseBase
     {
         [JsonConverter(typeof(StringEnumConverter))]

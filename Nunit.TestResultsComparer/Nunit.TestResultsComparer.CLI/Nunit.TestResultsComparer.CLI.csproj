@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GenericParsing, Version=1.2.2.0, Culture=neutral, PublicKeyToken=e2512bd771ff0617, processorArchitecture=MSIL">
+      <HintPath>..\packages\GenericParsing.1.2.2\lib\net461\GenericParsing.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -51,7 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="CMDs\CompareWebHealthTabbedFiles.cmd" />
     <None Include="CMDs\CompareTest.cmd" />
+    <None Include="CMDs\CompareWebHealthTabbedFiles_worker.cmd" />
     <None Include="CMDs\TestRunReadTest.cmd" />
     <None Include="CMDs\CompareTest_worker.cmd" />
     <None Include="CMDs\TestRunReadTest_worker.cmd" />

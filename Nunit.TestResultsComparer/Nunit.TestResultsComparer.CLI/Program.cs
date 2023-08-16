@@ -4,6 +4,8 @@ using Nunit.TestResultsComparer.Lib.Comparer;
 using Nunit.TestResultsComparer.Lib.Readers;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -16,6 +18,7 @@ namespace Nunit.TestResultsComparer.CLI
     {
         #region field(s)
         private static Dictionary<string, CmdHandler> _cmdHandlers;
+        private static bool _noBuzz = false;
         #endregion
 
         #region inner type(s)
@@ -65,7 +68,7 @@ namespace Nunit.TestResultsComparer.CLI
                 List<string> origArgs = new List<string>(args);
                 origArgs.RemoveAt(0);
                 bool isDebug = false;
-                int debugSwitchPos = DetectDebugSwitch(origArgs);
+                int debugSwitchPos = DetectSpecialSwitch(origArgs,"-Debug");
                 if (debugSwitchPos != -1)
                 {
                     isDebug = true;
@@ -74,17 +77,25 @@ namespace Nunit.TestResultsComparer.CLI
 
                 if (isDebug)
                     Console.Read();
-                LogCmdArgs(_cmdHandlers[keyArg].Method.Name, origArgs.ToArray());
+
+                int noBuzzPos = DetectSpecialSwitch(origArgs, "-SkipLogo");
+                if (noBuzzPos != -1)
+                {
+                    _noBuzz = true;
+                    origArgs.RemoveAt(noBuzzPos);
+                }
+
+                if (!_noBuzz) LogCmdArgs(_cmdHandlers[keyArg].Method.Name, origArgs.ToArray());
                 return _cmdHandlers[keyArg](origArgs.ToArray());
             }
             else
                 return _cmdHandlers[string.Empty](args);
         }
 
-        private static int DetectDebugSwitch(List<string> args)
+        private static int DetectSpecialSwitch(List<string> args, string switchName)
         {
-            const string DebugSwitch = "-Debug";
-            return args.FindIndex(a => a == DebugSwitch || a.ToLower() == DebugSwitch.ToLower());
+            //const string DebugSwitch = "-Debug";
+            return args.FindIndex(a => a == switchName || a.ToLower() == switchName.ToLower());
         }
         #endregion
 
@@ -115,7 +126,7 @@ namespace Nunit.TestResultsComparer.CLI
             string path2 = args[1];
             DetailedComparisonResult detailed;
             int cmpRes = (new NunitTestRunComparer()).Compare(ReadTestRunWorker(path1), ReadTestRunWorker(path2), out detailed);
-            Console.WriteLine($"{nameof(cmpRes)}:{cmpRes}");
+            if (!_noBuzz) Console.WriteLine($"{nameof(cmpRes)}:{cmpRes}");
             return cmpRes;
         }
 
@@ -126,6 +137,27 @@ namespace Nunit.TestResultsComparer.CLI
             return (new TestRunReader()).Read(doc.DocumentElement.SelectSingleNode("/test-run"));
         }
 
+        private static void PWSHExpore()
+        {
+            //System.IO.File.WriteAllText()
+        }
+
+        public static int CompareWebHealthTabbedFiles(string[] args)
+        {
+            string path1 = args[0];
+            string path2 = args[1];
+            string keyColNm = args[2];
+            string resColNm = args[3];
+            var dt1 = TextDelimitedFileReader.Read(path1, '\t', 2);
+            var dt2 = TextDelimitedFileReader.Read(path2, '\t', 2);
+            if (dt1 == null && dt2 == null) return 0;
+            if (dt1 == null || dt2 == null) return int.MinValue;
+            if (dt1.Rows.Count != dt2.Rows.Count) return 10*(dt1.Rows.Count - dt2.Rows.Count);
+            DataTable merged = dt1.AsEnumerable()
+                .Where(ra => dt2.AsEnumerable()
+                .Any(rb => rb.Field<string>(keyColNm) == ra.Field<string>(keyColNm) && int.Parse(rb.Field<string>(resColNm).Trim()) == int.Parse(ra.Field<string>(resColNm).Trim()))).CopyToDataTable();
+            return 100 * (dt1.Rows.Count - merged.Rows.Count);
+        }
         #endregion
         #region aux
         public static int ExitWithComplaints(string msg, int ret)
