@@ -39,6 +39,7 @@ namespace Nunit.TestResultsComparer.Lib.Readers
                     try
                     {
                         var currRslt = Newtonsoft.Json.JsonConvert.DeserializeObject<ScenarioRunResult>(File.ReadAllText(rp));
+                        currRslt.resultFileName = Path.GetFileName(rp);
                         rslt.Results.Add(currRslt.uuid, currRslt);
                     }
                     catch (Exception ex)

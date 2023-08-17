@@ -22,6 +22,7 @@ namespace Nunit.TestResultsComparer.Lib.Data.Allure
         public List<Parameter> parameters { get; set; }
         public long start { get; set; }
         public long stop { get; set; }
+        public string resultFileName { get; set; }
     }
 
     public class StatusDetails
@@ -37,7 +38,7 @@ namespace Nunit.TestResultsComparer.Lib.Data.Allure
         public string status { get; set; }
         public StatusDetails statusDetails { get; set; }
         public string stage { get; set; }
-        public List<string> steps { get; set; }
+        public List<Step> steps { get; set; }
         public List<AttachmentInfo> attachments { get; set; }
         public List<string> parameters { get; set; }
         public long start { get; set; }

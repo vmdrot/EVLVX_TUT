@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.SqlServer.Server;
+using Newtonsoft.Json;
 using Nunit.TestResultsComparer.Lib;
 using Nunit.TestResultsComparer.Lib.Comparer;
 using Nunit.TestResultsComparer.Lib.Data.TestResultsXml;
@@ -174,6 +175,15 @@ namespace Nunit.TestResultsComparer.CLI
 
         public static int AllureExtractFailed(string[] args)
         {
+            string path = args[0];
+            bool withUuidAndFileName = args.Length > 1 ? bool.Parse(args[1]) : false;
+            var hive = AllureScenariosRunHiveReader.Read(path);
+            var rslt = hive.Results.Where(r => r.Value.status == "failed").ToList();
+            rslt.ForEach(r => 
+                {
+                    var pfx = withUuidAndFileName ? $"{r.Key}\t{r.Value?.resultFileName}\t" : string.Empty;
+                    Console.WriteLine($"{pfx}{r.Value?.fullName}\t{r.Value?.steps?.FirstOrDefault(s => s.status == "failed")?.name}");
+                });
             return 0;//todo
         }
         #endregion
