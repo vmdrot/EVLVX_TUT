@@ -1,4 +1,5 @@
 ﻿using Nunit.TestResultsComparer.Lib.Data.Allure;
+using Nunit.TestResultsComparer.Lib.Data.Allure.Analysis;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -67,6 +68,37 @@ namespace Nunit.TestResultsComparer.Lib.Readers
                 });
             }
             return rslt;
+        }
+
+        public static List<FailingScenarioInfo> ExtractFailingOnes(ScenariosContainersResultsHive src)
+        {
+            var rslt = new List<FailingScenarioInfo>();
+            var interim = src.Results.Where(r => r.Value.status == "failed").ToList();
+            interim.ForEach(r =>
+            {
+                var failingStep = r.Value?.steps?.FirstOrDefault(s => s.status == "failed");
+                rslt.Add(
+                    new FailingScenarioInfo() 
+                    {
+                        uuid = r.Value?.uuid,
+                        SourceFile = r.Value?.resultFileName,
+                        ScenarioFullName = r.Value?.fullName,
+                        ScenarioName = r.Value?.name,
+                        FailingStepName = failingStep?.name,
+                        ErrorMessage = r.Value?.statusDetails.message,
+                        ExTrace1stLn = ExtractFirstLine(r.Value?.statusDetails.trace)
+                    });
+            });
+
+            return rslt;
+        }
+
+        private static string ExtractFirstLine(string trace, int limit = 255)
+        {
+            if (string.IsNullOrWhiteSpace(trace)) return null;
+            int nlPos = trace.IndexOf('\n');
+            if (nlPos == -1) nlPos = trace.Length > limit ? limit : trace.Length;
+            return trace.Substring(0, nlPos);
         }
 
         private static List<string> ListFilesByMask(string folderPath, string mask)

@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Comparer\DetailedComparisonResult.cs" />
     <Compile Include="Comparer\NunitTestRunComparer.cs" />
+    <Compile Include="Data\Allure\Analysis\FailingScenarioInfo.cs" />
     <Compile Include="Data\Allure\ContainersResultsHive.cs" />
     <Compile Include="Data\Allure\ScenariosContainer.cs" />
     <Compile Include="Data\Allure\ScenarioRunResult.cs" />

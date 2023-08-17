@@ -54,7 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="CMDs\AllureExtractFailed2.cmd" />
     <None Include="CMDs\AllureExtractFailed.cmd" />
+    <None Include="CMDs\AllureExtractFailed2_worker.cmd" />
     <None Include="CMDs\ReadAllureFolder.cmd" />
     <None Include="CMDs\AllureExtractFailed_worker.cmd" />
     <None Include="CMDs\ReadAllureFolder_worker.cmd" />

@@ -30,6 +30,9 @@ namespace Nunit.TestResultsComparer.Lib.Data.Allure
         public bool known { get; set; }
         public bool muted { get; set; }
         public bool flaky { get; set; }
+        public string message { get; set; }
+        public string trace { get; set; }
+
     }
 
     public class Step

@@ -170,7 +170,7 @@ namespace Nunit.TestResultsComparer.CLI
             Console.WriteLine(hive.Attachements?.Count);
             Console.WriteLine(new string('=', 33));
             Console.WriteLine(JsonConvert.SerializeObject(hive, Newtonsoft.Json.Formatting.Indented));
-            return 0;//todo
+            return 0;
         }
 
         public static int AllureExtractFailed(string[] args)
@@ -184,8 +184,16 @@ namespace Nunit.TestResultsComparer.CLI
                     var pfx = withUuidAndFileName ? $"{r.Key}\t{r.Value?.resultFileName}\t" : string.Empty;
                     Console.WriteLine($"{pfx}{r.Value?.fullName}\t{r.Value?.steps?.FirstOrDefault(s => s.status == "failed")?.name}");
                 });
-            return 0;//todo
+            return 0;
         }
+
+        public static int AllureExtractFailed2(string[] args)
+        {
+            string path = args[0];
+            Console.WriteLine(JsonConvert.SerializeObject(AllureScenariosRunHiveReader.ExtractFailingOnes(AllureScenariosRunHiveReader.Read(path)), Newtonsoft.Json.Formatting.Indented));
+            return 0;
+        }
+
         #endregion
         #region aux
         public static int ExitWithComplaints(string msg, int ret)
