@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Nunit.TestResultsComparer.Lib.Data.Allure
 {
-    public class ScenarioRunResult
+    public class ScenarioRunResult : IAllureStartStopItem
     {
         public string uuid { get; set; }
         public string historyId { get; set; }

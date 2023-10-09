@@ -2,6 +2,8 @@
 using Newtonsoft.Json;
 using Nunit.TestResultsComparer.Lib;
 using Nunit.TestResultsComparer.Lib.Comparer;
+using Nunit.TestResultsComparer.Lib.Comparers.Allure;
+using Nunit.TestResultsComparer.Lib.Data.Allure.Analysis;
 using Nunit.TestResultsComparer.Lib.Data.TestResultsXml;
 using Nunit.TestResultsComparer.Lib.Readers;
 using System;
@@ -164,7 +166,8 @@ namespace Nunit.TestResultsComparer.CLI
         public static int ReadAllureFolder(string[] args)
         {
             string path = args[0];
-            var hive = AllureScenariosRunHiveReader.Read(path);
+            bool skipAttachs = args.Length > 1 ? bool.Parse(args[1]) : false;
+            var hive = AllureScenariosRunHiveReader.Read(folderPath: path, skipAttachments: skipAttachs);
             Console.WriteLine(hive.Containers?.Count);
             Console.WriteLine(hive.Results?.Count);
             Console.WriteLine(hive.Attachements?.Count);
@@ -191,6 +194,38 @@ namespace Nunit.TestResultsComparer.CLI
         {
             string path = args[0];
             Console.WriteLine(JsonConvert.SerializeObject(AllureScenariosRunHiveReader.ExtractFailingOnes(AllureScenariosRunHiveReader.Read(path)), Newtonsoft.Json.Formatting.Indented));
+            return 0;
+        }
+
+        public static int CompareMultipleRuns(string[] args)
+        {
+            string inputFile = args[0];
+            Dictionary<string,string> inputs = new Dictionary<string,string>();
+            #region Read inputs
+            var inputLns = new List<string>(File.ReadAllLines(inputFile));
+            inputLns.ForEach(ln => 
+                {
+                    if (!string.IsNullOrWhiteSpace(ln))
+                    {
+                        var flds = ln.Split('\t');
+                        if (flds.Length == 2) 
+                        {
+                            inputs.Add(flds[0]?.Trim(), flds[1]?.Trim());
+                        }
+                    }
+                });
+            #endregion
+
+            var failsHives = new Dictionary<string, List<FailingScenarioInfo>>();
+            var runsDates = new Dictionary<string, DateTime>();
+            foreach (var runNr in inputs.Keys)
+            {
+                var hive = AllureScenariosRunHiveReader.Read(folderPath: inputs[runNr], skipAttachments: true);
+                failsHives.Add(runNr, AllureScenariosRunHiveReader.ExtractFailingOnes(hive));
+                runsDates.Add(runNr, hive.RunDate);
+            }
+            var cmprr = new AllureMultipleRunsComparer();
+            Console.WriteLine(cmprr.Group(failsHives, runsDates:runsDates));
             return 0;
         }
 

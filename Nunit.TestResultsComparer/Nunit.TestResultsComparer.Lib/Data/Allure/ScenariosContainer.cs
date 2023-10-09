@@ -1,6 +1,6 @@
 ﻿namespace Nunit.TestResultsComparer.Lib.Data.Allure
 {
-    public class ScenariosContainer
+    public class ScenariosContainer : IAllureStartStopItem
     {
         public string uuid { get; set; }
         public string[] children { get; set; }

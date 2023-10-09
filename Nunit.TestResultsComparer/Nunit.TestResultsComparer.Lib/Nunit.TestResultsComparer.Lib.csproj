@@ -47,10 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comparer\DetailedComparisonResult.cs" />
-    <Compile Include="Comparer\NunitTestRunComparer.cs" />
+    <Compile Include="Comparers\Allure\AllureMultipleRunsComparer.cs" />
+    <Compile Include="Comparers\DetailedComparisonResult.cs" />
+    <Compile Include="Comparers\NunitTestRunComparer.cs" />
     <Compile Include="Data\Allure\Analysis\FailingScenarioInfo.cs" />
+    <Compile Include="Data\Allure\Analysis\ScenarioRunInfoBase.cs" />
     <Compile Include="Data\Allure\ContainersResultsHive.cs" />
+    <Compile Include="Data\Allure\IAllureStartStopItem.cs" />
     <Compile Include="Data\Allure\ScenariosContainer.cs" />
     <Compile Include="Data\Allure\ScenarioRunResult.cs" />
     <Compile Include="Data\TestResultsXml\Enums.cs" />
@@ -68,6 +71,7 @@
     <Compile Include="Readers\TestRunReader.cs" />
     <Compile Include="Readers\TestSuiteReader.cs" />
     <Compile Include="Readers\TextDelimitedFileReader.cs" />
+    <Compile Include="Tools\EpochTimeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

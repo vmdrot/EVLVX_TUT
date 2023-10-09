@@ -11,5 +11,6 @@ namespace Nunit.TestResultsComparer.Lib.Data.Allure
         public Dictionary<string,ScenariosContainer> Containers { get; set; }
         public Dictionary<string,ScenarioRunResult> Results { get; set; }
         public Dictionary<string,string> Attachements { get; set; }
+        public DateTime RunDate { get; set; }
     }
 }

@@ -4,16 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Nunit.TestResultsComparer.Lib.Tools;
 
 namespace Nunit.TestResultsComparer.Lib.Readers
 {
     public static class AllureScenariosRunHiveReader
     {
-        public static ScenariosContainersResultsHive Read(string folderPath, bool suppressErrors = true)
+        public static ScenariosContainersResultsHive Read(string folderPath, bool suppressErrors = true, bool skipAttachments = false)
         {
             List<string> containerFilePaths = ListFilesByMask(folderPath, "*-container.json");
             List<string> resultFilePaths = ListFilesByMask(folderPath, "*-result.json");
-            List<string> attachmentsPaths = ListFilesByMask(folderPath, "*-attachment.txt");
+            List<string> attachmentsPaths = skipAttachments ? null : ListFilesByMask(folderPath, "*-attachment.txt");
             ScenariosContainersResultsHive rslt = new ScenariosContainersResultsHive();
             if (containerFilePaths != null && containerFilePaths.Any())
             {
@@ -50,7 +51,7 @@ namespace Nunit.TestResultsComparer.Lib.Readers
                     }
                 });
             }
-            if (attachmentsPaths != null && attachmentsPaths.Any())
+            if (!skipAttachments && attachmentsPaths != null && attachmentsPaths.Any())
             {
                 rslt.Attachements = new Dictionary<string, string>();
                 attachmentsPaths.ForEach(ap =>
@@ -67,6 +68,8 @@ namespace Nunit.TestResultsComparer.Lib.Readers
                     
                 });
             }
+
+            rslt.RunDate = ExtractRunDate(rslt);
             return rslt;
         }
 
@@ -85,8 +88,8 @@ namespace Nunit.TestResultsComparer.Lib.Readers
                         ScenarioFullName = r.Value?.fullName,
                         ScenarioName = r.Value?.name,
                         FailingStepName = failingStep?.name,
-                        ErrorMessage = r.Value?.statusDetails.message,
-                        ExTrace1stLn = ExtractFirstLine(r.Value?.statusDetails.trace)
+                        ErrorMessage = ExtractFirstLine(r.Value?.statusDetails?.message),
+                        ExcTrace1stLn = ExtractFirstLine(r.Value?.statusDetails?.trace)
                     });
             });
 
@@ -106,5 +109,56 @@ namespace Nunit.TestResultsComparer.Lib.Readers
             return new List<string>(Directory.GetFiles(folderPath, mask));
         }
 
+        private static DateTime ExtractRunDate(ScenariosContainersResultsHive hive)
+        {
+            List<long> candidates = new List<long>();
+            candidates.Add(ExtractEarliestStartDt(hive.Containers.Values));
+            candidates.Add(ExtractEarliestStartDt(hive.Results.Values));
+            long rslt = candidates.Min();
+            /*
+            Console.WriteLine($"{nameof(DateTime.FromBinary)}({rslt}):{DateTime.FromBinary(rslt)}");
+            Console.WriteLine($"{nameof(DateTime.FromFileTime)}({rslt}):{DateTime.FromFileTime(rslt)}");
+            Console.WriteLine($"{nameof(DateTime.FromFileTimeUtc)}({rslt}):{DateTime.FromFileTimeUtc(rslt)}");
+            Console.WriteLine($"new DateTime({rslt}):{new DateTime(rslt)}");
+            //Console.WriteLine($"{nameof(UnixTimeStampToDateTime)}({rslt}):{UnixTimeStampToDateTime(rslt)}");
+            try {
+                Console.WriteLine($"{nameof(EpochTimeExtensions.ToDateTimeFromEpoch)}({rslt}):{rslt.ToDateTimeFromEpoch()}");
+            } catch { }
+            try
+            {
+                Console.WriteLine($"{nameof(EpochTimeExtensions.ToDateTimeFromEpoch)}({rslt/1000}):{(rslt/1000).ToDateTimeFromEpoch()}");
+            }
+            catch { }
+            try
+            {
+                var str = rslt.ToString();
+                double trueTime = double.Parse($"{str.Substring(0, str.Length - 3)}.{str.Substring(str.Length - 3)}");
+                Console.WriteLine($"{nameof(EpochTimeExtensions.ToDateTimeFromEpoch)}({trueTime}):{trueTime.ToDateTimeFromEpoch()}");
+            }
+            catch { }
+
+            return DateTime.FromBinary(rslt);
+            */
+            var str = rslt.ToString();
+            double trueTime = double.Parse($"{str.Substring(0, str.Length - 3)}.{str.Substring(str.Length - 3)}");
+            return trueTime.ToDateTimeFromEpoch();
+        }
+
+        private static long ExtractEarliestStartDt<T>(Dictionary<string,T>.ValueCollection src) where T : IAllureStartStopItem
+        {
+            return src.Select(v => v.start).Min();
+        }
+
+        public static DateTime UnixTimeStampToDateTime(long unixTimeStamp)
+        {
+            /*
+            // Unix timestamp is seconds past epoch
+            DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            dateTime = dateTime.AddSeconds(unixTimeStamp).ToLocalTime();
+            return dateTime;
+            */
+            DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            return DateTimeOffset.FromUnixTimeSeconds(unixTimeStamp - dateTime.Ticks).DateTime;//UtcDateTime;
+        }
     }
 }
