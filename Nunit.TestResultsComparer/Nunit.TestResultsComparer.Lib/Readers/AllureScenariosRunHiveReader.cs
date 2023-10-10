@@ -70,7 +70,20 @@ namespace Nunit.TestResultsComparer.Lib.Readers
             }
 
             rslt.RunDate = ExtractRunDate(rslt);
+            //CalcScenariosPerStep(rslt);
             return rslt;
+        }
+
+        private static void CalcScenariosPerStep(ScenariosContainersResultsHive rslt)
+        {
+            var subStepNames = new List<string>();
+            var allSteps = rslt.Results.Values.Select(r => r.steps).ToList();
+            allSteps.ForEach(ll => {
+                ll.ForEach(s => {
+                    //todo
+                });
+            });
+            
         }
 
         public static List<FailingScenarioInfo> ExtractFailingOnes(ScenariosContainersResultsHive src)
@@ -92,8 +105,21 @@ namespace Nunit.TestResultsComparer.Lib.Readers
                         ExcTrace1stLn = ExtractFirstLine(r.Value?.statusDetails?.trace)
                     });
             });
-
+            CalcScenariosPerStep(rslt);
             return rslt;
+        }
+
+        private static void CalcScenariosPerStep(List<FailingScenarioInfo> rslt)
+        {
+            var stepNames = rslt.Select(s => s.FailingStepName).Distinct().ToList();
+            var dict = new Dictionary<string, int>();
+            stepNames.ForEach(s => {
+                var cnt = rslt.Where(i => i.FailingStepName == s).Count();
+                dict.Add(s, cnt);
+            });
+            rslt.ForEach(i => {
+                i.ScenariosPerStep = dict[i.FailingStepName];
+            });
         }
 
         private static string ExtractFirstLine(string trace, int limit = 255)

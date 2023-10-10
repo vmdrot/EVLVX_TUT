@@ -9,7 +9,7 @@
         public string FailingStepName { get; set; }
         public string ErrorMessage { get; set; }
         public string ExcTrace1stLn { get; set; }
-
+        public int ScenariosPerStep { get; set; }
         public static bool AreTheSame(FailingScenarioInfo one, FailingScenarioInfo two)
         {
             return one?.ScenarioFullName == two?.ScenarioFullName

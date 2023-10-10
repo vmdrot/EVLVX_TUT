@@ -44,7 +44,7 @@ namespace Nunit.TestResultsComparer.Lib.Comparers.Allure
 
         private void AppendHeader(StringBuilder target, Dictionary<string, List<FailingScenarioInfo>>.KeyCollection keys, Dictionary<string, DateTime> runsDates)
         {
-            StringBuilder rslt = new StringBuilder($"{nameof(FailingScenarioInfo.ScenarioFullName)}{_delim}{nameof(FailingScenarioInfo.FailingStepName)}{_delim}{nameof(FailingScenarioInfo.ErrorMessage)}{_delim}{nameof(FailingScenarioInfo.ExcTrace1stLn)}{_delim}Occurrences{_delim}Pct");
+            StringBuilder rslt = new StringBuilder($"{nameof(FailingScenarioInfo.ScenarioFullName)}{_delim}{nameof(FailingScenarioInfo.FailingStepName)}{_delim}{nameof(FailingScenarioInfo.ErrorMessage)}{_delim}{nameof(FailingScenarioInfo.ExcTrace1stLn)}{_delim}{nameof(FailingScenarioInfo.ScenariosPerStep)}{_delim}Occurrences{_delim}Pct");
             foreach (var key in keys)
             {
                 var currDtHdrPfx = string.Empty;
@@ -63,7 +63,7 @@ namespace Nunit.TestResultsComparer.Lib.Comparers.Allure
         private void AppendRow(StringBuilder target, Dictionary<string, List<FailingScenarioInfo>>.KeyCollection keys, FailingScenarioInfo failingScenarioInfo, List<string> list)
         {
             decimal pct = Math.Round(100M * (decimal)list.Count / (decimal)keys.Count, 2);
-            StringBuilder rslt = new StringBuilder($"{failingScenarioInfo.ScenarioFullName}{_delim}{failingScenarioInfo.FailingStepName}{_delim}{failingScenarioInfo.ErrorMessage}{_delim}{failingScenarioInfo.ExcTrace1stLn}{_delim}{list.Count}{_delim}{pct}%");
+            StringBuilder rslt = new StringBuilder($"{failingScenarioInfo.ScenarioFullName}{_delim}{failingScenarioInfo.FailingStepName}{_delim}{failingScenarioInfo.ErrorMessage}{_delim}{failingScenarioInfo.ExcTrace1stLn}{_delim}{failingScenarioInfo.ScenariosPerStep}{_delim}{list.Count}{_delim}{pct}%");
             foreach (var key in keys)
             {
                 string currCellVal = list.Contains(key) ? "y" : "";

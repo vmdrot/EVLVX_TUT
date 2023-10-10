@@ -10,4 +10,5 @@ REM CALL CompareMultipleRuns_worker.cmd F:\home\vmdrot\EPAM\Projs\PTBX-NDC\JIRA\
 REM CALL CompareMultipleRuns_worker.cmd F:\home\vmdrot\EPAM\Projs\PTBX-NDC\JIRA\PCT-9822\failingBuilds\failingBuildsIdx_4915-20.tab -SkipLogo
 REM CALL CompareMultipleRuns_worker.cmd F:\home\vmdrot\EPAM\Projs\PTBX-NDC\JIRA\PCT-9822\failingBuilds\failingBuildsIdx_4920-22.tab -SkipLogo
 REM CALL CompareMultipleRuns_worker.cmd F:\home\vmdrot\EPAM\Projs\PTBX-NDC\JIRA\PCT-9822\failingBuilds\failingBuildsIdx_4920-23.tab -SkipLogo
-CALL CompareMultipleRuns_worker.cmd F:\home\vmdrot\EPAM\Projs\PTBX-NDC\JIRA\PCT-9822\failingBuilds\failingBuildsIdx_4920-27.tab -SkipLogo
+REM CALL CompareMultipleRuns_worker.cmd F:\home\vmdrot\EPAM\Projs\PTBX-NDC\JIRA\PCT-9822\failingBuilds\failingBuildsIdx_4920-27.tab -SkipLogo
+CALL CompareMultipleRuns_worker.cmd F:\home\vmdrot\EPAM\Projs\PTBX-NDC\JIRA\PCT-9822\failingBuilds\failingBuildsIdx_4928-30.tab -SkipLogo -Debug
